@@ -43,6 +43,7 @@ func activate() -> bool:
 				game.damage_enemy(e,d.damage*game.damage_mult*(1.0+float(game.characters[game.selected].melee_bonus)))
 				if game.state!=game.State.COMBAT:return true
 				if game.enemies.has(e) and e.kind!='boss':
+					game.encounters.interrupt_elite(e)
 					var dir:Vector2=(e.pos-origin).normalized()
 					if dir==Vector2.ZERO:dir=Vector2.RIGHT
 					e.pos=(e.pos+dir*d.knockback).clamp(Vector2(35,35),Vector2(2365,1565))

@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ENCOUNTER SOAK PASS scrapyard bruiser elite+boss 7200 steps / 120 simulated seconds
+ENCOUNTER SOAK PASS scrapyard sparky elite+boss 7200 steps / 120 simulated seconds
+ENCOUNTER SOAK PASS scrapyard shade elite+boss 7200 steps / 120 simulated seconds
+ENCOUNTER SOAK PASS reactor bruiser elite+boss 7200 steps / 120 simulated seconds
+ENCOUNTER SOAK PASS reactor sparky elite+boss 7200 steps / 120 simulated seconds
+ENCOUNTER SOAK PASS reactor shade elite+boss 7200 steps / 120 simulated seconds
+ENCOUNTER SOAK TOTAL 43200 steps / 720 simulated seconds; peaks={ "enemies": 100, "hazards": 3, "shots": 25, "rewards": 1 }; artificial HP/time fixtures, not Android FPS or real run balancing

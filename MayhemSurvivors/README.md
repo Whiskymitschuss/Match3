@@ -1,3 +1,70 @@
+# Mayhem Survivors 0.10.0 Alpha — Elite Encounters
+
+Nutzerfeedback zur 0.9: „Yes alles top“. Die bestätigte Oberfläche bleibt Grundlage.
+Neue Begegnungen für beide Arenen, vollständig mit Kampf, Shop und Spielende verbunden.
+
+## Elitegegner
+
+In Wellen 4, 6, 8 und 9 wird ab Sekunde 18 der nächste geeignete normale Spawn zur Elite.
+Höchstens eine pro Welle, maximal vier pro Run. Kein zusätzliches Gegnerobjekt und
+weiterhin höchstens 100 Gegner. Ohne freien Spawnplatz entsteht keine zusätzliche Elite.
+Goldene Krone, eigener Körper, HP-Leiste und dezentes Ereignisfeld unten im HUD.
+
+| Arena | Elite | Ausweichen / Konter |
+|---|---|---|
+| Schrottplatz | Schrottbrecher | Goldener gerader Korridor, 1,2 s Vorwarnung, dann fixierter Sturmangriff; seitlich ausweichen oder mit Bruisers Schockwelle unterbrechen |
+| Reaktorzone | Impulswächter | 1,45 s Ringwarnung, dann kurzer Impuls; innen/außen bleiben oder türkise Öffnung nutzen |
+
+Warnursprung/Ziel bleiben fixiert; Knockback bricht den Windup ab. Schockwelle unterbricht
+auch an der Arenagrenze und kann den Sturm stoppen. Neue Spezialangriffe werden nicht
+aus dem unsichtbaren Bereich begonnen/vollendet. Treffer nutzen Rüstung, Dashschutz und
+bestehenden Kontakt-Cooldown. Gewöhnliche Gegner, Waffen- und Charaktergrundwerte erhalten.
+Eliten haben 1,65-fache aktuelle Tank-HP, 1,25-faches Tanktempo und 1,10-fachen Kontaktschaden.
+
+## Elite-Beute
+
+Tötet eine Elite: Tankbelohnung plus 12 Coins und 12 XP (Kristall). Nach der Welle folgt
+vor dem eigentlichen Shop eine kostenlose Wahl genau einer Run-Belohnung:
+
+- Kampftraining: +5 Prozentpunkte Basis-Schadensbonus.
+- Panzerreserve: +10 maximale und +10 aktuelle HP.
+- Schrottdepot: 20 + 2 × besiegte Welle Coins.
+
+Einmal pro Elite. Ein Run-/Wellenbezeichner verhindert doppelte oder alte Käufe.
+Waffenentwicklung auf Stufe fünf folgt danach weiterhin verbindlich, dann der Markt.
+Elite-Kills erscheinen im Ergebnis und gespeicherten Run-Verlauf. Keine Meta-Käufe,
+keine neue Währung, keine Werbung. Ohne besiegte Elite keine Bonuswahl.
+
+## Bossphasen
+
+Bei 65 % und 30 % verbleibenden HP wechseln beide Bosse ihre Gesundheitsphase.
+HP bleiben 6.000 / 7.560 und das Limit 90 s. Keine Heilung oder Unverwundbarkeitsphase.
+Ein starker Treffer darf direkt Phase III erreichen. Beim Wechsel werden alte
+feindliche Schüsse/Bossmarkierungen abgeräumt; eigene Schüsse bleiben erhalten.
+
+- Overlord II: drei angekündigte Trümmer-Zielkreise einschließlich deiner letzten Position.
+- Reaktorwächter II: Kreuzmarkierungen an deiner letzten Position, diagonal verlassen.
+- Phase III: zusätzlich abwechselnde Impulsringe mit breiter sichtbarer Fluchtöffnung.
+
+Neue Muster starten mit mindestens 1,5 s Warnzeit. Der Boss hält während der Warnung/
+Auslösung still; kurze Erholung und begrenzte Musterzahl verhindern Überlagerung.
+Die vertrauten Grundangriffe kehren zwischen den Spezialmustern zurück. Alle kritischen
+Warnflächen bleiben auf LOW/MEDIUM/HIGH gleich. Drei neue eigene Audioakzente.
+
+## Start / Tests / Build
+
+`project.godot` in Godot 4.6.3 stable öffnen. Serielle Importkonfiguration aus 0.9 erhalten.
+`python3 tools/run_tests.py --traces`: 1.030 Assertions plus beide historischen Kampftraces.
+Neue Begegnungen: tests/encounters_test.gd, Lastprobe tests/encounters_soak.gd.
+Native Beispielbilder tests/encounter_*.png sind gestellte Engine-Szenen, keine echten
+Android-Runs. APK 0.10.0 / Code 14, gleicher Paketname/Schlüssel: als Update installieren.
+Offen bleibt die Handy-Abnahme der neuen Gegner, Phasen und Belohnungsbalance.
+
+
+---
+
+## Historischer Stand vor 0.10
+
 # Mayhem Survivors 0.9.0 Alpha — Neon Interface
 
 Vollständiger Menü-Rework nach der neuen Neon-Comic-Referenz des Nutzers.

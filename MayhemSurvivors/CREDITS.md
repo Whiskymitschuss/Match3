@@ -1,3 +1,16 @@
+# Neue Inhalte 0.10 — RF Worlds
+
+Zwei originale Elite-Sprites mit Bildgenerierung für diesen Spielstil erstellt,
+Atlas assets/enemies/elites.png. Sturm-/Ring-/Kreuz-/Zielkreisgrafik direkt aus der
+Gameplay-Geometrie gezeichnet, keine externen Effekte oder fremden Gegner kopiert.
+Drei neue Audiocues mit eigener deterministischer Synthese, Quelle
+ tools/generate_encounter_audio.py (Python-Standardbibliothek). Bisherige Fontlizenzen,
+UI-/Audioherkunft und Bildquellen bleiben erhalten.
+
+---
+
+## Historischer Stand vor 0.10
+
 # Gestaltung 0.9 — RF Worlds
 
 Neon-Stadtmotiv, neue Silber/Magenta-Wortmarke und MS-Icon mit Bildgenerierung nach

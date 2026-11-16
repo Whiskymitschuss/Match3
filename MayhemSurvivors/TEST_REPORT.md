@@ -1,3 +1,55 @@
+# Testbericht 0.10.0 — 2026-11-16
+
+Godot 4.6.3 stable, Linux Headless und native Mesa-Ansichten. Logs tests/results/v0.10-*.
+1.030 Assertions bestanden: 926 bestehende plus 104 Encounter-Prüfungen. Keine Parser-/
+Ressourcenfehler oder Fehlassertions in finalen Suiten.
+
+Neue Suite prüft 20 Arena-/Wellenkombinationen, echten Spawn-Ersatz/Cap/Einführungszeit,
+HP/Identität, fixierte Warnung, volle Warnzeit trotz großem Frame, einmaligen Swept-
+Sturmtreffer, Angriffabbruch durch Knockback/Schockwelle auch an Wänden und Offscreen-
+Schutz. Der Kameratest setzt echte Landscape-Sicht und verschiebt Kamera/Spieler in
+andere Arenaecken; er verlässt sich nicht nur auf Spielerabstand.
+Ringöffnung/Innen-/Außenzone und echter Schaden geprüft, Elite-Tod löscht eigene
+Gefahren. Keine doppelte Belohnung, Zusatzcoins/XP, Cache über Wellenende, echte
+Wahlwirkungen und Item-Synchronisation. Marktaktionen/Weitergehen während Cache blockiert,
+Nonce nicht wiederverwendbar, Übergabe an obligatorische Entwicklung und dann Markt.
+Pause/Level-up/Shop frieren neue Systeme ein; Neustart löscht Runzustand.
+
+Beide Bossphasen-Schwellen, direkte Phase-III-Sprünge, keine Rückstufung, vollständige
+neue Warnung, arenaeigene Muster, sichtbare sichere Ringöffnung, alte Feindschüsse weg/
+eigene behalten, Ablauf nach großem Frame, Sieg und Tod durch neue Gefahr während
+Iteration geprüft. Shade-Dash bleibt gegen diese Treffer geschützt. Elite-Runrecord
+wird kompatibel sanitisiert. Normale Charakter-/Waffen-/Wellen-JSONs unverändert.
+
+Welttrace 33 Punkte/3.600 Schritte bestanden, neue Begegnungen dabei regulär aktiv,
+aber frühe Wellen unverändert. Effekttrace 87 Punkte/8.700 Schritte unter eingefrorenen
+alten Wellen und ausdrücklich deaktiviertem 0.10-Director: prüft Legacy-Verhalten,
+keine Behauptung unveränderter später Kämpfe mit neuen Bossphasen.
+
+Lastprobe: 43.200 Schritte / 720 simulierte Sekunden, beide Arenen × drei Helden,
+LOW/MEDIUM/HIGH, Start mit 100 Gegnern, echte Elite- und Bossphasen. Peaks: 100 Gegner,
+3 Zusatzgefahren, 25 Poolobjekte, 1 wartende Beute. Gegner-/Rollen-/Loot-/Poolcaps
+gehalten. HP/Zeit für Lastprüfung künstlich hochgehalten; falls nötig wird Elite
+nach 55 Sekunden über reale Schaden-API getötet, um Beutefluss zu testen. Boss-HP in
+Lastfixture 500.000, Phasen zeitlich angesteuert. Keine reale Run- oder Fairnessabnahme.
+
+20 isolierte Boss-DPS-Proben mit vorgegebenem Build/zehn Entwicklungen × zwei Arenen
+unter 90 Sekunden; Boss-KI und eingehender Schaden darin aus. Keine Ausweichprüfung.
+Sechs tatsächliche Godot-Renderbilder zeigen Elitewarnungen, offene/aktive Ringe,
+Beutewahl und beide Boss-Zusatzmuster. Zustände/Stats per Fixture vorgegeben.
+Offen: neue Mechaniken, Lesbarkeit/Audio und Ökonomie auf physischem Android-Gerät,
+FPS/Temperaturmessung. Automatisierte/native Prüfungen ersetzen diese Abnahme nicht.
+
+Weitere Regression: Boss-Grundangriffscursor bleiben bei Specials erhalten.
+Verlangsamte Stürme treffen nur entlang der tatsächlich zurückgelegten Strecke.
+Alle drei Beutebuttons wurden über ihre echten Signale betätigt; auch ein zweiter
+Klick auf denselben alten Button gewährt keine weitere Belohnung.
+
+
+---
+
+## Historischer Stand vor 0.10
+
 # Testbericht 0.9.0 — 2026-11-16
 
 Godot 4.6.3 stable, Headless plus natives Mesa-Rendering. Logs tests/results/v0.9-*.

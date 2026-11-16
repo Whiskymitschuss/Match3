@@ -60,7 +60,7 @@ func icon(id:String) -> Texture2D:
 	return textures[id]
 func upgrade_price(w:Dictionary) -> int:return int((18+game.wave_number*5)*(1+int(w.level)*.3))
 func upgrade(id:String) -> bool:
-	if game.state!=game.State.SHOP or not game.pending_specialization().is_empty():return false
+	if game.state!=game.State.SHOP or not game.encounters.rewards.is_empty() or not game.pending_specialization().is_empty():return false
 	for w in game.weapons:
 		if w.id!=id or w.level>=5:continue
 		var cost=upgrade_price(w)
@@ -71,7 +71,7 @@ func salvage_price(w:Dictionary) -> int:
 	# Kept well below the cheapest acquisition and upgrade costs; no buy/sell profit loop.
 	return int((8+game.wave_number*2)*int(w.level)*.4)
 func salvage(id:String) -> bool:
-	if game.state!=game.State.SHOP or game.weapons.size()<=1 or not game.pending_specialization().is_empty():return false
+	if game.state!=game.State.SHOP or not game.encounters.rewards.is_empty() or game.weapons.size()<=1 or not game.pending_specialization().is_empty():return false
 	for i in range(game.weapons.size()):
 		if game.weapons[i].id!=id:continue
 		game.coins+=salvage_price(game.weapons[i]);game.weapons.remove_at(i);sync()

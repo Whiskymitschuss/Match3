@@ -1,3 +1,22 @@
+# 0.10.0 Alpha — 2026-11-16
+
+- Schrottbrecher und Impulswächter mit eigener Grafik, Krone, HP-Leiste und Angriffswarnung.
+- Pro ausgewählter Welle maximal ein normaler Spawn aufgewertet; Gegnercap bleibt 100.
+- Fixierter Sturm mit Swept-Trefferprüfung; offener Impulsring mit gemeinsamer Warn-/Treffergeometrie.
+- Bruisers Schockwelle unterbricht Eliten auch an Wänden; Shade-Dash schützt wie bisher.
+- Einmalige Elite-Beute nach Wellenende, drei echte Run-Optionen; doppelte/alte Auswahl gesperrt.
+- Beute, Waffenentwicklung und Markt in korrekter Reihenfolge verbunden.
+- Boss-Gesundheitsphasen bei 65/30 %, arenaeigene Zusatzmuster und offene Ringe in Phase III.
+- Musterwechsel räumt alte Feindangriffe auf, behält eigene Schüsse; keine HP-/Zeit-Limit-Erhöhung.
+- Elite-Killzahl in Ergebnis/Run-Historie, Speicherformat weiterhin rückwärtslesbar als Version 3.
+- Drei eigene Sounds; LOW verändert keine Warn- oder Treffergeometrie.
+- 104 neue Assertions, insgesamt 1.030; 43.200 Schritte Lastprobe und native Galerie.
+- Android 0.10.0 / Code 14. Bewährte UI/Audio-/Touchbasis aus 0.9 erhalten.
+
+---
+
+## Historischer Stand vor 0.10
+
 # 0.9.0 Alpha — 2026-11-16
 
 - Menülandschaft, Wortmarke, MS-App-Icon und RF-Worlds-Marke an Neon-Referenz angepasst.

@@ -5,6 +5,7 @@ const REACTOR_FLOOR=preload('res://assets/environments/reactor.png')
 const GUARDIAN=preload('res://assets/enemies/reactor_guardian.png')
 const GUARDIAN_REGION=Rect2(0,70,1254,1168)
 const ROLE_ART=preload('res://assets/enemies/reactor_roles.png')
+const ELITES=preload('res://assets/enemies/elites.png')
 const ENEMIES = preload('res://assets/enemies/enemies_atlas.png')
 const REGIONS = {'grunt':Rect2(132,79,377,516),'runner':Rect2(738,60,383,536),'tank':Rect2(26,675,576,566),'boss':Rect2(636,633,571,611),'spitter':Rect2(32,90,704,870),'drone':Rect2(792,72,720,824)}
 var game: Node2D
@@ -19,7 +20,7 @@ func death_limit() -> int:
 	return 12 if game.saved.settings.quality=='LOW' else (20 if game.saved.settings.quality=='MEDIUM' else 32)
 func enemy_defeated(enemy: Dictionary):
 	if deaths.size()>=death_limit():return
-	deaths.append({'kind':enemy.kind,'pos':enemy.pos,'radius':enemy.radius,'life':.38,'full':.38,'face':-1.0 if game.player.position.x<enemy.pos.x else 1.0})
+	deaths.append({'kind':enemy.kind,'elite':enemy.get('elite',''),'pos':enemy.pos,'radius':enemy.radius,'life':.38,'full':.38,'face':-1.0 if game.player.position.x<enemy.pos.x else 1.0})
 static func region(kind: String) -> Rect2:
 	return REGIONS.get(kind,Rect2(0,0,1,1))
 static func dimensions(radius: float, kind: String = 'grunt') -> Vector2:
@@ -31,8 +32,9 @@ func draw_arena():
 func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	var radius: float=enemy.radius
 	var guardian=game.is_reactor() and enemy.kind=='boss'
-	var source=GUARDIAN_REGION if guardian else region(enemy.kind)
-	var size=Vector2(radius*2.8,radius*2.8*source.size.y/source.size.x) if guardian else dimensions(radius,enemy.kind)
+	var elite=enemy.get('elite','')!=''
+	var source=Rect2((ELITES.get_width()*.5) if enemy.get('elite')=='pulse' else 0,0,ELITES.get_width()*.5,ELITES.get_height()) if elite else (GUARDIAN_REGION if guardian else region(enemy.kind))
+	var size=Vector2(radius*2.8,radius*2.8*source.size.y/source.size.x) if guardian else (Vector2(radius*3.0,radius*3.0*source.size.y/source.size.x) if elite else dimensions(radius,enemy.kind))
 	var pos: Vector2=enemy.pos
 	var clock=game.animation_clock if decorative else game.run_time
 	var speed=11.0 if enemy.kind in ['runner','drone'] else (5.0 if enemy.kind in ['boss','tank'] else 8.0)
@@ -44,9 +46,9 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	game.draw_circle(Vector2.ZERO,radius*.9,Color(0,0,0,.28))
 	game.draw_set_transform(pos,stride*.018,Vector2(face,1))
 	var tint=Color(2.2,2.2,2.2) if float(enemy.get('hit',0))>0 else Color.WHITE
-	game.draw_texture_rect_region(GUARDIAN if guardian else (ROLE_ART if enemy.kind in ['spitter','drone'] else ENEMIES),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
+	game.draw_texture_rect_region(ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if enemy.kind in ['spitter','drone'] else ENEMIES)),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
 	game.draw_set_transform(Vector2.ZERO)
-	if enemy.kind!='boss' and enemy.get('hp',1)<enemy.get('max_hp',1):
+	if enemy.kind!='boss' and (elite or enemy.get('hp',1)<enemy.get('max_hp',1)):
 		var bar=pos+Vector2(-radius,-size.y*.66-10)
 		var ratio=maxf(0,enemy.hp/enemy.max_hp)
 		game.draw_line(bar,bar+Vector2(radius*2,0),Color('#101323'),7,true)
@@ -56,11 +58,12 @@ func draw_deaths():
 		var progress=1.0-e.life/e.full
 		var alpha=1.0-progress
 		var guardian=game.is_reactor() and e.kind=='boss'
-		var source=GUARDIAN_REGION if guardian else region(e.kind)
-		var base=Vector2(e.radius*2.8,e.radius*2.8*source.size.y/source.size.x) if guardian else dimensions(e.radius,e.kind)
+		var elite=e.get('elite','')!=''
+		var source=Rect2((ELITES.get_width()*.5) if e.get('elite')=='pulse' else 0,0,ELITES.get_width()*.5,ELITES.get_height()) if elite else (GUARDIAN_REGION if guardian else region(e.kind))
+		var base=Vector2(e.radius*2.8,e.radius*2.8*source.size.y/source.size.x) if guardian else (Vector2(e.radius*3.0,e.radius*3.0*source.size.y/source.size.x) if elite else dimensions(e.radius,e.kind))
 		var size=base*Vector2(1+progress*.12,1-progress*.6)
 		game.draw_set_transform(e.pos,0,Vector2(e.face,1))
-		game.draw_texture_rect_region(GUARDIAN if guardian else (ROLE_ART if e.kind in ['spitter','drone'] else ENEMIES),Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
+		game.draw_texture_rect_region(ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if e.kind in ['spitter','drone'] else ENEMIES)),Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
 		game.draw_set_transform(Vector2.ZERO)
 		var color=Color(game.enemy_definition(e.kind).color)
 		for i in range(5):

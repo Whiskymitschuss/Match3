@@ -3,6 +3,7 @@ const CombatArt = preload('res://scripts/ui/combat_art.gd')
 var game
 func _draw():
 	if not game: return
+	game.encounters.draw_notice(self)
 	var p: Vector2 = game.stick_origin if game.stick_id>=0 else game.joystick_rest()
 	draw_texture_rect(preload('res://assets/ui/joystick_base.svg'),Rect2(p-Vector2(140,140),Vector2(280,280)),false)
 	draw_texture_rect(preload('res://assets/ui/joystick_thumb.svg'),Rect2(p+game.stick_pos-Vector2(56,56),Vector2(112,112)),false)

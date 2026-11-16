@@ -1,3 +1,47 @@
+# Version 0.10.0 — 2026-11-16
+
+## Aktueller Stand
+
+Nutzer bestätigt 0.9 mit „Yes alles top“; danach Elitegegner, Bossphasen und besondere
+Belohnungen ausdrücklich freigegeben („Let's go“). Branch feature/elite-encounters-v0.10.
+Gameplay, Grafik, Audio, Beute-/Shopfluss und Persistenz integriert. Import, 1.030
+Assertions, beide historischen Traces und Lastprobe bestanden. APK exportiert/signiert;
+Quell-ZIP frisch entpackt, neu importiert und alle 1.030 Prüfungen sowie beide Traces
+erneut bestanden. GitHub-Downloads werden bei der Veröffentlichung verifiziert.
+
+## Implementiert
+
+Maximal eine Elite ab Sekunde 18 in Welle 4/6/8/9 durch Aufwertung eines normalen Spawns.
+Schrottbrecher mit geradem, fixiert angekündigtem Sturm; Impulswächter mit offenem Ring.
+Eigene Spritegrafiken/Animation, Krone und HP, Ereignisfeld, drei neue Sounds.
+Schockwelle unterbricht auch bei blockiertem Knockback; Schutz/Schaden über bestehende APIs.
+Tankbelohnung +12 Coins/+12 XP, danach einmalige Wahl aus +5 % Basisschaden, +10 HP
+oder Wellen-Coins im Shop. Nonce pro Run/Welle, kein Überspringen/Mehrfachclaim,
+Waffenentwicklung bleibt verbindlich. Elite-Kills in Ergebnis/Historie, altes JSON lädt.
+Bossphasen bei 65/30 % mit Trümmerfeldern/Kreuzlinien und offenen Impulsringen; alte
+Feindangriffe beim Wechsel bereinigt, Warnzeit/Erholung, Grundangriffe zwischen Specials.
+Boss-HP und Zeit unverändert, normale Wellen-/Charakter-/Waffendaten unverändert.
+
+## Prüfung / nächste Schritte
+
+104 neue Encounter-Assertions; zusammen 1.030 grün. Neue Angriffsgeometrie, komplette
+Warnzeit auch bei langem Frame, Kamerasicht, Pause/Level-up, echte Schockwelle/Dash,
+Tod während Iteration, Belohnungseinmaligkeit, Weitergabe an Entwicklung/Shop,
+Neustart und Phasenwechsel geprüft. 43.200 Schritte / 720 simulierte Sekunden unter
+Last, beide Arenen × drei Helden und alle Grafikstufen. Caps eingehalten.
+Native Engine-Galerie aus sechs Vorgabeszenen geprüft, keine physischen Android-Runs.
+Historischer Effekttrace deaktiviert ausdrücklich neue 0.10-Begegnungen in seinem
+Legacy-Fixture; neue Mechanics haben eigene Tests. Keine behauptete Balanceidentität.
+
+Nächste Abnahme: auf Android beide Eliten in Welle 4/6/8/9 und beide Bosskämpfe mit
+verschiedenen Helden spielen. Fairness, Fluchtöffnungen und Bonuswert anhand realer
+Runs nachjustieren; Geräte-FPS/Temperatur noch messen. Keine bekannten Parserfehler.
+
+
+---
+
+## Historischer Stand vor 0.10
+
 # Version 0.9.0 — 2026-11-16
 
 ## Aktuelle Phase

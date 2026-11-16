@@ -5,6 +5,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
+	g.encounters.enabled=false # Frozen historical combat rules; 0.10 tested separately.
 	g.saved=g.default_save()
 	g.saved.wins=1
 	var trace:Array=[]

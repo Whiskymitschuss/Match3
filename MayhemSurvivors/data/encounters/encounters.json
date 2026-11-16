@@ -1,0 +1,17 @@
+{
+  "elite_waves": [4, 6, 8, 9],
+  "elite_at": 18.0,
+  "elite_hp_factor": 1.65,
+  "elite_speed_factor": 1.25,
+  "elite_damage_factor": 1.10,
+  "elite_extra_coins": 12,
+  "elite_extra_xp": 12,
+  "ram": {"name": "SCHROTTBRECHER", "color": "#FFAD42", "windup": 1.20, "cooldown": 3.6, "dash_speed": 460.0, "dash_range": 360.0},
+  "pulse": {"name": "IMPULSWÄCHTER", "color": "#41F4DE", "windup": 1.45, "cooldown": 4.6, "radius": 190.0, "width": 26.0, "gap": 1.65, "damage": 14.0},
+  "boss_thresholds": [0.65, 0.30],
+  "boss_special_cooldown": 7.0,
+  "boss_recovery": 1.2,
+  "reward_damage": 0.05,
+  "reward_hp": 10,
+  "reward_coins": 20
+}

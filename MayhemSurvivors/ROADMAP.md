@@ -1,3 +1,15 @@
+# Stand 0.10.0
+
+Elitebegegnungen, einmalige Bonuswahl und zusätzliche Boss-Gesundheitsphasen vollständig
+verbunden. 0.9 bleibt dokumentierte positiv bestätigte UI-Basis (Commit 5fb11d1).
+Nächster Schritt: reale Android-Abnahme für neue Kampfmuster und Reward-Ökonomie,
+insbesondere alle drei Helden, sichtbare Öffnungen und Leistung unter Gegnerlast.
+Erst danach weitere Inhalte statt ungeprüfter zusätzlicher Schwierigkeitssteigerung.
+
+---
+
+## Historischer Stand vor 0.10
+
 # Stand 0.9.0
 
 Gesamte Menügestaltung im Neon-Comic-Stil umgesetzt, Icon-/Branding-Satz erneuert,
