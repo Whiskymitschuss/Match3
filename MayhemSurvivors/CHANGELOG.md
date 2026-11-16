@@ -1,3 +1,21 @@
+# 0.8.0 Alpha — 2026-11-16
+
+- Gelieferte Logoideen als transparente Wortmarke und installierbares MS-App-Icon adaptiert.
+- Eigene RF-Worlds-Studiomarke mit SVG-Pfadschrift, Splash aktualisiert.
+- Crew-Hauptmenü, durchgängige Stahlrahmen/Orange-Akzente/Warnstreifen/Glutpartikel.
+- Barlow-Schriftpaar inkl. OFL-Lizenzen, Buttonzustände und neue HUD-Kontrastflächen.
+- Größere Audio-Schieberegler mit Prozentwerten; kurze Menüeinblendung, LOW statisch.
+- 31 Originaleffekte neu produziert, zwei eigene acht Takte lange Musikstücke.
+- AudioDirector mit Cache, festen Stimmenlimits, reservierten UI-/Warnstimmen,
+  Pickup-Begrenzung, Zustandsmusik, leiseren Pausen und wirksamer Null-Lautstärke.
+- Bestehende Spielwerte/Ökonomie/Klassenbindung unverändert.
+- 27 neue Präsentations-/Audioprüfungen; 825 Gesamtassertions bestanden.
+- Android-Version 0.8.0 / Code 12, installierbares Update mit bestehender Signatur.
+
+---
+
+## Historischer Stand vor 0.8
+
 # 0.7.0 Alpha — 2026-11-16
 
 - Eigener Mayhem Market nach Nutzerreferenzen: Karten, Werte, Inventar-Tabs, Details und drei Hilfeseiten.

@@ -23,7 +23,7 @@ func show():
 	game.button('? HILFE',Vector2(1550,75),Vector2(260,85),func():help_page(0))
 	for i in range(game.offers.size()):
 		var o=game.offers[i];var x=100+i*435
-		panel(Vector2(x,245),Vector2(400,495),Color('#202D46'))
+		panel(Vector2(x,245),Vector2(400,495),Color('#19222F'))
 		var color=game.TEAL
 		if o.type=='weapon':game.weapon_icon(o.id,Vector2(x+15,270),Vector2(115,95))
 		elif o.type=='item':
@@ -49,9 +49,9 @@ func show():
 		buy.disabled=o.get('sold',false) or game.coins<o.price
 	for i in range(3):
 		var key=['weapons','items','sets'][i]
-		game.button(['WAFFEN (%d)' % game.weapons.size(),'GEGENSTÄNDE (%d)' % game.run_items.owned.size(),'SETS'][i],Vector2(100+i*350,770),Vector2(330,85),func():tab=key;show(),Color('#147F81') if tab==key else Color('#243958'))
+		game.button(['WAFFEN (%d)' % game.weapons.size(),'GEGENSTÄNDE (%d)' % game.run_items.owned.size(),'SETS'][i],Vector2(100+i*350,770),Vector2(330,85),func():tab=key;show(),Color('#8B491A') if tab==key else Color('#263342'))
 	game.button('REROLL: '+('GRATIS' if game.rerolls==0 else '%d ●' % (5+game.rerolls*3)),Vector2(1300,770),Vector2(480,90),game.reroll_shop)
-	game.button('NÄCHSTE WELLE →',Vector2(1300,900),Vector2(480,105),game.next_shop_wave,Color('#147F81'))
+	game.button('NÄCHSTE WELLE →',Vector2(1300,900),Vector2(480,105),game.next_shop_wave,Color('#8B491A'))
 	match tab:
 		'weapons':
 			for i in range(game.weapons.size()):
@@ -70,7 +70,7 @@ func show():
 			var counts=game.run_items.counts();var i=0
 			for family in game.run_items.FAMILIES:
 				var f=game.run_items.FAMILIES[family];var at=Vector2(100+i*365,880);i+=1
-				panel(at,Vector2(345,135),Color('#202D46'))
+				panel(at,Vector2(345,135),Color('#19222F'))
 				text('%s  %d/3' % [f.name,mini(3,counts[family])],at+Vector2(12,8),320,23,Color(f.color))
 				text(('✓ ' if counts[family]>=2 else '2 Teile: ')+f.two+'\n'+('✓ ' if counts[family]>=3 else '3 Teile: ')+f.three,at+Vector2(12,48),320,20)
 func weapon_details(id:String):
@@ -129,6 +129,6 @@ func help_page(page:int):
 	text(titles[page],Vector2(650,300),1100,42,game.GOLD)
 	text(descriptions[page],Vector2(650,405),1080,34)
 	game.button('ÜBERSPRINGEN',Vector2(120,855),Vector2(600,105),finish_help)
-	game.button('VERSTANDEN' if page==2 else 'WEITER →',Vector2(1050,855),Vector2(700,105),finish_help if page==2 else func():help_page(page+1),Color('#147F81'))
+	game.button('VERSTANDEN' if page==2 else 'WEITER →',Vector2(1050,855),Vector2(700,105),finish_help if page==2 else func():help_page(page+1),Color('#8B491A'))
 func finish_help():
 	game.saved.settings.shop_help_seen=true;game.save_game();show()

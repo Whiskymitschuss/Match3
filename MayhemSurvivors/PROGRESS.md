@@ -1,3 +1,42 @@
+# Version 0.8.0 — 2026-11-16
+
+## Aktuelle Phase
+
+Design und Audio implementiert; Import/825 Assertions/Referenztraces erfolgreich.
+Android-APK exportiert, Signatur/Alignment/Paket/Berechtigungen geprüft.
+Branch `feature/presentation-audio-v0.8`; Quell-ZIP frisch importiert und vollständig erneut getestet.
+
+## Bestätigter Nutzerstand und neue Umsetzung
+
+Nutzer bestätigt Vollbild, anspruchsvollere Wellen beider Arenen und Shop aus 0.7 mit
+„Ja – Ja – Ja“. Neues Ziel: alles aufhübschen, Logos und richtige Sounds einarbeiten.
+Feuer-/Metall-Wortmarke und MS-Icon nach beiden Bildreferenzen erstellt und tatsächlich
+integriert. Crew-Menü, Studiomarke, Schriftpaar, Stahlrahmen, Warnstreifen, Glut,
+HUD-Kontrast, größere Regler. Alle Untermenüs erben den Stil. 31 neu produzierte
+Effekte, zwei eigene Musiken, AudioDirector mit festen Stimmenbudgets und reservierten
+Warn-/UI-Stimmen. Spielwerte, Setregeln und Preise nicht geändert.
+
+## Prüfung / bekannte Grenzen
+
+825 Assertions bestanden; Kampftraces unverändert unter ihren dokumentierten Fixtures.
+Aktuelle Menüs, Karten, Einstellungen, Kampf und Resultate nativ gerendert; breite
+Seitenkanten geprüft. 31 WAVs auf Stille/digitales Clipping geprüft, Musik decodiert.
+Keine bekannten Parser-/Ressourcenfehler im finalen Import oder finalen Suiten.
+Headless-Testende wartet kurz echte Mixerzeit, da --fixed-fps Simulation schneller
+als Audio-Echtzeit laufen lässt. Keine neue Audioverzögerung im Spiel eingeführt.
+Keine physische Android-Abnahme der neuen Version, keine Geräte-FPS/Temperaturwerte.
+
+## Nächster Schritt
+
+Auf dem Nutzergerät neue Menüs/Logo/Icon und Touch-Lesbarkeit abnehmen; Musik vs.
+Waffen/Bosswarnungen über Handylautsprecher/Kopfhörer prüfen. Falls nötig Lautstärken
+gezielt nachjustieren. Bestätigte 0.7-Balance beibehalten. Aktive Runs bleiben nicht
+wiederherstellbar; lokale Statistik/Einstellungen bleiben bei Update erhalten.
+
+---
+
+## Historischer Stand vor 0.8
+
 # Version 0.7.0 — 2026-11-16
 
 ## Aktuelle Phase
@@ -465,3 +504,7 @@ Die endgültige Quellenübergabe enthält keine SDK-Downloads oder Editorcaches.
 APK auf physischem Android-Gerät installieren; komplette Abnahme über zehn Wellen mit
 allen drei Helden, Displayvarianten, Unterbrechungen und Leistungsaufzeichnung durchführen.
 Erst danach die Android-Abnahme als vollständig markieren.
+
+Abschließende ZIP-Prüfung: in leeres Verzeichnis entpackt, Godot-Import ohne Parser-/
+Ressourcenfehler. Alle 825 Assertions und beide Referenztraces mit dem mitgelieferten
+Runner daraus erneut bestanden. Logs tests/results/v0.8-clean-*.log.

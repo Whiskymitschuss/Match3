@@ -1,0 +1,31 @@
+integration 
+RESULT 76 passed, 0 failed
+combat_visuals_test 
+COMBAT VISUAL RESULT 28 passed, 0 failed
+character_policy_test 
+CHARACTER POLICY RESULT 42 passed, 0 failed
+world_visuals_test 
+WORLD VISUAL RESULT 36 passed, 0 failed
+run_records_test 
+RUN RECORDS RESULT 28 passed, 0 failed
+reactor_test 
+REACTOR RESULT 157 passed, 0 failed
+abilities_test 
+ABILITIES RESULT 76 passed, 0 failed
+specializations_test 
+SPECIALIZATIONS RESULT 108 passed, 0 failed
+effects_test 
+EFFECTS RESULT 40 passed, 0 failed
+reactor_roles_test 
+REACTOR ROLES RESULT 66 passed, 0 failed
+display_balance_test 
+DISPLAY BALANCE RESULT 100 passed, 0 failed
+shop_test 
+RESULT 41 passed / 0 failed
+presentation_audio_test 
+PRESENTATION AUDIO RESULT 27 passed, 0 failed
+world_trace 
+WORLD REGRESSION PASS: 33 checkpoints, 3600 fixed-clock steps, 3 heroes; HP, XP, kills, coins, damage, enemies, projectiles and critical RNG compared with v0.2.2
+effects_trace 
+EFFECTS REGRESSION PASS: 87 checkpoints / 8700 steps / all 10 specializations, abilities and classic boss; LEGACY WAVE RULES IN TEST HARNESS (both arenas rebalanced in 0.6.1); quality=HIGH
+All requested suites passed.

@@ -1,3 +1,51 @@
+# Mayhem Survivors 0.8.0 Alpha — Presentation & Audio
+
+Das Android-Spiel ist vollständig verbunden und direkt über `project.godot` startbar.
+Neu: Wortmarke und App-Icon im Feuer-/Metallstil der gelieferten Nutzerreferenzen,
+RF-Worlds-Studiomarke, neu gestaltetes Crew-Menü und einheitlicher Stil in Charakterwahl,
+Arena-/Wellenwahl, Shop, Hilfe, Pause, Einstellungen, Statistik und Ergebnisbildschirmen.
+Stahlflächen, Warnstreifen, Glutpartikel, kräftige Barlow-Überschriften und gut lesbarer
+Barlow-Fließtext. LOW hält die neue Hintergrundanimation statisch. Die Dekoration
+fängt keine Touch-Eingaben ab. HUD erhält dunkle Kontrastflächen, Lautstärkeregler
+bekommen große Griffe und Prozentanzeigen. Vollbild/Safe-Area bleibt erhalten.
+
+## Neues Audiopaket
+
+31 neu gestaltete Originaleffekte: mehrschichtige Waffen, Treffer/Tode, Fähigkeiten,
+Entwicklungen, Pickups, Kaufen/Leveln sowie unterschiedliche Bosswarnungen und Ergebnis-
+Stinger. Zwei eigene 8-Takt-Musikstücke: Menü/Werkstatt (110 BPM) und Kampf (128 BPM).
+Musik startet mit kurzer Einblendung und wird während Pause/Level-up leiser.
+Master/Musik/Effekte bleiben separat gespeichert; Null stoppt die jeweilige Wiedergabe.
+Zwei reservierte UI-Stimmen und eine Warnungsstimme zusätzlich zu zwölf Effektstimmen;
+maximal zwei feste Musikplayer. Häufige Pickup-Klänge werden zeitlich begrenzt.
+Keine externen Soundaufnahmen, kein Internet nötig. Warnung/Kauf bleiben trotz
+voll belegter normaler Effektstimmen verfügbar. Hörbarkeit auf Handy noch abnehmen.
+
+## Balance und Daten
+
+Die vom Nutzer in 0.7 bestätigten Regeln bleiben bestehen: Gegner/Wellen/Waffen/Items/
+Preise und Set-Boni unverändert. Klassenbindung, zwei Hände und automatische Waffen
+bleiben erhalten. Statistiken und Einstellungen werden weiter aus Format 3 geladen.
+Nutzer bestätigte Vollbild, Schwierigkeit und Shop mit „Ja – Ja – Ja“; daraus werden
+keine FPS-Zahlen oder Gerätemodelle abgeleitet.
+
+## Quellen, Tests und Export
+
+- 825 Assertions bestanden, plus historische Kampftraces; TEST_REPORT.md.
+- Alle normalen Suiten: `python3 tools/run_tests.py --traces` (Godot auf PATH).
+- Audio neu erzeugen optional: numpy, scipy und ffmpeg installieren, dann
+  `python3 tools/generate_presentation_audio.py`. Zum Spielen/Export nicht nötig.
+  Frühere Generatoren bleiben als Herkunft erhalten; nicht zum Regenerieren von 0.8 verwenden.
+- Fonts Barlow/Barlow Condensed unter SIL Open Font License; Lizenzen bei den Fonts
+  und in APK. Audioherkunft in assets/audio/LICENSE.txt, Gestaltung in CREDITS.md.
+- ARM64 Android-Debug-APK 0.8.0 / Code 12 mit bestehendem Paket/Signierschlüssel.
+  Als Update installieren. Hardwareabnahme der neuen Darstellung/Mischung noch offen.
+
+
+---
+
+## Historischer Stand vor 0.8
+
 # Mayhem Survivors 0.7.0 Alpha — RF Worlds
 
 Godot 4.6.3 stable, Android ARM64, offline. Das komplette Projekt lässt sich über

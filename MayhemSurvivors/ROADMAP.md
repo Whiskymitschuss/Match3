@@ -1,3 +1,13 @@
+# Stand 0.8.0
+
+Präsentations-/Audioupdate umgesetzt. Nutzer hat die drei 0.7-Themen bestätigt.
+Jetzt Android-Abnahme für neue Oberfläche und Mischung; danach konkrete Punkte aus
+Runs/Bedienung auswerten. Vor neuen Systemen bestätigte Balance erhalten.
+
+---
+
+## Historischer Stand vor 0.8
+
 # Stand 0.7.0
 
 Shop-Ausbau, Vollbild und schwerere Spätwellen für beide Arenen implementiert.

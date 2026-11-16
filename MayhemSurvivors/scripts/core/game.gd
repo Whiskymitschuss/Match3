@@ -58,6 +58,8 @@ var combat_visuals
 var world_visuals
 var run_items
 var shop_view
+var audio_director
+const UISkin=preload('res://scripts/ui/skin.gd')
 var hp = 120.0
 var max_hp = 120.0
 var speed = 180.0
@@ -108,6 +110,7 @@ func change_state(next: int):
 		push_error('Invalid state transition: %s -> %s' % [state,next])
 		return
 	state = next
+	if audio_director:audio_director.state_changed(next)
 
 func _ready():
 	rng.randomize()
@@ -172,6 +175,8 @@ func update_safe_area():
 	ui_bleed=layout.bleed
 	var bg=ui_root.get_node_or_null('FullBleedBackdrop')
 	if bg:bg.position=ui_bleed.position;bg.size=ui_bleed.size
+	var chrome=ui_root.get_node_or_null('HudChrome')
+	if chrome:chrome.queue_redraw()
 	if is_instance_valid(hud):hud.position=Vector2(75,35)+hud_top_left()
 	if is_instance_valid(boss_hud):boss_hud.position=Vector2(620,150)+Vector2(0,safe_logical.position.y)
 	if is_instance_valid(pause_button):pause_button.position=Vector2(1690,40)+hud_top_right()
@@ -197,42 +202,13 @@ func save_game():
 	SaveManager.save_local(saved)
 
 func sound(id: String):
-	if test_mode: return
-	if id in ['boss_radial_warning','boss_charge_warning','warning','victory','defeat'] and is_instance_valid(alert_audio):
-		alert_audio.stop()
-		alert_audio.stream=load('res://assets/audio/'+id+'.wav')
-		alert_audio.volume_db=linear_to_db(maxf(.001,float(saved.settings.master)*float(saved.settings.sfx)))
-		alert_audio.play()
-		return
-	for a in sfx_players:
-		if not a.playing:
-			a.stream = load('res://assets/audio/' + id + '.wav')
-			a.volume_db = linear_to_db(maxf(.001, float(saved.settings.master) * float(saved.settings.sfx)))
-			a.play()
-			return
+	if audio_director:audio_director.play(id)
 
 func setup_music():
-	var stream = AudioStreamWAV.new()
-	stream.format = AudioStreamWAV.FORMAT_16_BITS
-	stream.mix_rate = 22050
-	stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	stream.loop_end = 44100
-	var bytes = PackedByteArray()
-	bytes.resize(88200)
-	var notes = [130.81,164.81,196.0,164.81,146.83,174.61,220.0,174.61]
-	for i in range(44100):
-		var t = float(i) / 22050.0
-		var v = int(1100 * sin(TAU * notes[int(t * 4) % 8] * t) * (1.0-fmod(t*4,1.0)))
-		bytes.encode_s16(i*2,v)
-	stream.data = bytes
-	music = AudioStreamPlayer.new()
-	add_child(music)
-	music.stream = stream
-	update_music()
-	if not test_mode: music.play()
+	audio_director=preload('res://scripts/audio/audio_director.gd').new(self)
 
 func update_music():
-	if music: music.volume_db = linear_to_db(maxf(.001,float(saved.settings.master)*float(saved.settings.music)))
+	if audio_director:audio_director.update_settings()
 
 func clear_ui():
 	for n in ui_root.get_children():
@@ -252,6 +228,7 @@ func label_at(text: String, pos: Vector2, size: int = 32, color: Color = Color.W
 	l.text = text
 	l.position = pos
 	l.add_theme_font_size_override('font_size',size)
+	l.add_theme_font_override('font',UISkin.HEADING if size>=40 else UISkin.BODY)
 	l.add_theme_color_override('font_color',color)
 	l.add_theme_color_override('font_shadow_color',INK)
 	l.add_theme_constant_override('shadow_offset_x',3)
@@ -261,39 +238,33 @@ func label_at(text: String, pos: Vector2, size: int = 32, color: Color = Color.W
 
 func style(color: Color) -> StyleBoxFlat:
 	if style_cache.has(color): return style_cache[color]
-	var s = StyleBoxFlat.new()
-	s.bg_color = color
-	s.border_color = TEAL.darkened(.35)
-	s.set_border_width_all(3)
-	s.set_corner_radius_all(22)
-	s.content_margin_left = 24
-	s.content_margin_right = 24
+	var s=UISkin.box(color,Color('#FFAE35') if color.r>color.b*1.3 else Color('#566477'))
 	style_cache[color] = s
 	return s
 
-func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: Color = Color('#243958')) -> Button:
+func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: Color = Color('#25303F')) -> Button:
 	var b = Button.new()
 	b.text = text
 	b.position = pos
 	b.size = size
 	b.custom_minimum_size = size
-	b.add_theme_font_size_override('font_size',29)
+	b.add_theme_font_size_override('font_size',32)
+	b.add_theme_font_override('font',UISkin.HEADING)
+	b.add_theme_color_override('font_color',Color('#F6EDDD'))
+	b.add_theme_color_override('font_disabled_color',Color('#7B8490'))
+	b.add_theme_stylebox_override('disabled',UISkin.box(Color('#171E28'),Color('#303C4A')))
+	b.add_theme_stylebox_override('focus',UISkin.box(Color(0,0,0,0),Color('#FFD166')))
 	b.add_theme_stylebox_override('normal',style(color))
 	b.add_theme_stylebox_override('hover',style(color.lightened(.15)))
-	b.add_theme_stylebox_override('pressed',style(TEAL.darkened(.5)))
+	b.add_theme_stylebox_override('pressed',style(Color('#804316')))
 	b.pressed.connect(func(): sound('click'); action.call())
 	ui_root.add_child(b)
 	return b
 
 func backdrop(title: String, subtitle: String = ''):
 	clear_ui()
-	var bg = ColorRect.new()
-	bg.color = Color(INK,.95)
-	bg.name='FullBleedBackdrop'
-	bg.position=ui_bleed.position
-	bg.size=ui_bleed.size
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	ui_root.add_child(bg)
+	UISkin.background(self)
+	UISkin.brand(self)
 	label_at(title,Vector2(100,75),64,GOLD)
 	label_at(subtitle,Vector2(105,162),27,TEAL)
 
@@ -301,23 +272,7 @@ func main_menu():
 	change_state(State.MAIN_MENU)
 	cleanup()
 	player.position = Vector2(1200,800)
-	backdrop('MAYHEM SURVIVORS','BY RF WORLDS  /  ANDROID ALPHA')
-	var play_button = button('SPIELEN',Vector2(110,300),Vector2(600,110),character_select,Color('#147f81'))
-	var char_button = button('CHARAKTERE',Vector2(110,435),Vector2(600,110),character_select)
-	var stats_button = button('STATISTIK',Vector2(110,570),Vector2(600,110),statistics)
-	var settings_button = button('EINSTELLUNGEN',Vector2(110,705),Vector2(600,110),func(): settings(main_menu))
-	var goals_button=button('ZIELE & STILE',Vector2(110,820),Vector2(600,95),challenges_screen)
-	var stack = VBoxContainer.new()
-	stack.position = Vector2(110,300)
-	stack.size = Vector2(600,575)
-	stack.add_theme_constant_override('separation',20)
-	ui_root.add_child(stack)
-	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
-		item.custom_minimum_size.y=95
-		item.reparent(stack)
-	label_at('0.7.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
-	portrait(Vector2(1330,530),1,1.05)
-	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
+	UISkin.menu(self)
 
 func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'portrait'):
 	var art = Control.new()
@@ -434,7 +389,13 @@ func settings(back: Callable):
 		slider.max_value = 1
 		slider.step = .05
 		slider.value = float(saved.settings[key])
-		slider.value_changed.connect(func(v): saved.settings[key]=v; update_music(); save_game())
+		slider.add_theme_icon_override('grabber',preload('res://assets/ui/slider_grab.svg'))
+		slider.add_theme_icon_override('grabber_highlight',preload('res://assets/ui/slider_grab.svg'))
+		var rail=UISkin.box(Color('#182230'));rail.content_margin_top=7;rail.content_margin_bottom=7
+		slider.add_theme_stylebox_override('slider',rail)
+		slider.add_theme_stylebox_override('grabber_area',UISkin.box(Color('#B56B1E'),GOLD))
+		var percentage=label_at('%d %%' % int(slider.value*100),Vector2(1360,310+i*120),34,GOLD)
+		slider.value_changed.connect(func(v): saved.settings[key]=v;percentage.text='%d %%' % roundi(v*100); update_music(); save_game())
 		ui_root.add_child(slider)
 	for i in range(3):
 		var q = ['LOW','MEDIUM','HIGH'][i]
@@ -525,6 +486,7 @@ func begin_wave():
 
 func make_hud():
 	clear_ui()
+	var chrome=Control.new();chrome.name='HudChrome';chrome.set_script(preload('res://scripts/ui/hud_chrome.gd'));chrome.game=self;ui_root.add_child(chrome)
 	hud = label_at('',Vector2(75,35)+hud_top_left(),30)
 	boss_hud = label_at('',Vector2(620,150)+Vector2(0,safe_logical.position.y),32,Color('#FF4757'))
 	pause_button=button('Ⅱ',Vector2(1690,40)+hud_top_right(),Vector2(140,100),pause_game)
@@ -1061,6 +1023,7 @@ func _draw():
 			if e.text!='': draw_string(ThemeDB.fallback_font,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
+	if audio_director:audio_director.stop()
 	if is_instance_valid(alert_audio):
 		alert_audio.stop()
 		alert_audio.stream=null

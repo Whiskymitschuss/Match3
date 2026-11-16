@@ -1,0 +1,264 @@
+[
+  {
+    "cue": "ability_explosion",
+    "seconds": 0.65,
+    "rate": 44100,
+    "peak": 0.7572,
+    "rms": 0.1832,
+    "clipped": 0
+  },
+  {
+    "cue": "ability_impulse",
+    "seconds": 0.4,
+    "rate": 44100,
+    "peak": 0.7149,
+    "rms": 0.1173,
+    "clipped": 0
+  },
+  {
+    "cue": "ability_shadow_step",
+    "seconds": 0.36,
+    "rate": 44100,
+    "peak": 0.5672,
+    "rms": 0.1291,
+    "clipped": 0
+  },
+  {
+    "cue": "ability_shockwave",
+    "seconds": 0.5,
+    "rate": 44100,
+    "peak": 0.75,
+    "rms": 0.2079,
+    "clipped": 0
+  },
+  {
+    "cue": "arc_zap",
+    "seconds": 0.33,
+    "rate": 44100,
+    "peak": 0.6427,
+    "rms": 0.1278,
+    "clipped": 0
+  },
+  {
+    "cue": "blade_hit",
+    "seconds": 0.24,
+    "rate": 44100,
+    "peak": 0.6691,
+    "rms": 0.1673,
+    "clipped": 0
+  },
+  {
+    "cue": "blaster_fire",
+    "seconds": 0.23,
+    "rate": 44100,
+    "peak": 0.6946,
+    "rms": 0.1769,
+    "clipped": 0
+  },
+  {
+    "cue": "boss_charge_warning",
+    "seconds": 1.06,
+    "rate": 44100,
+    "peak": 0.4701,
+    "rms": 0.1234,
+    "clipped": 0
+  },
+  {
+    "cue": "boss_radial_warning",
+    "seconds": 1.01,
+    "rate": 44100,
+    "peak": 0.4554,
+    "rms": 0.1153,
+    "clipped": 0
+  },
+  {
+    "cue": "buy",
+    "seconds": 0.725,
+    "rate": 44100,
+    "peak": 0.5626,
+    "rms": 0.1261,
+    "clipped": 0
+  },
+  {
+    "cue": "click",
+    "seconds": 0.57,
+    "rate": 44100,
+    "peak": 0.5509,
+    "rms": 0.1165,
+    "clipped": 0
+  },
+  {
+    "cue": "coin",
+    "seconds": 0.57,
+    "rate": 44100,
+    "peak": 0.5813,
+    "rms": 0.1159,
+    "clipped": 0
+  },
+  {
+    "cue": "death",
+    "seconds": 0.28,
+    "rate": 44100,
+    "peak": 0.6143,
+    "rms": 0.1928,
+    "clipped": 0
+  },
+  {
+    "cue": "defeat",
+    "seconds": 1.65,
+    "rate": 44100,
+    "peak": 0.4318,
+    "rms": 0.1115,
+    "clipped": 0
+  },
+  {
+    "cue": "fx_boom",
+    "seconds": 0.65,
+    "rate": 44100,
+    "peak": 0.7664,
+    "rms": 0.1819,
+    "clipped": 0
+  },
+  {
+    "cue": "fx_splat",
+    "seconds": 0.28,
+    "rate": 44100,
+    "peak": 0.6263,
+    "rms": 0.1873,
+    "clipped": 0
+  },
+  {
+    "cue": "hammer_slam",
+    "seconds": 0.5,
+    "rate": 44100,
+    "peak": 0.7664,
+    "rms": 0.2031,
+    "clipped": 0
+  },
+  {
+    "cue": "hit",
+    "seconds": 0.3,
+    "rate": 44100,
+    "peak": 0.5658,
+    "rms": 0.1729,
+    "clipped": 0
+  },
+  {
+    "cue": "level",
+    "seconds": 0.95,
+    "rate": 44100,
+    "peak": 0.5303,
+    "rms": 0.1449,
+    "clipped": 0
+  },
+  {
+    "cue": "shot",
+    "seconds": 0.23,
+    "rate": 44100,
+    "peak": 0.6879,
+    "rms": 0.1768,
+    "clipped": 0
+  },
+  {
+    "cue": "spec_arc",
+    "seconds": 0.44,
+    "rate": 44100,
+    "peak": 0.6963,
+    "rms": 0.1111,
+    "clipped": 0
+  },
+  {
+    "cue": "spec_blaster",
+    "seconds": 0.32,
+    "rate": 44100,
+    "peak": 0.6852,
+    "rms": 0.1503,
+    "clipped": 0
+  },
+  {
+    "cue": "spec_evolve",
+    "seconds": 1.13,
+    "rate": 44100,
+    "peak": 0.531,
+    "rms": 0.1555,
+    "clipped": 0
+  },
+  {
+    "cue": "spec_hammer",
+    "seconds": 0.6,
+    "rate": 44100,
+    "peak": 0.7552,
+    "rms": 0.191,
+    "clipped": 0
+  },
+  {
+    "cue": "spec_splitgun",
+    "seconds": 0.4,
+    "rate": 44100,
+    "peak": 0.7737,
+    "rms": 0.1694,
+    "clipped": 0
+  },
+  {
+    "cue": "spitter_fire",
+    "seconds": 0.24,
+    "rate": 44100,
+    "peak": 0.6327,
+    "rms": 0.2032,
+    "clipped": 0
+  },
+  {
+    "cue": "spitter_warning",
+    "seconds": 0.7,
+    "rate": 44100,
+    "peak": 0.4961,
+    "rms": 0.1075,
+    "clipped": 0
+  },
+  {
+    "cue": "splitgun_fire",
+    "seconds": 0.25,
+    "rate": 44100,
+    "peak": 0.7704,
+    "rms": 0.2164,
+    "clipped": 0
+  },
+  {
+    "cue": "victory",
+    "seconds": 2.03,
+    "rate": 44100,
+    "peak": 0.4681,
+    "rms": 0.135,
+    "clipped": 0
+  },
+  {
+    "cue": "warning",
+    "seconds": 0.92,
+    "rate": 44100,
+    "peak": 0.467,
+    "rms": 0.1256,
+    "clipped": 0
+  },
+  {
+    "cue": "xp",
+    "seconds": 0.56,
+    "rate": 44100,
+    "peak": 0.3997,
+    "rms": 0.0843,
+    "clipped": 0
+  },
+  {
+    "cue": "menu_theme",
+    "seconds": 17.45453514739229,
+    "peak": 0.5261470675468445,
+    "rms": 0.08975493907928467,
+    "seam_delta": 0.001624522265046835
+  },
+  {
+    "cue": "combat_theme",
+    "seconds": 15.0,
+    "peak": 0.5285427570343018,
+    "rms": 0.07331585139036179,
+    "seam_delta": 0.0009207542170770466
+  }
+]

@@ -1,3 +1,37 @@
+# Testbericht 0.8.0 — 2026-11-16
+
+Godot 4.6.3 stable. Tatsächliche Logs in `tests/results/v0.8-*`.
+825 Assertions bestanden: 798 bestehende und 27 Präsentation/Audio. Final keine
+Parser-, Ressourcen- oder Testfehler. Ausführung mit --headless --fixed-fps 60.
+
+Die neue Suite prüft eingebaute Logo-/Iconressourcen, zwei Fonts, echtes Logo im
+Menübaum, touchdurchlässige Dekoration, ausreichend große Menübuttons, Zustand für
+Musikauswahl, beide Looplängen, Pause/Resume-Lautstärke, eingefrorenen Kampf,
+separate Null-/Masterregler, reservierte UI-/Bossstimmen bei zwölf belegten Effekten,
+Cacheidentität, Pickup-Begrenzung und weiterhin verbundenen Shop/Resultat/Neustart.
+Mixerfreigabe am Testende wartet echte Millisekunden, unabhängig von der beschleunigten
+Simulationszeit. Quellen/Datenpreise nicht geändert; Git-Diff data/ bleibt leer.
+
+Weltvergleich 33 Punkte/3.600 Schritte bestanden. Effektvergleich 87 Punkte/8.700
+Schritte mit historischen eingefrorenen Wellendaten bestanden. Letzterer prüft
+weiterhin ausdrücklich alte Regeln, keine neue Balanceidentität zu Versionen vor 0.7.
+
+Native Mesa-Renderbilder: sieben neue Bildschirmansichten (Menü, Charakterwahl,
+Arenen, Vorbereitung, Einstellungen, Pause, Sieg); sechs Shopansichten; Vollbild
+16:9/breit/Tablet. Vorgabeszenen mit Teststatistiken, keine echten Android-Runs.
+Neue Regler/Schrift/Studio-/Wortmarke visuell kontrolliert. Alle gemessenen breiten
+Renderkanten ohne schwarze Seitenpixel. Bilder tests/presentation_*.png und shop_*.png.
+
+Audiotechnik: 31 WAVs nicht stumm, ohne digital geclippte Samples; zwei Ogg-Musiken
+decodiert und auf endliche, nicht stumme Samples geprüft. Das ist keine subjektive
+Hörabnahme der Mischung auf Android. Kein physisches Gerät, keine FPS-/Hitzeprüfung.
+Hardwareabnahme von UI, Icon/Launcher-Maskierung, Lautsprecher/Kopfhörer noch offen.
+
+
+---
+
+## Historischer Stand vor 0.8
+
 # Testbericht 0.7.0 — 2026-11-16
 
 Godot 4.6.3 stable, Linux Headless und native Mesa Compatibility. Tatsächliche Logs:
@@ -55,3 +89,7 @@ Notch/immersiver Modus und alle Touch-Flows auf Hardware.
 
 Quell-ZIP frisch in leeres Verzeichnis entpackt: Godot-Import ohne Parser-/Ressourcenfehler;
 Shop 41/41 und Display/Balance 100/100 daraus erneut bestanden. Logs v0.7-clean-*.log.
+
+Abschließende ZIP-Prüfung: in leeres Verzeichnis entpackt, Godot-Import ohne Parser-/
+Ressourcenfehler. Alle 825 Assertions und beide Referenztraces mit dem mitgelieferten
+Runner daraus erneut bestanden. Logs tests/results/v0.8-clean-*.log.

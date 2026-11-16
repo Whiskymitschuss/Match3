@@ -1,30 +1,30 @@
-# Android-Buildbericht 0.7.0 — 2026-11-16
+# Android-Buildbericht 0.8.0 — 2026-11-16
 
-Erfolgreich exportiert mit Godot 4.6.3 stable, JDK 21, SDK Platform 36 und
-Build Tools 36.0.0. Nativer Debug-Export ohne Gradle.
+Erfolgreicher nativer Debug-Export mit Godot 4.6.3 stable, JDK 21, SDK Platform 36,
+Build Tools 36.0.0. Datei `builds/android/MayhemSurvivors-v0.8-debug.apk`.
 
-- Datei `builds/android/MayhemSurvivors-v0.7-debug.apk`, 41.529.054 Bytes.
-- SHA-256 `11c3c2690540c6ce6086ae7e04990f9b73c975a7acb1a08bc38466d23de4af4f`.
-- Paket `com.rfworlds.mayhemsurvivors`, versionCode 11, versionName 0.7.0.
-- Ausschließlich ARM64-v8a, minSDK 24, targetSDK 36, Landscape, GL Compatibility.
-- APK-Startargumente tatsächlich geprüft: `--fullscreen` und `--edge_to_edge` enthalten.
-- `apksigner verify --verbose --print-certs`: erfolgreich, v2/v3-Signatur.
+- Größe 49,281,359 Bytes.
+- SHA-256 `29fed7184728104afaf25660a35fe8a4f7f8df22a4123dae1f31e343400ef871`.
+- Paket `com.rfworlds.mayhemsurvivors`, versionCode 12, versionName 0.8.0.
+- ARM64-v8a ausschließlich; minSDK 24 / targetSDK 36, Landscape, GL Compatibility.
+- v2/v3-Signatur mit apksigner tatsächlich geprüft.
 - Zertifikat-SHA256 `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
-- Gleicher Signierschlüssel wie bisher: Update über bestehende App vorgesehen.
-- `zipalign -c -P 16 4`: erfolgreich.
-- `aapt dump permissions`: ausschließlich `android.permission.VIBRATE`.
-- Item-JSON in APK enthalten, keine Testdateien, keine Netzwerkberechtigung.
+- `zipalign -c -P 16 4`: bestanden. Gleicher Signierschlüssel wie 0.7, Update vorgesehen.
+- Einzige Berechtigung VIBRATE; keine Netzwerk-/Speicherberechtigung.
+- Neues Launcher-Icon exportiert; Wortmarke/Fonts/beide Musikstücke vorhanden.
+- OFL-Schriftlizenzen und Audioherkunft in APK enthalten, Tests ausgeschlossen.
+- Immersive/Edge-to-edge-Startargumente bleiben enthalten.
 
-Kein Android-Gerät an ADB angeschlossen. Meldung „cannot connect to daemon at
-tcp:5037“ ist in dieser Umgebung erwartet, Export/Signaturprüfung erfolgreich.
-Installation, tatsächliche Systemleisten/Notch und Geräte-FPS noch nicht geprüft.
+ADB-Gerät nicht vorhanden; „cannot connect to daemon at tcp:5037“ betrifft diese
+Umgebung und verhindert den erfolgreichen Export nicht. Keine physische Android-
+Installation oder FPS-Messung der neuen Version behauptet.
 
-Quell-ZIP enthält komplettes Godot-Projekt inklusive Szenen, Skripten, Originalassets,
-Audio, Daten, Tests und Dokumentation. `.godot`, APKs, SDK und private Schlüssel
-ausgeschlossen. Debugschlüssel liegt außerhalb des Projekts. Für eigenen Export:
-Godot-Android-Exporttemplate installieren, SDK/JDK im Editor konfigurieren und
-lokalen Debugschlüssel verwenden; bestehende offizielle App lässt sich nur mit
-passendem Schlüssel aktualisieren. Fertige APK ist separat verfügbar.
+Quell-ZIP enthält vollständige Dateien/Assets/Szenen/Skripte/Daten/Tests/Berichte;
+keine .godot-Caches, APKs, SDKs oder privaten Schlüssel. Godot importiert die mitgelieferten
+Fonts/Originalsounds selbst. Audio-Generatorabhängigkeiten nur für optionales Regenerieren.
+Eigener Export benötigt SDK/JDK/Exporttemplate und eigenen Debugschlüssel; offizielles
+Update benötigt denselben Schlüssel wie die bestehende App. Fertige APK separat.
 
-Quell-ZIP frisch in leeres Verzeichnis entpackt: Godot-Import ohne Parser-/Ressourcenfehler;
-Shop 41/41 und Display/Balance 100/100 daraus erneut bestanden. Logs v0.7-clean-*.log.
+Abschließende ZIP-Prüfung: in leeres Verzeichnis entpackt, Godot-Import ohne Parser-/
+Ressourcenfehler. Alle 825 Assertions und beide Referenztraces mit dem mitgelieferten
+Runner daraus erneut bestanden. Logs tests/results/v0.8-clean-*.log.

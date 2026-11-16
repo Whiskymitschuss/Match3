@@ -255,5 +255,8 @@ func run():
 	check(g.state==g.State.PAUSED,'Settings preserve paused simulation')
 	g.queue_free()
 	await process_frame
+	# Audio mixer releases stopped playback asynchronously.
+	OS.delay_msec(180) # Real mixer time, independent of --fixed-fps simulation acceleration.
+	await process_frame
 	print('ABILITIES RESULT ',passed,' passed, ',failed,' failed')
 	quit(0 if failed==0 else 1)
