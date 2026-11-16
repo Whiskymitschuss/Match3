@@ -1,0 +1,11 @@
+{
+  "data/characters/characters.json": "7bb5083add2ef0b748045779057e0897dd5fb72c8187327f02cf01198a2d2a7d",
+  "data/enemies/enemies.json": "f541a56a922fbc87c5f6b1c6e22f97ed37d628ff13db37607475723541b742a7",
+  "data/upgrades/upgrades.json": "7540c941f53ec7d794a2a988bac44f3e6d1cecbc791dcef753f9321c6f66cbe2",
+  "data/waves/waves.json": "8576b03765ca14ffeaa62da07a8f4096b7bbc53b9fd572e15cbb8779fd2a1ceb",
+  "data/weapons/weapons.json": "99d04d4f19a74facc80d271af118f245138f3cfc776e4bc8168ffbdd1ad24d56",
+  "scripts/weapons/weapon_manager.gd": "23a5cb4a228f1e519431bee8c17dfbdc6474d31a40edd035920db192d22838c6",
+  "scripts/combat/projectile_pool.gd": "43359dc6492322ffdf1babf41c843868a134102e2b499a2767bb5ad0b1e4c3c2",
+  "scripts/characters/player_controller.gd": "dd65183ba9f7fc621280b6218565f97ec3d86d2c477a77f961ca2c0c5cbd36f1",
+  "scripts/autoload/save_manager.gd": "6e31e1d0b204dd3a4fce3c71bb1960cbc491423003e66b64c6034ba7b3f2a7f7"
+}

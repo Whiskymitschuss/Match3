@@ -1,10 +1,28 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha 0.1.0 · Godot 4.6.3 stable · GDScript · OpenGL Compatibility
+Android Alpha 0.2.0 · Godot 4.6.3 stable · GDScript · OpenGL Compatibility
+
+## Charaktergrafik-Update 0.2
+
+Die drei vorhandenen Helden wurden nach den vom Studio gelieferten Comicreferenzen neu
+visualisiert: Bruiser als bärtiger Berserker, Sparky als rothaarige Technikerin und Shade als
+maskierter Kapuzenkämpfer. Ein transparenter Atlas mit sechs Feldern enthält drei größere
+Auswahlbilder und drei vereinfachte Spielfiguren. Die Charakterkarten und Ergebnisporträts
+verwenden dieselben Designs; die Spielfiguren erhalten Laufwippen, Blickrichtungswechsel
+und sichtbare Trefferaufhellung. Dies sind prozedural bewegte Figuren, noch keine getrennten
+handgezeichneten Animationssequenzen für jede Aktion und Blickrichtung.
+
+**Balance unverändert:** Alle JSON-Spieldaten, Waffenlogik, Kollisionen, Bewegungstempo,
+Spawnintervalle, Schadenswerte, XP und Shoppreise sind gegenüber 0.1 unverändert.
+Der Nutzer hat nach 15 gespielten Runden die Gegner-/Schussbalance ausdrücklich bestätigt.
+
+Die Android-APK besitzt denselben Paketnamen und dieselbe Debug-Signatur wie 0.1,
+aber versionCode 2. Sie ist als Update vorgesehen; das Speicherschema bleibt Version 1.
+Geräteseitige Aktualisierung und Sichtbarkeit im echten Kampf sind noch zu prüfen.
 
 ## Starten
 
-Die signierte Test-App liegt unter `builds/android/MayhemSurvivors-v0.1-debug.apk`.
+Die signierte Test-App liegt unter `builds/android/MayhemSurvivors-v0.2-debug.apk`.
 Auf ein Android-Gerät mit ARM64-Prozessor und Android 7.0 oder neuer übertragen und installieren.
 Es werden weder Konto noch Internetverbindung benötigt. Diese App enthält keine Werbung,
 keine Käufe und keinen Windows-Export.
@@ -37,7 +55,8 @@ werden lokal gespeichert; laufende Runs werden nach vollständigem Beenden nicht
 - `scripts/ui/portrait.gd`: animierte eigene Cartoonporträts und Siegerkonfetti.
 - `data/`: alle Helden, Waffenbasiswerte, Gegner, Upgrades und Wellen als JSON.
 - `assets/`: eigene Wortmarke, Icon, Splashscreen und elf erzeugte WAV-Effekte.
-  Die Arenagrafik und Figuren werden direkt in Godot gezeichnet, Musik wird synthetisiert.
+  Die Arena und Gegner werden direkt in Godot gezeichnet; Helden verwenden den transparenten
+  Atlas `assets/characters/heroes_atlas.png`. Musik wird synthetisiert.
 
 Die Grafikstufen LOW/MEDIUM/HIGH verändern ausschließlich das Effektlimit (30/65/110),
 nicht Gegnerzahl, Belohnungen oder Schwierigkeit. Maximal 100 aktive Gegner, 320
@@ -50,7 +69,7 @@ Die UI wird in einer 1920×1080-Referenzfläche skaliert und berücksichtigt die
 godot --headless --path . --editor --import --quit
 godot --headless --path . --script res://tests/integration.gd
 godot --headless --path . --script res://tests/soak.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.1-debug.apk
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.2-debug.apk
 ```
 
 Der Export benötigt Godot-4.6.3-Android-Exportvorlagen, JDK und Android SDK in den

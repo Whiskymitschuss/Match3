@@ -1,3 +1,34 @@
+# Charaktergrafik-Update 0.2 — 2026-11-16
+
+## Aktueller Stand
+
+Grafikänderung auf Branch `art/characters-v0.2`. Die Referenzversion 0.1 bleibt auf `main`.
+Nach 15 gespielten Runden meldet der Nutzer sehr gutes Spielgefühl und bestätigt ausdrücklich
+Gegner-/Schussbalance. Deshalb keinerlei Balancingänderungen.
+
+## Implementiert und geprüft
+
+- Drei neue Designs für vorhandene Charaktere nach den visuellen Nutzerreferenzen.
+- Größere Auswahlporträts und vereinfachte Spielfiguren als gemeinsamer transparenter Atlas.
+- Charakterkarten, Hauptmenü und Ergebnisporträts verbunden; Arenadarstellung mit Laufwippen,
+  horizontaler Blickrichtung und Trefferaufhellung. Keine Änderung der Kollisionsgröße.
+- 76 bestehende Integrationsprüfungen erneut bestanden.
+- Auswahl, Arena und übrige Ansichten tatsächlich mit Godot gerendert und visuell geprüft.
+- Atlaszellen auf Transparenz und sichtbaren Inhalt geprüft.
+- Spieldaten und zentrale Kampfsysteme gegenüber 0.1 bytegleich geprüft.
+- Android-Testbuild 0.2 wird mit gleicher Debug-Signatur und versionCode 2 bereitgestellt.
+
+## Offen / nächster Schritt
+
+Auf dem Nutzergerät als Update testen: Charakterkontrast bei voller Arena, Blickrichtung,
+Trefferfeedback, Spritegröße und Erhalt der lokalen Statistik. Keine neue Android-FPS-Messung.
+Die Bilder werden prozedural bewegt; separate Walk-/Attack-Spriteanimationen sind ein späterer
+Grafikschritt. V0.2 ist hier ein Charaktergrafik-Testbuild, kein weiteres Gameplay-Update.
+
+---
+
+## Archiv: Stand 0.1
+
 # Entwicklungsstand — 2026-11-15
 
 ## Aktuelle Phase

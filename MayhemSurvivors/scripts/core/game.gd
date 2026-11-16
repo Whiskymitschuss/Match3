@@ -2,6 +2,8 @@ extends Node2D
 # All simulation advances exclusively in COMBAT. UI stays active in every state.
 const GameStateMachine = preload('res://scripts/core/game_state_machine.gd')
 const State = GameStateMachine.State
+const CharacterArt = preload('res://scripts/ui/character_art.gd')
+var facing = 1.0
 const INK = Color('#14213D')
 const TEAL = Color('#00D9D0')
 const GOLD = Color('#FFD166')
@@ -242,8 +244,8 @@ func main_menu():
 	ui_root.add_child(stack)
 	for item in [play_button,char_button,stats_button,settings_button]:
 		item.reparent(stack)
-	label_at('0.1.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
-	portrait(Vector2(1340,665),1,1.25)
+	label_at('0.2.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	portrait(Vector2(1240,495),1,1.1)
 	label_at('ZEHN WELLEN.\nVIER WAFFEN.\nDEIN MAYHEM.',Vector2(1000,370),52,TEAL)
 
 func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'portrait'):
@@ -259,16 +261,26 @@ func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'por
 
 func character_select():
 	change_state(State.CHARACTER_SELECT)
-	backdrop('WÄHLE DEINEN HELDEN','Drei Persönlichkeiten. Ein chaotischer Auftrag.')
+	backdrop('WÄHLE DEINEN HELDEN','RF WORLDS / MAYHEM CREW')
+	var roles = ['DER BERSERKER','DIE TECHNIKERIN','DER SCHATTEN']
 	for i in range(3):
 		var c = characters[i]
-		var x = 110 + i*575
-		portrait(Vector2(x+315,245),i,.75)
-		label_at(c.name,Vector2(x+20,300),44,Color(c.color))
-		label_at(c.description,Vector2(x+20,380),23)
-		label_at('%d HP   •   %d Tempo\nStart: %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+20,450),27)
-		button('AUSWÄHLEN',Vector2(x,610),Vector2(515,110),func(): selected=i; start_run(),Color(c.color).darkened(.65))
-	button('ZURÜCK',Vector2(110,880),Vector2(340,95),main_menu)
+		var x = 100 + i*585
+		var card = Panel.new()
+		card.position = Vector2(x,230)
+		card.size = Vector2(550,705)
+		card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var box = style(Color('#201d35')).duplicate()
+		box.border_color = Color(c.color).darkened(.4)
+		card.add_theme_stylebox_override('panel',box)
+		ui_root.add_child(card)
+		portrait(Vector2(x+77,240),i,1.1)
+		label_at(roles[i],Vector2(x+25,645),23,Color(c.color))
+		label_at(c.name,Vector2(x+25,677),42,Color.WHITE)
+		label_at(c.description,Vector2(x+25,739),22)
+		label_at('%d HP  /  %d Tempo  /  %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),22)
+		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; start_run(),Color(c.color).darkened(.65))
+	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
 
 func statistics():
 	backdrop('DEINE STATISTIK','Lokal auf deinem Gerät gespeichert')
@@ -326,6 +338,7 @@ func start_run():
 	upgrade_counts.clear()
 	weapons = [{'id':c.weapon,'level':1,'clock':0.0}]
 	player.position = Vector2(1200,800)
+	facing = 1.0
 	result_recorded = false
 	prepare_wave()
 
@@ -423,6 +436,7 @@ func _physics_process(delta):
 	run_time += delta
 	remaining = maxf(0,remaining-delta)
 	hurt_clock -= delta
+	if absf(move_input.x)>.08: facing = -1.0 if move_input.x<0 else 1.0
 	player.move_analog(move_input,speed)
 	orbit_angle += delta*3.5
 	spawn_clock -= delta
@@ -712,7 +726,7 @@ func finish(victory: bool):
 	cleanup()
 	sound('victory' if victory else 'defeat')
 	backdrop('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!','RF WORLDS • '+('SIEG' if victory else 'GAME OVER'))
-	portrait(Vector2(1450,300),selected,1.3,'victory' if victory else 'defeat')
+	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
 	label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),character_select)
@@ -748,6 +762,20 @@ func cartoon(pos: Vector2, radius: float, color: Color, kind: String, flash: boo
 	for side in [-1,1]:
 		draw_circle(pos+Vector2(side*radius*.55,radius*.85),radius*.24,INK)
 
+func draw_player_character():
+	var moving = state == State.COMBAT and move_input.length_squared()>.01
+	var stride = sin(animation_clock*12) if moving else 0.0
+	var pos = player.position
+	var accent = Color(characters[selected].color)
+	draw_set_transform(pos+Vector2(0,26),0,Vector2(1,.3))
+	draw_circle(Vector2.ZERO,33,Color(0,0,0,.3))
+	draw_arc(Vector2.ZERO,35,0,TAU,32,Color(accent,.55),3,true)
+	draw_set_transform(pos,stride*.035,Vector2(facing,1))
+	var tint = Color(2,2,2,1) if hurt_clock>.4 else Color.WHITE
+	var rect = Rect2(Vector2(-48,-64-absf(stride)*3),Vector2(96,96))
+	draw_texture_rect_region(CharacterArt.TEXTURE,rect,CharacterArt.region(characters[selected].id,true),tint)
+	draw_set_transform(Vector2.ZERO)
+
 func _draw():
 	draw_rect(Rect2(0,0,2400,1600),Color('#284d58'))
 	for x in range(0,2400,120):
@@ -777,7 +805,7 @@ func _draw():
 		if e.hp<e.max_hp:
 			draw_line(e.pos+Vector2(-e.radius,-e.radius-14),e.pos+Vector2(e.radius,-e.radius-14),INK,7)
 			draw_line(e.pos+Vector2(-e.radius,-e.radius-14),e.pos+Vector2(-e.radius+2*e.radius*maxf(0,e.hp/e.max_hp),-e.radius-14),Color('#FF4757'),5)
-	cartoon(player.position,30,Color(characters[selected].color),characters[selected].id,hurt_clock>.4)
+	draw_player_character()
 	for i in range(weapons.size()):
 		var w = weapons[i]
 		var pos = player.position+Vector2.from_angle(-.8+i*1.7)*48

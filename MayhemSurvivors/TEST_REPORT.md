@@ -1,3 +1,26 @@
+# Charaktergrafik-Tests 0.2 — 2026-11-16
+
+- Bestehende Integrationstests erneut ausgeführt: **76 bestanden, 0 fehlgeschlagen**.
+- Godot 4.6.3 importiert neue PNG- und Scriptressourcen ohne Parserfehler.
+- Auswahl, Arena, Hauptmenü, Shop, Upgrades, Boss und Ergebnis tatsächlich gerendert.
+  Charakterauswahl und Arena visuell auf vollständig sichtbare Figuren geprüft.
+- Alle sechs Atlaszellen besitzen transparente Außenbereiche und sichtbaren Figureninhalt.
+- Alle Daten unter `data/` gegenüber 0.1 bytegleich. Waffenmanager, PlayerController,
+  Projektilpool und SaveManager ebenfalls bytegleich. Die einzige Ergänzung im
+  Simulationsschritt bestimmt eine visuelle Spiegelrichtung; sie verändert keine Bewegung.
+- Kampfwerte, Spawnintervalle, Kollisionsradius und Belohnungen bleiben unverändert.
+- Paket, Version, Signatur und Alignment des neuen Android-Builds statisch geprüft.
+- **Kein physischer Android-Test der neuen Grafiken** in dieser Umgebung. Insbesondere
+  Sichtbarkeit in dichtem Kampf, Updateinstallation und Leistung müssen noch geprüft werden.
+- Kein neuer Performance-Test behauptet: die Messwerte weiter unten stammen aus 0.1.
+
+Protokolle: `tests/results/v0.2/`. Aktuelle Renderbilder: `tests/*.png`.
+Die vom Nutzer gemeldeten 15 gespielten Runden betreffen die vorherige Version 0.1.
+
+---
+
+## Archiv: Testbericht 0.1
+
 # Testbericht — 2026-11-15
 
 ## Tatsächlich ausgeführt

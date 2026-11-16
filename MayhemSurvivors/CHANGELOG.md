@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0 Alpha — 2026-11-16
+
+- Neue detailreiche Comic-Charakterbilder nach den visuellen Studioreferenzen.
+- Gemeinsamer transparenter 1536×1024-Atlas mit drei Auswahlbildern und drei Spielfiguren.
+- Größere Charakterkarten mit klarer Silhouette, Werten und großen Auswahlbuttons.
+- Sprite-Darstellung in der Arena mit Blickrichtungswechsel, Laufwippen und Trefferfeedback.
+- Neue Porträts in Hauptmenü und Ergebnisbildschirm; Splash-Versionsanzeige aktualisiert.
+- Die von Nutzertests über 15 Runden bestätigte Balance von 0.1 vollständig beibehalten.
+- Keine neuen Charakterfähigkeiten, Waffen, Gegner oder Spielwerte.
+
 ## 0.1.0 Alpha — 2026-11-15
 
 - Verbundener Offline-Run mit Charakterauswahl, zehn Wellen, Level-Upgrades, Shop,

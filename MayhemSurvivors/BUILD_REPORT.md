@@ -1,3 +1,28 @@
+# Android-Build 0.2.0 — 2026-11-16
+
+**Charaktergrafik-Testbuild tatsächlich exportiert, signiert und statisch verifiziert.**
+
+- APK: `builds/android/MayhemSurvivors-v0.2-debug.apk`
+- Größe: 31,647,231 Bytes
+- SHA-256: `6a965f922d1b7596e6a643d7fa3b88a1f1321806d58b6d0a78bc1d4c52c59a2f`
+- Paket: `com.rfworlds.mayhemsurvivors`, versionName `0.2.0`, versionCode `2`.
+- Architektur: ausschließlich ARM64; Querformat; Minimum Android 7.0, Target SDK 36.
+- Godot 4.6.3, JDK 21, SDK/Build Tools 36.0.0; nativer Export ohne Gradle.
+- `apksigner verify`: gültige v2/v3-Signatur. Signierzertifikat gegenüber 0.1 identisch.
+- `zipalign -c -P 16 4`: 16-KiB-Alignment erfolgreich geprüft.
+- `aapt`: Paket, Version, Architektur und keine angeforderten Berechtigungen geprüft.
+- Neue Textur und Zeichenskripte importiert; keine Parserfehler.
+- Speicherformat, Paket und Signatur bleiben gleich; die APK ist als Update vorgesehen.
+  Tatsächliches Update auf Nutzerhardware noch nicht geprüft, daher keine Datenübernahme behauptet.
+- Exportwarnung zum nicht verfügbaren ADB-Daemon betrifft keine Build-/Signaturprüfung.
+
+Protokolle: `tests/results/v0.2/`. Kein Android-Gerätetest und keine neue Frameratemessung.
+Diese Version aktualisiert Charaktergrafik und zugehörige UI, nicht das Gameplay-Balancing.
+
+---
+
+## Archiv: Build 0.1
+
 # Android-Buildbericht — 2026-11-15
 
 **Ergebnis: Debug-APK tatsächlich erzeugt, signiert und statisch verifiziert.**
