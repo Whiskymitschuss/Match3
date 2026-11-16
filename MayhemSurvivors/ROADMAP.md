@@ -1,3 +1,10 @@
+# Stand 0.3.0
+
+Die unten beschriebene Erweiterung ist implementiert und automatisiert geprüft.
+Android-Praxisabnahme und Reaktor-Feinbalancing stehen aus. Siehe PROGRESS.md.
+
+---
+
 # Nächster Meilenstein: 0.3 — mehr Abwechslung
 
 Status: konkreter Entwicklungsvorschlag, noch keine Implementierung oder neue APK.

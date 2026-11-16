@@ -19,7 +19,7 @@ func _draw():
 	for enemy in game.enemies:
 		if enemy.kind=='boss':
 			draw_rect(Rect2(620,245,680,24),Color('#0e182b'))
-			draw_rect(Rect2(620,245,680*maxf(0,enemy.hp/2500),24),Color('#ff4757'))
+			draw_rect(Rect2(620,245,680*clampf(enemy.hp/enemy.max_hp,0,1),24),Color('#ff4757'))
 
 	# Real equipment art uses the same atlas as the held weapons and shop offers.
 	for i in range(game.weapons.size()):

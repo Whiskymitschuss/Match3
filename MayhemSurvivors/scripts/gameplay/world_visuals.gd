@@ -1,6 +1,9 @@
 extends RefCounted
 # Visual-only world renderer. It never changes enemies, collisions or gameplay RNG.
 const FLOOR = preload('res://assets/environments/scrapyard.png')
+const REACTOR_FLOOR=preload('res://assets/environments/reactor.png')
+const GUARDIAN=preload('res://assets/enemies/reactor_guardian.png')
+const GUARDIAN_REGION=Rect2(0,70,1254,1168)
 const ENEMIES = preload('res://assets/enemies/enemies_atlas.png')
 const REGIONS = {'grunt':Rect2(132,79,377,516),'runner':Rect2(738,60,383,536),'tank':Rect2(26,675,576,566),'boss':Rect2(636,633,571,611)}
 var game: Node2D
@@ -23,10 +26,12 @@ static func dimensions(radius: float, kind: String = 'grunt') -> Vector2:
 	var width=radius*(2.2 if kind in ['grunt','runner'] else 2.6)
 	return Vector2(width,width*source.y/source.x)
 func draw_arena():
-	game.draw_texture_rect(FLOOR,Rect2(0,0,2400,1600),false)
+	game.draw_texture_rect(REACTOR_FLOOR if game.is_reactor() else FLOOR,Rect2(0,0,2400,1600),false)
 func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	var radius: float=enemy.radius
-	var size=dimensions(radius,enemy.kind)
+	var guardian=game.is_reactor() and enemy.kind=='boss'
+	var source=GUARDIAN_REGION if guardian else region(enemy.kind)
+	var size=Vector2(radius*2.8,radius*2.8*source.size.y/source.size.x) if guardian else dimensions(radius,enemy.kind)
 	var pos: Vector2=enemy.pos
 	var clock=game.animation_clock if decorative else game.run_time
 	var speed=11.0 if enemy.kind=='runner' else (5.0 if enemy.kind in ['boss','tank'] else 8.0)
@@ -37,7 +42,7 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	game.draw_circle(Vector2.ZERO,radius*.9,Color(0,0,0,.28))
 	game.draw_set_transform(pos,stride*.018,Vector2(face,1))
 	var tint=Color(2.2,2.2,2.2) if float(enemy.get('hit',0))>0 else Color.WHITE
-	game.draw_texture_rect_region(ENEMIES,Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),region(enemy.kind),tint)
+	game.draw_texture_rect_region(GUARDIAN if guardian else ENEMIES,Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
 	game.draw_set_transform(Vector2.ZERO)
 	if enemy.kind!='boss' and enemy.get('hp',1)<enemy.get('max_hp',1):
 		var bar=pos+Vector2(-radius,-size.y*.66-10)
@@ -48,9 +53,12 @@ func draw_deaths():
 	for e in deaths:
 		var progress=1.0-e.life/e.full
 		var alpha=1.0-progress
-		var size=dimensions(e.radius,e.kind)*Vector2(1+progress*.12,1-progress*.6)
+		var guardian=game.is_reactor() and e.kind=='boss'
+		var source=GUARDIAN_REGION if guardian else region(e.kind)
+		var base=Vector2(e.radius*2.8,e.radius*2.8*source.size.y/source.size.x) if guardian else dimensions(e.radius,e.kind)
+		var size=base*Vector2(1+progress*.12,1-progress*.6)
 		game.draw_set_transform(e.pos,0,Vector2(e.face,1))
-		game.draw_texture_rect_region(ENEMIES,Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),region(e.kind),Color(1,1,1,alpha*.7))
+		game.draw_texture_rect_region(GUARDIAN if guardian else ENEMIES,Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
 		game.draw_set_transform(Vector2.ZERO)
 		var color=Color(game.enemy_data[e.kind].color)
 		for i in range(5):
@@ -58,6 +66,7 @@ func draw_deaths():
 			var at=e.pos+dir*(7+progress*(e.radius+16))
 			game.draw_line(at,at+dir*6,Color(color,alpha),3*alpha+1,true)
 func boss_telegraph() -> Dictionary:
+	if game.is_reactor():return {}
 	# Read the actual combat phase and the locked target, never a guessed attack timer.
 	for e in game.enemies:
 		if e.kind!='boss':continue

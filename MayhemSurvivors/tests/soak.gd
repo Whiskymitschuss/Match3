@@ -6,6 +6,9 @@ func run():
 	root.add_child(g)
 	g.set_physics_process(false)
 	g.saved=g.default_save()
+	if OS.get_cmdline_user_args().has('--reactor'):
+		g.saved.wins=1
+		g.arena_id='reactor'
 	g.selected=1
 	g.start_run()
 	g.wave_number=9
@@ -31,6 +34,7 @@ func run():
 		assert(g.shots.size()<=320)
 		assert(g.loot.size()<=240)
 		assert(g.effects.size()<=110)
+		assert(g.arena_hazards.items.size()<=12)
 		assert(g.state==g.State.COMBAT)
 	var elapsed=(Time.get_ticks_usec()-start)/1000000.0
 	print('SOAK PASS frames=',frames,' simulated_seconds=120 wall_seconds=',elapsed,' simulation_ms_per_frame=',elapsed*1000/frames,' peak_enemies=',peak_enemies,' pool_size=',peak_projectiles,' kills=',g.kills)

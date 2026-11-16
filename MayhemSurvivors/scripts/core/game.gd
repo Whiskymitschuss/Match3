@@ -4,6 +4,11 @@ const GameStateMachine = preload('res://scripts/core/game_state_machine.gd')
 const State = GameStateMachine.State
 const RunRecords = preload('res://scripts/progression/run_records.gd')
 const CharacterArt = preload('res://scripts/ui/character_art.gd')
+const Arenas = preload('res://scripts/core/arena_catalog.gd')
+var arena_id='scrapyard'
+var arena_definition=Arenas.definition('scrapyard')
+var arena_hazards
+var reactor_guardian
 var facing = 1.0
 const INK = Color('#14213D')
 const TEAL = Color('#00D9D0')
@@ -91,6 +96,8 @@ func _ready():
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
 	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
 	world_visuals = preload('res://scripts/gameplay/world_visuals.gd').new(self)
+	arena_hazards=preload('res://scripts/gameplay/arena_hazards.gd').new(self)
+	reactor_guardian=preload('res://scripts/bosses/reactor_guardian.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -252,16 +259,18 @@ func main_menu():
 	var char_button = button('CHARAKTERE',Vector2(110,435),Vector2(600,110),character_select)
 	var stats_button = button('STATISTIK',Vector2(110,570),Vector2(600,110),statistics)
 	var settings_button = button('EINSTELLUNGEN',Vector2(110,705),Vector2(600,110),func(): settings(main_menu))
+	var goals_button=button('ZIELE & STILE',Vector2(110,820),Vector2(600,95),challenges_screen)
 	var stack = VBoxContainer.new()
 	stack.position = Vector2(110,300)
-	stack.size = Vector2(600,515)
-	stack.add_theme_constant_override('separation',25)
+	stack.size = Vector2(600,575)
+	stack.add_theme_constant_override('separation',20)
 	ui_root.add_child(stack)
-	for item in [play_button,char_button,stats_button,settings_button]:
+	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
+		item.custom_minimum_size.y=95
 		item.reparent(stack)
-	label_at('0.2.3 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
-	portrait(Vector2(1240,495),1,1.1)
-	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,370),52,TEAL)
+	label_at('0.3.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	portrait(Vector2(1330,530),1,1.05)
+	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
 
 func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'portrait'):
 	var art = Control.new()
@@ -295,27 +304,31 @@ func character_select():
 		label_at(c.description,Vector2(x+25,739),22)
 		label_at('%d HP / %d Tempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),21)
 		label_at(['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade'][i],Vector2(x+25,808),19,Color(c.color))
-		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; start_run(),Color(c.color).darkened(.65))
+		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; arena_select(),Color(c.color).darkened(.65))
 	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
 
 func duration_text(seconds: float) -> String:
 	var value=int(maxf(0,seconds))
 	return '%02d:%02d' % [value/60,value%60]
 
-func statistics(character: int = -1):
-	backdrop('DEINE STATISTIK','Gesamtwerte bleiben erhalten / Charakterbestwerte und Verlauf ab Version 0.2.3')
+func statistics(character: int = -1, arena_filter: String = 'all'):
+	var totals=saved if arena_filter=='all' else saved.arena_records[arena_filter]
+	var profiles=saved.records if arena_filter=='all' else totals.records
+	backdrop('DEINE STATISTIK','Arena: '+('Alle Arenen' if arena_filter=='all' else Arenas.definition(arena_filter).name))
+	var filters=['all','scrapyard','reactor']
+	button('ARENA WECHSELN',Vector2(1330,105),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%3]))
 	for i in range(4):
 		var tab=i-1
-		button(['ÜBERSICHT','BRUISER','SPARKY','SHADE'][i],Vector2(100+i*435,235),Vector2(400,80),func(): statistics(tab),Color('#147f81') if tab==character else Color('#243958'))
+		button(['ÜBERSICHT','BRUISER','SPARKY','SHADE'][i],Vector2(100+i*435,235),Vector2(400,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
 	if character<0:
 		label_at('ALLE RUNDEN',Vector2(120,365),28,TEAL)
-		var rate=100.0*float(saved.wins)/float(saved.games) if saved.games>0 else 0.0
-		label_at('Spiele: %d\nSiege: %d  /  %.0f %%\nHöchste Welle: %d / 10\nBesiegte Gegner: %d\nSpielzeit: %.1f Minuten' % [saved.games,saved.wins,rate,saved.highest_wave,saved.kills,float(saved.time)/60],Vector2(120,420),36)
-		var best=RunRecords.aggregate(saved.records)
+		var rate=100.0*float(totals.wins)/float(totals.games) if totals.games>0 else 0.0
+		label_at('Spiele: %d\nSiege: %d  /  %.0f %%\nHöchste Welle: %d / 10\nBesiegte Gegner: %d\nSpielzeit: %.1f Minuten' % [totals.games,totals.wins,rate,totals.highest_wave,totals.kills,float(totals.time)/60],Vector2(120,420),36)
+		var best=RunRecords.aggregate(profiles)
 		label_at('PERSÖNLICHE BESTWERTE',Vector2(1010,365),28,GOLD)
 		label_at('Kills in einer Runde: %d\nHöchstes Level: %d\nGrößter Schaden: %d\nLängster Run: %s\nSchnellster Sieg: %s' % [best.best_kills,best.best_level,best.best_damage,duration_text(best.longest_run),duration_text(best.fastest_victory) if best.fastest_victory>0 else '—'],Vector2(1010,420),32)
 	else:
-		var record=saved.records[characters[character].id]
+		var record=profiles[characters[character].id]
 		portrait(Vector2(110,355),character,1.05)
 		label_at(characters[character].name,Vector2(130,770),36,Color(characters[character].color))
 		label_at('BILANZ',Vector2(650,365),28,TEAL)
@@ -323,14 +336,14 @@ func statistics(character: int = -1):
 		label_at('BESTWERTE',Vector2(1250,365),28,GOLD)
 		label_at('Welle: %d / 10\nKills: %d\nLevel: %d\nSchaden: %d\nLängster Run: %s\nSchnellster Sieg: %s' % [record.best_wave,record.best_kills,record.best_level,record.best_damage,duration_text(record.longest_run),duration_text(record.fastest_victory) if record.fastest_victory>0 else '—'],Vector2(1250,420),29)
 	button('ZURÜCK',Vector2(110,900),Vector2(400,95),main_menu)
-	var history=button('LETZTE RUNDEN →',Vector2(1110,900),Vector2(650,95),func(): recent_runs_screen(character))
+	var history=button('LETZTE RUNDEN →',Vector2(1110,900),Vector2(650,95),func(): recent_runs_screen(character,0,arena_filter))
 	history.disabled=saved.recent_runs.is_empty()
 	if saved.recent_runs.is_empty():label_at('Der Verlauf beginnt mit deinem nächsten Run.',Vector2(1010,830),24)
 
-func recent_runs_screen(character: int = -1, page: int = 0):
+func recent_runs_screen(character: int = -1, page: int = 0, arena_filter: String = 'all'):
 	var records: Array=[]
 	for run in saved.recent_runs:
-		if character<0 or run.character==characters[character].id:records.append(run)
+		if (character<0 or run.character==characters[character].id) and (arena_filter=='all' or run.get('arena','scrapyard')==arena_filter):records.append(run)
 	var pages=maxi(1,ceili(records.size()/4.0))
 	page=clampi(page,0,pages-1)
 	backdrop('LETZTE RUNDEN','Bis zu 20 neue Runden lokal gespeichert / '+('Alle Charaktere' if character<0 else characters[character].name))
@@ -352,13 +365,13 @@ func recent_runs_screen(character: int = -1, page: int = 0):
 		label_at('Welle %d / 10   LV %d   %d Kills   %s' % [run.wave,run.level,run.kills,duration_text(run.time)],Vector2(940,y+12),25)
 		var loadout=''
 		for w in run.weapons:loadout+='%s Lv.%d  ' % [weapon_data[w.id].name,w.level]
-		label_at(loadout,Vector2(125,y+65),23)
+		label_at(Arenas.definition(run.get('arena','scrapyard')).name+' / '+loadout,Vector2(125,y+65),21)
 		label_at('%d Schaden  /  %d Coins' % [run.damage,run.coins],Vector2(1190,y+65),23,GOLD)
-	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func(): statistics(character))
-	var previous=button('← VORHERIGE',Vector2(590,905),Vector2(350,95),func(): recent_runs_screen(character,page-1))
+	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func(): statistics(character,arena_filter))
+	var previous=button('← VORHERIGE',Vector2(590,905),Vector2(350,95),func(): recent_runs_screen(character,page-1,arena_filter))
 	previous.disabled=page==0
 	label_at('%d / %d' % [page+1,pages],Vector2(1040,930),30)
-	var next=button('NÄCHSTE →',Vector2(1280,905),Vector2(480,95),func(): recent_runs_screen(character,page+1))
+	var next=button('NÄCHSTE →',Vector2(1280,905),Vector2(480,95),func(): recent_runs_screen(character,page+1,arena_filter))
 	next.disabled=page>=pages-1
 
 func settings(back: Callable):
@@ -384,6 +397,8 @@ func settings(back: Callable):
 func cleanup():
 	if combat_visuals: combat_visuals.clear()
 	if world_visuals: world_visuals.clear()
+	if arena_hazards:arena_hazards.clear()
+	if reactor_guardian:reactor_guardian.clear()
 	enemies.clear()
 	loot.clear()
 	effects.clear()
@@ -391,6 +406,9 @@ func cleanup():
 	boss_warning = ''
 
 func start_run():
+	if not Arenas.unlocked(saved,arena_id):arena_select();return
+	arena_definition=Arenas.definition(arena_id)
+	waves=read_data(arena_definition.waves)
 	cleanup()
 	var c = characters[selected]
 	max_hp = c.hp
@@ -420,7 +438,7 @@ func start_run():
 
 func prepare_wave():
 	change_state(State.WAVE_PREPARATION)
-	backdrop('WELLE %d / 10' % wave_number,'THE OVERLORD ERWACHT' if wave_number == 10 else 'Bewege dich, sammle Kristalle und überlebe!')
+	backdrop('WELLE %d / 10' % wave_number,arena_definition.boss_name+' ERWACHT' if wave_number == 10 else arena_definition.name+' / Bewege dich, sammle Kristalle und überlebe!')
 	label_at('Automatische Waffen • Links unten bewegen\nXP sammeln → Upgrades wählen\nZwischen den Wellen: Ausrüstung kaufen',Vector2(120,350),36)
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 
@@ -454,7 +472,7 @@ func refresh_hud():
 	boss_hud.text = ''
 	for e in enemies:
 		if e.kind == 'boss':
-			boss_hud.text = 'THE OVERLORD   %d / 2500\n%s' % [maxi(0,int(e.hp)),boss_warning]
+			boss_hud.text = '%s   %d / %d\n%s' % [arena_definition.boss_name,maxi(0,int(e.hp)),int(e.max_hp),boss_warning]
 			var warning=world_visuals.boss_telegraph()
 			if not warning.is_empty(): boss_hud.text += '  %.1f s' % warning.seconds
 
@@ -523,7 +541,12 @@ func _physics_process(delta):
 		spawn_clock += float(waves[wave_number-1].interval)
 		if enemies.size()<100:
 			var roll = rng.randf()
-			spawn_enemy('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
+			if is_reactor():
+				var w=waves[wave_number-1]
+				spawn_enemy('tank' if roll<w.tank_weight else ('runner' if roll<w.tank_weight+w.runner_weight else 'grunt'))
+			else:spawn_enemy('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
+	arena_hazards.update(delta)
+	if state != State.COMBAT:return
 	update_enemies(delta)
 	if state != State.COMBAT: return
 	update_weapons(delta)
@@ -543,7 +566,7 @@ func _physics_process(delta):
 	refresh_hud()
 
 func spawn_enemy(kind: String):
-	var d = enemy_data[kind]
+	var d = enemy_definition(kind)
 	var angle = rng.randf()*TAU
 	var pos = (player.position+Vector2.from_angle(angle)*rng.randf_range(650,850)).clamp(Vector2(70,70),Vector2(2330,1530))
 	if pos.distance_to(player.position)<450:
@@ -552,7 +575,8 @@ func spawn_enemy(kind: String):
 	enemies.append({'kind':kind,'pos':pos,'hp':float(d.hp)*scaling,'max_hp':float(d.hp)*scaling,'speed':float(d.speed),'damage':float(d.damage),'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0})
 
 func update_enemies(dt: float):
-	if wave_number == 10:
+	if wave_number==10 and is_reactor():reactor_guardian.update(dt)
+	if wave_number == 10 and not is_reactor():
 		boss_clock -= dt
 		if boss_clock <= 0:
 			boss_phase = (boss_phase+1)%4
@@ -573,11 +597,14 @@ func update_enemies(dt: float):
 		e.orbit_cd = maxf(0,e.orbit_cd-dt)
 		var dir: Vector2 = (player.position-e.pos).normalized()
 		var velocity: Vector2 = dir*e.speed
-		if e.kind == 'boss':
+		if e.kind == 'boss' and is_reactor():
+			if reactor_guardian.stationary():velocity=Vector2.ZERO
+		elif e.kind == 'boss':
 			if boss_phase%2 == 1: velocity *= .15
 			if boss_charging and boss_phase == 0 and boss_clock>2.1: velocity = (boss_target-e.pos).normalized()*520
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
+			if e.kind=='boss' and is_reactor() and reactor_guardian.stationary():break
 			var other = enemies[j]
 			var offset: Vector2 = e.pos-other.pos
 			var distance = offset.length()
@@ -648,11 +675,11 @@ func damage_enemy(e: Dictionary, power: float):
 		world_visuals.enemy_defeated(e)
 		enemies.erase(e)
 		kills += 1
-		var reward = int(enemy_data[kind].coins)
+		var reward = int(enemy_definition(kind).coins)
 		coins += reward
 		add_effect(pos+Vector2(0,20),GOLD,22,'+%d ●' % reward)
 		earned += reward
-		loot.append({'pos':pos,'xp':int(enemy_data[kind].xp)})
+		loot.append({'pos':pos,'xp':int(enemy_definition(kind).xp)})
 		add_effect(pos,Color(enemy_data[kind].color),50,'')
 		sound('death')
 		sound('coin')
@@ -841,11 +868,12 @@ func finish(victory: bool):
 	saved.kills+=kills
 	saved.time+=run_time
 	saved.highest_wave=maxi(int(saved.highest_wave),wave_number)
-	var improvements=RunRecords.add_run(saved,{'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons})
+	var improvements=RunRecords.add_run(saved,{'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons})
+	var unlocked=Arenas.sync(saved)
 	save_game()
 	cleanup()
 	sound('victory' if victory else 'defeat')
-	backdrop('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!','RF WORLDS • '+('SIEG' if victory else 'GAME OVER'))
+	backdrop('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!',arena_definition.name+' • '+('SIEG' if victory else 'GAME OVER'))
 	if victory:
 		var celebration=Control.new()
 		celebration.set_script(preload('res://scripts/ui/victory_fx.gd'))
@@ -855,6 +883,7 @@ func finish(victory: bool):
 	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
 	label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
 	if not improvements.is_empty(): label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
+	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),character_select)
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
@@ -871,7 +900,7 @@ func draw_player_character():
 	var moving = state == State.COMBAT and move_input.length_squared()>.01
 	var stride = sin(animation_clock*12) if moving else 0.0
 	var pos = player.position
-	var accent = Color(characters[selected].color)
+	var accent = Color({'gold':'#FFD166','mayhem':'#FF33E0','reactor':'#2ED573'}.get(saved.settings.get('aura','class'),characters[selected].color))
 	draw_set_transform(pos+Vector2(0,26),0,Vector2(1,.3))
 	draw_circle(Vector2.ZERO,33,Color(0,0,0,.3))
 	draw_arc(Vector2.ZERO,35,0,TAU,32,Color(accent,.55),3,true)
@@ -883,11 +912,13 @@ func draw_player_character():
 
 func _draw():
 	world_visuals.draw_arena()
-	if state in [State.MAIN_MENU,State.CHARACTER_SELECT,State.BOOT]:
+	if state in [State.MAIN_MENU,State.CHARACTER_SELECT,State.ARENA_SELECT,State.BOOT]:
 		for i in range(8):
 			var kind=['grunt','runner','tank'][i%3]
 			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
+	arena_hazards.draw()
+	if is_reactor():reactor_guardian.draw()
 	world_visuals.draw_telegraph()
 	world_visuals.draw_deaths()
 	for l in loot:
@@ -919,3 +950,48 @@ func _exit_tree():
 		if is_instance_valid(a):
 			a.stop()
 			a.stream = null
+
+func is_reactor() -> bool:return arena_id=='reactor'
+func enemy_definition(kind: String) -> Dictionary:
+	return arena_definition.boss if kind=='boss' and is_reactor() else enemy_data[kind]
+func choose_arena(id: String) -> bool:
+	if not Arenas.IDS.has(id) or not Arenas.unlocked(saved,id):return false
+	arena_id=id
+	start_run()
+	return true
+func arena_select():
+	change_state(State.ARENA_SELECT)
+	backdrop('WÄHLE DEINE ARENA',characters[selected].name+' / 10 Wellen / Ein Boss / Deine Ausrüstung')
+	for i in range(2):
+		var id=Arenas.IDS[i]
+		var d=Arenas.definition(id)
+		var x=110+i*865
+		var art=Control.new()
+		art.set_script(preload('res://scripts/ui/arena_preview.gd'))
+		art.texture=load('res://assets/environments/'+d.floor+'.png')
+		art.position=Vector2(x,260)
+		art.size=Vector2(805,350)
+		art.clip_contents=true
+		art.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		ui_root.add_child(art)
+		label_at(d.name,Vector2(x,635),42,TEAL if i==0 else Color('#2ED573'))
+		label_at(d.description,Vector2(x,705),25)
+		label_at('BOSS: '+d.boss_name,Vector2(x,755),25,GOLD)
+		var available=Arenas.unlocked(saved,id)
+		var enter=button('ARENA BETRETEN' if available else 'ERSTER SIEG BENÖTIGT',Vector2(x,825),Vector2(805,100),func(): choose_arena(id),Color('#147f81') if available else Color('#343749'))
+		enter.disabled=not available
+	button('ZURÜCK',Vector2(110,965),Vector2(350,85),character_select)
+func challenges_screen():
+	backdrop('ZIELE & STILE','Nur Optik: Alle Ringe behalten die gleichen Kampfwerte.')
+	var rows=[['gold','CHAMPIONRING','Gewinne einen Run.',saved.wins,1],['mayhem','MAYHEMRING','Besiege insgesamt 1.000 Gegner.',saved.kills,1000],['reactor','REAKTORSIEGEL','Besiege den Reaktorwächter.',saved.arena_records.reactor.wins,1]]
+	for i in range(rows.size()):
+		var r=rows[i]
+		var y=280+i*190
+		label_at(r[1],Vector2(120,y),36,GOLD)
+		label_at('%s  %d / %d' % [r[2],mini(r[3],r[4]),r[4]],Vector2(120,y+58),28)
+		var unlocked=saved.unlocked_styles.has(r[0])
+		var selected_style=saved.settings.get('aura','class')==r[0]
+		var equip=button('AKTIV' if selected_style else ('AKTIVIEREN' if unlocked else 'GESPERRT'),Vector2(1220,y),Vector2(520,105),func(): saved.settings.aura=r[0];save_game();challenges_screen())
+		equip.disabled=not unlocked or selected_style
+	button('KLASSENRING',Vector2(720,905),Vector2(520,95),func(): saved.settings.aura='class';save_game();challenges_screen())
+	button('ZURÜCK',Vector2(110,905),Vector2(400,95),main_menu)

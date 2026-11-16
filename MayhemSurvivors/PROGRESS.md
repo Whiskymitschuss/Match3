@@ -1,3 +1,42 @@
+# Meilenstein 0.3.0 — 2026-11-16
+
+## Aktuelle Phase
+
+Implementierung, automatisierte Prüfung und Android-Export abgeschlossen; GitHub-Übergabe.
+Physische Android-Abnahme der neuen Inhalte steht aus. APK signiert und geprüft, Quell-ZIP frisch importiert und erneut getestet.
+
+## Implementiert
+
+- Arena-Katalog, Auswahl nach Charakterwahl, eigenständige Wellenkonfiguration.
+- Reaktorzone nach erstem Sieg; vorhandene Siege werden berücksichtigt.
+- Eigene Reaktorboden- und Wächtergrafik, drei vorangekündigte Bossangriffe.
+- Ab Welle 3 wechselnde Strombahnen; keine Reaktorgefahren auf dem Schrottplatz.
+- Durchgehender Ablauf mit allen drei Helden in beiden Arenen: zehn Wellen, Shop,
+  Levels, Boss, Ergebnis, Timeout, Tod und sicherer Neustart.
+- Arena- und Heldenstatistik, Verlauf, drei rein kosmetische Ringfreischaltungen.
+- Speicherformat 3, Migration aus 1/2 samt Originalbackup, Einstellungserhalt.
+- Bisherige Klassen-/Waffen-/Gegner-/Upgrade- und Schrottplatz-Wellendaten unverändert.
+
+## Tests und behobene Fehler
+
+367 Assertions bestanden; Referenzvergleich 33 Punkte/3.600 Schritte bestanden.
+Zwei Belastungsläufe mit je 7.200 Schritten bestanden. Kontrollierter Schadenstest
+aller drei Klassen bestanden. Lange Frames übersprangen zunächst die Warnzeit einer
+neu erzeugten Strombahn: behoben, gezielter Regressionstest vorhanden. Bossleiste
+verwendet tatsächliche Maximal-HP. Arena-Vorschaubilder bleiben innerhalb ihrer Karten.
+Sieben UI-/Kampfbilder mit Godot/Mesa gerendert und geprüft; keine Android-Screenshots.
+
+## Offen / nächster Schritt
+
+APK auf bestehender Android-Installation aktualisieren; Erhalt der Werte, Freischaltung,
+Touchbedienung, Warnlesbarkeit und vollständige Reaktorruns prüfen. Reaktorbalancing
+mit allen Helden anhand echter Runs beurteilen. 60 FPS/Temperatur auf Geräten messen.
+Keine offenen Pflichtmenüs oder bekannten Parserfehler. Builddetails siehe BUILD_REPORT.md.
+
+---
+
+# Historischer Referenzstand 0.2.3
+
 # Grafik-/Feedback-/Komfortstand 0.2.3 — 2026-11-16
 
 ## Bestätigter Nutzer-Praxistest

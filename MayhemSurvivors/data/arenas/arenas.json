@@ -1,0 +1,25 @@
+{
+  "scrapyard": {
+    "name": "SCHROTTPLATZ",
+    "description": "Die bewährte Arena. Zehn Wellen gegen die Schrottmeute.",
+    "floor": "scrapyard",
+    "waves": "waves/waves",
+    "boss_name": "THE OVERLORD"
+  },
+  "reactor": {
+    "name": "REAKTORZONE",
+    "description": "Strombahnen, Kernbomben und der Reaktorwächter.",
+    "floor": "reactor",
+    "waves": "waves/reactor",
+    "boss_name": "REAKTORWÄCHTER",
+    "boss": {
+      "hp": 4200,
+      "speed": 62,
+      "damage": 18,
+      "radius": 82,
+      "xp": 120,
+      "coins": 140,
+      "color": "#2ED573"
+    }
+  }
+}

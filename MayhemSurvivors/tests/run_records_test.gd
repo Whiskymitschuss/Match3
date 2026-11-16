@@ -14,7 +14,7 @@ func run():
 	var legacy={'version':1,'unlocked':['bruiser','sparky','shade'],'highest_wave':9,'games':15,'wins':4,'kills':3120,'time':8400.0,'settings':{'master':.55,'music':.25,'sfx':.7,'quality':'MEDIUM'}}
 	check(Save.save_local(legacy,path)==OK,'Write real schema-1 fixture')
 	var saved=Save.load_local(path)
-	check(saved.version==2 and saved.games==15 and saved.wins==4,'Migrate schema-1 totals into schema 2')
+	check(saved.version==3 and saved.games==15 and saved.wins==4,'Migrate schema-1 totals into schema 3')
 	check(saved.kills==3120 and saved.highest_wave==9 and saved.time==8400,'Migration preserves kills, wave and time')
 	check(is_equal_approx(saved.settings.master,.55) and saved.settings.quality=='MEDIUM','Migration preserves settings')
 	check(FileAccess.file_exists(Save.sidecar(path,'v1.backup')),'Migration creates original schema-1 backup')

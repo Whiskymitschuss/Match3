@@ -1,0 +1,62 @@
+[
+  {
+    "duration": 60,
+    "interval": 1.55,
+    "tank_weight": 0,
+    "runner_weight": 0.15
+  },
+  {
+    "duration": 60,
+    "interval": 1.35,
+    "tank_weight": 0.05,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 1.2,
+    "tank_weight": 0.1,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 1.1,
+    "tank_weight": 0.15000000000000002,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 1,
+    "tank_weight": 0.2,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 0.95,
+    "tank_weight": 0.25,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 0.85,
+    "tank_weight": 0.3,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 0.78,
+    "tank_weight": 0.3,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 60,
+    "interval": 0.7,
+    "tank_weight": 0.3,
+    "runner_weight": 0.35
+  },
+  {
+    "duration": 90,
+    "interval": 0.95,
+    "tank_weight": 0.3,
+    "runner_weight": 0.35
+  }
+]

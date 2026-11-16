@@ -1,0 +1,43 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Enemy sprite region in atlas grunt
+PASS Distinct sprite silhouette grunt
+PASS Finite visual dimensions grunt
+PASS Enemy sprite region in atlas runner
+PASS Distinct sprite silhouette runner
+PASS Finite visual dimensions runner
+PASS Enemy sprite region in atlas tank
+PASS Distinct sprite silhouette tank
+PASS Finite visual dimensions tank
+PASS Enemy sprite region in atlas boss
+PASS Distinct sprite silhouette boss
+PASS Finite visual dimensions boss
+PASS Death triggers a single visual snapshot
+PASS Death art leaves rewards unchanged
+PASS Duplicate death does not duplicate effects/rewards
+PASS Death snapshot does not follow removed enemy
+PASS Pause freezes death animation
+PASS Death animation advances on resume
+PASS Death animation releases expired snapshots
+PASS LOW limits death snapshots independently of gameplay
+PASS Cleanup removes world effects
+PASS No false warning on initial boss spawn
+PASS Radial telegraph derives from actual attack phase
+PASS Telegraph progress matches remaining windup
+PASS Pause freezes actual warning timer
+PASS Radial warning clears when projectiles fire
+PASS Warning adds no damage/projectiles to radial attack
+PASS Charge corridor uses actual locked target
+PASS Charge warning does not falsely follow moving player
+PASS World visual queries consume no gameplay RNG
+PASS New boss artwork still ends in immediate victory
+PASS Victory particles do not block result buttons
+PASS Exactly one result celebration created
+PASS Celebration does not record a second win
+PASS Both warning sounds available
+PASS Boss warning remains routed when regular SFX voices are busy
+WORLD VISUAL RESULT 36 passed, 0 failed
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

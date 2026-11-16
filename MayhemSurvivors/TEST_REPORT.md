@@ -1,3 +1,54 @@
+# Testbericht 0.3.0 — 2026-11-16
+
+Godot 4.6.3 stable, GDScript, Linux Headless und Mesa Compatibility. Tatsächliche Logs
+unter `tests/results/v0.3-*.log`. Keine physischen Android-Tests dieser Version.
+
+| Suite | Ergebnis |
+|---|---|
+| Integration | 76 / 76 |
+| Kampfgrafik | 28 / 28 |
+| Klassenbindung/Haltung | 42 / 42 |
+| Welt/Bosswarnungen | 36 / 36 |
+| Laufstatistik/Speicherung | 28 / 28 |
+| Reaktor, Freischaltung, Gefahren, vollständige Zustandsabläufe, Migration | 157 / 157 |
+| Gesamt | 367 / 367 |
+
+Zusätzlich: Schrottplatz-Referenzvergleich mit v0.2.2, 33 Kontrollpunkte über 3.600
+feste Simulationsschritte für alle drei Helden, vollständig identisch einschließlich
+HP, XP, Coins, Kills, Schaden, Gegner, Projektile und kritischem RNG. Charakter-,
+Waffen-, Gegner-, Upgrade- und klassische Wellendaten sowie Waffenmanager,
+Projektilpool und Kampfgrafikmodul sind unverändert zur Referenz a4efbc4.
+
+Belastungsläufe Schrottplatz/Reaktor: jeweils 7.200 Schritte, 120 simulierte Sekunden,
+bis 100 aktive Gegner, Objekt-/Loot-/Effekt-/Gefahrenlimits eingehalten. Synthetischer
+Stressaufbau mit vier Waffen; keine reguläre Klassenfreigabe und keine Android-FPS-Messung.
+
+Kontrollierte Boss-Schadensprobe: Stufe-5-Klassenwaffen, Schadenfaktor 2,2,
+Angriffsfaktor 1,6, Kritchance 25 %, Multishot +1, Abstand 100, ohne eingehenden Schaden.
+Bruiser 11,38 s, Sparky 4,35 s, Shade 38,10 s bis 4.200 HP. Belegt erreichbaren Schaden
+in dieser festen Versuchsanordnung, keinen vollständigen oder fair gebalancten Spieler-Run.
+
+Reaktortest deckt Warnung ohne Schaden, Aktivierung, Invulnerabilität, lange Frames,
+fixierte Ziele, Bossruhe während Warnung, vier gerichtete Dreiersalven, Pause/Level/Shop,
+Victory/Timeout/Tod, Aufräumen, Neustart, alle 60 Held/Arena/Wellenkombinationen und
+Migration aus Format 2 ab. Bestehender Migrationstest deckt Format 1 und Korruption ab.
+Die Ablaufprüfung verkürzt Wellentimer und setzt tödlichen Boss-Testschaden; sie ist
+kein autonom durchgespielter Zehn-Minuten-Run.
+
+Sieben Bilder tatsächlich mit Godot/Mesa gerendert: Auswahl, Menü, Arena, Kreuzlaser,
+Kernbomben, Stile, Statistik (`tests/reactor_*.png`). Vorgabedaten, keine Android-Aufnahmen.
+Initialer Lauf meldete beim Audio-Test Ressourcen beim Prozessende; gezielter Wiederholungslauf
+mit `--verbose` beendete sauber. Kein Kampf-/Parserfehler. V-Sync im Dummy-Display nicht verfügbar.
+
+Zusätzlich Quell-ZIP in ein leeres Verzeichnis entpackt: frischer Import ohne Parser-/Ressourcenfehler, anschließend Reaktorsuite erneut 157 / 157 bestanden.
+
+Offen: Android-Update mit echten Nutzerdaten, Bedienung und vollständiger Reaktorrun je
+Held, Ton auf Gerät, Aussparungen/abweichende Displays, FPS und thermische Belastung.
+
+---
+
+# Historische Tests 0.2.3
+
 # Tests 0.2.3 — 2026-11-16
 
 ## Bestätigter Nutzer-Praxistest

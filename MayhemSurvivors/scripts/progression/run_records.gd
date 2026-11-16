@@ -1,4 +1,5 @@
 extends RefCounted
+const Arenas = preload('res://scripts/core/arena_catalog.gd')
 const CHARACTERS = ['bruiser','sparky','shade']
 const WEAPONS = ['blaster','hammer','splitgun','arc','orbit']
 const MAX_HISTORY = 20
@@ -27,7 +28,8 @@ static func sanitize_records(data) -> Dictionary:
 	return result
 static func clean_run(data) -> Dictionary:
 	if not data is Dictionary or not CHARACTERS.has(data.get('character')):return {}
-	var result={'character':data.character,'won':data.get('won',false)==true,'wave':clampi(int(number(data.get('wave'),1)),1,10),'time':number(data.get('time'),0,7200),'kills':int(number(data.get('kills'))),'level':clampi(int(number(data.get('level'),1)),1,999),'damage':number(data.get('damage')),'coins':int(number(data.get('coins'))),'weapons':[]}
+	if not Arenas.IDS.has(data.get('arena','scrapyard')):return {}
+	var result={'arena':data.get('arena','scrapyard'),'character':data.character,'won':data.get('won',false)==true,'wave':clampi(int(number(data.get('wave'),1)),1,10),'time':number(data.get('time'),0,7200),'kills':int(number(data.get('kills'))),'level':clampi(int(number(data.get('level'),1)),1,999),'damage':number(data.get('damage')),'coins':int(number(data.get('coins'))),'weapons':[]}
 	var weapons=data.get('weapons')
 	if weapons is Array:
 		for item in weapons:
@@ -49,20 +51,27 @@ static func add_run(saved: Dictionary, data: Dictionary) -> Array[String]:
 	if run.is_empty():return improvements
 	if not saved.has('records'):saved.records=defaults()
 	if not saved.has('recent_runs'):saved.recent_runs=[]
-	var record=saved.records[run.character]
-	record.games+=1
-	record.wins+=int(run.won)
-	record.kills+=run.kills
-	record.coins+=run.coins
-	record.time+=run.time
-	for pair in [['best_wave','wave'],['best_kills','kills'],['best_level','level'],['best_damage','damage']]:
-		if run[pair[1]]>record[pair[0]]:
-			record[pair[0]]=run[pair[1]]
-			improvements.append(pair[0])
-	record.longest_run=maxf(record.longest_run,run.time)
-	if run.won and run.time>0 and (record.fastest_victory<=0 or run.time<record.fastest_victory):
-		record.fastest_victory=run.time
-		improvements.append('fastest_victory')
+	if not saved.has('arena_records'):saved.arena_records=arena_defaults()
+	var arena=saved.arena_records[run.arena]
+	arena.games+=1
+	arena.wins+=int(run.won)
+	arena.kills+=run.kills
+	arena.time+=run.time
+	arena.highest_wave=maxi(arena.highest_wave,run.wave)
+	for record in [saved.records[run.character],arena.records[run.character]]:
+		record.games+=1
+		record.wins+=int(run.won)
+		record.kills+=run.kills
+		record.coins+=run.coins
+		record.time+=run.time
+		for pair in [['best_wave','wave'],['best_kills','kills'],['best_level','level'],['best_damage','damage']]:
+				if run[pair[1]]>record[pair[0]]:
+						record[pair[0]]=run[pair[1]]
+						improvements.append(pair[0])
+		record.longest_run=maxf(record.longest_run,run.time)
+		if run.won and run.time>0 and (record.fastest_victory<=0 or run.time<record.fastest_victory):
+				record.fastest_victory=run.time
+				improvements.append('fastest_victory')
 	saved.recent_runs.push_front(run)
 	if saved.recent_runs.size()>MAX_HISTORY:saved.recent_runs.resize(MAX_HISTORY)
 	return improvements
@@ -72,4 +81,21 @@ static func aggregate(records: Dictionary) -> Dictionary:
 		var record=records[id]
 		for key in ['best_wave','best_kills','best_level','best_damage','longest_run']:result[key]=maxf(result[key],record[key])
 		if record.fastest_victory>0 and (result.fastest_victory<=0 or record.fastest_victory<result.fastest_victory):result.fastest_victory=record.fastest_victory
+	return result
+
+static func arena_defaults() -> Dictionary:
+	var result={}
+	for id in Arenas.IDS:result[id]={'games':0,'wins':0,'kills':0,'time':0.0,'highest_wave':0,'records':defaults()}
+	return result
+static func sanitize_arenas(data) -> Dictionary:
+	var result=arena_defaults()
+	if not data is Dictionary:return result
+	for id in Arenas.IDS:
+		var source=data.get(id)
+		if not source is Dictionary:continue
+		for key in ['games','wins','kills','highest_wave']:result[id][key]=int(number(source.get(key)))
+		result[id].wins=mini(result[id].wins,result[id].games)
+		result[id].highest_wave=mini(10,result[id].highest_wave)
+		result[id].time=number(source.get('time'))
+		result[id].records=sanitize_records(source.get('records'))
 	return result

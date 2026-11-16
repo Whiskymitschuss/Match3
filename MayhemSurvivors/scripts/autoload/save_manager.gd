@@ -1,8 +1,9 @@
 extends RefCounted
 const Records = preload('res://scripts/progression/run_records.gd')
-# Schema 2 adds optional run records; schema 1 totals/settings migrate without attribution.
+const Arenas = preload('res://scripts/core/arena_catalog.gd')
+# Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'version':2,'unlocked':['bruiser','sparky','shade'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH'},'records':Records.defaults(),'recent_runs':[]}
+	return {'version':3,'unlocked':['bruiser','sparky','shade'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class'},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):
@@ -15,10 +16,12 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 	var parser=JSON.new()
 	var valid=parser.parse(raw)==OK
 	var data=parser.data if valid else null
-	if not data is Dictionary or not (data.get('version')==1 or data.get('version')==2) or not data.get('settings') is Dictionary:
+	if not data is Dictionary or not (data.get('version')==1 or data.get('version')==2 or data.get('version')==3) or not data.get('settings') is Dictionary:
 		backup(raw,sidecar(path,'corrupt'))
 		return result
-	if data.version==1 and not FileAccess.file_exists(sidecar(path,'v1.backup')):backup(raw,sidecar(path,'v1.backup'))
+	if data.version<3:
+		var suffix='v%d.backup' % int(data.version)
+		if not FileAccess.file_exists(sidecar(path,suffix)):backup(raw,sidecar(path,suffix))
 	for key in ['highest_wave','games','wins','kills','time']:
 		var value=data.get(key)
 		if (value is float or value is int) and is_finite(float(value)) and float(value)>=0:
@@ -30,6 +33,17 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 	if data.settings.get('quality') in ['LOW','MEDIUM','HIGH']:result.settings.quality=data.settings.quality
 	result.records=Records.sanitize_records(data.get('records'))
 	result.recent_runs=Records.sanitize_history(data.get('recent_runs'))
+	result.arena_records=Records.sanitize_arenas(data.get('arena_records'))
+	if data.version<3:
+		for key in ['games','wins','kills','time','highest_wave']:result.arena_records.scrapyard[key]=result[key]
+		result.arena_records.scrapyard.records=result.records.duplicate(true)
+	for key in ['unlocked_arenas','unlocked_styles']:
+		var ids=data.get(key)
+		if ids is Array:
+			for id in ids:
+				if id in (Arenas.IDS if key=='unlocked_arenas' else ['class','gold','mayhem','reactor']) and not result[key].has(id):result[key].append(id)
+	Arenas.sync(result)
+	if result.unlocked_styles.has(data.settings.get('aura')):result.settings.aura=data.settings.aura
 	return result
 static func save_local(data: Dictionary, path: String = 'user://save.json') -> Error:
 	var temp=path+'.tmp'

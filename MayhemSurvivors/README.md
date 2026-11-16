@@ -1,101 +1,70 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha **0.2.3** · Godot 4.6.3 stable · GDScript · Compatibility Renderer
+Android Alpha **0.3.0** · Godot **4.6.3 stable** · GDScript · GL Compatibility
 
-## Neu in 0.2.3
+## Spielen
 
-- Eigene Comic-Figuren für Grunt, Runner, Tank und THE OVERLORD statt einfacher Kreise.
-- Offener Industriehof mit gezeichnetem Boden, eingelassenen Gittern und klarer Randmarkierung.
-  Die ganze bisherige Spielfläche bleibt begehbar; keine neuen Kollisionen oder Hindernisse.
-- Trefferaufhellung, prozedurale Laufbewegung und begrenzte, ausblendende Todeseffekte.
-- Radialsalve mit Strahlenwarnung; Sturmangriff mit Korridor zum tatsächlich fixierten Ziel.
-  Countdown aus der echten Angriffsuhr, unterschiedliche Warntöne auf reservierter Audiostimme.
-- Größere Siegesfeier ohne zusätzliche Wartezeit oder blockierte Ergebnisbuttons.
-- Persönliche Bestwerte und Bilanz je Charakter sowie die letzten 20 abgeschlossenen Runden.
-- Speicherformat 2 mit Übernahme alter Gesamtwerte/Einstellungen und Sicherung des Formats 1.
+`project.godot` in Godot importieren und starten. Ausschließlich Android-Export:
+ARM64, Querformat, Android 7.0+, Paket `com.rfworlds.mayhemsurvivors`, offline.
+Links unten per Touch-Joystick bewegen, Waffen greifen automatisch an. XP einsammeln,
+Upgrades wählen, zwischen neun 60-Sekunden-Wellen einkaufen. Welle zehn hat ein
+90-Sekunden-Limit: Boss besiegen oder verlieren. Pause oben rechts.
 
-Die akzeptierte Klassenbindung und Zwei-Hand-Waffenhaltung aus 0.2.2 bleiben erhalten:
+## Neu in 0.3
 
-| Held | Erlaubte Waffen |
+Nach der Charakterwahl folgt die Arena-Auswahl. Der Schrottplatz behält seine
+bisherigen Kampfwerte. Die Reaktorzone wird durch den ersten Sieg freigeschaltet;
+Siege aus älteren Versionen zählen mit. Eigener Boden, Gegnerzusammensetzung und
+ab Welle drei angekündigte Strombahnen. Diese sind vor der Aktivierung ungefährlich.
+
+Der Reaktorwächter ist eine eigene vierbeinige Maschine mit 4.200 HP: angekündigte
+Kreuzlaser, drei fixierte Kernbomben und ein gerichteter Impulsfächer mit vier Salven.
+Keine beweglichen Hindernisse. Alle Warnungen und Angriffe pausieren gemeinsam mit
+dem Kampf und werden beim Wellenende/Neustart entfernt.
+
+Statistik und Verlauf lassen sich nach Arena und Held filtern. Unter „Ziele & Stile“
+sind drei Bodenringe erspielbar: erster Sieg, 1.000 Gesamtkills, Reaktorsieg.
+Die Auswahl wird gespeichert und beeinflusst keine Kampfwerte.
+
+| Held | Waffen |
 |---|---|
 | Bruiser | Hammer |
 | Sparky | Blaster, Splitgun, Arc Cannon |
 | Shade | Orbit Blade |
 
-Sparky kann passende Schusswaffen kombinieren; sichtbar gehalten wird eine Waffe mit zwei
-Händen. Orbit Blade schwebt frei. Keine klassenfremden Käufe und keine nutzlosen Projektil-
-Upgrades bei reinen Nah-/Orbitklassen. Alle Kampf-/Klassendaten sind gegenüber 0.2.2 unverändert.
+Die akzeptierte Haltung mit zwei Händen und einer sichtbar gehaltenen Waffe bleibt.
+Sparkys weitere ausgerüstete Waffen greifen weiterhin automatisch an.
 
-## Installieren und starten
+## Lokaler Speicher
 
-Die signierte APK wird separat im GitHub-Ordner `Downloads/` bereitgestellt. Das Quellprojekt-ZIP
-enthält ausschließlich Quellen, Assets, Szenen, Tests und Berichte; keine APK und keine Toolchain.
-Für einen eigenen Export lautet der Zielpfad `builds/android/MayhemSurvivors-v0.2.3-debug.apk`.
+`user://save.json`, Format 3. Format 1/2 wird automatisch geladen und vor der
+Übernahme als `save.v1.backup.json` beziehungsweise `save.v2.backup.json` gesichert.
+Bisherige Gesamtwerte und Einstellungen bleiben erhalten. Alte Runs gehörten zum
+Schrottplatz; fehlende historische Heldenzuordnungen werden nicht erfunden.
+Beschädigte Dateien erhalten ein `.corrupt.json`-Backup. Kein aktiver Run-Resume.
 
-Android 7.0 oder neuer, ausschließlich ARM64. Gleicher Paketname und gleicher Signaturschlüssel
-wie bisher, versionCode 5; als Update vorgesehen. Die echte Geräteinstallation wurde hier nicht geprüft.
-
-Zum Öffnen der Quellen `project.godot` mit Godot 4.6.3 importieren und starten. Keine manuelle
-Programmierung oder Szenenmontage notwendig. Die Bedienung ist ausschließlich für Touch ausgelegt.
-
-SPIELEN → Charakter wählen → Welle starten. Links unten ziehen, Waffen greifen automatisch an.
-Kristalle sammeln und Upgrades wählen. Zwischen neun 60-Sekunden-Wellen liegt ein Shop mit
-vier Angeboten und Rerolls. Welle zehn: Boss innerhalb von 90 Sekunden besiegen.
-Pause oben rechts; Android-Unterbrechung pausiert die Simulation. Offline, ohne Werbung oder Käufe.
-
-## Statistik und Speicherübernahme
-
-Die bisherigen Gesamtwerte bleiben erhalten. Bei Format 1 entsteht einmalig
-`user://save.v1.backup.json`; der nächste Speichervorgang schreibt Format 2 atomisch.
-Ungültige JSON-Dateien werden unter `user://save.corrupt.json` gesichert und abgefangen.
-
-Charakterbestwerte und Verlauf beginnen ab 0.2.3, weil frühere Spielstände keine Zuordnung
-alter Runden zu Charakteren enthielten. Es werden keine alten Charakterergebnisse erfunden.
-Gespeichert werden pro Held Spiele, Siege, Kills, Coins, aktive Kampfzeit, höchste Welle,
-Kill-/Level-/Schadensbestwert, längster Run und schnellster Sieg. Der Verlauf zeigt bis zu
-20 neue abgeschlossene Runden mit Ausrüstung und lässt sich nach Charakter filtern.
-Ein aktiver Run wird nach vollständigem App-Ende weiterhin nicht wiederhergestellt.
-
-## Aufbau
-
-- `scripts/core/game.gd`: Run, Menüs, Wellen, Kampf, Shop und Ergebnisverbindung.
-- `scripts/core/game_state_machine.gd`: Zustände und Übergänge.
-- `scripts/characters/player_controller.gd`: Analogbewegung und Arenagrenzen.
-- `scripts/weapons/weapon_manager.gd`: automatische Angriffe; gegenüber 0.2.2 unverändert.
-- `scripts/combat/combat_visuals.gd`: akzeptierte Zweihandhaltung und Waffenfeedback.
-- `scripts/gameplay/world_visuals.gd`: Boden, Gegnerdarstellung, Todeseffekte und Bosswarnflächen.
-- `scripts/progression/run_records.gd`: Charakterbestwerte und begrenzter Verlauf.
-- `scripts/autoload/save_manager.gd`: Schema-1/2-Laden, Sicherung und atomisches Schreiben.
-- `assets/enemies/enemies_atlas.png`: vier vollständige Gegnerfiguren.
-- `assets/environments/scrapyard.png`: flacher Arena-Hintergrund ohne Gameplay-Objekte.
-
-Alle Spielgrafiken und Effekte wurden für das Projekt erstellt; die Bildgenerierung folgt den
-vom Nutzer gelieferten Stilreferenzen. Godot und seine Bibliotheken behalten ihre eigenen
-Lizenzen: https://godotengine.org/license/.
-
-## Prüfungen und Export
+## Prüfen und bauen
 
 ```sh
 godot --headless --path . --editor --import --quit
-godot --headless --path . --script res://tests/integration.gd
-godot --headless --path . --script res://tests/combat_visuals_test.gd
-godot --headless --path . --script res://tests/character_policy_test.gd
-godot --headless --path . --script res://tests/world_visuals_test.gd
-godot --headless --path . --script res://tests/run_records_test.gd
-godot --headless --fixed-fps 60 --path . --script res://tests/world_trace.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.2.3-debug.apk
+godot --headless --path . --fixed-fps 60 --script res://tests/integration.gd
+godot --headless --path . --fixed-fps 60 --script res://tests/reactor_test.gd
+godot --headless --path . --fixed-fps 60 --script res://tests/world_trace.gd
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.3-debug.apk
 ```
 
-210 Prüfungen bestanden. Die neue Regression verwendet legale Klassen-Loadouts der akzeptierten
-Version 0.2.2 und vergleicht 33 Kontrollpunkte über 3600 Schritte. Der ältere `balance_trace.gd`
-bleibt als historischer Test künstlicher Mehrwaffen-Loadouts erhalten.
-Export benötigt Godot-Android-Vorlagen, JDK und SDK in den Editoreinstellungen; diese wurden
-hier tatsächlich benutzt. APK-Signatur und 16-KiB-Alignment wurden geprüft.
+Für Export Godot-Android-Template, JDK 21 und Android SDK konfigurieren. Private
+Signierschlüssel/SDK sind nicht Teil des Quellprojekts. Test-APK separat verfügbar.
+Weitere Tests und tatsächliche Ergebnisse: [TEST_REPORT.md](TEST_REPORT.md).
+Exportdetails: [BUILD_REPORT.md](BUILD_REPORT.md).
 
-## Noch offen
+## Assets und Grenzen
 
-Echte Android-Updateinstallation und Statistikübernahme, neue Gegnerlesbarkeit im dichten Kampf,
-Warntöne über Geräteaudio, lange Runs mit allen Klassen und Geräte-FPS/Temperatur.
-Die Gegner sind prozedural bewegte Stand-Sprites, keine handgezeichneten Mehrbild-Laufsequenzen.
-Die Renderbilder sind Godot-Testaufnahmen; Statistikbilder verwenden vorgegebene Testdaten.
-Details: `TEST_REPORT.md`, `BUILD_REPORT.md`, `PROGRESS.md`.
+Eigene generierte Comic-Grafiken und prozedurale Effekte; eigene synthetisierte
+WAV-Effekte/Musik. Keine kopierten Figuren, Sounds oder Oberflächen aus Brotato.
+Keine Werbung, Käufe, Server oder bezahlten Plugins. LOW/MEDIUM/HIGH begrenzen nur
+Effekte. Ziel 60 FPS auf geeigneten Geräten, keine gemessene Android-FPS-Zusage.
+
+Die neue Reaktorzone wurde automatisiert und mit Godot/Mesa geprüft. Ihr kompletter
+Android-Praxistest, Geräteleistung und das Balancing aller drei Helden stehen noch aus.
+Der Nutzer hat den älteren Schrottplatz mit Sparky erfolgreich durchgespielt.

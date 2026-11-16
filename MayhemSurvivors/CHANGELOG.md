@@ -1,3 +1,14 @@
+# 0.3.0 Alpha — 2026-11-16
+
+- Arena-Auswahl und nach erstem Sieg freigeschaltete Reaktorzone.
+- Zehn eigene Wellen mit angekündigten Strombahnen und Reaktorwächter.
+- Drei Bossattacken: Kreuzlaser, Kernbomben, gerichtete Impulssalven.
+- Getrennte Arena-Statistiken und Verlauf mit Arenazuordnung.
+- Drei erspielbare Bodenringe ohne permanente Kampfboni.
+- Schema-3-Speicher mit Migration und Backups aus Schema 1/2.
+- Schrottplatz-Balance und akzeptierte Klassenbindung/Waffenhaltung erhalten.
+- Neue Integrations-, Migrations-, Gefahren-, Boss- und Belastungstests.
+
 # Changelog
 
 ## 0.2.3 Alpha — 2026-11-16
