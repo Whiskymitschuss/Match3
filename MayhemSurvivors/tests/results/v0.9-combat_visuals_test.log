@@ -1,0 +1,31 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Actual attack stamps character projectile style 0
+PASS Projectile styling preserves base damage and speed 0
+PASS Projectile slot reused across characters 0
+PASS Muzzle pulse triggered by actual attack 0
+PASS Pause freezes combat visual timers 0
+PASS Cleanup clears weapon feedback and shots 0
+PASS Actual attack stamps character projectile style 1
+PASS Projectile styling preserves base damage and speed 1
+PASS Projectile slot reused across characters 1
+PASS Muzzle pulse triggered by actual attack 1
+PASS Pause freezes combat visual timers 1
+PASS Cleanup clears weapon feedback and shots 1
+PASS Actual attack stamps character projectile style 2
+PASS Projectile styling preserves base damage and speed 2
+PASS Projectile slot reused across characters 2
+PASS Muzzle pulse triggered by actual attack 2
+PASS Pause freezes combat visual timers 2
+PASS Cleanup clears weapon feedback and shots 2
+PASS Actual hammer attack triggers slam feedback
+PASS Actual arc attack triggers beam feedback
+PASS Actual orbit attack triggers impact feedback
+PASS LOW quality bounds simultaneous combat effects
+PASS Three character projectile regions are distinct
+PASS Weapon sound resource exists blaster_fire
+PASS Weapon sound resource exists splitgun_fire
+PASS Weapon sound resource exists hammer_slam
+PASS Weapon sound resource exists arc_zap
+PASS Weapon sound resource exists blade_hit
+COMBAT VISUAL RESULT 28 passed, 0 failed

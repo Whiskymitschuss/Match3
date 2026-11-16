@@ -58,6 +58,7 @@ var combat_visuals
 var world_visuals
 var run_items
 var shop_view
+var ui_revision=0
 var audio_director
 const UISkin=preload('res://scripts/ui/skin.gd')
 var hp = 120.0
@@ -211,6 +212,7 @@ func update_music():
 	if audio_director:audio_director.update_settings()
 
 func clear_ui():
+	ui_revision+=1
 	for n in ui_root.get_children():
 		ui_root.remove_child(n)
 		n.queue_free()
@@ -238,13 +240,19 @@ func label_at(text: String, pos: Vector2, size: int = 32, color: Color = Color.W
 
 func style(color: Color) -> StyleBoxFlat:
 	if style_cache.has(color): return style_cache[color]
-	var s=UISkin.box(color,Color('#FFAE35') if color.r>color.b*1.3 else Color('#566477'))
+	var s=UISkin.box(color,Color('#FFAE35') if color.r>color.b*1.3 else Color('#795396'))
 	style_cache[color] = s
 	return s
 
-func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: Color = Color('#25303F')) -> Button:
+func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: Color = Color('#2F2044')) -> Button:
 	var b = Button.new()
-	b.text = text
+	var icon_id=UISkin.Icons.button_id(text)
+	b.text=text.replace('▶','').replace('←','').replace('→','').replace('✓','AKTIV ·').replace('●','').replace('Ⅱ','').replace('? HILFE','HILFE').strip_edges()
+	if not icon_id.is_empty():
+		b.icon=UISkin.Icons.get_icon(icon_id);b.expand_icon=true
+		b.add_theme_constant_override('icon_max_width',44)
+		b.add_theme_constant_override('h_separation',14)
+	b.set_script(preload('res://scripts/ui/menu_button.gd'));b.motion_enabled=saved.settings.quality!='LOW'
 	b.position = pos
 	b.size = size
 	b.custom_minimum_size = size
@@ -253,10 +261,11 @@ func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: 
 	b.add_theme_color_override('font_color',Color('#F6EDDD'))
 	b.add_theme_color_override('font_disabled_color',Color('#7B8490'))
 	b.add_theme_stylebox_override('disabled',UISkin.box(Color('#171E28'),Color('#303C4A')))
-	b.add_theme_stylebox_override('focus',UISkin.box(Color(0,0,0,0),Color('#FFD166')))
+	var focus=UISkin.box(Color(0,0,0,0),Color('#FFD166'));focus.bg_color=Color(0,0,0,0)
+	b.add_theme_stylebox_override('focus',focus)
 	b.add_theme_stylebox_override('normal',style(color))
 	b.add_theme_stylebox_override('hover',style(color.lightened(.15)))
-	b.add_theme_stylebox_override('pressed',style(Color('#804316')))
+	b.add_theme_stylebox_override('pressed',style(Color('#78246B')))
 	b.pressed.connect(func(): sound('click'); action.call())
 	ui_root.add_child(b)
 	return b
@@ -264,9 +273,14 @@ func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: 
 func backdrop(title: String, subtitle: String = ''):
 	clear_ui()
 	UISkin.background(self)
+	UISkin.decorate_screen(self,title)
 	UISkin.brand(self)
+	schedule_menu_reveal()
 	label_at(title,Vector2(100,75),64,GOLD)
 	label_at(subtitle,Vector2(105,162),27,TEAL)
+
+func schedule_menu_reveal():call_deferred('_reveal_menu',ui_revision)
+func _reveal_menu(revision:int):UISkin.reveal(self,revision)
 
 func main_menu():
 	change_state(State.MAIN_MENU)
@@ -318,7 +332,7 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 	var profiles=saved.records if arena_filter=='all' else totals.records
 	backdrop('DEINE STATISTIK','Arena: '+('Alle Arenen' if arena_filter=='all' else Arenas.definition(arena_filter).name))
 	var filters=['all','scrapyard','reactor']
-	button('ARENA WECHSELN',Vector2(1330,105),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%3]))
+	button('ARENA WECHSELN',Vector2(1330,75),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%3]))
 	for i in range(4):
 		var tab=i-1
 		button(['ÜBERSICHT','BRUISER','SPARKY','SHADE'][i],Vector2(100+i*435,235),Vector2(400,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
@@ -504,7 +518,7 @@ func make_hud():
 
 func refresh_hud():
 	if not is_instance_valid(hud): return
-	var info = '♥ %d / %d     LV %d  ◈ %d / %d     ● %d\nWELLE %d / 10     %02d:%02d' % [ceili(hp),max_hp,level,xp,required_xp(),coins,wave_number,int(remaining)/60,int(remaining)%60]
+	var info = 'HP %d / %d    LV %d    XP %d / %d\nWELLE %d / 10    %02d:%02d    COINS %d' % [ceili(hp),max_hp,level,xp,required_xp(),wave_number,int(remaining)/60,int(remaining)%60,coins]
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
 	for e in enemies:
@@ -561,7 +575,7 @@ func pause_game():
 	pause_menu()
 
 func pause_menu():
-	backdrop('DURCHATMEN','Simulation angehalten')
+	backdrop('DURCHATMEN','Deine Runde wartet auf dich.')
 	button('FORTSETZEN',Vector2(120,320),Vector2(620,110),resume)
 	button('EINSTELLUNGEN',Vector2(120,460),Vector2(620,110),func(): settings(pause_menu))
 	button('HAUPTMENÜ',Vector2(120,600),Vector2(620,110),confirm_leave)
@@ -816,10 +830,11 @@ func level_up():
 	for i in range(mini(3,pool.size())):
 		var u = pool[i]
 		var x = 100+i*580
-		label_at(u[1],Vector2(x+30,320),86,TEAL)
+		UISkin.panel(self,Rect2(x,270,530,545),Color('#9861C1'))
+		UISkin.image(self,UISkin.Icons.get_icon(u[0]),Rect2(x+25,300,130,130))
 		label_at(u[2],Vector2(x+20,450),33,GOLD)
 		label_at(u[3],Vector2(x+20,520),25)
-		button('WÄHLEN',Vector2(x,680),Vector2(530,110),func(): apply_upgrade(u[0]); if_more_levels())
+		button('WÄHLEN',Vector2(x+25,685),Vector2(480,105),func(): apply_upgrade(u[0]); if_more_levels())
 
 func if_more_levels():
 	if xp>=required_xp(): level_up()
@@ -955,8 +970,11 @@ func finish(victory: bool):
 		celebration.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		ui_root.add_child(celebration)
 	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
-	label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
-	if not run_items.owned.is_empty():label_at('GEGENSTÄNDE: '+', '.join(run_items.owned.map(func(id):return run_items.data[id].name)),Vector2(110,585),20,TEAL)
+	var summary=label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
+	summary.text=UISkin.wrap_text(summary.text,UISkin.BODY,33,1120)
+	if not run_items.owned.is_empty():
+		var items_label=label_at('GEGENSTÄNDE: '+', '.join(run_items.owned.map(func(id):return run_items.data[id].name)),Vector2(110,565),20,TEAL)
+		items_label.text=UISkin.wrap_text(items_label.text,UISkin.BODY,20,1120)
 	if not improvements.is_empty(): label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
 	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
@@ -1020,7 +1038,7 @@ func _draw():
 		if e.has('end'): draw_line(e.pos,e.end,e.color,5,true)
 		else:
 			draw_arc(e.pos,e.radius*(1.5-e.life),0,TAU,20,Color(e.color,e.life*2),4,true)
-			if e.text!='': draw_string(ThemeDB.fallback_font,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
+			if e.text!='': draw_string(UISkin.BODY,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
 	if audio_director:audio_director.stop()
@@ -1072,6 +1090,8 @@ func challenges_screen():
 	for i in range(rows.size()):
 		var r=rows[i]
 		var y=280+i*190
+		UISkin.panel(self,Rect2(95,y-15,1690,165))
+		UISkin.image(self,UISkin.Icons.get_icon('trophy' if i<2 else 'world'),Rect2(1070,y+10,100,100))
 		label_at(r[1],Vector2(120,y),36,GOLD)
 		label_at('%s  %d / %d' % [r[2],mini(r[3],r[4]),r[4]],Vector2(120,y+58),28)
 		var unlocked=saved.unlocked_styles.has(r[0])
@@ -1099,6 +1119,7 @@ func specialization_screen():
 		var id=choices[i]
 		var d=Specs.all()[id]
 		var x=110+i*865
+		UISkin.panel(self,Rect2(x-10,245,825,695),Color(d.color))
 		var icon=TextureRect.new()
 		icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
 		icon.texture=load('res://assets/ui/specializations/'+id+'.svg')

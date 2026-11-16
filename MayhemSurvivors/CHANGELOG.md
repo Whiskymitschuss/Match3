@@ -1,3 +1,21 @@
+# 0.9.0 Alpha — 2026-11-16
+
+- Menülandschaft, Wortmarke, MS-App-Icon und RF-Worlds-Marke an Neon-Referenz angepasst.
+- 49 finale semantische UI-Icons statt Textzeichen, acht Item-, drei Fähigkeits-
+  und zehn Entwicklungsillustrationen sowie neuer Joystick.
+- Durchgängige violette Karten/Buttonzustände; informative Auswahl-, Upgrade-/Statistikflächen.
+- Leicht gestaffelte Seitenübergänge, Button-Glanz, sanft bewegtes Motiv und Lichtpartikel.
+- Kurzer Hintergrund-Weichzeichner in eigener Bildebene; Text bleibt davon unabhängig.
+- LOW ohne neue Bewegung/Shader, schnelle Navigation verwirft veraltete Übergänge.
+- Statistik-Kopf entzerrt, vollständige achtteilige Ergebnisliste innerhalb der Karte umbrochen.
+- Alte unbenutzte Icon-/Splashassets entfernt, keine Laufzeitverweise darauf.
+- 101 neue UI-Assertions, insgesamt 926; neue Galerie und animierter Engine-Mitschnitt.
+- Bestehende Kampf-/Economy-Daten und Audiopaket erhalten; Android Code 13 / Name 0.9.0.
+
+---
+
+## Historischer Stand vor 0.9
+
 # 0.8.0 Alpha — 2026-11-16
 
 - Gelieferte Logoideen als transparente Wortmarke und installierbares MS-App-Icon adaptiert.

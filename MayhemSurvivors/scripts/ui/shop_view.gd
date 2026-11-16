@@ -29,8 +29,7 @@ func show():
 		elif o.type=='item':
 			color=Color(game.run_items.data[o.id].color);icon(game.run_items.icon(o.id),Vector2(x+25,270),Vector2(90,90))
 		else:
-			for u in game.upgrades:
-				if u[0]==o.id:game.label_at(u[1],Vector2(x+35,270),64,color)
+			icon(game.UISkin.Icons.get_icon(o.id),Vector2(x+25,270),Vector2(90,90))
 		text(o.rarity,Vector2(x+145,285),235,22,color)
 		text('WAFFE' if o.type=='weapon' else ('GEGENSTAND' if o.type=='item' else 'VERBESSERUNG'),Vector2(x+145,325),235,18)
 		text(o.name,Vector2(x+20,390),360,29,game.GOLD)

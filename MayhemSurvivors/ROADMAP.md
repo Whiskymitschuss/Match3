@@ -1,3 +1,14 @@
+# Stand 0.9.0
+
+Gesamte Menügestaltung im Neon-Comic-Stil umgesetzt, Icon-/Branding-Satz erneuert,
+leichte Übergänge und qualitätsabhängige Animationen integriert. Nächster Schritt:
+Android-Abnahme der zusammenhängenden Oberfläche und Animation; anschließend
+konkretes Feedback zu Lesbarkeit, Bedienung und Performance auswerten.
+
+---
+
+## Historischer Stand vor 0.9
+
 # Stand 0.8.0
 
 Präsentations-/Audioupdate umgesetzt. Nutzer hat die drei 0.7-Themen bestätigt.

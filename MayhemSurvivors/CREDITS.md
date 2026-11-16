@@ -1,3 +1,18 @@
+# Gestaltung 0.9 — RF Worlds
+
+Neon-Stadtmotiv, neue Silber/Magenta-Wortmarke und MS-Icon mit Bildgenerierung nach
+der aktuellen Nutzerreferenz und vorhandenen Spielmarken erstellt. Tatsächlich im
+Spiel eingebunden, Dateien assets/branding/. Studiomarke als eigene SVG-Pfade erneuert.
+49 originale semantische UI-Badges sowie acht Item-, drei Ability- und zehn
+Entwicklungsillustrationen als SVG generiert. Quelle tools/generate_interface_icons.py,
+keine externen Iconfonts/Emoji nötig. Joystickgrafiken ebenfalls eigene SVGs.
+Fonts und Audio aus 0.8 mit bisherigen Lizenz-/Herkunftsnachweisen erhalten.
+
+
+---
+
+## Historischer Stand vor 0.9
+
 # Mayhem Survivors — RF Worlds / 0.8
 
 Spiel-/Studiogestaltung: RF Worlds. Neue Wortmarke und MS-Icon wurden mit Bildgenerierung

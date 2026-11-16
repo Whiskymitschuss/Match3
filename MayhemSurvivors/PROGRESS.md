@@ -1,3 +1,42 @@
+# Version 0.9.0 — 2026-11-16
+
+## Aktuelle Phase
+
+Menü-/Branding-/Icon-Rework implementiert und nativ gerendert. 926 Assertions und
+beide dokumentierten Referenztraces bestanden. Android-Export, Signatur und finaler ZIP-Neuimport geprüft.
+GitHub-Downloadkontrolle folgt. Branch `feature/neon-interface-v0.9`.
+
+## Auftrag / umgesetzt
+
+Nutzer wünscht sämtliche Logos/Icons fertig, alle Menüs hochwertig und leichte
+Animationen/Blur-Übergänge anhand der Neon-Comic-Vorlage. Neues vollflächiges Motiv,
+kompakte Wortmarke, App-Icon, Studiomarke, 49 semantische UI-Icons, alle Item-/Ability-/
+Entwicklungsicons und Joystickgrafik integriert. Jede bestehende Menüfunktion bleibt
+verbunden. Gemeinsame Skins, Lesbarkeitsscrims und Auswahl-/Informationskarten.
+Leicht gestaffelte Einblend-/Positionsanimationen, Buttonfeedback, Hintergrundschwenk,
+Lichtpartikel, kurzzeitiger 5-Sample-Weichzeichner ausschließlich auf der Bildebene.
+Schnelle Navigation generationsgesichert; LOW statisch ohne neue Shader/Animation.
+Statistik-Headerüberlagerung und volle Ergebnisliste korrigiert. Alte Icon-/Splash-
+Assets ohne verbleibende Laufzeitverweise entfernt. Keine Kampf-/Economy-Daten geändert.
+
+## Tests / Restabnahme
+
+926 Assertions: 825 Bestand + 101 neue UI-Prüfungen. 49 Icons geladen, Upgrade-Icons,
+semantische Aktionen, drei Qualitätsstufen, echte Produktionsanimation, schnelle
+Navigation, Shop/Level-up-Pause und vollständiger Ergebnisumbruch geprüft.
+Native Galerie und kurzer Menü-GIF-Mitschnitt erstellt, Glyphen und volle Ergebnisse
+kontrolliert. Weichzeichner auf separater TextureRect-Ebene; UI-Rendering bleibt separat.
+Breite Darstellung und Tablet geprüft; dunkle einzelne Motivpixel sind keine Letterbox.
+Keine bekannten Parser-/Ressourcenfehler in finalen Suiten. Keine Geräte-FPS behauptet.
+
+Nächster Schritt: finale APK/Signatur/Downloads verifizieren;
+danach Android-Praxisabnahme für neue Übergänge, Lesbarkeit, Launcher-Maske und
+Temperatur/FPS. Die vom Nutzer bestätigte Spielbalance bleibt unangetastet.
+
+---
+
+## Historischer Stand vor 0.9
+
 # Version 0.8.0 — 2026-11-16
 
 ## Aktuelle Phase
@@ -508,3 +547,13 @@ Erst danach die Android-Abnahme als vollständig markieren.
 Abschließende ZIP-Prüfung: in leeres Verzeichnis entpackt, Godot-Import ohne Parser-/
 Ressourcenfehler. Alle 825 Assertions und beide Referenztraces mit dem mitgelieferten
 Runner daraus erneut bestanden. Logs tests/results/v0.8-clean-*.log.
+
+Erstimport-Abnahme 0.9: Ein erster paralleler Editor-Import in dieser Umgebung endete
+mit SIGSEGV beim Assetimport. Nach Entfernen des generierten Caches lief der serielle
+Neuimport vollständig durch; daraus alle 926 Assertions und beide Kampftraces bestanden.
+`editor/import/use_multiple_threads=false` ist bereits im Projekt gesetzt, kein manueller
+Eingriff erforderlich. Dies betrifft den Editor-Import und ändert keine Kampfregeln.
+
+Finales ZIP erneut vollständig entpackt und Cache entfernt: Import erfolgreich,
+alle 926 Assertions sowie beide Referenztraces daraus erneut bestanden.
+Nachweise: tests/results/v0.9-final-zip-import.log und v0.9-final-zip-tests.log.

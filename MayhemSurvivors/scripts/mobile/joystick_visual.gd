@@ -4,11 +4,9 @@ var game
 func _draw():
 	if not game: return
 	var p: Vector2 = game.stick_origin if game.stick_id>=0 else game.joystick_rest()
-	draw_circle(p,130,Color('#14213d99'))
-	draw_arc(p,122,0,TAU,48,Color('#00d9d080'),5,true)
-	draw_circle(p+game.stick_pos,55,Color('#00d9d0aa'))
-	draw_circle(p+game.stick_pos,43,Color('#cfffff55'))
-	draw_string(ThemeDB.fallback_font,p+Vector2(-72,170),'BEWEGEN',HORIZONTAL_ALIGNMENT_LEFT,-1,24,Color.WHITE)
+	draw_texture_rect(preload('res://assets/ui/joystick_base.svg'),Rect2(p-Vector2(140,140),Vector2(280,280)),false)
+	draw_texture_rect(preload('res://assets/ui/joystick_thumb.svg'),Rect2(p+game.stick_pos-Vector2(56,56),Vector2(112,112)),false)
+	draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),p+Vector2(-72,170),'BEWEGEN',HORIZONTAL_ALIGNMENT_LEFT,-1,24,Color.WHITE)
 	if game.hit_feedback.hurt_flash>0:
 		var alpha=game.hit_feedback.hurt_flash/.22*.65
 		for x in [game.ui_bleed.position.x,game.ui_bleed.end.x-12]:draw_rect(Rect2(x,game.ui_bleed.position.y,12,game.ui_bleed.size.y),Color(1,.28,.35,alpha))
@@ -30,8 +28,8 @@ func _draw():
 		var w=game.weapons[i]
 		var at=Vector2(1100+i*116,44)+game.hud_top_right()
 		draw_style_box(game.style(Color('#18263d')),Rect2(at,Vector2(104,104)))
-		draw_string(ThemeDB.fallback_font,at+Vector2(4,19),{'blaster':'BLASTER','hammer':'HAMMER','splitgun':'SPLITGUN','arc':'ARC','orbit':'ORBIT'}[w.id],HORIZONTAL_ALIGNMENT_CENTER,96,16,Color.WHITE)
+		draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(4,19),{'blaster':'BLASTER','hammer':'HAMMER','splitgun':'SPLITGUN','arc':'ARC','orbit':'ORBIT'}[w.id],HORIZONTAL_ALIGNMENT_CENTER,96,16,Color.WHITE)
 		draw_texture_rect_region(CombatArt.TEXTURE,Rect2(at+Vector2(6,18),Vector2(92,61)),CombatArt.weapon(w.id))
-		draw_string(ThemeDB.fallback_font,at+Vector2(32,94),'Lv.'+str(w.level),HORIZONTAL_ALIGNMENT_LEFT,-1,19,Color('#ffd166'))
+		draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(32,94),'Lv.'+str(w.level),HORIZONTAL_ALIGNMENT_LEFT,-1,19,Color('#ffd166'))
 
 		if not game.Specs.definition(w).is_empty():draw_texture_rect(game.Specs.icon(w.spec),Rect2(at+Vector2(74,70),Vector2(26,26)),false)

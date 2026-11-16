@@ -1,3 +1,43 @@
+# Testbericht 0.9.0 — 2026-11-16
+
+Godot 4.6.3 stable, Headless plus natives Mesa-Rendering. Logs tests/results/v0.9-*.
+926 Assertions bestanden: 825 bisherige + 101 neue Neon-Interface-Prüfungen.
+Keine Parser-/Ressourcenfehler oder fehlgeschlagenen Assertions im finalen Lauf.
+
+Neue Suite: alle 49 semantischen Grafikressourcen, zehn Upgrade-IDs, passende
+Aktionsicons, tatsächliche Buttons/Touchgrößen und LOW/MEDIUM/HIGH; LOW ohne Motion/
+Weichzeichner. Illustration wirklich integriert, Statistik mit Lesbarkeitsscrim trotz
+unverändertem Main-Menu-Spielzustand, echte Angebots- und Level-up-Grafiken statt
+Symbolzeichen, Kampf während Shop angehalten. Produktionsübergang beginnt transparent
+und endet auf exakter Touchposition; rasche Wechsel ignorieren alte Revisionen,
+keine unsichtbar bleibenden Buttons. Acht Gegenstände am Run-Ende passen mit Umbruch
+in die Ergebnisfläche. Test enthält echte Prozessframes, keine bloßen Mock-Callbacks.
+
+Referenztraces weiterhin bestanden: Welt 33 Punkte/3.600 Schritte, Effekte 87 Punkte/
+8.700 Schritte unter ausdrücklich historischen eingefrorenen Wellen. Keine Aussage,
+dass heutige späte Wellen mit Versionen vor 0.7 identisch wären. Datenverzeichnis
+gegenüber 0.8 unverändert; Änderungen an game.gd betreffen Darstellung/Navigation.
+
+Native Galerie: Hauptmenü, Charaktere, Arenen, Vorbereitung, Einstellungen, Pause,
+Sieg; Shop/Inventar/Sets/Werte/Werkstatt/Hilfe; Statistik, Verlauf, Ziele, Level-up,
+Bestätigungen, Entwicklung und vollständiger Niederlagen-Build. Neue Bildebene mit
+Weichzeichner separat von Text/Bedienung. Mehrfachnavigation und Glyphen im nativen
+Render kontrolliert. Teststatistiken sind Vorgaben und keine gespielten Android-Runs.
+
+Zusätzlich Engine-Mitschnitt aus 84 gerenderten Frames bei festem 30-Hz-Zeitmaß,
+als 2,8-Sekunden-GIF kodiert. Kein gemessener 30-/60-FPS-Android-Nachweis.
+16:9, 1280×591 und Tablet: Hintergrundgeometrie deckt den Viewport ab. Einzelne sehr
+dunkle Motivpixel in alten Kanten-Helligkeitsproben sind keine Balken; aktuelle
+Darstellung anhand Geometrie und sichtbarem Motiv geprüft. Safe-Area-/Touchtests grün.
+
+Offen: neue Oberfläche auf echter Android-Hardware einschließlich Notch/Launcher-
+Maske, Schriften, Übergängen und Last/FPS/Temperatur abnehmen. Export und native
+Renderprüfung ersetzen diese Abnahme nicht.
+
+---
+
+## Historischer Stand vor 0.9
+
 # Testbericht 0.8.0 — 2026-11-16
 
 Godot 4.6.3 stable. Tatsächliche Logs in `tests/results/v0.8-*`.
@@ -93,3 +133,13 @@ Shop 41/41 und Display/Balance 100/100 daraus erneut bestanden. Logs v0.7-clean-
 Abschließende ZIP-Prüfung: in leeres Verzeichnis entpackt, Godot-Import ohne Parser-/
 Ressourcenfehler. Alle 825 Assertions und beide Referenztraces mit dem mitgelieferten
 Runner daraus erneut bestanden. Logs tests/results/v0.8-clean-*.log.
+
+Erstimport-Abnahme 0.9: Ein erster paralleler Editor-Import in dieser Umgebung endete
+mit SIGSEGV beim Assetimport. Nach Entfernen des generierten Caches lief der serielle
+Neuimport vollständig durch; daraus alle 926 Assertions und beide Kampftraces bestanden.
+`editor/import/use_multiple_threads=false` ist bereits im Projekt gesetzt, kein manueller
+Eingriff erforderlich. Dies betrifft den Editor-Import und ändert keine Kampfregeln.
+
+Finales ZIP erneut vollständig entpackt und Cache entfernt: Import erfolgreich,
+alle 926 Assertions sowie beide Referenztraces daraus erneut bestanden.
+Nachweise: tests/results/v0.9-final-zip-import.log und v0.9-final-zip-tests.log.

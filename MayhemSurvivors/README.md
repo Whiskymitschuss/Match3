@@ -1,3 +1,49 @@
+# Mayhem Survivors 0.9.0 Alpha — Neon Interface
+
+Vollständiger Menü-Rework nach der neuen Neon-Comic-Referenz des Nutzers.
+Neues Stadt-/Wirbelmotiv, kompakte Silber-/Magenta-Wortmarke, angepasstes MS-App-Icon
+und RF-Worlds-Studiomarke. Hauptmenü, Charaktere, Arenen, Vorbereitung, Level-up,
+Waffenentwicklung, Shop/Details/Hilfe, Werte, Einstellungen, Pause/Bestätigung,
+Statistik/Verlauf, Ziele und Sieg/Niederlage verwenden die gemeinsame Gestaltung.
+
+## Fertige UI-Grafiken und Bewegung
+
+49 semantische Grafik-Icons ersetzen Textsymbol-/Emoji-Icons bei Navigation, Upgrades,
+Kauf, Hilfe und Bedienung. Acht Gegenstands-, drei Fähigkeits- und zehn Entwicklungs-
+Illustrationen wurden ebenfalls überarbeitet; neuer Joystick mit fertiger Basis und Griff.
+Nicht mehr verwendete alte Icon-/Splashdateien entfernt. Die tatsächlichen Waffen-
+und Charaktergrafiken bleiben erhalten. Es werden keine leeren Sprite-Nodes angezeigt.
+
+Kurze, leicht gestaffelte Einblend-/Positionsübergänge (0,22–0,27 s), dezentes Leuchten
+an Buttons, langsame Bewegung der Hintergrundillustration und begrenzte Lichtpartikel.
+Beim Öffnen läuft ein kurzer Weichzeichner über die reine Hintergrundgrafik. Text und
+Bedienelemente haben eigenes Rendering und behalten ihre Touchflächen. Schnelle
+Navigation verwirft alte Übergänge über eine Bildschirmrevision. LOW schaltet die neue Hintergrundbewegung,
+Übergangsanimation, Buttonanimation und Hintergrund-Shader ab; Texte bleiben sichtbar.
+Die Hintergrundgrafik füllt weiterhin breite Displays/Tablet, HUD beachtet Safe-Areas.
+
+## Unverändert spielbar
+
+Die bestätigte Balance aus 0.7, Waffen-/Gegner-/Wave-/Itemdaten und Preise sind unverändert.
+0.8-Audiopaket mit 31 Effekten und zwei Musiken bleibt enthalten. Statistiken/Einstellungen
+weiterhin kompatibel. Android-only, ARM64, offline, kein Netzwerk/Ads/IAP.
+
+## Start, Tests, Quellen
+
+`project.godot` mit Godot 4.6.3 stable öffnen und starten; kein Zusammenbauen erforderlich.
+`python3 tools/run_tests.py --traces` führt 926 Assertions und zwei Kampfvergleiche aus.
+Neuer UI-Test prüft 101 Punkte inklusive realer Animation und vollständiger Ergebnisliste.
+Native Bildschirmgalerie: tests/presentation_*.png, interface_*.png, shop_*.png.
+Kurzer Engine-Mitschnitt: tests/menu_motion_preview.gif; kein Android-FPS-Benchmark.
+SVG-Iconquelle: tools/generate_interface_icons.py (Python-Standardbibliothek).
+Bildmotive nach Nutzerreferenzen erstellt; Fonts unter OFL, Details CREDITS.md.
+Android-Debug-APK 0.9.0 / Code 13 mit bestehendem Paket und Schlüssel als Update installieren.
+Neue Oberfläche/Animationen noch auf physischem Android-Gerät abnehmen.
+
+---
+
+## Historischer Stand vor 0.9
+
 # Mayhem Survivors 0.8.0 Alpha — Presentation & Audio
 
 Das Android-Spiel ist vollständig verbunden und direkt über `project.godot` startbar.
@@ -271,3 +317,9 @@ Effekte. Ziel 60 FPS auf geeigneten Geräten, keine gemessene Android-FPS-Zusage
 Version 0.4 wurde automatisiert und mit Godot/Mesa geprüft. Ihr kompletter
 Android-Praxistest, echte Multitouch-/Vibrationsprüfung, Geräteleistung und das Balancing aller drei Helden stehen noch aus.
 Der Nutzer hat den älteren Schrottplatz mit Sparky erfolgreich durchgespielt.
+
+Erstimport-Abnahme 0.9: Ein erster paralleler Editor-Import in dieser Umgebung endete
+mit SIGSEGV beim Assetimport. Nach Entfernen des generierten Caches lief der serielle
+Neuimport vollständig durch; daraus alle 926 Assertions und beide Kampftraces bestanden.
+`editor/import/use_multiple_threads=false` ist bereits im Projekt gesetzt, kein manueller
+Eingriff erforderlich. Dies betrifft den Editor-Import und ändert keine Kampfregeln.

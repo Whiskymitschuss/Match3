@@ -1,33 +1,46 @@
 extends Control
-# Decorative geometry is independent of gameplay RNG and ignores all input.
+# One full-screen illustration, bounded particles, no gameplay RNG or input interception.
+const ART=preload('res://assets/branding/neon_city.png')
 var game:Node2D
 var clock=0.0
-func _ready():mouse_filter=Control.MOUSE_FILTER_IGNORE
+var motion=false
+var is_home=false
+var picture:TextureRect
+func _ready():
+	mouse_filter=Control.MOUSE_FILTER_IGNORE
+	motion=game.saved.settings.quality!='LOW'
+	set_process(motion)
+	picture=TextureRect.new();picture.name='BackdropArt';picture.texture=ART
+	picture.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;picture.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	picture.mouse_filter=Control.MOUSE_FILTER_IGNORE;picture.show_behind_parent=true;add_child(picture)
+	if motion:
+		var effect=ShaderMaterial.new();effect.shader=preload('res://assets/ui/shaders/menu_soft_focus.gdshader');picture.material=effect
+	resized.connect(update_picture);update_picture()
+func update_picture():
+	if not is_instance_valid(picture):return
+	picture.size=size*1.035
+	var pan=Vector2(sin(clock*.13)*7,cos(clock*.11)*4) if motion else Vector2.ZERO
+	picture.position=(size-picture.size)*.5+pan
 func _process(delta):
+	if not motion:return
 	clock+=delta
-	if game.saved.settings.quality!='LOW':queue_redraw()
+	if picture.material:picture.material.set_shader_parameter('blur_px',3.0*maxf(0,1-clock/.35))
+	update_picture();queue_redraw()
 func _draw():
 	if not is_instance_valid(game):return
 	var rect=Rect2(Vector2.ZERO,size)
-	draw_rect(rect,Color('#0B101A'))
-	var right=rect.end.x;var left=rect.position.x
-	draw_colored_polygon(PackedVector2Array([Vector2(right-900,rect.position.y),Vector2(right,rect.position.y),rect.end,Vector2(right-1300,rect.end.y)]),Color('#151C2A'))
-	for i in range(12):
-		var x=left+i*260
-		draw_line(Vector2(x,rect.position.y),Vector2(x-700,rect.end.y),Color('#202B3A'),2,true)
-	# Hazard stripe edges frame the UI without competing with card text.
-	for y in [rect.position.y,rect.end.y-12]:
-		draw_rect(Rect2(left,y,rect.size.x,12),Color('#2C1D12'))
-		for i in range(int(rect.size.x/45)+1):
-			var x=left+i*45
-			draw_colored_polygon(PackedVector2Array([Vector2(x,y),Vector2(x+23,y),Vector2(x+10,y+12),Vector2(x-13,y+12)]),Color('#B77222'))
-	for i in range(6):
-		var y=rect.position.y+95+i*(rect.size.y-190)/5
-		for x in [left+23,right-23]:
-			draw_circle(Vector2(x,y),8,Color('#303B49'));draw_line(Vector2(x-4,y),Vector2(x+4,y),Color('#89929D'),2)
-	var count=10 if game.saved.settings.quality=='LOW' else (18 if game.saved.settings.quality=='MEDIUM' else 28)
+	var main=is_home
+	draw_rect(rect,Color(.025,.01,.07,.16 if main else .64))
+	# Readability scrim is strongest underneath navigation and softens toward artwork.
+	var opacity=.48 if main else .22
+	var corners=PackedVector2Array([Vector2.ZERO,Vector2(size.x,0),size,Vector2(0,size.y)])
+	var colors=PackedColorArray([Color(.025,.008,.07,opacity),Color(.025,.008,.07,0),Color(.025,.008,.07,0),Color(.025,.008,.07,opacity)])
+	draw_polygon(corners,colors)
+	for y in [0,size.y-2]:draw_line(Vector2(0,y),Vector2(size.x,y),Color(.85,.2,1,.35),2,true)
+	var count=8 if not motion else (14 if game.saved.settings.quality=='MEDIUM' else 24)
 	for i in range(count):
-		var p=Vector2(left+fmod(i*173.0+sin(i)*100,rect.size.x),rect.end.y-fmod(i*137.0+clock*(16+i%5*7),rect.size.y))
-		draw_line(p,p+Vector2(-3,-7),Color(1,.35,.06,.13+.18*(.5+.5*sin(clock+i))),2,true)
-	draw_line(Vector2(100,219),Vector2(1820,219),Color('#55402B'),2,true)
-	draw_line(Vector2(100,219),Vector2(370,219),Color('#FF9F1C'),5,true)
+		var p=Vector2(fmod(i*173.0+sin(i)*100+size.x,size.x),size.y-fmod(i*137.0+clock*(10+i%5*5),size.y))
+		draw_circle(p,1.5+i%2,Color(1,.42,.87,.15+.18*(.5+.5*sin(clock+i))))
+	if not main:
+		draw_rect(Rect2(60-position.x,48-position.y,1800,170),Color(.04,.025,.10,.62))
+		draw_line(Vector2(100-position.x,220-position.y),Vector2(1810-position.x,220-position.y),Color(.65,.23,.86,.45),2,true)
