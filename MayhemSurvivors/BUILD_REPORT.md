@@ -1,3 +1,31 @@
+# Android-Build 0.2.3 — 2026-11-16
+
+**Tatsächlich exportiert, signiert und statisch verifiziert.**
+
+- Datei: `builds/android/MayhemSurvivors-v0.2.3-debug.apk`
+- Größe: 36,983,444 Bytes
+- SHA-256: `56d5fd84b49dfe4fa419ec81f98b9f8a3299c70ef432b34c711bf45b9eb3f7be`
+- Paket: `com.rfworlds.mayhemsurvivors`, versionName `0.2.3`, versionCode `5`.
+- Ausschließlich `arm64-v8a`, Querformat, Minimum SDK 24 / Target SDK 36.
+- Godot 4.6.3 stable, OpenJDK 21, Android Build Tools 36.0.0.
+- APK-Signatur v2/v3 gültig, Signierzertifikat entspricht allen bisherigen Testversionen.
+- 16-KiB-Alignment gültig; keine angeforderten Berechtigungen.
+- Neue Welt-/Gegnergrafiken und beide Warntöne im Paket enthalten; Tests nicht verpackt.
+- Import und Scriptprüfung ohne Parserfehler oder fehlende Ressourcen.
+- ADB-Daemon nicht verbunden; die Abschlussmeldung betrifft keine Build-/Signaturprüfung.
+
+Das Speicherformat im Spiel ist jetzt 2; Format 1 wird mit Sicherung geladen. Dateimigration
+wurde getestet. Tatsächliche Android-Updateinstallation und Nutzerstatistikübernahme wurden
+hier nicht auf einem Gerät ausgeführt.
+
+Die APK liegt separat im GitHub-Downloadordner. Das Quellprojekt-ZIP enthält alle Quellen,
+Assets, Szenen, Tests und Berichte, aber keine APK, Editorcaches oder Android-Toolchain.
+Protokolle: `tests/results/v0.2.3/`.
+
+---
+
+## Archiv: Stand 0.2.2
+
 # Android-Build 0.2.2 — 2026-11-16
 
 **Tatsächlich gebaut, signiert und statisch geprüft.**

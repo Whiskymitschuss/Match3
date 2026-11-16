@@ -1,3 +1,60 @@
+# Tests 0.2.3 — 2026-11-16
+
+## Ausgeführte Suiten
+
+| Suite | Bestanden | Fehlgeschlagen |
+|---|---:|---:|
+| Integration | 76 | 0 |
+| Kampfeffekte/Projektile | 28 | 0 |
+| Klassen und Zweihandhaltung | 42 | 0 |
+| Welt, Todeseffekte und Bosswarnungen | 36 | 0 |
+| Charakterbestwerte, Verlauf und Migration | 28 | 0 |
+| **Summe** | **210** | **0** |
+
+Zusätzlich: neue deterministische Regression mit erlaubten Klassen-Loadouts gegen den
+Git-Stand 0.2.2 (`d47853c`). Alle 33 Kontrollpunkte über 3600 Schritte stimmen überein:
+HP, XP, Coins, Kills, Schaden, Gegner- und Projektilzustände sowie Krit-Zufallszustand.
+Positionswerte werden auf vier Nachkommastellen protokolliert, JSON-Zahlen mit 0.000001
+Toleranz gelesen. Dies ist ein reproduzierbarer Ablauf, kein formaler Beweis aller Spielzustände.
+Spieldaten und unveränderte Kampfmodule zusätzlich bytegleich geprüft.
+
+## Neue Grenzfälle
+
+Todeseffekte ohne doppelte Belohnung, abgelöste Positions-Snapshots, Effektlimit und Cleanup,
+Pause/Resume, echte Bossphasen und Countdown, unveränderte 18er-Salve, fixiertes Sturmziel,
+keine visuelle RNG-Nutzung, kein blockierter Siegbutton, keine doppelte Siegerfassung und
+Warning-Audio bei belegten normalen SFX-Stimmen.
+Dateibasierte Schema-1-Migration mit Originalbackup, Erhalt aller alten Gesamtwerte und
+Einstellungen, keine erfundenen Charakterresultate, echte Ergebnisverbindung, unveränderliche
+Bestwerte bei schlechteren Runs, schnellster Sieg, begrenzter 20er-Verlauf, neueste Runde zuerst,
+Schema-2-Roundtrip, beschädigte Unterfelder und sichere Seiten-/Charakterfilter.
+
+## Weitere Nachweise
+
+Headless-Lasttest: 7200 Schritte, 120 simulierte Sekunden, Spitze 100 Gegner, synthetisches
+Vierwaffen-Loadout. Gemessen ca. 0.350 ms Simulationszeit pro Schritt auf dem Entwicklungsrechner.
+Dies enthält keine Grafikberechnung und ist keine Android-FPS-Messung.
+
+Gerendert und geprüft: `world_arena.png`, `world_crowd.png`, `world_boundary.png`,
+`world_boss_radial.png`, `world_boss_charge.png`, `world_victory.png`, `world_stats.png`,
+`world_stats_sparky.png`, `world_history.png`. Godot Compatibility/Mesa auf Linux, 1280×720.
+Der Spieler bleibt wie zuvor vor der Menge sichtbar. Boden und Figuren sind Grafiken,
+keine neuen Hindernisse oder veränderten Kollisionen. Statistikbilder zeigen kontrollierte
+Testdatensätze, keine tatsächlichen Spielerfolge oder ausgelesenen Android-Nutzerdaten.
+
+APK-Version, Paket, ARM64, Signatur, Berechtigungen, Assets und 16-KiB-Alignment geprüft.
+Keine Parserfehler. Der virtuelle Grafiktreiber meldet nur nicht umschaltbare VSync-Einstellung.
+
+## Offene Geräteabnahme
+
+Android-Installation, echte Statistikübernahme, Audio, Lesbarkeit im Kampf, längere Klassen-Runs
+und Geräte-FPS/Temperatur sind noch praktisch zu prüfen. Kein Android-Gerätetest behauptet.
+Rohprotokolle: `tests/results/v0.2.3/`.
+
+---
+
+## Archiv: Stand 0.2.2
+
 # Tests 0.2.2 — 2026-11-16
 
 - 76 bisherige Integrationsprüfungen bestanden.

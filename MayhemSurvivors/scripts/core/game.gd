@@ -2,6 +2,7 @@ extends Node2D
 # All simulation advances exclusively in COMBAT. UI stays active in every state.
 const GameStateMachine = preload('res://scripts/core/game_state_machine.gd')
 const State = GameStateMachine.State
+const RunRecords = preload('res://scripts/progression/run_records.gd')
 const CharacterArt = preload('res://scripts/ui/character_art.gd')
 var facing = 1.0
 const INK = Color('#14213D')
@@ -35,6 +36,7 @@ var effects: Array = []
 var weapons: Array = []
 var weapon_manager
 var combat_visuals
+var world_visuals
 var hp = 120.0
 var max_hp = 120.0
 var speed = 180.0
@@ -69,6 +71,7 @@ var upgrade_counts = {}
 var saved = {}
 var rng = RandomNumberGenerator.new()
 var sfx_players: Array = []
+var alert_audio: AudioStreamPlayer
 var music: AudioStreamPlayer
 var result_recorded = false
 var style_cache: Dictionary = {}
@@ -87,6 +90,7 @@ func _ready():
 	rng.randomize()
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
 	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
+	world_visuals = preload('res://scripts/gameplay/world_visuals.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -113,6 +117,9 @@ func _ready():
 		var a = AudioStreamPlayer.new()
 		add_child(a)
 		sfx_players.append(a)
+	alert_audio=AudioStreamPlayer.new()
+	alert_audio.name='AlertAudio'
+	add_child(alert_audio)
 	setup_music()
 	get_tree().auto_accept_quit = false
 	main_menu()
@@ -142,6 +149,12 @@ func save_game():
 
 func sound(id: String):
 	if test_mode: return
+	if id in ['boss_radial_warning','boss_charge_warning','warning','victory','defeat'] and is_instance_valid(alert_audio):
+		alert_audio.stop()
+		alert_audio.stream=load('res://assets/audio/'+id+'.wav')
+		alert_audio.volume_db=linear_to_db(maxf(.001,float(saved.settings.master)*float(saved.settings.sfx)))
+		alert_audio.play()
+		return
 	for a in sfx_players:
 		if not a.playing:
 			a.stream = load('res://assets/audio/' + id + '.wav')
@@ -246,7 +259,7 @@ func main_menu():
 	ui_root.add_child(stack)
 	for item in [play_button,char_button,stats_button,settings_button]:
 		item.reparent(stack)
-	label_at('0.2.2 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.2.3 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1240,495),1,1.1)
 	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,370),52,TEAL)
 
@@ -285,10 +298,68 @@ func character_select():
 		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; start_run(),Color(c.color).darkened(.65))
 	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
 
-func statistics():
-	backdrop('DEINE STATISTIK','Lokal auf deinem Gerät gespeichert')
-	label_at('Spiele: %d\nSiege: %d\nHöchste Welle: %d / 10\nBesiegte Gegner: %d\nSpielzeit: %.1f Minuten' % [saved.games,saved.wins,saved.highest_wave,saved.kills,float(saved.time)/60],Vector2(120,300),42)
-	button('ZURÜCK',Vector2(110,870),Vector2(400,100),main_menu)
+func duration_text(seconds: float) -> String:
+	var value=int(maxf(0,seconds))
+	return '%02d:%02d' % [value/60,value%60]
+
+func statistics(character: int = -1):
+	backdrop('DEINE STATISTIK','Gesamtwerte bleiben erhalten / Charakterbestwerte und Verlauf ab Version 0.2.3')
+	for i in range(4):
+		var tab=i-1
+		button(['ÜBERSICHT','BRUISER','SPARKY','SHADE'][i],Vector2(100+i*435,235),Vector2(400,80),func(): statistics(tab),Color('#147f81') if tab==character else Color('#243958'))
+	if character<0:
+		label_at('ALLE RUNDEN',Vector2(120,365),28,TEAL)
+		var rate=100.0*float(saved.wins)/float(saved.games) if saved.games>0 else 0.0
+		label_at('Spiele: %d\nSiege: %d  /  %.0f %%\nHöchste Welle: %d / 10\nBesiegte Gegner: %d\nSpielzeit: %.1f Minuten' % [saved.games,saved.wins,rate,saved.highest_wave,saved.kills,float(saved.time)/60],Vector2(120,420),36)
+		var best=RunRecords.aggregate(saved.records)
+		label_at('PERSÖNLICHE BESTWERTE',Vector2(1010,365),28,GOLD)
+		label_at('Kills in einer Runde: %d\nHöchstes Level: %d\nGrößter Schaden: %d\nLängster Run: %s\nSchnellster Sieg: %s' % [best.best_kills,best.best_level,best.best_damage,duration_text(best.longest_run),duration_text(best.fastest_victory) if best.fastest_victory>0 else '—'],Vector2(1010,420),32)
+	else:
+		var record=saved.records[characters[character].id]
+		portrait(Vector2(110,355),character,1.05)
+		label_at(characters[character].name,Vector2(130,770),36,Color(characters[character].color))
+		label_at('BILANZ',Vector2(650,365),28,TEAL)
+		label_at('Spiele: %d\nSiege: %d\nKills gesamt: %d\nCoins gesamt: %d\nSpielzeit: %.1f Minuten' % [record.games,record.wins,record.kills,record.coins,record.time/60],Vector2(650,420),31)
+		label_at('BESTWERTE',Vector2(1250,365),28,GOLD)
+		label_at('Welle: %d / 10\nKills: %d\nLevel: %d\nSchaden: %d\nLängster Run: %s\nSchnellster Sieg: %s' % [record.best_wave,record.best_kills,record.best_level,record.best_damage,duration_text(record.longest_run),duration_text(record.fastest_victory) if record.fastest_victory>0 else '—'],Vector2(1250,420),29)
+	button('ZURÜCK',Vector2(110,900),Vector2(400,95),main_menu)
+	var history=button('LETZTE RUNDEN →',Vector2(1110,900),Vector2(650,95),func(): recent_runs_screen(character))
+	history.disabled=saved.recent_runs.is_empty()
+	if saved.recent_runs.is_empty():label_at('Der Verlauf beginnt mit deinem nächsten Run.',Vector2(1010,830),24)
+
+func recent_runs_screen(character: int = -1, page: int = 0):
+	var records: Array=[]
+	for run in saved.recent_runs:
+		if character<0 or run.character==characters[character].id:records.append(run)
+	var pages=maxi(1,ceili(records.size()/4.0))
+	page=clampi(page,0,pages-1)
+	backdrop('LETZTE RUNDEN','Bis zu 20 neue Runden lokal gespeichert / '+('Alle Charaktere' if character<0 else characters[character].name))
+	if records.is_empty():label_at('Für diesen Charakter ist noch keine neue Runde gespeichert.',Vector2(120,400),32)
+	for row in range(4):
+		var index=page*4+row
+		if index>=records.size():break
+		var run=records[index]
+		var y=285+row*137
+		var card=Panel.new()
+		card.position=Vector2(100,y)
+		card.size=Vector2(1710,118)
+		card.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		card.add_theme_stylebox_override('panel',style(Color('#201d35')))
+		ui_root.add_child(card)
+		var hero=RunRecords.CHARACTERS.find(run.character)
+		label_at(characters[hero].name,Vector2(125,y+10),29,Color(characters[hero].color))
+		label_at('SIEG' if run.won else 'GAME OVER',Vector2(465,y+10),29,Color('#2ED573') if run.won else Color('#FF6376'))
+		label_at('Welle %d / 10   LV %d   %d Kills   %s' % [run.wave,run.level,run.kills,duration_text(run.time)],Vector2(940,y+12),25)
+		var loadout=''
+		for w in run.weapons:loadout+='%s Lv.%d  ' % [weapon_data[w.id].name,w.level]
+		label_at(loadout,Vector2(125,y+65),23)
+		label_at('%d Schaden  /  %d Coins' % [run.damage,run.coins],Vector2(1190,y+65),23,GOLD)
+	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func(): statistics(character))
+	var previous=button('← VORHERIGE',Vector2(590,905),Vector2(350,95),func(): recent_runs_screen(character,page-1))
+	previous.disabled=page==0
+	label_at('%d / %d' % [page+1,pages],Vector2(1040,930),30)
+	var next=button('NÄCHSTE →',Vector2(1280,905),Vector2(480,95),func(): recent_runs_screen(character,page+1))
+	next.disabled=page>=pages-1
 
 func settings(back: Callable):
 	backdrop('EINSTELLUNGEN','Audio und Effektdichte • Spielregeln bleiben gleich')
@@ -312,6 +383,7 @@ func settings(back: Callable):
 
 func cleanup():
 	if combat_visuals: combat_visuals.clear()
+	if world_visuals: world_visuals.clear()
 	enemies.clear()
 	loot.clear()
 	effects.clear()
@@ -381,7 +453,10 @@ func refresh_hud():
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
 	for e in enemies:
-		if e.kind == 'boss': boss_hud.text = 'THE OVERLORD   %d / 2500\n%s' % [maxi(0,int(e.hp)),boss_warning]
+		if e.kind == 'boss':
+			boss_hud.text = 'THE OVERLORD   %d / 2500\n%s' % [maxi(0,int(e.hp)),boss_warning]
+			var warning=world_visuals.boss_telegraph()
+			if not warning.is_empty(): boss_hud.text += '  %.1f s' % warning.seconds
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -436,6 +511,7 @@ func _physics_process(delta):
 	if is_instance_valid(joystick): joystick.queue_redraw()
 	if state != State.COMBAT: return
 	combat_visuals.update(delta)
+	world_visuals.update(delta)
 	run_time += delta
 	remaining = maxf(0,remaining-delta)
 	hurt_clock -= delta
@@ -481,7 +557,8 @@ func update_enemies(dt: float):
 		if boss_clock <= 0:
 			boss_phase = (boss_phase+1)%4
 			boss_charging = boss_phase == 0
-			if boss_phase%2 == 1: sound('warning')
+			if boss_phase==1: sound('boss_radial_warning')
+			if boss_phase==3: sound('boss_charge_warning')
 			boss_clock = 1.3 if boss_phase%2 == 1 else 3.2
 			boss_warning = '⚠ RADIALSALVE!' if boss_phase == 1 else ('⚠ STURMANGRIFF!' if boss_phase == 3 else '')
 			if boss_phase == 3: boss_target = player.position
@@ -568,6 +645,7 @@ func damage_enemy(e: Dictionary, power: float):
 	if e.hp<=0:
 		var kind: String = e.kind
 		var pos: Vector2 = e.pos
+		world_visuals.enemy_defeated(e)
 		enemies.erase(e)
 		kills += 1
 		var reward = int(enemy_data[kind].coins)
@@ -763,12 +841,20 @@ func finish(victory: bool):
 	saved.kills+=kills
 	saved.time+=run_time
 	saved.highest_wave=maxi(int(saved.highest_wave),wave_number)
+	var improvements=RunRecords.add_run(saved,{'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons})
 	save_game()
 	cleanup()
 	sound('victory' if victory else 'defeat')
 	backdrop('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!','RF WORLDS • '+('SIEG' if victory else 'GAME OVER'))
+	if victory:
+		var celebration=Control.new()
+		celebration.set_script(preload('res://scripts/ui/victory_fx.gd'))
+		celebration.count=12 if saved.settings.quality=='LOW' else (24 if saved.settings.quality=='MEDIUM' else 40)
+		celebration.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		ui_root.add_child(celebration)
 	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
 	label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
+	if not improvements.is_empty(): label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),character_select)
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
@@ -776,32 +862,6 @@ func finish(victory: bool):
 func add_effect(pos: Vector2, color: Color, radius: float, text: String):
 	var cap = 30 if saved.settings.quality=='LOW' else (65 if saved.settings.quality=='MEDIUM' else 110)
 	if effects.size()<cap: effects.append({'pos':pos,'color':color,'radius':radius,'life':.45,'text':text})
-
-func cartoon(pos: Vector2, radius: float, color: Color, kind: String, flash: bool = false):
-	var bounce = sin(animation_clock*9+pos.x*.01)*3
-	pos.y += bounce
-	draw_circle(pos+Vector2(0,radius*.8),radius*.9,Color(0,0,0,.22))
-	if kind in ['tank','bruiser','boss']:
-		draw_style_box(style(INK),Rect2(pos-Vector2(radius*1.2,radius),Vector2(radius*2.4,radius*2)))
-	draw_circle(pos,radius+4,INK)
-	draw_circle(pos,radius,Color.WHITE if flash else color)
-	draw_arc(pos-Vector2(0,radius*.12),radius*.75,PI,TAU,16,color.lightened(.4),5,true)
-	if kind=='shade':
-		draw_colored_polygon(PackedVector2Array([pos+Vector2(-radius,-5),pos+Vector2(0,-radius*1.6),pos+Vector2(radius,-5)]),color.darkened(.25))
-	if kind=='runner':
-		draw_line(pos+Vector2(-radius,-radius*.5),pos+Vector2(-radius*1.5,-radius),INK,7)
-	if kind=='boss':
-		var crown = PackedVector2Array([pos+Vector2(-65,-60),pos+Vector2(-65,-115),pos+Vector2(-30,-85),pos+Vector2(0,-125),pos+Vector2(30,-85),pos+Vector2(65,-115),pos+Vector2(65,-60)])
-		draw_colored_polygon(crown,GOLD)
-	for side in [-1,1]:
-		var eye = pos+Vector2(side*radius*.34,-radius*.13)
-		draw_circle(eye,radius*.22,INK)
-		draw_circle(eye+Vector2(1,-2),radius*.12,Color.WHITE)
-	if kind=='sparky':
-		draw_line(pos+Vector2(-radius,-8),pos+Vector2(radius,-8),GOLD,8)
-	draw_arc(pos+Vector2(0,radius*.28),radius*.25,0,PI,10,INK,3,true)
-	for side in [-1,1]:
-		draw_circle(pos+Vector2(side*radius*.55,radius*.85),radius*.24,INK)
 
 func character_facing() -> float:
 	var x=combat_visuals.target_direction.x
@@ -822,34 +882,21 @@ func draw_player_character():
 	draw_set_transform(Vector2.ZERO)
 
 func _draw():
-	draw_rect(Rect2(0,0,2400,1600),Color('#284d58'))
-	for x in range(0,2400,120):
-		for y in range(0,1600,120):
-			var col = Color('#305963') if (x/120+y/120)%2==0 else Color('#2c535e')
-			draw_rect(Rect2(x+3,y+3,114,114),col)
-	for i in range(65):
-		var pos = Vector2(fmod(i*379.0+83,2300)+50,fmod(i*541.0+31,1500)+50)
-		draw_circle(pos,7+(i%4)*3,Color('#386b63'))
-		draw_line(pos,pos+Vector2(6,-12),Color('#49846a'),3)
-	draw_rect(Rect2(24,24,2352,1552),GOLD.darkened(.45),false,12)
+	world_visuals.draw_arena()
 	if state in [State.MAIN_MENU,State.CHARACTER_SELECT,State.BOOT]:
-		for i in range(12): cartoon(Vector2(250+i*170,650+sin(animation_clock+i)*200),40,Color(enemy_data[['grunt','runner','tank'][i%3]].color),['grunt','runner','tank'][i%3])
+		for i in range(8):
+			var kind=['grunt','runner','tank'][i%3]
+			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
+	world_visuals.draw_telegraph()
+	world_visuals.draw_deaths()
 	for l in loot:
 		var p: Vector2 = l.pos
 		draw_circle(p,18,Color(0,.85,.8,.12))
 		draw_colored_polygon(PackedVector2Array([p+Vector2(0,-13),p+Vector2(9,0),p+Vector2(0,13),p+Vector2(-9,0)]),TEAL)
 		draw_line(p+Vector2(0,-9),p+Vector2(-5,0),Color.WHITE,3)
-	for e in enemies:
-		if e.kind=='boss' and boss_phase==1:
-			draw_arc(e.pos,145+sin(animation_clock*15)*12,0,TAU,48,Color('#ff4757'),8,true)
-		if e.kind=='boss' and boss_phase==3:
-			draw_line(e.pos,boss_target,Color(1,.3,.3,.45),52,true)
-			draw_circle(boss_target,55,Color(1,.3,.3,.3))
-		cartoon(e.pos,e.radius,Color(enemy_data[e.kind].color),e.kind,e.hit>0)
-		if e.hp<e.max_hp:
-			draw_line(e.pos+Vector2(-e.radius,-e.radius-14),e.pos+Vector2(e.radius,-e.radius-14),INK,7)
-			draw_line(e.pos+Vector2(-e.radius,-e.radius-14),e.pos+Vector2(-e.radius+2*e.radius*maxf(0,e.hp/e.max_hp),-e.radius-14),Color('#FF4757'),5)
+	# Keep the player visible in crowds, as in the accepted combat version.
+	for e in enemies: world_visuals.draw_enemy(e)
 	combat_visuals.draw_weapons(true)
 	draw_player_character()
 	combat_visuals.draw_weapons(false)
@@ -862,6 +909,9 @@ func _draw():
 			if e.text!='': draw_string(ThemeDB.fallback_font,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
+	if is_instance_valid(alert_audio):
+		alert_audio.stop()
+		alert_audio.stream=null
 	if is_instance_valid(music):
 		music.stop()
 		music.stream = null

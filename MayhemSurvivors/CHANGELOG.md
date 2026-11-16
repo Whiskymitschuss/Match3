@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.3 Alpha — 2026-11-16
+
+- Eigenständige Gegner- und Bossgrafiken sowie eine gezeichnete, frei begehbare Industriearena.
+- Treffer-/Todeseffekte, phasengenaue Radial- und Sturmwarnung, Countdown und zwei Warntöne.
+- Reservierte Audiostimme für Warnungen und Ergebnisse; zusätzliche Siegesfeier.
+- Bestwerte und Bilanz je Charakter, Verlauf der letzten 20 neuen Runden mit Filter und Seiten.
+- Speicherformat 2; Format-1-Gesamtwerte/Einstellungen werden übernommen und vorher gesichert.
+- Neue Charakterbestwerte beginnen ohne erfundene alte Zuordnungen ab dieser Version.
+- 210 Prüfungen bestanden; 33 Regression-Kontrollpunkte mit erlaubten 0.2.2-Loadouts identisch.
+- Keine Änderungen an Kampf-/Klassendaten, Trefferberechnung, Zwei-Hand-Rig, Waffen oder Spawns.
+- Android-Debugbuild versionCode 5, gleiche Signatur und ARM64-Paketidentität.
+
 ## 0.2.2 Alpha — 2026-11-16
 
 - Gameplay-Körper von Armen/Händen getrennt; genau zwei animierte Hände an Griffpunkten.

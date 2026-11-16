@@ -1,53 +1,57 @@
-# Mayhem Survivors — RF Worlds — 0.2.2 Teststand
+# RF Worlds — Mayhem Survivors 0.2.3
 
-## Zwei Hände statt gestapelter Waffen
+## Gegner, Arena, Bossfeedback und Bestwerte
 
-Die Spielfigur ist jetzt aus einem Körper ohne eingemalte Arme, zwei Armketten und zwei
-Handschuhkomponenten aufgebaut. Genau diese zwei Hände liegen an den Griffpunkten der
-sichtbar gehaltenen Hauptwaffe. Auch mit mehreren Schusswaffen gibt es keine zusätzlichen
-Hände oder gehaltenen Waffen. Orbit Blade bleibt frei schwebend.
+Grunt, Runner, Tank und THE OVERLORD haben jetzt eigene Comic-Figuren passend zu den Helden.
+Die Arena ist ein offener Industriehof mit gezeichnetem Boden und Randmarkierung. Es gibt
+keine neuen Hindernisse. Treffer und Tod bekommen eigene Effekte, der Boss warnt mit
+phasengetreuen Strahlen oder einem Korridor zum fixierten Sturmziel samt Countdown.
+Warnungen besitzen eigene Töne und eine reservierte Audiostimme. Die Siegesfeier ist erweitert.
 
-![Neue Haltung](MayhemSurvivors/tests/grip_close_sparky.png)
+![Neue Arena und Gegner](MayhemSurvivors/tests/world_arena.png)
 
-## Vorläufige Waffenbindung
-
-| Held | Erlaubte Waffen |
-|---|---|
-| Bruiser | Hammer |
-| Sparky | Blaster, Splitgun, Arc Cannon |
-| Shade | Orbit Blade |
-
-Die Bindung war der vorgeschlagene Teststand; eine abweichende Auswahl im Chat kann noch
-berücksichtigt werden. Shop und Kaufprüfung erzwingen dieselben Klassenregeln. Stat-Upgrades
-vergeben keine fremden Waffen; reine Nah-/Orbitklassen erhalten keine nutzlosen Projektil-Upgrades.
-Sparky kann passende Schusswaffen kombinieren; nur eine wird mit den Händen geführt.
-
-**Schadenswerte und Feuerraten bleiben gleich, die möglichen Builds ändern sich.**
-Die neue Klassenbalance über volle zehn Wellen ist noch zu prüfen.
+Die akzeptierte Zwei-Hand-Waffenhaltung und Klassenbindung aus 0.2.2 bleiben unverändert.
+Alle Spieldaten, Angriffswerte, Bewegungs-/Kollisionsregeln und Spawnintervalle sind gleich.
 
 ## Downloads
 
-- [Android-APK 0.2.2](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/fix/character-grips-v0.2.2/Downloads/MayhemSurvivors-v0.2.2-debug.apk)
-- [Komplettes Projekt 0.2.2 als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/fix/character-grips-v0.2.2/Downloads/MayhemSurvivors-v0.2.2-source.zip)
-- [Haltung in normaler Spielgröße](https://github.com/Whiskymitschuss/Match3/blob/fix/character-grips-v0.2.2/MayhemSurvivors/tests/grip_sparky_all.png)
-- [Charakterwahl und Spezialisierungen](https://github.com/Whiskymitschuss/Match3/blob/fix/character-grips-v0.2.2/MayhemSurvivors/tests/grip_characters.png)
+- [Android-APK 0.2.3 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/world-v0.2.3/Downloads/MayhemSurvivors-v0.2.3-debug.apk)
+- [Vollständiges Quellprojekt 0.2.3 als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/world-v0.2.3/Downloads/MayhemSurvivors-v0.2.3-source.zip)
+- [Sturmwarnung ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/world-v0.2.3/MayhemSurvivors/tests/world_boss_charge.png)
+- [Radialsalvenwarnung ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/world-v0.2.3/MayhemSurvivors/tests/world_boss_radial.png)
 
-Android 7.0 oder neuer, ARM64, Querformat, offline. Gleicher Paketname und Signierschlüssel,
-versionCode 4; als Update vorgesehen. Geräteinstallation und neue Klassenbalance noch offen.
+Quell-ZIP ohne APK und Toolchain; die APK ist oben separat verfügbar. Android 7.0+, ARM64,
+Querformat, offline. Gleicher Paketname/Signierschlüssel, versionCode 5, als Update vorgesehen.
+Keine Berechtigungen angefordert. Echte Geräteinstallation/FPS noch nicht in dieser Umgebung geprüft.
 
-## Tatsächlich geprüft
+## Neue Statistik
 
-146 Prüfungen bestanden: 76 bestehende, 28 Effekte, 42 Klassen-/Haltungsprüfungen.
-33 historische Kontrollpunkte über 3600 Simulationsschritte prüfen weiterhin
-die unveränderten Schadensformeln mit künstlich injizierten alten Loadouts. Dies ist kein
-Nachweis der neuen Klassenbalance. Normale Ansichten und vergrößerte Griffbilder wurden
-mit Godot/Mesa gerendert und geprüft. APK-Signatur, ARM64 und Alignment verifiziert.
-Keine neue Android-FPS-Messung oder vollständige Abnahme auf echter Hardware behauptet.
+Bestwerte und Bilanz je Held: Spiele, Siege, Kills, Coins, Spielzeit, höchste Welle,
+Kill-/Level-/Schadensrekord, längster Run und schnellster Sieg. Die letzten 20 abgeschlossenen
+neuen Runden werden mit Waffen gespeichert und lassen sich nach Charakter filtern.
+
+Bisherige Gesamtzahlen/Einstellungen werden aus Format 1 übernommen und vorher unter
+`user://save.v1.backup.json` gesichert. Format 2 speichert die neuen Daten. Charakterwerte
+und Verlauf beginnen ab 0.2.3; alte Runden werden keinem Charakter nachträglich zugeschrieben.
+
+[Statistikvorschau mit Testdaten](https://github.com/Whiskymitschuss/Match3/blob/art/world-v0.2.3/MayhemSurvivors/tests/world_stats.png) ·
+[Charakterbestwerte mit Testdaten](https://github.com/Whiskymitschuss/Match3/blob/art/world-v0.2.3/MayhemSurvivors/tests/world_stats_sparky.png) ·
+[Rundenverlauf mit Testdaten](https://github.com/Whiskymitschuss/Match3/blob/art/world-v0.2.3/MayhemSurvivors/tests/world_history.png)
+
+## Geprüft
+
+210 Prüfungen bestanden. Dateimigration mit Originalbackup und Rundendaten getestet.
+33 deterministische Kontrollpunkte über 3600 Schritte mit erlaubten Klassen-Loadouts
+stimmen mit dem akzeptierten 0.2.2-Stand überein. Kampf-/Klassendaten und die zentralen
+Kampfmodule sind bytegleich. Welt, Menge, Rand, Bosswarnungen, Sieg und Statistik tatsächlich
+mit Godot/Mesa gerendert. Statistikbilder sind Vorgabedaten, keine ausgelesenen Spielergebnisse.
+APK signiert, ARM64 und 16-KiB-Alignment geprüft. Keine Android-Abnahme behauptet.
 
 [Godot-Projekt](MayhemSurvivors) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
 [Buildbericht](MayhemSurvivors/BUILD_REPORT.md) · [Entwicklungsstand](MayhemSurvivors/PROGRESS.md)
 
 ## Frühere Stände
 
-[0.2.1 Waffenupdate](https://github.com/Whiskymitschuss/Match3/tree/art/weapons-v0.2.1) ·
+[0.2.2 Haltung/Klassen](https://github.com/Whiskymitschuss/Match3/tree/fix/character-grips-v0.2.2) ·
+[0.2.1 Waffen](https://github.com/Whiskymitschuss/Match3/tree/art/weapons-v0.2.1) ·
 [0.2 Charakterbilder](https://github.com/Whiskymitschuss/Match3/tree/art/characters-v0.2) · [0.1 Referenz](https://github.com/Whiskymitschuss/Match3/tree/main)

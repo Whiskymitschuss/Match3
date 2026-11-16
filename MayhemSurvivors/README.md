@@ -1,15 +1,20 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha **0.2.2** · Godot 4.6.3 stable · GDScript · Compatibility Renderer
+Android Alpha **0.2.3** · Godot 4.6.3 stable · GDScript · Compatibility Renderer
 
-## Neu: klare Waffenhaltung und Klassen
+## Neu in 0.2.3
 
-Der frühere Fehler mit zusätzlichen Händen ist durch einen getrennten Gameplay-Rig ersetzt:
-Körper ohne eingemalte Arme, zwei animierte Arme und genau zwei Handschuhkomponenten.
-Diese Hände liegen an den Griffpunkten einer sichtbar geführten Hauptwaffe. Die vollständigen
-Auswahlporträts bleiben erhalten. Die Orbit Blade schwebt frei und bekommt keine eigenen Hände.
+- Eigene Comic-Figuren für Grunt, Runner, Tank und THE OVERLORD statt einfacher Kreise.
+- Offener Industriehof mit gezeichnetem Boden, eingelassenen Gittern und klarer Randmarkierung.
+  Die ganze bisherige Spielfläche bleibt begehbar; keine neuen Kollisionen oder Hindernisse.
+- Trefferaufhellung, prozedurale Laufbewegung und begrenzte, ausblendende Todeseffekte.
+- Radialsalve mit Strahlenwarnung; Sturmangriff mit Korridor zum tatsächlich fixierten Ziel.
+  Countdown aus der echten Angriffsuhr, unterschiedliche Warntöne auf reservierter Audiostimme.
+- Größere Siegesfeier ohne zusätzliche Wartezeit oder blockierte Ergebnisbuttons.
+- Persönliche Bestwerte und Bilanz je Charakter sowie die letzten 20 abgeschlossenen Runden.
+- Speicherformat 2 mit Übernahme alter Gesamtwerte/Einstellungen und Sicherung des Formats 1.
 
-Vorläufige Waffenbindung für diesen Teststand:
+Die akzeptierte Klassenbindung und Zwei-Hand-Waffenhaltung aus 0.2.2 bleiben erhalten:
 
 | Held | Erlaubte Waffen |
 |---|---|
@@ -17,75 +22,80 @@ Vorläufige Waffenbindung für diesen Teststand:
 | Sparky | Blaster, Splitgun, Arc Cannon |
 | Shade | Orbit Blade |
 
-Sparky kann mehrere passende Schusswaffen ausrüsten; automatisch angegriffen wird weiterhin
-mit den ausgerüsteten Waffen. In der Figur wird immer nur eine gehaltene Waffe dargestellt,
-keine zusätzlichen Arme pro Waffenslot. Andere Waffen werden im Shop ausgefiltert und
-auch bei der Kaufprüfung abgewiesen. Stat-Upgrades vergeben keine neuen Waffen.
-Bruiser und Shade erhalten keine nutzlosen Projektil-/Multishot-Angebote.
-
-**Die Waffenbindung verändert die möglichen Builds.** Zahlenwerte für HP, Tempo, Schaden,
-Feuerrate, Reichweite, Gegner, Wellen und Belohnungen wurden nicht angepasst. Die neue
-Klassenverteilung muss über volle Runs geprüft werden; keine unveränderte Gesamtbalance behauptet.
+Sparky kann passende Schusswaffen kombinieren; sichtbar gehalten wird eine Waffe mit zwei
+Händen. Orbit Blade schwebt frei. Keine klassenfremden Käufe und keine nutzlosen Projektil-
+Upgrades bei reinen Nah-/Orbitklassen. Alle Kampf-/Klassendaten sind gegenüber 0.2.2 unverändert.
 
 ## Installieren und starten
 
-`builds/android/MayhemSurvivors-v0.2.2-debug.apk` ist die signierte ARM64-Test-App.
-Android 7.0 oder neuer. Gleicher Paketname und gleiche Debug-Signatur wie bisher,
-versionCode 4; als Update vorgesehen. Speicherschema 1 und Charakter-IDs bleiben gleich.
-Die tatsächliche Updateinstallation und Statistikübernahme wurden hier nicht auf einem Gerät geprüft.
+Die signierte APK wird separat im GitHub-Ordner `Downloads/` bereitgestellt. Das Quellprojekt-ZIP
+enthält ausschließlich Quellen, Assets, Szenen, Tests und Berichte; keine APK und keine Toolchain.
+Für einen eigenen Export lautet der Zielpfad `builds/android/MayhemSurvivors-v0.2.3-debug.apk`.
 
-Quellprojekt: `project.godot` mit Godot 4.6.3 öffnen und starten. Es sind keine manuellen
-Codekorrekturen oder zusammenzubauenden Szenen nötig. Die Bedienung ist für Touch ausgelegt.
+Android 7.0 oder neuer, ausschließlich ARM64. Gleicher Paketname und gleicher Signaturschlüssel
+wie bisher, versionCode 5; als Update vorgesehen. Die echte Geräteinstallation wurde hier nicht geprüft.
 
-SPIELEN → Charakter auswählen → Welle starten. Links unten ziehen, Waffen greifen automatisch
-an. XP-Kristalle einsammeln und ein Upgrade wählen. Zwischen neun 60-Sekunden-Wellen gibt
-es einen Shop mit vier Angeboten, Heilung und Rerolls. Welle zehn: Boss innerhalb von
-90 Sekunden besiegen. Pause oben rechts; Android-Unterbrechung hält die Simulation an.
-Alles läuft offline, ohne Werbung, Käufe oder Konten.
+Zum Öffnen der Quellen `project.godot` mit Godot 4.6.3 importieren und starten. Keine manuelle
+Programmierung oder Szenenmontage notwendig. Die Bedienung ist ausschließlich für Touch ausgelegt.
 
-## Systeme und Ressourcen
+SPIELEN → Charakter wählen → Welle starten. Links unten ziehen, Waffen greifen automatisch an.
+Kristalle sammeln und Upgrades wählen. Zwischen neun 60-Sekunden-Wellen liegt ein Shop mit
+vier Angeboten und Rerolls. Welle zehn: Boss innerhalb von 90 Sekunden besiegen.
+Pause oben rechts; Android-Unterbrechung pausiert die Simulation. Offline, ohne Werbung oder Käufe.
 
-- `scripts/core/game.gd`: Run, Menüs, Wellen, Shop, XP, Schadens- und Gegnerkoordination.
-- `scripts/core/game_state_machine.gd`: erlaubte Zustandsübergänge.
+## Statistik und Speicherübernahme
+
+Die bisherigen Gesamtwerte bleiben erhalten. Bei Format 1 entsteht einmalig
+`user://save.v1.backup.json`; der nächste Speichervorgang schreibt Format 2 atomisch.
+Ungültige JSON-Dateien werden unter `user://save.corrupt.json` gesichert und abgefangen.
+
+Charakterbestwerte und Verlauf beginnen ab 0.2.3, weil frühere Spielstände keine Zuordnung
+alter Runden zu Charakteren enthielten. Es werden keine alten Charakterergebnisse erfunden.
+Gespeichert werden pro Held Spiele, Siege, Kills, Coins, aktive Kampfzeit, höchste Welle,
+Kill-/Level-/Schadensbestwert, längster Run und schnellster Sieg. Der Verlauf zeigt bis zu
+20 neue abgeschlossene Runden mit Ausrüstung und lässt sich nach Charakter filtern.
+Ein aktiver Run wird nach vollständigem App-Ende weiterhin nicht wiederhergestellt.
+
+## Aufbau
+
+- `scripts/core/game.gd`: Run, Menüs, Wellen, Kampf, Shop und Ergebnisverbindung.
+- `scripts/core/game_state_machine.gd`: Zustände und Übergänge.
 - `scripts/characters/player_controller.gd`: Analogbewegung und Arenagrenzen.
-- `scripts/weapons/weapon_manager.gd`: automatische Waffen und unveränderte Schadensformeln.
-- `scripts/combat/combat_visuals.gd`: ein gehaltener Waffen-Rig, zwei Arme/Hände, Attackenfeedback.
-- `scripts/combat/projectile_pool.gd`: begrenzte, wiederverwendete Geschosse.
-- `scripts/ui/character_art.gd`: getrennte Auswahlbilder, Gameplay-Körper und Handschuhregionen.
-- `scripts/autoload/save_manager.gd`: versionierte, atomische lokale Speicherung mit Fehlerabfang.
-- `data/characters/characters.json`: Werte, Startwaffen und `allowed_weapons` pro Klasse.
-- `assets/characters/hero_rig.png`: neue Körper-/Handkomponenten; keine fertigen Arme im Körperbild.
-- `assets/weapons/combat_atlas.png`: fünf Waffen, drei Geschossdesigns und Bossprojektil.
+- `scripts/weapons/weapon_manager.gd`: automatische Angriffe; gegenüber 0.2.2 unverändert.
+- `scripts/combat/combat_visuals.gd`: akzeptierte Zweihandhaltung und Waffenfeedback.
+- `scripts/gameplay/world_visuals.gd`: Boden, Gegnerdarstellung, Todeseffekte und Bosswarnflächen.
+- `scripts/progression/run_records.gd`: Charakterbestwerte und begrenzter Verlauf.
+- `scripts/autoload/save_manager.gd`: Schema-1/2-Laden, Sicherung und atomisches Schreiben.
+- `assets/enemies/enemies_atlas.png`: vier vollständige Gegnerfiguren.
+- `assets/environments/scrapyard.png`: flacher Arena-Hintergrund ohne Gameplay-Objekte.
 
-Alle Spielgrafiken und Sounds wurden für dieses Projekt erstellt. Die neuen Rigs wurden mit
-Bildgenerierung aus den vom Nutzer gelieferten Charakterreferenzen abgeleitet. Godot und seine
-Bibliotheken behalten ihre Lizenzen: https://godotengine.org/license/.
+Alle Spielgrafiken und Effekte wurden für das Projekt erstellt; die Bildgenerierung folgt den
+vom Nutzer gelieferten Stilreferenzen. Godot und seine Bibliotheken behalten ihre eigenen
+Lizenzen: https://godotengine.org/license/.
 
-## Prüfen und exportieren
+## Prüfungen und Export
 
 ```sh
 godot --headless --path . --editor --import --quit
 godot --headless --path . --script res://tests/integration.gd
 godot --headless --path . --script res://tests/combat_visuals_test.gd
 godot --headless --path . --script res://tests/character_policy_test.gd
-godot --headless --fixed-fps 60 --path . --script res://tests/balance_trace.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.2.2-debug.apk
+godot --headless --path . --script res://tests/world_visuals_test.gd
+godot --headless --path . --script res://tests/run_records_test.gd
+godot --headless --fixed-fps 60 --path . --script res://tests/world_trace.gd
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.2.3-debug.apk
 ```
 
-146 Prüfungen bestanden (76 bestehende, 28 Effekte, 42 Klassen-/Haltungsprüfungen).
-Der historische 33-Kontrollpunkt-Test injiziert alte Mehrwaffen-Loadouts künstlich, um die
-unveränderten Formeln zu prüfen. Er ist kein Nachweis der neuen Klassenbalance oder eines
-regulären Klassen-Runs. Das Rendering wurde mit Godot/Mesa geprüft, nicht auf Android.
+210 Prüfungen bestanden. Die neue Regression verwendet legale Klassen-Loadouts der akzeptierten
+Version 0.2.2 und vergleicht 33 Kontrollpunkte über 3600 Schritte. Der ältere `balance_trace.gd`
+bleibt als historischer Test künstlicher Mehrwaffen-Loadouts erhalten.
+Export benötigt Godot-Android-Vorlagen, JDK und SDK in den Editoreinstellungen; diese wurden
+hier tatsächlich benutzt. APK-Signatur und 16-KiB-Alignment wurden geprüft.
 
-Export benötigt passende Godot-Android-Vorlagen, JDK und Android SDK in den
-Editoreinstellungen. Diese Werkzeuge wurden hier tatsächlich verwendet.
+## Noch offen
 
-## Speicher und offene Abnahme
-
-Statistik und Einstellungen liegen lokal in `user://save.json`, Schema 1. Ungültige Daten
-werden gesichert und durch Standardwerte ersetzt. Ein laufender Run wird nach App-Ende
-nicht wiederhergestellt. Keine Berechtigungen oder Netzwerkverbindung nötig.
-
-Installation, neue Haltung bei Bewegung und beim Zielen in alle Richtungen, Klassenbalance
-über zehn Wellen, Audio und 60-FPS-Ziel müssen auf echter Hardware geprüft werden.
-Siehe `PROGRESS.md`, `TEST_REPORT.md` und `BUILD_REPORT.md`.
+Echte Android-Updateinstallation und Statistikübernahme, neue Gegnerlesbarkeit im dichten Kampf,
+Warntöne über Geräteaudio, lange Runs mit allen Klassen und Geräte-FPS/Temperatur.
+Die Gegner sind prozedural bewegte Stand-Sprites, keine handgezeichneten Mehrbild-Laufsequenzen.
+Die Renderbilder sind Godot-Testaufnahmen; Statistikbilder verwenden vorgegebene Testdaten.
+Details: `TEST_REPORT.md`, `BUILD_REPORT.md`, `PROGRESS.md`.

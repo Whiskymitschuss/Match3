@@ -1,3 +1,44 @@
+# Grafik-/Feedback-/Komfortstand 0.2.3 — 2026-11-16
+
+## Aktuelle Phase
+
+Technische Übergabe und Android-Praxisabnahme. Nutzer hat Haltung und Klassenbindung aus
+0.2.2 akzeptiert; diese bleiben unverändert. Die noch geplanten Weltgrafik-, Warnungs- und
+Statistikarbeiten sind in dieser Testversion verbunden.
+
+## Umgesetzt
+
+Vier Gegnerfiguren, ein durchgehend begehbarer Industriehof als statische Textur,
+Trefferaufhellung und begrenzte Todes-Snapshots. Keine neuen Hindernisse oder Kollisionswerte.
+Bosswarnungen zeigen die tatsächliche Phase, verbleibende Warnzeit und das fixierte Sturmziel.
+Warnungen benutzen eine reservierte Audiostimme. Zusätzliche Siegesfeier ohne neue Wartephase.
+Bestwerte je Held und gefilterter Verlauf der letzten 20 neuen Runden, direkt an das Ergebnis
+angeschlossen. Schema 1 wird mit Originalbackup nach Schema 2 übernommen; alte Gesamtwerte
+bleiben erhalten, neue Charakterzuordnungen werden nicht rückwirkend erfunden.
+
+## Tatsächlich geprüft
+
+76 Integration + 28 Kampfeffekte + 42 Klassen/Haltung + 36 Welt/Warnungen + 28 Speicherung/
+Bestwerte = 210 bestandene Prüfungen. Vergleich gegen akzeptiertes 0.2.2-Projekt über 3600
+Schritte mit legalen Klassen-Loadouts: 33 Kontrollpunkte stimmen überein. Alle Spiel-JSON-Dateien,
+PlayerController, WeaponManager, Projektilpool und Zweihand-Rig sind bytegleich zu 0.2.2.
+120 simulierte Sekunden Belastungstest bestanden (synthetischer Vierwaffen-Stressfall).
+Welt, 100 Gegner, Rand, beide Bosswarnungen, Sieg und drei Statistikansichten mit Godot gerendert.
+Statistik-Renderbilder verwenden Testdaten, keine behaupteten Nutzerresultate.
+APK tatsächlich gebaut, signiert und statisch geprüft; passende Assets verpackt.
+
+## Offen / nächster Schritt
+
+Auf dem Nutzergerät Update und alte Gesamtstatistik prüfen. Neue Charakterwerte starten ab
+0.2.3. Gegnerlesbarkeit bei voller Arena, Warnungen, Audio und zehn Wellen je Klasse praktisch
+abnehmen. Geräte-FPS und thermische Stabilität noch messen. Gegnerbewegung ist derzeit eine
+prozedurale Spriteanimation; Mehrbild-Animationssätze sind ein späterer Grafikschritt.
+Keine Android-Abnahme oder unverifizierte Leistungsangabe behauptet.
+
+---
+
+## Archiv: Stand 0.2.2
+
 # Haltungs-/Klassenkorrektur 0.2.2 — 2026-11-16
 
 ## Aktueller Stand
