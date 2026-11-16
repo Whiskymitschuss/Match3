@@ -1,26 +1,24 @@
-# Android-Buildbericht 0.10.0 — 2026-11-16
+# Android-Buildbericht 0.11.0 — 2026-11-16
 
-Erfolgreich mit Godot 4.6.3 stable, JDK 21, SDK Platform 36 / Build Tools 36.0.0,
-nativem Debug-Template ohne Gradle exportiert.
+Tatsächlich exportiert mit Godot 4.6.3 stable, JDK 21, Android SDK 36,
+Build Tools 36.0.0, nativem Debug-Template ohne Gradle.
 
-- Datei builds/android/MayhemSurvivors-v0.10-debug.apk, 51,521,249 Bytes.
-- SHA256 `13a76dc607332a446676906b5f669fd8bd1985ae8a6ec007ca4fd912e6e7ba51`.
-- Paket com.rfworlds.mayhemsurvivors, versionCode 14 / versionName 0.10.0.
-- Nur ARM64-v8a, minSDK 24, targetSDK 36, Landscape, GL Compatibility.
-- apksigner v2/v3 erfolgreich; gleiches Zertifikat wie bisher:
-  `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
-- zipalign -c -P 16 4 erfolgreich. Berechtigung ausschließlich VIBRATE.
-- Keine Netzwerkpflicht, Werbung oder Bezahlfunktionen; lokaler Speicher unverändert.
+- builds/android/MayhemSurvivors-v0.11-debug.apk: 51,529,634 Bytes.
+- SHA256 `208de26438c1a5bb628cc8c3c0068e8b178e82e28bad55b97b26cefa6b9dd345`.
+- com.rfworlds.mayhemsurvivors, versionCode 15, versionName 0.11.0.
+- ARM64-v8a ausschließlich, minSDK 24, targetSDK 36, Landscape, GL Compatibility.
+- apksigner verify erfolgreich, Zertifikat unverändert:
+  5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce.
+- zipalign -c -P 16 4 erfolgreich. Einzige Berechtigung VIBRATE.
+- APK ohne Tests, ohne Internet-Permission; keine Werbung/IAP.
 
-APK als Update über bestehende Installation vorgesehen. Kein ADB-Gerät hier;
-„cannot connect to daemon at tcp:5037“ verhindert den erfolgreichen Export nicht.
-Keine physische Installation, FPS-/Temperatur- oder Fairnessabnahme behauptet.
+Update über 0.10 vorgesehen; Speicherung kompatibel um hero_styles ergänzt.
+Kein Android-Gerät verbunden, keine Installation/FPS-Messung behauptet.
+Quell-ZIP enthält alle Projektdateien, Assets, Szenen, Skripte, Tests und Berichte;
+keine .godot-Caches, Builds, SDKs oder privaten Schlüssel. APK separat.
+Generatoren optional, Start nach Editor-Import ohne manuelle Programmierung.
+Debug-Neuexport benötigt SDK/JDK/Template und für kompatible Updates den bisherigen
+privaten Signierschlüssel. Dieser gehört ausdrücklich nicht ins Quellarchiv.
 
-Quell-ZIP mit sämtlichen Szenen/Skripten/Daten/Grafiken/Audio/Tests/Berichten;
-keine .godot-Caches, APKs, SDKs oder privaten Schlüssel. Fertige APK separat.
-Serieller Editor-Import aus 0.9 erhalten. Import/Start braucht keine Asset-Erzeugung;
-Generatoren nur optional für Änderungen. Eigener Export benötigt SDK/JDK/Template
-und privaten Debugschlüssel; offizielles Update benötigt bisherigen Signierschlüssel.
-
-Abschließende Quell-ZIP-Prüfung: frisch entpackt, seriell importiert, alle 1.030
-Assertions und beide Regressionstraces bestanden (v0.10-final-*.log).
+Quell-ZIP frisch entpackt und ohne vorhandenen Importcache importiert.
+Alle 1.075 Assertions und beide Traces erneut bestanden (v0.11-final-*.log).

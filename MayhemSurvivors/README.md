@@ -1,3 +1,48 @@
+# Mayhem Survivors 0.11.0 Alpha — Charakter-Meisterschaften
+
+Android-only, Godot 4.6.3 stable / GDScript / GL Compatibility, offline.
+In CHARAKTERE → MEISTERSCHAFTEN & SKINS lassen sich alle drei Helden ansehen.
+
+Für jeden Helden separat, in beiden Arenen gemeinsam:
+
+- Welle 5 erreichen: NEON CREW Farbvariante.
+- 250 Gegner insgesamt besiegen: sichtbares Jägerabzeichen.
+- Einen Run gewinnen: GOLD CHAMPION Farbvariante.
+- Alle drei Ziele: eigener Meistertitel in Auswahl und Meisterschaftsseite.
+
+Diese Skins sind Farbvarianten der vorhandenen Illustrationen und Spielkörper mit
+prozeduralen Blitz-/Kronenabzeichen, keine neuen Körpermodelle. Handschuhe erhalten
+dieselbe Farbabstimmung. Titel: Schrottkönig, Funkenkönigin, Nachtmeister.
+Alle Belohnungen sind kosmetisch: kein Bonus auf HP, Schaden, Bewegung oder Drops.
+
+Fortschritt wird am Rundenende bei Sieg oder Niederlage aus validierten dauerhaften
+Charakterrekorden ermittelt. Abgebrochene Runs zählen wie bisher nicht. Bereits in
+0.10 gespeicherte Charakterrekorde werden automatisch angerechnet; alte Gesamtsummen
+ohne Charakterzuordnung werden nicht erfunden zugeteilt. Auswahl wird separat je
+Held gespeichert. Gesperrte Varianten können angesehen, aber nicht ausgerüstet werden.
+Freischaltungen erzwingen keinen Outfitwechsel. Neu verdiente Belohnungen erscheinen
+auf dem Ergebnisbildschirm. Kein eigener Claim nötig, keine doppelt zählenden Zähler.
+
+Speicherschema 3 wird kompatibel um optionales hero_styles ergänzt. Ungültige oder
+unverdient ausgewählte IDs werden beim Laden zu Original zurückgesetzt. Bestehende
+Statistik, Arenen, Ringe, Einstellungen bleiben erhalten. Als Update installieren.
+
+## Ausführen und prüfen
+
+project.godot mit Godot 4.6.3 öffnen und starten. Kein Assetgenerator erforderlich.
+Android minSDK 24 / targetSDK 36 / ARM64 / Querformat, Code 15 / 0.11.0.
+`python3 tools/run_tests.py --traces` führt 16 Suites und zwei historische Traces aus.
+1.075 Assertions bestanden; zusätzlich native Galerie unter tests/mastery_*.png.
+Die Galerie ist eine Engine-Vorgabeszene, kein Android-Spieltest.
+
+Offene Geräteabnahme: Update über 0.10 mit echten Daten, drei Helden wechseln,
+freigeschaltete Variante wählen, App neu starten, Touch/Notch und Kampfdarstellung.
+Schwierigkeitsgrade und neue Arena-Ereignisse sind spätere Schritte, nicht Teil 0.11.
+
+---
+
+## Historischer Stand vor 0.11
+
 # Mayhem Survivors 0.10.0 Alpha — Elite Encounters
 
 Nutzerfeedback zur 0.9: „Yes alles top“. Die bestätigte Oberfläche bleibt Grundlage.

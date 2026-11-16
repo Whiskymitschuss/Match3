@@ -1,3 +1,13 @@
+# Ergänzungen 0.11
+
+Vorhandene eigene Charaktergrafiken unverändert als Basis für kosmetische Farbtönungen.
+Blitz-, Kronen- und Jägerschilde mit eigenen Godot draw_*-Funktionen gezeichnet.
+Keine externen neuen Grafiken, Sounds oder kostenpflichtigen Plugins hinzugefügt.
+
+---
+
+## Historischer Stand vor 0.11
+
 # Neue Inhalte 0.10 — RF Worlds
 
 Zwei originale Elite-Sprites mit Bildgenerierung für diesen Spielstil erstellt,

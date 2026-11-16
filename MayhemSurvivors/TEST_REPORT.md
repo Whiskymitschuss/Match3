@@ -1,3 +1,28 @@
+# Testbericht 0.11.0 — 2026-11-16
+
+Ausgeführt mit Godot 4.6.3 stable: 16 Suites, 1.075 Assertions, 0 Fehler.
+Davon 44 neue Meisterschaftsprüfungen; bestehende UI-Suite zählt mit zusätzlichem
+Menübutton nun 102 Assertions. Beide historischen Regressionstraces ebenfalls grün.
+Die historische Effekt-Fixture deaktiviert weiterhin ausdrücklich 0.10-Encounters;
+diese werden von ihrer eigenen 104-Assertion-Suite geprüft.
+
+Neue Prüfungen: Schwellen unmittelbar darunter/darauf für alle drei Helden;
+Fortschritt getrennt je Held; kumulative Kills; Titel; gesperrte/fremde IDs;
+echte JSON-Datei speichern/laden, bestehende Schema-3-Profile, Schema-1-Totals ohne
+falsche Zuordnung, ungültige Auswahl; tatsächliche UI-Buttons für Navigation,
+Vorschau/Ausrüsten/Zurück; Portraitauswahl; unveränderte Kampfwerte; echtes finish()
+bei Niederlage/Sieg, Ergebnistext und Schutz vor doppelter Wertung.
+
+Native GL-Compatibility-Captures in tests/mastery_*.png visuell geprüft, inklusive
+prozeduraler Abzeichen und lesbarer Fortschrittsbalken. Vorgabeszenen, kein echter Run.
+Keine neue Lastprobe nötig: keine Kampfmechanik ergänzt; frühere Lastproben bleiben
+historisch ausgewiesen. Android-Gerät, FPS/Temperatur und Touch-Abnahme noch offen.
+Logs: tests/results/v0.11-*.log. Reproduktion: python3 tools/run_tests.py --traces.
+
+---
+
+## Historischer Stand vor 0.11
+
 # Testbericht 0.10.0 — 2026-11-16
 
 Godot 4.6.3 stable, Linux Headless und native Mesa-Ansichten. Logs tests/results/v0.10-*.

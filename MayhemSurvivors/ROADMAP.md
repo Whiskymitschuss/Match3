@@ -1,3 +1,14 @@
+# Nächster Stand nach 0.11
+
+Charakter-Meisterschaften und freischaltbare Farbvarianten umgesetzt.
+Zuerst Gerätefeedback zu Freischaltung, Auswahl und bestehenden Bossphasen sammeln.
+Danach gezielt Veteran/Mayhem-Schwierigkeiten und optionale Arena-Ereignisse entwickeln.
+Keine dieser späteren Erweiterungen als bereits implementiert ausweisen.
+
+---
+
+## Historischer Stand vor 0.11
+
 # Stand 0.10.0
 
 Elitebegegnungen, einmalige Bonuswahl und zusätzliche Boss-Gesundheitsphasen vollständig

@@ -1,3 +1,24 @@
+# 0.11.0 — Charakter-Meisterschaften
+
+Aktueller Branch: feature/character-mastery-v0.11.
+Implementiert: Ziele je Held, rückwirkende Rekordanrechnung, Farbvarianten/Abzeichen,
+Titel, Vorschau, gesperrte Auswahl, Auswahl je Held, Menü-/Kampfdarstellung,
+Ergebnisankündigung, kompatible lokale Speicherung. Keine offenen Pflichtfunktionen
+innerhalb dieses Umfangs. Schwierigkeitsgrade/Arena-Ereignisse bewusst später.
+
+Import und 16 Test-Suites bestanden: 1.075 Assertions, beide historischen Traces.
+Native Engine-Galerie geprüft: gesperrte Vorschau, vollständige Meisterschaft, Kampf.
+Android-APK erfolgreich exportiert, Signatur/Alignment/ARM64/Manifest geprüft.
+Quell-ZIP frisch entpackt und importiert; erneut alle 1.075 Assertions und beide
+Traces bestanden. GitHub-Downloadprüfung erfolgt bei Veröffentlichung.
+Nächste fachliche Abnahme: Android-Update/Neustart mit echten bestehenden Rekorden,
+Touch auf verschiedenen Seitenverhältnissen und Outfits im laufenden Kampf.
+Keine physische Android-Installation oder neue FPS-Messung in dieser Umgebung.
+
+---
+
+## Historischer Stand vor 0.11
+
 # Version 0.10.0 — 2026-11-16
 
 ## Aktueller Stand

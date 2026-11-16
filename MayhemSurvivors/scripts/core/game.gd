@@ -3,6 +3,7 @@ extends Node2D
 const GameStateMachine = preload('res://scripts/core/game_state_machine.gd')
 const State = GameStateMachine.State
 const RunRecords = preload('res://scripts/progression/run_records.gd')
+const Mastery = preload('res://scripts/progression/character_mastery.gd')
 const CharacterArt = preload('res://scripts/ui/character_art.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 var arena_id='scrapyard'
@@ -297,6 +298,8 @@ func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'por
 	art.scale = Vector2.ONE*factor
 	art.color = Color(characters[index].color)
 	art.kind = characters[index].id
+	art.outfit = Mastery.selected(saved,art.kind)
+	art.hunter = Mastery.goals(saved,art.kind)[1].value>=250
 	art.mode = mode
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(art)
@@ -319,11 +322,12 @@ func character_select():
 		portrait(Vector2(x+77,240),i,1.1)
 		label_at(roles[i],Vector2(x+25,645),23,Color(c.color))
 		label_at(c.name,Vector2(x+25,677),42,Color.WHITE)
-		label_at(c.description,Vector2(x+25,739),22)
+		label_at(Mastery.TITLES[c.id] if Mastery.completed(saved,c.id)==3 else c.description,Vector2(x+25,739),22)
 		label_at('%d HP / %d Tempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),21)
 		label_at(['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade'][i]+' • '+hero_ability.data[c.id].name,Vector2(x+25,808),18,Color(c.color))
 		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; arena_select(),Color(c.color).darkened(.65))
 	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
+	button('MEISTERSCHAFTEN & SKINS',Vector2(1030,965),Vector2(790,85),func():mastery_screen(selected))
 
 func duration_text(seconds: float) -> String:
 	var value=int(maxf(0,seconds))
@@ -980,8 +984,11 @@ func finish(victory: bool):
 	saved.kills+=kills
 	saved.time+=run_time
 	saved.highest_wave=maxi(int(saved.highest_wave),wave_number)
+	var previous_rewards=Mastery.rewards(saved,characters[selected].id)
 	var improvements=RunRecords.add_run(saved,{'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'elite_kills':encounters.elite_kills})
 	var unlocked=Arenas.sync(saved)
+	for reward in Mastery.rewards(saved,characters[selected].id):
+		if not previous_rewards.has(reward):unlocked.append(reward)
 	save_game()
 	cleanup()
 	encounters.end_run()
@@ -1022,9 +1029,10 @@ func draw_player_character():
 	draw_circle(Vector2.ZERO,33,Color(0,0,0,.3))
 	draw_arc(Vector2.ZERO,35,0,TAU,32,Color(accent,.55),3,true)
 	draw_set_transform(pos,stride*.035,Vector2(character_facing(),1))
-	var tint = Color(2,2,2,1) if hurt_clock>.4 else Color.WHITE
+	var tint = Color(2,2,2,1) if hurt_clock>.4 else Mastery.tint(Mastery.selected(saved,characters[selected].id))
 	var rect = Rect2(Vector2(-48,-64-absf(stride)*3),Vector2(96,96))
 	draw_texture_rect_region(CharacterArt.GAMEPLAY_TEXTURE,rect,CharacterArt.body_region(characters[selected].id),tint)
+	Mastery.insignia(self,Vector2(6,-9-absf(stride)*3),Mastery.selected(saved,characters[selected].id),6)
 	draw_set_transform(Vector2.ZERO)
 
 func _draw():
@@ -1174,3 +1182,39 @@ func next_shop_wave():
 	if not pending_specialization().is_empty():specialization_screen();return
 	wave_number+=1
 	prepare_wave()
+
+func mastery_screen(index:int, preview:String=''):
+	var hero=characters[index].id
+	var current=Mastery.selected(saved,hero)
+	var shown=current if preview=='' else preview
+	backdrop('CHARAKTER-MEISTERSCHAFT','Dauerhafte Ziele / kosmetische Belohnungen / keine Werteboni')
+	for i in range(3):
+		button(characters[i].name,Vector2(100+i*585,230),Vector2(550,75),func():mastery_screen(i),Color('#147F81') if i==index else Color('#243958'))
+	portrait(Vector2(130,360),index,1.2)
+	# Preview can show a locked colour, but never equips it.
+	var art=ui_root.get_child(ui_root.get_child_count()-1)
+	art.outfit=shown
+	label_at(Mastery.NAMES[shown]+(' / VORSCHAU' if shown!=current else ' / AKTIV'),Vector2(130,820),24,Mastery.accent(shown))
+	var complete=Mastery.completed(saved,hero)
+	label_at(Mastery.TITLES[hero] if complete==3 else 'MEISTERSCHAFT %d / 3' % complete,Vector2(130,875),28,GOLD)
+	if Mastery.goals(saved,hero)[1].value>=250:label_at('JÄGERABZEICHEN / 250 KILLS',Vector2(130,925),19,TEAL)
+	for i in range(3):
+		var goal=Mastery.goals(saved,hero)[i]
+		var y=345+i*145
+		label_at(('✓ ' if goal.value>=goal.target else '')+goal.name,Vector2(720,y),27,GOLD if goal.value>=goal.target else TEAL)
+		label_at('%s  /  %d von %d' % [goal.description,goal.value,goal.target],Vector2(720,y+40),23)
+		var bar=ProgressBar.new()
+		bar.position=Vector2(720,y+79);bar.size=Vector2(990,13);bar.max_value=goal.target;bar.value=goal.value;bar.show_percentage=false;bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		bar.add_theme_stylebox_override('background',UISkin.box(Color('#141326'),Color('#4B395F')))
+		var fill=StyleBoxFlat.new();fill.bg_color=GOLD if goal.value>=goal.target else TEAL;fill.set_corner_radius_all(6)
+		bar.add_theme_stylebox_override('fill',fill)
+		ui_root.add_child(bar)
+		label_at('BELOHNUNG: '+goal.reward,Vector2(720,y+97),18,TEAL)
+	for i in range(3):
+		var outfit=Mastery.STYLES[i]
+		var available=Mastery.unlocked(saved,hero,outfit)
+		button(Mastery.NAMES[outfit]+(' ✓' if current==outfit else (' / GESPERRT' if not available else '')),Vector2(720+i*350,815),Vector2(330,85),func():mastery_screen(index,outfit),Color('#147F81') if shown==outfit else Color('#243958'))
+	button('ZURÜCK',Vector2(100,965),Vector2(400,85),character_select)
+	var equip=button('AKTIV' if current==shown else ('AUSRÜSTEN' if Mastery.unlocked(saved,hero,shown) else 'NOCH GESPERRT'),Vector2(1180,965),Vector2(590,85),func():
+		if Mastery.equip(saved,hero,shown):save_game();sound('buy');mastery_screen(index))
+	equip.disabled=current==shown or not Mastery.unlocked(saved,hero,shown)

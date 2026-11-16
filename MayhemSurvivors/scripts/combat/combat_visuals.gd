@@ -139,7 +139,7 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.GAMEPLAY_TEXTURE,Rect2(-19,-17,38,34),HeroArt.hand_region(game.characters[game.selected].id))
+		game.draw_texture_rect_region(HeroArt.GAMEPLAY_TEXTURE,Rect2(-19,-17,38,34),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):

@@ -1,0 +1,47 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Fresh bruiser
+PASS Locked bruiser
+PASS Below wave threshold bruiser
+PASS Wave threshold bruiser
+PASS Equip earned neon bruiser
+PASS Below kills threshold bruiser
+PASS Cumulative kills bruiser
+PASS Full mastery title bruiser
+PASS Equip earned gold bruiser
+PASS Fresh sparky
+PASS Locked sparky
+PASS Below wave threshold sparky
+PASS Wave threshold sparky
+PASS Equip earned neon sparky
+PASS Below kills threshold sparky
+PASS Cumulative kills sparky
+PASS Full mastery title sparky
+PASS Equip earned gold sparky
+PASS Fresh shade
+PASS Locked shade
+PASS Below wave threshold shade
+PASS Wave threshold shade
+PASS Equip earned neon shade
+PASS Below kills threshold shade
+PASS Cumulative kills shade
+PASS Full mastery title shade
+PASS Equip earned gold shade
+PASS Reject unknown IDs
+PASS Save real styles
+PASS Reload all progress and selections
+PASS Existing v0.10 profile earns goals without forcing outfit
+PASS Never attribute another hero progress
+PASS Invalid and locked stored selections sanitized
+PASS Legacy aggregate totals never invent hero mastery
+PASS Actual character navigation opens mastery
+PASS Locked preview never equips
+PASS Real equip button persists unlocked selection
+PASS Equip writes actual local save
+PASS Character card reflects saved skin
+PASS Cosmetic skin changes no combat stats
+PASS Real defeat awards reached wave and cumulative kills
+PASS Duplicate result never duplicates progress
+PASS Real victory unlocks gold and master title
+PASS Result announces newly earned reward
+MASTERY RESULT 44 passed, 0 failed

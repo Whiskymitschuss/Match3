@@ -1,3 +1,15 @@
+# 0.11.0 Alpha — 2026-11-16
+
+- Drei Meisterschaftsziele pro Held aus bestehenden dauerhaften Charakterrekorden.
+- Neon-/Gold-Farbvarianten, Jägerabzeichen und persönliche Meistertitel.
+- Eigene responsive Meisterschaftsseite, Vorschau, Sperren, Auswahl und Ergebnisankündigung.
+- Kompatible Speicherung je Held; keine Kampf-/Wellen-/Bosswerte verändert.
+- 44 neue Assertions, Gesamtsuite 1.075 inklusive aktualisierter UI-Prüfung.
+
+---
+
+## Historischer Stand vor 0.11
+
 # 0.10.0 Alpha — 2026-11-16
 
 - Schrottbrecher und Impulswächter mit eigener Grafik, Krone, HP-Leiste und Angriffswarnung.
