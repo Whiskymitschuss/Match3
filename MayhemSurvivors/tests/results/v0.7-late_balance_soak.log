@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+LATE BALANCE SOAK PASS scrapyard bruiser 3600 steps / 60 simulated seconds, kills=176
+LATE BALANCE SOAK PASS scrapyard sparky 3600 steps / 60 simulated seconds, kills=195
+LATE BALANCE SOAK PASS scrapyard shade 3600 steps / 60 simulated seconds, kills=3
+LATE BALANCE SOAK PASS reactor bruiser 3600 steps / 60 simulated seconds, kills=132
+LATE BALANCE SOAK PASS reactor sparky 3600 steps / 60 simulated seconds, kills=131
+LATE BALANCE SOAK PASS reactor shade 3600 steps / 60 simulated seconds, kills=0
+LATE BALANCE SOAK TOTAL 21600 steps / 360 simulated seconds; peaks={ "spitter": 6, "drone": 2, "shots": 6 }

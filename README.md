@@ -1,28 +1,23 @@
-# RF Worlds — Mayhem Survivors 0.6.0
+# RF Worlds — Mayhem Survivors 0.7.0
 
-**Zwei neue Gegnerrollen in der Reaktorzone:**
+**Neuer Shop, Vollbild und anspruchsvollere Wellen ab Welle vier in beiden Arenen.**
 
-- **Reaktorspucker** ab Welle 2: fixierte Ziellinie, 0,9 Sekunden Vorwarnung,
-  einzelner langsamer Fernschuss. Keine Schüsse aus dem unsichtbaren Bereich.
-- **Schilddrohne** ab Welle 4: 30 % Schutz für normale Gegner im Umfeld.
-  Kein Stapeln/Bossschutz. Drohne ausschalten oder Gegner aus der Aura locken.
+- Vier Angebotskarten, Werteübersicht und antippbare Ausrüstung.
+- Acht Gegenstände mit Vor-/Nachteilen und drei Set-Boni.
+- Waffen aufrüsten, Details ansehen und mit Bestätigung verwerten; letzte Waffe geschützt.
+- Kurze Shop-Hilfe, gratis erster Reroll; keine Werbung/VIP/Bezahlfunktionen.
+- Breites Vollbild mit Safe-Area-Steuerung; Schrottplatz/Reaktor ab Welle vier verstärkt.
 
-![Neue Gegner — inszenierte Godot-Nahansicht](MayhemSurvivors/tests/roles_encounter.png)
+![Eigener Shop — Godot-Render mit Testausrüstung](MayhemSurvivors/tests/shop_market_wide.png)
 
-- [Android-APK 0.6 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/reactor-enemies-v0.6/Downloads/MayhemSurvivors-v0.6-debug.apk)
-- [Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/reactor-enemies-v0.6/Downloads/MayhemSurvivors-v0.6-source.zip)
-- [Schussdarstellung](MayhemSurvivors/tests/roles_projectile.png) · [Vorbereitungshinweise](MayhemSurvivors/tests/roles_preparation.png)
+[Android-APK 0.7 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/shop-fullscreen-v0.7/Downloads/MayhemSurvivors-v0.7-debug.apk)
 
-Maximal 6 Spucker, 2 Drohnen und 2 gleichzeitige Schusswarnungen. Die Reaktor-Gegner-
-zusammensetzung ändert sich bewusst; der Schrottplatz behält seine Gegner und Balance.
-Alle Waffenentwicklungen, Fähigkeiten und Effekte bleiben enthalten.
-Android 7.0+, ARM64, Querformat, offline; gleicher Paketname/Signierschlüssel,
-versionCode 10. Als Update über bestehende App installieren, Statistiken bleiben erhalten.
-Nur optionale Vibrationsberechtigung, keine Netzwerkberechtigung.
+[Vollständiges Godot-Quellprojekt als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/shop-fullscreen-v0.7/Downloads/MayhemSurvivors-v0.7-source.zip)
 
-657 Assertions bestanden. Schrottplatz-Referenzen mit allen Waffenwegen/Fähigkeiten
-bleiben identisch. Neue Rollen unter Last geprüft. Android-Praxisabnahme und Balancing
-der erweiterten Reaktorzone sowie Geräte-FPS stehen noch aus.
+Android 7.0+, ARM64, Querformat, offline. Gleicher Paketname und Signierschlüssel,
+VersionCode 11: als Update installieren, lokale Statistik bleibt erhalten.
+798 automatisierte Assertions bestanden; zusätzlich Last-/Bossproben und echte
+Godot-Renderprüfung. Android-Hardwareabnahme der neuen Version noch offen.
 
 [Anleitung](MayhemSurvivors/README.md) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
 [Buildbericht](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)

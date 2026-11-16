@@ -1,0 +1,23 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PRESSURE classic wave=1 spawn_x=1.0 incoming_hp_x=1.0 xp_budget_x=1.0 coin_budget_x=1.0
+PRESSURE classic wave=2 spawn_x=1.0 incoming_hp_x=1.0 xp_budget_x=1.0 coin_budget_x=1.0
+PRESSURE classic wave=3 spawn_x=1.0 incoming_hp_x=1.0 xp_budget_x=1.0 coin_budget_x=1.0
+PRESSURE classic wave=4 spawn_x=1.4 incoming_hp_x=1.65 xp_budget_x=1.12 coin_budget_x=1.3
+PRESSURE classic wave=5 spawn_x=1.41 incoming_hp_x=1.9 xp_budget_x=1.12 coin_budget_x=1.31
+PRESSURE classic wave=6 spawn_x=1.58 incoming_hp_x=2.37 xp_budget_x=1.22 coin_budget_x=0.96
+PRESSURE classic wave=7 spawn_x=1.57 incoming_hp_x=2.59 xp_budget_x=1.16 coin_budget_x=0.95
+PRESSURE classic wave=8 spawn_x=1.8 incoming_hp_x=3.24 xp_budget_x=1.19 coin_budget_x=0.96
+PRESSURE classic wave=9 spawn_x=1.76 incoming_hp_x=3.51 xp_budget_x=1.16 coin_budget_x=0.94
+PRESSURE classic wave=10 spawn_x=1.69 incoming_hp_x=3.39 xp_budget_x=1.25 coin_budget_x=1.03
+PRESSURE reactor wave=1 spawn_x=1.0 incoming_hp_x=1.0 xp_budget_x=1.0 coin_budget_x=1.0
+PRESSURE reactor wave=2 spawn_x=1.0 incoming_hp_x=1.0 xp_budget_x=1.0 coin_budget_x=1.0
+PRESSURE reactor wave=3 spawn_x=1.0 incoming_hp_x=1.0 xp_budget_x=1.0 coin_budget_x=1.0
+PRESSURE reactor wave=4 spawn_x=1.39 incoming_hp_x=1.64 xp_budget_x=1.14 coin_budget_x=1.23
+PRESSURE reactor wave=5 spawn_x=1.39 incoming_hp_x=1.88 xp_budget_x=1.1 coin_budget_x=1.21
+PRESSURE reactor wave=6 spawn_x=1.58 incoming_hp_x=2.38 xp_budget_x=1.19 coin_budget_x=1.1
+PRESSURE reactor wave=7 spawn_x=1.57 incoming_hp_x=2.6 xp_budget_x=1.12 coin_budget_x=1.12
+PRESSURE reactor wave=8 spawn_x=1.8 incoming_hp_x=3.24 xp_budget_x=1.21 coin_budget_x=1.08
+PRESSURE reactor wave=9 spawn_x=1.75 incoming_hp_x=3.5 xp_budget_x=1.18 coin_budget_x=1.06
+PRESSURE reactor wave=10 spawn_x=1.69 incoming_hp_x=3.38 xp_budget_x=1.21 coin_budget_x=1.16
+PRESSURE NOTE theoretical flow before enemy caps and player kills; not difficulty/FPS measurement

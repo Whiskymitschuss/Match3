@@ -13,30 +13,66 @@
   },
   {
     "duration": 60,
-    "interval": 1
+    "interval": 0.86,
+    "extra_spawn_every": 5,
+    "hp_factor": 1.18,
+    "speed_factor": 1.03,
+    "damage_factor": 1.06,
+    "reward_factor": 0.85
   },
   {
     "duration": 60,
-    "interval": 0.9
+    "interval": 0.8,
+    "extra_spawn_every": 4,
+    "hp_factor": 1.35,
+    "speed_factor": 1.05,
+    "damage_factor": 1.1,
+    "reward_factor": 0.8
   },
   {
     "duration": 60,
-    "interval": 0.8
+    "interval": 0.675,
+    "extra_spawn_every": 3,
+    "hp_factor": 1.5,
+    "speed_factor": 1.08,
+    "damage_factor": 1.14,
+    "reward_factor": 0.72
   },
   {
     "duration": 60,
-    "interval": 0.7
+    "interval": 0.595,
+    "extra_spawn_every": 3,
+    "hp_factor": 1.65,
+    "speed_factor": 1.1,
+    "damage_factor": 1.18,
+    "reward_factor": 0.7
   },
   {
     "duration": 60,
-    "interval": 0.6
+    "interval": 0.5,
+    "extra_spawn_every": 2,
+    "hp_factor": 1.8,
+    "speed_factor": 1.12,
+    "damage_factor": 1.22,
+    "reward_factor": 0.65
   },
   {
     "duration": 60,
-    "interval": 0.55
+    "interval": 0.47,
+    "extra_spawn_every": 2,
+    "hp_factor": 2.0,
+    "speed_factor": 1.14,
+    "damage_factor": 1.26,
+    "reward_factor": 0.65
   },
   {
     "duration": 90,
-    "interval": 0.8
+    "interval": 0.63,
+    "extra_spawn_every": 3,
+    "hp_factor": 2.0,
+    "speed_factor": 1.14,
+    "damage_factor": 1.26,
+    "reward_factor": 0.7,
+    "boss_hp_factor": 2.4
   }
 ]

@@ -1,3 +1,46 @@
+# Version 0.7.0 — 2026-11-16
+
+## Aktuelle Phase
+
+Implementierung verbunden, Regressionstests bestanden. Android-Export, Signatur/Architektur/
+Berechtigungen/Startargumente und ZIP-Neuimport erfolgreich geprüft. Arbeitsbranch `feature/shop-fullscreen-v0.7`.
+Interne 0.6.1 wurde um den neuen Nutzerwunsch erweitert und nicht veröffentlicht.
+
+## Nutzerfeedback und Umsetzung
+
+Nutzer spielt flüssig, Wellen ab vier zu leicht; Screenshot Reaktor-Sieg 09:08,
+520 Kills, Level 21, 56.363 Schaden, 1.780 verdiente Coins. Keine Geräte-FPS-Messung.
+Explizite Auswahl „Beide Arenen“ umgesetzt. Schwarze Seitenränder per expand/immersiv/
+Edge-to-edge behoben; Safe-Area-Layout berücksichtigt Aussparungen/Systemleisten.
+Neu gewünschte Shopreferenzen als eigene RF-Worlds-Oberfläche umgesetzt: acht Items,
+drei Sets, Werte, Inventar, Waffenwerkstatt/Verwerten, kurze Hilfe. Keine Ads/VIP.
+
+## Implementiert und geprüft
+
+798 Assertions: 657 Bestand + 100 Display/Balance + 41 Shop. Keine gemeldeten Fehler
+in finalen Suiten. 21.600 Lastschritte mit allen Helden/beiden Arenen und acht Items;
+alle Caps eingehalten. 20 isolierte Boss-Build-Proben unter 90 Sekunden; keine
+vollständigen Android-Runs. Historischer Vergleich nutzt eingefrorene alte Wellendaten
+nur im Test, behauptet keine unveränderte neue Spätspielbalance.
+Shopkarten/Inventar/Sets/Werte/Werkstatt/Hilfe bei 1280×591 nativ gerendert;
+Vollbild an 16:9, breitem Display und Tablet geprüft. Kein physisches Android-Gerät.
+
+## Offen / nächster Schritt
+
+Auf dem Nutzergerät Vollbild inkl. Systemleisten/Notch und Erreichbarkeit aller
+Touchbuttons prüfen. Beide Arenen mit allen Helden ab Welle vier sowie neue Item-Builds
+spielen; Fairness/Ökonomie anhand echter Runs nachjustieren. FPS/Temperatur messen.
+Keine bekannten offenen Pflichtfunktionen des implementierten Alpha-Spielablaufs.
+Android-Hardwareabnahme ist ausdrücklich noch offen.
+
+Quell-ZIP in leeres Verzeichnis entpackt: Import ohne Parser-/Ressourcenfehler,
+41 Shop- und 100 Display-/Balance-Prüfungen daraus erneut bestanden.
+GitHub-Übergabe wird mit direkten Downloadlinks und SHA256SUMS-v0.7.txt bereitgestellt.
+
+---
+
+## Historischer Stand (vor 0.7)
+
 # Version 0.6.0 — 2026-11-16
 
 ## Aktuelle Phase

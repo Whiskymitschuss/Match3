@@ -1,513 +1,57 @@
-# Testbericht 0.6.0 — 2026-11-16
-
-Godot 4.6.3 stable, Linux Headless und Mesa Compatibility. Tatsächliche Logs in
-`tests/results/v0.6-*.log`. Keine physische Android-Abnahme dieser Version.
-
-| Suite | Ergebnis |
-|---|---|
-| Integration | 76 / 76 |
-| Kampfgrafik | 28 / 28 |
-| Klassenbindung/Haltung | 42 / 42 |
-| Welt/Bosswarnungen | 36 / 36 |
-| Statistik/Speicherung | 28 / 28 |
-| Reaktor/Migration | 157 / 157 |
-| Fähigkeiten/Touch/Haptik | 76 / 76 |
-| Waffenspezialisierungen | 108 / 108 |
-| Effekte | 40 / 40 |
-| Neue Reaktorgegner | 66 / 66 |
-| Gesamt | 657 / 657 |
-
-Neue Suite prüft Grundwerte, Spawner-Verbindung, Einführungswellen und Caps, sichtbare
-Warnung ohne sofortigen Schuss, fixiertes Ziel, langsames gepooltes Projektil, echten
-Swept-Treffer am Spieler und einmaligen Schaden, Zurücksetzen der Schuss-Metadaten,
-Abstands-/Rückzugs-KI, keine Offscreen-Schüsse und maximal zwei gleichzeitige Warnungen.
-Auch ein langer Frame beginnt mit voller Warnzeit. Tod unterbricht einen geplanten Schuss.
-Pause/Shop/Level-up/Android-Unterbrechung frieren die KI ein. HP, Geschwindigkeit,
-Belohnungen und Drohnenbewegung stimmen mit den konfigurierten Daten überein.
-
-Schutzaura: echte 30-%-Schadensreduktion inklusive tatsächlichem Schadenszähler,
-kein Stapeln, keine Anwendung auf Boss oder Drohne, sofortiger Wegfall bei Verlassen
-des Radius oder Tod der letzten Drohne. Belohnungen werden einmal vergeben. Organische
-Spucker-Spritzer und mechanische Drohnenfunken sowie tatsächliche Atlasregionen geprüft.
-Cleanup/Neustart/Arenawechsel entfernen Status und Projektile. Speicherformat bleibt 3;
-bestehende Migrations-, Verlaufs- und Einstellungstests bestanden unverändert weiter.
-
-Referenzen: alter Schrottplatzvergleich 33 Punkte / 3.600 Schritte identisch. Der
-Schrottplatz-Anteil der 0.5-Referenz (`effects_v0.5_trace.json`) mit allen zehn
-Spezialisierungen, Fähigkeiten und klassischem Boss: 87 Punkte / 8.700 Schritte,
-HIGH und LOW identisch. `effects_trace.gd` vergleicht seit 0.6 ausdrücklich nur diesen
-Anteil. Der Reaktor-Anteil wurde nicht neu als „unverändert“ ausgegeben oder still
-überschrieben: dort verändern neue Gegner Zusammensetzung, Kämpfe und RNG-Verbrauch
-bewusst. Die historische vollständige Referenzdatei bleibt erhalten.
-
-Belastung: 3 × 3.600 Schritte / 180 simulierte Sekunden, ein Szenario je Held mit
-LOW/MEDIUM/HIGH, allen neuen Rollen, bis 100 Gegnern und aktiven Fähigkeiten. Die
-Kamera wird im manuellen Headless-Loop nachgeführt, damit Sichtbarkeitschecks sinnvoll
-arbeiten. Caps 6 Spucker/2 Drohnen/2 Warnungen/320 Poolplätze eingehalten, Projektile,
-Loot und Effekte begrenzt. Peak feindlicher Projektile in diesem Versuch: 6.
-Zusätzlich 18.000 Schritte mit allen zehn Waffenwegen im Effekttest bestanden.
-Botbewegungen und Test-HP sind kontrollierte Fixtures, keine echten vollständigen Runs,
-kein Nachweis ausgewogenen Balancings und keine Android-FPS-Messung.
-
-Fünf Godot/Mesa-Aufnahmen (`tests/roles_*.png`) zeigen Vorbereitung, neue Gegner mit
-Warnung/Schutzaura, Projektil, Schutzabbruch und klassische Arena. Vorgabefiguren,
-Kampf-Nahansichten mit Zoom 1,3 statt Standard 1,15; keine Android-Aufnahmen.
-Kein Parser-/Ressourcenfehler in finalen Läufen. Dummy-Display ohne V-Sync.
-
-Quell-ZIP zusätzlich separat entpackt und frisch importiert: keine Parser-/Ressourcenfehler, Gegnersuite daraus erneut 66 / 66 bestanden.
-
-Offen: echte Android-Runs, Fairness der Fernschüsse, Zielpriorisierung der Drohnen,
-Konter mit allen Helden/Builds, Lesbarkeit unter Last, Geräte-FPS/Temperatur und Audio.
-
----
-
-# Historische Tests 0.5.1
-
-# Testbericht 0.5.1 — 2026-11-16
-
-Godot 4.6.3 stable, Linux Headless und Mesa Compatibility. Tatsächliche Logs:
-`tests/results/v0.5.1-*.log`. Keine physische Android-Prüfung dieser Version.
-
-| Suite | Ergebnis |
-|---|---|
-| Integration | 76 / 76 |
-| Kampfgrafik | 28 / 28 |
-| Klassenbindung/Haltung | 42 / 42 |
-| Welt/Bosswarnungen | 36 / 36 |
-| Statistik/Speicherung | 28 / 28 |
-| Reaktor/Migration | 157 / 157 |
-| Fähigkeiten/Touch/Haptik | 76 / 76 |
-| Waffenspezialisierungen | 108 / 108 |
-| Neues Effektpaket | 40 / 40 |
-| Gesamt | 591 / 591 |
-
-Neue Suite: Treffer-/Todes-Splatter, kritische Sterne, genau eine Belohnung und passendes
-Münz-Popup, Einfrieren in Pause/Shop/Level-up, Ablauf/Freigabe aller Effektgruppen,
-Wiederverwendung derselben Partikel-Dictionaries, alle Qualitätslimits und sofortiges
-Trimmen vorhandener Bestände. Splatter AUS entfernt vorhandene Blut-/Schleimspuren und
-verhindert neue, erhält aber Funken und Brandspuren. Tatsächliche Waffen-/Fähigkeits-
-und Gefahrenmethoden lösen die entsprechenden Effekte aus. Der mechanische Boss
-emittiert keine Blutpartikel. Neue Einstellung wird real gespeichert/geladen; ältere
-Format-3-Dateien und ungültige optionale Felder bleiben kompatibel.
-
-Vor dem Effekteinbau wurde aus 0.5 / Commit 01e68cd eine neue Referenz erzeugt:
-`tests/fixtures/effects_v0.5_trace.json`. 174 Kontrollpunkte über 17.400 Schritte,
-alle zehn Spezialisierungen, aktive Fähigkeiten, beide Arenen und beide Bosse.
-HP, Position, Gegner/Projektile, Schaden, XP, Level, Coins/Kills, Timer, Fähigkeiten-
-Cooldowns und Gameplay-RNG stimmen in 0.5.1 vollständig überein: HIGH, LOW sowie
-Splatter AUS. Zusätzlich alter Referenzvergleich 33 Punkte / 3.600 Schritte bestanden.
-Die visuellen Effekte ändern nach diesen Versuchen keine Kampfergebnisse.
-
-Belastung: alle zehn Waffenwege mit echten Fähigkeiten in Reaktorwelle neun,
-18.000 Schritte / 300 simulierte Sekunden mit gemischtem LOW/MEDIUM/HIGH,
-bis zu 100 Gegnern und allen neuen Effektgruppen. Partikel-/Bodenmarken-/Ereignis-/
-Projektil-/Loot-Limits eingehalten. Kein daraus abgeleiteter Android-FPS-Nachweis.
-
-Sieben Bilder `tests/fx_*.png` tatsächlich mit Godot/Mesa erzeugt: Schuss/Splatter,
-Bodenspuren, Schockwelle, Impulsgranate, Schattenschritt, Bosswarnungen, Einstellungen.
-Inszenierte Fixtures, überwiegend Nahansicht mit Kamerazoom 1,45 statt normal 1,15;
-keine Android-Aufnahmen oder echte Nutzer-Runs. Erste Bildprüfung zeigte zu viele
-kreisförmige alte Todeseffekte. Diese wurden durch Spritzer/Münz-Popups ersetzt,
-Treffersterne reduziert und die Bilder neu erstellt. Warnungen liegen über Bodenflecken.
-Dummy-Display unterstützt kein V-Sync. Keine Parser-/Ressourcenfehler in finalen Läufen.
-
-Quell-ZIP zusätzlich separat entpackt und frisch importiert: keine Parser-/Ressourcenfehler, Effektsuite daraus erneut 40 / 40 bestanden.
-
-Offen: vollständige Android-Runs mit Waffenwegen und Effekten, Warnlesbarkeit unter
-realer Last, Gerätetemperatur/FPS, Audio auf Gerät und Statistikerhalt beim Update.
-
----
-
-# Historische Tests 0.5
-
-# Testbericht 0.5.0 — 2026-11-16
-
-Godot 4.6.3 stable; Linux Headless und Mesa Compatibility. Tatsächliche Logs in
-`tests/results/v0.5-*.log`. Keine Android-Hardwareprüfung dieser Version.
-
-| Suite | Ergebnis |
-|---|---|
-| Integration | 76 / 76 |
-| Kampfgrafik | 28 / 28 |
-| Klassenbindung/Haltung | 42 / 42 |
-| Welt/Bosswarnungen | 36 / 36 |
-| Statistik/Speicherung | 28 / 28 |
-| Reaktor/Migration | 157 / 157 |
-| Fähigkeiten/Touch/Haptik | 76 / 76 |
-| Waffenspezialisierungen | 108 / 108 |
-| Gesamt | 551 / 551 |
-
-Neue Suite prüft reale Stufe-5-Shopkäufe, einmalige Coin-Abbuchung, kostenlose
-verbindliche Auswahl, Pause, Klassengrenzen, mehrere Auswahlen, Wellenübergang und
-Run-Reset. Zehn Symbole werden tatsächlich geladen. Beschreibungskarten werden auf
-Breite geprüft. Durchschlag trifft höchstens drei verschiedene Gegner, auch bei langen
-Frames; wiederholte Überlappung verursacht keinen doppelten Treffer. Explosionen trennen
-Direkt- und Flächenschaden, vergeben Coins/XP/Kills nur einmal. Objektpool setzt neue
-Metadaten zurück. Einzel-/Flächenhammer, Fächerzahl/Winkel/Schaden/Reichweite,
-Kettenziele/Falloff, Blitz-Cooldown und Orbitpose/Trefferintervall sind geprüft.
-Alle zehn Varianten können beide Bosse besiegen und räumen sicher auf. Hierfür wird
-Boss-HP gezielt auf 1 gesetzt; dies beweist keinen vollständigen oder gebalancten Run.
-Verlauf inklusive Spezialisierung über echte Datei gespeichert und neu geladen;
-fehlende/ungültige/frühe Spezialisierungen werden korrekt behandelt.
-
-Deterministischer Schrottplatzvergleich: alle 33 Kontrollpunkte über 3.600 Schritte
-mit drei Helden identisch zu v0.2.2, wenn keine Fähigkeit oder Spezialisierung verwendet
-wird. Die gewählten Entwicklungen verändern das Kampfergebnis bewusst. Grunddaten von
-Charakteren, Waffen, Gegnern, Upgrades und beiden Arenawellen bleiben gegenüber 0.4 gleich.
-
-Belastung: zehn Varianten × 1.800 Schritte, insgesamt 18.000 Schritte / 300 simulierte
-Sekunden, Reaktorwelle neun mit bis zu 100 Gegnern und regelmäßig ausgelösten Fähigkeiten.
-Gegner-/Pool-/Loot-/Effektlimits eingehalten, keine Trefferliste größer als drei,
-Referenzen nach Cleanup freigegeben. Zusätzlich 21.600 Schritte Fähigkeiten-Stresstest
-für alle sechs Helden-/Arenakombinationen bestanden. Keine Geräte-FPS-Messung.
-
-13 Godot/Mesa-Bilder (`tests/spec_*.png`): fünf Auswahlansichten, sechs Kampfvarianten,
-Ergebnis und Verlauf. Vorgabedaten, keine Android-Aufnahmen. Anfangs überlappten lange
-Kartentexte; Layout korrigiert und zwei Assertions ergänzt. Finale Aufnahmen geprüft.
-Dummy-Display ohne V-Sync. Keine Parser-/Ressourcen-/Signalfehler in finalen Läufen.
-
-Quell-ZIP zusätzlich separat entpackt und frisch importiert: keine Parser-/Ressourcenfehler, neue Spezialisierungssuite daraus erneut 108 / 108 bestanden.
-
-Offen: vollständige Android-Runs mit den neuen Waffenwegen, Vor-/Nachteile im echten
-Spiel vergleichen, Statistikerhalt beim Update und Lesbarkeit/Bedienung auf Geräten.
-Positives Nutzerfeedback zu 0.4 ist dokumentiert, keine pauschale Abnahme von 0.5.
-
----
-
-# Historische Tests 0.4
-
-# Testbericht 0.4.0 — 2026-11-16
-
-Godot 4.6.3 stable, Linux Headless und gerendert mit Mesa GL Compatibility.
-Tatsächliche Ergebnisse unter `tests/results/v0.4-*.log`.
-
-| Suite | Ergebnis |
-|---|---|
-| Integration | 76 / 76 |
-| Kampfgrafik | 28 / 28 |
-| Klassenbindung/Haltung | 42 / 42 |
-| Welt/Bosswarnungen | 36 / 36 |
-| Laufstatistik/Speicherung | 28 / 28 |
-| Reaktor und Migration | 157 / 157 |
-| Heldenfähigkeiten, Touch, Haptik und Einstellungen | 76 / 76 |
-| Gesamt | 443 / 443 |
-
-Neue Tests: Schaden und Radius, Nahkampfbonus, Rückstoß, Bossimmunität gegen
-Displacement/Slow, Granatenziel/Zünder/Explosion, einmalige Treffer, Slow-Ablauf,
-Dash-Distanz und durchgehende Streckenkollision bei langen Frames, Grenzen und
-blockierte Aktivierung, Ende der Unverwundbarkeit, Cooldown und Pausierung in allen
-Unterbrechungszuständen. Alle drei Fähigkeiten können beide Bosse besiegen und
-anschließend sicher neu starten. Dafür setzen die Tests Boss-HP auf 1; dies ist keine
-vollständig gespielte oder gebalancte Bossabnahme.
-
-Touch-Tests leiten echte InputEventScreenTouch/Drag über `Viewport.push_input` durch
-den Godot-Inputweg: zwei Finger, getrennte Freigabe, kein Wiederholen beim Halten,
-kein Auslösen beim Überziehen des Joysticks, wechselnde UI-Transformationen und
-Freigabe außerhalb des Buttons. Kein Android-Touchhardware-Beleg.
-Haptikpolitik mit injiziertem Recorder geprüft: AUS, Stärken, Rate-Limit, ungültige
-Ereignisse. Echte Vibration und Amplituden auf Android noch nicht geprüft.
-Alte Format-3-Einstellungen, ungültige optionale Felder und echter Datei-Roundtrip getestet.
-Format-1/2-Migration wird durch die bestehenden Suiten weiterhin abgedeckt.
-
-Deterministischer Schrottplatzvergleich: alle 33 Punkte / 3.600 Schritte / drei Helden
-stimmen einschließlich HP, XP, Kills, Coins, Schaden, Gegner, Projektile und RNG mit
-v0.2.2 überein, wenn keine Fähigkeit ausgelöst wird. Die aktiven Fähigkeiten verändern
-bewusst das Kampfergebnis. Keine Änderungen an Waffen-, Gegner-, Upgrade-, Charakter-
-oder Wellengrundwerten und keine zusätzlichen Waffenfreigaben.
-
-Fähigkeiten-Belastung: 6 × 3.600 Schritte, 360 simulierte Sekunden, 38 tatsächliche
-Aktivierungen; beide Arenen und alle Helden, bis 100 Gegner. Objekt-/Loot-/Zahlen-/
-Gefahrenlimits und Spielergrenzen eingehalten. Zusätzlich Standard-Stresstest mit
-7.200 Schritten bestanden. Massen-Drop-Test führt 310 auf 240 Kristalle zusammen und
-behält exakt 48.205 XP. Keine Android-Performance-Messung.
-
-Acht Godot/Mesa-Aufnahmen (`tests/ability_*.png`) zeigen alle Fähigkeiten, Bereitschaft,
-Granatenexplosion, Vorbereitung, Charakterwahl und Einstellungen. Vorgegebene Szenen,
-keine Android-Aufnahmen. Im schnellen Audio-Test musste nach Freigabe eine reale
-80-ms-Mischthread-Nachlaufzeit ergänzt werden; der finale Lauf endet ohne Ressourcenwarnung.
-Dummy-Display unterstützt kein V-Sync. Kein Parser- oder Ressourcenladefehler.
-
-Das Quell-ZIP wurde separat in ein leeres Verzeichnis entpackt und frisch importiert. Keine Parser-/Ressourcenfehler; Fähigkeitssuite daraus erneut 76 / 76 bestanden.
-
-Offen: physisches Android-Update mit Nutzerspeicher, echte Multitouch-/Vibrationsbedienung,
-volle Runs und Fähigkeitsbalancing aller Helden, Geräte-FPS, Temperatur und verschiedene Displays.
-
----
-
-# Historische Tests 0.3
-
-# Testbericht 0.3.0 — 2026-11-16
-
-Godot 4.6.3 stable, GDScript, Linux Headless und Mesa Compatibility. Tatsächliche Logs
-unter `tests/results/v0.3-*.log`. Keine physischen Android-Tests dieser Version.
-
-| Suite | Ergebnis |
-|---|---|
-| Integration | 76 / 76 |
-| Kampfgrafik | 28 / 28 |
-| Klassenbindung/Haltung | 42 / 42 |
-| Welt/Bosswarnungen | 36 / 36 |
-| Laufstatistik/Speicherung | 28 / 28 |
-| Reaktor, Freischaltung, Gefahren, vollständige Zustandsabläufe, Migration | 157 / 157 |
-| Gesamt | 367 / 367 |
-
-Zusätzlich: Schrottplatz-Referenzvergleich mit v0.2.2, 33 Kontrollpunkte über 3.600
-feste Simulationsschritte für alle drei Helden, vollständig identisch einschließlich
-HP, XP, Coins, Kills, Schaden, Gegner, Projektile und kritischem RNG. Charakter-,
-Waffen-, Gegner-, Upgrade- und klassische Wellendaten sowie Waffenmanager,
-Projektilpool und Kampfgrafikmodul sind unverändert zur Referenz a4efbc4.
-
-Belastungsläufe Schrottplatz/Reaktor: jeweils 7.200 Schritte, 120 simulierte Sekunden,
-bis 100 aktive Gegner, Objekt-/Loot-/Effekt-/Gefahrenlimits eingehalten. Synthetischer
-Stressaufbau mit vier Waffen; keine reguläre Klassenfreigabe und keine Android-FPS-Messung.
-
-Kontrollierte Boss-Schadensprobe: Stufe-5-Klassenwaffen, Schadenfaktor 2,2,
-Angriffsfaktor 1,6, Kritchance 25 %, Multishot +1, Abstand 100, ohne eingehenden Schaden.
-Bruiser 11,38 s, Sparky 4,35 s, Shade 38,10 s bis 4.200 HP. Belegt erreichbaren Schaden
-in dieser festen Versuchsanordnung, keinen vollständigen oder fair gebalancten Spieler-Run.
-
-Reaktortest deckt Warnung ohne Schaden, Aktivierung, Invulnerabilität, lange Frames,
-fixierte Ziele, Bossruhe während Warnung, vier gerichtete Dreiersalven, Pause/Level/Shop,
-Victory/Timeout/Tod, Aufräumen, Neustart, alle 60 Held/Arena/Wellenkombinationen und
-Migration aus Format 2 ab. Bestehender Migrationstest deckt Format 1 und Korruption ab.
-Die Ablaufprüfung verkürzt Wellentimer und setzt tödlichen Boss-Testschaden; sie ist
-kein autonom durchgespielter Zehn-Minuten-Run.
-
-Sieben Bilder tatsächlich mit Godot/Mesa gerendert: Auswahl, Menü, Arena, Kreuzlaser,
-Kernbomben, Stile, Statistik (`tests/reactor_*.png`). Vorgabedaten, keine Android-Aufnahmen.
-Initialer Lauf meldete beim Audio-Test Ressourcen beim Prozessende; gezielter Wiederholungslauf
-mit `--verbose` beendete sauber. Kein Kampf-/Parserfehler. V-Sync im Dummy-Display nicht verfügbar.
-
-Zusätzlich Quell-ZIP in ein leeres Verzeichnis entpackt: frischer Import ohne Parser-/Ressourcenfehler, anschließend Reaktorsuite erneut 157 / 157 bestanden.
-
-Offen: Android-Update mit echten Nutzerdaten, Bedienung und vollständiger Reaktorrun je
-Held, Ton auf Gerät, Aussparungen/abweichende Displays, FPS und thermische Belastung.
-
----
-
-# Historische Tests 0.2.3
-
-# Tests 0.2.3 — 2026-11-16
-
-## Bestätigter Nutzer-Praxistest
-
-Nach Übergabe von 0.2.3 meldete der Nutzer einen vollständig durchgespielten Android-Run
-mit Sparky und „Läuft sehr gut“. Der beigefügte Sieg-Screenshot zeigt:
-
-- Welle 10 / 10, Sieg, Kampfzeit 09:07.
-- 602 Kills, Level 20, 48.387 Schaden, 1.566 gesammelte Coins.
-- Blaster Stufe 5, Arc Cannon Stufe 2, Splitgun Stufe 3.
-
-Dies ist ein Nutzerbeleg für einen vollständigen Sparky-Run, keine durch den Agenten
-aufgezeichnete Gerätemessung. Gerätemodell, Android-Version, FPS, thermisches Verhalten,
-Erhalt der Statistik nach App-Neustart und vollständige Runs mit Bruiser/Shade sind damit
-noch nicht bestätigt. Der Code-Stand `a4efbc4` bleibt die Referenz für weitere Erweiterungen.
-
-## Ausgeführte Suiten
-
-| Suite | Bestanden | Fehlgeschlagen |
-|---|---:|---:|
-| Integration | 76 | 0 |
-| Kampfeffekte/Projektile | 28 | 0 |
-| Klassen und Zweihandhaltung | 42 | 0 |
-| Welt, Todeseffekte und Bosswarnungen | 36 | 0 |
-| Charakterbestwerte, Verlauf und Migration | 28 | 0 |
-| **Summe** | **210** | **0** |
-
-Zusätzlich: neue deterministische Regression mit erlaubten Klassen-Loadouts gegen den
-Git-Stand 0.2.2 (`d47853c`). Alle 33 Kontrollpunkte über 3600 Schritte stimmen überein:
-HP, XP, Coins, Kills, Schaden, Gegner- und Projektilzustände sowie Krit-Zufallszustand.
-Positionswerte werden auf vier Nachkommastellen protokolliert, JSON-Zahlen mit 0.000001
-Toleranz gelesen. Dies ist ein reproduzierbarer Ablauf, kein formaler Beweis aller Spielzustände.
-Spieldaten und unveränderte Kampfmodule zusätzlich bytegleich geprüft.
-
-## Neue Grenzfälle
-
-Todeseffekte ohne doppelte Belohnung, abgelöste Positions-Snapshots, Effektlimit und Cleanup,
-Pause/Resume, echte Bossphasen und Countdown, unveränderte 18er-Salve, fixiertes Sturmziel,
-keine visuelle RNG-Nutzung, kein blockierter Siegbutton, keine doppelte Siegerfassung und
-Warning-Audio bei belegten normalen SFX-Stimmen.
-Dateibasierte Schema-1-Migration mit Originalbackup, Erhalt aller alten Gesamtwerte und
-Einstellungen, keine erfundenen Charakterresultate, echte Ergebnisverbindung, unveränderliche
-Bestwerte bei schlechteren Runs, schnellster Sieg, begrenzter 20er-Verlauf, neueste Runde zuerst,
-Schema-2-Roundtrip, beschädigte Unterfelder und sichere Seiten-/Charakterfilter.
-
-## Weitere Nachweise
-
-Headless-Lasttest: 7200 Schritte, 120 simulierte Sekunden, Spitze 100 Gegner, synthetisches
-Vierwaffen-Loadout. Gemessen ca. 0.350 ms Simulationszeit pro Schritt auf dem Entwicklungsrechner.
-Dies enthält keine Grafikberechnung und ist keine Android-FPS-Messung.
-
-Gerendert und geprüft: `world_arena.png`, `world_crowd.png`, `world_boundary.png`,
-`world_boss_radial.png`, `world_boss_charge.png`, `world_victory.png`, `world_stats.png`,
-`world_stats_sparky.png`, `world_history.png`. Godot Compatibility/Mesa auf Linux, 1280×720.
-Der Spieler bleibt wie zuvor vor der Menge sichtbar. Boden und Figuren sind Grafiken,
-keine neuen Hindernisse oder veränderten Kollisionen. Statistikbilder zeigen kontrollierte
-Testdatensätze, keine tatsächlichen Spielerfolge oder ausgelesenen Android-Nutzerdaten.
-
-APK-Version, Paket, ARM64, Signatur, Berechtigungen, Assets und 16-KiB-Alignment geprüft.
-Keine Parserfehler. Der virtuelle Grafiktreiber meldet nur nicht umschaltbare VSync-Einstellung.
-
-## Offene Geräteabnahme
-
-Ein voller Sparky-Run ist durch Nutzerfeedback bestätigt. Statistikpersistenz, spezifische
-Audio-/Displayprüfungen, andere Klassen und Geräte-FPS/Temperatur bleiben noch offen.
-Rohprotokolle: `tests/results/v0.2.3/`.
-
----
-
-## Archiv: Stand 0.2.2
-
-# Tests 0.2.2 — 2026-11-16
-
-- 76 bisherige Integrationsprüfungen bestanden.
-- 28 Effekt-/Projektilprüfungen bestanden.
-- 42 neue Klassen-/Rigprüfungen bestanden: korrekte Startwaffen, erlaubte Käufe, Abweisung
-  klassenfremder Käufe ohne Coin-/Inventaränderung, 40 zufällige Shoplisten je Held,
-  Filtern nutzloser Projektil-/Multishot-Upgrades, Stat-Upgrades ohne Waffenvergabe,
-  zwei endliche Griffpunkte bei 16 Zielwinkeln je Held, keine Extra-Hände für Orbit, Cleanup.
-- Historischer Formelnvergleich: 33 Kontrollpunkte über 3600 Schritte weiterhin bestanden.
-  Er injiziert frühere Mehrwaffen-Loadouts unabhängig vom Shop und beweist nur das getestete
-  Verhalten der Formeln, nicht die Balance der nun eingeschränkten Klassen-Loadouts.
-- Numerische Charakterwerte geprüft; nur `allowed_weapons` in den Charakterdaten ergänzt.
-  Waffen-, Gegner-, Wellen- und Upgrade-JSON sowie PlayerController und SaveManager unverändert.
-- Tatsächlich gerenderte Bilder: `grip_bruiser.png`, `grip_sparky.png`, `grip_shade.png`,
-  vergrößerte `grip_close_*.png`, Sparkys Dreifach-Loadout und drei Klassen-Shops.
-  Die Körperregionen enthalten keine Hände; Handschuhkomponenten werden genau zweimal gezeichnet.
-  Die vergrößerten Bilder sind Godot-Aufnahmen mit Kamerazoom, keine nachbearbeiteten Spielerbilder.
-- Import und Android-Export ohne Parserfehler; APK-Signatur, Architektur und Alignment geprüft.
-
-Rohprotokolle: `tests/results/v0.2.2/`. Keine physische Android-Installation oder neue
-Klassenbalance über zehn Wellen geprüft. Die vorläufige Waffenbindung ist eine Spielregeländerung,
-keine reine Grafikänderung; daher keine unveränderte Gesamtbalance behauptet.
-
----
-
-## Archiv: Stand 0.2.1
-
-# Waffen-/Geschosstests 0.2.1 — 2026-11-16
-
-- 76 bestehende Integrationstests bestanden.
-- 28 neue Prüfungen bestanden: tatsächliche Angriffe stempeln Charakter-/Waffenmetadaten,
-  identischer Basisschaden und Flugtempo, Wiederverwendung des Projektilslots zwischen Helden,
-  Mündungsfeedback, visuelle Pause, Cleanup, Hammer-/Blitz-/Orbitereignisse, Effektbudget,
-  verschiedene Atlasregionen und Vorhandensein der fünf Soundressourcen.
-- Reproduzierbare Balance-Regression mit `--fixed-fps 60`: alle drei Helden, fünf Waffen über
-  vier Slots, 3600 Schritte, 33 Kontrollpunkte. HP, Coins, Kills, Schaden, XP, Gegnerpositionen/HP,
-  Projektilpositionen/Schaden/Lebensdauer und Krit-Zufallszustand stimmen mit der 0.1-Referenz
-  überein. Aufgezeichnete Positionswerte haben vier Nachkommastellen; JSON-Zahlen werden mit
-  Toleranz 0.000001 verglichen. Dies ist ein getesteter Ablauf, kein formaler Beweis aller Zustände.
-- Belastungstest: 7200 Schritte, 120 simulierte Sekunden, 100 Gegner als Spitze,
-  ca. 0.358 ms Headless-Simulationszeit pro Schritt auf diesem Rechner. Keine Android-FPS-Angabe.
-- Neun Atlaszellen auf Transparenz und sichtbaren Inhalt geprüft.
-- Mit Godot Compatibility/Mesa tatsächlich gerendert: `combat_bruiser.png`, `combat_sparky.png`,
-  `combat_shade.png`, `combat_shop.png` sowie drei `ammo_*.png` zum Vergleich der Geschossformen.
-  Dies sind kontrollierte Testszenarien, keine Bildschirmaufnahmen eines Android-Geräts.
-- Neue Audioassets importiert; keine Hardware-Hörprüfung durchgeführt.
-- Android-APK exportiert, Signatur, Version, Architektur, Berechtigungen und Alignment geprüft.
-
-Protokolle: `tests/results/v0.2.1/`. Physisches Android-Update, Audio, Effektlesbarkeit im
-vollen Kampf und neue Geräte-FPS bleiben offen. Schaden, Feuerraten und Spawnregeln wurden
-für das Grafikupdate nicht verändert.
-
----
-
-## Archiv: Stand 0.2
-
-# Charaktergrafik-Tests 0.2 — 2026-11-16
-
-- Bestehende Integrationstests erneut ausgeführt: **76 bestanden, 0 fehlgeschlagen**.
-- Godot 4.6.3 importiert neue PNG- und Scriptressourcen ohne Parserfehler.
-- Auswahl, Arena, Hauptmenü, Shop, Upgrades, Boss und Ergebnis tatsächlich gerendert.
-  Charakterauswahl und Arena visuell auf vollständig sichtbare Figuren geprüft.
-- Alle sechs Atlaszellen besitzen transparente Außenbereiche und sichtbaren Figureninhalt.
-- Alle Daten unter `data/` gegenüber 0.1 bytegleich. Waffenmanager, PlayerController,
-  Projektilpool und SaveManager ebenfalls bytegleich. Die einzige Ergänzung im
-  Simulationsschritt bestimmt eine visuelle Spiegelrichtung; sie verändert keine Bewegung.
-- Kampfwerte, Spawnintervalle, Kollisionsradius und Belohnungen bleiben unverändert.
-- Paket, Version, Signatur und Alignment des neuen Android-Builds statisch geprüft.
-- **Kein physischer Android-Test der neuen Grafiken** in dieser Umgebung. Insbesondere
-  Sichtbarkeit in dichtem Kampf, Updateinstallation und Leistung müssen noch geprüft werden.
-- Kein neuer Performance-Test behauptet: die Messwerte weiter unten stammen aus 0.1.
-
-Protokolle: `tests/results/v0.2/`. Aktuelle Renderbilder: `tests/*.png`.
-Die vom Nutzer gemeldeten 15 gespielten Runden betreffen die vorherige Version 0.1.
-
----
-
-## Archiv: Testbericht 0.1
-
-# Testbericht — 2026-11-15
-
-## Tatsächlich ausgeführt
-
-Godot 4.6.3 stable, Linux-Entwicklungsumgebung. Keine physischen Android-Geräte verbunden.
-
-| Prüfung | Ergebnis |
-|---|---|
-| Headless-Import sämtlicher Ressourcen | erfolgreich; keine Parserfehler oder fehlenden Ressourcen |
-| `tests/integration.gd` | **76 bestanden, 0 fehlgeschlagen** |
-| `tests/soak.gd` | **7200 Schritte / 120 simulierte Sekunden bestanden** |
-| OpenGL-Renderprüfung | sieben Ansichten als PNG erzeugt und visuell geprüft |
-| Android-Debugexport | erfolgreich, ARM64-APK erzeugt |
-| APK-Signaturprüfung | erfolgreich, v2 und v3 |
-| ZIP-/16-KiB-Alignment | erfolgreich |
-| APK-Paket-/Architekturprüfung | korrekt; nur arm64-v8a |
-| Android-Installation / manueller kompletter Run | **nicht ausgeführt** |
-| Android-FPS / Notch / echtes Multitouch / Hardwareaudio | **nicht ausgeführt** |
-
-## Integrationsumfang
-
-Boot und Menü; drei Charaktere und exakte Startwerte; Analogbewegung und Diagonallimit;
-Arenagrenzen; sichere Spawns; Verfolgung aller drei Gegnertypen; alle fünf automatischen
-Waffen; Projektiltreffer und Trefferbegrenzung; Schaden und Kritsystem im Spielpfad;
-einmaliger Tod, XP-Kristalle, XP-Einsammeln und Coinbelohnung; XP-Formel und mehrere
-Levelaufstiege; alle zehn Upgradeeffekte und Angebotsfilter; Shopkauf, doppelte Käufe,
-Rerollkosten, keine negativen Coins und keine Max-Level-Waffenangebote;
-Pause und Fortsetzen; alle neun Wellen-Shop-Übergänge; Joystick-Fingerzuordnung,
-zweiter Finger, Rückstellung und Android-Unterbrechung; sichere Bereinigung beim Tod;
-Boss-Spawn, Warnung, Radialsalve, Sturmziel und kein unangekündigter Startsturm;
-Victory, Game Over, Bosszeitlimit, Statistik nur einmal schreiben und sauberer Neustart;
-Speichern, Laden und beschädigte JSON-Datei mit Sicherung.
-
-Die Tests setzen bewusst Zustände, Gegnerpositionen und Timer, um Grenzfälle schnell und
-reproduzierbar zu erreichen. Sie sind kein Nachweis eines manuell durchgespielten Runs.
-Der Testmodus unterdrückt Audiowiedergabe; WAV-Dateien werden trotzdem importiert.
-
-## Belastungstest
-
-Vier Level-5-Waffen, Welle-9-Regeln, kreisförmige synthetische Bewegung und anfangs
-100 Gegner. Für diesen Test sind die Lebenspunkte erhöht; Leveldialoge werden automatisch
-aufgelöst. Bei jedem Schritt werden Grenzen für Gegner, Projektile, Kristalle und Effekte geprüft.
-
-Letzter gemessener Lauf: 2,435711 Sekunden Rechenzeit für 7200 Simulationsschritte,
-ca. **0,338 ms pro Simulationsschritt**, Spitzenwert 100 Gegner, 208 Kills.
-Das misst ausschließlich die Headless-Simulation auf dem Entwicklungsrechner.
-Es ist weder eine gerenderte Framerate noch ein Leistungsversprechen für Android.
-
-## Grafikprüfung
-
-Godot Compatibility Renderer mit Mesa llvmpipe, 1280×720. Ansichten unter `tests/`:
-`menu.png`, `characters.png`, `arena.png`, `boss.png`, `shop.png`, `upgrades.png`,
-`victory.png`. Die Bilder zeigen kontrollierte Testzustände; insbesondere ist das
-Victory-Bild kein Beleg für einen tatsächlich durchgespielten Run.
-Die UI-Texte, Figuren, Balken und großen Buttons wurden anhand dieser Bilder geprüft.
-Der virtuelle Grafiktreiber meldet nur fehlende VSync-Umschaltung.
-
-## Verbleibende Abnahme
-
-Auf ARM64-Android installieren, alle drei Helden durchspielen, Shop und Upgrades mit Fingern
-bedienen, Gerätewechsel in Hintergrund/Vordergrund prüfen und 60-FPS-Ziel messen.
-Physisches Touchgefühl, Safe Area auf realen Displayausschnitten, Audio und thermische
-Stabilität sind noch offen. Deshalb keine vollständige Android-Abnahme erklärt.
-
-Rohprotokolle: `tests/results/`.
-
-## Entpackte Übergabe
-
-Das ZIP wurde auf CRC-Integrität geprüft und in einen neuen Ordner entpackt.
-Die entpackte Kopie wurde ohne vorhandenen `.godot`-Cache erfolgreich importiert
-und headless gestartet. Ein sehr kurzer, erzwungener `--quit-after`-Start meldet
-beim Beenden gelegentlich eine ObjectDB-Warnung zu noch aktiver Audiowiedergabe.
-Die geordnet beendeten Integrationstests und der Belastungstest enden ohne diese Warnung.
-Dies ist als offene Shutdown-Prüfung auf Android zu berücksichtigen.
+# Testbericht 0.7.0 — 2026-11-16
+
+Godot 4.6.3 stable, Linux Headless und native Mesa Compatibility. Tatsächliche Logs:
+`tests/results/v0.7-*.log`. Keine physische Android-Abnahme/FPS-Messung.
+
+| Suite | Bestanden |
+|---|---:|
+| Integration | 76 |
+| Kampfgrafik | 28 |
+| Klassenbindung/Haltung | 42 |
+| Welt/Bosswarnungen | 36 |
+| Statistik/Speicherung | 28 |
+| Reaktor/Migration | 157 |
+| Fähigkeiten/Touch/Haptik | 76 |
+| Waffenspezialisierungen | 108 |
+| Effekte | 40 |
+| Reaktorgegner | 66 |
+| Display/Balance | 100 |
+| Shop/Items/Sets | 41 |
+| Gesamt | 798 |
+
+Shop prüft echte Käufe/Einmalabzug, Tradeoffs, Set-Aktivierung/-Verlust, wiederholtes
+Synchronisieren, Erhalt von Levelboni, direkte Waffenupgrades bis Entwicklung,
+Verwertungsrefunderstattung/letzte-Waffe-Schutz, unzureichende Coins, gültige Angebote,
+Stats-/Detailansichten, eingefrorene Simulation, Wellenpersistenz und Neustartreset,
+Crit-/Rüstungscap, HP-Untergrenze, Item-Historie und gespeicherten Hilfezustand.
+
+Displayprüfung: fünf Seitenverhältnisse inkl. 32:9, drei simulierte Safe-Areas,
+Kamera innerhalb Arena, echtes GUI-Pause-Klicken außerhalb der alten 1920er Breite,
+Multitouch an drei Formen, Ablehnung neuer Touches in unsicheren Aussparungsbereichen.
+Erste drei Wellen gegen eingefrorene 0.6-JSONs geprüft, beide späten Arenen stärker,
+Belohnungen und Spawngruppen begrenzt. Fixture-Provenienz: Commit 72b145d.
+
+Native Renderprüfung: Menü/Kampf 16:9, 1280×591 und Tablet; Ergebnis breit/Tablet.
+Shop zusätzlich sechs 1280×591-Ansichten. Keine schwarzen Seitenpixel an den
+geprüften Renderkanten. PNGs in tests/. Mesa warnt mangels VSync-Unterstützung;
+Dummy-Audio beim visuellen Test. Das prüft keine Android-Systemleisten auf Hardware.
+
+Regressionsvergleich Welt: 33 Kontrollpunkte/3.600 Schritte mit früherem Schrottplatz.
+Effektvergleich: 87 Punkte/8.700 Schritte, alle zehn Waffenwege/Fähigkeiten/alter Boss.
+Dafür werden ausdrücklich ALTE eingefrorene Wellen im Test injiziert; neue späte
+Balance wird nicht als identisch behauptet. Produktion nutzt neue WaveBalance-Daten.
+
+Lastprobe: 21.600 Schritte/360 simulierte Sekunden, beide Arenen × drei Helden,
+LOW/MEDIUM/HIGH, Start mit 100 Gegnern und acht Items. Caps 100 Gegner, 6 Spucker,
+2 Drohnen, 2 Warnungen, 320 Schüsse, 240 Loot und Effektlimits eingehalten.
+Bot flieht auf festem Kreis; Shade teils null Kills, kein Fairness-/Run-Sieg-Beweis.
+
+20 isolierte Boss-DPS-Proben (10 Entwicklungen × 2 Arenen) jeweils unter 90 Sekunden,
+mit definiertem spätem Build ohne Itemboni. Gegnerbewegung/eingehender Schaden dabei
+ausgeschaltet; beweist Erreichbarkeit des HP-Ziels, keine vollständigen Runs.
+Analytische Druckprobe vergleicht Spawn-/HP-/Belohnungsfluss vor Caps/Spielerkills.
+Offen: echte Android-Runs für neue Schwierigkeit und Shopökonomie, FPS/Temperatur,
+Notch/immersiver Modus und alle Touch-Flows auf Hardware.
+
+Quell-ZIP frisch in leeres Verzeichnis entpackt: Godot-Import ohne Parser-/Ressourcenfehler;
+Shop 41/41 und Display/Balance 100/100 daraus erneut bestanden. Logs v0.7-clean-*.log.

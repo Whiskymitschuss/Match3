@@ -195,6 +195,9 @@ func run():
 	g.show_shop()
 	check(g.choose_specialization('hammer','quake') and g.state==g.State.SHOP,'Choice works with production state transition guards')
 	g.test_mode=true
+	# State-guard coverage is complete; stop test-only audio before fast boss fixtures.
+	for voice in g.sfx_players:voice.stop();voice.stream=null
+	g.alert_audio.stop();g.alert_audio.stream=null
 	for id in Specs.all():
 		var weapon=Specs.all()[id].weapon
 		for arena in ['scrapyard','reactor']:

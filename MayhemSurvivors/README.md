@@ -1,3 +1,59 @@
+# Mayhem Survivors 0.7.0 Alpha — RF Worlds
+
+Godot 4.6.3 stable, Android ARM64, offline. Das komplette Projekt lässt sich über
+`project.godot` starten. Keine Programmierung oder Szenenmontage erforderlich.
+
+## Neuer Mayhem Market
+
+Nach Wellen 1–9 öffnet der Shop mit vier Angeboten. Beim ersten Besuch erklärt eine
+überspringbare Hilfe die Bedienung; über HILFE jederzeit wieder öffnen. Der Kampf
+bleibt bis NÄCHSTE WELLE angehalten. Ein Reroll je Besuch gratis, danach 8, 11, 14 … Coins.
+
+- Angebotskarten: Preis, Seltenheit, Symbol, Wirkung und bei Gegenständen grüne Vorteile/rote Nachteile.
+- WAFFEN: antippen für tatsächliche Trefferwerte, Aufrüsten und Verwerten mit Bestätigung.
+  Die letzte Waffe ist geschützt. Ab Stufe fünf weiterhin kostenlose verbindliche Entwicklung.
+- GEGENSTÄNDE: acht eigene Module, jedes einmal pro Run. Boni gelten bis Run-Ende.
+- SETS: Waffen und Gegenstände zählen zusammen. Zwei/drei Teile aktivieren Boni.
+- WERTE: aktuelle Gesamtwerte inklusive Gegenständen und Sets. Klassenbindung bleibt bestehen.
+
+| Set | 2 Teile | 3 Teile (zusätzlich) |
+|---|---|---|
+| Brecher: Hammer, Blaster, Splitgun, Wuchtgriff, Panzerplatte | +8 % Schaden | +1 Rüstung |
+| Stromkreis: Arc Cannon, Überlastzelle, Ionenkühler | +8 % Angriffstempo | +15 % Projektiltempo |
+| Nachtlauf: Orbit Blade, Phasenstiefel, Präzisionslinse | +8 % Bewegungstempo | +5 % Krit-Chance |
+
+Schrottmagnet/Vitalpaket zählen zu keinem Set. Gegenstände verändern bestehende Werte;
+negative Rüstung ist möglich. Maximalwerte: Krit 75 %, Rüstung 20; Max-HP-Untergrenze
+bei Gegenstandskauf 30. Kein Kopieren von Vorlagenassets, keine Werbung/VIP/Käufe.
+Waffen werden über ihre vorhandenen fünf Stufen aufgerüstet; kein Duplikat-Fusionssystem.
+
+## Vollbild und Schwierigkeit
+
+Der sichtbare Spielbereich erweitert sich auf das Display-Seitenverhältnis. Menüs
+füllen den Hintergrund; HUD/Touchsteuerung beachten sichere Displayränder.
+Android-Preset nutzt immersiven Modus und Edge-to-edge. Für extreme Breite passt sich
+die Kamera an die Arenagrenzen an. Physische Android-Vollbildabnahme noch erforderlich.
+
+Beide Arenen werden ab Welle vier härter: mehr Gegner in begrenzten Gruppen,
+mehr HP, moderat höheres Tempo/Kontaktschaden. Wellen 1–3 unverändert. Belohnungen pro
+Gegner reduziert, damit mehr Gegner nicht ungebremst mehr Upgrades finanzieren.
+Maximal 100 aktive Gegner; Rollenlimits bleiben 6 Spucker/2 Drohnen.
+Overlord jetzt 6.000 HP, Reaktorwächter 7.560 HP, weiterhin 90-Sekunden-Limit.
+Warnzeiten bleiben erhalten. Neue Schwierigkeit braucht echte Android-Runs.
+
+## Tests und Export
+
+`godot --headless --path . --script res://tests/shop_test.gd` prüft den neuen Shop.
+Alle ausgeführten Suiten und Grenzen der Aussagekraft: TEST_REPORT.md.
+Android-Export: `godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.7-debug.apk`.
+Voraussetzungen SDK/JDK/Exporttemplate und privater Debugschlüssel außerhalb des ZIP;
+Details BUILD_REPORT.md. Paket bleibt `com.rfworlds.mayhemsurvivors`, versionCode 11.
+Bestehende lokale Statistik wird geladen; aktive Runs werden weiterhin nicht wiederhergestellt.
+
+---
+
+## Historischer Stand (vor 0.7)
+
 # Mayhem Survivors — RF Worlds
 
 Android Alpha **0.6.0** · Godot **4.6.3 stable** · GDScript · GL Compatibility

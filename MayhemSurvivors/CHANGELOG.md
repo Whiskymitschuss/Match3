@@ -1,3 +1,21 @@
+# 0.7.0 Alpha — 2026-11-16
+
+- Eigener Mayhem Market nach Nutzerreferenzen: Karten, Werte, Inventar-Tabs, Details und drei Hilfeseiten.
+- Acht echte Run-Gegenstände mit Vor-/Nachteilen, eigene SVG-Symbole und drei 2-/3-Teile-Sets.
+- Waffenwerkstatt: Werte, direkte kostenpflichtige Upgrades, Entwicklung ab Lv5,
+  Verwerten mit Bestätigung und Schutz der letzten Waffe; keine Duplikatfusion.
+- Set-Verlust sofort neu berechnet, keine wiederholte Bonusanrechnung; Gegenstände in Run-Historie.
+- Versionskompatibles Speichern der Shop-Hilfe, keine Wiederherstellung laufender Runs.
+- Vollbild per expand/Edge-to-edge, Hintergrund über ganzen Viewport, Safe-Area-HUD und Touchsteuerung.
+- Schrottplatz UND Reaktorzone ab Welle 4 verstärkt; erste drei Wellen erhalten.
+- Begrenzte Gruppen, angepasste Belohnungen, Endboss-HP 6.000/7.560.
+- Zusätzliche Layout-/Balance- und Shopprüfungen, Lastproben und gerenderte UI-Abnahme.
+- Android-Version 0.7.0 / Code 11. Interne Zwischenfassung 0.6.1 nicht veröffentlicht.
+
+---
+
+## Historischer Stand (vor 0.7)
+
 # 0.6.0 Alpha — 2026-11-16
 
 - Reaktorspucker ab Welle zwei mit angekündigtem, fixiertem Fernschuss und Abstands-KI.

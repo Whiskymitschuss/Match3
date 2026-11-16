@@ -33,6 +33,10 @@ var camera: Camera2D
 var ui: CanvasLayer
 var panel: Control
 var ui_root: Control
+const DisplayLayout=preload('res://scripts/mobile/display_layout.gd')
+var safe_logical=Rect2(0,0,1920,1080)
+var ui_bleed=Rect2(0,0,1920,1080)
+var pause_button:Button
 var hud: Label
 var boss_hud: Label
 var joystick: Control
@@ -52,6 +56,8 @@ var specialized_combat
 var weapon_manager
 var combat_visuals
 var world_visuals
+var run_items
+var shop_view
 var hp = 120.0
 var max_hp = 120.0
 var speed = 180.0
@@ -71,6 +77,8 @@ var dealt = 0.0
 var run_time = 0.0
 var wave_number = 1
 var remaining = 60.0
+const WaveBalance=preload('res://scripts/gameplay/wave_balance.gd')
+var spawn_cycle=0
 var spawn_clock = 0.0
 var hurt_clock = 0.0
 var orbit_angle = 0.0
@@ -103,6 +111,8 @@ func change_state(next: int):
 
 func _ready():
 	rng.randomize()
+	run_items=preload('res://scripts/economy/run_items.gd').new(self)
+	shop_view=preload('res://scripts/ui/shop_view.gd').new(self)
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
 	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
 	world_visuals = preload('res://scripts/gameplay/world_visuals.gd').new(self)
@@ -147,18 +157,35 @@ func _ready():
 	main_menu()
 
 func update_safe_area():
-	if not ui_root: return
-	var size = get_viewport_rect().size
-	var safe = Rect2(Vector2.ZERO,size)
+	if not ui_root:return
+	var viewport_size=get_viewport_rect().size
+	var screen=Vector2.ZERO
+	var safe=Rect2()
 	if OS.has_feature('android'):
-		var screen = Vector2(DisplayServer.screen_get_size())
-		var area = Rect2(DisplayServer.get_display_safe_area())
-		if screen.x>0 and screen.y>0 and area.size.x>0:
-			safe = Rect2(area.position/screen*size,area.size/screen*size)
-	var factor = minf(safe.size.x/1920.0,safe.size.y/1080.0)
-	ui_root.scale = Vector2.ONE*factor
-	ui_root.position = safe.position+(safe.size-Vector2(1920,1080)*factor)*.5
-	ui_root.size = Vector2(1920,1080)
+		screen=Vector2(DisplayServer.screen_get_size())
+		safe=Rect2(DisplayServer.get_display_safe_area())
+	var layout=DisplayLayout.calculate(viewport_size,screen,safe)
+	ui_root.scale=Vector2.ONE*layout.scale
+	ui_root.position=layout.position
+	ui_root.size=Vector2(1920,1080)
+	safe_logical=layout.safe
+	ui_bleed=layout.bleed
+	var bg=ui_root.get_node_or_null('FullBleedBackdrop')
+	if bg:bg.position=ui_bleed.position;bg.size=ui_bleed.size
+	if is_instance_valid(hud):hud.position=Vector2(75,35)+hud_top_left()
+	if is_instance_valid(boss_hud):boss_hud.position=Vector2(620,150)+Vector2(0,safe_logical.position.y)
+	if is_instance_valid(pause_button):pause_button.position=Vector2(1690,40)+hud_top_right()
+	if is_instance_valid(ability_button):ability_button.position=ability_rect().position
+	stick_id=-1
+	ability_touch_ids.clear()
+	stick_pos=Vector2.ZERO
+	move_input=Vector2.ZERO
+	if camera:camera.zoom=Vector2.ONE*DisplayLayout.camera_zoom(viewport_size)
+func hud_top_left() -> Vector2:return safe_logical.position
+func hud_top_right() -> Vector2:return Vector2(safe_logical.end.x-1920,safe_logical.position.y)
+func ability_rect() -> Rect2:
+	return Rect2(ABILITY_RECT.position+safe_logical.end-Vector2(1920,1080),ABILITY_RECT.size)
+func joystick_rest() -> Vector2:return Vector2(220+safe_logical.position.x,850+safe_logical.end.y-1080)
 
 func default_save():
 	return SaveManager.defaults()
@@ -211,6 +238,7 @@ func clear_ui():
 	for n in ui_root.get_children():
 		ui_root.remove_child(n)
 		n.queue_free()
+	pause_button=null
 	ability_button=null
 	ability_touch_ids.clear()
 	hud = null
@@ -261,7 +289,9 @@ func backdrop(title: String, subtitle: String = ''):
 	clear_ui()
 	var bg = ColorRect.new()
 	bg.color = Color(INK,.95)
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.name='FullBleedBackdrop'
+	bg.position=ui_bleed.position
+	bg.size=ui_bleed.size
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(bg)
 	label_at(title,Vector2(100,75),64,GOLD)
@@ -285,7 +315,7 @@ func main_menu():
 	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
 		item.custom_minimum_size.y=95
 		item.reparent(stack)
-	label_at('0.6.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.7.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1330,530),1,1.05)
 	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
 
@@ -456,6 +486,8 @@ func start_run():
 	dealt = 0
 	run_time = 0
 	wave_number = 1
+	run_items.clear()
+	shop_view.tab='weapons'
 	upgrade_counts.clear()
 	weapons = [{'id':c.weapon,'level':1,'clock':0.0}]
 	player.position = Vector2(1200,800)
@@ -465,7 +497,7 @@ func start_run():
 
 func prepare_wave():
 	change_state(State.WAVE_PREPARATION)
-	backdrop('WELLE %d / 10' % wave_number,arena_definition.boss_name+' ERWACHT' if wave_number == 10 else arena_definition.name+' / Bewege dich, sammle Kristalle und überlebe!')
+	backdrop('WELLE %d / 10' % wave_number,arena_definition.boss_name+' ERWACHT' if wave_number == 10 else arena_definition.name+(' / Verstärkte Gegnergruppen ab Welle 4' if wave_number>=4 else ' / Bewege dich, sammle Kristalle und überlebe!'))
 	label_at('Automatische Waffen • Links unten bewegen\nXP sammeln → Upgrades wählen\nZwischen den Wellen: Ausrüstung kaufen',Vector2(120,350),36)
 	var ability=hero_ability.definition()
 	label_at('RECHTS UNTEN: '+ability.name+' / %.0f s Abklingzeit' % ability.cooldown,Vector2(120,525),30,Color(ability.color))
@@ -482,6 +514,7 @@ func prepare_wave():
 func begin_wave():
 	cleanup()
 	remaining = float(waves[wave_number-1].duration)
+	spawn_cycle=0
 	spawn_clock = .2
 	boss_clock = 3
 	boss_phase = 0
@@ -492,10 +525,10 @@ func begin_wave():
 
 func make_hud():
 	clear_ui()
-	hud = label_at('',Vector2(75,35),30)
-	boss_hud = label_at('',Vector2(620,150),32,Color('#FF4757'))
-	button('Ⅱ',Vector2(1690,40),Vector2(140,100),pause_game)
-	ability_button=button('',ABILITY_RECT.position,ABILITY_RECT.size,func():hero_ability.activate())
+	hud = label_at('',Vector2(75,35)+hud_top_left(),30)
+	boss_hud = label_at('',Vector2(620,150)+Vector2(0,safe_logical.position.y),32,Color('#FF4757'))
+	pause_button=button('Ⅱ',Vector2(1690,40)+hud_top_right(),Vector2(140,100),pause_game)
+	ability_button=button('',ability_rect().position,ABILITY_RECT.size,func():hero_ability.activate())
 	ability_button.set_script(preload('res://scripts/ui/ability_button.gd'))
 	ability_button.game=self
 	ability_button.focus_mode=Control.FOCUS_NONE
@@ -525,14 +558,14 @@ func _input(event):
 			if not event.pressed:ability_touch_ids.erase(event.index)
 			get_viewport().set_input_as_handled()
 			return
-		if state==State.COMBAT and event.pressed and event.index!=stick_id and ABILITY_RECT.has_point(pos):
+		if state==State.COMBAT and event.pressed and event.index!=stick_id and ability_rect().has_point(pos):
 			ability_touch_ids.append(event.index)
 			hero_ability.activate()
 			get_viewport().set_input_as_handled()
 			return
-		if state == State.COMBAT and event.pressed and stick_id == -1 and pos.x < 700 and pos.y > 540:
+		if state == State.COMBAT and event.pressed and stick_id == -1 and safe_logical.has_point(pos) and pos.x < 700+safe_logical.position.x and pos.y > 540+safe_logical.end.y-1080:
 			stick_id = event.index
-			stick_origin = Vector2(clampf(pos.x,130,570),clampf(pos.y,680,930))
+			stick_origin = Vector2(clampf(pos.x,130+safe_logical.position.x,570+safe_logical.position.x),clampf(pos.y,680+safe_logical.end.y-1080,930+safe_logical.end.y-1080))
 			stick_pos = (pos-stick_origin).limit_length(110)
 			get_viewport().set_input_as_handled()
 		elif event.index == stick_id and not event.pressed:
@@ -551,6 +584,9 @@ func _notification(what):
 	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		if state == State.COMBAT: pause_game()
 		save_game()
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN and is_instance_valid(ui_root):
+		if OS.has_feature('android'):DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		call_deferred('update_safe_area')
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		if state == State.COMBAT: pause_game()
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -599,12 +635,13 @@ func _physics_process(delta):
 	orbit_angle += delta*3.5
 	spawn_clock -= delta
 	if spawn_clock <= 0:
-		spawn_clock += float(waves[wave_number-1].interval)
-		if enemies.size()<100:
-			var roll = rng.randf()
-			if is_reactor():
-				var w=waves[wave_number-1]
-				spawn_enemy(enemy_roles.spawn_kind(w,roll))
+		var current_wave=waves[wave_number-1]
+		spawn_clock+=float(current_wave.interval)
+		spawn_cycle+=1
+		for index in range(WaveBalance.spawn_count(current_wave,spawn_cycle)):
+			if enemies.size()>=100:break
+			var roll=rng.randf()
+			if is_reactor():spawn_enemy(enemy_roles.spawn_kind(current_wave,roll))
 			else:spawn_enemy('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
 	arena_hazards.update(delta)
 	if state != State.COMBAT:return
@@ -633,8 +670,9 @@ func spawn_enemy(kind: String):
 	var pos = (player.position+Vector2.from_angle(angle)*rng.randf_range(650,850)).clamp(Vector2(70,70),Vector2(2330,1530))
 	if pos.distance_to(player.position)<450:
 		pos = Vector2(2300 if player.position.x<1200 else 100,1500 if player.position.y<800 else 100)
-	var scaling = 1.0 if kind == 'boss' else 1.0+(wave_number-1)*.09
-	enemies.append({'kind':kind,'pos':pos,'hp':float(d.hp)*scaling,'max_hp':float(d.hp)*scaling,'speed':float(d.speed),'damage':float(d.damage),'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0})
+	var current_wave=waves[wave_number-1]
+	var values=WaveBalance.stats(d,current_wave,wave_number,kind=='boss')
+	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,kind=='boss'),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,kind=='boss')})
 	enemy_roles.initialize(enemies.back())
 	return true
 
@@ -753,11 +791,11 @@ func damage_enemy(e: Dictionary, power: float):
 		enemy_roles.removed(e)
 		enemies.erase(e)
 		kills += 1
-		var reward = int(enemy_definition(kind).coins)
+		var reward = int(e.get('coin_reward',enemy_definition(kind).coins))
 		coins += reward
 		vfx.coin(pos,reward)
 		earned += reward
-		loot.append({'pos':pos,'xp':int(enemy_definition(kind).xp)})
+		loot.append({'pos':pos,'xp':int(e.get('xp_reward',enemy_definition(kind).xp))})
 		sound('death')
 		sound('coin')
 		if kind == 'boss': finish(true)
@@ -859,6 +897,10 @@ func generate_offers():
 			pool.append({'type':'weapon','id':id,'name':weapon_data[id].name,'description':'Neue Waffe' if existing==0 else 'Waffenlevel %d → %d' % [existing,existing+1],'price':int((18+wave_number*5)*(1+existing*.3)),'rarity':'SELTEN' if id in ['arc','orbit'] else 'STANDARD'})
 	for u in upgrades:
 		if valid_upgrade(u[0]): pool.append({'type':'upgrade','id':u[0],'name':u[2],'description':u[3],'price':12+wave_number*4,'rarity':'STANDARD'})
+	for id in run_items.data:
+		if run_items.valid(id):
+			var item=run_items.data[id]
+			pool.append({'type':'item','id':id,'name':item.name,'description':item.description,'price':int(item.price)+wave_number*4,'rarity':item.rarity})
 	pool.shuffle()
 	for i in range(mini(4,pool.size())): offers.append(pool[i])
 
@@ -888,19 +930,7 @@ func weapon_icon(id: String, pos: Vector2, size: Vector2):
 
 func show_shop():
 	if not pending_specialization().is_empty():specialization_screen();return
-	backdrop('MAYHEM MARKET','%s • %d Coins • %s' % [characters[selected].name,coins,class_weapon_summary()])
-	for i in range(offers.size()):
-		var o = offers[i]
-		var x = 85+i*455
-		if o.type=='weapon': weapon_icon(o.id,Vector2(x+270,248),Vector2(130,108))
-		label_at(('⚒ ' if o.type=='weapon' else '✦ ')+o.rarity,Vector2(x,300),25,TEAL)
-		label_at(o.name,Vector2(x,365),29,GOLD)
-		label_at(o.description,Vector2(x,425),22)
-		var b = button('GEKAUFT' if o.get('sold',false) else '%d ●  KAUFEN' % o.price,Vector2(x,555),Vector2(420,110),func(): buy_offer(i))
-		b.disabled = o.get('sold',false) or coins<o.price
-	button('REROLL • '+('GRATIS' if rerolls==0 else '%d ●' % (5+rerolls*3)),Vector2(100,790),Vector2(650,100),reroll_shop)
-	button('NÄCHSTE WELLE →',Vector2(1050,790),Vector2(650,100),next_shop_wave,Color('#147f81'))
-	label_at('Ausrüstung: '+weapon_summary(),Vector2(100,940),25)
+	shop_view.show()
 
 func weapon_summary() -> String:
 	var text = ''
@@ -919,9 +949,12 @@ func buy_offer(index: int) -> bool:
 		else:
 			for w in weapons:
 				if w.id==o.id: w.level+=1
+	elif o.type=='item':
+		if not run_items.add(o.id):return false
 	else:
 		if not valid_upgrade(o.id): return false
 		apply_upgrade(o.id)
+	run_items.sync()
 	coins -= int(o.price)
 	o.sold = true
 	sound('buy')
@@ -947,7 +980,7 @@ func finish(victory: bool):
 	saved.kills+=kills
 	saved.time+=run_time
 	saved.highest_wave=maxi(int(saved.highest_wave),wave_number)
-	var improvements=RunRecords.add_run(saved,{'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons})
+	var improvements=RunRecords.add_run(saved,{'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned})
 	var unlocked=Arenas.sync(saved)
 	save_game()
 	cleanup()
@@ -961,6 +994,7 @@ func finish(victory: bool):
 		ui_root.add_child(celebration)
 	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
 	label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
+	if not run_items.owned.is_empty():label_at('GEGENSTÄNDE: '+', '.join(run_items.owned.map(func(id):return run_items.data[id].name)),Vector2(110,585),20,TEAL)
 	if not improvements.is_empty(): label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
 	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)

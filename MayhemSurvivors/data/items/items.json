@@ -1,0 +1,98 @@
+{
+  "grip": {
+    "name": "WUCHTGRIFF",
+    "family": "assault",
+    "price": 22,
+    "rarity": "SELTEN",
+    "mods": {
+      "damage": 0.1,
+      "speed": -0.04
+    },
+    "description": "+10 % Schaden\n-4 % Bewegungstempo",
+    "color": "#FF9F1C"
+  },
+  "plate": {
+    "name": "PANZERPLATTE",
+    "family": "assault",
+    "price": 24,
+    "rarity": "STANDARD",
+    "mods": {
+      "armor": 2,
+      "speed": -0.05
+    },
+    "description": "+2 Rüstung\n-5 % Bewegungstempo",
+    "color": "#FF9F1C"
+  },
+  "battery": {
+    "name": "ÜBERLASTZELLE",
+    "family": "flux",
+    "price": 24,
+    "rarity": "SELTEN",
+    "mods": {
+      "attack": 0.08,
+      "hp": -10
+    },
+    "description": "+8 % Angriffstempo\n-10 maximale HP",
+    "color": "#00D9D0"
+  },
+  "coolant": {
+    "name": "IONENKÜHLER",
+    "family": "flux",
+    "price": 20,
+    "rarity": "STANDARD",
+    "mods": {
+      "projectile": 0.18,
+      "damage": -0.04
+    },
+    "description": "+18 % Projektiltempo\n-4 % Schaden",
+    "color": "#00D9D0"
+  },
+  "boots": {
+    "name": "PHASENSTIEFEL",
+    "family": "shadow",
+    "price": 24,
+    "rarity": "SELTEN",
+    "mods": {
+      "speed": 0.1,
+      "hp": -10
+    },
+    "description": "+10 % Bewegungstempo\n-10 maximale HP",
+    "color": "#A55EEA"
+  },
+  "lens": {
+    "name": "PRÄZISIONSLINSE",
+    "family": "shadow",
+    "price": 26,
+    "rarity": "SELTEN",
+    "mods": {
+      "crit": 0.05,
+      "armor": -1
+    },
+    "description": "+5 % Krit-Chance\n-1 Rüstung",
+    "color": "#A55EEA"
+  },
+  "magnet": {
+    "name": "SCHROTTMAGNET",
+    "family": "neutral",
+    "price": 20,
+    "rarity": "STANDARD",
+    "mods": {
+      "magnet": 0.25,
+      "attack": -0.04
+    },
+    "description": "+25 % Sammelradius\n-4 % Angriffstempo",
+    "color": "#FFD166"
+  },
+  "pack": {
+    "name": "VITALPAKET",
+    "family": "neutral",
+    "price": 24,
+    "rarity": "STANDARD",
+    "mods": {
+      "hp": 20,
+      "damage": -0.04
+    },
+    "description": "+20 maximale/aktuelle HP\n-4 % Schaden",
+    "color": "#FFD166"
+  }
+}

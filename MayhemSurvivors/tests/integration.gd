@@ -155,17 +155,17 @@ func run():
 	g.begin_wave()
 	var touch=InputEventScreenTouch.new()
 	touch.index=3
-	touch.position=Vector2(220,850)
+	touch.position=g.ui_root.get_global_transform()*g.joystick_rest()
 	touch.pressed=true
 	g._input(touch)
 	var drag=InputEventScreenDrag.new()
 	drag.index=3
-	drag.position=Vector2(330,850)
+	drag.position=g.ui_root.get_global_transform()*(g.joystick_rest()+Vector2(110,0))
 	g._input(drag)
 	check(g.stick_id==3 and g.move_input.x>.9,'Touch joystick captures finger and analog drag')
 	var extra=InputEventScreenTouch.new()
 	extra.index=4
-	extra.position=Vector2(400,850)
+	extra.position=g.ui_root.get_global_transform()*(g.joystick_rest()+Vector2(180,0))
 	extra.pressed=true
 	g._input(extra)
 	check(g.stick_id==3,'Second finger does not steal joystick')
@@ -185,7 +185,7 @@ func run():
 	g.start_run()
 	g.wave_number=10
 	g.begin_wave()
-	check(g.enemies.size()==1 and g.enemies[0].hp==2500,'Boss spawn')
+	check(g.enemies.size()==1 and g.enemies[0].hp==6000,'Strengthened classic boss spawn')
 	var boss_pos=g.enemies[0].pos
 	g.update_enemies(.016)
 	check(g.enemies[0].pos.distance_to(boss_pos)<2,'Boss starts without unannounced dash')

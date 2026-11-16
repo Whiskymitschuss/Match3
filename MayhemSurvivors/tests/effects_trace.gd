@@ -23,6 +23,8 @@ func run():
 		g.arena_id=scene.arena
 		g.start_run()
 		g.rng.seed=5100+index
+		# Freeze historical wave rules only in this regression harness, never in the app.
+		g.waves=JSON.parse_string(FileAccess.get_file_as_string('res://tests/fixtures/classic_waves_v0.6.json'))
 		g.wave_number=10 if scene.boss else 9
 		g.begin_wave()
 		g.hp=99999
@@ -54,7 +56,7 @@ func run():
 	else:
 		var reference=JSON.parse_string(FileAccess.get_file_as_string('res://tests/fixtures/effects_v0.5_trace.json')).filter(func(entry):return entry.scenario<13)
 		ok=same(trace,reference)
-		print('EFFECTS REGRESSION ', 'PASS' if ok else 'FAIL', ': ',trace.size(),' checkpoints / 8700 steps / all 10 specializations, abilities and classic boss; SCRAPYARD ONLY (reactor intentionally extended in 0.6); quality=',g.saved.settings.quality)
+		print('EFFECTS REGRESSION ', 'PASS' if ok else 'FAIL', ': ',trace.size(),' checkpoints / 8700 steps / all 10 specializations, abilities and classic boss; LEGACY WAVE RULES IN TEST HARNESS (both arenas rebalanced in 0.6.1); quality=',g.saved.settings.quality)
 	g.queue_free()
 	await process_frame
 	quit(0 if ok else 1)

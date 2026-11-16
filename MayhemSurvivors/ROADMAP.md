@@ -1,3 +1,15 @@
+# Stand 0.7.0
+
+Shop-Ausbau, Vollbild und schwerere Spätwellen für beide Arenen implementiert.
+Nächster Schritt ist eine gemeinsame Android-Abnahme: sichere Bildschirmränder,
+Shop-Lesbarkeit/-Bedienung, Schwierigkeit ab Welle vier und Item-/Set-Kombinationen.
+Vor weiterem Inhalt konkrete Runs mit Charakter, Arena, Endwelle und Build auswerten.
+FPS/Temperatur auf echter Hardware bleiben offen.
+
+---
+
+## Historischer Stand (vor 0.7)
+
 # Stand 0.6.0
 
 Taktische Gegnerrollen in der Reaktorzone umgesetzt: angekündigter Fernkämpfer ab

@@ -60,7 +60,7 @@ func run():
 	g.wave_number=10
 	g.begin_wave()
 	var boss=g.enemies[0]
-	check(boss.max_hp==4200 and boss.speed==62,'Reactor boss uses its own stats')
+	check(boss.max_hp==7560 and boss.speed==62,'Reactor boss uses strengthened HP and unchanged movement')
 	boss.pos=Vector2(1500,800)
 	g.reactor_guardian.update(3.01)
 	check(g.reactor_guardian.stage=='cross' and g.arena_hazards.items.size()==2,'Cross laser announces both actual damage lanes')
@@ -124,7 +124,7 @@ func run():
 	check(g.arena_hazards.items.is_empty(),'Classic arena never creates reactor hazards')
 	g.wave_number=10
 	g.begin_wave()
-	check(g.enemies[0].max_hp==2500,'Classic Overlord keeps 2500 HP')
+	check(g.enemies[0].max_hp==6000,'Classic Overlord receives the requested stronger boss HP')
 	g.main_menu()
 	for arena in ['all','scrapyard','reactor']:
 		g.statistics(1,arena)
