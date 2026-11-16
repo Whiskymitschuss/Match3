@@ -1,3 +1,56 @@
+# Mayhem Survivors 0.13.0 Alpha — RAVOX
+
+RAVOX – DER WUTTEUFEL ist ein neuer Gegner, kein auswählbarer Held.
+Eigene Grafik nach RF-Worlds-Nutzervorlage, Zermalmer als schwere Faustpanzer.
+140 Basis-HP, Tempo 220, 12 Basis-Kontaktschaden. Bestehende Wellen-Skalierung gilt.
+
+## Verhalten / Gegenmittel
+
+In beiden Arenen ab Welle 5 bis einschließlich Welle 9. Zehn Prozent der bisherigen
+Spawn-Rolls ersetzen einen normalen Spawn; keine zusätzliche Spawnquelle und kein
+zusätzlicher RNG-Wurf. Höchstens zwei lebende Ravox, vier Erzeugungen pro Welle.
+Ist das Kontingent voll, erscheint der ursprüngliche normale Gegner. Globales Limit
+100 unverändert. Wellen 1–4 und der Bosskampf bekommen keine Ravox-Spawns.
+
+Verfolgt den Spieler, beginnt nach zwei sichtbaren Sekunden mit dem Angriffsmuster:
+
+1. Steht 1,25 s still und zeigt die vollständige orange Sturmbahn. Ziel und Endpunkt
+   bleiben fixiert. Seitlich ausweichen; Ravox steuert nach Beginn nicht nach.
+2. Stürmt mit Tempo 500 höchstens 360 Einheiten. Zermalmer: +15 % gegenüber seinem
+   aktuellen Kontaktschaden, vor Rüstung/Unverwundbarkeit. Kollisionsprüfung über die
+   tatsächlich zurückgelegte Strecke; keine Treffer voraus bei Verlangsamung.
+3. Erholt sich 1,1 s, danach Verfolgung und 3,8 s Cooldown vor erneutem Anlauf.
+
+Nur ein Ravox darf gleichzeitig vorwarnen/stürmen. Angriffe beginnen nur sichtbar;
+unsichtbar gewordene Anläufe werden abgebrochen. Schockwelle, Twinkles Seife und Tornado
+unterbrechen. Sparky verlangsamt auch den Sturm. Shades Unverwundbarkeit gilt normal.
+Dauerbetäubung wird weiterhin durch Twinkles bestehende 3-s-Resistenz verhindert.
+
+Eigene Treffer-/Todesdarstellung, Name und HP-Balken, Warn-/Sturm-Sounds und eigene
+Beute (18 Basis-XP / 8 Basis-Coins, bestehende Wellenmultiplikatoren). Doppelte Tode
+und Belohnungen bleiben ausgeschlossen. Pause/Level-up/Shop stoppen das Gameplay;
+Aufräumen entfernt Ravox samt Warnung, neuer Run setzt die Spawnkontingente zurück.
+Keine neue Speicherung nötig, alle bisherigen Charaktere/Meisterschaften kompatibel.
+
+## Prüfen und spielen
+
+Android 7+, ARM64, offline, Landscape. Code 17 / Version 0.13.0. Als Update installieren.
+Godot 4.6.3 stable: project.godot importieren und starten, keine Generatoren nötig.
+`python3 tools/run_tests.py --traces`: 18 Suites / 1.216 Assertions und beide Traces.
+Ravox-Suite: 52 Checks. Lastprobe: alle vier Helden × zwei Arenen, 28.800 Schritte,
+maximal 100 Gegner / zwei Ravox / vier pro Welle, keine überlappenden Ravox-Angriffe.
+Künstliche HP und Pilot; keine Android-FPS- oder menschliche Balance-Abnahme.
+
+Historische Effekt-Fixture deaktiviert neue 0.13-Spawns ausdrücklich; ihre zehn alten
+Entwicklungen und Regeln bleiben vergleichbar. Neue Begegnungen separat getestet.
+Quell-ZIP enthält sämtliche Laufzeitassets/Szenen/Skripte/Tests/Berichte und aktuelle
+Ravox-/Twinkle-/Meisterschaft-/Encounter-Galerien. Ältere reine Screenshots im Repository.
+Geräteabnahme: orange Bahn/Lesbarkeit, Ausweichen/Unterbrechen und Schwierigkeit ab Welle 5.
+
+---
+
+## Historischer Stand vor 0.13
+
 # Mayhem Survivors 0.12.0 Alpha — TWINKLE
 
 Vierte spielbare Heldin: TWINKLE – DIE REINIGUNGSQUEEN.

@@ -44,6 +44,7 @@ func apply_stun(e:Dictionary,duration:float):
 	if e.kind=='boss' or float(e.get('suds_resist',0))>0:return
 	e.suds_stun=duration;e.suds_resist=float(game.weapon_data.mop.stun_resistance)
 	game.encounters.interrupt_elite(e)
+	game.ravox.interrupt(e)
 func stunned(e:Dictionary,dt:float) -> bool:
 	if not active():return false
 	e.suds_resist=maxf(0,float(e.get('suds_resist',0))-dt)
@@ -79,6 +80,7 @@ func update(dt:float):
 			dose+=float(game.hero_ability.definition().damage)*game.damage_mult*area_multiplier()*duration
 			if e.kind!='boss':
 				game.encounters.interrupt_elite(e)
+				game.ravox.interrupt(e)
 				var direction:Vector2=(e.pos-game.player.position).normalized()
 				if direction==Vector2.ZERO:direction=Vector2.RIGHT
 				e.pos=(e.pos+direction*float(game.hero_ability.definition().knockback)*duration).clamp(Vector2(35,35),Vector2(2365,1565))

@@ -1,3 +1,16 @@
+# 0.13.0 Alpha — 2026-11-16
+
+- Ravox als seltener Gegner für beide Arenen, Wellen 5–9, Basis 140 HP / Tempo 220.
+- Eigene Grafik, Zermalmer-Sturm mit +15 % Schaden, fester Warnbahn und Erholung.
+- Maximal zwei aktive / vier pro Welle; ersetzt normale Spawns im bisherigen Budget.
+- Seife/Schockwelle/Tornado unterbrechen; Slow und Unverwundbarkeit berücksichtigt.
+- Eigene Warn-/Sturm-Sounds, Name/HP/Treffer/Tod/XP/Coins und Vorbereitungshinweis.
+- 52 neue Ravox-Prüfungen, 1.216 Assertions insgesamt; beide Regressionstraces grün.
+
+---
+
+## Historischer Stand vor 0.13
+
 # 0.12.0 Alpha — 2026-11-16
 
 - TWINKLE als vierte, sofort spielbare Heldin mit eigenem Portrait und armlosen Rig.

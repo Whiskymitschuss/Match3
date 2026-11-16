@@ -1,3 +1,15 @@
+# Ergänzungen 0.13
+
+Ravox-Name, Wutteufel-Konzept, Werte/Referenz und Zermalmer von Nutzer / RF Worlds.
+Eigene generierte transparente Gegnerillustration, keine Übernahme fremder Spieleassets.
+Orange Sturmbahn/Progressanzeige und Animationen mit Godot draw_*-Funktionen.
+Zwei originale deterministisch synthetisierte Sounds; tools/generate_ravox_audio.py.
+Keine neuen externen oder kostenpflichtigen Abhängigkeiten.
+
+---
+
+## Historischer Stand vor 0.13
+
 # Ergänzungen 0.12
 
 TWINKLE: Charakterkonzept, Name, Mechanik und Referenz vom Nutzer / RF Worlds.

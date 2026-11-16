@@ -1,0 +1,14 @@
+{
+  "ravox_warning": {
+    "rate": 44100,
+    "frames": 28665,
+    "peak": 9493,
+    "clipped": false
+  },
+  "ravox_charge": {
+    "rate": 44100,
+    "frames": 14994,
+    "peak": 15200,
+    "clipped": false
+  }
+}

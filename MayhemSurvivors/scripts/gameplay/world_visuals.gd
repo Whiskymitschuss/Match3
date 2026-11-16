@@ -1,5 +1,6 @@
 extends RefCounted
 # Visual-only world renderer. It never changes enemies, collisions or gameplay RNG.
+const RAVOX=preload('res://assets/enemies/ravox.png')
 const FLOOR = preload('res://assets/environments/scrapyard.png')
 const REACTOR_FLOOR=preload('res://assets/environments/reactor.png')
 const GUARDIAN=preload('res://assets/enemies/reactor_guardian.png')
@@ -7,7 +8,7 @@ const GUARDIAN_REGION=Rect2(0,70,1254,1168)
 const ROLE_ART=preload('res://assets/enemies/reactor_roles.png')
 const ELITES=preload('res://assets/enemies/elites.png')
 const ENEMIES = preload('res://assets/enemies/enemies_atlas.png')
-const REGIONS = {'grunt':Rect2(132,79,377,516),'runner':Rect2(738,60,383,536),'tank':Rect2(26,675,576,566),'boss':Rect2(636,633,571,611),'spitter':Rect2(32,90,704,870),'drone':Rect2(792,72,720,824)}
+const REGIONS = {'ravox':Rect2(0,0,1312,1199),'grunt':Rect2(132,79,377,516),'runner':Rect2(738,60,383,536),'tank':Rect2(26,675,576,566),'boss':Rect2(636,633,571,611),'spitter':Rect2(32,90,704,870),'drone':Rect2(792,72,720,824)}
 var game: Node2D
 var deaths: Array = []
 func _init(owner_game: Node2D):game=owner_game
@@ -25,7 +26,7 @@ static func region(kind: String) -> Rect2:
 	return REGIONS.get(kind,Rect2(0,0,1,1))
 static func dimensions(radius: float, kind: String = 'grunt') -> Vector2:
 	var source=region(kind).size
-	var width=radius*(2.2 if kind in ['grunt','runner'] else 2.6)
+	var width=radius*(3.4 if kind=='ravox' else (2.2 if kind in ['grunt','runner'] else 2.6))
 	return Vector2(width,width*source.y/source.x)
 func draw_arena():
 	game.draw_texture_rect(REACTOR_FLOOR if game.is_reactor() else FLOOR,Rect2(0,0,2400,1600),false)
@@ -46,9 +47,9 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	game.draw_circle(Vector2.ZERO,radius*.9,Color(0,0,0,.28))
 	game.draw_set_transform(pos,stride*.018,Vector2(face,1))
 	var tint=Color(2.2,2.2,2.2) if float(enemy.get('hit',0))>0 else Color.WHITE
-	game.draw_texture_rect_region(ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if enemy.kind in ['spitter','drone'] else ENEMIES)),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
+	game.draw_texture_rect_region(RAVOX if enemy.kind=='ravox' else (ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if enemy.kind in ['spitter','drone'] else ENEMIES))),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
 	game.draw_set_transform(Vector2.ZERO)
-	if enemy.kind!='boss' and (elite or enemy.get('hp',1)<enemy.get('max_hp',1)):
+	if enemy.kind!='boss' and (elite or enemy.kind=='ravox' or enemy.get('hp',1)<enemy.get('max_hp',1)):
 		var bar=pos+Vector2(-radius,-size.y*.66-10)
 		var ratio=maxf(0,enemy.hp/enemy.max_hp)
 		game.draw_line(bar,bar+Vector2(radius*2,0),Color('#101323'),7,true)
@@ -63,7 +64,7 @@ func draw_deaths():
 		var base=Vector2(e.radius*2.8,e.radius*2.8*source.size.y/source.size.x) if guardian else (Vector2(e.radius*3.0,e.radius*3.0*source.size.y/source.size.x) if elite else dimensions(e.radius,e.kind))
 		var size=base*Vector2(1+progress*.12,1-progress*.6)
 		game.draw_set_transform(e.pos,0,Vector2(e.face,1))
-		game.draw_texture_rect_region(ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if e.kind in ['spitter','drone'] else ENEMIES)),Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
+		game.draw_texture_rect_region(RAVOX if e.kind=='ravox' else (ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if e.kind in ['spitter','drone'] else ENEMIES))),Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
 		game.draw_set_transform(Vector2.ZERO)
 		var color=Color(game.enemy_definition(e.kind).color)
 		for i in range(5):

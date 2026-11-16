@@ -34,5 +34,14 @@
     "radius": 78,
     "xp": 100,
     "coins": 100
+  },
+  "ravox": {
+    "hp": 140,
+    "speed": 220,
+    "damage": 12,
+    "color": "#FF653B",
+    "radius": 32,
+    "xp": 18,
+    "coins": 8
   }
 }

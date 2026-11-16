@@ -1,3 +1,14 @@
+# Stand nach 0.13
+
+Ravox in beide Arenen integriert und technisch geprüft.
+Nächster fachlicher Schritt: Android-Feedback zu Welle 5–9, Ausweichen und Unterbrechung;
+zusammen mit Twinkles Balance bewerten. Veteran/Mayhem-Schwierigkeiten und neue
+Arena-Ereignisse bleiben spätere Schritte. Keine Abnahme auf echter Hardware behauptet.
+
+---
+
+## Historischer Stand vor 0.13
+
 # Stand nach 0.12
 
 TWINKLE vollständig in den aktuellen Spielablauf integriert.

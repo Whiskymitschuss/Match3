@@ -1,3 +1,32 @@
+# Testbericht 0.13.0 — 2026-11-16
+
+Tatsächlich ausgeführt mit Godot 4.6.3 stable: 18 Suites / 1.216 Assertions / 0 Fehler.
+52 Ravox-Checks: beide Arenen und alle Wellen, Basis-/skalierte Werte, Chance/Fallback,
+aktive Caps und Wellenkontingent über Tod/Cleanup/Neustart, volle Vorwarnung auch bei
+langem Frame, fixes Ziel, Ausweichen, Swept-Kollision samt exaktem +15-%-Schaden,
+Verlangsamung gegen vorausberechnete Falschtreffer, Knockback, reale Seife/Schockwelle/
+Tornado/Schattenschritt, Pause/Level-up/Shop, sichtbare Warnung/Abbruch außerhalb der
+Kamera, Tod/Beute genau einmal, korrektes Todessprite, Game Over und Neustart.
+
+Beide historischen Traces bestanden (Welt 33 Punkte/3.600 Schritte, Effekt 87/8.700).
+Effekt-Fixture deaktiviert ausdrücklich neue Ravox-Spawns; die aktuelle 52-Check-Suite
+und Lastprobe prüfen diese. Der neue spätere Wellenmix ist absichtlich verändert.
+
+Lastprobe in ravox_soak.gd: 28.800 feste Schritte (~480 simulierte Sekunden), vier Helden
+in beiden Arenen; alle drei Qualitätsstufen enthalten. Künstliche HP / vorgegebener Pilot.
+Maximal 100 Gegner, zwei Ravox gleichzeitig, vier Ravox pro Welle, ein Sturm/Windup zur
+Zeit. Keine NaN-Positionen, keine Caps-Verletzung. Keine Android-FPS-Aussage oder
+menschliche Balanceabnahme. Drei native GL-Compatibility-Vorgabeszenen visuell geprüft:
+Schrottplatz-Warnbahn, Reaktor-Warnbahn und Seifenunterbrechung. Keine Android-Screenshots.
+Zwei selbst synthetisierte WAVs auf gültiges Mono-44,1-kHz-Format/Signal/Clipping geprüft.
+
+Während Umsetzung Konstanten-Parserfehler und unpassende Kameratestposition behoben;
+abschließende Import-/Test-/Galerielogs fehlerfrei. Geräte-/Touch-/Schwierigkeitsabnahme offen.
+
+---
+
+## Historischer Stand vor 0.13
+
 # Testbericht 0.12.0 — 2026-11-16
 
 Godot 4.6.3 stable: 17 tatsächlich ausgeführte Suites / 1.164 Assertions, 0 Fehler.

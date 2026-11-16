@@ -10,6 +10,7 @@ var arena_id='scrapyard'
 var arena_definition=Arenas.definition('scrapyard')
 var arena_hazards
 var reactor_guardian
+var ravox
 var enemy_roles
 var encounters
 var twinkle
@@ -130,6 +131,7 @@ func _ready():
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
 	vfx=preload('res://scripts/combat/mayhem_vfx.gd').new(self)
+	ravox=preload('res://scripts/enemies/ravox_controller.gd').new(self)
 	enemy_roles=preload('res://scripts/enemies/reactor_roles.gd').new(self)
 	encounters=preload('res://scripts/gameplay/encounter_director.gd').new(self)
 	load_save()
@@ -480,6 +482,7 @@ func start_run():
 	wave_number = 1
 	run_items.clear()
 	encounters.reset_run()
+	ravox.reset_run()
 	shop_view.tab='weapons'
 	upgrade_counts.clear()
 	weapons = [{'id':c.weapon,'level':1,'clock':0.0}]
@@ -505,6 +508,7 @@ func prepare_wave():
 	if wave_number in [4,6,8,9]:
 		label_at('ELITE: '+('IMPULSWÄCHTER / Ring meiden oder grüne Öffnung nutzen' if is_reactor() else 'SCHROTTBRECHER / Sturmrichtung verlassen / Schockwelle unterbricht'),Vector2(120,850),25,GOLD)
 		label_at('Elite besiegen: zusätzliche Beutewahl im nächsten Shop.',Vector2(120,900),24,TEAL)
+	if wave_number>=5 and wave_number<=9:label_at('RAVOX / Orange Sturmbahn verlassen / Seife und Schockwelle unterbrechen',Vector2(120,950),24,Color('#FFAA55'))
 	if wave_number==10:label_at('Bossphasen bei 65 % und 30 % HP / Neue Angriffe werden gold markiert',Vector2(120,850),25,GOLD)
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 
@@ -639,8 +643,8 @@ func _physics_process(delta):
 		for index in range(WaveBalance.spawn_count(current_wave,spawn_cycle)):
 			if enemies.size()>=100:break
 			var roll=rng.randf()
-			if is_reactor():spawn_enemy(enemy_roles.spawn_kind(current_wave,roll))
-			else:spawn_enemy('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
+			var kind=enemy_roles.spawn_kind(current_wave,roll) if is_reactor() else ('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
+			spawn_enemy(ravox.select_kind(kind,roll))
 	encounters.update(delta)
 	if state!=State.COMBAT:return
 	arena_hazards.update(delta)
@@ -666,6 +670,7 @@ func _physics_process(delta):
 	refresh_hud()
 
 func spawn_enemy(kind: String):
+	if kind=='ravox' and not ravox.allowed():return false
 	if enemy_roles.data.has(kind) and enemy_roles.count(kind)>=int(enemy_roles.data[kind].cap):return false
 	var d = enemy_definition(kind)
 	var angle = rng.randf()*TAU
@@ -676,6 +681,7 @@ func spawn_enemy(kind: String):
 	var values=WaveBalance.stats(d,current_wave,wave_number,kind=='boss')
 	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,kind=='boss'),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,kind=='boss')})
 	enemy_roles.initialize(enemies.back())
+	ravox.initialize(enemies.back())
 	encounters.promote(enemies.back())
 	return true
 
@@ -703,6 +709,7 @@ func update_enemies(dt: float):
 		if twinkle.stunned(e,dt):continue
 		var dir: Vector2 = (player.position-e.pos).normalized()
 		var velocity: Vector2 = dir*e.speed
+		if e.kind=='ravox':velocity=ravox.velocity(e,velocity,dt)
 		if e.kind in ['spitter','drone']:velocity=enemy_roles.velocity(e,velocity,dt)
 		if e.has('elite'):velocity=encounters.movement(e,velocity,dt)
 		if state!=State.COMBAT:return
@@ -718,6 +725,7 @@ func update_enemies(dt: float):
 			e.ability_slow_time=maxf(0,e.ability_slow_time-dt)
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
+			if e.kind=='ravox' and e.ravox_stage in ['windup','dash','recovery']:break
 			if e.has('elite') and e.elite_stage in ['windup','dash']:break
 			if e.kind=='boss' and encounters.boss_lock:break
 			if e.kind=='spitter' and e.get('windup',0)>0:break
@@ -729,9 +737,11 @@ func update_enemies(dt: float):
 				velocity += offset/distance*45
 		var previous_pos:Vector2=e.pos
 		e.pos = (e.pos+velocity*dt).clamp(Vector2(35,35),Vector2(2365,1565))
+		if e.kind=='ravox':ravox.after_move(e,previous_pos,e.pos)
+		if state!=State.COMBAT:return
 		if e.has('elite'):encounters.after_move(e,previous_pos,e.pos)
 		if state!=State.COMBAT:return
-		if e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0: hurt(e.damage)
+		if not (e.kind=='ravox' and e.ravox_stage=='dash') and e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0: hurt(e.damage)
 		if state != State.COMBAT: return
 
 func hurt(amount: float):
@@ -1056,6 +1066,7 @@ func _draw():
 			var kind=['grunt','runner','tank'][i%3]
 			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
+	ravox.draw_floor()
 	twinkle.draw_floor()
 	vfx.draw_floor()
 	encounters.draw_floor()
@@ -1076,6 +1087,7 @@ func _draw():
 	for e in enemies:
 		world_visuals.draw_enemy(e)
 		encounters.draw_elite(e)
+		ravox.draw_name(e)
 	combat_visuals.draw_weapons(true)
 	draw_player_character()
 	combat_visuals.draw_weapons(false)

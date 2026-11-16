@@ -1,3 +1,24 @@
+# 0.13.0 — RAVOX / Implementierung abgeschlossen
+
+Branch feature/ravox-v0.13. Gegner vollständig integriert: eigene Grafik, Verhalten,
+Zermalmer-Sturm, Warnbahn, Sounds, HP/Name, Treffer/Tod/Beute und Vorbereitungshinweis.
+Wellen 5–9 beider Arenen; maximal zwei aktiv / vier pro Welle, bestehendes Spawnbudget.
+Seife, Schockwelle, Tornado, Slow, Unverwundbarkeit, Pause und Neustart geprüft.
+
+1.216 Assertions / 18 Suites und beide historischen Traces grün. Anschließend ZIP
+frisch ohne Importcache entpackt/importiert und dieselben Prüfungen erneut bestanden.
+Lastprobe: 28.800 Schritte, vier Helden × beide Arenen, maximal 100 Gegner / zwei Ravox
+und ein Ravox-Windup/Sturm zur Zeit. Native Galerie visuell geprüft. APK exportiert,
+signiert, Alignment/ARM64/Manifest/Payload geprüft. GitHub-Downloadprüfung bei Veröffentlichung.
+Keine offenen Implementierungsstubs im freigegebenen Ravox-Umfang.
+Nächste fachliche Abnahme: Android-Update und menschlicher Test von Welle 5–9,
+Warnbahn/Ausweichen/Unterbrechen, zusammen mit Twinkle-Balancing. Keine Geräte-FPS behauptet.
+
+
+---
+
+## Historischer Stand vor 0.13
+
 # 0.12.0 — TWINKLE / aktuelle Umsetzung
 
 Branch feature/twinkle-v0.12. Vierte Heldin tatsächlich implementiert: eigene Grafik,

@@ -1,26 +1,24 @@
-# RF Worlds — Mayhem Survivors 0.12.0 / TWINKLE
+# RF Worlds — Mayhem Survivors 0.13.0 / RAVOX
 
-Die Reinigungsqueen ist als vierte Heldin spielbar: 100 HP, Tempo 210, nur Wischmopp.
+Ravox – der Wutteufel – als neuer Gegner in beiden Arenen ab Welle 5.
 
-- Halbkreis-Moppattacke und +15 % Flächenschaden.
-- Seifenbetäubung, Giftpfützen und 2 HP Heilung bei jedem 20. Kill.
-- Fünf Sekunden TWINKLE TORNADO, 45 Sekunden Cooldown.
-- Eigene Grafik, Mopp/Sprühflasche, Sounds, Effekte und zwei Waffenentwicklungen.
-- Vollständig in Shop, Statistik, Meisterschaften und lokale Speicherung eingebunden.
+- 140 Basis-HP, Tempo 220, Zermalmer und +15 % Sturmschaden.
+- Orange Warnbahn, fixes Ziel, seitlich ausweichen und Erholung nutzen.
+- Mit Twinkles Seife/Tornado oder Bruisers Schockwelle unterbrechen.
+- Maximal zwei gleichzeitig / vier pro Welle; ersetzt normale Spawns.
+- Eigene Grafik, Animation, Sounds, HP-Anzeige und Beute.
 
-![Twinkle — native Engine-Vorgabeszene](MayhemSurvivors/tests/twinkle_selection.png)
+![Ravox — native Engine-Vorgabeszene](MayhemSurvivors/tests/ravox_warning.png)
 
-[Android-APK 0.12 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/twinkle-v0.12/Downloads/MayhemSurvivors-v0.12-debug.apk)
+[Android-APK 0.13 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/ravox-v0.13/Downloads/MayhemSurvivors-v0.13-debug.apk)
 
-[Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/twinkle-v0.12/Downloads/MayhemSurvivors-v0.12-source.zip)
+[Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/ravox-v0.13/Downloads/MayhemSurvivors-v0.13-source.zip)
 
-[Twinkle Tornado](MayhemSurvivors/tests/twinkle_tornado.png) ·
-[Waffenentwicklungen](MayhemSurvivors/tests/twinkle_evolution.png)
-
-1.164 automatisierte Prüfungen und beide historischen Traces bestanden.
-APK exportiert/signiert. Android-Geräteabnahme und menschliches Twinkle-Balancing offen.
-Android 7+, ARM64, offline, Querformat, Code 16, gleicher Paketname/Debug-Schlüssel.
-Als Update installieren. CHARAKTERE → WEITERE HELDEN → TWINKLE.
+1.216 automatisierte Prüfungen und beide historischen Traces bestanden.
+Alle vier Helden in beiden Arenen unter begrenzter Last geprüft, keine Android-FPS-Messung.
+APK exportiert/signiert. Geräteabnahme und menschliches Ravox-/Twinkle-Balancing offen.
+Android 7+, ARM64, offline, Querformat, Code 17, gleicher Paketname/Debug-Schlüssel.
+Als Update installieren. Ravox erscheint in Wellen 5–9, kein neuer spielbarer Held.
 
 [Anleitung](MayhemSurvivors/README.md) · [Tests](MayhemSurvivors/TEST_REPORT.md) ·
 [Build](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)

@@ -1,0 +1,17 @@
+{
+  "name": "RAVOX",
+  "title": "DER WUTTEUFEL",
+  "weapon": "ZERMALMER",
+  "first_wave": 5,
+  "weight": 0.1,
+  "cap": 2,
+  "wave_cap": 4,
+  "initial_delay": 2,
+  "windup": 1.25,
+  "dash_speed": 500,
+  "dash_distance": 360,
+  "range": 450,
+  "recovery": 1.1,
+  "cooldown": 3.8,
+  "charge_bonus": 1.15
+}

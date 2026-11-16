@@ -8,7 +8,7 @@ var ui_voices:Array[AudioStreamPlayer]=[]
 var music_voices={}
 var track=''
 var music_tween:Tween
-const CUES=['boss_phase','elite_warning','warning','boss_radial_warning','boss_charge_warning','victory','defeat']
+const CUES=['ravox_warning','boss_phase','elite_warning','warning','boss_radial_warning','boss_charge_warning','victory','defeat']
 func _init(g:Node2D):
 	game=g
 	for i in range(2):
