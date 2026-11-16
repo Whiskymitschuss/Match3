@@ -6,6 +6,9 @@ static func cell(coords: Vector2) -> Rect2:
 	var step = Vector2(TEXTURE.get_size())/3.0
 	return Rect2(coords*step,step)
 static func weapon(id: String) -> Rect2:
+	if id=='bomb':
+		var size=Vector2(preload('res://scripts/ui/character_art.gd').KICKSY.get_size())
+		return Rect2(size*.5,size*.5)
 	if id=='mop':
 		var size=Vector2(preload('res://scripts/ui/character_art.gd').TWINKLE.get_size())
 		return Rect2(size*.5,size*.5)
@@ -16,4 +19,5 @@ static func color_for(skin: int) -> Color:
 	return COLORS[clampi(skin,0,2)]
 
 static func weapon_texture(id:String) -> Texture2D:
+	if id=='bomb':return preload('res://scripts/ui/character_art.gd').KICKSY
 	return preload('res://scripts/ui/character_art.gd').TWINKLE if id=='mop' else TEXTURE

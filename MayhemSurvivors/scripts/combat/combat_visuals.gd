@@ -42,7 +42,7 @@ func push(effect: Dictionary):
 	if fx.size()<limit(): fx.append(effect)
 func attack(id: String, direction: Vector2, _level: int):
 	var r=rig(id)
-	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish'}.get(id,'shot'))
+	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw'}.get(id,'shot'))
 	r.angle=direction.angle()
 	r.pulse=.115
 	game.vfx.shot(id,direction)
@@ -82,6 +82,8 @@ func held_pose() -> Dictionary:
 		center=game.player.position+Vector2(0,-8)+direction*5
 		rect=Rect2(-14,-43,110,84)
 		grips=[Vector2(5,0),Vector2(27,0)]
+	if id=='bomb':
+		rect=Rect2(-25,-25,50,50);grips=[Vector2(-10,5),Vector2(10,5)]
 	if id=='mop' and game.twinkle.tornado_left>0:
 		angle=game.twinkle.tornado_age*TAU*2
 		mirror=-1.0 if cos(angle)<0 else 1.0
@@ -100,7 +102,7 @@ func hand_positions() -> Array:
 
 func shoulder_positions() -> Array:
 	var face=game.character_facing()
-	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10)][game.selected]
+	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10),Vector2(-8,10)][game.selected]
 	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
 
 func elbows(hands: Array) -> Array:
@@ -131,7 +133,7 @@ func arm_segment(a: Vector2, b: Vector2, width: float, color: Color):
 func draw_arms(hands: Array):
 	var shoulders=shoulder_positions()
 	var bends=elbows(hands)
-	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79')][game.selected]
+	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79'),Color('#D59B76')][game.selected]
 	var width=8.0 if game.selected==0 else 6.0
 	for i in range(2):
 		arm_segment(shoulders[i],bends[i],width,skin)
@@ -144,7 +146,7 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),(Rect2(-11,-11,22,22) if game.selected==3 else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
+		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),(Rect2(-11,-11,22,22) if game.selected in [3,4] else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):
@@ -163,7 +165,7 @@ func draw_weapons(behind: bool = false):
 				var at=Vector2(54,-33) if pose.id=='hammer' else Vector2(3,-25)
 				game.draw_texture_rect(Specs.icon(w.spec),Rect2(at,Vector2(28,28)),false)
 				game.draw_line(at+Vector2(2,29),at+Vector2(29,29),Color(spec.color),4,true)
-			if pose.id not in ['hammer','mop'] and pose.pulse>0:
+			if pose.id not in ['hammer','mop','bomb'] and pose.pulse>0:
 				var color=Art.color_for(game.selected)
 				var kick=pose.pulse/.115
 				var muzzle=Vector2(44,-6)

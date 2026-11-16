@@ -5,6 +5,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
+	g.rules.progressive=false # Frozen pre-0.14 movement/values; new scaling has dedicated tests.
 	g.saved=g.default_save()
 	var trace:Array=[]
 	for hero in range(3):

@@ -17,7 +17,7 @@ func panel(pos:Vector2,size:Vector2,color:Color):
 	node.add_theme_stylebox_override('panel',game.style(color));game.ui_root.add_child(node)
 func show():
 	if game.state!=game.State.SHOP:return
-	if not game.saved.settings.get('shop_help_seen',false):help_page(0);return
+	if not game.saved.settings.get('shop_help_seen',false) and not (game.tutorial and game.tutorial.active):help_page(0);return
 	game.backdrop('MAYHEM MARKET','Welle %d geschafft  /  %s  /  %d Coins' % [game.wave_number,game.characters[game.selected].name,game.coins])
 	game.button('WERTE',Vector2(1250,75),Vector2(260,85),stats)
 	game.button('? HILFE',Vector2(1550,75),Vector2(260,85),func():help_page(0))

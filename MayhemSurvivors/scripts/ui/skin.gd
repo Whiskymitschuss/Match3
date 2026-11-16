@@ -35,12 +35,13 @@ static func menu(game:Node2D):
 	game.button('STATISTIK',Vector2(115,925),Vector2(400,90),game.statistics)
 	game.button('EINSTELLUNGEN',Vector2(545,925),Vector2(400,90),func():game.settings(game.main_menu))
 	game.label_at('DIE MAYHEM CREW',Vector2(1240,265),43,Color('#FFE4B7'))
-	game.label_at('10 WELLEN. EIN ZIEL: ÜBERLEBEN.',Vector2(1160,325),25,Color('#EDCEFB'))
+	game.label_at('VIER ARENEN. DEIN NÄCHSTER RUN.',Vector2(1160,325),25,Color('#EDCEFB'))
 	game.portrait(Vector2(1045,535),0,.97)
 	game.portrait(Vector2(1490,540),2,.94)
 	game.portrait(Vector2(1230,440),1,1.25)
-	game.label_at('3 HELDEN   /   2 ARENEN   /   DEINE WAHL',Vector2(1145,980),25,Color('#E7D7F3'))
-	game.label_at('v0.13  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
+	game.button('TUTORIAL MIT KICKSY',Vector2(1100,890),Vector2(690,90),func():game.tutorial.start())
+	game.label_at('5 HELDEN / 4 ARENEN / 2 MODI',Vector2(1145,995),25,Color('#E7D7F3'))
+	game.label_at('v0.14  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='EINSTELLUNGEN':panel(game,Rect2(90,260,1460,415))
@@ -52,7 +53,7 @@ static func decorate_screen(game:Node2D,title:String):
 	elif title in ['DURCHATMEN','RUN WIRKLICH BEENDEN?']:
 		panel(game,Rect2(85,270,700,560));image(game,LOGO,Rect2(1110,285,620,300));game.portrait(Vector2(1250,545),game.selected,.85)
 static func reveal(game:Node2D,revision:int):
-	if revision!=game.ui_revision or game.test_mode or game.saved.settings.quality=='LOW' or game.state==game.State.COMBAT:return
+	if revision!=game.ui_revision or game.test_mode or game.saved.settings.quality=='LOW' or game.state==game.State.COMBAT or game.saved.settings.get('reduced_motion',false):return
 	var index=0
 	for node in game.ui_root.get_children():
 		if node is Control and node.name!='FullBleedBackdrop':

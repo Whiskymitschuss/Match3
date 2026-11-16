@@ -17,6 +17,9 @@ func _process(delta):
 	if absf(old-hover_amount-press_amount)>.001:queue_redraw()
 func _draw():
 	if disabled:return
+	var points=PackedVector2Array([Vector2(18,5),Vector2(size.x-18,5),Vector2(size.x-5,18),Vector2(size.x-5,size.y-18),Vector2(size.x-18,size.y-6),Vector2(18,size.y-6),Vector2(5,size.y-18),Vector2(5,18)])
+	var top=Color(.85,.45,1,.10+hover_amount*.08);var bottom=Color(.02,.01,.06,.17)
+	draw_polygon(points,PackedColorArray([top,top,top,bottom,bottom,bottom,bottom,top]))
 	var fade=.13+hover_amount*.23+press_amount*.17
 	draw_line(Vector2(18,3),Vector2(size.x-18,3),Color(1,.76,1,fade),2,true)
 	if hover_amount>.01:

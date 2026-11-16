@@ -1,3 +1,32 @@
+# 0.14.0 — Worlds / Endlos / Kicksy — implementiert und geprüft
+
+Branch feature/worlds-endless-v0.14. Vier Arenen inklusive Neonhafen/Glutwerk mit
+eigenen Böden und Bossgrafiken/Gefahren. Endlos-Bosse/Shop über Welle10 hinaus,
+separate dauerhafte Rekorde, steigende Gegnerwerte und vorausschauende KI mit Caps.
+13-Schritt-Aktionstutorial mit Kicksy nach angehängter Referenz; freischaltbare fünfte
+Heldin (Tutorial + 500 Kampagnen-/Endlos-Kills), Bombenpool, Kettenreaktion und zwei
+Entwicklungen. Fünf Helden vollständig in Auswahl/Statistik/Meisterschaft/Speichern.
+UI-Verläufe, Pop-/Menüanimationen, Sensor-Parallaxe, Kalibrierung und ruhige Menüs.
+
+20 Suites / 1.513 Assertions und beide historischen Traces bestanden. Traces frieren
+alte Schwierigkeit ein; aktuelle Regeln separat geprüft. Quellarchiv frisch entpackt
+und ohne vorhandenen Importcache importiert, abschließende vollständige Suite grün.
+Test-Audiofreigabe vor Quit in Twinkle-Produktionstouch-Fixture stabilisiert; keine
+Ressourcenfehler im abschließenden Durchlauf. Native Galerie aus neun Szenen geprüft.
+Lastprobe: 36.000 Schritte / vier Arenen × fünf Helden / Endlos31, maximal 100 Gegner,
+Bomben-/Folgeereignis-/Brandfeldcaps eingehalten. Keine NaNs oder offenen Pflichtstubs.
+APK exportiert/signiert, ARM64/Manifest/Payload/Alignment geprüft. Veröffentlichung mit
+anschließender anonymer Download-/Hashprüfung. Alle Quelldateien und Berichte vorhanden.
+
+Nächste fachliche Abnahme: Android-Update mit echten Daten, komplettes Touch-Tutorial,
+Sensor-Richtung/Komfort, neue Arenen, Kampagnen-/Endlos-Balance und FPS/Thermik auf Gerät.
+Aktive Run-Wiederherstellung bleibt wie bisher außerhalb dieses Umfangs.
+
+
+---
+
+## Historischer Stand vor 0.14
+
 # 0.13.0 — RAVOX / Implementierung abgeschlossen
 
 Branch feature/ravox-v0.13. Gegner vollständig integriert: eigene Grafik, Verhalten,

@@ -20,7 +20,7 @@ func button(text:String):
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save()
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
-	check(g.characters.size()==4 and g.characters[3].id=='twinkle','Fourth real character')
+	check(g.characters.size()==5 and g.characters[3].id=='twinkle','Fourth real character')
 	fresh();check(g.max_hp==100 and g.speed==210 and g.weapons[0].id=='mop','Specified HP speed and start weapon')
 	check(g.allowed_weapon_ids()==['mop'] and not g.can_equip_weapon('hammer') and not g.has_projectile_weapon(),'Exclusive mop class binding')
 	check(not g.valid_upgrade('multi') and not g.valid_upgrade('projectile'),'No unsuitable projectile upgrades')
@@ -93,7 +93,9 @@ func run():
 	check(loaded.records.has('twinkle') and loaded.records.twinkle.games==0 and loaded.arena_records.scrapyard.records.has('twinkle'),'Existing schema three migrates fourth record safely')
 	check(loaded.unlocked.has('twinkle') and loaded.hero_styles.twinkle=='classic','Twinkle available with default skin on existing saves')
 	g.saved=original;g.save_game()
+	g.audio_director.stop()
 	for voice in g.sfx_players:voice.stop();voice.stream=null
 	g.alert_audio.stop();g.alert_audio.stream=null
-	g.queue_free();await process_frame;OS.delay_msec(80);await process_frame;DirAccess.remove_absolute(path)
+	await process_frame;OS.delay_msec(120)
+	g.queue_free();await process_frame;OS.delay_msec(120);await process_frame;DirAccess.remove_absolute(path)
 	print('TWINKLE RESULT ',passed,' passed, ',failed,' failed');quit(1 if failed else 0)

@@ -112,5 +112,19 @@
     "power": 1,
     "poison": 1.6,
     "puddle_extra": 1
+  },
+  "bombard": {
+    "weapon": "bomb",
+    "name": "STREUBOMBE",
+    "description": "Jede Bombe erzeugt drei kleine Explosionen mit je 30 % Schaden. Keine rekursive Kette.",
+    "color": "#FF9F1C",
+    "power": 1
+  },
+  "fireball": {
+    "weapon": "bomb",
+    "name": "FEUERBALL",
+    "description": "Explosionen hinterlassen drei Sekunden Brandfelder. Überlappend gilt das stärkste Feld.",
+    "color": "#FF4757",
+    "power": 1
   }
 }

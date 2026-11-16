@@ -1,3 +1,87 @@
+# Mayhem Survivors 0.14.0 Alpha — Worlds, Endlos & Kicksy
+
+Android-only / Godot 4.6.3 stable / GDScript / offline / ARM64 / Querformat.
+
+## Vier Arenen, zwei Modi
+
+SCHROTTPLATZ und REAKTORZONE bleiben erhalten. Neu, sofort wählbar:
+NEONHAFEN mit eigener Hafenkarte, angekündigten Flutimpulsen und DOCK-TYRANN;
+GLUTWERK mit eigener Ofenkarte, Schmelzbahnen und OFENKÖNIG. Beide Bosse besitzen
+eigene Grafiken; sie verwenden die bewährten Overlord-/Wächter-Angriffsarchetypen
+mit Phasen und arenaeigenen Gefahren. Keine dekorativen Hindernisse im Spielfeld.
+CHARAKTERE → ARENAWAHL → WEITERE ARENEN zeigt die neuen Karten.
+
+MODUS schaltet zwischen KAMPAGNE und ENDLOS um. Kampagne bleibt zehn Wellen mit
+finalem Sieg. Endlos hat keinen Siegdeckel: normale Wellen 60 s, jede zehnte Welle
+Boss mit 90-s-Limit. Boss besiegt → Shop → Welle 11/21/31 usw. Tod oder Boss-Zeitlimit
+beendet den Run. Endlos-Rekorde je Arena unter STATISTIK → ENDLOS-REKORDE, getrennt
+von Kampagnen-Siegen/Meisterschaften. Keine Verlängerung der begrenzten Gegnerliste.
+Aktive Runs werden nach vollständigem Beenden der App weiterhin nicht wiederhergestellt.
+
+## Jede Welle mehr Druck
+
+Zusätzlich zu bisherigen Wellenwerten bekommen normale Gegner je weiterem Wellenindex
++2,5 % Basisfaktor auf HP und Tempo sowie +2 % Kontaktschaden. Tempo-Faktor maximal
+1,8, Zusatz-Schadensfaktor maximal 3. HP wachsen weiter. Vorausschauende Verfolgung
+steigt auf maximal 0,30 s; Runner flankieren zunehmend mit begrenzter Seitbewegung.
+Telegraphierte Stürme verfolgen kein neues Ziel nach der Warnung. 100 Gegner maximal.
+In Endlos steigt Boss-HP pro weiterem Zehnerzyklus um 35 %, Spawnintervall sinkt bis
+höchstens 0,30 s. Ravox-/Elitekontingente wiederholen sich mit begrenztem Speicher.
+Level maximal 999, XP-Anforderung numerisch abgesichert, kein festhängendes Upgrade-Menü.
+Dies verändert die Schwierigkeit ausdrücklich; keine Balanceidentität zu 0.13 behauptet.
+
+## Kicksy als Coach und Heldin
+
+TUTORIAL MIT KICKSY startet eine sichere interaktive Übung mit 13 Etappen. Sie erklärt
+Bewegung, Auto-Angriff, XP, echte Upgrade-Auswahl, Fähigkeit, Ravox-Ausweichen,
+Shopkauf, Reroll, Waffenwerkstatt, Pause sowie Meisterschaft und Modi. Aufgaben werden
+an tatsächlichen Aktionen geprüft, nicht nur mit Weiter weggeklickt. Keine Kampf-
+rekorde, Coins oder Niederlagen durch Training. Abbruch und Wiederholung möglich.
+Coach erscheint mit Pop-Animation; ruhige Menüs deaktivieren diese. Eigene angepasste
+Illustration nach der vom Nutzer angehängten braunhaarigen Kicksy im roten Hoodie.
+Dialoge bearbeitbar in data/tutorial/kicksy.json, keine Sprachaufnahmen behauptet.
+
+Nach Tutorialabschluss UND 500 insgesamt besiegten Gegnern (Kampagne + beendete
+Endlos-Runs, bestehende Werte zählen mit) wird KICKSY spielbar. Freischaltung wird
+nach Run/Tutorial gespeichert und beim Laden aus validierten Daten rekonstruiert.
+100 HP / 220 Basistempo / +10 % Passiv = tatsächlich 242 Tempo, Seltenheit EPISCH.
+Nur MAYHEM-BOMBE: automatische Würfe, 20 Basisschaden, Radius 110, 0,65-s-Flug,
+1,1-s-Cooldown. Projektiltempo und Multishot sind geeignet. Bomben-Stufe 1–5.
+KETTENREAKTION: drei zeitversetzte Explosionen mit je 30 Basisschaden, Cooldown 28 s.
+Stufe 5: STREUBOMBE (drei 30-%-Folgeexplosionen ohne Rekursion) oder FEUERBALL
+(drei Sekunden Brandfeld, stärkstes überlappendes Feld). Kein Selbstschaden.
+Pool 16 Bomben, maximal 15 Folgeereignisse und vier Brandfelder, auf allen Qualitätsstufen
+gleiche Spielmechanik. Genau zwei animierte Arme am armlosen Kicksy-Spielkörper.
+Eigene Portraits/Handschuhe/Bombe, Icons, Sounds, Statistik und Meisterschaft.
+
+## Menü und Mobile UX
+
+Verläufe, lesbare Karten, feste Touchziele und dezente bestehende Überblendungen.
+Hintergrund-Parallaxe über Android-Gravity/Accelerometer; Bedienelemente bleiben fest.
+EINSTELLUNGEN → BEWEGUNG: Neigung an/aus, ruhige Menüs und neu zentrieren.
+Automatische Mittelpunktkalibrierung, geglätteter begrenzter Ausschlag, Sensor-Fallback.
+LOW und ruhige Menüs reduzieren Menübewegung. Keine neue Android-Berechtigung.
+Eigene Endlos-HUD ohne falsche Max-HP-Ersetzung; Tutorial-HUD ohne künstlichen Timer.
+Coach-Touch wird nicht vom Joystick abgefangen. Abweichende Seitenverhältnisse werden
+weiter über Safe-Area-Skalierung behandelt.
+
+## Start / Prüfung
+
+project.godot importieren und starten; keine Generatoren oder Programmierung erforderlich.
+Android-Update Code 18 / 0.14.0, identischer Paketname und Debug-Schlüssel.
+`python3 tools/run_tests.py --traces`: 20 Suites, 1.513 Assertions und beide Traces grün.
+Historische Traces frieren alte Progressionswerte bewusst ein; aktuelle neue Regeln
+haben eigene Tests. Lastprobe 36.000 Schritte mit fünf Helden in vier Arenen/Welle31.
+Vorgabeszenen unter tests/worlds_*.png sind native Engine-Bilder, keine Android-Captures.
+Offene Geräteabnahme: Tutorial-Touch, Sensor-Richtung/Komfort, Update mit bestehenden
+Daten, beide neuen Arenen und menschliche Schwierigkeit/Boss-Balance/FPS/Thermik.
+Quell-ZIP enthält alle Laufzeitassets, Code, Szenen, Tests, Logs und aktuelle Galerien;
+ältere reine Testscreenshots bleiben im Repository. Keine SDKs/privaten Schlüssel im ZIP.
+
+---
+
+## Historischer Stand vor 0.14
+
 # Mayhem Survivors 0.13.0 Alpha — RAVOX
 
 RAVOX – DER WUTTEUFEL ist ein neuer Gegner, kein auswählbarer Held.

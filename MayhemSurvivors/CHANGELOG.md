@@ -1,3 +1,19 @@
+# 0.14.0 Alpha — 2026-11-16
+
+- Neonhafen und Glutwerk mit eigenen Karten/Bossgrafiken und Gefahrenmustern.
+- Endlosmodus mit Bossen alle zehn Wellen, Shop-Fortsetzung und eigener Rekordwertung.
+- Stetige HP-/Tempo-/Schadensprogression und vorausschauende/flankierende Gegner-KI.
+- Interaktives 13-Schritt-Tutorial mit Kicksy, echter Aktionsprüfung und Pop-Animation.
+- Freischaltbare Kicksy: Tutorial + 500 Gegner; Bombenpool, Kettenreaktion, zwei Entwicklungen.
+- Fünf Helden in Statistik, Historie, Auswahl, Meisterschaft und Speicherung.
+- Sensor-Parallaxe, Verläufe, ruhige Menüoption und Kalibrierung; Touchziele bleiben fest.
+- 20 Test-Suites / 1.513 Assertions grün, beide historischen Traces mit explizit eingefrorener
+  alter Schwierigkeit. Neue Lastprobe: 36.000 Schritte, vier Arenen × fünf Helden.
+
+---
+
+## Historischer Stand vor 0.14
+
 # 0.13.0 Alpha — 2026-11-16
 
 - Ravox als seltener Gegner für beide Arenen, Wellen 5–9, Basis 140 HP / Tempo 220.

@@ -1,3 +1,14 @@
+# Stand nach 0.14
+
+Vier Arenen, Endlos, neue Gegnerprogression, Kicksy-Tutorial und spielbare Kicksy integriert.
+Nächster Schritt: Android-Abnahme von Tutorial/Neigung/Update und menschliches Balancing
+aller vier Arenen sowie längerer Endlos-Runs. Feinabstimmung anhand konkreter Gerätedaten.
+Aktive Run-Wiederherstellung und weitere Schwierigkeitsprofile bleiben spätere Erweiterungen.
+
+---
+
+## Historischer Stand vor 0.14
+
 # Stand nach 0.13
 
 Ravox in beide Arenen integriert und technisch geprüft.

@@ -8,7 +8,7 @@ var is_home=false
 var picture:TextureRect
 func _ready():
 	mouse_filter=Control.MOUSE_FILTER_IGNORE
-	motion=game.saved.settings.quality!='LOW'
+	motion=game.saved.settings.quality!='LOW' and not game.saved.settings.get('reduced_motion',false)
 	set_process(motion)
 	picture=TextureRect.new();picture.name='BackdropArt';picture.texture=ART
 	picture.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;picture.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED
@@ -18,11 +18,12 @@ func _ready():
 	resized.connect(update_picture);update_picture()
 func update_picture():
 	if not is_instance_valid(picture):return
-	picture.size=size*1.035
-	var pan=Vector2(sin(clock*.13)*7,cos(clock*.11)*4) if motion else Vector2.ZERO
+	picture.size=size*1.07
+	var pan=(Vector2(sin(clock*.13)*7,cos(clock*.11)*4)+game.menu_motion.filtered*35) if motion else Vector2.ZERO
 	picture.position=(size-picture.size)*.5+pan
 func _process(delta):
 	if not motion:return
+	game.menu_motion.sample(delta)
 	clock+=delta
 	if picture.material:picture.material.set_shader_parameter('blur_px',3.0*maxf(0,1-clock/.35))
 	update_picture();queue_redraw()

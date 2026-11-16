@@ -21,5 +21,37 @@
       "coins": 140,
       "color": "#2ED573"
     }
+  },
+  "docks": {
+    "name": "NEONHAFEN",
+    "description": "Flutimpulse, schnelle Jäger und der Dock-Tyrann.",
+    "floor": "docks",
+    "waves": "waves/waves",
+    "boss_name": "DOCK-TYRANN",
+    "boss": {
+      "hp": 2600,
+      "speed": 85,
+      "damage": 20,
+      "radius": 78,
+      "xp": 110,
+      "coins": 130,
+      "color": "#00D9D0"
+    }
+  },
+  "foundry": {
+    "name": "GLUTWERK",
+    "description": "Schmelzbahnen und der gefährliche Ofenkönig.",
+    "floor": "foundry",
+    "waves": "waves/reactor",
+    "boss_name": "OFENKÖNIG",
+    "boss": {
+      "hp": 4200,
+      "speed": 62,
+      "damage": 18,
+      "radius": 82,
+      "xp": 120,
+      "coins": 140,
+      "color": "#FF9F1C"
+    }
   }
 }

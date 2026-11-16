@@ -5,6 +5,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
+	g.rules.progressive=false # Historical movement and values; current progression tested separately.
 	g.ravox.enabled=false # Historical fixture excludes new 0.13 enemy; dedicated tests cover Ravox.
 	g.encounters.enabled=false # Frozen historical combat rules; 0.10 tested separately.
 	g.saved=g.default_save()
@@ -12,7 +13,7 @@ func run():
 	var trace:Array=[]
 	var scenarios:Array=[]
 	for arena in ['scrapyard','reactor']:
-		for id in g.Specs.all().keys().filter(func(key):return g.Specs.all()[key].weapon!='mop'):scenarios.append({'arena':arena,'spec':id,'boss':false})
+		for id in g.Specs.all().keys().filter(func(key):return g.Specs.all()[key].weapon not in ['mop','bomb']):scenarios.append({'arena':arena,'spec':id,'boss':false})
 		for id in ['quake','piercer','swift']:scenarios.append({'arena':arena,'spec':id,'boss':true})
 	var args=OS.get_cmdline_user_args()
 	if args.has('--low'):g.saved.settings.quality='LOW'

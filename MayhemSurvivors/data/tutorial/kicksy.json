@@ -1,0 +1,58 @@
+{
+  "coach": "KICKSY",
+  "role": "Sprengstoff-Trainerin",
+  "steps": [
+    {
+      "title": "WILLKOMMEN BEI MAYHEM",
+      "text": "Na, bereit für ein bisschen Mayhem? Ich bin Kicksy. Wir üben mit echten Waffen und Tasten. Keine Sorge: Deine Kampfrekorde bleiben sauber."
+    },
+    {
+      "title": "BEWEGEN",
+      "text": "Links den Joystick ziehen. Rennen zuerst, heldenhaft aussehen danach! Bewege dich ein Stück; zielen übernimmt deine Waffe."
+    },
+    {
+      "title": "AUTOMATISCH ANGREIFEN",
+      "text": "Geh in Waffenreichweite. Dein Blaster sucht selbst das nächste Ziel und feuert automatisch. Besiege den Übungsgegner."
+    },
+    {
+      "title": "XP EINSAMMELN",
+      "text": "Sammle den leuchtenden XP-Kristall ein. In deiner Nähe zieht ihn das Magnetfeld an. Coins werden bei besiegten Gegnern direkt gutgeschrieben."
+    },
+    {
+      "title": "LEVEL-UP & UPGRADES",
+      "text": "Die XP-Leiste ist voll. Der Kampf hält an. Wähle eine der drei echten Verbesserungen. Schaden, Tempo, Rüstung und Heilung verändern deinen Build."
+    },
+    {
+      "title": "DEINE SPEZIALFÄHIGKEIT",
+      "text": "Tippe rechts unten auf IMPULSGRANATE. Jede Klasse besitzt eine eigene Fähigkeit. Der Balken zeigt, wann sie wieder bereit ist."
+    },
+    {
+      "title": "WARNBAHN AUSWEICHEN",
+      "text": "Ravox ist sauer. Soll er doch! Verlasse seine orange Sturmbahn seitlich. Er steuert nicht nach. Diese sichere Übung verursacht keinen Schaden."
+    },
+    {
+      "title": "IM SHOP KAUFEN",
+      "text": "Der Kampf pausiert. Kaufe ein Angebot: Coins weg, Wirkung sofort da! Fremde Klassenwaffen bleiben gesperrt."
+    },
+    {
+      "title": "ANGEBOTE NEU WÜRFELN",
+      "text": "Frische Ware? Tippe REROLL. Der erste pro Shop ist gratis, weitere kosten Coins. Bereits Gekauftes zahlst du nie doppelt."
+    },
+    {
+      "title": "WAFFEN AUFRÜSTEN",
+      "text": "Waffenkarte unten antippen, dann AUFRÜSTEN. Stufe 5 bringt eine Entwicklung. Set-Boni findest du unter SETS."
+    },
+    {
+      "title": "PAUSE & WEITERSPIELEN",
+      "text": "Starte die nächste Welle. Öffne oben rechts die Pause und setze danach fort. Bei Android-Unterbrechung pausiert das Spiel ebenfalls."
+    },
+    {
+      "title": "MEISTERSCHAFT & MODI",
+      "text": "Charakter-Meisterschaften schalten kosmetische Varianten frei. Kampagne: zehn Wellen und ein Endboss. Endlos: Bosse alle zehn Wellen, danach Shop und weiter. Beide Modi haben eigene Rekorde."
+    },
+    {
+      "title": "BEREIT FÜR MAYHEM",
+      "text": "Boom! Du bist bereit. Mich schaltest du mit diesem Tutorial und 500 besiegten Gegnern frei. Wähle jetzt deinen Helden und deine Arena!"
+    }
+  ]
+}

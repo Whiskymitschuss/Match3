@@ -1,0 +1,14 @@
+{
+  "bomb_throw": {
+    "rate": 44100,
+    "frames": 14994,
+    "peak": 15200,
+    "clipped": false
+  },
+  "ability_chain_reaction": {
+    "rate": 44100,
+    "frames": 28665,
+    "peak": 9493,
+    "clipped": false
+  }
+}

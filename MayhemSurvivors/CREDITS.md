@@ -1,3 +1,17 @@
+# Ergänzungen 0.14
+
+Kicksy-Konzept/Profil und angehängte Referenz von Nutzer / RF Worlds; daraus eigener
+an den Mayhem-Stil angepasster generierter Atlas (Portrait, armloser Körper, Handschuhe,
+Fußball-Bombe). Grundlage ist die tatsächlich angehängte Kicksy-Referenz.
+Neonhafen-/Glutwerk-Karten und Dock-Tyrann-/Ofenkönig-Grafiken eigens generiert.
+Eigene SVG-Icons, Shader-/Canvas-Verläufe, UI-Bewegung und bearbeitbare Kicksy-Dialoge.
+Zwei eigene Audio-Cues in tools/generate_kicksy_audio.py synthetisiert, ohne Fremdsamples.
+Neue Bossgrafiken nutzen bestehende eigene Verhaltensarchetypen. Keine neuen Plugins.
+
+---
+
+## Historischer Stand vor 0.14
+
 # Ergänzungen 0.13
 
 Ravox-Name, Wutteufel-Konzept, Werte/Referenz und Zermalmer von Nutzer / RF Worlds.

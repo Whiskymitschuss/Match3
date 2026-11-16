@@ -91,12 +91,12 @@ func run():
 	g.begin_wave();g.wave_number=4
 	g.spawn_enemy('grunt')
 	var e=g.enemies.back()
-	check(approx(e.max_hp,40*1.27*1.18) and approx(e.speed,105*1.03) and approx(e.damage,8*1.06),'Actual fourth-wave enemy gets all configured modifiers')
+	check(approx(e.max_hp,40*1.27*1.18*1.075) and approx(e.speed,105*1.03*1.075) and approx(e.damage,8*1.06*1.06),'Actual fourth-wave enemy gets all configured modifiers')
 	g.crit=0;g.damage_enemy(e,10000)
 	check(g.coins==2 and g.loot.back().xp==4,'Actual fourth-wave drops use rounded balanced rewards')
 	g.cleanup();g.wave_number=9
 	g.spawn_enemy('tank');e=g.enemies.back()
-	check(approx(e.max_hp,160*1.72*2) and approx(e.speed,70*1.14),'Late tank health and speed scale as configured')
+	check(approx(e.max_hp,160*1.72*2*1.2) and approx(e.speed,70*1.14*1.2),'Late tank health and speed scale as configured')
 	check(e.coin_reward==3 and e.xp_reward==8,'Late tank rewards are adjusted without discarding drops')
 	g.cleanup();g.wave_number=10;g.spawn_enemy('boss');e=g.enemies[0]
 	check(e.max_hp==7560 and e.speed==62 and e.damage==18,'Reactor boss lasts longer while movement/contact values stay fair')
@@ -112,7 +112,7 @@ func run():
 	g.spawn_cycle=4;g.spawn_clock=0;g._physics_process(.01)
 	check(g.enemies.size()==100,'Reinforcement group cannot exceed existing 100-enemy cap')
 	g.arena_id='scrapyard';g.start_run();g.wave_number=9;g.begin_wave();g.spawn_enemy('tank');e=g.enemies.back()
-	check(approx(e.hp,160*1.72*2) and approx(e.speed,70*1.14) and approx(e.damage,16*1.26) and e.coin_reward==3,'Actual classic late wave is also stronger with controlled rewards')
+	check(approx(e.hp,160*1.72*2*1.2) and approx(e.speed,70*1.14*1.2) and approx(e.damage,16*1.26*1.16) and e.coin_reward==3,'Actual classic late wave is also stronger with controlled rewards')
 	g.queue_free();await process_frame
 	print('DISPLAY BALANCE RESULT ',passed,' passed, ',failed,' failed')
 	quit(0 if failed==0 else 1)

@@ -39,5 +39,13 @@
     "puddle_radius": 85,
     "stun": 1,
     "stun_resistance": 3
+  },
+  "bomb": {
+    "name": "MAYHEM-BOMBE",
+    "damage": 20,
+    "cooldown": 1.1,
+    "reach": 380,
+    "radius": 110,
+    "flight": 0.65
   }
 }

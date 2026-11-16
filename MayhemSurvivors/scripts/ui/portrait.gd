@@ -2,12 +2,14 @@ extends Control
 const Mastery=preload('res://scripts/progression/character_mastery.gd')
 var outfit='classic'
 var hunter=false
+var motion_enabled=true
 const Art = preload('res://scripts/ui/character_art.gd')
 var color = Color('#00d9d0')
 var kind = 'sparky'
 var mode = 'portrait'
 var clock = 0.0
 func _process(dt):
+	if not motion_enabled:return
 	clock+=dt
 	queue_redraw()
 func _draw():

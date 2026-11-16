@@ -61,5 +61,26 @@
     "allowed_weapons": [
       "mop"
     ]
+  },
+  {
+    "id": "kicksy",
+    "name": "KICKSY",
+    "hp": 100,
+    "speed": 220,
+    "weapon": "bomb",
+    "color": "#FF667F",
+    "description": "Schneller Zunder • +10 % Bewegungstempo",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "move_bonus": 0.1,
+    "allowed_weapons": [
+      "bomb"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "tutorial_complete": true,
+      "kills": 500
+    }
   }
 ]

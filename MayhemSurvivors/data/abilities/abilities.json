@@ -42,5 +42,13 @@
     "damage": 24,
     "knockback": 110,
     "color": "#E879F9"
+  },
+  "kicksy": {
+    "id": "chain_reaction",
+    "name": "KETTENREAKTION",
+    "description": "Drei Explosionen springen zum nächsten Gegner. Auch ohne Ziel detoniert eine Bombenkette vor dir.",
+    "damage": 30,
+    "cooldown": 28,
+    "color": "#FF9F1C"
   }
 }

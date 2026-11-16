@@ -16,7 +16,7 @@ func run():
 	check(g.state==g.State.MAIN_MENU,'Boot -> main menu')
 	check(g.GameStateMachine.permits(g.State.COMBAT,g.State.SHOP) and not g.GameStateMachine.permits(g.State.COMBAT,g.State.CHARACTER_SELECT),'Defined state transitions')
 	g.character_select()
-	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==4,'Character selection')
+	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==5,'Character selection')
 	for i in range(4):
 		g.selected=i
 		g.start_run()
@@ -103,7 +103,8 @@ func run():
 			if o.type=='weapon' and o.id==id:valid=false
 		check(valid,'Max weapon excluded '+id)
 	for id in g.weapon_data:
-		g.selected=3 if id=='mop' else 1
+		g.selected=4 if id=='bomb' else (3 if id=='mop' else 1)
+		if id=='bomb':g.saved.settings.tutorial_complete=true;g.saved.kills=500
 		g.cleanup()
 		g.state=g.State.COMBAT
 		g.weapons=[{'id':id,'level':1,'clock':0.0}]
@@ -114,6 +115,7 @@ func run():
 		health=e.hp
 		g.update_weapons(.016)
 		for i in range(20):g.update_shots(.016)
+		if id=='bomb':g.bombs.update(1)
 		check(e.hp<health,'Weapon damage '+id)
 	g.start_run()
 	g.begin_wave()

@@ -1,8 +1,8 @@
 extends RefCounted
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 const Specs=preload('res://scripts/weapons/specializations.gd')
-const CHARACTERS = ['bruiser','sparky','shade','twinkle']
-const WEAPONS = ['blaster','hammer','splitgun','arc','orbit','mop']
+const CHARACTERS = ['bruiser','sparky','shade','twinkle','kicksy']
+const WEAPONS = ['blaster','hammer','splitgun','arc','orbit','mop','bomb']
 const MAX_HISTORY = 20
 static func character_defaults() -> Dictionary:
 	return {'games':0,'wins':0,'kills':0,'coins':0,'time':0.0,'best_wave':0,'best_kills':0,'best_level':0,'best_damage':0.0,'longest_run':0.0,'fastest_victory':0.0}

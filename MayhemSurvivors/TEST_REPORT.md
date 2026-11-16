@@ -1,3 +1,50 @@
+# Testbericht 0.14.0 — 2026-11-16
+
+Godot 4.6.3 stable: 20 ausgeführte Suites / 1.513 Assertions / 0 Fehler.
+Worlds/Endlos: 117 Checks, Kicksy: 34 Checks, zusätzliche Bestandsprüfungen wegen
+vier Arenen/fünf Helden/14 Entwicklungen. Bestehende Display-Balance-Sollwerte wurden
+an ausdrücklich gewünschte zusätzliche Faktoren angepasst, keine Fehler ausgeblendet.
+
+Neue Prüffälle: vier Arenen mit echten Assets/Bossen, Kampagnen-Sieg; Endlos-Bosse
+10/20/30 samt tatsächlichem Kill → Shop → 11/21/31, Timeout, Welle1001, Stats/JSON-
+Migration/Doppelwertung, unabhängige Kampagnenzähler, unverfälschte HP im HUD;
+strict steigende Wellenwerte, begrenztes Tempo, sichere XP-Formel/Levelcap-Rückkehr,
+vorausschauende KI ohne manipulierte Bosszielrichtung, begrenzte Quoten-Speicherung,
+echte Gefahrenwarnung beider Arenen, Filter/Kalibrierung des Neigungseffekts.
+
+Tutorial komplett durch tatsächliche Bewegung, Kill, Loot-Pickup, Upgrade, Fähigkeit,
+Ravox-Ausweichen, Kauf, Reroll, Werkstatt, Pause/Resume und Abschluss geprüft. Kein
+Kampfrekord-/Modus-Leak. Coach-Touch kollidiert nicht mit Joystick-Aktivierung.
+Kicksy: beide Freischaltkriterien einschließlich kombinierter Endlos-Kills, Lock-Bypass,
+Speichern/Laden, Tempo 242, echter Bombenflug/Explosion/Poollimit, Multishot, beide
+Entwicklungen, präzise Brand-Lebenszeit, keine Feldstapelung/Explosion-Rekursion,
+Kettenreaktion, Pause/Level-up/Shop, reale Boss-Siege aller vier Arenen, Werkstatt und
+sofortige Freischaltung bei Tutorialabschluss. Kein Selbstschaden.
+
+Beide historischen Traces bestanden: Welt 33 Punkte/3.600 Schritte, Effekt 87/8.700.
+Beide deaktivieren ausdrücklich die neue 0.14-Progression; Effekttrace außerdem neue
+Encounters/Ravox und neuere Waffen. Sie prüfen Regressionen unter alten Regeln,
+nicht unverändertes aktuelles Balancing. Aktuelle Regeln separat getestet.
+
+Lastprobe worlds_soak.gd: 36.000 feste Schritte (~600 simulierte Sekunden), vier Arenen
+× fünf Helden bei Endlos-Welle31, alle Qualitätsstufen enthalten. Peak 100 Gegner;
+Bomben-/Folgeereignis-/Brandfeldcaps eingehalten, keine NaNs. Künstliche HP und Pilot,
+keine Aussage über menschliche Fairness oder Android-FPS. Native Galerie aus neun
+Vorgabeszenen geprüft, inklusive Coach, fünfter Heldin und Endlos-Bossen.
+Zwei neue WAV-Cues auf gültiges Mono-44,1-kHz-Signal ohne Clipping geprüft.
+
+Android-Sensor-Hardware, Touch auf echtem Gerät, Thermik und Kampagnen-/Endlos-Balance
+noch offen. Keine physische APK-Installation oder AAA-Abnahme behauptet.
+
+Abschließende Archivprüfung: frischer Import ohne .godot-Cache, gesamte Suite erneut
+grün. Audiofreigabe beim Testende einer Produktionstouch-Fixture wird vor Quit
+abgewartet; keine Ressourcenfehler im abschließenden Lauf.
+
+
+---
+
+## Historischer Stand vor 0.14
+
 # Testbericht 0.13.0 — 2026-11-16
 
 Tatsächlich ausgeführt mit Godot 4.6.3 stable: 18 Suites / 1.216 Assertions / 0 Fehler.

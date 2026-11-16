@@ -1,10 +1,10 @@
 extends RefCounted
-const IDS = ['scrapyard','reactor']
+const IDS = ['scrapyard','reactor','docks','foundry']
 static func definition(id: String) -> Dictionary:
 	var data=JSON.parse_string(FileAccess.get_file_as_string('res://data/arenas/arenas.json'))
 	return data.get(id,data.scrapyard)
 static func unlocked(saved: Dictionary, id: String) -> bool:
-	return id=='scrapyard' or (id=='reactor' and (int(saved.get('wins',0))>0 or saved.get('unlocked_arenas',[]).has(id)))
+	return id in ['scrapyard','docks','foundry'] or (id=='reactor' and (int(saved.get('wins',0))>0 or saved.get('unlocked_arenas',[]).has(id)))
 static func sync(saved: Dictionary) -> Array[String]:
 	var added:Array[String]=[]
 	if not saved.has('unlocked_arenas'):saved.unlocked_arenas=['scrapyard']

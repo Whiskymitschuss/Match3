@@ -7,7 +7,8 @@ var enabled=true
 func _init(g:Node2D):game=g;data=game.read_data('enemies/ravox')
 func reset_run():spawned.clear()
 func allowed() -> bool:
-	if game.state!=game.State.COMBAT or game.wave_number<int(data.first_wave) or game.wave_number>9:return false
+	if game.state!=game.State.COMBAT or game.wave_number<int(data.first_wave) or game.rules.boss_wave():return false
+	if not spawned.has(game.wave_number):spawned.clear() # Only current-wave quota survives in endless runs.
 	var count=0
 	for e in game.enemies:
 		if e.kind=='ravox' and e.hp>0:count+=1

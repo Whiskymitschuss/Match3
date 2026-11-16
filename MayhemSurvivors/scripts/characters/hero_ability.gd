@@ -20,7 +20,7 @@ func clear():
 	afterimages.clear()
 	activations=0
 func ready_to_use() -> bool:
-	return game.state==game.State.COMBAT and cooldown<=0 and grenade.is_empty() and dash.is_empty()
+	return game.state==game.State.COMBAT and cooldown<=0 and grenade.is_empty() and dash.is_empty() and not (game.tutorial and game.tutorial.active and game.tutorial.frozen())
 func activate() -> bool:
 	if not ready_to_use():return false
 	var d=definition()
@@ -48,6 +48,8 @@ func activate() -> bool:
 					var dir:Vector2=(e.pos-origin).normalized()
 					if dir==Vector2.ZERO:dir=Vector2.RIGHT
 					e.pos=(e.pos+dir*d.knockback).clamp(Vector2(35,35),Vector2(2365,1565))
+		'chain_reaction':
+			game.bombs.activate()
 		'twinkle_tornado':
 			game.twinkle.activate_tornado()
 		'impulse':

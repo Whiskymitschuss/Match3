@@ -27,12 +27,12 @@ func clear_combat():
 func visible(pos:Vector2) -> bool:
 	return game.enemy_roles.visible(pos)
 func eligible() -> bool:
-	return enabled and game.state==game.State.COMBAT and not promoted and data.elite_waves.has(game.wave_number) and float(game.waves[game.wave_number-1].duration)-game.remaining>=float(data.elite_at)
+	return enabled and game.state==game.State.COMBAT and not promoted and data.elite_waves.has(((game.wave_number-1)%10)+1) and float(game.rules.current_wave().duration)-game.remaining>=float(data.elite_at)
 func promote(e:Dictionary):
 	if not eligible() or not e.kind in ['grunt','runner','tank']:return
 	var definition=game.enemy_data.tank
-	var wave=game.waves[game.wave_number-1]
-	var stats=game.WaveBalance.stats(definition,wave,game.wave_number)
+	var wave=game.rules.current_wave()
+	var stats=game.rules.scale_stats(game.WaveBalance.stats(definition,wave,game.wave_number))
 	e.kind='tank';e.elite='pulse' if game.is_reactor() else 'ram'
 	e.hp=stats.hp*float(data.elite_hp_factor);e.max_hp=e.hp
 	e.speed=stats.speed*float(data.elite_speed_factor);e.damage=stats.damage*float(data.elite_damage_factor);e.radius=float(definition.radius)+7
@@ -147,7 +147,7 @@ func update(dt:float):
 					else:at.x=game.player.position.x
 				game.vfx.ground_impact(at,float(h.get('radius',70)),Color('#FFD166'))
 		if h.age>=h.warm+h.duration:hazards.remove_at(i)
-	if game.wave_number!=10:return
+	if not game.rules.boss_wave():return
 	var boss:Dictionary={}
 	for e in game.enemies:
 		if e.kind=='boss' and e.hp>0:boss=e;break
