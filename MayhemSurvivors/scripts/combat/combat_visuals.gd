@@ -1,6 +1,7 @@
 extends RefCounted
 # Cosmetic state only: no damage, collision, cooldown or gameplay RNG access.
 const Art = preload('res://scripts/ui/combat_art.gd')
+const HeroArt = preload('res://scripts/ui/character_art.gd')
 var game: Node2D
 var rigs: Dictionary = {}
 var fx: Array = []
@@ -13,6 +14,7 @@ func clear():
 	rigs.clear()
 	fx.clear()
 	aim_clock=0
+	target_direction=Vector2.RIGHT
 	impact_sound_clock=0
 func rig(id: String) -> Dictionary:
 	if not rigs.has(id): rigs[id]={'angle':target_direction.angle(),'pulse':0.0,'swing':0.0}
@@ -55,45 +57,118 @@ func impact(pos: Vector2, weapon: String, hostile: bool = false):
 	push({'kind':'impact','pos':pos,'life':.19,'full':.19,'skin':game.selected,'weapon':weapon,'hostile':hostile})
 func beam(origin: Vector2, target: Vector2):
 	push({'kind':'beam','pos':origin,'end':target,'life':.22,'full':.22,'skin':game.selected})
-func anchor(direction: Vector2, index: int) -> Vector2:
-	# Main weapon is carried at torso height; other slots flank it without covering the face.
-	var slots=[Vector2(0,0),Vector2(-43,18),Vector2(39,24),Vector2(-25,43)]
-	return game.player.position+Vector2(0,-3)+direction*12+slots[index%4]
+func primary_id() -> String:
+	for w in game.weapons:
+		if w.id!='orbit': return w.id
+	return ''
+
+func held_pose() -> Dictionary:
+	var id=primary_id()
+	if id=='': return {}
+	var r=rig(id)
+	var direction=Vector2.from_angle(r.angle)
+	var mirror=-1.0 if direction.x<0 else 1.0
+	var angle=r.angle
+	var center=game.player.position+Vector2(0,-9)+direction*14-direction*(r.pulse/.115)*5
+	var rect=Rect2(-32,-29,82,70)
+	var grips=[Vector2(-18,18),Vector2(12,4)]
+	if id=='hammer':
+		var progress=1.0-r.swing/.26
+		angle+=sin(progress*PI)*.8 if r.swing>0 else -.3
+		center=game.player.position+Vector2(0,-8)+direction*5
+		rect=Rect2(-14,-43,110,84)
+		grips=[Vector2(5,0),Vector2(27,0)]
+	var hands: Array[Vector2]=[]
+	for point in grips: hands.append(center+Vector2(point.x,point.y*mirror).rotated(angle))
+	return {'id':id,'center':center,'angle':angle,'mirror':mirror,'rect':rect,'hands':hands,'pulse':r.pulse}
+
+func hand_positions() -> Array:
+	var pose=held_pose()
+	if not pose.is_empty(): return pose.hands
+	# An orbit weapon never acquires fake hands; the hero keeps two neutral arms.
+	var face=game.character_facing()
+	return [game.player.position+Vector2(-19*face,5),game.player.position+Vector2(19*face,4)]
+
+func shoulder_positions() -> Array:
+	var face=game.character_facing()
+	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13)][game.selected]
+	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
+
+func elbows(hands: Array) -> Array:
+	var shoulders=shoulder_positions()
+	var face=game.character_facing()
+	var result: Array[Vector2]=[]
+	for i in range(2):
+		var offset: Vector2=hands[i]-shoulders[i]
+		var middle: Vector2=(hands[i]+shoulders[i])*.5
+		var height=sqrt(maxf(0,18*18-offset.length_squared()*.25))
+		var normal=offset.normalized().orthogonal()
+		var a=middle+normal*height
+		var b=middle-normal*height
+		var side=(-1 if i==0 else 1)*face
+		if primary_id()=='': result.append(middle+Vector2(side*3,0))
+		else: result.append(a if a.x*side>b.x*side else b)
+	return result
+
+func arm_segment(a: Vector2, b: Vector2, width: float, color: Color):
+	var outline=Color('#10111C')
+	game.draw_line(a,b,outline,width+3,true)
+	for end in [a,b]: game.draw_circle(end,width*.5+1.5,outline)
+	game.draw_line(a,b,color,width,true)
+	for end in [a,b]: game.draw_circle(end,width*.5,color)
+	var side=(b-a).normalized().orthogonal()*width*.18
+	game.draw_line(a+side,b+side,color.lightened(.25),maxf(1,width*.22),true)
+
+func draw_arms(hands: Array):
+	var shoulders=shoulder_positions()
+	var bends=elbows(hands)
+	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046')][game.selected]
+	var width=8.0 if game.selected==0 else 6.0
+	for i in range(2):
+		arm_segment(shoulders[i],bends[i],width,skin)
+		arm_segment(bends[i],hands[i],width*.85,skin.darkened(.08))
+		# Wrist guards connect naturally to the glove components.
+		arm_segment(hands[i].lerp(bends[i],.22),hands[i],width,Color('#272332'))
+
+func draw_hands(hands: Array):
+	var bends=elbows(hands)
+	for i in range(2):
+		var angle=(hands[i]-bends[i]).angle()
+		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
+		game.draw_texture_rect_region(HeroArt.GAMEPLAY_TEXTURE,Rect2(-19,-17,38,34),HeroArt.hand_region(game.characters[game.selected].id))
+		game.draw_set_transform(Vector2.ZERO)
+
 func draw_weapons(behind: bool = false):
-	for i in range(game.weapons.size()):
-		var w=game.weapons[i]
-		var r=rig(w.id)
-		var direction=Vector2.from_angle(r.angle)
-		var color=Art.color_for(game.selected)
-		if w.id=='orbit':
-			if behind: continue
-			var angle=game.orbit_angle
-			var radius=110+5*(w.level-1)
-			game.draw_arc(game.player.position,radius,angle-.65,angle,16,Color(color,.3),8,true)
-			game.draw_arc(game.player.position,radius,angle-.35,angle,12,Color(color,.7),3,true)
-			game.draw_set_transform(game.player.position+Vector2.from_angle(angle)*radius,angle+PI*.5)
-			game.draw_texture_rect_region(Art.TEXTURE,Rect2(-34,-34,68,68),Art.weapon('orbit'))
-			game.draw_set_transform(Vector2.ZERO)
-			continue
-		if behind != (direction.y<-.25): continue
-		var pos=anchor(direction,i)
-		if w.id=='hammer':
-			var swing=1.0-r.swing/.26
-			var offset=lerpf(-1.5,.6,swing) if r.swing>0 else -.3
-			game.draw_set_transform(pos,r.angle+offset,Vector2(1,-1 if direction.x<0 else 1))
-			game.draw_texture_rect_region(Art.TEXTURE,Rect2(-17,-43,114,86),Art.weapon('hammer'))
-			game.draw_set_transform(Vector2.ZERO)
-		else:
-			var kick=r.pulse/.115
-			pos-=direction*kick*7
-			game.draw_set_transform(pos,r.angle,Vector2(1,-1 if direction.x<0 else 1))
-			game.draw_texture_rect_region(Art.TEXTURE,Rect2(-32,-29,82,70),Art.weapon(w.id))
-			if r.pulse>0:
+	var pose=held_pose()
+	var pose_behind=false if pose.is_empty() else Vector2.from_angle(pose.angle).y<-.25
+	if behind==pose_behind:
+		var hands=hand_positions()
+		draw_arms(hands)
+		if not pose.is_empty():
+			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))
+			game.draw_texture_rect_region(Art.TEXTURE,pose.rect,Art.weapon(pose.id))
+			if pose.id!='hammer' and pose.pulse>0:
+				var color=Art.color_for(game.selected)
+				var kick=pose.pulse/.115
 				var muzzle=Vector2(44,-6)
 				var star=PackedVector2Array([muzzle+Vector2(-7,-4),muzzle+Vector2(7,-15),muzzle+Vector2(10,-5),muzzle+Vector2(27,0),muzzle+Vector2(10,6),muzzle+Vector2(6,14),muzzle+Vector2(-5,5)])
 				game.draw_colored_polygon(star,Color(color,.8*kick))
 				game.draw_line(muzzle,muzzle+Vector2(15,0),Color(1,1,1,kick),5,true)
 			game.draw_set_transform(Vector2.ZERO)
+		draw_hands(hands)
+	if behind: return
+	# Orbit Blade is a free orbiting weapon, never another pair of holding arms.
+	for w in game.weapons:
+		if w.id!='orbit': continue
+		var angle=game.orbit_angle
+		var radius=110+5*(w.level-1)
+		var color=Art.color_for(game.selected)
+		game.draw_arc(game.player.position,radius,angle-.65,angle,16,Color(color,.3),8,true)
+		game.draw_arc(game.player.position,radius,angle-.35,angle,12,Color(color,.7),3,true)
+		game.draw_set_transform(game.player.position+Vector2.from_angle(angle)*radius,angle+PI*.5)
+		game.draw_texture_rect_region(Art.TEXTURE,Rect2(-34,-34,68,68),Art.weapon('orbit'))
+		game.draw_set_transform(Vector2.ZERO)
+
 func draw_shots():
 	for s in game.shots:
 		if not s.active: continue

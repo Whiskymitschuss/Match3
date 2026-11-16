@@ -246,9 +246,9 @@ func main_menu():
 	ui_root.add_child(stack)
 	for item in [play_button,char_button,stats_button,settings_button]:
 		item.reparent(stack)
-	label_at('0.2.1 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.2.2 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1240,495),1,1.1)
-	label_at('ZEHN WELLEN.\nVIER WAFFEN.\nDEIN MAYHEM.',Vector2(1000,370),52,TEAL)
+	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,370),52,TEAL)
 
 func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'portrait'):
 	var art = Control.new()
@@ -280,7 +280,8 @@ func character_select():
 		label_at(roles[i],Vector2(x+25,645),23,Color(c.color))
 		label_at(c.name,Vector2(x+25,677),42,Color.WHITE)
 		label_at(c.description,Vector2(x+25,739),22)
-		label_at('%d HP  /  %d Tempo  /  %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),22)
+		label_at('%d HP / %d Tempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),21)
+		label_at(['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade'][i],Vector2(x+25,808),19,Color(c.color))
 		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; start_run(),Color(c.color).darkened(.65))
 	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
 
@@ -596,11 +597,18 @@ func update_loot(dt: float):
 func required_xp() -> int:
 	return roundi(20*pow(1.18,level-1))
 
+func has_projectile_weapon() -> bool:
+	for w in weapons:
+		if w.id in ['blaster','splitgun']: return true
+	return false
+
 func valid_upgrade(id: String) -> bool:
 	var count = int(upgrade_counts.get(id,0))
 	match id:
 		'heal': return hp<max_hp
 		'crit': return crit<.75
+		'projectile':
+			return upgrade_counts.get(id,0)<6 and has_projectile_weapon()
 		'multi':
 			var suitable = false
 			for w in weapons:
@@ -608,7 +616,7 @@ func valid_upgrade(id: String) -> bool:
 			return suitable and multishot<4
 		'armor': return armor<20
 		'speed': return count<8
-		'magnet','projectile': return count<6
+		'magnet': return count<6
 		'rapid': return count<10
 	return true
 
@@ -648,10 +656,21 @@ func apply_upgrade(id: String):
 		'heal': hp=minf(max_hp,hp+25)
 		'multi': multishot=mini(4,multishot+1)
 
+func allowed_weapon_ids() -> Array:
+	return characters[selected].allowed_weapons
+
+func can_equip_weapon(id: String) -> bool:
+	return allowed_weapon_ids().has(id)
+
+func class_weapon_summary() -> String:
+	var names: Array[String]=[]
+	for id in allowed_weapon_ids(): names.append(weapon_data[id].name)
+	return ' / '.join(names)
+
 func generate_offers():
 	offers.clear()
 	var pool: Array = []
-	for id in weapon_data:
+	for id in allowed_weapon_ids():
 		var existing = weapon_level(id)
 		if (existing==0 and weapons.size()<4) or (existing>0 and existing<5):
 			pool.append({'type':'weapon','id':id,'name':weapon_data[id].name,'description':'Neue Waffe' if existing==0 else 'Waffenlevel %d → %d' % [existing,existing+1],'price':int((18+wave_number*5)*(1+existing*.3)),'rarity':'SELTEN' if id in ['arc','orbit'] else 'STANDARD'})
@@ -685,7 +704,7 @@ func weapon_icon(id: String, pos: Vector2, size: Vector2):
 	ui_root.add_child(icon)
 
 func show_shop():
-	backdrop('MAYHEM MARKET','Welle %d überlebt • %d Coins • Maximal vier Waffen' % [wave_number,coins])
+	backdrop('MAYHEM MARKET','%s • %d Coins • %s' % [characters[selected].name,coins,class_weapon_summary()])
 	for i in range(offers.size()):
 		var o = offers[i]
 		var x = 85+i*455
@@ -709,6 +728,7 @@ func buy_offer(index: int) -> bool:
 	var o = offers[index]
 	if o.get('sold',false) or coins<o.price: return false
 	if o.type=='weapon':
+		if not can_equip_weapon(o.id): return false
 		var lvl = weapon_level(o.id)
 		if lvl>=5 or (lvl==0 and weapons.size()>=4): return false
 		if lvl==0: weapons.append({'id':o.id,'level':1,'clock':0.0})
@@ -783,6 +803,10 @@ func cartoon(pos: Vector2, radius: float, color: Color, kind: String, flash: boo
 	for side in [-1,1]:
 		draw_circle(pos+Vector2(side*radius*.55,radius*.85),radius*.24,INK)
 
+func character_facing() -> float:
+	var x=combat_visuals.target_direction.x
+	return -1.0 if x<-.1 else (1.0 if x>.1 else facing)
+
 func draw_player_character():
 	var moving = state == State.COMBAT and move_input.length_squared()>.01
 	var stride = sin(animation_clock*12) if moving else 0.0
@@ -791,10 +815,10 @@ func draw_player_character():
 	draw_set_transform(pos+Vector2(0,26),0,Vector2(1,.3))
 	draw_circle(Vector2.ZERO,33,Color(0,0,0,.3))
 	draw_arc(Vector2.ZERO,35,0,TAU,32,Color(accent,.55),3,true)
-	draw_set_transform(pos,stride*.035,Vector2(facing,1))
+	draw_set_transform(pos,stride*.035,Vector2(character_facing(),1))
 	var tint = Color(2,2,2,1) if hurt_clock>.4 else Color.WHITE
 	var rect = Rect2(Vector2(-48,-64-absf(stride)*3),Vector2(96,96))
-	draw_texture_rect_region(CharacterArt.TEXTURE,rect,CharacterArt.region(characters[selected].id,true),tint)
+	draw_texture_rect_region(CharacterArt.GAMEPLAY_TEXTURE,rect,CharacterArt.body_region(characters[selected].id),tint)
 	draw_set_transform(Vector2.ZERO)
 
 func _draw():

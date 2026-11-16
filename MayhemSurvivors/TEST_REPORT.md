@@ -1,3 +1,30 @@
+# Tests 0.2.2 — 2026-11-16
+
+- 76 bisherige Integrationsprüfungen bestanden.
+- 28 Effekt-/Projektilprüfungen bestanden.
+- 42 neue Klassen-/Rigprüfungen bestanden: korrekte Startwaffen, erlaubte Käufe, Abweisung
+  klassenfremder Käufe ohne Coin-/Inventaränderung, 40 zufällige Shoplisten je Held,
+  Filtern nutzloser Projektil-/Multishot-Upgrades, Stat-Upgrades ohne Waffenvergabe,
+  zwei endliche Griffpunkte bei 16 Zielwinkeln je Held, keine Extra-Hände für Orbit, Cleanup.
+- Historischer Formelnvergleich: 33 Kontrollpunkte über 3600 Schritte weiterhin bestanden.
+  Er injiziert frühere Mehrwaffen-Loadouts unabhängig vom Shop und beweist nur das getestete
+  Verhalten der Formeln, nicht die Balance der nun eingeschränkten Klassen-Loadouts.
+- Numerische Charakterwerte geprüft; nur `allowed_weapons` in den Charakterdaten ergänzt.
+  Waffen-, Gegner-, Wellen- und Upgrade-JSON sowie PlayerController und SaveManager unverändert.
+- Tatsächlich gerenderte Bilder: `grip_bruiser.png`, `grip_sparky.png`, `grip_shade.png`,
+  vergrößerte `grip_close_*.png`, Sparkys Dreifach-Loadout und drei Klassen-Shops.
+  Die Körperregionen enthalten keine Hände; Handschuhkomponenten werden genau zweimal gezeichnet.
+  Die vergrößerten Bilder sind Godot-Aufnahmen mit Kamerazoom, keine nachbearbeiteten Spielerbilder.
+- Import und Android-Export ohne Parserfehler; APK-Signatur, Architektur und Alignment geprüft.
+
+Rohprotokolle: `tests/results/v0.2.2/`. Keine physische Android-Installation oder neue
+Klassenbalance über zehn Wellen geprüft. Die vorläufige Waffenbindung ist eine Spielregeländerung,
+keine reine Grafikänderung; daher keine unveränderte Gesamtbalance behauptet.
+
+---
+
+## Archiv: Stand 0.2.1
+
 # Waffen-/Geschosstests 0.2.1 — 2026-11-16
 
 - 76 bestehende Integrationstests bestanden.

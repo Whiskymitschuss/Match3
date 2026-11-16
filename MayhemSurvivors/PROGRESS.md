@@ -1,3 +1,37 @@
+# Haltungs-/Klassenkorrektur 0.2.2 — 2026-11-16
+
+## Aktueller Stand
+
+Branch `fix/character-grips-v0.2.2`. Nutzer meldete vermeintliche vier Hände durch die
+Überlagerung von vollständiger Figur und mehreren Waffen sowie fehlende Klassenspezialisierung.
+Die Waffenbindung wurde als vorläufiger Testvorschlag umgesetzt; auf die Auswahlfrage im
+Chat lag bei Umsetzung noch keine Antwort vor. Sie kann bei abweichendem Wunsch angepasst werden.
+
+## Implementiert / geprüft
+
+Getrennte Gameplay-Körper ohne eingemalte Arme; genau zwei Armketten und zwei Hände am
+Griff einer sichtbar geführten Waffe. Nahaufnahmen und normale Spielszenen geprüft.
+Auch Sparkys drei Schusswaffen erzeugen keine zusätzlichen gehaltenen Waffen oder Hände.
+Orbit Blade schwebt frei. Menüporträts bleiben vollständig.
+
+Bruiser darf Hammer kaufen, Sparky Blaster/Splitgun/Arc Cannon, Shade Orbit Blade.
+Shopgenerierung UND Kaufvalidierung prüfen dies. Stat-Upgrades vergeben keine Waffen.
+Unergiebige Projektil-/Multishot-Angebote werden bei reinen Nah-/Orbitklassen ausgefiltert.
+76 bestehende + 28 Effekt- + 42 Klassen-/Haltungsprüfungen bestanden.
+Alter synthetischer Formelnvergleich bestanden; keine neue Klassenbalance damit behauptet.
+APK 0.2.2 gebaut und geprüft, VersionCode 4, gleiche Signatur, ARM64, keine Berechtigungen.
+
+## Offen / nächster Schritt
+
+Rückmeldung zur vorgeschlagenen Waffenbindung abwarten. APK auf Android als Update testen,
+Hände bei Bewegung und Zielwechsel prüfen sowie neue Klassen über volle Runs spielen.
+Waffen-/Gegnerwerte sind gleich; eingeschränkte Builds können die Schwierigkeit ändern.
+Keine neue Hardware-FPS-Messung, keine vollständige Geräteabnahme behauptet.
+
+---
+
+## Archiv: Stand 0.2.1
+
 # Waffen-/Geschossupdate 0.2.1 — 2026-11-16
 
 ## Aktueller Stand

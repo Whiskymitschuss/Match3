@@ -1,44 +1,53 @@
-# RF Worlds — Mayhem Survivors 0.2.1
+# Mayhem Survivors — RF Worlds — 0.2.2 Teststand
 
-## Echte Waffen und eigene Geschosse
+## Zwei Hände statt gestapelter Waffen
 
-Alle fünf Waffen haben jetzt Comic-Grafiken passend zu den Helden: Blaster, Kriegshammer,
-Splitgun, Arc Cannon und Orbit Blade. Keine Waffen-Rechtecke oder einfachen Balken mehr.
-Automatische Ausrichtung, Rückstoß, Mündungsfeuer, Hammerschwung, Bodenschock,
-Kettenblitz, Klingenspur, Trefferfunken, Hülsen und fünf eigene Waffensounds sind verbunden.
-Waffenbilder erscheinen auch in Shop und HUD.
+Die Spielfigur ist jetzt aus einem Körper ohne eingemalte Arme, zwei Armketten und zwei
+Handschuhkomponenten aufgebaut. Genau diese zwei Hände liegen an den Griffpunkten der
+sichtbar gehaltenen Hauptwaffe. Auch mit mehreren Schusswaffen gibt es keine zusätzlichen
+Hände oder gehaltenen Waffen. Orbit Blade bleibt frei schwebend.
 
-Die Geschossform richtet sich nach dem Charakter:
-**Bruiser: Goldgeschoss / Sparky: türkise Plasmalanze / Shade: violetter Energiedorn.**
-Bossgeschosse sind rot-orange. Die Waffenmechanik und Balance bleiben erhalten.
+![Neue Haltung](MayhemSurvivors/tests/grip_close_sparky.png)
 
-- [Android 0.2.1 APK herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/weapons-v0.2.1/Downloads/MayhemSurvivors-v0.2.1-debug.apk)
-- [Komplettes Projekt 0.2.1 als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/weapons-v0.2.1/Downloads/MayhemSurvivors-v0.2.1-source.zip)
-- [Waffen und Kettenblitz im Kampf ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/weapons-v0.2.1/MayhemSurvivors/tests/combat_sparky.png)
-- [Waffen im Shop ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/weapons-v0.2.1/MayhemSurvivors/tests/combat_shop.png)
+## Vorläufige Waffenbindung
 
-![Kampf mit echten Waffen](MayhemSurvivors/tests/combat_sparky.png)
+| Held | Erlaubte Waffen |
+|---|---|
+| Bruiser | Hammer |
+| Sparky | Blaster, Splitgun, Arc Cannon |
+| Shade | Orbit Blade |
 
-Android 7.0 oder neuer, ausschließlich ARM64, Querformat, offline. Gleicher Paketname und
-Signierschlüssel wie bisher; versionCode 3, als Update vorgesehen. Grafik, Sound und Update
-auf dem physischen Android-Gerät müssen noch praktisch geprüft werden.
+Die Bindung war der vorgeschlagene Teststand; eine abweichende Auswahl im Chat kann noch
+berücksichtigt werden. Shop und Kaufprüfung erzwingen dieselben Klassenregeln. Stat-Upgrades
+vergeben keine fremden Waffen; reine Nah-/Orbitklassen erhalten keine nutzlosen Projektil-Upgrades.
+Sparky kann passende Schusswaffen kombinieren; nur eine wird mit den Händen geführt.
 
-## Geprüft
+**Schadenswerte und Feuerraten bleiben gleich, die möglichen Builds ändern sich.**
+Die neue Klassenbalance über volle zehn Wellen ist noch zu prüfen.
 
-76 bisherige Tests plus 28 neue Tests bestanden. Drei Helden über 3600 Simulationsschritte
-mit der Version 0.1 verglichen: HP, XP, Coins, Kills, Schaden, Gegner, Geschosse und Krit-Zufall
-stimmen an 33 Kontrollpunkten überein. Alle Spiel-JSON-Dateien sind unverändert.
-120 simulierte Sekunden Belastungstest bestanden. Neue Ansichten mit Godot gerendert.
-APK signiert, ARM64, Berechtigungen und 16-KiB-Alignment geprüft.
-Keine neue Geräte-Frameratemessung oder Android-Abnahme behauptet.
+## Downloads
 
-## Frühere Versionen
+- [Android-APK 0.2.2](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/fix/character-grips-v0.2.2/Downloads/MayhemSurvivors-v0.2.2-debug.apk)
+- [Komplettes Projekt 0.2.2 als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/fix/character-grips-v0.2.2/Downloads/MayhemSurvivors-v0.2.2-source.zip)
+- [Haltung in normaler Spielgröße](https://github.com/Whiskymitschuss/Match3/blob/fix/character-grips-v0.2.2/MayhemSurvivors/tests/grip_sparky_all.png)
+- [Charakterwahl und Spezialisierungen](https://github.com/Whiskymitschuss/Match3/blob/fix/character-grips-v0.2.2/MayhemSurvivors/tests/grip_characters.png)
 
-- [0.2 Charaktergrafik-Testversion](https://github.com/Whiskymitschuss/Match3/tree/art/characters-v0.2)
-- [0.1 Referenzversion](https://github.com/Whiskymitschuss/Match3/tree/main)
+Android 7.0 oder neuer, ARM64, Querformat, offline. Gleicher Paketname und Signierschlüssel,
+versionCode 4; als Update vorgesehen. Geräteinstallation und neue Klassenbalance noch offen.
 
-Der Nutzer hat nach 15 Runden die Gegner-/Schussbalance bestätigt. Deshalb wurden für
-diese Updates keine Schadenswerte, Feuerraten, Kollisionsregeln oder Spawns angepasst.
+## Tatsächlich geprüft
+
+146 Prüfungen bestanden: 76 bestehende, 28 Effekte, 42 Klassen-/Haltungsprüfungen.
+33 historische Kontrollpunkte über 3600 Simulationsschritte prüfen weiterhin
+die unveränderten Schadensformeln mit künstlich injizierten alten Loadouts. Dies ist kein
+Nachweis der neuen Klassenbalance. Normale Ansichten und vergrößerte Griffbilder wurden
+mit Godot/Mesa gerendert und geprüft. APK-Signatur, ARM64 und Alignment verifiziert.
+Keine neue Android-FPS-Messung oder vollständige Abnahme auf echter Hardware behauptet.
 
 [Godot-Projekt](MayhemSurvivors) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
 [Buildbericht](MayhemSurvivors/BUILD_REPORT.md) · [Entwicklungsstand](MayhemSurvivors/PROGRESS.md)
+
+## Frühere Stände
+
+[0.2.1 Waffenupdate](https://github.com/Whiskymitschuss/Match3/tree/art/weapons-v0.2.1) ·
+[0.2 Charakterbilder](https://github.com/Whiskymitschuss/Match3/tree/art/characters-v0.2) · [0.1 Referenz](https://github.com/Whiskymitschuss/Match3/tree/main)

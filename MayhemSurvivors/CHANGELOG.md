@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.2 Alpha — 2026-11-16
+
+- Gameplay-Körper von Armen/Händen getrennt; genau zwei animierte Hände an Griffpunkten.
+- Nur eine Waffe sichtbar gehalten; Orbit Blade bleibt frei schwebend.
+- Vorläufige Klassenbindung: Bruiser Hammer; Sparky Blaster/Splitgun/Arc; Shade Orbit.
+- Klassenfilter für Shop und Kaufprüfung; nutzlose Projektil-Upgrades ausgeblendet.
+- Auswahl und Shop zeigen die Spezialisierung. 42 neue Klassen-/Rigprüfungen bestanden.
+- Zahlenwerte unverändert, mögliche Builds bewusst eingeschränkt; Klassenbalance offen.
+- VersionCode 4, gleicher Paketname und Signierschlüssel.
+
 ## 0.2.1 Alpha — 2026-11-16
 
 - Fünf echte Comic-Waffensprites statt geometrischer Platzhalter, auch in Shop und HUD.
