@@ -1,3 +1,65 @@
+# Mayhem Survivors 0.12.0 Alpha — TWINKLE
+
+Vierte spielbare Heldin: TWINKLE – DIE REINIGUNGSQUEEN.
+100 HP / 210 Tempo / nur WISCHMOPP. Von Beginn an verfügbar, in beiden Arenen.
+CHARAKTERE → WEITERE HELDEN öffnet ihre eigene Auswahlseite mit Beschreibung/Zitat.
+
+## Eigene Mechanik
+
+- Wischattacke: automatischer Halbkreis mit 150 Basisreichweite, 18 Basisschaden,
+  0,95 s Basis-Cooldown. Trifft mehrere Gegner; +15 % Flächenschaden auf Mopp,
+  Gift und Tornado. Bestehende globale Schadens-/Tempo-Upgrades gelten zusätzlich.
+- Seifenchaos: getroffene normale Gegner eine Sekunde betäubt, keine Bewegung,
+  Spezialattacke oder Kontaktschaden währenddessen. Individuelle 3-s-Resistenz ab
+  Betäubungsbeginn verhindert Dauerbetäubung. Bosse sind kontrollimmun.
+- Chemiekeule: Sprühflasche erzeugt am Ziel eine 3-s-Giftpfütze, 85 Basisradius,
+  8 Basis-DPS. Maximal fünf Felder, überlappend gilt nur das stärkste Gift.
+  Schaden in begrenzten 0,25-s-Intervallen; Lebenszeit auch bei langen Frames begrenzt.
+- Putzfimmel: jeder 20. tatsächliche Kill im aktuellen Run heilt 2 HP, bis zum Maximum.
+- TWINKLE TORNADO: Touch-Fähigkeit, fünf Sekunden Seifenwirbel um die bewegliche
+  Heldin, 230 Radius, 24 Basis-DPS plus Flächenbonus, 110 Einheiten/s Rückstoß auf
+  normale Gegner. Der Mopp dreht sich sichtbar. Keine Unverwundbarkeit. 45 s Cooldown
+  ab Aktivierung. Bosse erhalten Schaden, werden aber nicht verschoben/betäubt.
+
+Wischmopp Stufe 1–5: +30 % Basisschaden/Stufe, Reichweiten-/Tempo-Steigerung.
+Pfützen-DPS skaliert gleich mit dem Waffenlevel. Auf Stufe 5 kostenlos eine Entwicklung:
+SEIFENSTURM (+40 % Wischreichweite / 1,25 s Betäubung) oder CHEMIEFLUT
+(+60 % Giftschaden / eine Sekunde längere Felder). Keine fremden Waffen über Shop.
+Set-Zuordnung STROMKREIS; ungeeignete Multishot-/Geschosstempo-Upgrades werden nicht angeboten.
+
+## Vollständige Integration
+
+Eigener transparenter Grafik-Atlas: Portrait, armloser Spielkörper, separate Handschuhe
+und Wischmopp. Genau zwei animierte Arme; separate prozedurale Sprühflasche.
+Eigene Mopp-/Sprüh-/Seifen-/Gift-/Tornado-Effekte und drei selbst synthetisierte Sounds.
+Darstellungsstufen ändern nur Blasenanzahl, keinen Schaden oder Radius.
+Statistik, Historie, Ergebnis, Skins, Meisterschaft und lokale Speicherung kennen Twinkle.
+Meistertitel GLANZLEGENDE, dieselben drei Ziele und Farbvarianten wie die anderen Helden.
+
+Bestehende Schema-3-Saves bekommen leere Twinkle-Profile und Original-Skin ergänzt;
+alle alten Rekorde/Einstellungen bleiben erhalten, keine erfundene Twinkle-Historie.
+Transienter Schaden/Betäubung/Tornado stoppt in Pause/Level-up/Shop und wird bei
+Wellenende, Neustart, Sieg/Niederlage bereinigt. Kein Run-Resume nach App-Beenden.
+
+## Ausführen / Abnahme
+
+Godot 4.6.3 stable, project.godot importieren und starten. Kein Generator erforderlich.
+Android 7+, ARM64, offline, Querformat. Code 16 / 0.12.0, als Update installieren.
+`python3 tools/run_tests.py --traces`: 17 Suites / 1.164 Assertions, beide alten Traces grün.
+Neue Twinkle-Suite: 65 Checks. Lastprobe in tests/twinkle_soak.gd künstliche HP und Pilot;
+3/6 Boss-Siege am Schrottplatz, drei Reaktor-Zeitlimits. Kein Beweis menschlicher Balance
+oder Android-FPS. Touch/Update/Lesbarkeit und beide Bosse auf Gerät noch abnehmen.
+Normale Gegner-/Waffen-/Charakterwerte der bisherigen drei Helden unverändert.
+
+Quellarchiv enthält sämtliche Laufzeitassets und den kompletten Code/Szenen/Tests.
+Historische Testscreenshots sind im GitHub-Repository; im ZIP nur die aktuelle Twinkle-
+und die direkt vorherigen Meisterschaft-/Encounter-Galerien, um das Archiv klein zu halten.
+Diese Screenshots sind keine Testfixtures und nicht zum Import/Spielen nötig.
+
+---
+
+## Historischer Stand vor 0.12
+
 # Mayhem Survivors 0.11.0 Alpha — Charakter-Meisterschaften
 
 Android-only, Godot 4.6.3 stable / GDScript / GL Compatibility, offline.

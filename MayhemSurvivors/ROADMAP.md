@@ -1,3 +1,14 @@
+# Stand nach 0.12
+
+TWINKLE vollständig in den aktuellen Spielablauf integriert.
+Als Nächstes: Android-Rückmeldung zu Mopp-Reichweite, Stun-Lesbarkeit, Tornado,
+Reaktor-Boss und Speichermigration sammeln, dann datenbasiert balancieren.
+Veteran/Mayhem-Schwierigkeiten und zusätzliche Arena-Ereignisse bleiben spätere Schritte.
+
+---
+
+## Historischer Stand vor 0.12
+
 # Nächster Stand nach 0.11
 
 Charakter-Meisterschaften und freischaltbare Farbvarianten umgesetzt.

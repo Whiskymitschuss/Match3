@@ -1,22 +1,26 @@
-# RF Worlds — Mayhem Survivors 0.11.0
+# RF Worlds — Mayhem Survivors 0.12.0 / TWINKLE
 
-Charakter-Meisterschaften: eigene Ziele, kosmetische Farbvarianten und Meistertitel.
+Die Reinigungsqueen ist als vierte Heldin spielbar: 100 HP, Tempo 210, nur Wischmopp.
 
-- Je Held Welle 5 erreichen, 250 Gegner besiegen und einen Run gewinnen.
-- Neon Crew, Gold Champion, Jägerabzeichen und drei individuelle Titel freischalten.
-- Vorschau und dauerhafte Auswahl unter CHARAKTERE → MEISTERSCHAFTEN & SKINS.
-- Bereits vorhandene Charakterrekorde zählen mit. Keine Änderungen an Kampfwerten.
+- Halbkreis-Moppattacke und +15 % Flächenschaden.
+- Seifenbetäubung, Giftpfützen und 2 HP Heilung bei jedem 20. Kill.
+- Fünf Sekunden TWINKLE TORNADO, 45 Sekunden Cooldown.
+- Eigene Grafik, Mopp/Sprühflasche, Sounds, Effekte und zwei Waffenentwicklungen.
+- Vollständig in Shop, Statistik, Meisterschaften und lokale Speicherung eingebunden.
 
-![Meisterschaften — native Engine-Vorgabeszene](MayhemSurvivors/tests/mastery_champion.png)
+![Twinkle — native Engine-Vorgabeszene](MayhemSurvivors/tests/twinkle_selection.png)
 
-[Android-APK 0.11 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/character-mastery-v0.11/Downloads/MayhemSurvivors-v0.11-debug.apk)
+[Android-APK 0.12 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/twinkle-v0.12/Downloads/MayhemSurvivors-v0.12-debug.apk)
 
-[Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/character-mastery-v0.11/Downloads/MayhemSurvivors-v0.11-source.zip)
+[Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/twinkle-v0.12/Downloads/MayhemSurvivors-v0.12-source.zip)
 
-1.075 automatisierte Prüfungen und beide historischen Traces bestanden.
-Android-APK exportiert/signiert. Neue Geräteabnahme noch offen.
-Android 7+, ARM64, offline, Querformat, gleicher Paketname/Schlüssel, Code 15.
-Als Update installieren; Fortschritt und Einstellungen bleiben erhalten.
+[Twinkle Tornado](MayhemSurvivors/tests/twinkle_tornado.png) ·
+[Waffenentwicklungen](MayhemSurvivors/tests/twinkle_evolution.png)
+
+1.164 automatisierte Prüfungen und beide historischen Traces bestanden.
+APK exportiert/signiert. Android-Geräteabnahme und menschliches Twinkle-Balancing offen.
+Android 7+, ARM64, offline, Querformat, Code 16, gleicher Paketname/Debug-Schlüssel.
+Als Update installieren. CHARAKTERE → WEITERE HELDEN → TWINKLE.
 
 [Anleitung](MayhemSurvivors/README.md) · [Tests](MayhemSurvivors/TEST_REPORT.md) ·
 [Build](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)

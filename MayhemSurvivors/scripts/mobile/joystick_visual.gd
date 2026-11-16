@@ -29,8 +29,8 @@ func _draw():
 		var w=game.weapons[i]
 		var at=Vector2(1100+i*116,44)+game.hud_top_right()
 		draw_style_box(game.style(Color('#18263d')),Rect2(at,Vector2(104,104)))
-		draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(4,19),{'blaster':'BLASTER','hammer':'HAMMER','splitgun':'SPLITGUN','arc':'ARC','orbit':'ORBIT'}[w.id],HORIZONTAL_ALIGNMENT_CENTER,96,16,Color.WHITE)
-		draw_texture_rect_region(CombatArt.TEXTURE,Rect2(at+Vector2(6,18),Vector2(92,61)),CombatArt.weapon(w.id))
+		draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(4,19),{'blaster':'BLASTER','hammer':'HAMMER','splitgun':'SPLITGUN','arc':'ARC','orbit':'ORBIT','mop':'MOPP'}[w.id],HORIZONTAL_ALIGNMENT_CENTER,96,16,Color.WHITE)
+		draw_texture_rect_region(CombatArt.weapon_texture(w.id),Rect2(at+Vector2(6,18),Vector2(92,61)),CombatArt.weapon(w.id))
 		draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(32,94),'Lv.'+str(w.level),HORIZONTAL_ALIGNMENT_LEFT,-1,19,Color('#ffd166'))
 
 		if not game.Specs.definition(w).is_empty():draw_texture_rect(game.Specs.icon(w.spec),Rect2(at+Vector2(74,70),Vector2(26,26)),false)

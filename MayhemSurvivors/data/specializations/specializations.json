@@ -94,5 +94,23 @@
     "angular": 1.65,
     "hit_cooldown": 0.55,
     "size": 58
+  },
+  "soap_storm": {
+    "weapon": "mop",
+    "name": "SEIFENSTURM",
+    "description": "40 % mehr Wischreichweite und 1,25 Sekunden Betäubung. Gift bleibt unverändert.",
+    "color": "#60F7ED",
+    "power": 1,
+    "reach": 1.4,
+    "stun": 1.25
+  },
+  "chemical_flood": {
+    "weapon": "mop",
+    "name": "CHEMIEFLUT",
+    "description": "60 % mehr Giftschaden. Pfützen bleiben eine Sekunde länger bestehen.",
+    "color": "#E879F9",
+    "power": 1,
+    "poison": 1.6,
+    "puddle_extra": 1
   }
 }

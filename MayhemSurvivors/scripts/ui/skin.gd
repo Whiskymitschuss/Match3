@@ -40,7 +40,7 @@ static func menu(game:Node2D):
 	game.portrait(Vector2(1490,540),2,.94)
 	game.portrait(Vector2(1230,440),1,1.25)
 	game.label_at('3 HELDEN   /   2 ARENEN   /   DEINE WAHL',Vector2(1145,980),25,Color('#E7D7F3'))
-	game.label_at('v0.11  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
+	game.label_at('v0.12  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='EINSTELLUNGEN':panel(game,Rect2(90,260,1460,415))

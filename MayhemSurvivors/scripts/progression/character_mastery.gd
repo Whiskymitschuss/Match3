@@ -1,9 +1,9 @@
 extends RefCounted
 # Derived from validated lifetime character records: no duplicate progress counters.
-const HEROES=['bruiser','sparky','shade']
+const HEROES=['bruiser','sparky','shade','twinkle']
 const STYLES=['classic','neon','champion']
 const NAMES={'classic':'ORIGINAL','neon':'NEON CREW','champion':'GOLD CHAMPION'}
-const TITLES={'bruiser':'SCHROTTKÖNIG','sparky':'FUNKENKÖNIGIN','shade':'NACHTMEISTER'}
+const TITLES={'bruiser':'SCHROTTKÖNIG','sparky':'FUNKENKÖNIGIN','shade':'NACHTMEISTER','twinkle':'GLANZLEGENDE'}
 static func goals(saved:Dictionary, hero:String) -> Array:
 	var r=saved.get('records',{}).get(hero,{})
 	return [

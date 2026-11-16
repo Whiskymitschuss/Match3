@@ -11,7 +11,7 @@ func run():
 	var trace:Array=[]
 	var scenarios:Array=[]
 	for arena in ['scrapyard','reactor']:
-		for id in g.Specs.all():scenarios.append({'arena':arena,'spec':id,'boss':false})
+		for id in g.Specs.all().keys().filter(func(key):return g.Specs.all()[key].weapon!='mop'):scenarios.append({'arena':arena,'spec':id,'boss':false})
 		for id in ['quake','piercer','swift']:scenarios.append({'arena':arena,'spec':id,'boss':true})
 	var args=OS.get_cmdline_user_args()
 	if args.has('--low'):g.saved.settings.quality='LOW'

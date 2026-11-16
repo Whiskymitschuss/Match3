@@ -1,0 +1,23 @@
+{
+  "mop_swish": {
+    "frames": 14112,
+    "rate": 44100,
+    "duration": 0.32,
+    "peak": 11775,
+    "clipped": false
+  },
+  "twinkle_heal": {
+    "frames": 28665,
+    "rate": 44100,
+    "duration": 0.65,
+    "peak": 10979,
+    "clipped": false
+  },
+  "ability_twinkle_tornado": {
+    "frames": 50715,
+    "rate": 44100,
+    "duration": 1.15,
+    "peak": 15760,
+    "clipped": false
+  }
+}

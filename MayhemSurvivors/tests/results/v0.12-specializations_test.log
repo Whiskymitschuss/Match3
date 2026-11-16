@@ -1,0 +1,119 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Twelve unique specialization definitions
+PASS Two choices for hammer
+PASS Real icon loads for quake
+PASS Real icon loads for crusher
+PASS Two choices for blaster
+PASS Real icon loads for piercer
+PASS Real icon loads for blast
+PASS Two choices for splitgun
+PASS Real icon loads for precision
+PASS Real icon loads for storm
+PASS Two choices for arc
+PASS Real icon loads for conductor
+PASS Real icon loads for overcharge
+PASS Two choices for orbit
+PASS Real icon loads for wide
+PASS Real icon loads for swift
+PASS Real shop purchase reaches level five and charges once
+PASS Level-five purchase opens choice while simulation remains stopped
+PASS Choice description fits its touch card
+PASS Choice description fits its touch card
+PASS Specialization choice freezes combat, timer and ability input
+PASS Cannot bypass pending choice with next-wave action
+PASS Class and weapon mismatches rejected
+PASS Valid specialization costs no additional coins
+PASS Chosen path cannot be switched in the same run
+PASS Sold level-five offer cannot be bought twice
+PASS Specialization persists across shop and wave transition
+PASS Fresh run resets all weapon evolution
+PASS Earthquake deals configured radial damage including behind player
+PASS Earthquake has longer cooldown and visible wave effect
+PASS Crusher hits one closest target with configured damage
+PASS Crusher has faster attack cooldown
+PASS Piercing projectile starts with three hit budget
+PASS Swept piercer hits three distinct enemies in one long frame
+PASS Piercer deactivates after third target
+PASS Lingering piercer cannot hit same enemy twice
+PASS Cleanup releases projectile target references
+PASS Reused hostile projectile never inherits piercing or explosive metadata
+PASS Explosive shot separates direct and nearby splash damage without double hit
+PASS Spent explosive cannot damage twice
+PASS Splash deaths award kills, coins and XP exactly once
+PASS Precision fan retains three pellets and increases damage
+PASS Precision fan narrows spread and extends lifetime/range
+PASS Storm adds two pellets, combines with multishot and reduces pellet damage
+PASS Storm fan is visibly wider
+PASS Conductor chains through five separate targets
+PASS Conductor applies reduced base power and chain falloff
+PASS Overcharge boosts single target without chain
+PASS Overcharge reduces attack cooldown
+PASS wide blade uses configured power
+PASS wide visual and damage orbit geometry share same pose
+PASS wide uses configured per-target hit cooldown
+PASS wide angular speed matches visual orbit
+PASS swift blade uses configured power
+PASS swift visual and damage orbit geometry share same pose
+PASS swift uses configured per-target hit cooldown
+PASS swift angular speed matches visual orbit
+PASS Pause freezes specialization feedback
+PASS Expired specialization effects released
+PASS Specialization effect count bounded
+PASS LOW trims existing specialization effects immediately
+PASS LOW effect limit remains bounded when effects arrive
+PASS History keeps valid level-five path and strips malformed/early path
+PASS Specialization history survives actual save and reload
+PASS Old histories remain compatible without invented choices
+PASS Several pending weapon choices are handled sequentially
+PASS All pending choices return to functional shop
+PASS Choice works with production state transition guards
+PASS quake boss victory cleanup in scrapyard
+PASS quake result records selected path
+PASS quake boss victory cleanup in reactor
+PASS quake result records selected path
+PASS crusher boss victory cleanup in scrapyard
+PASS crusher result records selected path
+PASS crusher boss victory cleanup in reactor
+PASS crusher result records selected path
+PASS piercer boss victory cleanup in scrapyard
+PASS piercer result records selected path
+PASS piercer boss victory cleanup in reactor
+PASS piercer result records selected path
+PASS blast boss victory cleanup in scrapyard
+PASS blast result records selected path
+PASS blast boss victory cleanup in reactor
+PASS blast result records selected path
+PASS precision boss victory cleanup in scrapyard
+PASS precision result records selected path
+PASS precision boss victory cleanup in reactor
+PASS precision result records selected path
+PASS storm boss victory cleanup in scrapyard
+PASS storm result records selected path
+PASS storm boss victory cleanup in reactor
+PASS storm result records selected path
+PASS conductor boss victory cleanup in scrapyard
+PASS conductor result records selected path
+PASS conductor boss victory cleanup in reactor
+PASS conductor result records selected path
+PASS overcharge boss victory cleanup in scrapyard
+PASS overcharge result records selected path
+PASS overcharge boss victory cleanup in reactor
+PASS overcharge result records selected path
+PASS wide boss victory cleanup in scrapyard
+PASS wide result records selected path
+PASS wide boss victory cleanup in reactor
+PASS wide result records selected path
+PASS swift boss victory cleanup in scrapyard
+PASS swift result records selected path
+PASS swift boss victory cleanup in reactor
+PASS swift result records selected path
+PASS soap_storm boss victory cleanup in scrapyard
+PASS soap_storm result records selected path
+PASS soap_storm boss victory cleanup in reactor
+PASS soap_storm result records selected path
+PASS chemical_flood boss victory cleanup in scrapyard
+PASS chemical_flood result records selected path
+PASS chemical_flood boss victory cleanup in reactor
+PASS chemical_flood result records selected path
+SPECIALIZATIONS RESULT 116 passed, 0 failed

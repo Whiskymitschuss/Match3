@@ -42,11 +42,11 @@ func push(effect: Dictionary):
 	if fx.size()<limit(): fx.append(effect)
 func attack(id: String, direction: Vector2, _level: int):
 	var r=rig(id)
-	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap'}.get(id,'shot'))
+	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish'}.get(id,'shot'))
 	r.angle=direction.angle()
 	r.pulse=.115
 	game.vfx.shot(id,direction)
-	if id=='hammer':
+	if id in ['hammer','mop']:
 		r.swing=.26
 		push({'kind':'slam','pos':game.player.position+direction*70,'life':.28,'full':.28,'skin':game.selected})
 	elif id in ['blaster','splitgun']:
@@ -76,14 +76,19 @@ func held_pose() -> Dictionary:
 	var center=game.player.position+Vector2(0,-9)+direction*14-direction*(r.pulse/.115)*5
 	var rect=Rect2(-32,-29,82,70)
 	var grips=[Vector2(-18,18),Vector2(12,4)]
-	if id=='hammer':
+	if id in ['hammer','mop']:
 		var progress=1.0-r.swing/.26
 		angle+=sin(progress*PI)*.8 if r.swing>0 else -.3
 		center=game.player.position+Vector2(0,-8)+direction*5
 		rect=Rect2(-14,-43,110,84)
 		grips=[Vector2(5,0),Vector2(27,0)]
+	if id=='mop' and game.twinkle.tornado_left>0:
+		angle=game.twinkle.tornado_age*TAU*2
+		mirror=-1.0 if cos(angle)<0 else 1.0
+		center=game.player.position+Vector2(0,-8)+Vector2.from_angle(angle)*10
 	var hands: Array[Vector2]=[]
 	for point in grips: hands.append(center+Vector2(point.x,point.y*mirror).rotated(angle))
+	if id=='mop':hands[1]=game.player.position+Vector2(-19*game.character_facing(),1)
 	return {'id':id,'center':center,'angle':angle,'mirror':mirror,'rect':rect,'hands':hands,'pulse':r.pulse}
 
 func hand_positions() -> Array:
@@ -95,7 +100,7 @@ func hand_positions() -> Array:
 
 func shoulder_positions() -> Array:
 	var face=game.character_facing()
-	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13)][game.selected]
+	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10)][game.selected]
 	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
 
 func elbows(hands: Array) -> Array:
@@ -126,7 +131,7 @@ func arm_segment(a: Vector2, b: Vector2, width: float, color: Color):
 func draw_arms(hands: Array):
 	var shoulders=shoulder_positions()
 	var bends=elbows(hands)
-	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046')][game.selected]
+	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79')][game.selected]
 	var width=8.0 if game.selected==0 else 6.0
 	for i in range(2):
 		arm_segment(shoulders[i],bends[i],width,skin)
@@ -139,7 +144,7 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.GAMEPLAY_TEXTURE,Rect2(-19,-17,38,34),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
+		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),(Rect2(-11,-11,22,22) if game.selected==3 else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):
@@ -150,7 +155,7 @@ func draw_weapons(behind: bool = false):
 		draw_arms(hands)
 		if not pose.is_empty():
 			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))
-			game.draw_texture_rect_region(Art.TEXTURE,pose.rect,Art.weapon(pose.id))
+			game.draw_texture_rect_region(Art.weapon_texture(pose.id),pose.rect,Art.weapon(pose.id))
 			for w in game.weapons:
 				if w.id!=pose.id:continue
 				var spec=Specs.definition(w)
@@ -158,7 +163,7 @@ func draw_weapons(behind: bool = false):
 				var at=Vector2(54,-33) if pose.id=='hammer' else Vector2(3,-25)
 				game.draw_texture_rect(Specs.icon(w.spec),Rect2(at,Vector2(28,28)),false)
 				game.draw_line(at+Vector2(2,29),at+Vector2(29,29),Color(spec.color),4,true)
-			if pose.id!='hammer' and pose.pulse>0:
+			if pose.id not in ['hammer','mop'] and pose.pulse>0:
 				var color=Art.color_for(game.selected)
 				var kick=pose.pulse/.115
 				var muzzle=Vector2(44,-6)
@@ -166,6 +171,7 @@ func draw_weapons(behind: bool = false):
 				game.draw_colored_polygon(star,Color(color,.8*kick))
 				game.draw_line(muzzle,muzzle+Vector2(15,0),Color(1,1,1,kick),5,true)
 			game.draw_set_transform(Vector2.ZERO)
+		if pose.get('id','')=='mop':game.twinkle.draw_bottle(hands[1])
 		draw_hands(hands)
 	if behind: return
 	# Orbit Blade is a free orbiting weapon, never another pair of holding arms.

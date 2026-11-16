@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SOAK scrapyard LOW boss_result=8 time=108.216666666662
+SOAK scrapyard MEDIUM boss_result=8 time=108.216666666662
+SOAK scrapyard HIGH boss_result=8 time=108.216666666662
+SOAK reactor LOW boss_result=9 time=150.016666666678
+SOAK reactor MEDIUM boss_result=9 time=150.016666666678
+SOAK reactor HIGH boss_result=9 time=150.016666666678
+TWINKLE SOAK PASS steps=46482 peak_enemies=52 fields=5 sweeps=1 boss_victories=3/6; artificial HP, deterministic pilot, not Android FPS or human balance proof

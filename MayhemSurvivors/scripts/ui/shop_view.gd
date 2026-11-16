@@ -82,6 +82,7 @@ func weapon_details(id:String):
 	game.backdrop(game.Specs.label(w) if not spec.is_empty() else d.name,'WAFFENWERKSTATT / Stufe %d / %d Coins' % [w.level,game.coins])
 	game.weapon_icon(id,Vector2(150,300),Vector2(450,300))
 	var damage=float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult*float(spec.get('power',1.0))
+	if id=='mop':damage*=game.twinkle.area_multiplier()
 	if id=='hammer':damage*=1.0+float(game.characters[game.selected].melee_bonus)
 	var cooldown=float(d.cooldown)/game.attack_mult/(1+.06*(w.level-1))*float(spec.get('cooldown',1.0))
 	if id=='orbit':cooldown=.5/game.attack_mult/(1+.08*(w.level-1))*float(spec.get('hit_cooldown',1.0))

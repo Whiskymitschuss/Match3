@@ -12,6 +12,7 @@ var arena_hazards
 var reactor_guardian
 var enemy_roles
 var encounters
+var twinkle
 var hero_ability
 var hit_feedback
 var vfx
@@ -124,6 +125,7 @@ func _ready():
 	world_visuals = preload('res://scripts/gameplay/world_visuals.gd').new(self)
 	arena_hazards=preload('res://scripts/gameplay/arena_hazards.gd').new(self)
 	reactor_guardian=preload('res://scripts/bosses/reactor_guardian.gd').new(self)
+	twinkle=preload('res://scripts/characters/twinkle_combat.gd').new(self)
 	hero_ability=preload('res://scripts/characters/hero_ability.gd').new(self)
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
@@ -304,13 +306,14 @@ func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'por
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(art)
 
-func character_select():
+func character_select(page:int=0):
 	change_state(State.CHARACTER_SELECT)
 	backdrop('WÄHLE DEINEN HELDEN','RF WORLDS / MAYHEM CREW')
-	var roles = ['DER BERSERKER','DIE TECHNIKERIN','DER SCHATTEN']
-	for i in range(3):
+	var roles = ['DER BERSERKER','DIE TECHNIKERIN','DER SCHATTEN','DIE REINIGUNGSQUEEN']
+	page=clampi(page,0,(characters.size()-1)/3)
+	for i in range(page*3,mini(page*3+3,characters.size())):
 		var c = characters[i]
-		var x = 100 + i*585
+		var x = 100 + (i%3)*585
 		var card = Panel.new()
 		card.position = Vector2(x,230)
 		card.size = Vector2(550,705)
@@ -324,9 +327,15 @@ func character_select():
 		label_at(c.name,Vector2(x+25,677),42,Color.WHITE)
 		label_at(Mastery.TITLES[c.id] if Mastery.completed(saved,c.id)==3 else c.description,Vector2(x+25,739),22)
 		label_at('%d HP / %d Tempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),21)
-		label_at(['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade'][i]+' • '+hero_ability.data[c.id].name,Vector2(x+25,808),18,Color(c.color))
+		label_at((['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade','Nur Wischmopp'][i]+' • '+('SEIFENCHAOS' if c.id=='twinkle' else hero_ability.data[c.id].name)),Vector2(x+25,808),18,Color(c.color))
 		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; arena_select(),Color(c.color).darkened(.65))
 	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
+	button('WEITERE HELDEN →' if page==0 else '← ERSTE HELDEN',Vector2(480,965),Vector2(500,85),func():character_select(1-page))
+	if page==1:
+		label_at('PUTZEN. WISCHEN. MAYHEM.',Vector2(750,300),52,GOLD)
+		label_at('Wischattacke: Halbkreis gegen mehrere Gegner\nBlitzblank: +15 % auf ihren Flächenschaden\nSeifenchaos: 1 Sekunde Betäubung\nChemiekeule: giftige Pfützen mit Dauerschaden\nPutzfimmel: jeder 20. Kill heilt 2 HP',Vector2(750,410),32)
+		label_at('TWINKLE TORNADO',Vector2(750,665),44,Color('#E879F9'))
+		label_at('5 Sekunden Seifenwirbel / 45 Sekunden Cooldown\n„Hier bleibt kein Dreck übrig. Und kein Gegner!“',Vector2(750,745),30)
 	button('MEISTERSCHAFTEN & SKINS',Vector2(1030,965),Vector2(790,85),func():mastery_screen(selected))
 
 func duration_text(seconds: float) -> String:
@@ -339,9 +348,9 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 	backdrop('DEINE STATISTIK','Arena: '+('Alle Arenen' if arena_filter=='all' else Arenas.definition(arena_filter).name))
 	var filters=['all','scrapyard','reactor']
 	button('ARENA WECHSELN',Vector2(1330,75),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%3]))
-	for i in range(4):
+	for i in range(characters.size()+1):
 		var tab=i-1
-		button(['ÜBERSICHT','BRUISER','SPARKY','SHADE'][i],Vector2(100+i*435,235),Vector2(400,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
+		button('ÜBERSICHT' if i==0 else characters[i-1].name,Vector2(100+i*345,235),Vector2(325,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
 	if character<0:
 		label_at('ALLE RUNDEN',Vector2(120,365),28,TEAL)
 		var rate=100.0*float(totals.wins)/float(totals.games) if totals.games>0 else 0.0
@@ -436,6 +445,7 @@ func cleanup():
 	if enemy_roles:enemy_roles.clear()
 	if specialized_combat:specialized_combat.clear()
 	if hero_ability:hero_ability.clear()
+	if twinkle:twinkle.clear()
 	if hit_feedback:hit_feedback.clear()
 	if vfx:vfx.clear()
 	enemies.clear()
@@ -635,6 +645,8 @@ func _physics_process(delta):
 	if state!=State.COMBAT:return
 	arena_hazards.update(delta)
 	if state != State.COMBAT:return
+	twinkle.update(delta)
+	if state!=State.COMBAT:return
 	update_enemies(delta)
 	if state != State.COMBAT: return
 	update_weapons(delta)
@@ -688,6 +700,7 @@ func update_enemies(dt: float):
 		var e = enemies[i]
 		e.hit = maxf(0,e.hit-dt)
 		e.orbit_cd = maxf(0,e.orbit_cd-dt)
+		if twinkle.stunned(e,dt):continue
 		var dir: Vector2 = (player.position-e.pos).normalized()
 		var velocity: Vector2 = dir*e.speed
 		if e.kind in ['spitter','drone']:velocity=enemy_roles.velocity(e,velocity,dt)
@@ -791,6 +804,7 @@ func damage_enemy(e: Dictionary, power: float):
 		encounters.removed(e)
 		enemies.erase(e)
 		kills += 1
+		twinkle.on_kill()
 		var reward = int(e.get('coin_reward',enemy_definition(kind).coins))
 		coins += reward
 		vfx.coin(pos,reward)
@@ -919,7 +933,7 @@ func open_shop():
 func weapon_icon(id: String, pos: Vector2, size: Vector2):
 	var icon = TextureRect.new()
 	var atlas = AtlasTexture.new()
-	atlas.atlas = preload('res://scripts/ui/combat_art.gd').TEXTURE
+	atlas.atlas = preload('res://scripts/ui/combat_art.gd').weapon_texture(id)
 	atlas.region = preload('res://scripts/ui/combat_art.gd').weapon(id)
 	icon.texture = atlas
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -1009,7 +1023,7 @@ func finish(victory: bool):
 	if not improvements.is_empty(): label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
 	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
-	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),character_select)
+	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected/3))
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
 
 func add_effect(pos: Vector2, color: Color, radius: float, text: String):
@@ -1031,7 +1045,7 @@ func draw_player_character():
 	draw_set_transform(pos,stride*.035,Vector2(character_facing(),1))
 	var tint = Color(2,2,2,1) if hurt_clock>.4 else Mastery.tint(Mastery.selected(saved,characters[selected].id))
 	var rect = Rect2(Vector2(-48,-64-absf(stride)*3),Vector2(96,96))
-	draw_texture_rect_region(CharacterArt.GAMEPLAY_TEXTURE,rect,CharacterArt.body_region(characters[selected].id),tint)
+	draw_texture_rect_region(CharacterArt.texture(characters[selected].id,true),rect,CharacterArt.body_region(characters[selected].id),tint)
 	Mastery.insignia(self,Vector2(6,-9-absf(stride)*3),Mastery.selected(saved,characters[selected].id),6)
 	draw_set_transform(Vector2.ZERO)
 
@@ -1042,6 +1056,7 @@ func _draw():
 			var kind=['grunt','runner','tank'][i%3]
 			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
+	twinkle.draw_floor()
 	vfx.draw_floor()
 	encounters.draw_floor()
 	enemy_roles.draw_floor()
@@ -1188,8 +1203,8 @@ func mastery_screen(index:int, preview:String=''):
 	var current=Mastery.selected(saved,hero)
 	var shown=current if preview=='' else preview
 	backdrop('CHARAKTER-MEISTERSCHAFT','Dauerhafte Ziele / kosmetische Belohnungen / keine Werteboni')
-	for i in range(3):
-		button(characters[i].name,Vector2(100+i*585,230),Vector2(550,75),func():mastery_screen(i),Color('#147F81') if i==index else Color('#243958'))
+	for i in range(characters.size()):
+		button(characters[i].name,Vector2(100+i*435,230),Vector2(410,75),func():mastery_screen(i),Color('#147F81') if i==index else Color('#243958'))
 	portrait(Vector2(130,360),index,1.2)
 	# Preview can show a locked colour, but never equips it.
 	var art=ui_root.get_child(ui_root.get_child_count()-1)
@@ -1214,7 +1229,7 @@ func mastery_screen(index:int, preview:String=''):
 		var outfit=Mastery.STYLES[i]
 		var available=Mastery.unlocked(saved,hero,outfit)
 		button(Mastery.NAMES[outfit]+(' ✓' if current==outfit else (' / GESPERRT' if not available else '')),Vector2(720+i*350,815),Vector2(330,85),func():mastery_screen(index,outfit),Color('#147F81') if shown==outfit else Color('#243958'))
-	button('ZURÜCK',Vector2(100,965),Vector2(400,85),character_select)
+	button('ZURÜCK',Vector2(100,965),Vector2(400,85),func():character_select(index/3))
 	var equip=button('AKTIV' if current==shown else ('AUSRÜSTEN' if Mastery.unlocked(saved,hero,shown) else 'NOCH GESPERRT'),Vector2(1180,965),Vector2(590,85),func():
 		if Mastery.equip(saved,hero,shown):save_game();sound('buy');mastery_screen(index))
 	equip.disabled=current==shown or not Mastery.unlocked(saved,hero,shown)

@@ -1,3 +1,23 @@
+# 0.12.0 — TWINKLE / aktuelle Umsetzung
+
+Branch feature/twinkle-v0.12. Vierte Heldin tatsächlich implementiert: eigene Grafik,
+zweihändiges Rig ohne zusätzliche Körperarme, Mopp und sichtbare Sprühflasche,
+Halbkreis, Giftfelder, Seifenbetäubung, Heilpassiv, fünfsekündiger Tornado/45 s,
+zwei Waffenentwicklungen, Menüseite, Statistik, Historie, Meisterschaft, Speicherung.
+
+1.164 Assertions / 17 Suites und beide historischen Traces bestanden.
+Lastprobe: 46.482 Schritte, maximal 52 Gegner / 5 Felder / 1 Sweep;
+3/6 Siege (Schrottplatz), Reaktorpilot jeweils Zeitlimit. Kein Android-FPS-Test.
+Native Galerie nach letztem Code visuell geprüft. APK exportiert, signiert und geprüft.
+Quellarchiv frisch entpackt/importiert: alle 1.164 Assertions und beide Traces erneut grün.
+Veröffentlichung auf GitHub mit anschließender Download-/Hashprüfung.
+Nächste fachliche Abnahme: Android-Update, Touch, Twinkle-Reichweite/Kontrolle und
+menschliches Boss-Balancing, insbesondere Reaktor. Kein offenes Implementierungsstub.
+
+---
+
+## Historischer Stand vor 0.12
+
 # 0.11.0 — Charakter-Meisterschaften
 
 Aktueller Branch: feature/character-mastery-v0.11.

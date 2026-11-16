@@ -8,7 +8,7 @@ var textures:Dictionary={}
 func _init(g:Node2D):game=g;data=game.read_data('items/items')
 func clear():owned.clear();applied.clear()
 func family(weapon:String) -> String:
-	return 'flux' if weapon=='arc' else ('shadow' if weapon=='orbit' else 'assault')
+	return 'flux' if weapon in ['arc','mop'] else ('shadow' if weapon=='orbit' else 'assault')
 func counts() -> Dictionary:
 	var result={'assault':0,'flux':0,'shadow':0}
 	for w in game.weapons:result[family(w.id)]+=1

@@ -6,8 +6,14 @@ static func cell(coords: Vector2) -> Rect2:
 	var step = Vector2(TEXTURE.get_size())/3.0
 	return Rect2(coords*step,step)
 static func weapon(id: String) -> Rect2:
+	if id=='mop':
+		var size=Vector2(preload('res://scripts/ui/character_art.gd').TWINKLE.get_size())
+		return Rect2(size*.5,size*.5)
 	return cell(WEAPONS.get(id,Vector2.ZERO))
 static func projectile(skin: int, hostile: bool = false) -> Rect2:
 	return cell(Vector2(2,1) if hostile else Vector2(clampi(skin,0,2),2))
 static func color_for(skin: int) -> Color:
 	return COLORS[clampi(skin,0,2)]
+
+static func weapon_texture(id:String) -> Texture2D:
+	return preload('res://scripts/ui/character_art.gd').TWINKLE if id=='mop' else TEXTURE

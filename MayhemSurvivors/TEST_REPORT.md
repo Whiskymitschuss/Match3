@@ -1,3 +1,36 @@
+# Testbericht 0.12.0 — 2026-11-16
+
+Godot 4.6.3 stable: 17 tatsächlich ausgeführte Suites / 1.164 Assertions, 0 Fehler.
+65 neue Twinkle-Assertions: Werte/Klassenbindung, Halbkreis vorne/seitlich/hinten/weit,
+exakter Flächenbonus, Stun/Bewegung/Kontaktschaden/Resistenz, Gift-DPS/Überlagerung/
+Austritt/Lebenszeit bei langem Frame, Heilung bei Kill 19/20/40 und doppeltem Tod,
+Bossimmunität, komplette Tornadodauer/DPS/Cooldown/Rückstoß, alle Pausenzustände,
+Grafikstufen, beide Entwicklungen und Arenen, echte Boss-Victory und Game Over,
+Neustart, Shopkauf/Upgrade/Entwicklung, echte Menü-Buttons, Produktion-State-Machine,
+Touch-Fähigkeitsbutton, Statistik/Historie sowie Laden eines alten Schema-3-Profils.
+Meisterschaftssuite prüft nun auch den vierten Helden (53 Checks), vorhandene Tests
+für Charakterzahl/Entwicklungen sachlich erweitert, keine neuen Fälle ausgeblendet.
+
+Beide historischen Traces weiterhin grün: Welt 33 Punkte/3.600 Schritte, Effekt 87
+Punkte/8.700 Schritte. Die Effekt-Fixture bleibt ausdrücklich bei zehn ursprünglichen
+Entwicklungen und deaktiviert neue 0.10-Encounters; aktuelle Mechaniken separat geprüft.
+
+Lastprobe: 46.482 feste Schritte (~774,7 simulierte Sekunden), beide Arenen × drei
+Qualitätsstufen, Welle-9-Last und folgende Bossphase. Peak 52 Gegner, 5 Felder, 1 Sweep.
+Künstlich hohe HP und festgelegter Pilot, keine menschliche Spielprobe. Schrottplatz
+3/3 Siege, Reaktor 3/3 Zeitlimits. Die Probe zeigt Funktion/Caps/Bereinigung, keine
+bestätigte Boss-Fairness. Neue Android-Performance-/Thermik-/Touch-Abnahme bleibt offen.
+
+Vier native GL-Compatibility-Screenshots nach finalem Code geprüft (Auswahl, Mopp,
+Tornado, Entwicklung). Vorgabeszenen mit festgelegten Gegnerpositionen, keine Android-
+Screenshots. WAV-Audit: drei originale Mono-44,1-kHz-Cues, nicht stumm, kein Clipping.
+Logs/Manifest/Signatur/Audit: tests/results/v0.12-*. Mehrere während Entwicklung
+gefundene Fixture-/HUD-Fehler behoben; abschließende Suite ohne diese Fehler grün.
+
+---
+
+## Historischer Stand vor 0.12
+
 # Testbericht 0.11.0 — 2026-11-16
 
 Ausgeführt mit Godot 4.6.3 stable: 16 Suites, 1.075 Assertions, 0 Fehler.

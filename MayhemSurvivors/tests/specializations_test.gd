@@ -11,7 +11,7 @@ func check(ok:bool,text:String):
 	else:failed+=1;push_error('FAIL '+text)
 func near(a:float,b:float) -> bool:return absf(a-b)<.001
 func setup(weapon:String,spec:String=''):
-	g.selected=0 if weapon=='hammer' else (2 if weapon=='orbit' else 1)
+	g.selected=3 if weapon=='mop' else (0 if weapon=='hammer' else (2 if weapon=='orbit' else 1))
 	g.start_run()
 	g.begin_wave()
 	g.crit=0
@@ -35,7 +35,7 @@ func run():
 	root.add_child(g)
 	g.set_physics_process(false)
 	g.saved=Save.defaults()
-	check(Specs.all().size()==10,'Ten unique specialization definitions')
+	check(Specs.all().size()==12,'Twelve unique specialization definitions')
 	for weapon in ['hammer','blaster','splitgun','arc','orbit']:
 		check(Specs.choices(weapon).size()==2,'Two choices for '+weapon)
 		for id in Specs.choices(weapon):check(Specs.icon(id)!=null,'Real icon loads for '+id)

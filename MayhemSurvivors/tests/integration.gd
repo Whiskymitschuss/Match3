@@ -16,8 +16,8 @@ func run():
 	check(g.state==g.State.MAIN_MENU,'Boot -> main menu')
 	check(g.GameStateMachine.permits(g.State.COMBAT,g.State.SHOP) and not g.GameStateMachine.permits(g.State.COMBAT,g.State.CHARACTER_SELECT),'Defined state transitions')
 	g.character_select()
-	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==3,'Character selection')
-	for i in range(3):
+	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==4,'Character selection')
+	for i in range(4):
 		g.selected=i
 		g.start_run()
 		check(g.hp==g.characters[i].hp and g.speed==g.characters[i].speed and g.weapons[0].id==g.characters[i].weapon,'Character stats '+str(i))
@@ -103,6 +103,7 @@ func run():
 			if o.type=='weapon' and o.id==id:valid=false
 		check(valid,'Max weapon excluded '+id)
 	for id in g.weapon_data:
+		g.selected=3 if id=='mop' else 1
 		g.cleanup()
 		g.state=g.State.COMBAT
 		g.weapons=[{'id':id,'level':1,'clock':0.0}]

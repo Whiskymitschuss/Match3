@@ -1,3 +1,17 @@
+# Ergänzungen 0.12
+
+TWINKLE: Charakterkonzept, Name, Mechanik und Referenz vom Nutzer / RF Worlds.
+Eigenständiger, generierter transparenter Twinkle-Atlas mit Portrait, Körper ohne Arme,
+Handschuh-Komponenten und Turbo-Mopp. Sprühflasche, Seifen-/Gift-/Wirbeleffekte und
+neue Fähigkeits-/Entwicklungs-Icons selbst mit Godot draw_* bzw. SVG erstellt.
+Drei originale Audio-Cues (Wischgeräusch, Heilglöckchen, Tornadowirbel) deterministisch
+synthetisiert, ohne externe Samples; tools/generate_twinkle_audio.py enthält Generator.
+Keine neuen kostenpflichtigen Abhängigkeiten, keine fremden Spieleassets.
+
+---
+
+## Historischer Stand vor 0.12
+
 # Ergänzungen 0.11
 
 Vorhandene eigene Charaktergrafiken unverändert als Basis für kosmetische Farbtönungen.

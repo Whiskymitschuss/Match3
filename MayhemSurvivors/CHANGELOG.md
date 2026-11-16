@@ -1,3 +1,18 @@
+# 0.12.0 Alpha — 2026-11-16
+
+- TWINKLE als vierte, sofort spielbare Heldin mit eigenem Portrait und armlosen Rig.
+- Wischmopp, Chemie-Sprühflasche, Halbkreis, Betäubung, Giftfelder und 20-Kill-Heilung.
+- Fünf Sekunden Twinkle Tornado / 45 Sekunden Cooldown, ohne Boss-Kontrollschleife.
+- Zwei vollständige Level-5-Entwicklungen und eigene UI-Symbole/Sounds/Effekte.
+- Zweite Charakterseite; vier Helden in Meisterschaft, Statistik, Verlauf und Speicherung.
+- 65 neue Twinkle-Checks, erweiterte Bestandsprüfungen; insgesamt 1.164 Assertions grün.
+- Historischer Effekttrace explizit auf seine zehn ursprünglichen Entwicklungen begrenzt;
+  neuer Mopp in eigenen Tests und erweiterten Boss-Spezialisierungsprüfungen erfasst.
+
+---
+
+## Historischer Stand vor 0.12
+
 # 0.11.0 Alpha — 2026-11-16
 
 - Drei Meisterschaftsziele pro Held aus bestehenden dauerhaften Charakterrekorden.

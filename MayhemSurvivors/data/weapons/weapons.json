@@ -28,5 +28,16 @@
     "damage": 10,
     "cooldown": 0.5,
     "reach": 135
+  },
+  "mop": {
+    "name": "WISCHMOPP",
+    "damage": 18,
+    "cooldown": 0.95,
+    "reach": 150,
+    "poison_dps": 8,
+    "puddle_duration": 3,
+    "puddle_radius": 85,
+    "stun": 1,
+    "stun_resistance": 3
   }
 }

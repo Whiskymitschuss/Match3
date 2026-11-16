@@ -4,7 +4,7 @@ const Records = preload('res://scripts/progression/run_records.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 # Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'hero_styles':{'bruiser':'classic','sparky':'classic','shade':'classic'},'version':3,'unlocked':['bruiser','sparky','shade'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
+	return {'hero_styles':{'bruiser':'classic','sparky':'classic','shade':'classic','twinkle':'classic'},'version':3,'unlocked':['bruiser','sparky','shade','twinkle'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):

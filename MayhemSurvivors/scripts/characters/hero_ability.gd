@@ -47,6 +47,8 @@ func activate() -> bool:
 					var dir:Vector2=(e.pos-origin).normalized()
 					if dir==Vector2.ZERO:dir=Vector2.RIGHT
 					e.pos=(e.pos+dir*d.knockback).clamp(Vector2(35,35),Vector2(2365,1565))
+		'twinkle_tornado':
+			game.twinkle.activate_tornado()
 		'impulse':
 			var target=game.nearest(game.player.position,d.reach)
 			var at:Vector2=target.pos if target!=null else game.player.position+Vector2(game.facing,0)*250
