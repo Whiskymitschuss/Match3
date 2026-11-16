@@ -1,3 +1,32 @@
+# Waffen-/Geschosstests 0.2.1 — 2026-11-16
+
+- 76 bestehende Integrationstests bestanden.
+- 28 neue Prüfungen bestanden: tatsächliche Angriffe stempeln Charakter-/Waffenmetadaten,
+  identischer Basisschaden und Flugtempo, Wiederverwendung des Projektilslots zwischen Helden,
+  Mündungsfeedback, visuelle Pause, Cleanup, Hammer-/Blitz-/Orbitereignisse, Effektbudget,
+  verschiedene Atlasregionen und Vorhandensein der fünf Soundressourcen.
+- Reproduzierbare Balance-Regression mit `--fixed-fps 60`: alle drei Helden, fünf Waffen über
+  vier Slots, 3600 Schritte, 33 Kontrollpunkte. HP, Coins, Kills, Schaden, XP, Gegnerpositionen/HP,
+  Projektilpositionen/Schaden/Lebensdauer und Krit-Zufallszustand stimmen mit der 0.1-Referenz
+  überein. Aufgezeichnete Positionswerte haben vier Nachkommastellen; JSON-Zahlen werden mit
+  Toleranz 0.000001 verglichen. Dies ist ein getesteter Ablauf, kein formaler Beweis aller Zustände.
+- Belastungstest: 7200 Schritte, 120 simulierte Sekunden, 100 Gegner als Spitze,
+  ca. 0.358 ms Headless-Simulationszeit pro Schritt auf diesem Rechner. Keine Android-FPS-Angabe.
+- Neun Atlaszellen auf Transparenz und sichtbaren Inhalt geprüft.
+- Mit Godot Compatibility/Mesa tatsächlich gerendert: `combat_bruiser.png`, `combat_sparky.png`,
+  `combat_shade.png`, `combat_shop.png` sowie drei `ammo_*.png` zum Vergleich der Geschossformen.
+  Dies sind kontrollierte Testszenarien, keine Bildschirmaufnahmen eines Android-Geräts.
+- Neue Audioassets importiert; keine Hardware-Hörprüfung durchgeführt.
+- Android-APK exportiert, Signatur, Version, Architektur, Berechtigungen und Alignment geprüft.
+
+Protokolle: `tests/results/v0.2.1/`. Physisches Android-Update, Audio, Effektlesbarkeit im
+vollen Kampf und neue Geräte-FPS bleiben offen. Schaden, Feuerraten und Spawnregeln wurden
+für das Grafikupdate nicht verändert.
+
+---
+
+## Archiv: Stand 0.2
+
 # Charaktergrafik-Tests 0.2 — 2026-11-16
 
 - Bestehende Integrationstests erneut ausgeführt: **76 bestanden, 0 fehlgeschlagen**.

@@ -1,39 +1,44 @@
-# RF Worlds — Mayhem Survivors
+# RF Worlds — Mayhem Survivors 0.2.1
 
-## 0.2 Charaktergrafik-Testversion
+## Echte Waffen und eigene Geschosse
 
-Neue Comic-Helden nach den Studioreferenzen: bärtiger Bruiser, rothaarige Sparky und
-maskierter Shade. Große Auswahlbilder und vereinfachte Spielfiguren, Laufwippen,
-Blickrichtungswechsel und Trefferaufhellung. **Kampf-Balance von 0.1 unverändert.**
+Alle fünf Waffen haben jetzt Comic-Grafiken passend zu den Helden: Blaster, Kriegshammer,
+Splitgun, Arc Cannon und Orbit Blade. Keine Waffen-Rechtecke oder einfachen Balken mehr.
+Automatische Ausrichtung, Rückstoß, Mündungsfeuer, Hammerschwung, Bodenschock,
+Kettenblitz, Klingenspur, Trefferfunken, Hülsen und fünf eigene Waffensounds sind verbunden.
+Waffenbilder erscheinen auch in Shop und HUD.
 
-- [Android 0.2 APK herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/characters-v0.2/Downloads/MayhemSurvivors-v0.2-debug.apk)
-- [Komplettes 0.2 Projekt als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/characters-v0.2/Downloads/MayhemSurvivors-v0.2-source.zip)
-- [Neue Charakterauswahl ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/characters-v0.2/MayhemSurvivors/tests/characters.png)
+Die Geschossform richtet sich nach dem Charakter:
+**Bruiser: Goldgeschoss / Sparky: türkise Plasmalanze / Shade: violetter Energiedorn.**
+Bossgeschosse sind rot-orange. Die Waffenmechanik und Balance bleiben erhalten.
 
-![Neue Charakterauswahl](MayhemSurvivors/tests/characters.png)
+- [Android 0.2.1 APK herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/weapons-v0.2.1/Downloads/MayhemSurvivors-v0.2.1-debug.apk)
+- [Komplettes Projekt 0.2.1 als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/weapons-v0.2.1/Downloads/MayhemSurvivors-v0.2.1-source.zip)
+- [Waffen und Kettenblitz im Kampf ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/weapons-v0.2.1/MayhemSurvivors/tests/combat_sparky.png)
+- [Waffen im Shop ansehen](https://github.com/Whiskymitschuss/Match3/blob/art/weapons-v0.2.1/MayhemSurvivors/tests/combat_shop.png)
 
-Android 7.0 oder neuer, ausschließlich ARM64, Querformat, offline.
-Gleicher Paketname und gleiche Debug-Signatur wie 0.1, versionCode 2; als Update vorgesehen.
-Echte Updateinstallation, Lesbarkeit im Kampf und Leistung auf Android noch zu prüfen.
+![Kampf mit echten Waffen](MayhemSurvivors/tests/combat_sparky.png)
 
-## Version 0.1 bleibt verfügbar
+Android 7.0 oder neuer, ausschließlich ARM64, Querformat, offline. Gleicher Paketname und
+Signierschlüssel wie bisher; versionCode 3, als Update vorgesehen. Grafik, Sound und Update
+auf dem physischen Android-Gerät müssen noch praktisch geprüft werden.
 
-- [Bisherige 0.1 APK](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/main/Downloads/MayhemSurvivors-v0.1-debug.apk)
-- [Bisheriges 0.1 Quellprojekt](https://github.com/Whiskymitschuss/Match3/tree/main/MayhemSurvivors)
+## Geprüft
 
-Der Nutzer hat 0.1 über 15 Runden gespielt und die Gegner-/Schussbalance bestätigt.
-Der aktuelle Branch verändert deshalb ausschließlich Charakterdarstellung und zugehörige UI.
+76 bisherige Tests plus 28 neue Tests bestanden. Drei Helden über 3600 Simulationsschritte
+mit der Version 0.1 verglichen: HP, XP, Coins, Kills, Schaden, Gegner, Geschosse und Krit-Zufall
+stimmen an 33 Kontrollpunkten überein. Alle Spiel-JSON-Dateien sind unverändert.
+120 simulierte Sekunden Belastungstest bestanden. Neue Ansichten mit Godot gerendert.
+APK signiert, ARM64, Berechtigungen und 16-KiB-Alignment geprüft.
+Keine neue Geräte-Frameratemessung oder Android-Abnahme behauptet.
 
-## Entwicklung und Tests
+## Frühere Versionen
 
-[MayhemSurvivors](MayhemSurvivors) enthält das vollständige Godot-4.6.3-Projekt.
-`MayhemSurvivors/project.godot` öffnen und starten.
+- [0.2 Charaktergrafik-Testversion](https://github.com/Whiskymitschuss/Match3/tree/art/characters-v0.2)
+- [0.1 Referenzversion](https://github.com/Whiskymitschuss/Match3/tree/main)
 
-76 bestehende Integrationstests erneut bestanden. Die neuen Ansichten wurden mit Godot
-Compatibility/Mesa gerendert und geprüft; APK signiert, ARM64 und Alignment verifiziert.
-Alle JSON-Spieldaten und die zentralen Kampfsysteme wurden bytegleich gegenüber 0.1 geprüft.
-Keine neue Android-Frameratemessung oder vollständige Abnahme auf einem Gerät behauptet.
+Der Nutzer hat nach 15 Runden die Gegner-/Schussbalance bestätigt. Deshalb wurden für
+diese Updates keine Schadenswerte, Feuerraten, Kollisionsregeln oder Spawns angepasst.
 
-Details: [Testbericht](MayhemSurvivors/TEST_REPORT.md),
-[Buildbericht](MayhemSurvivors/BUILD_REPORT.md),
-[Entwicklungsstand](MayhemSurvivors/PROGRESS.md).
+[Godot-Projekt](MayhemSurvivors) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
+[Buildbericht](MayhemSurvivors/BUILD_REPORT.md) · [Entwicklungsstand](MayhemSurvivors/PROGRESS.md)

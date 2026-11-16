@@ -10,5 +10,6 @@ func acquire(pos: Vector2, direction: Vector2, power: float, hostile: bool, spee
 		shot={}
 		items.append(shot)
 	shot.merge({'active':true,'pos':pos,'vel':direction*speed,'damage':power,'hostile':hostile,'life':life},true)
+	return shot
 func clear():
 	for item in items: item.active=false

@@ -1,3 +1,40 @@
+# Waffen-/Geschossupdate 0.2.1 — 2026-11-16
+
+## Aktueller Stand
+
+Branch `art/weapons-v0.2.1`. Nutzerkritik umgesetzt: Figuren waren bereits verbessert,
+Waffen und Schüsse verwendeten noch primitive Formen. Dieser Stand ersetzt alle fünf
+Waffendarstellungen und ergänzt den restlichen visuellen und akustischen Angriffsablauf.
+
+## Implementiert
+
+- Gemeinsamer transparenter 3×3-Atlas für fünf Waffen, Bossprojektil und drei Heldenprojektile.
+- Automatische Ausrichtung, Rückstoß, Mündungsfeuer und ausgeworfene Hülsen.
+- Hammerschwung mit Bodenschock; sichtbare Orbitklinge mit Spur; Kettenblitz mit Zacken und Kern.
+- Charakterbezogene Geschossform und -farbe, Trefferfunken und fünf neue Waffensounds.
+- Echte Waffenbilder in Shop und HUD; alte überlappende Waffen-Textzeile entfernt.
+- Kosmetische Zustände separat, zeitlich pausiert und beim Bereinigen zurückgesetzt.
+- Gleiches Kampf-Balancing; unveränderte Spiel-JSON-Daten, Bewegungs- und Kollisionswerte.
+
+## Tests / Export
+
+76 bestehende + 28 neue Tests bestanden. 3600 Schritte mit allen drei Helden bei fester
+Engine-Zeit gegen 0.1 verglichen: 33 Kontrollpunkte stimmen in den aufgezeichneten
+Gameplay-Werten überein. 7200-Schritt-Belastungstest / 120 simulierte Sekunden bestanden.
+Alle Waffen- und Munitionsdarstellungen mit Godot/Mesa gerendert; Shop und HUD geprüft.
+APK 0.2.1 gebaut, ARM64, versionCode 3, Signatur wie 0.1, keine Berechtigungen,
+16-KiB-Alignment geprüft. Protokolle unter `tests/results/v0.2.1/`.
+
+## Offen / nächster Schritt
+
+Auf Android als Update installieren und Waffenführung, Schusslesbarkeit, Lautstärke und
+Effektdichte im echten Kampf prüfen. Neue Effekte sind begrenzt, aber die Geräteleistung
+wurde hier nicht gemessen. Keine Änderungen an Gegnern oder Arena in diesem Waffenupdate.
+
+---
+
+## Archiv: Stand 0.2
+
 # Charaktergrafik-Update 0.2 — 2026-11-16
 
 ## Aktueller Stand

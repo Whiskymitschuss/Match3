@@ -1,6 +1,29 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha 0.2.0 · Godot 4.6.3 stable · GDScript · OpenGL Compatibility
+Android Alpha 0.2.1 · Godot 4.6.3 stable · GDScript · OpenGL Compatibility
+
+## Waffen- und Schussupdate 0.2.1
+
+Alle fünf Waffen verwenden jetzt gezeichnete Comic-Sprites statt Rechtecken und Linien.
+Sie richten sich automatisch aus. Blaster, Splitgun und Arc Cannon besitzen Mündungsfeuer
+und Rückstoß; der Hammer eine Schwunganimation und einen Bodenschock. Die Orbit Blade
+hat eine sichtbare Klingenform und Flugspur. Arc Cannon zeichnet einen verzweigten Kettenblitz.
+Shop und HUD verwenden dieselben Waffenbilder. Treffer erzeugen kurze Funken; fünf neue
+selbst erzeugte Waffen-Sounds unterstützen das Feedback.
+
+Die Projektile unterscheiden sich bei gleicher gekaufter Fernwaffe je Charakter:
+**Bruiser: goldenes Metallgeschoss. Sparky: türkise Plasmalanze. Shade: violetter Energiedorn.**
+Bossgeschosse sind rot-orange. Das ändert ausschließlich Darstellung und Sound.
+Schaden, Flugtempo, Reichweite, Cooldowns und Kollisionsprüfung bleiben gleich.
+Der neue CombatVisuals-Manager verwendet keine Zufallswerte aus der Gameplay-Simulation.
+
+76 bisherige und 28 neue Prüfungen bestehen. Eine Regression über 3600 Schritte und
+33 Kontrollpunkte vergleicht alle drei Helden mit der 0.1-Referenz: HP, XP, Kills, Coins,
+Schaden, Gegner, Geschosse und Krit-Zufallszustand stimmen bei festem Zeitschritt überein.
+Die Code-Erweiterungen im Waffenmanager lösen lediglich Darstellungsereignisse aus.
+
+Die APK besitzt versionCode 3 und dieselbe Signatur wie 0.1/0.2. Update auf einem Android-Gerät,
+Grafiklesbarkeit und Audio sind noch praktisch zu prüfen. Eine Geräteabnahme wird nicht behauptet.
 
 ## Charaktergrafik-Update 0.2
 
@@ -17,12 +40,12 @@ Spawnintervalle, Schadenswerte, XP und Shoppreise sind gegenüber 0.1 unverände
 Der Nutzer hat nach 15 gespielten Runden die Gegner-/Schussbalance ausdrücklich bestätigt.
 
 Die Android-APK besitzt denselben Paketnamen und dieselbe Debug-Signatur wie 0.1,
-aber versionCode 2. Sie ist als Update vorgesehen; das Speicherschema bleibt Version 1.
+in Version 0.2 mit versionCode 2 (0.2.1: versionCode 3). Sie ist als Update vorgesehen; das Speicherschema bleibt Version 1.
 Geräteseitige Aktualisierung und Sichtbarkeit im echten Kampf sind noch zu prüfen.
 
 ## Starten
 
-Die signierte Test-App liegt unter `builds/android/MayhemSurvivors-v0.2-debug.apk`.
+Die signierte Test-App liegt unter `builds/android/MayhemSurvivors-v0.2.1-debug.apk`.
 Auf ein Android-Gerät mit ARM64-Prozessor und Android 7.0 oder neuer übertragen und installieren.
 Es werden weder Konto noch Internetverbindung benötigt. Diese App enthält keine Werbung,
 keine Käufe und keinen Windows-Export.
@@ -65,11 +88,23 @@ Die UI wird in einer 1920×1080-Referenzfläche skaliert und berücksichtigt die
 
 ## Tests und Export
 
+Zusätzliche Prüfungen für den Waffenstand:
+
+```sh
+godot --headless --path . --script res://tests/combat_visuals_test.gd
+godot --headless --fixed-fps 60 --path . --script res://tests/balance_trace.gd
+```
+
+Der Balancevergleich benötigt den festen Engine-Zeitschritt; er verwendet die gespeicherte
+0.1-Referenz unter `tests/fixtures/`. Positionswerte werden auf vier Dezimalstellen aufgezeichnet,
+beim JSON-Laden wird die kleine Zahlenrundungstoleranz 0.000001 verwendet.
+
+
 ```sh
 godot --headless --path . --editor --import --quit
 godot --headless --path . --script res://tests/integration.gd
 godot --headless --path . --script res://tests/soak.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.2-debug.apk
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.2.1-debug.apk
 ```
 
 Der Export benötigt Godot-4.6.3-Android-Exportvorlagen, JDK und Android SDK in den

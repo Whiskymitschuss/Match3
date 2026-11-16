@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 Alpha — 2026-11-16
+
+- Fünf echte Comic-Waffensprites statt geometrischer Platzhalter, auch in Shop und HUD.
+- Charakterbezogene Geschossformen: Goldgeschoss / Plasmalanze / Energiedorn.
+- Neues Bossprojektil; automatische Waffenausrichtung, Rückstoß, Mündungsfeuer, Hammerschwung,
+  Bodenschock, Kettenblitz, Klingenspur, Trefferfunken und begrenzte Patronenhülsen.
+- Fünf eigene Waffen-Sounds; Darstellung pausiert und wird beim Runwechsel zurückgesetzt.
+- 76 bestehende plus 28 neue Tests bestanden. Reproduzierbarer Balancevergleich gegen 0.1.
+- Gleicher Paketname und Signaturschlüssel, versionCode 3. Keine Änderung der Kampfwerte.
+
 ## 0.2.0 Alpha — 2026-11-16
 
 - Neue detailreiche Comic-Charakterbilder nach den visuellen Studioreferenzen.

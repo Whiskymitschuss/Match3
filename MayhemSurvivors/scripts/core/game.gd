@@ -34,6 +34,7 @@ var loot: Array = []
 var effects: Array = []
 var weapons: Array = []
 var weapon_manager
+var combat_visuals
 var hp = 120.0
 var max_hp = 120.0
 var speed = 180.0
@@ -85,6 +86,7 @@ func change_state(next: int):
 func _ready():
 	rng.randomize()
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
+	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -244,7 +246,7 @@ func main_menu():
 	ui_root.add_child(stack)
 	for item in [play_button,char_button,stats_button,settings_button]:
 		item.reparent(stack)
-	label_at('0.2.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.2.1 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1240,495),1,1.1)
 	label_at('ZEHN WELLEN.\nVIER WAFFEN.\nDEIN MAYHEM.',Vector2(1000,370),52,TEAL)
 
@@ -308,6 +310,7 @@ func settings(back: Callable):
 	button('ZURÜCK',Vector2(120,890),Vector2(420,100),back)
 
 func cleanup():
+	if combat_visuals: combat_visuals.clear()
 	enemies.clear()
 	loot.clear()
 	effects.clear()
@@ -373,9 +376,7 @@ func make_hud():
 
 func refresh_hud():
 	if not is_instance_valid(hud): return
-	var ws = ''
-	for w in weapons: ws += '%s %d   ' % [weapon_data[w.id].name,w.level]
-	var info = '♥ %d / %d     LV %d  ◈ %d / %d     ● %d\nWELLE %d / 10     %02d:%02d\n%s' % [ceili(hp),max_hp,level,xp,required_xp(),coins,wave_number,int(remaining)/60,int(remaining)%60,ws]
+	var info = '♥ %d / %d     LV %d  ◈ %d / %d     ● %d\nWELLE %d / 10     %02d:%02d' % [ceili(hp),max_hp,level,xp,required_xp(),coins,wave_number,int(remaining)/60,int(remaining)%60]
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
 	for e in enemies:
@@ -433,6 +434,7 @@ func _physics_process(delta):
 	queue_redraw()
 	if is_instance_valid(joystick): joystick.queue_redraw()
 	if state != State.COMBAT: return
+	combat_visuals.update(delta)
 	run_time += delta
 	remaining = maxf(0,remaining-delta)
 	hurt_clock -= delta
@@ -526,8 +528,11 @@ func nearest(pos: Vector2, reach: float):
 func update_weapons(dt: float):
 	weapon_manager.update(dt)
 
-func shoot(pos: Vector2, direction: Vector2, power: float, hostile: bool, velocity: float, life: float):
-	projectile_pool.acquire(pos,direction,power,hostile,velocity,life)
+func shoot(pos: Vector2, direction: Vector2, power: float, hostile: bool, velocity: float, life: float, weapon_id: String = 'blaster'):
+	var shot=projectile_pool.acquire(pos,direction,power,hostile,velocity,life)
+	if shot!=null:
+		shot.skin = selected
+		shot.weapon = weapon_id
 
 func update_shots(dt: float):
 	for s in shots:
@@ -539,12 +544,14 @@ func update_shots(dt: float):
 		if s.hostile:
 			if Geometry2D.get_closest_point_to_segment(player.position,old,s.pos).distance_to(player.position)<34:
 				s.active=false
+				combat_visuals.impact(s.pos,'boss',true)
 				hurt(s.damage)
 				if state != State.COMBAT: return
 		else:
 			for e in enemies.duplicate():
 				if Geometry2D.get_closest_point_to_segment(e.pos,old,s.pos).distance_to(e.pos)<e.radius+8:
 					s.active=false
+					combat_visuals.impact(s.pos,s.get('weapon','blaster'))
 					damage_enemy(e,s.damage)
 					if state != State.COMBAT: return
 					break
@@ -664,11 +671,25 @@ func open_shop():
 	generate_offers()
 	show_shop()
 
+func weapon_icon(id: String, pos: Vector2, size: Vector2):
+	var icon = TextureRect.new()
+	var atlas = AtlasTexture.new()
+	atlas.atlas = preload('res://scripts/ui/combat_art.gd').TEXTURE
+	atlas.region = preload('res://scripts/ui/combat_art.gd').weapon(id)
+	icon.texture = atlas
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.position = pos
+	icon.size = size
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ui_root.add_child(icon)
+
 func show_shop():
 	backdrop('MAYHEM MARKET','Welle %d überlebt • %d Coins • Maximal vier Waffen' % [wave_number,coins])
 	for i in range(offers.size()):
 		var o = offers[i]
 		var x = 85+i*455
+		if o.type=='weapon': weapon_icon(o.id,Vector2(x+270,248),Vector2(130,108))
 		label_at(('⚒ ' if o.type=='weapon' else '✦ ')+o.rarity,Vector2(x,300),25,TEAL)
 		label_at(o.name,Vector2(x,365),29,GOLD)
 		label_at(o.description,Vector2(x,425),22)
@@ -805,24 +826,11 @@ func _draw():
 		if e.hp<e.max_hp:
 			draw_line(e.pos+Vector2(-e.radius,-e.radius-14),e.pos+Vector2(e.radius,-e.radius-14),INK,7)
 			draw_line(e.pos+Vector2(-e.radius,-e.radius-14),e.pos+Vector2(-e.radius+2*e.radius*maxf(0,e.hp/e.max_hp),-e.radius-14),Color('#FF4757'),5)
+	combat_visuals.draw_weapons(true)
 	draw_player_character()
-	for i in range(weapons.size()):
-		var w = weapons[i]
-		var pos = player.position+Vector2.from_angle(-.8+i*1.7)*48
-		if w.id=='orbit': pos=player.position+Vector2.from_angle(orbit_angle)*(110+5*(w.level-1))
-		var color = {'blaster':TEAL,'hammer':GOLD,'splitgun':Color('#FF4757'),'arc':Color('#A55EEA'),'orbit':Color.WHITE}[w.id]
-		draw_circle(pos,18,INK)
-		if w.id=='hammer': draw_rect(Rect2(pos-Vector2(20,12),Vector2(40,24)),color)
-		elif w.id=='orbit': draw_colored_polygon(PackedVector2Array([pos+Vector2(0,-26),pos+Vector2(12,0),pos+Vector2(0,26),pos+Vector2(-12,0)]),color)
-		else:
-			draw_line(pos-Vector2(10,0),pos+Vector2(20,0),color,15)
-			draw_circle(pos+Vector2(20,0),5,Color.WHITE)
-	for s in shots:
-		if s.active:
-			var color = Color('#FF4757') if s.hostile else TEAL
-			draw_line(s.pos-s.vel.normalized()*18,s.pos,color.darkened(.3),10,true)
-			draw_circle(s.pos,7,color)
-			draw_circle(s.pos,3,Color.WHITE)
+	combat_visuals.draw_weapons(false)
+	combat_visuals.draw_shots()
+	combat_visuals.draw_effects()
 	for e in effects:
 		if e.has('end'): draw_line(e.pos,e.end,e.color,5,true)
 		else:
