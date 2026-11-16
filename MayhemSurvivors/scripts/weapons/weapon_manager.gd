@@ -1,4 +1,5 @@
 extends RefCounted
+const Specs=preload('res://scripts/weapons/specializations.gd')
 var game: Node2D
 func _init(owner_game: Node2D):
 	game = owner_game
@@ -8,6 +9,11 @@ func update(dt: float):
 		var d = game.weapon_data[w.id]
 		var power = float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult
 		if w.id == 'hammer': power *= 1.0+float(game.characters[game.selected].melee_bonus)
+		var specialized=Specs.definition(w)
+		if not specialized.is_empty():
+			game.specialized_combat.fire(w,specialized,power,dt)
+			if game.state!=game.State.COMBAT:return
+			continue
 		if w.id == 'orbit':
 			var blade = game.player.position+Vector2.from_angle(game.orbit_angle)*(110+5*(w.level-1))
 			for e in game.enemies.duplicate():

@@ -1,3 +1,59 @@
+# Testbericht 0.5.0 — 2026-11-16
+
+Godot 4.6.3 stable; Linux Headless und Mesa Compatibility. Tatsächliche Logs in
+`tests/results/v0.5-*.log`. Keine Android-Hardwareprüfung dieser Version.
+
+| Suite | Ergebnis |
+|---|---|
+| Integration | 76 / 76 |
+| Kampfgrafik | 28 / 28 |
+| Klassenbindung/Haltung | 42 / 42 |
+| Welt/Bosswarnungen | 36 / 36 |
+| Statistik/Speicherung | 28 / 28 |
+| Reaktor/Migration | 157 / 157 |
+| Fähigkeiten/Touch/Haptik | 76 / 76 |
+| Waffenspezialisierungen | 108 / 108 |
+| Gesamt | 551 / 551 |
+
+Neue Suite prüft reale Stufe-5-Shopkäufe, einmalige Coin-Abbuchung, kostenlose
+verbindliche Auswahl, Pause, Klassengrenzen, mehrere Auswahlen, Wellenübergang und
+Run-Reset. Zehn Symbole werden tatsächlich geladen. Beschreibungskarten werden auf
+Breite geprüft. Durchschlag trifft höchstens drei verschiedene Gegner, auch bei langen
+Frames; wiederholte Überlappung verursacht keinen doppelten Treffer. Explosionen trennen
+Direkt- und Flächenschaden, vergeben Coins/XP/Kills nur einmal. Objektpool setzt neue
+Metadaten zurück. Einzel-/Flächenhammer, Fächerzahl/Winkel/Schaden/Reichweite,
+Kettenziele/Falloff, Blitz-Cooldown und Orbitpose/Trefferintervall sind geprüft.
+Alle zehn Varianten können beide Bosse besiegen und räumen sicher auf. Hierfür wird
+Boss-HP gezielt auf 1 gesetzt; dies beweist keinen vollständigen oder gebalancten Run.
+Verlauf inklusive Spezialisierung über echte Datei gespeichert und neu geladen;
+fehlende/ungültige/frühe Spezialisierungen werden korrekt behandelt.
+
+Deterministischer Schrottplatzvergleich: alle 33 Kontrollpunkte über 3.600 Schritte
+mit drei Helden identisch zu v0.2.2, wenn keine Fähigkeit oder Spezialisierung verwendet
+wird. Die gewählten Entwicklungen verändern das Kampfergebnis bewusst. Grunddaten von
+Charakteren, Waffen, Gegnern, Upgrades und beiden Arenawellen bleiben gegenüber 0.4 gleich.
+
+Belastung: zehn Varianten × 1.800 Schritte, insgesamt 18.000 Schritte / 300 simulierte
+Sekunden, Reaktorwelle neun mit bis zu 100 Gegnern und regelmäßig ausgelösten Fähigkeiten.
+Gegner-/Pool-/Loot-/Effektlimits eingehalten, keine Trefferliste größer als drei,
+Referenzen nach Cleanup freigegeben. Zusätzlich 21.600 Schritte Fähigkeiten-Stresstest
+für alle sechs Helden-/Arenakombinationen bestanden. Keine Geräte-FPS-Messung.
+
+13 Godot/Mesa-Bilder (`tests/spec_*.png`): fünf Auswahlansichten, sechs Kampfvarianten,
+Ergebnis und Verlauf. Vorgabedaten, keine Android-Aufnahmen. Anfangs überlappten lange
+Kartentexte; Layout korrigiert und zwei Assertions ergänzt. Finale Aufnahmen geprüft.
+Dummy-Display ohne V-Sync. Keine Parser-/Ressourcen-/Signalfehler in finalen Läufen.
+
+Quell-ZIP zusätzlich separat entpackt und frisch importiert: keine Parser-/Ressourcenfehler, neue Spezialisierungssuite daraus erneut 108 / 108 bestanden.
+
+Offen: vollständige Android-Runs mit den neuen Waffenwegen, Vor-/Nachteile im echten
+Spiel vergleichen, Statistikerhalt beim Update und Lesbarkeit/Bedienung auf Geräten.
+Positives Nutzerfeedback zu 0.4 ist dokumentiert, keine pauschale Abnahme von 0.5.
+
+---
+
+# Historische Tests 0.4
+
 # Testbericht 0.4.0 — 2026-11-16
 
 Godot 4.6.3 stable, Linux Headless und gerendert mit Mesa GL Compatibility.

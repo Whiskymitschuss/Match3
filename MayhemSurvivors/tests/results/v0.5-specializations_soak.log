@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SPECIALIZATION SOAK PASS quake 1800 steps / 30 simulated seconds, kills=131
+SPECIALIZATION SOAK PASS crusher 1800 steps / 30 simulated seconds, kills=89
+SPECIALIZATION SOAK PASS piercer 1800 steps / 30 simulated seconds, kills=87
+SPECIALIZATION SOAK PASS blast 1800 steps / 30 simulated seconds, kills=97
+SPECIALIZATION SOAK PASS precision 1800 steps / 30 simulated seconds, kills=64
+SPECIALIZATION SOAK PASS storm 1800 steps / 30 simulated seconds, kills=69
+SPECIALIZATION SOAK PASS conductor 1800 steps / 30 simulated seconds, kills=86
+SPECIALIZATION SOAK PASS overcharge 1800 steps / 30 simulated seconds, kills=67
+SPECIALIZATION SOAK PASS wide 1800 steps / 30 simulated seconds, kills=48
+SPECIALIZATION SOAK PASS swift 1800 steps / 30 simulated seconds, kills=15
+SPECIALIZATION SOAK TOTAL 18000 steps / 300 simulated seconds / 10 variants PASS

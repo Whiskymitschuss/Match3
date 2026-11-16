@@ -1,3 +1,12 @@
+# Stand 0.5.0
+
+Zwei verbindliche, kostenlose Entwicklungen je Waffe ab Stufe fünf implementiert und
+automatisiert geprüft. Nächster Schritt: Android-Praxisabnahme und gezieltes Balancing
+beider Wege pro Klassenwaffe anhand echter Runs. Fähigkeiten aus 0.4 wurden vom Nutzer
+positiv zu Funktion, Nutzen und Lesbarkeit bewertet. Details in PROGRESS.md.
+
+---
+
 # Stand 0.4.0
 
 Drei aktive Heldenfähigkeiten, eigener Multitouch-Button, optional gespeicherte Vibration

@@ -1,6 +1,6 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha **0.4.0** · Godot **4.6.3 stable** · GDScript · GL Compatibility
+Android Alpha **0.5.0** · Godot **4.6.3 stable** · GDScript · GL Compatibility
 
 ## Spielen
 
@@ -10,7 +10,30 @@ Links unten per Touch-Joystick bewegen, Waffen greifen automatisch an. XP einsam
 Upgrades wählen, zwischen neun 60-Sekunden-Wellen einkaufen. Welle zehn hat ein
 90-Sekunden-Limit: Boss besiegen oder verlieren. Pause oben rechts.
 
-## Neu in 0.4
+## Neu in 0.5: Waffenspezialisierungen
+
+Beim Kauf von Waffenstufe fünf wählst du kostenlos zwischen zwei Entwicklungen.
+Die Wahl ist für diese Waffe in diesem Run verbindlich, kostet keine zusätzlichen Coins
+und bleibt über die Wellen erhalten. Ein neuer Run beginnt wieder mit der Startwaffe
+auf Stufe eins. Während der Auswahl steht die Simulation im Shop vollständig still.
+Mehrere ausstehende Auswahlen erscheinen nacheinander.
+
+| Waffe | Entwicklung A | Entwicklung B |
+|---|---|---|
+| Hammer | Erdbeben: größerer Rundumschlag, weniger Schaden und längerer Cooldown | Donnerfaust: schnellere, konzentrierte Einzeltreffer |
+| Blaster | Durchbrecher: durchschlägt bis zu drei verschiedene Gegner | Sprengkern: geringerer Direktschaden plus Explosion gegen andere nahe Gegner |
+| Splitgun | Fokusfächer: enger, stärker und weiter | Schrothagel: mehr Kugeln, breiter und schwächer je Kugel |
+| Arc Cannon | Kettensturm: bis zu fünf Ziele und größere Sprungreichweite | Hochspannung: stärkerer, schnellerer Einzelzielblitz |
+| Orbit Blade | Fernschneide: weiter, größer, stärker und langsamer | Wirbelklinge: enger, kleiner, schneller und schwächer je Treffer |
+
+Alle genauen Werte stehen auf den Auswahlkarten und datenbasiert unter
+`data/specializations/specializations.json`. Symbole an Waffen/HUD, Projektileffekte,
+Orbitdarstellung, Rückmeldung und zusätzliche synthetisierte Töne unterscheiden die Wege.
+Es erscheinen keine zusätzlichen Arme. Klassenbindung und Waffenslots bleiben erhalten.
+Ergebnis und gespeicherter Verlauf enthalten die gewählte Entwicklung. Alte Einträge
+bleiben ohne nachträglich erfundene Spezialisierung kompatibel; Speicherformat bleibt 3.
+
+## Fähigkeiten aus 0.4
 
 Rechts unten liegt ein eigener Fähigkeitenbutton mit Symbol und Abklinganzeige.
 Joystick und Fähigkeit lassen sich mit zwei Fingern gleichzeitig bedienen.
@@ -78,7 +101,7 @@ godot --headless --path . --editor --import --quit
 godot --headless --path . --fixed-fps 60 --script res://tests/integration.gd
 godot --headless --path . --fixed-fps 60 --script res://tests/reactor_test.gd
 godot --headless --path . --fixed-fps 60 --script res://tests/world_trace.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.4-debug.apk
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.5-debug.apk
 ```
 
 Für Export Godot-Android-Template, JDK 21 und Android SDK konfigurieren. Private

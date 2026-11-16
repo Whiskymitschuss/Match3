@@ -1,3 +1,49 @@
+# Meilenstein 0.5.0 — 2026-11-16
+
+## Nutzerabnahme des Vorgängers
+
+Nutzer bestätigt zu 0.4: „Ja funktioniert, sie hilft und alles ist gut erkennbar“.
+Damit liegt positives Praxisfeedback zu Funktion, Nutzen und Lesbarkeit der Fähigkeit vor.
+Konkrete Helden, vollständige Run-Anzahl, Gerätemodell und FPS wurden nicht genannt.
+
+## Aktuelle Phase
+
+Alle zehn Waffenspezialisierungen implementiert und geprüft. Android-APK exportiert,
+signiert, Paket/Version/ARM64/Berechtigungen und 16-KiB-Alignment geprüft.
+Quell-ZIP frisch importiert und daraus erneut 108 Prüfungen bestanden. GitHub-Übergabe
+vorbereitet. Keine physische Android-Hardware hier.
+
+## Umgesetzt
+
+Kostenlose verbindliche Auswahl direkt nach Stufe-5-Shopkauf, zwei Wege je Waffe.
+Neue Rundumschläge, Einzeltreffer, Durchschlag, Explosionen, Fächer, Ketten und Klingenorbits.
+Klassenbindung und Fähigkeiten erhalten. Auswahl pausiert die Simulation; mehrere
+Auswahlen werden nacheinander abgearbeitet. Wellen behalten, neue Runs löschen die Wahl.
+Symbole/Abzeichen, visuelle Effekte und eigene Synthsounds. Verlauf und Ergebnis
+enthalten Spezialisierungen, Speicherformat 3 bleibt mit älteren Einträgen kompatibel.
+
+## Tatsächlich geprüft
+
+551 Assertions bestanden: bestehende 443 plus 108 neue Prüfungen. Referenzvergleich
+33 Punkte / 3.600 Schritte ohne gewählte Spezialisierung weiterhin identisch.
+Alle zehn Varianten jeweils 1.800 Belastungsschritte, insgesamt 300 simulierte Sekunden,
+mit echten Fähigkeiten und bis zu 100 Gegnern geprüft. Zusätzlich 21.600 Schritte
+Fähigkeiten-Stresstest bestanden. Kein daraus abgeleiteter Android-FPS-Nachweis.
+13 UI-/Kampfbilder mit Godot/Mesa gerendert und geprüft. Überlappende Beschreibungstexte
+bei der ersten Bildprüfung korrigiert und durch Layout-Regression abgesichert.
+
+## Nächster Schritt
+
+Echte Android-Runs mit den
+beiden Wegen je Klassenwaffe prüfen: verständliche Auswahl, unterschiedliche Spielweise,
+faire Gegenleistung für Reichweite/Tempo/Flächenschaden, Geräteleistung und Statistikerhalt.
+Version 0.5 ist noch nicht physisch auf Android abgenommen. Details in TEST_REPORT.md
+und BUILD_REPORT.md; keine offenen Pflichtmenüs oder bekannten Parserfehler.
+
+---
+
+# Historischer Stand 0.4
+
 # Meilenstein 0.4.0 — 2026-11-16
 
 ## Aktuelle Phase

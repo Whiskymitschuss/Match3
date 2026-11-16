@@ -45,6 +45,8 @@ const SaveManager = preload('res://scripts/autoload/save_manager.gd')
 var loot: Array = []
 var effects: Array = []
 var weapons: Array = []
+const Specs=preload('res://scripts/weapons/specializations.gd')
+var specialized_combat
 var weapon_manager
 var combat_visuals
 var world_visuals
@@ -106,6 +108,7 @@ func _ready():
 	reactor_guardian=preload('res://scripts/bosses/reactor_guardian.gd').new(self)
 	hero_ability=preload('res://scripts/characters/hero_ability.gd').new(self)
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
+	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -278,7 +281,7 @@ func main_menu():
 	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
 		item.custom_minimum_size.y=95
 		item.reparent(stack)
-	label_at('0.4.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.5.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1330,530),1,1.05)
 	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
 
@@ -374,7 +377,7 @@ func recent_runs_screen(character: int = -1, page: int = 0, arena_filter: String
 		label_at('SIEG' if run.won else 'GAME OVER',Vector2(465,y+10),29,Color('#2ED573') if run.won else Color('#FF6376'))
 		label_at('Welle %d / 10   LV %d   %d Kills   %s' % [run.wave,run.level,run.kills,duration_text(run.time)],Vector2(940,y+12),25)
 		var loadout=''
-		for w in run.weapons:loadout+='%s Lv.%d  ' % [weapon_data[w.id].name,w.level]
+		for w in run.weapons:loadout+='%s Lv.%d  ' % [Specs.label(w) if not Specs.label(w).is_empty() else weapon_data[w.id].name,w.level]
 		label_at(Arenas.definition(run.get('arena','scrapyard')).name+' / '+loadout,Vector2(125,y+65),21)
 		label_at('%d Schaden  /  %d Coins' % [run.damage,run.coins],Vector2(1190,y+65),23,GOLD)
 	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func(): statistics(character,arena_filter))
@@ -413,12 +416,13 @@ func cleanup():
 	if world_visuals: world_visuals.clear()
 	if arena_hazards:arena_hazards.clear()
 	if reactor_guardian:reactor_guardian.clear()
+	if specialized_combat:specialized_combat.clear()
 	if hero_ability:hero_ability.clear()
 	if hit_feedback:hit_feedback.clear()
 	enemies.clear()
 	loot.clear()
 	effects.clear()
-	for s in shots: s.active = false
+	projectile_pool.clear()
 	boss_warning = ''
 
 func start_run():
@@ -568,6 +572,7 @@ func _physics_process(delta):
 	if is_instance_valid(joystick): joystick.queue_redraw()
 	if is_instance_valid(ability_button):ability_button.queue_redraw()
 	if state != State.COMBAT: return
+	specialized_combat.update(delta)
 	hit_feedback.update(delta)
 	hero_ability.update(delta)
 	if state != State.COMBAT:return
@@ -686,6 +691,7 @@ func shoot(pos: Vector2, direction: Vector2, power: float, hostile: bool, veloci
 	if shot!=null:
 		shot.skin = selected
 		shot.weapon = weapon_id
+	return shot
 
 func update_shots(dt: float):
 	for s in shots:
@@ -700,6 +706,9 @@ func update_shots(dt: float):
 				combat_visuals.impact(s.pos,'boss',true)
 				hurt(s.damage)
 				if state != State.COMBAT: return
+		elif s.get('spec','')!='':
+			specialized_combat.projectile(s,old)
+			if state!=State.COMBAT:return
 		else:
 			for e in enemies.duplicate():
 				if Geometry2D.get_closest_point_to_segment(e.pos,old,s.pos).distance_to(e.pos)<e.radius+8:
@@ -858,6 +867,7 @@ func weapon_icon(id: String, pos: Vector2, size: Vector2):
 	ui_root.add_child(icon)
 
 func show_shop():
+	if not pending_specialization().is_empty():specialization_screen();return
 	backdrop('MAYHEM MARKET','%s • %d Coins • %s' % [characters[selected].name,coins,class_weapon_summary()])
 	for i in range(offers.size()):
 		var o = offers[i]
@@ -869,12 +879,12 @@ func show_shop():
 		var b = button('GEKAUFT' if o.get('sold',false) else '%d ●  KAUFEN' % o.price,Vector2(x,555),Vector2(420,110),func(): buy_offer(i))
 		b.disabled = o.get('sold',false) or coins<o.price
 	button('REROLL • '+('GRATIS' if rerolls==0 else '%d ●' % (5+rerolls*3)),Vector2(100,790),Vector2(650,100),reroll_shop)
-	button('NÄCHSTE WELLE →',Vector2(1050,790),Vector2(650,100),func(): wave_number+=1; prepare_wave(),Color('#147f81'))
+	button('NÄCHSTE WELLE →',Vector2(1050,790),Vector2(650,100),next_shop_wave,Color('#147f81'))
 	label_at('Ausrüstung: '+weapon_summary(),Vector2(100,940),25)
 
 func weapon_summary() -> String:
 	var text = ''
-	for w in weapons: text += '%s Lv.%d  ' % [weapon_data[w.id].name,w.level]
+	for w in weapons: text += '%s Lv.%d  ' % [Specs.label(w) if not Specs.label(w).is_empty() else weapon_data[w.id].name,w.level]
 	return text
 
 func buy_offer(index: int) -> bool:
@@ -982,6 +992,7 @@ func _draw():
 	draw_player_character()
 	combat_visuals.draw_weapons(false)
 	combat_visuals.draw_shots()
+	specialized_combat.draw()
 	combat_visuals.draw_effects()
 	hit_feedback.draw()
 	for e in effects:
@@ -1050,3 +1061,44 @@ func challenges_screen():
 func haptic(kind:String) -> bool:
 	if test_mode or not OS.has_feature('android'):return false
 	return haptic_feedback.request(saved.settings.get('haptics','OFF'),kind,Time.get_ticks_msec(),func(duration:int,amplitude:float):Input.vibrate_handheld(duration,amplitude))
+
+func pending_specialization() -> Dictionary:
+	for w in weapons:
+		if w.level==5 and Specs.definition(w).is_empty() and can_equip_weapon(w.id):return w
+	return {}
+func specialization_screen():
+	if state!=State.SHOP:return
+	var w=pending_specialization()
+	if w.is_empty():show_shop();return
+	backdrop('WÄHLE DEINE ENTWICKLUNG',weapon_data[w.id].name+' / Stufe 5 / Kostenlos / Gilt für diesen Run')
+	var choices=Specs.choices(w.id)
+	for i in range(choices.size()):
+		var id=choices[i]
+		var d=Specs.all()[id]
+		var x=110+i*865
+		var icon=TextureRect.new()
+		icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+		icon.texture=load('res://assets/ui/specializations/'+id+'.svg')
+		icon.position=Vector2(x+260,265)
+		icon.size=Vector2(220,220)
+		icon.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		ui_root.add_child(icon)
+		label_at(d.name,Vector2(x+15,520),42,Color(d.color))
+		var description=label_at(d.description,Vector2(x+15,605),30)
+		description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+		description.set_deferred('size',Vector2(760,155))
+		button('ENTWICKELN',Vector2(x,815),Vector2(805,110),func():choose_specialization(w.id,id),Color(d.color).darkened(.65))
+	label_at('Eine Wahl pro Waffe. Keine zusätzlichen Coins. Kampf und Timer stehen still.',Vector2(120,985),25)
+func choose_specialization(weapon:String,id:String) -> bool:
+	if state!=State.SHOP or not can_equip_weapon(weapon) or not Specs.valid(weapon,id):return false
+	var w=pending_specialization()
+	if w.is_empty() or w.id!=weapon:return false
+	w.spec=id
+	sound('spec_evolve')
+	show_shop()
+	return true
+func next_shop_wave():
+	if state!=State.SHOP:return
+	if not pending_specialization().is_empty():specialization_screen();return
+	wave_number+=1
+	prepare_wave()

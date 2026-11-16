@@ -1,3 +1,17 @@
+# 0.5.0 Alpha — 2026-11-16
+
+- Zwei kostenlose Stufe-5-Entwicklungen für jede der fünf Waffen, insgesamt zehn Wege.
+- Verbindliche Auswahl direkt nach dem Shopkauf, mehrere Auswahlen nacheinander.
+- Rundumschlag/Einzeltreffer, Durchschlag/Explosion, enger/breiter Fächer,
+  lange Kette/Einzelblitz und weiter/schneller Klingenorbit tatsächlich implementiert.
+- Eigene SVG-Symbole, Waffenabzeichen, Geschossspuren, Orbitgeometrie und begrenzte Effekte.
+- Zusätzliche eigene synthetisierte Audioeffekte und Auswahlton.
+- Ergebnis und Verlauf speichern die Wahl; ältere Formate bleiben kompatibel.
+- Projektilpool setzt Spezialisierung und Trefferlisten bei Wiederverwendung zurück.
+- 108 neue Prüfungen und Belastung aller zehn Varianten.
+- Nutzer bestätigt Funktion, Nutzen und Lesbarkeit der Fähigkeiten aus 0.4;
+  kein daraus abgeleiteter Nachweis vollständiger Runs aller Helden oder gemessener FPS.
+
 # 0.4.0 Alpha — 2026-11-16
 
 - Drei datenbasierte Heldenfähigkeiten: Schockwelle, Impulsgranate, Schattenschritt.

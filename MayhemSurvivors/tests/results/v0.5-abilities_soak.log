@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ABILITY SOAK PASS scrapyard bruiser 3600 steps / 60 simulated seconds, uses=5
+ABILITY SOAK PASS scrapyard sparky 3600 steps / 60 simulated seconds, uses=6
+ABILITY SOAK PASS scrapyard shade 3600 steps / 60 simulated seconds, uses=8
+ABILITY SOAK PASS reactor bruiser 3600 steps / 60 simulated seconds, uses=5
+ABILITY SOAK PASS reactor sparky 3600 steps / 60 simulated seconds, uses=6
+ABILITY SOAK PASS reactor shade 3600 steps / 60 simulated seconds, uses=8
+ABILITY SOAK TOTAL 21600 steps, 360 simulated seconds, 38 actual activations; mass-loot merge preserves 48205 XP

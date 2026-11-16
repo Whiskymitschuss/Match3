@@ -1,5 +1,6 @@
 extends RefCounted
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
+const Specs=preload('res://scripts/weapons/specializations.gd')
 const CHARACTERS = ['bruiser','sparky','shade']
 const WEAPONS = ['blaster','hammer','splitgun','arc','orbit']
 const MAX_HISTORY = 20
@@ -34,7 +35,9 @@ static func clean_run(data) -> Dictionary:
 	if weapons is Array:
 		for item in weapons:
 			if not item is Dictionary or not WEAPONS.has(item.get('id')):continue
-			result.weapons.append({'id':item.id,'level':clampi(int(number(item.get('level'),1)),1,5)})
+			var weapon={'id':item.id,'level':clampi(int(number(item.get('level'),1)),1,5)}
+			if weapon.level==5 and Specs.valid(weapon.id,item.get('spec','')):weapon.spec=item.spec
+			result.weapons.append(weapon)
 			if result.weapons.size()==4:break
 	return result
 static func sanitize_history(data) -> Array:

@@ -1,5 +1,6 @@
 extends RefCounted
 # Cosmetic state only: no damage, collision, cooldown or gameplay RNG access.
+const Specs=preload('res://scripts/weapons/specializations.gd')
 const Art = preload('res://scripts/ui/combat_art.gd')
 const HeroArt = preload('res://scripts/ui/character_art.gd')
 var game: Node2D
@@ -147,6 +148,13 @@ func draw_weapons(behind: bool = false):
 		if not pose.is_empty():
 			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))
 			game.draw_texture_rect_region(Art.TEXTURE,pose.rect,Art.weapon(pose.id))
+			for w in game.weapons:
+				if w.id!=pose.id:continue
+				var spec=Specs.definition(w)
+				if spec.is_empty():continue
+				var at=Vector2(54,-33) if pose.id=='hammer' else Vector2(3,-25)
+				game.draw_texture_rect(Specs.icon(w.spec),Rect2(at,Vector2(28,28)),false)
+				game.draw_line(at+Vector2(2,29),at+Vector2(29,29),Color(spec.color),4,true)
 			if pose.id!='hammer' and pose.pulse>0:
 				var color=Art.color_for(game.selected)
 				var kick=pose.pulse/.115
@@ -160,13 +168,16 @@ func draw_weapons(behind: bool = false):
 	# Orbit Blade is a free orbiting weapon, never another pair of holding arms.
 	for w in game.weapons:
 		if w.id!='orbit': continue
-		var angle=game.orbit_angle
-		var radius=110+5*(w.level-1)
+		var orbit_pose=game.specialized_combat.orbit_pose(w)
+		var angle=orbit_pose.angle
+		var radius=orbit_pose.radius
 		var color=Art.color_for(game.selected)
 		game.draw_arc(game.player.position,radius,angle-.65,angle,16,Color(color,.3),8,true)
 		game.draw_arc(game.player.position,radius,angle-.35,angle,12,Color(color,.7),3,true)
 		game.draw_set_transform(game.player.position+Vector2.from_angle(angle)*radius,angle+PI*.5)
-		game.draw_texture_rect_region(Art.TEXTURE,Rect2(-34,-34,68,68),Art.weapon('orbit'))
+		var blade_size:float=orbit_pose.size
+		game.draw_texture_rect_region(Art.TEXTURE,Rect2(Vector2.ONE*(-blade_size/2),Vector2.ONE*blade_size),Art.weapon('orbit'))
+		if not Specs.definition(w).is_empty():game.draw_texture_rect(Specs.icon(w.spec),Rect2(-11,-11,22,22),false)
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_shots():
@@ -175,6 +186,10 @@ func draw_shots():
 		var skin=int(s.get('skin',game.selected))
 		var color=Color('#FF592E') if s.hostile else Art.color_for(skin)
 		var direction: Vector2=s.vel.normalized()
+		if not s.hostile and Specs.all().has(s.get('spec','')):
+			var accent=Color(Specs.all()[s.spec].color)
+			if s.spec=='blast':game.draw_arc(s.pos,14,0,TAU,16,accent,3,true)
+			else:game.draw_line(s.pos-direction*45,s.pos,Color(accent,.8),4,true)
 		var split=s.get('weapon','blaster')=='splitgun'
 		var length=32.0 if split else 44.0
 		var thickness=16.0 if split else 23.0
