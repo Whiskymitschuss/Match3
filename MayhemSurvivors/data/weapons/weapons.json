@@ -1,0 +1,32 @@
+{
+  "blaster": {
+    "name": "BLASTER",
+    "damage": 12,
+    "cooldown": 0.65,
+    "reach": 420
+  },
+  "hammer": {
+    "name": "HAMMER",
+    "damage": 24,
+    "cooldown": 1.0,
+    "reach": 100
+  },
+  "splitgun": {
+    "name": "SPLITGUN",
+    "damage": 7,
+    "cooldown": 1.2,
+    "reach": 340
+  },
+  "arc": {
+    "name": "ARC CANNON",
+    "damage": 18,
+    "cooldown": 1.5,
+    "reach": 360
+  },
+  "orbit": {
+    "name": "ORBIT BLADE",
+    "damage": 10,
+    "cooldown": 0.5,
+    "reach": 135
+  }
+}

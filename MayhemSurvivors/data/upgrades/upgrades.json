@@ -1,0 +1,62 @@
+[
+  [
+    "vital",
+    "\u2665",
+    "VITAL BOOST",
+    "+20 maximale und aktuelle HP"
+  ],
+  [
+    "damage",
+    "\u2726",
+    "HEAVY IMPACT",
+    "+12% Schaden"
+  ],
+  [
+    "rapid",
+    "\u00bb",
+    "RAPID FIRE",
+    "+10% Angriffstempo"
+  ],
+  [
+    "speed",
+    "\u27a4",
+    "SWIFT FEET",
+    "+8% Bewegungstempo"
+  ],
+  [
+    "crit",
+    "\u25ce",
+    "CRITICAL EYE",
+    "+5% kritische Chance"
+  ],
+  [
+    "armor",
+    "\u2b1f",
+    "IRON SKIN",
+    "+2 R\u00fcstung"
+  ],
+  [
+    "magnet",
+    "\u25c8",
+    "MAGNET FIELD",
+    "+25% Sammelradius"
+  ],
+  [
+    "projectile",
+    "\u2197",
+    "PROJECTILE BOOST",
+    "+12% Projektiltempo"
+  ],
+  [
+    "heal",
+    "+",
+    "FIELD MEDIC",
+    "Heilt 25 HP"
+  ],
+  [
+    "multi",
+    "\u22ee",
+    "MULTISHOT",
+    "+1 Projektil (Blaster / Splitgun)"
+  ]
+]

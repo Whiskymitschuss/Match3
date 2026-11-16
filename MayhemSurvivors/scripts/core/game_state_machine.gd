@@ -1,0 +1,16 @@
+extends RefCounted
+enum State { BOOT, MAIN_MENU, CHARACTER_SELECT, WAVE_PREPARATION, COMBAT, LEVEL_UP, SHOP, PAUSED, VICTORY, GAME_OVER }
+const TRANSITIONS = {
+	State.BOOT:[State.MAIN_MENU],
+	State.MAIN_MENU:[State.CHARACTER_SELECT],
+	State.CHARACTER_SELECT:[State.MAIN_MENU,State.WAVE_PREPARATION],
+	State.WAVE_PREPARATION:[State.COMBAT,State.MAIN_MENU],
+	State.COMBAT:[State.LEVEL_UP,State.SHOP,State.PAUSED,State.VICTORY,State.GAME_OVER],
+	State.LEVEL_UP:[State.LEVEL_UP,State.COMBAT],
+	State.SHOP:[State.WAVE_PREPARATION],
+	State.PAUSED:[State.COMBAT,State.GAME_OVER],
+	State.VICTORY:[State.MAIN_MENU,State.CHARACTER_SELECT,State.WAVE_PREPARATION],
+	State.GAME_OVER:[State.MAIN_MENU,State.CHARACTER_SELECT,State.WAVE_PREPARATION]
+}
+static func permits(from: int, to: int) -> bool:
+	return from==to or TRANSITIONS.get(from,[]).has(to)

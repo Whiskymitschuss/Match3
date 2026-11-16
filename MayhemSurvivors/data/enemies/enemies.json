@@ -1,0 +1,38 @@
+{
+  "grunt": {
+    "hp": 40,
+    "speed": 105,
+    "damage": 8,
+    "color": "#2ED573",
+    "radius": 23,
+    "xp": 5,
+    "coins": 2
+  },
+  "runner": {
+    "hp": 25,
+    "speed": 175,
+    "damage": 6,
+    "color": "#FF4757",
+    "radius": 18,
+    "xp": 4,
+    "coins": 2
+  },
+  "tank": {
+    "hp": 160,
+    "speed": 70,
+    "damage": 16,
+    "color": "#A55EEA",
+    "radius": 34,
+    "xp": 12,
+    "coins": 5
+  },
+  "boss": {
+    "hp": 2500,
+    "speed": 85,
+    "damage": 20,
+    "color": "#FF9F1C",
+    "radius": 78,
+    "xp": 100,
+    "coins": 100
+  }
+}

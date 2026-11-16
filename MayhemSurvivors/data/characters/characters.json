@@ -1,0 +1,38 @@
+[
+  {
+    "id": "bruiser",
+    "name": "BRUISER",
+    "hp": 120,
+    "speed": 180,
+    "weapon": "hammer",
+    "color": "#FF9F1C",
+    "description": "Panzerfaust \u2022 +10% Nahkampfschaden",
+    "melee_bonus": 0.1,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0
+  },
+  {
+    "id": "sparky",
+    "name": "SPARKY",
+    "hp": 90,
+    "speed": 200,
+    "weapon": "blaster",
+    "color": "#00D9D0",
+    "description": "Funkenpilot \u2022 +15% Angriffstempo",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0.15,
+    "crit_bonus": 0
+  },
+  {
+    "id": "shade",
+    "name": "SHADE",
+    "hp": 80,
+    "speed": 235,
+    "weapon": "orbit",
+    "color": "#A55EEA",
+    "description": "Nachtklinge \u2022 +10% kritische Chance",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0.1
+  }
+]
