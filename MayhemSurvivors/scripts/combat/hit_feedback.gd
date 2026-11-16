@@ -1,0 +1,35 @@
+extends RefCounted
+var game:Node2D
+var numbers:Array=[]
+var hurt_flash=0.0
+var serial=0
+func _init(g:Node2D):game=g
+func clear():
+	numbers.clear()
+	hurt_flash=0
+	serial=0
+func limit() -> int:
+	return 24 if game.saved.settings.quality=='LOW' else (40 if game.saved.settings.quality=='MEDIUM' else 64)
+func update(dt:float):
+	while numbers.size()>limit():numbers.pop_front()
+	hurt_flash=maxf(0,hurt_flash-dt)
+	for i in range(numbers.size()-1,-1,-1):
+		numbers[i].life-=dt
+		if numbers[i].life<=0:numbers.remove_at(i)
+func damage(pos:Vector2, amount:float, critical:bool, player_hit:bool=false):
+	if player_hit:hurt_flash=.22
+	if not game.saved.settings.get('damage_numbers',true):return
+	var cap=limit()
+	while numbers.size()>=cap:numbers.pop_front()
+	serial+=1
+	var color=Color('#FF6376') if player_hit else (Color('#FFD166') if critical else Color.WHITE)
+	var text=('-' if player_hit else '')+str(ceili(amount))+('!' if critical else '')
+	numbers.append({'pos':pos+Vector2((serial%5-2)*10,-30),'life':.7,'text':text,'color':color,'size':40 if critical or player_hit else 29})
+func draw():
+	if not game.saved.settings.get('damage_numbers',true):return
+	var font=ThemeDB.fallback_font
+	for n in numbers:
+		var pos:Vector2=n.pos-Vector2(0,(.7-n.life)*65)
+		var alpha=clampf(n.life*4,0,1)
+		game.draw_string_outline(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,n.size,5,Color(0.04,.06,.12,alpha))
+		game.draw_string(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,n.size,Color(n.color,alpha))

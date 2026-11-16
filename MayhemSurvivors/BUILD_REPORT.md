@@ -1,24 +1,27 @@
-# Android-Buildbericht 0.3.0 — 2026-11-16
+# Android-Buildbericht 0.4.0 — 2026-11-16
 
-Tatsächlich exportiert mit Godot 4.6.3 stable, Android-Debug-Template,
-OpenJDK 21, SDK Platform 36 und Build Tools 36.0.0. Nativer APK-Export ohne Gradle.
+Tatsächlich exportiert: Godot 4.6.3 stable, Android-Debug-Template, JDK 21,
+SDK Platform 36 / Build Tools 36.0.0, nativer APK-Export ohne Gradle.
 
-- Datei: `builds/android/MayhemSurvivors-v0.3-debug.apk`
-- Größe: 39,761,813 Bytes
-- SHA-256: `4291f9a91ecb01e8e867c5f83970daa9c3ffcdadd222850160487764123eb826`
-- Paket: `com.rfworlds.mayhemsurvivors`
-- versionCode 6 / versionName 0.3.0, minSDK 24, targetSDK 36.
-- Nur `arm64-v8a`, Querformat, GL Compatibility, keine angeforderten Berechtigungen.
-- `apksigner verify --verbose --print-certs`: bestanden, Signaturschemata v2/v3.
-- Zertifikat-SHA256: `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
-- Gleiches Zertifikat wie 0.2.3, daher als Update vorgesehen.
+- Datei: `builds/android/MayhemSurvivors-v0.4-debug.apk`
+- Größe: 39,809,188 Bytes
+- SHA-256: `8f396af1ad06a3e7242449f70f45b6ef20b618a36085e59154e8cf923bedb571`
+- Paket `com.rfworlds.mayhemsurvivors`, versionCode 7 / versionName 0.4.0.
+- Nur ARM64-v8a, Querformat, minSDK 24 / targetSDK 36, GL Compatibility.
+- Einzige angeforderte Berechtigung: `android.permission.VIBRATE` für optionale Haptik.
+  Keine Internet-/Netzwerk-/Speicherberechtigung.
+- `apksigner verify --verbose --print-certs`: bestanden, v2/v3-Signatur.
+- Zertifikat-SHA256 `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
+- Gleiches Signierzertifikat wie 0.3, daher Update über bestehende Installation vorgesehen.
 - `zipalign -c -P 16 4`: bestanden.
-- Neue Arena-/Wellen-JSON-Dateien im APK vorhanden; Tests und Berichte ausgeschlossen.
+- Fähigkeits-JSON vorhanden, nur ARM64-Bibliotheken, Tests nicht im APK.
 
-Exportcode 0. ADB meldet „cannot connect to daemon at tcp:5037“: In dieser Umgebung
-ist kein Android-Gerät verbunden; die signierte APK wurde trotzdem vollständig erzeugt.
-Installation, Launch und FPS auf einem echten Android-Gerät sind für 0.3 noch nicht geprüft.
-Kein Windows-Export. Private Schlüssel und SDK liegen außerhalb des Quellprojekts.
+Export erfolgreich. Meldung „cannot connect to daemon at tcp:5037“ betrifft das fehlende
+ADB-Gerät dieser Umgebung; kein physischer Android-Start oder FPS-Test behauptet.
+Vibration ist standardmäßig AUS, DEZENT/STARK benötigen die Praxisprüfung auf Gerät.
 
-Quell-ZIP: `MayhemSurvivors-v0.3-source.zip`, ohne `.godot`, APK, Signierschlüssel
-und Toolchain. Separater Download der APK. Frischer Import aus entpacktem ZIP ohne Parser-/Ressourcenfehler und 157 Reaktortests bestanden. Import-/Testdetails siehe TEST_REPORT.md.
+Das separate Quell-ZIP enthält Projekt, Szenen, Skripte, Daten, Assets, Generator,
+Tests und Berichte. `.godot`, APKs, SDK und private Signierschlüssel sind ausgeschlossen.
+Die APK ist separat im Downloadordner verfügbar. Kein Windows-Export.
+
+Quell-ZIP in ein leeres Verzeichnis entpackt, frisch in Godot importiert: keine Parser-/Ressourcenfehler. Fähigkeitssuite im entpackten Projekt erneut 76 / 76 bestanden.

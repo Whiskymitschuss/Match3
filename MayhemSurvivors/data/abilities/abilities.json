@@ -1,0 +1,5 @@
+{
+  "bruiser": {"id":"shockwave","name":"SCHOCKWELLE","description":"Trifft Gegner im Umkreis und stößt normale Gegner zurück.","cooldown":12.0,"radius":250.0,"damage":48.0,"knockback":90.0,"color":"#FF9F1C"},
+  "sparky": {"id":"impulse","name":"IMPULSGRANATE","description":"Wirft automatisch eine Granate zum nächsten Gegner. Explosion verlangsamt normale Gegner.","cooldown":10.0,"reach":450.0,"radius":180.0,"damage":40.0,"fuse":0.65,"slow":0.4,"slow_duration":2.0,"color":"#00D9D0"},
+  "shade": {"id":"shadow_step","name":"SCHATTENSCHRITT","description":"Schnellt in Bewegungsrichtung. Während des Schritts unverwundbar, trifft jeden durchquerten Gegner einmal.","cooldown":8.0,"distance":300.0,"duration":0.18,"damage":26.0,"color":"#A55EEA"}
+}

@@ -9,6 +9,12 @@ var arena_id='scrapyard'
 var arena_definition=Arenas.definition('scrapyard')
 var arena_hazards
 var reactor_guardian
+var hero_ability
+var hit_feedback
+var haptic_feedback=preload('res://scripts/mobile/haptic_feedback.gd').new()
+var ability_button:Button
+var ability_touch_ids:Array[int]=[]
+const ABILITY_RECT=Rect2(1510,770,300,210)
 var facing = 1.0
 const INK = Color('#14213D')
 const TEAL = Color('#00D9D0')
@@ -98,6 +104,8 @@ func _ready():
 	world_visuals = preload('res://scripts/gameplay/world_visuals.gd').new(self)
 	arena_hazards=preload('res://scripts/gameplay/arena_hazards.gd').new(self)
 	reactor_guardian=preload('res://scripts/bosses/reactor_guardian.gd').new(self)
+	hero_ability=preload('res://scripts/characters/hero_ability.gd').new(self)
+	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -196,6 +204,8 @@ func clear_ui():
 	for n in ui_root.get_children():
 		ui_root.remove_child(n)
 		n.queue_free()
+	ability_button=null
+	ability_touch_ids.clear()
 	hud = null
 	boss_hud = null
 	stick_id = -1
@@ -268,7 +278,7 @@ func main_menu():
 	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
 		item.custom_minimum_size.y=95
 		item.reparent(stack)
-	label_at('0.3.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.4.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1330,530),1,1.05)
 	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
 
@@ -303,7 +313,7 @@ func character_select():
 		label_at(c.name,Vector2(x+25,677),42,Color.WHITE)
 		label_at(c.description,Vector2(x+25,739),22)
 		label_at('%d HP / %d Tempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),21)
-		label_at(['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade'][i],Vector2(x+25,808),19,Color(c.color))
+		label_at(['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade'][i]+' • '+hero_ability.data[c.id].name,Vector2(x+25,808),18,Color(c.color))
 		button('AUSWÄHLEN',Vector2(x+20,835),Vector2(510,85),func(): selected=i; arena_select(),Color(c.color).darkened(.65))
 	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
 
@@ -375,7 +385,7 @@ func recent_runs_screen(character: int = -1, page: int = 0, arena_filter: String
 	next.disabled=page>=pages-1
 
 func settings(back: Callable):
-	backdrop('EINSTELLUNGEN','Audio und Effektdichte • Spielregeln bleiben gleich')
+	backdrop('EINSTELLUNGEN','Audio, Vibration und Trefferfeedback')
 	var keys = ['master','music','sfx']
 	for i in range(3):
 		var key = keys[i]
@@ -392,13 +402,19 @@ func settings(back: Callable):
 	for i in range(3):
 		var q = ['LOW','MEDIUM','HIGH'][i]
 		button(('✓ ' if saved.settings.quality == q else '')+q,Vector2(120+i*460,710),Vector2(420,95),func(): saved.settings.quality=q; save_game(); settings(back))
-	button('ZURÜCK',Vector2(120,890),Vector2(420,100),back)
+	var modes=['OFF','LOW','HIGH']
+	var mode=saved.settings.get('haptics','OFF')
+	button('VIBRATION: '+{'OFF':'AUS','LOW':'DEZENT','HIGH':'STARK'}[mode],Vector2(120,825),Vector2(620,90),func(): saved.settings.haptics=modes[(modes.find(mode)+1)%3];save_game();haptic('ability');settings(back))
+	button('SCHADENSZAHLEN: '+('AN' if saved.settings.get('damage_numbers',true) else 'AUS'),Vector2(800,825),Vector2(700,90),func(): saved.settings.damage_numbers=not saved.settings.get('damage_numbers',true);save_game();settings(back))
+	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
 
 func cleanup():
 	if combat_visuals: combat_visuals.clear()
 	if world_visuals: world_visuals.clear()
 	if arena_hazards:arena_hazards.clear()
 	if reactor_guardian:reactor_guardian.clear()
+	if hero_ability:hero_ability.clear()
+	if hit_feedback:hit_feedback.clear()
 	enemies.clear()
 	loot.clear()
 	effects.clear()
@@ -440,6 +456,12 @@ func prepare_wave():
 	change_state(State.WAVE_PREPARATION)
 	backdrop('WELLE %d / 10' % wave_number,arena_definition.boss_name+' ERWACHT' if wave_number == 10 else arena_definition.name+' / Bewege dich, sammle Kristalle und überlebe!')
 	label_at('Automatische Waffen • Links unten bewegen\nXP sammeln → Upgrades wählen\nZwischen den Wellen: Ausrüstung kaufen',Vector2(120,350),36)
+	var ability=hero_ability.definition()
+	label_at('RECHTS UNTEN: '+ability.name+' / %.0f s Abklingzeit' % ability.cooldown,Vector2(120,525),30,Color(ability.color))
+	var help=label_at(ability.description,Vector2(120,575),26)
+	help.custom_minimum_size.x=1550
+	help.size.x=1550
+	help.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 
 func begin_wave():
@@ -458,6 +480,11 @@ func make_hud():
 	hud = label_at('',Vector2(75,35),30)
 	boss_hud = label_at('',Vector2(620,150),32,Color('#FF4757'))
 	button('Ⅱ',Vector2(1690,40),Vector2(140,100),pause_game)
+	ability_button=button('',ABILITY_RECT.position,ABILITY_RECT.size,func():hero_ability.activate())
+	ability_button.set_script(preload('res://scripts/ui/ability_button.gd'))
+	ability_button.game=self
+	ability_button.focus_mode=Control.FOCUS_NONE
+	ability_button.action_mode=BaseButton.ACTION_MODE_BUTTON_PRESS
 	joystick = Control.new()
 	joystick.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	joystick.set_script(load('res://scripts/mobile/joystick_visual.gd'))
@@ -479,6 +506,15 @@ func refresh_hud():
 func _input(event):
 	if event is InputEventScreenTouch:
 		var pos = ui_root.get_global_transform().affine_inverse() * event.position
+		if event.index in ability_touch_ids:
+			if not event.pressed:ability_touch_ids.erase(event.index)
+			get_viewport().set_input_as_handled()
+			return
+		if state==State.COMBAT and event.pressed and event.index!=stick_id and ABILITY_RECT.has_point(pos):
+			ability_touch_ids.append(event.index)
+			hero_ability.activate()
+			get_viewport().set_input_as_handled()
+			return
 		if state == State.COMBAT and event.pressed and stick_id == -1 and pos.x < 700 and pos.y > 540:
 			stick_id = event.index
 			stick_origin = Vector2(clampf(pos.x,130,570),clampf(pos.y,680,930))
@@ -488,6 +524,9 @@ func _input(event):
 			stick_id = -1
 			stick_pos = Vector2.ZERO
 			move_input = Vector2.ZERO
+	if event is InputEventScreenDrag and event.index in ability_touch_ids:
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventScreenDrag and event.index == stick_id:
 		stick_pos = ((ui_root.get_global_transform().affine_inverse()*event.position)-stick_origin).limit_length(110)
 		move_input = stick_pos/110.0 if stick_pos.length()>14 else Vector2.ZERO
@@ -527,14 +566,19 @@ func _physics_process(delta):
 	animation_clock += delta
 	queue_redraw()
 	if is_instance_valid(joystick): joystick.queue_redraw()
+	if is_instance_valid(ability_button):ability_button.queue_redraw()
 	if state != State.COMBAT: return
+	hit_feedback.update(delta)
+	hero_ability.update(delta)
+	if state != State.COMBAT:return
 	combat_visuals.update(delta)
 	world_visuals.update(delta)
 	run_time += delta
 	remaining = maxf(0,remaining-delta)
 	hurt_clock -= delta
 	if absf(move_input.x)>.08: facing = -1.0 if move_input.x<0 else 1.0
-	player.move_analog(move_input,speed)
+	if not hero_ability.move_dash(delta):player.move_analog(move_input,speed)
+	if state != State.COMBAT:return
 	orbit_angle += delta*3.5
 	spawn_clock -= delta
 	if spawn_clock <= 0:
@@ -602,6 +646,9 @@ func update_enemies(dt: float):
 		elif e.kind == 'boss':
 			if boss_phase%2 == 1: velocity *= .15
 			if boss_charging and boss_phase == 0 and boss_clock>2.1: velocity = (boss_target-e.pos).normalized()*520
+		if float(e.get('ability_slow_time',0))>0:
+			velocity*=float(e.get('ability_slow',1.0))
+			e.ability_slow_time=maxf(0,e.ability_slow_time-dt)
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
 			if e.kind=='boss' and is_reactor() and reactor_guardian.stationary():break
@@ -615,11 +662,12 @@ func update_enemies(dt: float):
 		if state != State.COMBAT: return
 
 func hurt(amount: float):
-	if state != State.COMBAT or hurt_clock>0: return
+	if state != State.COMBAT or hurt_clock>0 or hero_ability.invulnerable(): return
 	hp -= maxf(1,amount-armor)
 	hurt_clock = .65
 	sound('hit')
-	add_effect(player.position,Color('#FF4757'),60,'-%d' % maxf(1,amount-armor))
+	hit_feedback.damage(player.position,maxf(1,amount-armor),false,true)
+	haptic('hurt')
 	if hp <= 0: hp=0; finish(false)
 
 func nearest(pos: Vector2, reach: float):
@@ -668,7 +716,7 @@ func damage_enemy(e: Dictionary, power: float):
 	dealt += minf(e.hp,amount)
 	e.hp -= amount
 	e.hit = .15
-	add_effect(e.pos,GOLD if critical else Color.WHITE,18,str(int(amount)))
+	hit_feedback.damage(e.pos,amount,critical)
 	if e.hp<=0:
 		var kind: String = e.kind
 		var pos: Vector2 = e.pos
@@ -695,7 +743,7 @@ func update_loot(dt: float):
 			loot.remove_at(i)
 			sound('xp')
 	# Merge bounded crystal storage without discarding XP.
-	if loot.size()>240:
+	while loot.size()>240:
 		loot[0].xp += loot.back().xp
 		loot.pop_back()
 
@@ -730,6 +778,7 @@ func level_up():
 	level += 1
 	change_state(State.LEVEL_UP)
 	sound('level')
+	haptic('level')
 	backdrop('LEVEL %d • DEIN UPGRADE' % level,'Wähle eine Verbesserung. Der Kampf wartet auf dich.')
 	var pool: Array = []
 	for u in upgrades:
@@ -921,6 +970,7 @@ func _draw():
 	if is_reactor():reactor_guardian.draw()
 	world_visuals.draw_telegraph()
 	world_visuals.draw_deaths()
+	hero_ability.draw()
 	for l in loot:
 		var p: Vector2 = l.pos
 		draw_circle(p,18,Color(0,.85,.8,.12))
@@ -933,6 +983,7 @@ func _draw():
 	combat_visuals.draw_weapons(false)
 	combat_visuals.draw_shots()
 	combat_visuals.draw_effects()
+	hit_feedback.draw()
 	for e in effects:
 		if e.has('end'): draw_line(e.pos,e.end,e.color,5,true)
 		else:
@@ -995,3 +1046,7 @@ func challenges_screen():
 		equip.disabled=not unlocked or selected_style
 	button('KLASSENRING',Vector2(720,905),Vector2(520,95),func(): saved.settings.aura='class';save_game();challenges_screen())
 	button('ZURÜCK',Vector2(110,905),Vector2(400,95),main_menu)
+
+func haptic(kind:String) -> bool:
+	if test_mode or not OS.has_feature('android'):return false
+	return haptic_feedback.request(saved.settings.get('haptics','OFF'),kind,Time.get_ticks_msec(),func(duration:int,amplitude:float):Input.vibrate_handheld(duration,amplitude))

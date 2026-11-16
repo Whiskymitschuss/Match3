@@ -1,3 +1,12 @@
+# Stand 0.4.0
+
+Drei aktive Heldenfähigkeiten, eigener Multitouch-Button, optional gespeicherte Vibration
+und neues Trefferfeedback implementiert und automatisiert geprüft. Nächster Schritt:
+Android-Praxisabnahme und gezieltes Fähigkeitsbalancing. Waffenspezialisierungen folgen
+als separater Meilenstein nach dieser Abnahme. Details in PROGRESS.md.
+
+---
+
 # Stand 0.3.0
 
 Die unten beschriebene Erweiterung ist implementiert und automatisiert geprüft.

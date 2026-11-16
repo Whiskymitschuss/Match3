@@ -1,3 +1,44 @@
+# Meilenstein 0.4.0 — 2026-11-16
+
+## Aktuelle Phase
+
+Heldenfähigkeiten und Trefferfeedback implementiert. Android-APK exportiert, Signatur,
+ARM64, Paket/Version, Berechtigung und 16-KiB-Alignment geprüft. Quell-ZIP frisch
+importiert und erneut getestet. GitHub-Übergabe vorbereitet. Keine Android-Hardware hier.
+
+## Implementiert
+
+- Bruiser: radiale Schockwelle, Nahkampfbonus, begrenzter Rückstoß für normale Gegner.
+- Sparky: automatisch gezielte Impulsgranate mit Zünder, Flächenschaden und temporärem Slow.
+- Shade: gerichteter Schattenschritt mit Swept-Kollision, einmaligem Schaden und Dash-Unverwundbarkeit.
+- Rechter Touchbutton, visuelle Bereitschaft/Abklingzeit, getrennte Multitouch-Fingerverwaltung.
+- Vollständiges Pausieren und Aufräumen; jede neue Welle beginnt bereit.
+- Vibration optional und standardmäßig aus, Schadenanzeigen abschaltbar und qualitätsbegrenzt.
+- Kritische Treffer hervorgehoben, eigener Schaden rot und mit kurzem Bildschirmrand-Feedback.
+- Eigene SVG-Symbole und vier eigene WAV-Sounds inklusive Generator.
+- Massen-XP-Drops sofort auf 240 Kristalle zusammengeführt, gesamte XP-Menge erhalten.
+- Speicherformat 3 um optionale Einstellungen ergänzt; vorhandene Werte bleiben erhalten.
+
+## Tatsächlich geprüft
+
+443 Assertions bestanden (bestehende 367 plus 76 Fähigkeiten/Touch/Haptik/Speicherung).
+Schrottplatz: alle 33 Referenzpunkte über 3.600 Schritte weiterhin identisch, sofern keine
+aktive Fähigkeit ausgelöst wird. 21.600 zusätzliche Belastungsschritte mit 38 Aktivierungen
+über alle sechs Arena-/Heldenkombinationen bestanden. Kein gemessener Android-FPS-Beleg.
+Acht UI-/Effektbilder mit Godot/Mesa gerendert und visuell geprüft.
+
+## Nächste Abnahme
+
+Android-Update über bestehende App installieren. Statistikerhalt, zwei Finger gleichzeitig,
+Fähigkeiten gegen beide Bosse und Vibrationsstärken prüfen. Komplette echte Runs je Held,
+Balance, Displays mit Aussparung, FPS und Temperatur stehen noch aus. Keine neuen
+Waffenspezialisierungen in diesem Meilenstein; diese folgen erst nach Fähigkeits-Praxistests.
+Build- und Testdetails stehen in BUILD_REPORT.md und TEST_REPORT.md.
+
+---
+
+# Historischer Stand 0.3
+
 # Meilenstein 0.3.0 — 2026-11-16
 
 ## Aktuelle Phase

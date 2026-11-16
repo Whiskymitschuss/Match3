@@ -1,3 +1,16 @@
+# 0.4.0 Alpha — 2026-11-16
+
+- Drei datenbasierte Heldenfähigkeiten: Schockwelle, Impulsgranate, Schattenschritt.
+- Großer Touchbutton mit Symbol, Bereitschaft und Abklingbalken; eigener Finger pro Aktion.
+- Begrenzter Rückstoß/Slow für normale Gegner; Bosse erhalten nur Schaden.
+- Dash mit Streckenprüfung, einmaligem Schaden und zeitlich begrenzter Unverwundbarkeit.
+- Gespeicherte Vibration AUS/DEZENT/STARK und abschaltbare Schadenszahlen.
+- Größere goldene kritische Treffer, rote eigene Schadenszahlen und dezentes Randfeedback.
+- Eigene Fähigkeits-Symbole und vier reproduzierbar synthetisierte Audioeffekte.
+- Sofortiges Zusammenführen zu vieler XP-Kristalle ohne XP-Verlust nach Flächenkills.
+- Grundwerte/Auto-Waffen und bisherige Arenen unverändert; Fähigkeiten sind aktive Ergänzungen.
+- 76 neue Assertions und Belastungsläufe mit regelmäßigen Fähigkeiten in beiden Arenen.
+
 # 0.3.0 Alpha — 2026-11-16
 
 - Arena-Auswahl und nach erstem Sieg freigeschaltete Reaktorzone.

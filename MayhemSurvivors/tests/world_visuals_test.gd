@@ -104,4 +104,7 @@ func run():
 	print('WORLD VISUAL RESULT ',passed,' passed, ',failed,' failed')
 	g.queue_free()
 	await process_frame
+	# Audio mixing uses wall time even when --fixed-fps accelerates SceneTree timers.
+	OS.delay_msec(80)
+	await process_frame
 	quit(0 if failed==0 else 1)

@@ -9,6 +9,10 @@ func _draw():
 	draw_circle(p+game.stick_pos,55,Color('#00d9d0aa'))
 	draw_circle(p+game.stick_pos,43,Color('#cfffff55'))
 	draw_string(ThemeDB.fallback_font,p+Vector2(-72,170),'BEWEGEN',HORIZONTAL_ALIGNMENT_LEFT,-1,24,Color.WHITE)
+	if game.hit_feedback.hurt_flash>0:
+		var alpha=game.hit_feedback.hurt_flash/.22*.65
+		for x in [0,1908]:draw_rect(Rect2(x,0,12,1080),Color(1,.28,.35,alpha))
+		for y in [0,1068]:draw_rect(Rect2(0,y,1920,12),Color(1,.28,.35,alpha))
 	# Large contrast bars supplement the numeric HUD.
 	var bar = Rect2(80,135,420,20)
 	draw_style_box(game.style(Color('#0e182b')),bar.grow(4))

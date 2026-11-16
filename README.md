@@ -1,26 +1,29 @@
-# RF Worlds — Mayhem Survivors 0.3.0
+# RF Worlds — Mayhem Survivors 0.4.0
 
-Arena-Auswahl, freischaltbare **Reaktorzone** und ein eigener **Reaktorwächter** mit
-Kreuzlasern, Kernbomben und gerichteten Salven. Zehn Wellen, Shop und Klassenwaffen.
-Der Schrottplatz behält seine bestätigten Kampfwerte.
+**Eigene aktive Fähigkeiten für die drei Helden**, großer rechter Touchbutton mit
+Abklinganzeige, stärker unterscheidbare Schadensanzeigen und optionale Vibration.
 
-![Reaktorwächter](MayhemSurvivors/tests/reactor_boss.png)
+| Held | Fähigkeit |
+|---|---|
+| Bruiser | Schockwelle mit Flächenschaden und Rückstoß |
+| Sparky | Automatisch gezielte Impulsgranate mit Verlangsamung |
+| Shade | Schattenschritt mit Durchquerungsschaden und kurzer Unverwundbarkeit |
 
-- [Android-APK 0.3 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/reactor-v0.3/Downloads/MayhemSurvivors-v0.3-debug.apk)
-- [Vollständiges Quellprojekt als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/reactor-v0.3/Downloads/MayhemSurvivors-v0.3-source.zip)
-- [Arena-Auswahl ansehen](MayhemSurvivors/tests/reactor_selection.png)
+![Schockwelle](MayhemSurvivors/tests/ability_bruiser.png)
 
-Als Update über die bisherige App installieren: gleicher Paketname/Schlüssel,
-versionCode 6. Android 7.0+, ARM64, Querformat, offline, keine Berechtigungen.
-Ein erster Sieg schaltet die Reaktorzone frei; vorhandene Siege zählen mit.
-Neue Arena-Statistiken und erspielbare kosmetische Ringe unter „Ziele & Stile“.
-Alte Speicherformate werden mit Originalbackup übernommen.
+- [Android-APK 0.4 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/hero-abilities-v0.4/Downloads/MayhemSurvivors-v0.4-debug.apk)
+- [Vollständiges Quellprojekt als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/hero-abilities-v0.4/Downloads/MayhemSurvivors-v0.4-source.zip)
+- [Granatenexplosion](MayhemSurvivors/tests/ability_sparky_explosion.png) · [Schattenschritt](MayhemSurvivors/tests/ability_shade.png)
 
-367 Assertions und der deterministische Schrottplatzvergleich bestanden. Zwei
-Belastungsläufe und gerenderte UI-Prüfung ausgeführt. Physische Android-Abnahme
-der neuen Reaktorzone und Geräte-FPS stehen aus.
+Android 7.0+, ARM64, Querformat, offline. Als Update über die bestehende App installieren:
+gleicher Paketname/Schlüssel, versionCode 7. Statistik und Freischaltungen bleiben erhalten.
+Vibration ist standardmäßig AUS; die App deklariert dafür `VIBRATE`, kein Internetzugriff.
+Die Schrottplatz- und Reaktorarenen samt Klassenbindung bleiben erhalten.
 
-[Projekt/Anleitung](MayhemSurvivors/README.md) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
+443 Assertions bestanden, deterministischer Referenzvergleich ohne Fähigkeitseinsatz
+weiterhin identisch. Zusätzliche Belastungsläufe mit 38 Fähigkeitseinsätzen über sechs
+Arena-/Heldenkombinationen bestanden. Echte Android-Bedienung, Vibrationsstärken und
+vollständige Runs mit den neuen Fähigkeiten müssen noch praktisch geprüft werden.
+
+[Anleitung](MayhemSurvivors/README.md) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
 [Buildbericht](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)
-
-Der bestätigte ältere Stand bleibt als Tag `v0.2.3-reference` erhalten.

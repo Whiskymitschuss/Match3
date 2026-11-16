@@ -1,3 +1,63 @@
+# Testbericht 0.4.0 — 2026-11-16
+
+Godot 4.6.3 stable, Linux Headless und gerendert mit Mesa GL Compatibility.
+Tatsächliche Ergebnisse unter `tests/results/v0.4-*.log`.
+
+| Suite | Ergebnis |
+|---|---|
+| Integration | 76 / 76 |
+| Kampfgrafik | 28 / 28 |
+| Klassenbindung/Haltung | 42 / 42 |
+| Welt/Bosswarnungen | 36 / 36 |
+| Laufstatistik/Speicherung | 28 / 28 |
+| Reaktor und Migration | 157 / 157 |
+| Heldenfähigkeiten, Touch, Haptik und Einstellungen | 76 / 76 |
+| Gesamt | 443 / 443 |
+
+Neue Tests: Schaden und Radius, Nahkampfbonus, Rückstoß, Bossimmunität gegen
+Displacement/Slow, Granatenziel/Zünder/Explosion, einmalige Treffer, Slow-Ablauf,
+Dash-Distanz und durchgehende Streckenkollision bei langen Frames, Grenzen und
+blockierte Aktivierung, Ende der Unverwundbarkeit, Cooldown und Pausierung in allen
+Unterbrechungszuständen. Alle drei Fähigkeiten können beide Bosse besiegen und
+anschließend sicher neu starten. Dafür setzen die Tests Boss-HP auf 1; dies ist keine
+vollständig gespielte oder gebalancte Bossabnahme.
+
+Touch-Tests leiten echte InputEventScreenTouch/Drag über `Viewport.push_input` durch
+den Godot-Inputweg: zwei Finger, getrennte Freigabe, kein Wiederholen beim Halten,
+kein Auslösen beim Überziehen des Joysticks, wechselnde UI-Transformationen und
+Freigabe außerhalb des Buttons. Kein Android-Touchhardware-Beleg.
+Haptikpolitik mit injiziertem Recorder geprüft: AUS, Stärken, Rate-Limit, ungültige
+Ereignisse. Echte Vibration und Amplituden auf Android noch nicht geprüft.
+Alte Format-3-Einstellungen, ungültige optionale Felder und echter Datei-Roundtrip getestet.
+Format-1/2-Migration wird durch die bestehenden Suiten weiterhin abgedeckt.
+
+Deterministischer Schrottplatzvergleich: alle 33 Punkte / 3.600 Schritte / drei Helden
+stimmen einschließlich HP, XP, Kills, Coins, Schaden, Gegner, Projektile und RNG mit
+v0.2.2 überein, wenn keine Fähigkeit ausgelöst wird. Die aktiven Fähigkeiten verändern
+bewusst das Kampfergebnis. Keine Änderungen an Waffen-, Gegner-, Upgrade-, Charakter-
+oder Wellengrundwerten und keine zusätzlichen Waffenfreigaben.
+
+Fähigkeiten-Belastung: 6 × 3.600 Schritte, 360 simulierte Sekunden, 38 tatsächliche
+Aktivierungen; beide Arenen und alle Helden, bis 100 Gegner. Objekt-/Loot-/Zahlen-/
+Gefahrenlimits und Spielergrenzen eingehalten. Zusätzlich Standard-Stresstest mit
+7.200 Schritten bestanden. Massen-Drop-Test führt 310 auf 240 Kristalle zusammen und
+behält exakt 48.205 XP. Keine Android-Performance-Messung.
+
+Acht Godot/Mesa-Aufnahmen (`tests/ability_*.png`) zeigen alle Fähigkeiten, Bereitschaft,
+Granatenexplosion, Vorbereitung, Charakterwahl und Einstellungen. Vorgegebene Szenen,
+keine Android-Aufnahmen. Im schnellen Audio-Test musste nach Freigabe eine reale
+80-ms-Mischthread-Nachlaufzeit ergänzt werden; der finale Lauf endet ohne Ressourcenwarnung.
+Dummy-Display unterstützt kein V-Sync. Kein Parser- oder Ressourcenladefehler.
+
+Das Quell-ZIP wurde separat in ein leeres Verzeichnis entpackt und frisch importiert. Keine Parser-/Ressourcenfehler; Fähigkeitssuite daraus erneut 76 / 76 bestanden.
+
+Offen: physisches Android-Update mit Nutzerspeicher, echte Multitouch-/Vibrationsbedienung,
+volle Runs und Fähigkeitsbalancing aller Helden, Geräte-FPS, Temperatur und verschiedene Displays.
+
+---
+
+# Historische Tests 0.3
+
 # Testbericht 0.3.0 — 2026-11-16
 
 Godot 4.6.3 stable, GDScript, Linux Headless und Mesa Compatibility. Tatsächliche Logs
