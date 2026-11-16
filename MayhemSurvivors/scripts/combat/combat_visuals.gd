@@ -189,6 +189,12 @@ func draw_shots():
 		var skin=int(s.get('skin',game.selected))
 		var color=Color('#FF592E') if s.hostile else Art.color_for(skin)
 		var direction: Vector2=s.vel.normalized()
+		if s.hostile and s.get('enemy_kind','')=='spitter':
+			game.draw_line(s.pos-direction*28,s.pos,Color(1,.3,.15,.45),8,true)
+			game.draw_circle(s.pos,12,Color('#14213D'))
+			game.draw_circle(s.pos,9,Color('#FF7040'))
+			game.draw_circle(s.pos+Vector2(-2,-3),4,Color('#FFD166'))
+			continue
 		if not s.hostile and Specs.all().has(s.get('spec','')):
 			var accent=Color(Specs.all()[s.spec].color)
 			if s.spec=='blast':game.draw_arc(s.pos,14,0,TAU,16,accent,3,true)

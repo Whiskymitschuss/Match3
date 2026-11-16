@@ -1,3 +1,15 @@
+# 0.6.0 Alpha — 2026-11-16
+
+- Reaktorspucker ab Welle zwei mit angekündigtem, fixiertem Fernschuss und Abstands-KI.
+- Schilddrohne ab Welle vier mit nicht stapelnder 30-%-Schutzaura für normale Verbündete.
+- Kein Schutz für Bosse/Drohnen; Schutz endet sofort bei Entfernung oder Drohnentod.
+- Eigene Grafik, Schwebe-/Treffer-/Todesdarstellung, Sounds und orange Gegnerprojektile.
+- Sichtbarkeitsprüfung, 0,9 Sekunden Vorwarnzeit, höchstens zwei gleichzeitige Warnungen.
+- Maximal sechs Spucker/zwei Drohnen; volle Rolle wird beim Spawn durch Grunt ersetzt.
+- Spielerfähigkeiten, Rüstung, Pause, Shop, Level-up, Bossablauf und Speicherung verbunden.
+- Reaktor-Zusammensetzung erweitert; Schrottplatz und Grundwerte alter Inhalte erhalten.
+- 66 neue Assertions, Lasttests und aktualisierte, ausdrücklich klassische Referenzprüfung.
+
 # 0.5.1 Alpha — 2026-11-16
 
 - Cartoon-Splatter bei Treffern/Tod, farbige Tropfen und ausblendende Bodenspuren.

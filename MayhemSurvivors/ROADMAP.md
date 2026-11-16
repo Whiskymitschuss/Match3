@@ -1,3 +1,12 @@
+# Stand 0.6.0
+
+Taktische Gegnerrollen in der Reaktorzone umgesetzt: angekündigter Fernkämpfer ab
+Welle zwei und Schilddrohne ab Welle vier. Der Schrottplatz bleibt Referenz. Nächster
+Schritt: Android-Abnahme, insbesondere faire Schüsse und Priorisierung der Drohnen,
+anschließend gezieltes Balancing anhand echter Runs. Details in PROGRESS.md.
+
+---
+
 # Stand 0.5.1
 
 Vom Nutzer vor der 0.5-Abnahme gewünschtes Effektpaket integriert: Cartoon-Splatter,

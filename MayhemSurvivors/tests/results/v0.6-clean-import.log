@@ -1,0 +1,473 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (54 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   1% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   3% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   5% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   7% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  10% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  12% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  18% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  20% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  21% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  23% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  29% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  30% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  32% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  34% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  38% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  40% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  43% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  45% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  49% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  54% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  56% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  61% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  65% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  67% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  69% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  70% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  74% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  76% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  83% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  87% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  89% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  90% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  92% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  94% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  96% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (129 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | ability_explosion.wav[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | ability_impulse.wav[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | ability_shadow_step.wav[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | ability_shockwave.wav[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | arc_zap.wav[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | blade_hit.wav[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | blaster_fire.wav[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | boss_charge_warning.wav[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | boss_radial_warning.wav[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | buy.wav[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | click.wav[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | coin.wav[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | death.wav[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | defeat.wav[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | fx_boom.wav[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | fx_splat.wav[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | hammer_slam.wav[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | hit.wav[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | level.wav[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | shot.wav[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | spec_arc.wav[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | spec_blaster.wav[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | spec_evolve.wav[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | spec_hammer.wav[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | spec_splitgun.wav[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | spitter_fire.wav[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | spitter_warning.wav[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | splitgun_fire.wav[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | victory.wav[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | warning.wav[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | xp.wav[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | icon.svg[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | splash.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | heroes_atlas.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | hero_rig.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | cartoon_splat.svg[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | enemies_atlas.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | reactor_guardian.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | reactor_roles.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | reactor.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | scrapyard.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | impulse.svg[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | shadow_step.svg[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | shockwave.svg[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | blast.svg[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | conductor.svg[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | crusher.svg[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | overcharge.svg[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | piercer.svg[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | precision.svg[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | quake.svg[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | storm.svg[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | swift.svg[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | wide.svg[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | combat_atlas.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | ability_bruiser.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | ability_characters.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | ability_settings.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | ability_shade.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | ability_shade_preparation.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | ability_shade_ready.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | ability_sparky.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | ability_sparky_explosion.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | ammo_bruiser.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | ammo_shade.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | ammo_sparky.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | arena.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | boss.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | characters.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | combat_bruiser.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | combat_shade.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | combat_shop.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | combat_sparky.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | fx_floor_stains.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | fx_impulse_explosion.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | fx_settings.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | fx_shadow_step.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | fx_shockwave.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | fx_splatter_gunfire.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | fx_warning_readability.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | grip_bruiser.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | grip_characters.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | grip_close_bruiser.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | grip_close_shade.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | grip_close_sparky.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | grip_shade.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | grip_shop_bruiser.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | grip_shop_shade.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | grip_shop_sparky.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | grip_sparky.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | grip_sparky_all.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | menu.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | reactor_arena.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | reactor_bombs.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | reactor_boss.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | reactor_menu.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | reactor_selection.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | reactor_statistics.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | reactor_styles.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | roles_classic_reference.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | roles_encounter.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | roles_preparation.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | roles_projectile.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | roles_shield_break.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | shop.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | spec_choices_arc.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | spec_choices_blaster.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | spec_choices_hammer.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | spec_choices_orbit.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | spec_choices_splitgun.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | spec_combat_blast.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | spec_combat_conductor.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | spec_combat_quake.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | spec_combat_storm.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | spec_combat_swift.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | spec_combat_wide.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | spec_history.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | spec_result.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | upgrades.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | victory.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | world_arena.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | world_boss_charge.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | world_boss_radial.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | world_boundary.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | world_crowd.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | world_history.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | world_stats.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | world_stats_sparky.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | world_victory.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (129 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   1% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  19% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  49% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  97% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  98% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | reactor_selection.png[39m[0m
+[   0% ] [90m[1mreimport[22m | reactor_menu.png[39m[0m
+[   1% ] [90m[1mreimport[22m | reactor_boss.png[39m[0m
+[   2% ] [90m[1mreimport[22m | reactor_bombs.png[39m[0m
+[   3% ] [90m[1mreimport[22m | reactor_arena.png[39m[0m
+[   3% ] [90m[1mreimport[22m | menu.png[39m[0m
+[   4% ] [90m[1mreimport[22m | grip_sparky_all.png[39m[0m
+[   5% ] [90m[1mreimport[22m | grip_sparky.png[39m[0m
+[   6% ] [90m[1mreimport[22m | grip_shop_sparky.png[39m[0m
+[   6% ] [90m[1mreimport[22m | grip_shop_shade.png[39m[0m
+[   7% ] [90m[1mreimport[22m | grip_shop_bruiser.png[39m[0m
+[   8% ] [90m[1mreimport[22m | grip_shade.png[39m[0m
+[   9% ] [90m[1mreimport[22m | grip_close_sparky.png[39m[0m
+[  10% ] [90m[1mreimport[22m | grip_close_shade.png[39m[0m
+[  10% ] [90m[1mreimport[22m | grip_close_bruiser.png[39m[0m
+[  11% ] [90m[1mreimport[22m | grip_characters.png[39m[0m
+[  12% ] [90m[1mreimport[22m | grip_bruiser.png[39m[0m
+[  13% ] [90m[1mreimport[22m | fx_warning_readability.png[39m[0m
+[  13% ] [90m[1mreimport[22m | fx_splatter_gunfire.png[39m[0m
+[  14% ] [90m[1mreimport[22m | fx_shockwave.png[39m[0m
+[  15% ] [90m[1mreimport[22m | fx_shadow_step.png[39m[0m
+[  16% ] [90m[1mreimport[22m | fx_settings.png[39m[0m
+[  16% ] [90m[1mreimport[22m | fx_impulse_explosion.png[39m[0m
+[  17% ] [90m[1mreimport[22m | fx_floor_stains.png[39m[0m
+[  18% ] [90m[1mreimport[22m | combat_sparky.png[39m[0m
+[  19% ] [90m[1mreimport[22m | combat_shop.png[39m[0m
+[  20% ] [90m[1mreimport[22m | combat_shade.png[39m[0m
+[  20% ] [90m[1mreimport[22m | combat_bruiser.png[39m[0m
+[  21% ] [90m[1mreimport[22m | characters.png[39m[0m
+[  22% ] [90m[1mreimport[22m | boss.png[39m[0m
+[  23% ] [90m[1mreimport[22m | arena.png[39m[0m
+[  23% ] [90m[1mreimport[22m | ammo_sparky.png[39m[0m
+[  24% ] [90m[1mreimport[22m | world_victory.png[39m[0m
+[  25% ] [90m[1mreimport[22m | world_stats_sparky.png[39m[0m
+[  26% ] [90m[1mreimport[22m | world_stats.png[39m[0m
+[  26% ] [90m[1mreimport[22m | world_history.png[39m[0m
+[  27% ] [90m[1mreimport[22m | world_crowd.png[39m[0m
+[  28% ] [90m[1mreimport[22m | world_boundary.png[39m[0m
+[  29% ] [90m[1mreimport[22m | world_boss_radial.png[39m[0m
+[  30% ] [90m[1mreimport[22m | world_boss_charge.png[39m[0m
+[  30% ] [90m[1mreimport[22m | world_arena.png[39m[0m
+[  31% ] [90m[1mreimport[22m | victory.png[39m[0m
+[  32% ] [90m[1mreimport[22m | upgrades.png[39m[0m
+[  33% ] [90m[1mreimport[22m | spec_result.png[39m[0m
+[  33% ] [90m[1mreimport[22m | spec_history.png[39m[0m
+[  34% ] [90m[1mreimport[22m | spec_combat_wide.png[39m[0m
+[  35% ] [90m[1mreimport[22m | spec_combat_swift.png[39m[0m
+[  36% ] [90m[1mreimport[22m | spec_combat_storm.png[39m[0m
+[  36% ] [90m[1mreimport[22m | spec_combat_quake.png[39m[0m
+[  37% ] [90m[1mreimport[22m | spec_combat_conductor.png[39m[0m
+[  38% ] [90m[1mreimport[22m | spec_combat_blast.png[39m[0m
+[  39% ] [90m[1mreimport[22m | spec_choices_splitgun.png[39m[0m
+[  40% ] [90m[1mreimport[22m | spec_choices_orbit.png[39m[0m
+[  40% ] [90m[1mreimport[22m | spec_choices_hammer.png[39m[0m
+[  41% ] [90m[1mreimport[22m | spec_choices_blaster.png[39m[0m
+[  42% ] [90m[1mreimport[22m | spec_choices_arc.png[39m[0m
+[  43% ] [90m[1mreimport[22m | shop.png[39m[0m
+[  43% ] [90m[1mreimport[22m | roles_shield_break.png[39m[0m
+[  44% ] [90m[1mreimport[22m | roles_projectile.png[39m[0m
+[  45% ] [90m[1mreimport[22m | roles_preparation.png[39m[0m
+[  46% ] [90m[1mreimport[22m | roles_encounter.png[39m[0m
+[  46% ] [90m[1mreimport[22m | roles_classic_reference.png[39m[0m
+[  47% ] [90m[1mreimport[22m | reactor_styles.png[39m[0m
+[  48% ] [90m[1mreimport[22m | reactor_statistics.png[39m[0m
+[  49% ] [90m[1mreimport[22m | overcharge.svg[39m[0m
+[  50% ] [90m[1mreimport[22m | crusher.svg[39m[0m
+[  50% ] [90m[1mreimport[22m | conductor.svg[39m[0m
+[  51% ] [90m[1mreimport[22m | blast.svg[39m[0m
+[  52% ] [90m[1mreimport[22m | shockwave.svg[39m[0m
+[  53% ] [90m[1mreimport[22m | shadow_step.svg[39m[0m
+[  53% ] [90m[1mreimport[22m | impulse.svg[39m[0m
+[  54% ] [90m[1mreimport[22m | scrapyard.png[39m[0m
+[  55% ] [90m[1mreimport[22m | reactor.png[39m[0m
+[  56% ] [90m[1mreimport[22m | reactor_roles.png[39m[0m
+[  56% ] [90m[1mreimport[22m | reactor_guardian.png[39m[0m
+[  57% ] [90m[1mreimport[22m | enemies_atlas.png[39m[0m
+[  58% ] [90m[1mreimport[22m | cartoon_splat.svg[39m[0m
+[  59% ] [90m[1mreimport[22m | hero_rig.png[39m[0m
+[  60% ] [90m[1mreimport[22m | heroes_atlas.png[39m[0m
+[  60% ] [90m[1mreimport[22m | splash.png[39m[0m
+[  61% ] [90m[1mreimport[22m | icon.svg[39m[0m
+[  62% ] [90m[1mreimport[22m | ammo_shade.png[39m[0m
+[  63% ] [90m[1mreimport[22m | ammo_bruiser.png[39m[0m
+[  63% ] [90m[1mreimport[22m | ability_sparky_explosion.png[39m[0m
+[  64% ] [90m[1mreimport[22m | ability_sparky.png[39m[0m
+[  65% ] [90m[1mreimport[22m | ability_shade_ready.png[39m[0m
+[  66% ] [90m[1mreimport[22m | ability_shade_preparation.png[39m[0m
+[  66% ] [90m[1mreimport[22m | ability_shade.png[39m[0m
+[  67% ] [90m[1mreimport[22m | ability_settings.png[39m[0m
+[  68% ] [90m[1mreimport[22m | ability_characters.png[39m[0m
+[  69% ] [90m[1mreimport[22m | ability_bruiser.png[39m[0m
+[  70% ] [90m[1mreimport[22m | combat_atlas.png[39m[0m
+[  70% ] [90m[1mreimport[22m | wide.svg[39m[0m
+[  71% ] [90m[1mreimport[22m | swift.svg[39m[0m
+[  72% ] [90m[1mreimport[22m | storm.svg[39m[0m
+[  73% ] [90m[1mreimport[22m | quake.svg[39m[0m
+[  73% ] [90m[1mreimport[22m | precision.svg[39m[0m
+[  74% ] [90m[1mreimport[22m | piercer.svg[39m[0m
+[  75% ] [90m[1mreimport[22m | reactor_selection.png[39m[0m
+[  76% ] [90m[1mreimport[22m | reactor_menu.png[39m[0m
+[  76% ] [90m[1mreimport[22m | reactor_boss.png[39m[0m
+[  77% ] [90m[1mreimport[22m | reactor_bombs.png[39m[0m
+[  78% ] [90m[1mreimport[22m | reactor_arena.png[39m[0m
+[  79% ] [90m[1mreimport[22m | menu.png[39m[0m
+[  80% ] [90m[1mreimport[22m | grip_sparky_all.png[39m[0m
+[  80% ] [90m[1mreimport[22m | grip_sparky.png[39m[0m
+[  81% ] [90m[1mreimport[22m | grip_shop_sparky.png[39m[0m
+[  82% ] [90m[1mreimport[22m | grip_shop_shade.png[39m[0m
+[  83% ] [90m[1mreimport[22m | grip_shop_bruiser.png[39m[0m
+[  83% ] [90m[1mreimport[22m | grip_shade.png[39m[0m
+[  84% ] [90m[1mreimport[22m | grip_close_sparky.png[39m[0m
+[  85% ] [90m[1mreimport[22m | grip_close_shade.png[39m[0m
+[  86% ] [90m[1mreimport[22m | grip_close_bruiser.png[39m[0m
+[  86% ] [90m[1mreimport[22m | grip_characters.png[39m[0m
+[  87% ] [90m[1mreimport[22m | grip_bruiser.png[39m[0m
+[  88% ] [90m[1mreimport[22m | fx_warning_readability.png[39m[0m
+[  89% ] [90m[1mreimport[22m | fx_splatter_gunfire.png[39m[0m
+[  90% ] [90m[1mreimport[22m | fx_shockwave.png[39m[0m
+[  90% ] [90m[1mreimport[22m | fx_shadow_step.png[39m[0m
+[  91% ] [90m[1mreimport[22m | fx_settings.png[39m[0m
+[  92% ] [90m[1mreimport[22m | fx_impulse_explosion.png[39m[0m
+[  93% ] [90m[1mreimport[22m | fx_floor_stains.png[39m[0m
+[  93% ] [90m[1mreimport[22m | combat_sparky.png[39m[0m
+[  94% ] [90m[1mreimport[22m | combat_shop.png[39m[0m
+[  95% ] [90m[1mreimport[22m | combat_shade.png[39m[0m
+[  96% ] [90m[1mreimport[22m | combat_bruiser.png[39m[0m
+[  96% ] [90m[1mreimport[22m | characters.png[39m[0m
+[  97% ] [90m[1mreimport[22m | boss.png[39m[0m
+[  98% ] [90m[1mreimport[22m | arena.png[39m[0m
+[  99% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (129 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+cannot connect to daemon at tcp:5037: Connection refused

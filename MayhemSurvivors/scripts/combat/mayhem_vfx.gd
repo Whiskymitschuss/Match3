@@ -2,7 +2,7 @@ extends RefCounted
 # Cosmetic-only, capped reused particle slots. Never reads or writes gameplay RNG.
 const SPLAT=preload('res://assets/effects/cartoon_splat.svg')
 const PROFILES={'LOW':{'particles':80,'stains':18,'events':8,'burst':2},'MEDIUM':{'particles':150,'stains':40,'events':16,'burst':4},'HIGH':{'particles':240,'stains':70,'events':24,'burst':6}}
-const COLORS={'grunt':Color('#91E65A'),'runner':Color('#FF547A'),'tank':Color('#B575FF'),'boss':Color('#B575FF')}
+const COLORS={'grunt':Color('#91E65A'),'runner':Color('#FF547A'),'tank':Color('#B575FF'),'boss':Color('#B575FF'),'spitter':Color('#FF7040'),'drone':Color('#00D9D0')}
 var game:Node2D
 var visual_rng=RandomNumberGenerator.new()
 var particles:Array=[]
@@ -75,7 +75,7 @@ func stain(pos:Vector2,color:Color,radius:float,blood:bool=true):
 func enemy_hit(enemy:Dictionary,critical:bool):
 	if hit_clock>0 and not critical:return
 	hit_clock=.035
-	var mechanical=enemy.kind=='boss' and game.is_reactor()
+	var mechanical=enemy.kind=='drone' or (enemy.kind=='boss' and game.is_reactor())
 	var color=Color('#FFD166') if mechanical else COLORS.get(enemy.kind,Color('#B575FF'))
 	if mechanical:burst(enemy.pos,color,limits().burst,'spark',170)
 	elif game.saved.settings.get('splatter',true):
@@ -86,7 +86,7 @@ func coin(pos:Vector2,amount:int):
 	event('coin',pos,Color('#FFD166'),10,Vector2.RIGHT,.65)
 	events.back().amount=amount
 func enemy_died(enemy:Dictionary):
-	var mechanical=enemy.kind=='boss' and game.is_reactor()
+	var mechanical=enemy.kind=='drone' or (enemy.kind=='boss' and game.is_reactor())
 	var color=Color('#FFD166') if mechanical else COLORS.get(enemy.kind,Color('#B575FF'))
 	if mechanical:
 		explosion(enemy.pos,enemy.radius*1.5,color)

@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+EFFECTS SOAK PASS quake 1800 steps / 30 simulated seconds, kills=130
+EFFECTS SOAK PASS crusher 1800 steps / 30 simulated seconds, kills=85
+EFFECTS SOAK PASS piercer 1800 steps / 30 simulated seconds, kills=58
+EFFECTS SOAK PASS blast 1800 steps / 30 simulated seconds, kills=98
+EFFECTS SOAK PASS precision 1800 steps / 30 simulated seconds, kills=50
+EFFECTS SOAK PASS storm 1800 steps / 30 simulated seconds, kills=68
+EFFECTS SOAK PASS conductor 1800 steps / 30 simulated seconds, kills=83
+EFFECTS SOAK PASS overcharge 1800 steps / 30 simulated seconds, kills=64
+EFFECTS SOAK PASS wide 1800 steps / 30 simulated seconds, kills=49
+EFFECTS SOAK PASS swift 1800 steps / 30 simulated seconds, kills=9
+EFFECTS SOAK TOTAL 18000 steps / 300 simulated seconds / 10 variants / mixed LOW-MEDIUM-HIGH PASS

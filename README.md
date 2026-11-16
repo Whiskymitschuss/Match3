@@ -1,23 +1,28 @@
-# RF Worlds — Mayhem Survivors 0.5.1
+# RF Worlds — Mayhem Survivors 0.6.0
 
-**Effektpaket vor dem nächsten Handy-Test:** Cartoon-Splatter, ausblendende Bodenspuren,
-Mündungsblitze, Geschossspuren, Funken/Rauch, Hammerrisse, elektrische Entladungen,
-Explosionen und Schatten-Nachbilder. Dazu kleine Münz-Popups statt alter Todesringe.
+**Zwei neue Gegnerrollen in der Reaktorzone:**
 
-![Cartoon-Splatter und Schüsse — inszenierte Godot-Nahansicht](MayhemSurvivors/tests/fx_splatter_gunfire.png)
+- **Reaktorspucker** ab Welle 2: fixierte Ziellinie, 0,9 Sekunden Vorwarnung,
+  einzelner langsamer Fernschuss. Keine Schüsse aus dem unsichtbaren Bereich.
+- **Schilddrohne** ab Welle 4: 30 % Schutz für normale Gegner im Umfeld.
+  Kein Stapeln/Bossschutz. Drohne ausschalten oder Gegner aus der Aura locken.
 
-- [Android-APK 0.5.1 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/combat-effects-v0.5.1/Downloads/MayhemSurvivors-v0.5.1-debug.apk)
-- [Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/art/combat-effects-v0.5.1/Downloads/MayhemSurvivors-v0.5.1-source.zip)
-- [Bodenspuren](MayhemSurvivors/tests/fx_floor_stains.png) · [Schattenschritt](MayhemSurvivors/tests/fx_shadow_step.png)
+![Neue Gegner — inszenierte Godot-Nahansicht](MayhemSurvivors/tests/roles_encounter.png)
 
-Enthält alle zehn Waffenentwicklungen aus 0.5 und Fähigkeiten aus 0.4. Klassenbindung,
-Kampfwerte und Belohnungen erhalten. Neuer Splatter-Schalter, Qualitätslimits und eigener
-visueller RNG. Android 7.0+, ARM64, Querformat, offline. Gleicher Paketname/Signierschlüssel,
-versionCode 9: als Update über bestehende App installieren. Nur optionale Vibrationsberechtigung.
+- [Android-APK 0.6 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/reactor-enemies-v0.6/Downloads/MayhemSurvivors-v0.6-debug.apk)
+- [Vollständiges Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/reactor-enemies-v0.6/Downloads/MayhemSurvivors-v0.6-source.zip)
+- [Schussdarstellung](MayhemSurvivors/tests/roles_projectile.png) · [Vorbereitungshinweise](MayhemSurvivors/tests/roles_preparation.png)
 
-591 Assertions bestanden. Neuer Gameplayvergleich mit 0.5 über 174 Kontrollpunkte / 17.400
-Schritte für alle Waffenwege, Fähigkeiten, Arenen und Bosse identisch, auch LOW/Splatter AUS.
-Effektlimits unter Last getestet; keine tatsächliche Geräte-FPS-Messung oder Android-Abnahme.
+Maximal 6 Spucker, 2 Drohnen und 2 gleichzeitige Schusswarnungen. Die Reaktor-Gegner-
+zusammensetzung ändert sich bewusst; der Schrottplatz behält seine Gegner und Balance.
+Alle Waffenentwicklungen, Fähigkeiten und Effekte bleiben enthalten.
+Android 7.0+, ARM64, Querformat, offline; gleicher Paketname/Signierschlüssel,
+versionCode 10. Als Update über bestehende App installieren, Statistiken bleiben erhalten.
+Nur optionale Vibrationsberechtigung, keine Netzwerkberechtigung.
+
+657 Assertions bestanden. Schrottplatz-Referenzen mit allen Waffenwegen/Fähigkeiten
+bleiben identisch. Neue Rollen unter Last geprüft. Android-Praxisabnahme und Balancing
+der erweiterten Reaktorzone sowie Geräte-FPS stehen noch aus.
 
 [Anleitung](MayhemSurvivors/README.md) · [Testbericht](MayhemSurvivors/TEST_REPORT.md) ·
 [Buildbericht](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)

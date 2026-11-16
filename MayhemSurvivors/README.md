@@ -1,6 +1,6 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha **0.5.1** · Godot **4.6.3 stable** · GDScript · GL Compatibility
+Android Alpha **0.6.0** · Godot **4.6.3 stable** · GDScript · GL Compatibility
 
 ## Spielen
 
@@ -10,7 +10,35 @@ Links unten per Touch-Joystick bewegen, Waffen greifen automatisch an. XP einsam
 Upgrades wählen, zwischen neun 60-Sekunden-Wellen einkaufen. Welle zehn hat ein
 90-Sekunden-Limit: Boss besiegen oder verlieren. Pause oben rechts.
 
-## Neu in 0.5.1: Effektpaket
+## Neu in 0.6: Reaktorgegner mit eigenen Rollen
+
+Nur die Reaktorzone erhält zwei zusätzliche Gegner. Die erste Welle bleibt vertraut.
+
+| Gegner | Einführung | Gegenmaßnahme |
+|---|---|---|
+| Reaktorspucker | Ab Welle 2 | Fixierte rote Ziellinie abwarten und seitlich ausweichen; auf kurze Distanz verfolgen |
+| Schilddrohne | Ab Welle 4 | Cyanfarbene Verbindung verfolgen und die Drohne zuerst ausschalten |
+
+Spucker haben 55 Basis-HP, Tempo 90, Kontaktschaden 6; sie lassen 8 XP und 4 Coins fallen.
+Sie halten auf mittlere Distanz an, kündigen 0,9 Sekunden lang an und schießen einen
+langsamen, nicht lenkenden Glutklecks (10 Schaden, Tempo 220, Lebensdauer 3 Sekunden).
+Startverzögerung 1,5 Sekunden, danach 2,8 Sekunden Cooldown zusätzlich zur Warnzeit.
+Außerhalb des sichtbaren Bereichs starten oder vollenden sie keinen Schuss.
+Maximal sechs Spucker und zwei gleichzeitig laufende Schusswarnungen.
+
+Drohnen haben 75 Basis-HP, Tempo 80, Kontaktschaden 4, Belohnung 10 XP/5 Coins.
+Ihre Aura im Radius 180 reduziert eingehenden Schaden normaler Verbündeter um 30 %.
+Kein Stapeln, keine Heilung, keine Unverwundbarkeit. Bosse und Drohnen selbst bekommen
+diesen Schutz nicht. Außerhalb der Aura oder nach dem Drohnentod ist sofort voller
+Schaden möglich. Maximal zwei Drohnen. HP skalieren wie bei den alten normalen Gegnern.
+
+Eigene Comic-Grafiken, Animation durch Bewegung/Schweben, Treffer/Tod, Signale und
+Projektildarstellung. Neue Gegner ersetzen nur einen Anteil der bisherigen Grunt-Rolls;
+Spawnintervalle, Wellendauern und Gesamtlimit 100 bleiben gleich. Die Reaktorzone wird
+bewusst taktisch erweitert. Der Schrottplatz behält seine bisherigen Gegner und Balance.
+Alle Daten unter `data/enemies/reactor_roles.json` und `data/waves/reactor.json`.
+
+## Effektpaket aus 0.5.1
 
 Cartoon-Splatter bei Treffern und Gegner-Tod: farbige Tropfen, kurze Todes-Puffs und
 sieben Sekunden ausblendende Bodenspuren. Grün/Rotrosa/Violett kennzeichnen Monster;
@@ -121,7 +149,7 @@ godot --headless --path . --editor --import --quit
 godot --headless --path . --fixed-fps 60 --script res://tests/integration.gd
 godot --headless --path . --fixed-fps 60 --script res://tests/reactor_test.gd
 godot --headless --path . --fixed-fps 60 --script res://tests/world_trace.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.5.1-debug.apk
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.6-debug.apk
 ```
 
 Für Export Godot-Android-Template, JDK 21 und Android SDK konfigurieren. Private

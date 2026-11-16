@@ -17,6 +17,7 @@ func run():
 	if args.has('--no-splatter'):g.saved.settings.splatter=false
 	for index in range(scenarios.size()):
 		var scene=scenarios[index]
+		if scene.arena!='scrapyard':continue
 		var weapon=g.Specs.all()[scene.spec].weapon
 		g.selected=0 if weapon=='hammer' else (2 if weapon=='orbit' else 1)
 		g.arena_id=scene.arena
@@ -51,9 +52,9 @@ func run():
 		f.store_string(JSON.stringify(trace))
 		f.close()
 	else:
-		var reference=JSON.parse_string(FileAccess.get_file_as_string('res://tests/fixtures/effects_v0.5_trace.json'))
+		var reference=JSON.parse_string(FileAccess.get_file_as_string('res://tests/fixtures/effects_v0.5_trace.json')).filter(func(entry):return entry.scenario<13)
 		ok=same(trace,reference)
-		print('EFFECTS REGRESSION ', 'PASS' if ok else 'FAIL', ': ',trace.size(),' checkpoints / 17400 steps / all 10 specializations, abilities, both arenas and bosses; quality=',g.saved.settings.quality)
+		print('EFFECTS REGRESSION ', 'PASS' if ok else 'FAIL', ': ',trace.size(),' checkpoints / 8700 steps / all 10 specializations, abilities and classic boss; SCRAPYARD ONLY (reactor intentionally extended in 0.6); quality=',g.saved.settings.quality)
 	g.queue_free()
 	await process_frame
 	quit(0 if ok else 1)

@@ -1,3 +1,46 @@
+# Version 0.6.0 — 2026-11-16
+
+## Aktuelle Phase
+
+Neue Gegner vollständig implementiert und getestet. APK signiert, ARM64/Paket/Version/
+Berechtigungen/16-KiB-Alignment geprüft. Quell-ZIP frisch importiert, 66 neue Prüfungen
+daraus erneut bestanden. GitHub-Übergabe vorbereitet. Kein Android-Gerät hier.
+Nutzerfeedback zur vorigen Übergabe: „Sehr geil. Weiter geht's“. Kein Nachweis einer
+bestimmten Run-Anzahl, Geräte-FPS oder abgeschlossener Runs aller Helden daraus abgeleitet.
+
+## Implementiert
+
+Reaktorspucker ab Welle zwei: sichtbare fixierte Ziellinie, 0,9 s Warnzeit,
+langsamer Einzelschuss, Abstands-KI. Schilddrohne ab Welle vier: 30 % Reduktion für
+normale Gegner im Radius 180, kein Stapeln/Bossschutz, sofortiges Ende nach Drohnentod.
+Maximal sechs Spucker, zwei Drohnen und zwei Schusswarnungen. Eigene Grafiken, Effekte,
+Sounds, Schussdarstellung und Hinweise vor der Welle. Alle üblichen Zustände verbunden.
+Nur die Reaktor-Zusammensetzung geändert, Spawnintervalle/Wellendauern/Gesamtlimit gleich.
+Schrottplatz bekommt keine neuen Gegner; Charaktere, Waffen, Fähigkeiten und alte
+Gegnerdaten bleiben erhalten. Speicherung weiterhin Format 3, keine Run-Wiederherstellung.
+
+## Tatsächlich geprüft
+
+657 Assertions bestanden (591 bestehende + 66 Gegnerrollen-Prüfungen).
+Alter Schrottplatzvergleich 33 Punkte / 3.600 Schritte bestanden; 87 klassische Punkte /
+8.700 Schritte aus 0.5 mit allen Waffenwegen/Fähigkeiten/Boss in HIGH und LOW identisch.
+Der historische Reaktorvergleich wird ausdrücklich nicht als unverändert behauptet,
+weil neue Rollen dort Spielverlauf und RNG-Verbrauch durch Kämpfe ändern.
+Belastung: 10.800 Schritte / 180 simulierte Sekunden mit allen drei Helden, bis 100 Gegner,
+maximal 6 Spucker, 2 Drohnen und begrenzte Warnungen/Projektile. Zusätzlich alle zehn
+Waffenwege im 18.000-Schritte-Effekttest bestanden. Keine Android-FPS-Messung.
+Fünf Godot/Mesa-Bilder mit Vorgabefiguren geprüft. Kein Parser-/Ressourcenfehler bekannt.
+
+## Nächster Schritt
+
+Echte Android-Runs für Fairness der Reaktorgegner, Sichtbarkeit von Warnungen,
+Konter mit allen Helden, Balance der Schutzaura sowie Geräte-FPS/Temperatur.
+Version 0.6 ist noch nicht auf physischer Android-Hardware abgenommen.
+
+---
+
+# Historischer Stand 0.5.1
+
 # Effektpaket 0.5.1 — 2026-11-16
 
 ## Aktuelle Phase

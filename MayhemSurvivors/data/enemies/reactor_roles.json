@@ -1,0 +1,37 @@
+{
+  "spitter": {
+    "name": "REAKTORSPUCKER",
+    "hp": 55,
+    "speed": 90,
+    "damage": 6,
+    "color": "#FF7040",
+    "radius": 27,
+    "xp": 8,
+    "coins": 4,
+    "cooldown": 2.8,
+    "initial_delay": 1.5,
+    "windup": 0.9,
+    "range": 440,
+    "min_distance": 170,
+    "hold_distance": 300,
+    "shot_damage": 10,
+    "shot_speed": 220,
+    "shot_life": 3.0,
+    "cap": 6,
+    "max_windups": 2,
+    "retreat_factor": 0.65
+  },
+  "drone": {
+    "name": "SCHILDDROHNE",
+    "hp": 75,
+    "speed": 80,
+    "damage": 4,
+    "color": "#00D9D0",
+    "radius": 26,
+    "xp": 10,
+    "coins": 5,
+    "shield_radius": 180,
+    "damage_reduction": 0.3,
+    "cap": 2
+  }
+}

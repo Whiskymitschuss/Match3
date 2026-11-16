@@ -9,6 +9,7 @@ var arena_id='scrapyard'
 var arena_definition=Arenas.definition('scrapyard')
 var arena_hazards
 var reactor_guardian
+var enemy_roles
 var hero_ability
 var hit_feedback
 var vfx
@@ -111,6 +112,7 @@ func _ready():
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
 	vfx=preload('res://scripts/combat/mayhem_vfx.gd').new(self)
+	enemy_roles=preload('res://scripts/enemies/reactor_roles.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -283,7 +285,7 @@ func main_menu():
 	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
 		item.custom_minimum_size.y=95
 		item.reparent(stack)
-	label_at('0.5.1 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.6.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1330,530),1,1.05)
 	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
 
@@ -419,6 +421,7 @@ func cleanup():
 	if world_visuals: world_visuals.clear()
 	if arena_hazards:arena_hazards.clear()
 	if reactor_guardian:reactor_guardian.clear()
+	if enemy_roles:enemy_roles.clear()
 	if specialized_combat:specialized_combat.clear()
 	if hero_ability:hero_ability.clear()
 	if hit_feedback:hit_feedback.clear()
@@ -470,6 +473,10 @@ func prepare_wave():
 	help.custom_minimum_size.x=1550
 	help.size.x=1550
 	help.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	if is_reactor():
+		var tips=label_at('NEUE GEGNER\nAb Welle 2: Spucker – rote Linie, dann Schuss.\nAb Welle 4: Drohne – 30 % Schutz im Umfeld.\nDrohne zuerst: ihr Schutz stapelt sich nicht.\nBosse und Drohnen bleiben ungeschützt.',Vector2(1030,310),25,TEAL)
+		tips.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+		tips.set_deferred('size',Vector2(730,200))
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 
 func begin_wave():
@@ -597,7 +604,7 @@ func _physics_process(delta):
 			var roll = rng.randf()
 			if is_reactor():
 				var w=waves[wave_number-1]
-				spawn_enemy('tank' if roll<w.tank_weight else ('runner' if roll<w.tank_weight+w.runner_weight else 'grunt'))
+				spawn_enemy(enemy_roles.spawn_kind(w,roll))
 			else:spawn_enemy('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
 	arena_hazards.update(delta)
 	if state != State.COMBAT:return
@@ -620,6 +627,7 @@ func _physics_process(delta):
 	refresh_hud()
 
 func spawn_enemy(kind: String):
+	if enemy_roles.data.has(kind) and enemy_roles.count(kind)>=int(enemy_roles.data[kind].cap):return false
 	var d = enemy_definition(kind)
 	var angle = rng.randf()*TAU
 	var pos = (player.position+Vector2.from_angle(angle)*rng.randf_range(650,850)).clamp(Vector2(70,70),Vector2(2330,1530))
@@ -627,6 +635,8 @@ func spawn_enemy(kind: String):
 		pos = Vector2(2300 if player.position.x<1200 else 100,1500 if player.position.y<800 else 100)
 	var scaling = 1.0 if kind == 'boss' else 1.0+(wave_number-1)*.09
 	enemies.append({'kind':kind,'pos':pos,'hp':float(d.hp)*scaling,'max_hp':float(d.hp)*scaling,'speed':float(d.speed),'damage':float(d.damage),'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0})
+	enemy_roles.initialize(enemies.back())
+	return true
 
 func update_enemies(dt: float):
 	if wave_number==10 and is_reactor():reactor_guardian.update(dt)
@@ -651,6 +661,8 @@ func update_enemies(dt: float):
 		e.orbit_cd = maxf(0,e.orbit_cd-dt)
 		var dir: Vector2 = (player.position-e.pos).normalized()
 		var velocity: Vector2 = dir*e.speed
+		if e.kind in ['spitter','drone']:velocity=enemy_roles.velocity(e,velocity,dt)
+		if e.kind=='spitter' and e.get('windup',0)>0:velocity=Vector2.ZERO
 		if e.kind == 'boss' and is_reactor():
 			if reactor_guardian.stationary():velocity=Vector2.ZERO
 		elif e.kind == 'boss':
@@ -661,6 +673,7 @@ func update_enemies(dt: float):
 			e.ability_slow_time=maxf(0,e.ability_slow_time-dt)
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
+			if e.kind=='spitter' and e.get('windup',0)>0:break
 			if e.kind=='boss' and is_reactor() and reactor_guardian.stationary():break
 			var other = enemies[j]
 			var offset: Vector2 = e.pos-other.pos
@@ -726,7 +739,7 @@ func update_shots(dt: float):
 func damage_enemy(e: Dictionary, power: float):
 	if e.hp<=0 or not enemies.has(e): return
 	var critical = rng.randf()<crit
-	var amount = power*(2 if critical else 1)
+	var amount = power*(2 if critical else 1)*enemy_roles.damage_factor(e)
 	dealt += minf(e.hp,amount)
 	e.hp -= amount
 	e.hit = .15
@@ -737,6 +750,7 @@ func damage_enemy(e: Dictionary, power: float):
 		var pos: Vector2 = e.pos
 		vfx.enemy_died(e)
 		world_visuals.enemy_defeated(e)
+		enemy_roles.removed(e)
 		enemies.erase(e)
 		kills += 1
 		var reward = int(enemy_definition(kind).coins)
@@ -983,9 +997,11 @@ func _draw():
 			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
 	vfx.draw_floor()
+	enemy_roles.draw_floor()
 	arena_hazards.draw()
 	if is_reactor():reactor_guardian.draw()
 	world_visuals.draw_telegraph()
+	enemy_roles.draw_telegraphs()
 	world_visuals.draw_deaths()
 	vfx.draw_particles()
 	hero_ability.draw()
@@ -1024,6 +1040,7 @@ func _exit_tree():
 
 func is_reactor() -> bool:return arena_id=='reactor'
 func enemy_definition(kind: String) -> Dictionary:
+	if enemy_roles.data.has(kind):return enemy_roles.data[kind]
 	return arena_definition.boss if kind=='boss' and is_reactor() else enemy_data[kind]
 func choose_arena(id: String) -> bool:
 	if not Arenas.IDS.has(id) or not Arenas.unlocked(saved,id):return false

@@ -29,3 +29,7 @@ write('spec_arc',.18,lambda t,r:.5*math.sin(2*math.pi*(650*t+1100*t*t))+.2*r.uni
 # Cartoon splat and explosion layers, no external samples.
 write('fx_splat',.14,lambda t,r:.35*r.uniform(-1,1)+.6*math.sin(2*math.pi*(170*t-320*t*t)))
 write('fx_boom',.35,lambda t,r:.45*r.uniform(-1,1)+.45*math.sin(2*math.pi*(85*t-60*t*t)))
+
+# Reactor enemy cues: warm-up chirp and nozzle spit.
+write('spitter_warning',.3,lambda t,r:.6*math.sin(2*math.pi*(330*t+400*t*t)))
+write('spitter_fire',.16,lambda t,r:.45*r.uniform(-1,1)+.45*math.sin(2*math.pi*(150*t-250*t*t)))

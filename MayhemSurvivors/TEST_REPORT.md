@@ -1,3 +1,68 @@
+# Testbericht 0.6.0 — 2026-11-16
+
+Godot 4.6.3 stable, Linux Headless und Mesa Compatibility. Tatsächliche Logs in
+`tests/results/v0.6-*.log`. Keine physische Android-Abnahme dieser Version.
+
+| Suite | Ergebnis |
+|---|---|
+| Integration | 76 / 76 |
+| Kampfgrafik | 28 / 28 |
+| Klassenbindung/Haltung | 42 / 42 |
+| Welt/Bosswarnungen | 36 / 36 |
+| Statistik/Speicherung | 28 / 28 |
+| Reaktor/Migration | 157 / 157 |
+| Fähigkeiten/Touch/Haptik | 76 / 76 |
+| Waffenspezialisierungen | 108 / 108 |
+| Effekte | 40 / 40 |
+| Neue Reaktorgegner | 66 / 66 |
+| Gesamt | 657 / 657 |
+
+Neue Suite prüft Grundwerte, Spawner-Verbindung, Einführungswellen und Caps, sichtbare
+Warnung ohne sofortigen Schuss, fixiertes Ziel, langsames gepooltes Projektil, echten
+Swept-Treffer am Spieler und einmaligen Schaden, Zurücksetzen der Schuss-Metadaten,
+Abstands-/Rückzugs-KI, keine Offscreen-Schüsse und maximal zwei gleichzeitige Warnungen.
+Auch ein langer Frame beginnt mit voller Warnzeit. Tod unterbricht einen geplanten Schuss.
+Pause/Shop/Level-up/Android-Unterbrechung frieren die KI ein. HP, Geschwindigkeit,
+Belohnungen und Drohnenbewegung stimmen mit den konfigurierten Daten überein.
+
+Schutzaura: echte 30-%-Schadensreduktion inklusive tatsächlichem Schadenszähler,
+kein Stapeln, keine Anwendung auf Boss oder Drohne, sofortiger Wegfall bei Verlassen
+des Radius oder Tod der letzten Drohne. Belohnungen werden einmal vergeben. Organische
+Spucker-Spritzer und mechanische Drohnenfunken sowie tatsächliche Atlasregionen geprüft.
+Cleanup/Neustart/Arenawechsel entfernen Status und Projektile. Speicherformat bleibt 3;
+bestehende Migrations-, Verlaufs- und Einstellungstests bestanden unverändert weiter.
+
+Referenzen: alter Schrottplatzvergleich 33 Punkte / 3.600 Schritte identisch. Der
+Schrottplatz-Anteil der 0.5-Referenz (`effects_v0.5_trace.json`) mit allen zehn
+Spezialisierungen, Fähigkeiten und klassischem Boss: 87 Punkte / 8.700 Schritte,
+HIGH und LOW identisch. `effects_trace.gd` vergleicht seit 0.6 ausdrücklich nur diesen
+Anteil. Der Reaktor-Anteil wurde nicht neu als „unverändert“ ausgegeben oder still
+überschrieben: dort verändern neue Gegner Zusammensetzung, Kämpfe und RNG-Verbrauch
+bewusst. Die historische vollständige Referenzdatei bleibt erhalten.
+
+Belastung: 3 × 3.600 Schritte / 180 simulierte Sekunden, ein Szenario je Held mit
+LOW/MEDIUM/HIGH, allen neuen Rollen, bis 100 Gegnern und aktiven Fähigkeiten. Die
+Kamera wird im manuellen Headless-Loop nachgeführt, damit Sichtbarkeitschecks sinnvoll
+arbeiten. Caps 6 Spucker/2 Drohnen/2 Warnungen/320 Poolplätze eingehalten, Projektile,
+Loot und Effekte begrenzt. Peak feindlicher Projektile in diesem Versuch: 6.
+Zusätzlich 18.000 Schritte mit allen zehn Waffenwegen im Effekttest bestanden.
+Botbewegungen und Test-HP sind kontrollierte Fixtures, keine echten vollständigen Runs,
+kein Nachweis ausgewogenen Balancings und keine Android-FPS-Messung.
+
+Fünf Godot/Mesa-Aufnahmen (`tests/roles_*.png`) zeigen Vorbereitung, neue Gegner mit
+Warnung/Schutzaura, Projektil, Schutzabbruch und klassische Arena. Vorgabefiguren,
+Kampf-Nahansichten mit Zoom 1,3 statt Standard 1,15; keine Android-Aufnahmen.
+Kein Parser-/Ressourcenfehler in finalen Läufen. Dummy-Display ohne V-Sync.
+
+Quell-ZIP zusätzlich separat entpackt und frisch importiert: keine Parser-/Ressourcenfehler, Gegnersuite daraus erneut 66 / 66 bestanden.
+
+Offen: echte Android-Runs, Fairness der Fernschüsse, Zielpriorisierung der Drohnen,
+Konter mit allen Helden/Builds, Lesbarkeit unter Last, Geräte-FPS/Temperatur und Audio.
+
+---
+
+# Historische Tests 0.5.1
+
 # Testbericht 0.5.1 — 2026-11-16
 
 Godot 4.6.3 stable, Linux Headless und Mesa Compatibility. Tatsächliche Logs:
