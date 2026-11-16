@@ -1,5 +1,19 @@
 # Grafik-/Feedback-/Komfortstand 0.2.3 — 2026-11-16
 
+## Bestätigter Nutzer-Praxistest
+
+Nach Übergabe von 0.2.3 meldete der Nutzer einen vollständig durchgespielten Android-Run
+mit Sparky und „Läuft sehr gut“. Der beigefügte Sieg-Screenshot zeigt:
+
+- Welle 10 / 10, Sieg, Kampfzeit 09:07.
+- 602 Kills, Level 20, 48.387 Schaden, 1.566 gesammelte Coins.
+- Blaster Stufe 5, Arc Cannon Stufe 2, Splitgun Stufe 3.
+
+Dies ist ein Nutzerbeleg für einen vollständigen Sparky-Run, keine durch den Agenten
+aufgezeichnete Gerätemessung. Gerätemodell, Android-Version, FPS, thermisches Verhalten,
+Erhalt der Statistik nach App-Neustart und vollständige Runs mit Bruiser/Shade sind damit
+noch nicht bestätigt. Der Code-Stand `a4efbc4` bleibt die Referenz für weitere Erweiterungen.
+
 ## Aktuelle Phase
 
 Technische Übergabe und Android-Praxisabnahme. Nutzer hat Haltung und Klassenbindung aus
@@ -29,11 +43,12 @@ APK tatsächlich gebaut, signiert und statisch geprüft; passende Assets verpack
 
 ## Offen / nächster Schritt
 
-Auf dem Nutzergerät Update und alte Gesamtstatistik prüfen. Neue Charakterwerte starten ab
-0.2.3. Gegnerlesbarkeit bei voller Arena, Warnungen, Audio und zehn Wellen je Klasse praktisch
-abnehmen. Geräte-FPS und thermische Stabilität noch messen. Gegnerbewegung ist derzeit eine
-prozedurale Spriteanimation; Mehrbild-Animationssätze sind ein späterer Grafikschritt.
-Keine Android-Abnahme oder unverifizierte Leistungsangabe behauptet.
+Nutzer-Praxistest mit Sparky erfolgreich; Bruiser und Shade noch bis zum Boss prüfen.
+Statistikpersistenz nach Neustart, weitere Geräte, FPS und Temperatur bleiben offen.
+Nächster vorgeschlagener Meilenstein: 0.3 mit datenbasierter Arena-Auswahl und einer zweiten
+Arena samt eigenem Boss. Siehe `ROADMAP.md`. Dieser neue Inhalt ist noch nicht implementiert.
+Der klassische Schrottplatz und seine Kampfwerte bleiben als Vergleich erhalten.
+
 
 ---
 

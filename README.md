@@ -55,3 +55,7 @@ APK signiert, ARM64 und 16-KiB-Alignment geprüft. Keine Android-Abnahme behaupt
 [0.2.2 Haltung/Klassen](https://github.com/Whiskymitschuss/Match3/tree/fix/character-grips-v0.2.2) ·
 [0.2.1 Waffen](https://github.com/Whiskymitschuss/Match3/tree/art/weapons-v0.2.1) ·
 [0.2 Charakterbilder](https://github.com/Whiskymitschuss/Match3/tree/art/characters-v0.2) · [0.1 Referenz](https://github.com/Whiskymitschuss/Match3/tree/main)
+
+## Weitere Entwicklung
+
+[Bestätigter Sparky-Praxistest und vorgeschlagener Meilenstein 0.3](MayhemSurvivors/ROADMAP.md).

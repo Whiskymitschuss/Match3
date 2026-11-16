@@ -1,5 +1,19 @@
 # Tests 0.2.3 — 2026-11-16
 
+## Bestätigter Nutzer-Praxistest
+
+Nach Übergabe von 0.2.3 meldete der Nutzer einen vollständig durchgespielten Android-Run
+mit Sparky und „Läuft sehr gut“. Der beigefügte Sieg-Screenshot zeigt:
+
+- Welle 10 / 10, Sieg, Kampfzeit 09:07.
+- 602 Kills, Level 20, 48.387 Schaden, 1.566 gesammelte Coins.
+- Blaster Stufe 5, Arc Cannon Stufe 2, Splitgun Stufe 3.
+
+Dies ist ein Nutzerbeleg für einen vollständigen Sparky-Run, keine durch den Agenten
+aufgezeichnete Gerätemessung. Gerätemodell, Android-Version, FPS, thermisches Verhalten,
+Erhalt der Statistik nach App-Neustart und vollständige Runs mit Bruiser/Shade sind damit
+noch nicht bestätigt. Der Code-Stand `a4efbc4` bleibt die Referenz für weitere Erweiterungen.
+
 ## Ausgeführte Suiten
 
 | Suite | Bestanden | Fehlgeschlagen |
@@ -47,8 +61,8 @@ Keine Parserfehler. Der virtuelle Grafiktreiber meldet nur nicht umschaltbare VS
 
 ## Offene Geräteabnahme
 
-Android-Installation, echte Statistikübernahme, Audio, Lesbarkeit im Kampf, längere Klassen-Runs
-und Geräte-FPS/Temperatur sind noch praktisch zu prüfen. Kein Android-Gerätetest behauptet.
+Ein voller Sparky-Run ist durch Nutzerfeedback bestätigt. Statistikpersistenz, spezifische
+Audio-/Displayprüfungen, andere Klassen und Geräte-FPS/Temperatur bleiben noch offen.
 Rohprotokolle: `tests/results/v0.2.3/`.
 
 ---
