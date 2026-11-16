@@ -4,9 +4,9 @@ Android Alpha 0.1.0, erstellt mit Godot 4.6.3 und GDScript.
 
 ## Downloads
 
-- [Android-APK herunterladen](https://github.com/Whiskymitschuss/Match3/releases/download/v0.1.0-alpha/MayhemSurvivors-v0.1-debug.apk)
-- [Komplettes Projekt als ZIP herunterladen](https://github.com/Whiskymitschuss/Match3/releases/download/v0.1.0-alpha/MayhemSurvivors-v0.1-source.zip)
-- [Release mit allen Downloads](https://github.com/Whiskymitschuss/Match3/releases/tag/v0.1.0-alpha)
+- [Android-APK herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/main/Downloads/MayhemSurvivors-v0.1-debug.apk)
+- [Komplettes Projekt als ZIP herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/main/Downloads/MayhemSurvivors-v0.1-source.zip)
+- [Downloadordner auf GitHub öffnen](https://github.com/Whiskymitschuss/Match3/tree/main/Downloads)
 
 APK: Android 7.0 oder neuer, ausschließlich ARM64, Querformat, offline.
 
