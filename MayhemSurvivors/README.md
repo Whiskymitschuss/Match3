@@ -1,6 +1,6 @@
 # Mayhem Survivors — RF Worlds
 
-Android Alpha **0.5.0** · Godot **4.6.3 stable** · GDScript · GL Compatibility
+Android Alpha **0.5.1** · Godot **4.6.3 stable** · GDScript · GL Compatibility
 
 ## Spielen
 
@@ -10,7 +10,27 @@ Links unten per Touch-Joystick bewegen, Waffen greifen automatisch an. XP einsam
 Upgrades wählen, zwischen neun 60-Sekunden-Wellen einkaufen. Welle zehn hat ein
 90-Sekunden-Limit: Boss besiegen oder verlieren. Pause oben rechts.
 
-## Neu in 0.5: Waffenspezialisierungen
+## Neu in 0.5.1: Effektpaket
+
+Cartoon-Splatter bei Treffern und Gegner-Tod: farbige Tropfen, kurze Todes-Puffs und
+sieben Sekunden ausblendende Bodenspuren. Grün/Rotrosa/Violett kennzeichnen Monster;
+der Reaktorwächter erzeugt Metallfunken. Keine Organe oder abgetrennten Körperteile.
+Unter Einstellungen lässt sich CARTOON-SPLATTER getrennt abschalten; Rauch, Funken,
+Explosionsspuren und andere Kampfeffekte bleiben verfügbar. Die Einstellung wird gespeichert.
+
+Zusätzlich kräftigere Mündungsblitze, Geschossspuren, Einschlagfunken, Rauch,
+Hammer-Schlagbögen/Bodenrisse, verzweigte elektrische Entladungen, Explosionswolken,
+kritische Treffersterne und violette Schatten-Nachbilder. Alte Todesringe wurden durch
+passende Spritzer und kleine Münz-Popups ersetzt. Zwei zusätzliche eigene Synthsounds.
+
+Die neue Effektsebene nutzt einen getrennten visuellen Zufallsgenerator, keine
+Gameplay-Zufallswerte. Wiederverwendete Partikel-Dictionaries ohne einzelne Effekt-Nodes.
+LOW/MEDIUM/HIGH begrenzen die neuen Partikel auf 80/150/240, Bodenmarken auf 18/40/70
+und kurze Effekt-Ereignisse auf 8/16/24. Warnmarkierungen werden über Bodenflecken gezeichnet.
+Pause, Level-up und Shop halten die Effekte an; Wellenende/Run-Ende räumen sie auf.
+Es ändern sich keine Kampfwerte, Belohnungen, Waffenentwicklungen oder Abklingzeiten.
+
+## Waffenentwicklungen aus 0.5
 
 Beim Kauf von Waffenstufe fünf wählst du kostenlos zwischen zwei Entwicklungen.
 Die Wahl ist für diese Waffe in diesem Run verbindlich, kostet keine zusätzlichen Coins
@@ -101,7 +121,7 @@ godot --headless --path . --editor --import --quit
 godot --headless --path . --fixed-fps 60 --script res://tests/integration.gd
 godot --headless --path . --fixed-fps 60 --script res://tests/reactor_test.gd
 godot --headless --path . --fixed-fps 60 --script res://tests/world_trace.gd
-godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.5-debug.apk
+godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.5.1-debug.apk
 ```
 
 Für Export Godot-Android-Template, JDK 21 und Android SDK konfigurieren. Private

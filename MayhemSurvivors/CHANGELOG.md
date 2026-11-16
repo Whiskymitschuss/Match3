@@ -1,3 +1,15 @@
+# 0.5.1 Alpha — 2026-11-16
+
+- Cartoon-Splatter bei Treffern/Tod, farbige Tropfen und ausblendende Bodenspuren.
+- Mündungsblitze, Geschossspuren, Einschlagfunken, Rauch und Münz-Popups.
+- Hammerbögen/Bodenrisse, Blitzverästelungen, Explosionen und Schatten-Nachbilder.
+- Kritische Treffer mit kurzen Sternblitzen; alte generische Todesringe entfernt.
+- Mechanische Boss-Treffer mit Funken, Effekte beim tatsächlichen Bomben-/Laserstart.
+- Zwei zusätzliche selbst synthetisierte Sounds, eigener SVG-Splatter.
+- Gespeicherter Splatter-Schalter; sofortige Effektlimits bei Qualitätssenkung.
+- Eigener visueller RNG und wiederverwendeter Partikelpool; keine Kampfwertänderung.
+- 40 neue Effektprüfungen und Gameplayvergleich mit 0.5 für alle Waffenwege/Arenen/Bosse.
+
 # 0.5.0 Alpha — 2026-11-16
 
 - Zwei kostenlose Stufe-5-Entwicklungen für jede der fünf Waffen, insgesamt zehn Wege.

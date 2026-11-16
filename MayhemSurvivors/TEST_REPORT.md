@@ -1,3 +1,60 @@
+# Testbericht 0.5.1 — 2026-11-16
+
+Godot 4.6.3 stable, Linux Headless und Mesa Compatibility. Tatsächliche Logs:
+`tests/results/v0.5.1-*.log`. Keine physische Android-Prüfung dieser Version.
+
+| Suite | Ergebnis |
+|---|---|
+| Integration | 76 / 76 |
+| Kampfgrafik | 28 / 28 |
+| Klassenbindung/Haltung | 42 / 42 |
+| Welt/Bosswarnungen | 36 / 36 |
+| Statistik/Speicherung | 28 / 28 |
+| Reaktor/Migration | 157 / 157 |
+| Fähigkeiten/Touch/Haptik | 76 / 76 |
+| Waffenspezialisierungen | 108 / 108 |
+| Neues Effektpaket | 40 / 40 |
+| Gesamt | 591 / 591 |
+
+Neue Suite: Treffer-/Todes-Splatter, kritische Sterne, genau eine Belohnung und passendes
+Münz-Popup, Einfrieren in Pause/Shop/Level-up, Ablauf/Freigabe aller Effektgruppen,
+Wiederverwendung derselben Partikel-Dictionaries, alle Qualitätslimits und sofortiges
+Trimmen vorhandener Bestände. Splatter AUS entfernt vorhandene Blut-/Schleimspuren und
+verhindert neue, erhält aber Funken und Brandspuren. Tatsächliche Waffen-/Fähigkeits-
+und Gefahrenmethoden lösen die entsprechenden Effekte aus. Der mechanische Boss
+emittiert keine Blutpartikel. Neue Einstellung wird real gespeichert/geladen; ältere
+Format-3-Dateien und ungültige optionale Felder bleiben kompatibel.
+
+Vor dem Effekteinbau wurde aus 0.5 / Commit 01e68cd eine neue Referenz erzeugt:
+`tests/fixtures/effects_v0.5_trace.json`. 174 Kontrollpunkte über 17.400 Schritte,
+alle zehn Spezialisierungen, aktive Fähigkeiten, beide Arenen und beide Bosse.
+HP, Position, Gegner/Projektile, Schaden, XP, Level, Coins/Kills, Timer, Fähigkeiten-
+Cooldowns und Gameplay-RNG stimmen in 0.5.1 vollständig überein: HIGH, LOW sowie
+Splatter AUS. Zusätzlich alter Referenzvergleich 33 Punkte / 3.600 Schritte bestanden.
+Die visuellen Effekte ändern nach diesen Versuchen keine Kampfergebnisse.
+
+Belastung: alle zehn Waffenwege mit echten Fähigkeiten in Reaktorwelle neun,
+18.000 Schritte / 300 simulierte Sekunden mit gemischtem LOW/MEDIUM/HIGH,
+bis zu 100 Gegnern und allen neuen Effektgruppen. Partikel-/Bodenmarken-/Ereignis-/
+Projektil-/Loot-Limits eingehalten. Kein daraus abgeleiteter Android-FPS-Nachweis.
+
+Sieben Bilder `tests/fx_*.png` tatsächlich mit Godot/Mesa erzeugt: Schuss/Splatter,
+Bodenspuren, Schockwelle, Impulsgranate, Schattenschritt, Bosswarnungen, Einstellungen.
+Inszenierte Fixtures, überwiegend Nahansicht mit Kamerazoom 1,45 statt normal 1,15;
+keine Android-Aufnahmen oder echte Nutzer-Runs. Erste Bildprüfung zeigte zu viele
+kreisförmige alte Todeseffekte. Diese wurden durch Spritzer/Münz-Popups ersetzt,
+Treffersterne reduziert und die Bilder neu erstellt. Warnungen liegen über Bodenflecken.
+Dummy-Display unterstützt kein V-Sync. Keine Parser-/Ressourcenfehler in finalen Läufen.
+
+Quell-ZIP zusätzlich separat entpackt und frisch importiert: keine Parser-/Ressourcenfehler, Effektsuite daraus erneut 40 / 40 bestanden.
+
+Offen: vollständige Android-Runs mit Waffenwegen und Effekten, Warnlesbarkeit unter
+realer Last, Gerätetemperatur/FPS, Audio auf Gerät und Statistikerhalt beim Update.
+
+---
+
+# Historische Tests 0.5
+
 # Testbericht 0.5.0 — 2026-11-16
 
 Godot 4.6.3 stable; Linux Headless und Mesa Compatibility. Tatsächliche Logs in

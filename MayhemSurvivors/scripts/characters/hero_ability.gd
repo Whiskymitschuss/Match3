@@ -33,6 +33,7 @@ func activate() -> bool:
 	activations+=1
 	game.haptic('ability')
 	game.sound('ability_'+d.id)
+	game.vfx.ability(d.id,game.player.position)
 	match d.id:
 		'shockwave':
 			rings.append({'pos':game.player.position,'radius':d.radius,'age':0.0,'life':.45,'color':Color(d.color)})
@@ -82,6 +83,7 @@ func update(dt:float):
 	grenade.clear()
 	rings.append({'pos':bomb.target,'radius':bomb.radius,'age':0.0,'life':.45,'color':Color('#00D9D0')})
 	game.sound('ability_explosion')
+	game.vfx.explosion(bomb.target,bomb.radius,Color('#00D9D0'))
 	for e in game.enemies.duplicate():
 		if e.pos.distance_to(bomb.target)>bomb.radius+e.radius:continue
 		game.damage_enemy(e,bomb.power)
@@ -99,7 +101,9 @@ func draw():
 			var dir=Vector2.from_angle(i*TAU/10)
 			game.draw_line(r.pos+dir*r.radius*t,r.pos+dir*(r.radius*t+15),color,4,true)
 	for a in afterimages:
-		game.draw_circle(a.pos,27,Color(.65,.37,.92,a.life*1.8))
+		game.draw_set_transform(a.pos,0,Vector2(game.character_facing(),1))
+		game.draw_texture_rect_region(game.CharacterArt.GAMEPLAY_TEXTURE,Rect2(-48,-64,96,96),game.CharacterArt.body_region(game.characters[game.selected].id),Color(.65,.37,.92,a.life*2.2))
+		game.draw_set_transform(Vector2.ZERO)
 	if not grenade.is_empty():
 		var t:float=clampf(grenade.age/grenade.fuse,0,1)
 		var at:Vector2=grenade.from.lerp(grenade.target,t)-Vector2(0,sin(t*PI)*100)

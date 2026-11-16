@@ -25,3 +25,7 @@ write('spec_hammer',.26,lambda t,r:.7*math.sin(2*math.pi*(95*t-85*t*t))+.2*r.uni
 write('spec_blaster',.12,lambda t,r:.65*math.sin(2*math.pi*(900*t-2400*t*t)))
 write('spec_splitgun',.14,lambda t,r:.4*r.uniform(-1,1)+.4*math.sin(2*math.pi*180*t))
 write('spec_arc',.18,lambda t,r:.5*math.sin(2*math.pi*(650*t+1100*t*t))+.2*r.uniform(-1,1))
+
+# Cartoon splat and explosion layers, no external samples.
+write('fx_splat',.14,lambda t,r:.35*r.uniform(-1,1)+.6*math.sin(2*math.pi*(170*t-320*t*t)))
+write('fx_boom',.35,lambda t,r:.45*r.uniform(-1,1)+.45*math.sin(2*math.pi*(85*t-60*t*t)))

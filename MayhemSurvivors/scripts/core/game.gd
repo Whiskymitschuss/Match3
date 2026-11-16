@@ -11,6 +11,7 @@ var arena_hazards
 var reactor_guardian
 var hero_ability
 var hit_feedback
+var vfx
 var haptic_feedback=preload('res://scripts/mobile/haptic_feedback.gd').new()
 var ability_button:Button
 var ability_touch_ids:Array[int]=[]
@@ -109,6 +110,7 @@ func _ready():
 	hero_ability=preload('res://scripts/characters/hero_ability.gd').new(self)
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
+	vfx=preload('res://scripts/combat/mayhem_vfx.gd').new(self)
 	load_save()
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -281,7 +283,7 @@ func main_menu():
 	for item in [play_button,char_button,stats_button,settings_button,goals_button]:
 		item.custom_minimum_size.y=95
 		item.reparent(stack)
-	label_at('0.5.0 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
+	label_at('0.5.1 Alpha • Offline • Keine Werbung',Vector2(110,970),25)
 	portrait(Vector2(1330,530),1,1.05)
 	label_at('DEIN HELD.\nDEINE WAFFE.\nDEIN MAYHEM.',Vector2(1000,320),48,TEAL)
 
@@ -404,11 +406,12 @@ func settings(back: Callable):
 		ui_root.add_child(slider)
 	for i in range(3):
 		var q = ['LOW','MEDIUM','HIGH'][i]
-		button(('✓ ' if saved.settings.quality == q else '')+q,Vector2(120+i*460,710),Vector2(420,95),func(): saved.settings.quality=q; save_game(); settings(back))
+		button(('✓ ' if saved.settings.quality == q else '')+q,Vector2(120+i*460,710),Vector2(420,95),func(): saved.settings.quality=q; vfx.apply_settings(); save_game(); settings(back))
 	var modes=['OFF','LOW','HIGH']
 	var mode=saved.settings.get('haptics','OFF')
 	button('VIBRATION: '+{'OFF':'AUS','LOW':'DEZENT','HIGH':'STARK'}[mode],Vector2(120,825),Vector2(620,90),func(): saved.settings.haptics=modes[(modes.find(mode)+1)%3];save_game();haptic('ability');settings(back))
 	button('SCHADENSZAHLEN: '+('AN' if saved.settings.get('damage_numbers',true) else 'AUS'),Vector2(800,825),Vector2(700,90),func(): saved.settings.damage_numbers=not saved.settings.get('damage_numbers',true);save_game();settings(back))
+	button('CARTOON-SPLATTER: '+('AN' if saved.settings.get('splatter',true) else 'AUS'),Vector2(800,960),Vector2(700,85),func(): saved.settings.splatter=not saved.settings.get('splatter',true);vfx.apply_settings();save_game();settings(back))
 	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
 
 func cleanup():
@@ -419,6 +422,7 @@ func cleanup():
 	if specialized_combat:specialized_combat.clear()
 	if hero_ability:hero_ability.clear()
 	if hit_feedback:hit_feedback.clear()
+	if vfx:vfx.clear()
 	enemies.clear()
 	loot.clear()
 	effects.clear()
@@ -572,6 +576,7 @@ func _physics_process(delta):
 	if is_instance_valid(joystick): joystick.queue_redraw()
 	if is_instance_valid(ability_button):ability_button.queue_redraw()
 	if state != State.COMBAT: return
+	vfx.update(delta)
 	specialized_combat.update(delta)
 	hit_feedback.update(delta)
 	hero_ability.update(delta)
@@ -725,19 +730,20 @@ func damage_enemy(e: Dictionary, power: float):
 	dealt += minf(e.hp,amount)
 	e.hp -= amount
 	e.hit = .15
+	vfx.enemy_hit(e,critical)
 	hit_feedback.damage(e.pos,amount,critical)
 	if e.hp<=0:
 		var kind: String = e.kind
 		var pos: Vector2 = e.pos
+		vfx.enemy_died(e)
 		world_visuals.enemy_defeated(e)
 		enemies.erase(e)
 		kills += 1
 		var reward = int(enemy_definition(kind).coins)
 		coins += reward
-		add_effect(pos+Vector2(0,20),GOLD,22,'+%d ●' % reward)
+		vfx.coin(pos,reward)
 		earned += reward
 		loot.append({'pos':pos,'xp':int(enemy_definition(kind).xp)})
-		add_effect(pos,Color(enemy_data[kind].color),50,'')
 		sound('death')
 		sound('coin')
 		if kind == 'boss': finish(true)
@@ -976,10 +982,12 @@ func _draw():
 			var kind=['grunt','runner','tank'][i%3]
 			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
+	vfx.draw_floor()
 	arena_hazards.draw()
 	if is_reactor():reactor_guardian.draw()
 	world_visuals.draw_telegraph()
 	world_visuals.draw_deaths()
+	vfx.draw_particles()
 	hero_ability.draw()
 	for l in loot:
 		var p: Vector2 = l.pos
@@ -994,6 +1002,7 @@ func _draw():
 	combat_visuals.draw_shots()
 	specialized_combat.draw()
 	combat_visuals.draw_effects()
+	vfx.draw_front()
 	hit_feedback.draw()
 	for e in effects:
 		if e.has('end'): draw_line(e.pos,e.end,e.color,5,true)

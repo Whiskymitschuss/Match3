@@ -45,6 +45,7 @@ func attack(id: String, direction: Vector2, _level: int):
 	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap'}.get(id,'shot'))
 	r.angle=direction.angle()
 	r.pulse=.115
+	game.vfx.shot(id,direction)
 	if id=='hammer':
 		r.swing=.26
 		push({'kind':'slam','pos':game.player.position+direction*70,'life':.28,'full':.28,'skin':game.selected})
@@ -52,11 +53,13 @@ func attack(id: String, direction: Vector2, _level: int):
 		shell_counter+=1
 		push({'kind':'shell','pos':game.player.position+Vector2(0,-8),'dir':direction.orthogonal()*(-1 if shell_counter%2 else 1),'life':.3,'full':.3,'skin':game.selected})
 func impact(pos: Vector2, weapon: String, hostile: bool = false):
+	game.vfx.impact(pos,weapon,hostile)
 	if weapon=='orbit' and impact_sound_clock<=0:
 		game.sound('blade_hit')
 		impact_sound_clock=.12
 	push({'kind':'impact','pos':pos,'life':.19,'full':.19,'skin':game.selected,'weapon':weapon,'hostile':hostile})
 func beam(origin: Vector2, target: Vector2):
+	game.vfx.beam(origin,target)
 	push({'kind':'beam','pos':origin,'end':target,'life':.22,'full':.22,'skin':game.selected})
 func primary_id() -> String:
 	for w in game.weapons:
@@ -194,6 +197,8 @@ func draw_shots():
 		var length=32.0 if split else 44.0
 		var thickness=16.0 if split else 23.0
 		if s.hostile: length=58; thickness=36
+		game.draw_line(s.pos-direction*58,s.pos-direction*10,Color(color,.10),thickness*.7,true)
+		game.draw_line(s.pos-direction*38,s.pos-direction*8,Color(color,.4),3,true)
 		game.draw_line(s.pos-direction*26,s.pos-direction*8,Color(color,.22),thickness*.5,true)
 		game.draw_set_transform(s.pos,s.vel.angle())
 		game.draw_texture_rect_region(Art.TEXTURE,Rect2(-length+9,-thickness*.5,length,thickness),Art.projectile(skin,s.hostile))

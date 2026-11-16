@@ -12,6 +12,8 @@ func update(dt:float):
 		fx[i].life-=dt
 		if fx[i].life<=0:fx.remove_at(i)
 func ring(pos:Vector2,radius:float,color:Color):
+	if radius>=200:game.vfx.ground_impact(pos,radius,color)
+	elif radius>=75:game.vfx.explosion(pos,radius,color)
 	var cap=limit()
 	while fx.size()>=cap:fx.pop_front()
 	fx.append({'pos':pos,'radius':radius,'color':color,'life':.4})

@@ -1,3 +1,40 @@
+# Effektpaket 0.5.1 — 2026-11-16
+
+## Aktuelle Phase
+
+Effektpaket implementiert und final getestet; Android-APK signiert, ARM64/Paket/Version/
+Berechtigungen/16-KiB-Alignment geprüft. Quell-ZIP frisch importiert, 40 neue Prüfungen
+daraus erneut bestanden. GitHub-Übergabe vorbereitet.
+Keine physische Android-Hardware in dieser Umgebung.
+
+## Implementiert
+
+Farbige Cartoon-Splattertropfen und Bodenflecken, Funken/Rauch, Mündungsblitze/Spuren,
+Hammerbögen/Bodenrisse, Blitzverästelungen, Explosionen, kritische Sterne, Schatten-
+Nachbilder und Münz-Popups. Alter Todesring entfernt. Eigene SVG-Textur und Synthsounds.
+Neue kosmetische Ebene mit eigenem RNG, wiederverwendeten Partikel-Dictionaries und
+Limits für LOW/MEDIUM/HIGH. Gespeicherter Splatter-Schalter. Bosswarnungen bleiben über
+Bodenflecken sichtbar. Kein neuer Schaden und keine Änderung von Werten oder Belohnungen.
+
+## Tatsächlich geprüft
+
+591 Assertions bestanden (551 bestehende + 40 neue). Neuer 0.5-Vergleich über 174 Punkte /
+17.400 Schritte mit allen zehn Waffenwegen, Fähigkeiten, Arenen und Bossen in HIGH, LOW
+und Splatter AUS identisch. Zusätzlich alter 33-Punkte-/3.600-Schritte-Vergleich bestanden.
+18.000 Belastungsschritte mit allen zehn Varianten und gemischten Qualitätseinstellungen
+bestanden. Sieben Godot/Mesa-Bilder geprüft und nach Entfernung überladener Todesringe
+neu erzeugt. Bilder sind Fixtures/Nahansichten, keine Android-Aufnahmen.
+
+## Nächster Schritt
+
+Tatsächliche Android-Abnahme für 0.5-Waffenwege plus 0.5.1-Effekte, Lesbarkeit,
+FPS/Temperatur und Audio. Version 0.4 hatte positives Nutzerfeedback; 0.5.1 noch nicht.
+Details siehe TEST_REPORT.md und BUILD_REPORT.md.
+
+---
+
+# Historischer Stand 0.5
+
 # Meilenstein 0.5.0 — 2026-11-16
 
 ## Nutzerabnahme des Vorgängers

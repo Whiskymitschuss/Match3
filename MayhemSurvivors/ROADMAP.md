@@ -1,3 +1,11 @@
+# Stand 0.5.1
+
+Vom Nutzer vor der 0.5-Abnahme gewünschtes Effektpaket integriert: Cartoon-Splatter,
+Schuss-, Treffer-, Todes- und Spezialeffekte. Keine neuen Kampfregeln. Nächster Schritt:
+Android-Praxisabnahme der kombinierten Waffen-/Effektversion. Details in PROGRESS.md.
+
+---
+
 # Stand 0.5.0
 
 Zwei verbindliche, kostenlose Entwicklungen je Waffe ab Stufe fünf implementiert und

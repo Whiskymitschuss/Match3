@@ -23,6 +23,13 @@ func update(dt: float):
 		var h=items[i]
 		var previous:float=h.age
 		h.age+=dt
+		if previous<h.warm and h.age>=h.warm:
+			if h.shape=='circle':game.vfx.explosion(h.pos,h.radius,Color('#FF7040'))
+			else:
+				var at:Vector2=h.rect.get_center()
+				if h.rect.size.x<h.rect.size.y:at.y=game.player.position.y
+				else:at.x=game.player.position.x
+				game.vfx.burst(at,Color('#FF7040'),game.vfx.limits().burst,'spark',170)
 		# Crossing the active interval also counts, even after a long frame.
 		if h.age>=h.warm and previous<h.warm+h.duration and contains(h,game.player.position):
 			game.hurt(h.damage)
