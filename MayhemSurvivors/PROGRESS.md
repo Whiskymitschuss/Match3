@@ -1,6 +1,6 @@
 # 0.19 — BREAKER AXEL — implementiert, geprüft und gebaut
 
-Aktuelle Phase: Auslieferung und Android-Abnahme. Branch feature/breaker-axel-v0.19.
+Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen. Branch feature/breaker-axel-v0.19.
 Boss in Welle5 aller vier Arenen, Endlos5/15/25/... . Zehnwelliger Run bleibt erhalten.
 1500 Basis-HP/15% Resistenz/78 Tempo,75s Limit. Eigene Grafik nach Fotovorlage,
 Vorstellung, Presslufthammer, Schockwellen, Zombie-Ansturm, Risse, drei Phasen bei
@@ -24,8 +24,10 @@ Debug-APK0.19.0/Code23 gebaut und geprüft: ARM64/Landscape/GL Compatibility,
 v2/v3-Signatur,16KB-Alignment, Manifest und Boss-Payload. Gleiches Update-Zertifikat.
 SHA256:69d14f75ccc1ad7f9cd25a0269f57ec6da4cac6a593b95de60df1eed4ce46266.
 Quell-ZIP frisch ohne Importcache importiert: gesamte Suite erneut grün, Laufzeit-
-quellen bytegleich. Nächste technische Aktion: GitHub-Downloads nach Push vollständig
-per SHA256 prüfen und Prüfprotokoll veröffentlichen. Danach Android-Geräteabnahme.
+quellen bytegleich. APK und Quell-ZIP öffentlich vollständig ohne Anmeldung geladen
+und beide SHA256 geprüft; Protokoll ../Downloads/VERIFICATION-v0.19.txt. Der Stand
+im Quellarchiv dokumentiert die Abnahme vor der Auslieferung, dieses externe Protokoll
+die anschließende Veröffentlichung. Nächste Aktion: Android-Geräteabnahme.
 
 Offen: echte Updateinstallation, Multitouch/Audio auf dem Gerät, Geräte-FPS/Thermik
 und menschliche Boss-/Beutebalance. Weltkarte/lineare Arenenfreigabe bleibt separater
