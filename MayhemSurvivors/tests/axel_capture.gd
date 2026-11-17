@@ -9,7 +9,7 @@ func capture(id:String):
 func fresh():
 	g.selected=0;g.arena_id='scrapyard';g.run_mode='campaign';g.start_run();g.wave_number=5;g.prepare_wave()
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	fresh();await capture('intro')
 	g.begin_wave();g.spawn_clock=999;g.camera.reset_smoothing();g.camera.force_update_scroll();var e:Dictionary=g.breaker.actor();e.pos=g.player.position+Vector2(290,0)

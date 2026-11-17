@@ -8,7 +8,7 @@ func check(ok:bool,text:String):
 	else:failed+=1;push_error('FAIL '+text)
 func near(a:float,b:float) -> bool:return absf(a-b)<.01
 func fresh(arena:String='scrapyard',wave:int=6,hero:int=3):
-	g.test_mode=true;g.selected=hero;g.arena_id=arena;g.saved.wins=1;g.start_run();g.wave_number=wave;g.begin_wave();g.spawn_clock=999;g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll();g.crit=0
+	g.test_mode=true;g.selected=hero;g.arena_id=arena;g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.start_run();g.wave_number=wave;g.begin_wave();g.spawn_clock=999;g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll();g.crit=0
 func spawn() -> Dictionary:
 	g.spawn_enemy('ravox');var e=g.enemies.back();e.pos=g.player.position+Vector2(250,0);e.ravox_clock=0;return e
 func run():

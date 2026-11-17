@@ -224,7 +224,7 @@ func run():
 	check(loaded.settings.haptics=='OFF' and loaded.settings.damage_numbers,'Malformed new settings sanitized')
 	DirAccess.remove_absolute(path)
 	for arena in ['scrapyard','reactor']:
-		g.saved.wins=1
+		g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 		g.arena_id=arena
 		for hero in range(3):
 			setup(hero)

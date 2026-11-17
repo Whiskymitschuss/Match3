@@ -102,7 +102,7 @@ func run():
 	g.hero_ability.activate()
 	check(g.vfx.particles.any(func(p):return p.active and p.kind=='wisp'),'Shade ability emits violet wisps')
 	g.vfx.clear()
-	g.saved.wins=1
+	g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	g.arena_id='reactor';g.start_run();g.begin_wave()
 	g.spawn_enemy('boss')
 	g.saved.settings.splatter=true

@@ -20,7 +20,7 @@ func run():
 	g.character_select()
 	g.arena_select()
 	check(g.state==g.State.ARENA_SELECT,'Character to arena selection connected')
-	g.saved.wins=1
+	g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	g.saved.kills=1000
 	Arenas.sync(g.saved)
 	check(Arenas.unlocked(g.saved,'reactor') and g.saved.unlocked_styles.has('gold') and g.saved.unlocked_styles.has('mayhem'),'Existing win and kills unlock arena and cosmetic rewards')

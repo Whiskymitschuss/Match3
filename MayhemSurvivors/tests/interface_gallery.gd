@@ -8,7 +8,7 @@ func capture(name:String):
 	root.get_texture().get_image().save_png('res://tests/interface_'+name+'.png');print('INTERFACE FRAME ',name)
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
-	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;g.saved.games=1;g.saved.highest_wave=10;g.saved.kills=520;g.saved.time=548;g.saved.settings.shop_help_seen=true
+	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.saved.games=1;g.saved.highest_wave=10;g.saved.kills=520;g.saved.time=548;g.saved.settings.shop_help_seen=true
 	g.statistics();await capture('statistics')
 	g.recent_runs_screen();await capture('history_empty')
 	g.challenges_screen();await capture('challenges')

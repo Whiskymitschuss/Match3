@@ -8,7 +8,7 @@ func run():
 	for hero in range(6):
 		for arena in g.Arenas.IDS:
 			for spell in ['heal_pulse','frost_nova','phase_blink']:
-				g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
+				g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 				for id in g.Collection.catalog().items:g.saved.collection.levels[id]=5 if g.Collection.catalog().items[id].ranked else 1
 				for id in ['reactor_plate','neon_soles','neon_visor','heart_module',spell,'cyan_core']:g.Collection.equip(g.saved,g.characters[hero].id,id)
 				g.selected=hero;g.selected_difficulty='mayhem';g.arena_id=arena;g.run_mode='endless';g.start_run();g.wave_number=31;g.begin_wave();g.rng.seed=180;g.hp=100000;g.max_hp=100000;g.weapons[0].level=5;g.weapons[0].spec=g.Specs.choices(g.weapons[0].id)[0]

@@ -1,0 +1,6 @@
+{
+  "scrapyard": {"color":"#FFAA43", "coins":40, "parts":20, "tickets":{"crew":1}},
+  "reactor": {"color":"#2EDB9C", "coins":60, "parts":35, "tickets":{"arsenal":1}},
+  "docks": {"color":"#36D7F4", "coins":80, "parts":50, "tickets":{"style":1}},
+  "foundry": {"color":"#FF654B", "coins":100, "parts":70, "tickets":{"crew":1,"arsenal":1}}
+}

@@ -10,8 +10,8 @@ const TRANSITIONS = {
 	State.LEVEL_UP:[State.MAIN_MENU,State.LEVEL_UP,State.COMBAT,State.SHOP],
 	State.SHOP:[State.MAIN_MENU,State.WAVE_PREPARATION],
 	State.PAUSED:[State.MAIN_MENU,State.COMBAT,State.GAME_OVER],
-	State.VICTORY:[State.MAIN_MENU,State.CHARACTER_SELECT,State.WAVE_PREPARATION],
-	State.GAME_OVER:[State.MAIN_MENU,State.CHARACTER_SELECT,State.WAVE_PREPARATION]
+	State.VICTORY:[State.MAIN_MENU,State.CHARACTER_SELECT,State.WAVE_PREPARATION,State.ARENA_SELECT],
+	State.GAME_OVER:[State.MAIN_MENU,State.CHARACTER_SELECT,State.WAVE_PREPARATION,State.ARENA_SELECT]
 }
 static func permits(from: int, to: int) -> bool:
 	return from==to or TRANSITIONS.get(from,[]).has(to)

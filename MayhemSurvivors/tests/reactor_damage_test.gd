@@ -7,7 +7,7 @@ func run():
 	root.add_child(g)
 	g.set_physics_process(false)
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
-	g.saved.wins=1
+	g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	g.arena_id='reactor'
 	var failed=false
 	for hero in range(3):

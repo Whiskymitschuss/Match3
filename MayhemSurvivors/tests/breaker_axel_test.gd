@@ -23,7 +23,7 @@ func choose_levels():
 		buttons[0].pressed.emit();limit+=1
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
-	var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
+	var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	for arena in g.Arenas.IDS:
 		g.arena_id=arena

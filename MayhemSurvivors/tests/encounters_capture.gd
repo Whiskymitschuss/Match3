@@ -12,7 +12,7 @@ func setup(arena:String,hero:int,wave:int):
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
-	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;g.saved.settings.shop_help_seen=true
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.saved.settings.shop_help_seen=true
 	setup('scrapyard',0,4);g.spawn_enemy('grunt');var e=g.enemies.back();e.pos=g.player.position+Vector2(-230,-45);e.elite_clock=0;g.encounters.movement(e,Vector2.RIGHT,.01);e.elite_clock=.6
 	await capture('ram_warning')
 	setup('reactor',1,4);g.spawn_enemy('grunt');e=g.enemies.back();e.pos=g.player.position+Vector2(-170,-20);e.elite_clock=0;g.encounters.movement(e,Vector2.RIGHT,.01);e.elite_clock=1.0

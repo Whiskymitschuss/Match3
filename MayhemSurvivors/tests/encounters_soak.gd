@@ -2,7 +2,7 @@ extends SceneTree
 func _initialize():call_deferred('run')
 func run():
 	var g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
-	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
+	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	var peaks={'enemies':0,'hazards':0,'shots':0,'rewards':0}
 	for arena in ['scrapyard','reactor']:
 		for hero in range(3):

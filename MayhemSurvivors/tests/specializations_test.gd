@@ -204,7 +204,7 @@ func run():
 		var weapon=Specs.all()[id].weapon
 		for arena in ['scrapyard','reactor']:
 			g.arena_id=arena
-			g.saved.wins=1
+			g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 			setup(weapon,id)
 			g.wave_number=10
 			g.begin_wave()

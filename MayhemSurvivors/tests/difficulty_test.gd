@@ -12,7 +12,7 @@ func near(a:float,b:float) -> bool:return absf(a-b)<.001
 func start(id:String,arena:String='scrapyard',mode:String='campaign',wave:int=1):
 	g.selected=1;g.selected_difficulty=id;g.arena_id=arena;g.run_mode=mode;g.start_run();g.wave_number=wave;g.begin_wave();g.spawn_clock=999;g.crit=0
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	start('normal');g.spawn_enemy('grunt');var normal=g.enemies[0].duplicate();var interval=g.rules.current_wave().interval
 	check(normal.hp==40 and normal.speed==105 and normal.damage==8,'Normal exact opening baseline retained')

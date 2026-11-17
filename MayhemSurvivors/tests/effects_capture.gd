@@ -19,7 +19,7 @@ func run():
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.saved=game.default_save();preload('res://tests/legacy_collection.gd').unlock_all(game.saved)
-	game.saved.wins=1
+	game.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(game.saved)
 	setup(1)
 	game.crit=.2
 	game.rng.seed=51

@@ -10,7 +10,7 @@ func run():
 	for hero in range(6):
 		for arena in g.Arenas.IDS:
 			for difficulty in g.Difficulty.IDS:
-				g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;g.saved.settings.quality=['LOW','MEDIUM','HIGH'][hero%3]
+				g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.saved.settings.quality=['LOW','MEDIUM','HIGH'][hero%3]
 				g.selected=hero;g.selected_difficulty=difficulty;g.arena_id=arena;g.run_mode='endless';g.start_run();g.wave_number=15;g.begin_wave();g.rng.seed=190
 				g.hp=100000;g.max_hp=100000;g.level=10;g.weapons[0].level=3
 				var e:Dictionary=g.breaker.actor();e.hp=100000;e.max_hp=100000;e.pos=g.player.position+Vector2(250,0)

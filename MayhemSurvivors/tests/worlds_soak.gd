@@ -4,7 +4,7 @@ var steps=0
 var peak=0
 func _initialize():call_deferred('run')
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;g.saved.kills=500;g.saved.settings.tutorial_complete=true
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.saved.kills=500;g.saved.settings.tutorial_complete=true
 	for arena in g.Arenas.IDS:
 		for hero in range(5):
 			g.selected=hero;g.arena_id=arena;g.run_mode='endless';g.start_run();g.wave_number=31;g.begin_wave();g.remaining=60;g.hp=100000;g.max_hp=100000;g.weapons[0].level=5;g.weapons[0].spec=g.Specs.choices(g.weapons[0].id)[0];g.saved.settings.quality=['LOW','MEDIUM','HIGH'][hero%3];g.rng.seed=140

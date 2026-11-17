@@ -1,3 +1,50 @@
+# Testbericht0.20.0 — 2026-11-17
+
+Godot4.6.3 stable:27 Suiten /2.256 Assertions /0 Fehler und beide historischen Traces
+bestanden. Neue Suite112 Checks: echte Freischaltkette, neue Profile und Reload,
+ungültige Ids/Duplikate, kein Unlock durch Niederlage/Endlos/Teilwelle/Axel, einmaliger
+Erstabschluss über alle Schwierigkeiten, exakte Gesamtbelohnungen und Größenlimits.
+
+Migration: explizite alte Freigaben, nachweislich besuchte Arenen und echte
+Arena-/Schwierigkeits-Siege erhalten; globale Alt-Victory v1/v2 zu Schrottplatz,
+keine erfundenen Siege durch Endlosrekorde oder bloße Freiverfügbarkeit. Original-
+Backup geprüft, Coins/Teile/Helden/Waffenränge erhalten. Abgeholte Geschenke kehren
+nach Reload nicht zurück. Tickets verändern beim Claim keinen Case-RNG-Seed.
+
+Integration: echte Auswahl-/Claim-/Retrybuttons und synthetische Touch-Wischgeste,
+Produktions-Zustandsmaschine von Karte → Run → finalem Boss → Victory → Belohnung.
+Alle vier Boss-Victories öffnen den tatsächlichen Weg; keine Unlock-Sonderregel für
+test_mode. Belohnung → gespeicherter Crew-Case → neuer Fighter inklusive Neustartbeleg.
+Mehrfachklick, Claim im Kampf/Pause/Shop/Level/Preparation und direkte Lockumgehung
+abgewiesen. FileAccess-Öffnungs- UND Renamefehler rollen den gesamten Claim zurück.
+Fehlgeschlagener Finish-Save bleibt sichtbar und Retry speichert ursprünglichen
+Run/Anspruch genau einmal. Tatsächlicher Axel-Sieg/Endboss-Timeout geprüft.
+
+Reproduzierbare Budgetchecks: erster Sieg ohne Killbonus finanziert mit Erstgeschenk
+einen Crew-Case und den ersten Hammer-Rang.175 Erstabschluss-Teile finanzieren Rang4,
+reichen nicht ungeprüft für Rang5. Keine menschliche Balancebewertung behauptet.
+Alte Kampftests nutzen explizite legacy_worlds-Fixtures für früher freien Arenenzugang;
+die neue Suite testet echte Locks. Meisterschaftsmeldung wurde beim Gesamtlauf als
+fehlend erkannt und ergänzt. Finale vollständige Läufe ohne Fehler, Referenzdateien
+beider Traces unverändert. Kampfsimulation erhält keinen neuen Gameplay-RNG-Aufruf.
+
+12 native GL-Compatibility-Ansichten: frische/gesperrte Welt, Währungen, Victory,
+Geschenk/abgeholt/nächste Welt, alle Welten, Endlosrekord, Save-Retry,2340×1080 und
+1920×1440. Touchgroße Karten/CTA, begrenztes Layout und Reduced-Motion geprüft.
+Software-GL unter Linux, Dummy-Audio; erwartete VSync-Warnung, keine Script-/
+Ressourcenfehler. Kein Android-Geräte-/FPS-/Thermik- oder menschlicher Balancetest.
+Keine erneute Langzeit-Kampfprobe für reine Menü-/Metaprogression; bestehende
+Kampfchecks/Traces und Axel-/Garage-Regressionen vollständig bestanden.
+
+Quell-ZIP zusätzlich frisch ohne Godot-Importcache entpackt und importiert. Alle27
+Suiten /2.256 Prüfungen und beide historischen Traces erneut bestanden. Laufzeit-
+skripte, Szenen, Daten und Assets mit dem getesteten Archiv bytegleich. Logs:
+tests/results/v0.20-clean-import.log und v0.20-clean-tests.log.
+
+---
+
+## Historischer Stand vor0.20
+
 # Testbericht0.19.0 — 2026-11-17
 
 Godot4.6.3 stable:26 Suiten /2.144 Assertions /0 Fehler und beide historischen Traces

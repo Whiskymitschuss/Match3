@@ -6,6 +6,7 @@ const RunRecords = preload('res://scripts/progression/run_records.gd')
 const Unlocks=preload('res://scripts/progression/hero_unlocks.gd')
 const Mastery = preload('res://scripts/progression/character_mastery.gd')
 const CharacterArt = preload('res://scripts/ui/character_art.gd')
+const WorldProgress=preload('res://scripts/progression/world_progress.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 var menu_motion=preload('res://scripts/mobile/menu_motion.gd').new(self)
 const Difficulty=preload('res://scripts/gameplay/difficulty.gd')
@@ -27,6 +28,7 @@ var equipped_spell
 var run_gear:Dictionary={}
 var run_loadout:Dictionary={}
 var studio_reward=0
+var world_map
 var spell_button
 var run_mode='campaign'
 var rules
@@ -173,6 +175,7 @@ func _ready():
 	load_save()
 	reward_hub=preload('res://scripts/ui/reward_hub.gd').new(self)
 	garage=preload('res://scripts/ui/garage_hub.gd').new(self)
+	world_map=preload('res://scripts/ui/world_map.gd').new(self)
 	equipped_spell=preload('res://scripts/gameplay/equipped_spell.gd').new(self)
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
@@ -615,10 +618,10 @@ func make_hud():
 
 func refresh_hud():
 	if not is_instance_valid(hud): return
-	var info = 'HP %d / %d    LV %d    XP %d / %d\nWELLE %d / 10    %02d:%02d    COINS %d' % [ceili(hp),max_hp,level,xp,required_xp(),wave_number,int(remaining)/60,int(remaining)%60,coins]
+	var info = 'HP %d / %d    LV %d    XP %d / %d\nWELLE %d / 10    %02d:%02d    RUN-COINS %d' % [ceili(hp),max_hp,level,xp,required_xp(),wave_number,int(remaining)/60,int(remaining)%60,coins]
 	if run_mode=='endless':info=info.replace('WELLE %d / 10' % wave_number,'WELLE %d / ENDLOS' % wave_number)
 	if run_mode!='tutorial':info='['+Difficulty.definition(run_difficulty).name+'] '+info
-	if run_mode=='tutorial':info=info.split('\n')[0]+'\nTUTORIAL   COINS %d' % coins
+	if run_mode=='tutorial':info=info.split('\n')[0]+'\nTUTORIAL   RUN-COINS %d' % coins
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
 	for e in enemies:
@@ -1142,11 +1145,12 @@ func finish(victory: bool):
 	var previous_rewards=Mastery.rewards(saved,characters[selected].id)
 	var improvements=RunRecords.add_run(saved,{'difficulty':run_difficulty,'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'elite_kills':encounters.elite_kills}) if run_mode=='campaign' else []
 	if run_mode=='endless':preload('res://scripts/progression/endless_records.gd').add(saved,arena_id,wave_number,kills,run_time)
+	var world_first_clear=WorldProgress.complete(saved,arena_id,run_mode,victory,wave_number)
 	var unlocked=Arenas.sync(saved)
 	if Unlocks.sync(saved):unlocked.append('KICKSY')
 	for reward in Mastery.rewards(saved,characters[selected].id):
 		if not previous_rewards.has(reward):unlocked.append(reward)
-	save_game()
+	world_map.persist()
 	cleanup()
 	encounters.end_run()
 	sound('victory' if victory else 'defeat')
@@ -1158,18 +1162,27 @@ func finish(victory: bool):
 		celebration.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		ui_root.add_child(celebration)
 	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
-	var summary=label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d (Eliten %d)     Level %d\nSchaden %d     Gesammelte Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,encounters.elite_kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
+	var summary=label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d (Eliten %d)     Level %d\nSchaden %d     Run-Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,encounters.elite_kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
 	if run_mode=='endless':summary.text=summary.text.replace(' / 10',' / ENDLOS')
 	summary.text=UISkin.wrap_text(summary.text,UISkin.BODY,33,1120)
 	if not run_items.owned.is_empty():
 		var items_label=label_at('GEGENSTÄNDE: '+', '.join(run_items.owned.map(func(id):return run_items.data[id].name)),Vector2(110,565),20,TEAL)
 		items_label.text=UISkin.wrap_text(items_label.text,UISkin.BODY,20,1120)
 	if not improvements.is_empty() or difficulty_best: label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
-	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
+	var world_message=''
+	if world_first_clear:
+		var next_world=WorldProgress.next_world(arena_id)
+		world_message=('NEUE WELT: '+Arenas.definition(next_world).name if next_world!='' else 'ALLE VIER WELTEN GEMEISTERT!')+' / ERSTABSCHLUSS-BELOHNUNG AUF DER WELTKARTE'
+	if not unlocked.is_empty():world_message+=(' / ' if world_message!='' else '')+'FREIGESCHALTET: '+', '.join(unlocked)
+	if world_map.error!='':world_message='FORTSCHRITT NOCH NICHT GESPEICHERT / AUF DER WELTKARTE ERNEUT VERSUCHEN'
+	if world_message!='':
+		var message=label_at(UISkin.wrap_text(world_message,UISkin.BODY,20,1110),Vector2(110,680),20,TEAL if world_map.error=='' else Color('#FF6D7B'))
+		message.set_deferred('size',Vector2(1120,60))
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected))
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
-	label_at('+%d STUDIO-COINS / dauerhafte Sammlung' % studio_reward,Vector2(110,900),28,TEAL)
+	label_at('+%d STUDIO-COINS\nDauerhaft für deine Sammlung' % studio_reward,Vector2(110,900),25,TEAL)
+	button('WELTKARTE / BELOHNUNG',Vector2(690,900),Vector2(500,95),func():world_map.persist();arena_select(Arenas.IDS.find(arena_id)))
 	button('CASES & GARAGE',Vector2(1230,900),Vector2(500,95),func():main_menu();garage.cases())
 
 func add_effect(pos: Vector2, color: Color, radius: float, text: String):
@@ -1270,23 +1283,7 @@ func choose_arena(id: String) -> bool:
 	return true
 func arena_select(index:int=-1):
 	if index>=0:arena_cursor=posmod(index,Arenas.IDS.size())
-	change_state(State.ARENA_SELECT)
-	backdrop('DEINE ARENA',characters[selected].name+' / '+('ENDLOS' if run_mode=='endless' else 'KAMPAGNE'))
-	selection_swipe.set_context('arena')
-	var id=Arenas.IDS[arena_cursor];var d=Arenas.definition(id)
-	var art=Control.new();art.set_script(preload('res://scripts/ui/arena_preview.gd'));art.texture=load('res://assets/environments/'+d.floor+'.png');art.position=Vector2(100,260);art.size=Vector2(950,530);art.clip_contents=true;art.mouse_filter=Control.MOUSE_FILTER_IGNORE;ui_root.add_child(art)
-	label_at('WISCHEN / %d VON %d' % [arena_cursor+1,Arenas.IDS.size()],Vector2(120,835),30,TEAL)
-	label_at(d.name,Vector2(1100,285),45,TEAL)
-	var info=label_at(d.description+'\n\nBOSS: '+d.boss_name+'\n\n'+('Axel ab Welle 5, dann alle 10 Wellen. Arenabosse alle 10 Wellen.' if run_mode=='endless' else '10 Wellen. Breaker Axel in Welle 5. Arenaboss in Welle 10.'),Vector2(1100,385),29)
-	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(690,330))
-	var available=Arenas.unlocked(saved,id)
-	var enter=button('ARENA BETRETEN' if available else 'ERSTER SIEG BENÖTIGT',Vector2(1100,800),Vector2(690,115),func():choose_arena(id),Color('#147f81'))
-	enter.disabled=not available
-	button('SCHWIERIGKEIT: '+Difficulty.definition(selected_difficulty).name,Vector2(1010,75),Vector2(800,85),func():difficulty_select(arena_cursor))
-	button('ZURÜCK',Vector2(100,965),Vector2(350,85),character_select)
-	button('VORHERIGE',Vector2(490,965),Vector2(280,85),func():selection_shift('arena',-1))
-	button('NÄCHSTE',Vector2(810,965),Vector2(280,85),func():selection_shift('arena',1))
-	button('MODUS: '+('ENDLOS' if run_mode=='endless' else 'KAMPAGNE'),Vector2(1130,965),Vector2(650,85),func():run_mode='campaign' if run_mode=='endless' else 'endless';arena_select())
+	world_map.show()
 
 func challenges_screen():
 	backdrop('ZIELE & STILE','Nur Optik: Alle Ringe behalten die gleichen Kampfwerte.')

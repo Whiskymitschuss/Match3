@@ -7,7 +7,7 @@ func run():
 	g.set_physics_process(false)
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	if OS.get_cmdline_user_args().has('--reactor'):
-		g.saved.wins=1
+		g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 		g.arena_id='reactor'
 	g.selected=1
 	g.start_run()

@@ -10,7 +10,7 @@ func run():
 	g.ravox.enabled=false # Historical fixture excludes new 0.13 enemy; dedicated tests cover Ravox.
 	g.encounters.enabled=false # Frozen historical combat rules; 0.10 tested separately.
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
-	g.saved.wins=1
+	g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	var trace:Array=[]
 	var scenarios:Array=[]
 	for arena in ['scrapyard','reactor']:

@@ -1,3 +1,24 @@
+# 0.20.0 Alpha — 2026-11-17
+
+- Weltkarte mit vier echten Arenenvorschauen und eigenen Metall-Emblemen, Touchkarten,
+  Wischwahl, subtiler Vorschau-Bewegung, bestehenden Neigungs-/Ruhe-Einstellungen.
+- Neue Profile: Schrottplatz zuerst; Kampagnensieg in10 öffnet Reaktorzone, danach
+  Neonhafen und Glutwerk. Endlos nutzt freigeschaltete Arenen ohne Kampagnenfreigaben.
+- Einmalige Erstbelohnungen mit40/60/80/100 Studio-Coins,20/35/50/70 Teilen und
+  insgesamt fünf Case-Tickets. Atomarer Claim mit vollständigem Rollback/Retry.
+- Eigene versionierte Fortschrittssektion und pre_world_map-Backup. Explizite alte
+  Freigaben, bereits gespielte Arenen und echte Siege erhalten; alte Siege nachträglich
+  genau einmal belohnbar. Unbespielte Arenen folgen der Freischaltkette.
+- Ergebnis führt direkt zum verdienten Geschenk. Persönliche Kampagnen-/Endlosrekorde,
+  goldene Abholpunkte, Währungshilfe, verständliche Run-/Studio-Coin-Bezeichnungen.
+- Fehlgeschlagene Run-End-Speicherung kann auf der Weltkarte erneut versucht werden.
+  Bestehende Meisterschaftsmeldungen bleiben neben neuer Weltmeldung sichtbar.
+-27 Suiten /2.256 Prüfungen;112 neue Checks, beide alten Traces unverändert grün.
+
+---
+
+## Historischer Stand vor0.20
+
 # 0.19.0 Alpha — 2026-11-17
 
 - Breaker Axel als eigenständiger Boss in Welle5 aller Arenen, wiederkehrend im Endlosmodus.
