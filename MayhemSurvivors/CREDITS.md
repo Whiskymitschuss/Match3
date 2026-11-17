@@ -1,3 +1,16 @@
+# Ergänzungen 0.17
+
+Steelfist-Grafik nach der vom Nutzer bereitgestellten Figurenreferenz als eigener
+transparenter Atlas erzeugt: Illustration, armlose Spielbasis, Handschuh, Schlüssel,
+Pumpenzange. Eigene SVGs für Rohrbruch-Chaos, Druckbrecher und Ratschenrausch.
+Eigene Wasser-/Dampf-/Schlaganimationen und synthetische Sounds steel_swing,
+ability_pipe_burst, steel_regen (tools/generate_steelfist_audio.py, keine Fremdsamples).
+Name/Timo-Charakterprofil und Kampfspruch vom Nutzer. Keine neuen Plugins/Fremdpakete.
+
+---
+
+## Historischer Stand vor 0.17
+
 # Ergänzungen 0.16
 
 Eigene generierte Cartoon-Grafik für Bombling/Longshot/Hexling in enemy_pack.png.

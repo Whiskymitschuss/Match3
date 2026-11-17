@@ -14,7 +14,8 @@ func run():
 	var trace:Array=[]
 	var scenarios:Array=[]
 	for arena in ['scrapyard','reactor']:
-		for id in g.Specs.all().keys().filter(func(key):return g.Specs.all()[key].weapon not in ['mop','bomb']):scenarios.append({'arena':arena,'spec':id,'boss':false})
+		# The reference contains only the original five weapon families.
+		for id in g.Specs.all().keys().filter(func(key):return g.Specs.all()[key].weapon in ['hammer','blaster','splitgun','arc','orbit']):scenarios.append({'arena':arena,'spec':id,'boss':false})
 		for id in ['quake','piercer','swift']:scenarios.append({'arena':arena,'spec':id,'boss':true})
 	var args=OS.get_cmdline_user_args()
 	if args.has('--low'):g.saved.settings.quality='LOW'

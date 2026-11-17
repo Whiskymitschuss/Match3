@@ -5,7 +5,7 @@ static func kills(saved:Dictionary) -> int:
 		if r is Dictionary:total+=int(r.get('kills',0))
 	return total
 static func available(saved:Dictionary,id:String) -> bool:
-	return id in ['bruiser','sparky','shade','twinkle'] or (id=='kicksy' and saved.get('settings',{}).get('tutorial_complete',false) and kills(saved)>=500)
+	return id in ['bruiser','sparky','shade','twinkle','steelfist'] or (id=='kicksy' and saved.get('settings',{}).get('tutorial_complete',false) and kills(saved)>=500)
 static func sync(saved:Dictionary) -> bool:
 	if not available(saved,'kicksy') or saved.unlocked.has('kicksy'):return false
 	saved.unlocked.append('kicksy');return true

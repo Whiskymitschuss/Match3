@@ -1,2 +1,4 @@
 RF Worlds — Mayhem Survivors audio
 All effects and both musical compositions are original procedural creations for this project. No external samples or recordings. Generator: tools/generate_presentation_audio.py (numpy/scipy). Earlier generators remain for provenance; running them overwrites older cue versions. Use the presentation generator to regenerate 0.8 audio.
+
+Steelfist 0.17: steel_swing, ability_pipe_burst and steel_regen are original deterministic syntheses, no external samples. Reproduce with tools/generate_steelfist_audio.py (Python standard library).

@@ -6,6 +6,9 @@ static func cell(coords: Vector2) -> Rect2:
 	var step = Vector2(TEXTURE.get_size())/3.0
 	return Rect2(coords*step,step)
 static func weapon(id: String) -> Rect2:
+	if id in ['tools','wrench','pliers']:
+		var size=Vector2(preload('res://scripts/ui/character_art.gd').STEELFIST.get_size())
+		return Rect2(size*Vector2(.75 if id=='pliers' else .5,.5),size*Vector2(.5 if id=='tools' else .25,.5))
 	if id=='bomb':
 		var size=Vector2(preload('res://scripts/ui/character_art.gd').KICKSY.get_size())
 		return Rect2(size*.5,size*.5)
@@ -16,8 +19,10 @@ static func weapon(id: String) -> Rect2:
 static func projectile(skin: int, hostile: bool = false) -> Rect2:
 	return cell(Vector2(2,1) if hostile else Vector2(clampi(skin,0,2),2))
 static func color_for(skin: int) -> Color:
+	if skin==5:return Color('#5DDCFF')
 	return COLORS[clampi(skin,0,2)]
 
 static func weapon_texture(id:String) -> Texture2D:
+	if id in ['tools','wrench','pliers']:return preload('res://scripts/ui/character_art.gd').STEELFIST
 	if id=='bomb':return preload('res://scripts/ui/character_art.gd').KICKSY
 	return preload('res://scripts/ui/character_art.gd').TWINKLE if id=='mop' else TEXTURE

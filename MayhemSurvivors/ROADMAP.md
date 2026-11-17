@@ -1,3 +1,16 @@
+# Stand nach0.17
+
+Steelfist vollständig integriert und technisch geprüft. Nächste Abnahme: als Android-
+Update installieren, sechsten Helden wählen, Nahkampf/Regeneration/Ultimate gegen
+normale Wellen und Boss testen; Kauf/Entwicklung/Statistik mit vorhandenem Profil prüfen.
+Balancing danach anhand echter Runs abstimmen, insbesondere208HP und langsames Tempo.
+Die Geräteprüfung kann aus den Headless-/Desktop-Prüfungen nicht abgeleitet werden.
+Aktive Run-Wiederherstellung bleibt wie zuvor außerhalb dieses Umfangs.
+
+---
+
+## Historischer Stand vor 0.17
+
 # Stand nach 0.16
 
 Wischwahl, Gegnerpack, vier Arenenereignisse, Tages-/Wochenaufgaben, kostenloser Pass

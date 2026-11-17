@@ -1,3 +1,18 @@
+# 0.17.0 Alpha — 2026-11-17
+
+- STEELFIST / Timo als sechster sofort spielbarer Tank mit eigener Illustration und Rig.
+- Werkzeugduo mit zwei echten Werkzeugen, 25% Nahkampfbonus und jedem vierten Doppelschlag.
+- 208 Start-HP aus160+30%, 10% Schadensreduktion, 2% Max-HP Regeneration je5s.
+- Rohrbruch-Chaos: Fläche, Rückstoß,2s Stun und begrenzter Kill-Tempobonus; 35s Cooldown.
+- Werkzeuglevel1–5, Druckbrecher/Ratschenrausch mit echter Werkstattintegration.
+- Eigene Icons und drei Sounds; HUD, Statistik, Meisterschaften, Verlauf und Speicher ergänzt.
+- Sechs Helden in den Reitern ohne Überlauf; vorherige Charakterwerte unverändert.
+- 72 neue Hero-Checks, Gesamt1.747 Assertions /23 Suites, beide historischen Traces grün.
+
+---
+
+## Historischer Stand vor 0.17
+
 # 0.16.0 Alpha — 2026-11-17
 
 - Große Helden-/Arena-Karten mit horizontalen Wischgesten und Pfeilalternative.

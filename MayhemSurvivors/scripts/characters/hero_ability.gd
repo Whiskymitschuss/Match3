@@ -36,6 +36,8 @@ func activate() -> bool:
 	game.sound('ability_'+d.id)
 	game.vfx.ability(d.id,game.player.position)
 	match d.id:
+		'pipe_burst':
+			game.steelfist.activate()
 		'shockwave':
 			rings.append({'pos':game.player.position,'radius':d.radius,'age':0.0,'life':.45,'color':Color(d.color)})
 			var origin:Vector2=game.player.position

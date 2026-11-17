@@ -126,5 +126,22 @@
     "description": "Explosionen hinterlassen drei Sekunden Brandfelder. Überlappend gilt das stärkste Feld.",
     "color": "#FF4757",
     "power": 1
+  },
+  "pressure_breaker": {
+    "weapon": "tools",
+    "name": "DRUCKBRECHER",
+    "description": "+20 % Schaden und +15 % Reichweite. 15 % längere Abklingzeit. Jeder vierte Schlag bleibt ein Doppelangriff.",
+    "color": "#5DDCFF",
+    "power": 1.2,
+    "reach": 1.15,
+    "cooldown": 1.15
+  },
+  "ratchet_rush": {
+    "weapon": "tools",
+    "name": "RATSCHENRAUSCH",
+    "description": "30 % kürzere Abklingzeit bei 15 % weniger Schaden. Jeder vierte Schlag trifft weiterhin doppelt.",
+    "color": "#FF9F1C",
+    "power": 0.85,
+    "cooldown": 0.7
   }
 }

@@ -1,3 +1,31 @@
+# 0.17.0 — STEELFIST — implementiert und geprüft
+
+Branch feature/steelfist-v0.17, Basis0.16. Timo als sechster sofort wählbarer Held mit
+eigener Illustration, armloser Spielbasis, Handschuh und zwei Werkzeugen. 160 Basis-HP
+plus30%=208 Start-HP; 25 Basisschaden plus25% Nahkampf; 0,8 Angriffe/s. Regeneration,
+10% Schadensreduktion, vierter Doppelschlag und Rohrbruch-Chaos mit2s Stun auch für
+Bosse und begrenztem Tempobonus. Zwei echte Level5-Entwicklungen. Auswahl/Wischkarussell,
+HUD, Werkstatt, Statistik, Meisterschaften und Speicherung integriert. Drei eigene
+Sounds. Bestehende Charakterwerte und0.16-Inhalte/Profile erhalten.
+
+23 Suites /1.747 Assertions und beide historischen Traces grün. Quell-ZIP frisch ohne
+Importcache importiert und vollständige Suite erneut bestanden. 72 Hero-Checks.
+Native GUI-Prüfung: acht fehlerfreie Vorgabeszenen, Werkzeug-HUD korrigiert. Historische
+Fixtures explizit auf Originalwaffen beschränkt, neue Pfade separat geprüft. Lastprobe
+43.200 Schritte /vier Arenen ×drei Stufen ×zwei Entwicklungen /Endlos31, max100 Gegner,
+keine NaNs, Buff-/Effektcaps eingehalten. APK exportiert/signiert, Alignment/Manifest/
+ARM64/Payload geprüft. Alle Laufzeitquellen/Assets/Szenen/Tests/Berichte enthalten.
+Keine offenen Implementierungsstubs. GitHub-Auslieferung mit Download-/Hashprüfung.
+
+Nächste fachliche Abnahme: Android-Update mit vorhandenem Profil, Steelfist auswählen,
+Regeneration/Doppelschlag/Ultimate gegen Wellen und Boss testen. Menschliches Balancing
+(208HP/165Tempo), echte Touchbedienung und Geräte-FPS/Thermik offen. Keine physische
+Installation behauptet. Aktive Run-Wiederherstellung bleibt außerhalb dieses Umfangs.
+
+---
+
+## Historischer Stand vor 0.17
+
 # 0.16.0 — Wischwahl / Gegner / Aufgaben — implementiert und geprüft
 
 Branch feature/live-rewards-v0.16. Einzelkarten für fünf Helden und vier Arenen mit

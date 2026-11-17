@@ -1,3 +1,39 @@
+# Testbericht 0.17.0 — 2026-11-17
+
+Godot4.6.3 stable: 23 Suites /1.747 Assertions /0 Fehler. Beide historischen Traces grün.
+72 Steelfist-Checks: echter Auswahlbutton/Karussell, freie Verfügbarkeit, Klasse und
+Upgradefilter, exakte Startwerte und Werkzeug-Formeln, vierteilige Schadensfolge mit
+Halbkreis/Rückstoß, genau zwei Rig-Griffpunkte, einmalige Todesbelohnung, Rüstung/DR/
+Kontaktcooldown, Regeneration nach5s/langer Frame/Max-HP-Upgrades/Overheal/Tod.
+Echte Ultimate: Flächenschaden, Stun, Cooldown, temporärer Tempofaktor, Killverlängerung/
+Cap/Ablauf und tatsächlicher Ultimate-Kill. Pausen-/Level-/Shop-Gates; Ravox/Longshot/
+Spucker-Unterbrechung; alle vier Bosscontroller werden betäubt und erholen sich.
+Beide Werkzeugentwicklungen mit tatsächlichem Schaden/Cooldown, echter Shopupgrade-
+und Entwicklungsablauf, Neustart, Resultate, JSON-Roundtrip und0.16-Profilergänzung,
+Erhalt alter Statistiken/Wallet, Statistik-Reitergrenzen und Audioressourcen.
+
+Bestehende Integration-/Ability-/Twinkle-/Spezialisierungsfixtures um sechsten Helden
+und16 Entwicklungen ergänzt. Generische Schadensprüfung bleibt mit Nicht-Tank-Fixture;
+die neue Schadensreduktion wird separat geprüft. Nativer Capture fand einen fehlenden
+Werkzeug-HUD-Schlüssel; korrigiert, danach alle acht Ansichten fehlerfrei neu erzeugt.
+Der Effekte-Referenzlauf beschränkt sich ausdrücklich auf seine historischen fünf
+Waffenfamilien; neue Werkzeuge werden separat getestet. Keine Referenzwerte überschrieben.
+
+steelfist_soak.gd: 43.200 feste Schritte /720 simulierte Sekunden, vier Arenen × drei
+Stufen × zwei Entwicklungen bei Endlos31, künstlicheHP und vorgegebener Pilot. Max100
+Gegner; Positionen/HP endlich, Buff≤10s/Verlängerung≤5s, Sweep≤4/Pressure≤3 eingehalten.
+Acht native GL-Compatibility-Vorgabeszenen geprüft: Auswahl, Leerlauf, Doppelschlag,
+Ultimate, Entwicklung, Waffendetails, Meisterschaft, Statistik. Keine Android-Screenshots.
+Physischer Android-Test, menschliche Balance, Update-Installation und FPS/Thermik offen.
+
+Quell-ZIP zusätzlich frisch ohne Importcache entpackt und importiert. Alle23 Suites
+(1.747 Assertions) und beide historischen Traces erneut bestanden. Logs unter
+tests/results/v0.17-clean-import.log und v0.17-clean-tests.log.
+
+---
+
+## Historischer Stand vor 0.17
+
 # Testbericht 0.16.0 — 2026-11-17
 
 Godot4.6.3 stable: 22 Suites / 1.644 Assertions / 0 Fehler, beide historischen Traces grün.

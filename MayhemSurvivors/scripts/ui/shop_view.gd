@@ -84,13 +84,17 @@ func weapon_details(id:String):
 	var damage=float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult*float(spec.get('power',1.0))
 	if id=='mop':damage*=game.twinkle.area_multiplier()
 	if id=='hammer':damage*=1.0+float(game.characters[game.selected].melee_bonus)
+	if id=='tools':damage=game.steelfist.power(w)
 	var cooldown=float(d.cooldown)/game.attack_mult/(1+.06*(w.level-1))*float(spec.get('cooldown',1.0))
 	if id=='orbit':cooldown=.5/game.attack_mult/(1+.08*(w.level-1))*float(spec.get('hit_cooldown',1.0))
+	if id=='tools':cooldown=game.steelfist.cooldown(w)
 	var reach=(float(d.reach)+10*(w.level-1))*float(spec.get('reach',1.0))
 	if id=='orbit':reach=game.specialized_combat.orbit_pose(w).radius
+	if id=='tools':reach=game.steelfist.reach(w)
 	text('Schaden pro Treffer: %.1f (ohne Krit)\n%s: %.2f s\n%s: %.0f\nKrit-Chance: %.0f %%' % [damage,'Trefferintervall' if id=='orbit' else 'Abklingzeit',cooldown,'Orbit-Radius' if id=='orbit' else 'Zielreichweite',reach,game.crit*100],Vector2(760,285),1000,32)
 	text('SET: '+game.run_items.FAMILIES[game.run_items.family(id)].name,Vector2(760,520),1000,29,game.TEAL)
 	text(spec.description if not spec.is_empty() else 'Auf Stufe 5 wählst du eine kostenlose Entwicklung. Die Klassenbindung bleibt erhalten.',Vector2(760,590),1000,28)
+	if id=='tools':text('Jeder 4. Angriff: 150 % Schaden + schwerer Rückstoß.\nSchlüssel und Zange bilden eine gemeinsame Waffe.',Vector2(760,725),1000,26,game.TEAL)
 	game.button('ZURÜCK',Vector2(100,840),Vector2(440,105),show)
 	var upgrade=game.button('STUFE 5 ERREICHT' if w.level>=5 else 'AUFRÜSTEN • %d ●' % game.run_items.upgrade_price(w),Vector2(610,840),Vector2(570,105),func():game.run_items.upgrade(id))
 	upgrade.disabled=w.level>=5 or game.coins<game.run_items.upgrade_price(w)
@@ -116,6 +120,7 @@ func stats():
 	game.portrait(Vector2(110,285),game.selected,.95)
 	text('HP: %.0f / %.0f\nSchaden: %+.0f %%\nAngriffstempo: %+.0f %%\nKrit-Chance: %.0f %%\nRüstung: %d' % [game.hp,game.max_hp,(game.damage_mult-1)*100,(game.attack_mult-1)*100,game.crit*100,game.armor],Vector2(650,290),520,34)
 	text('Bewegung: %.0f\nSammelradius: %.0f\nProjektiltempo: %+.0f %%\nZusatzprojektile: +%d\nLevel: %d' % [game.speed,game.magnet,(game.projectile_speed-1)*100,game.multishot,game.level],Vector2(1230,290),560,32)
+	if game.steelfist.active():text('STAHLKRAFT\n+25 % Werkzeugschaden\n10 % Schadensreduktion\n2 % Max-HP Heilung / 5 s',Vector2(125,700),460,25,game.TEAL)
 	var counts=game.run_items.counts();var row=0
 	for family in counts:
 		var d=game.run_items.FAMILIES[family]

@@ -42,10 +42,11 @@ func push(effect: Dictionary):
 	if fx.size()<limit(): fx.append(effect)
 func attack(id: String, direction: Vector2, _level: int):
 	var r=rig(id)
-	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw'}.get(id,'shot'))
+	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw','tools':'steel_swing'}.get(id,'shot'))
 	r.angle=direction.angle()
 	r.pulse=.115
 	game.vfx.shot(id,direction)
+	if id=='tools':r.swing=.32
 	if id in ['hammer','mop']:
 		r.swing=.26
 		push({'kind':'slam','pos':game.player.position+direction*70,'life':.28,'full':.28,'skin':game.selected})
@@ -89,6 +90,12 @@ func held_pose() -> Dictionary:
 		mirror=-1.0 if cos(angle)<0 else 1.0
 		center=game.player.position+Vector2(0,-8)+Vector2.from_angle(angle)*10
 	var hands: Array[Vector2]=[]
+	if id=='tools':
+		var face=game.character_facing();var strength=sin((1-r.swing/.32)*PI) if r.swing>0 else 0.0
+		for i in range(2):
+			var offset=direction*strength*27 if r.get('double_hit',false) or int(r.get('hand',0))==i else Vector2.ZERO
+			hands.append(game.player.position+Vector2((-23 if i==0 else 23)*face,0)+offset)
+		return {'id':id,'center':game.player.position,'angle':angle,'mirror':mirror,'rect':rect,'hands':hands,'pulse':r.pulse}
 	for point in grips: hands.append(center+Vector2(point.x,point.y*mirror).rotated(angle))
 	if id=='mop':hands[1]=game.player.position+Vector2(-19*game.character_facing(),1)
 	return {'id':id,'center':center,'angle':angle,'mirror':mirror,'rect':rect,'hands':hands,'pulse':r.pulse}
@@ -102,7 +109,7 @@ func hand_positions() -> Array:
 
 func shoulder_positions() -> Array:
 	var face=game.character_facing()
-	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10),Vector2(-8,10)][game.selected]
+	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10),Vector2(-8,10),Vector2(-10,13)][game.selected]
 	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
 
 func elbows(hands: Array) -> Array:
@@ -133,8 +140,8 @@ func arm_segment(a: Vector2, b: Vector2, width: float, color: Color):
 func draw_arms(hands: Array):
 	var shoulders=shoulder_positions()
 	var bends=elbows(hands)
-	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79'),Color('#D59B76')][game.selected]
-	var width=8.0 if game.selected==0 else 6.0
+	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79'),Color('#D59B76'),Color('#A87752')][game.selected]
+	var width=8.0 if game.selected in [0,5] else 6.0
 	for i in range(2):
 		arm_segment(shoulders[i],bends[i],width,skin)
 		arm_segment(bends[i],hands[i],width*.85,skin.darkened(.08))
@@ -146,16 +153,25 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),(Rect2(-11,-11,22,22) if game.selected in [3,4] else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
+		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),(Rect2(-11,-11,22,22) if game.selected>=3 else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):
 	var pose=held_pose()
 	var pose_behind=false if pose.is_empty() else Vector2.from_angle(pose.angle).y<-.25
+	if pose.get('id','')=='tools':pose_behind=false
 	if behind==pose_behind:
 		var hands=hand_positions()
 		draw_arms(hands)
-		if not pose.is_empty():
+		if pose.get('id','')=='tools':
+			var r=rig('tools');var strength=sin((1-r.swing/.32)*PI) if r.swing>0 else 0.0
+			for i in range(2):
+				var angle=(pose.angle+PI*.5)*strength if r.get('double_hit',false) or int(r.get('hand',0))==i else .15*(1 if i==0 else -1)
+				game.draw_set_transform(hands[i],angle)
+				var id='wrench' if i==0 else 'pliers'
+				game.draw_texture_rect_region(Art.weapon_texture(id),Rect2(-17,-64,34,84),Art.weapon(id))
+				game.draw_set_transform(Vector2.ZERO)
+		elif not pose.is_empty():
 			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))
 			game.draw_texture_rect_region(Art.weapon_texture(pose.id),pose.rect,Art.weapon(pose.id))
 			for w in game.weapons:

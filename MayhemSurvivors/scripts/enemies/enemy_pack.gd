@@ -40,7 +40,7 @@ func velocity(e:Dictionary,normal:Vector2,dt:float) -> Vector2:
 	return normal
 func resolve(e:Dictionary):
 	if game.state!=game.State.COMBAT or not CONFIG.has(e.kind) or e.pack_stage!='release' or not game.enemies.has(e):return
-	if e.get('suds_stun',0.0)>0:interrupt(e);return
+	if e.get('suds_stun',0.0)>0 or e.get('steel_stun',0.0)>0:interrupt(e);return
 	if not game.enemy_roles.visible(e.pos):e.pack_stage='chase';return
 	e.pack_stage='chase'
 	if e.kind=='bombling':

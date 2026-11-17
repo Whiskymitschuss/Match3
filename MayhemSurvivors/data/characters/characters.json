@@ -82,5 +82,25 @@
       "tutorial_complete": true,
       "kills": 500
     }
+  },
+  {
+    "id": "steelfist",
+    "name": "STEELFIST",
+    "title": "TIMO / DER STAHLKOLOSS / EPISCH",
+    "hp": 160,
+    "hp_bonus": 0.3,
+    "speed": 165,
+    "weapon": "tools",
+    "color": "#5DDCFF",
+    "description": "Stahlkraft • +25 % Nahkampfschaden",
+    "melee_bonus": 0.25,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "damage_reduction": 0.1,
+    "allowed_weapons": [
+      "tools"
+    ],
+    "rarity": "EPISCH",
+    "quote": "Wo rohe Kräfte sinnvoll walten, kann kein Rohr die Fresse halten!"
   }
 ]

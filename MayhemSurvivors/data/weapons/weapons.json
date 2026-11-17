@@ -47,5 +47,11 @@
     "reach": 380,
     "radius": 110,
     "flight": 0.65
+  },
+  "tools": {
+    "name": "WERKZEUGDUO",
+    "damage": 25,
+    "cooldown": 1.25,
+    "reach": 130
   }
 }

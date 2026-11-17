@@ -16,7 +16,7 @@ func run():
 	check(g.state==g.State.MAIN_MENU,'Boot -> main menu')
 	check(g.GameStateMachine.permits(g.State.COMBAT,g.State.SHOP) and not g.GameStateMachine.permits(g.State.COMBAT,g.State.CHARACTER_SELECT),'Defined state transitions')
 	g.character_select()
-	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==5,'Character selection')
+	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==6,'Character selection')
 	for i in range(4):
 		g.selected=i
 		g.start_run()
@@ -103,7 +103,7 @@ func run():
 			if o.type=='weapon' and o.id==id:valid=false
 		check(valid,'Max weapon excluded '+id)
 	for id in g.weapon_data:
-		g.selected=4 if id=='bomb' else (3 if id=='mop' else 1)
+		g.selected=5 if id=='tools' else (4 if id=='bomb' else (3 if id=='mop' else 1))
 		if id=='bomb':g.saved.settings.tutorial_complete=true;g.saved.kills=500
 		g.cleanup()
 		g.state=g.State.COMBAT
@@ -117,6 +117,7 @@ func run():
 		for i in range(20):g.update_shots(.016)
 		if id=='bomb':g.bombs.update(1)
 		check(e.hp<health,'Weapon damage '+id)
+	g.selected=1 # Remaining generic cases use the original non-tank fixture.
 	g.start_run()
 	g.begin_wave()
 	g.pause_game()

@@ -152,6 +152,7 @@ func update(dt:float):
 	for e in game.enemies:
 		if e.kind=='boss' and e.hp>0:boss=e;break
 	if boss.is_empty():return
+	if game.steelfist.boss_stunned():return
 	var ratio:float=boss.hp/boss.max_hp
 	var tier=3 if ratio<=float(data.boss_thresholds[1]) else (2 if ratio<=float(data.boss_thresholds[0]) else 1)
 	if tier>boss_tier:

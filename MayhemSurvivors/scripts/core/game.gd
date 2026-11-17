@@ -19,6 +19,7 @@ var reward_hub
 var run_waves=0
 var run_abilities=0
 var run_events=0
+var steelfist
 var run_mode='campaign'
 var rules
 var tutorial
@@ -148,6 +149,7 @@ func _ready():
 	reactor_guardian=preload('res://scripts/bosses/reactor_guardian.gd').new(self)
 	bombs=preload('res://scripts/characters/kicksy_bombs.gd').new(self)
 	twinkle=preload('res://scripts/characters/twinkle_combat.gd').new(self)
+	steelfist=preload('res://scripts/characters/steelfist_combat.gd').new(self)
 	hero_ability=preload('res://scripts/characters/hero_ability.gd').new(self)
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
@@ -347,10 +349,16 @@ func character_select(index:int=-1):
 	UISkin.panel(self,Rect2(100,245,740,675),Color(c.color))
 	portrait(Vector2(170,245),hero_cursor,1.65)
 	label_at(c.name,Vector2(920,270),64,Color(c.color))
+	if c.id=='steelfist':label_at(c.title,Vector2(925,337),23,GOLD)
 	label_at(c.description,Vector2(925,365),31)
-	label_at('%d HP / %d Basistempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(925,425),29)
+	label_at('%d HP / %d Basistempo / %s' % [roundi(c.hp*(1+float(c.get('hp_bonus',0)))),c.speed,weapon_data[c.weapon].name],Vector2(925,425),29)
 	var info=label_at(hero_ability.data[c.id].name+'\n'+hero_ability.data[c.id].description+'\n\nWaffen: '+(' / '.join(c.allowed_weapons.map(func(id):return weapon_data[id].name))),Vector2(925,505),27)
 	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(830,240))
+	if c.id=='steelfist':
+		var traits=label_at('160 Basis-HP +30 % / 10 % Schadensreduktion\n2 % Heilung je 5 s / jeder 4. Schlag: 150 % Schaden',Vector2(925,725),23,TEAL)
+		traits.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;traits.set_deferred('size',Vector2(830,75))
+		var quote=label_at('„'+c.quote+'“',Vector2(120,848),22,GOLD)
+		quote.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;quote.set_deferred('size',Vector2(695,65))
 	var available=Unlocks.available(saved,c.id)
 	if not available:label_at('Freischalten: Tutorial + 500 Gegner (%d / 500)' % mini(500,Unlocks.kills(saved)),Vector2(925,750),25,GOLD)
 	var enter=button('AUSWÄHLEN' if available else 'NOCH GESPERRT',Vector2(925,810),Vector2(850,105),func():selected=hero_cursor;arena_select(),Color(c.color).darkened(.65))
@@ -377,7 +385,8 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 	button('ARENA WECHSELN',Vector2(1330,75),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%filters.size()]))
 	for i in range(characters.size()+1):
 		var tab=i-1
-		button('ÜBERSICHT' if i==0 else characters[i-1].name,Vector2(100+i*285,235),Vector2(270,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
+		var tab_width=1720.0/(characters.size()+1)
+		button('ÜBERSICHT' if i==0 else characters[i-1].name,Vector2(100+i*tab_width,235),Vector2(tab_width-14,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
 	if character<0:
 		label_at('KAMPAGNEN-RUNDEN',Vector2(120,365),28,TEAL)
 		var rate=100.0*float(totals.wins)/float(totals.games) if totals.games>0 else 0.0
@@ -475,6 +484,7 @@ func cleanup():
 	if specialized_combat:specialized_combat.clear()
 	if hero_ability:hero_ability.clear()
 	if twinkle:twinkle.clear()
+	if steelfist:steelfist.clear()
 	if bombs:bombs.clear()
 	if hit_feedback:hit_feedback.clear()
 	if vfx:vfx.clear()
@@ -492,7 +502,7 @@ func start_run():
 	waves=read_data(arena_definition.waves)
 	cleanup()
 	var c = characters[selected]
-	max_hp = c.hp
+	max_hp = roundi(c.hp*(1+float(c.get('hp_bonus',0))))
 	hp = max_hp
 	speed = c.speed*(1+float(c.get('move_bonus',0)))
 	damage_mult = 1
@@ -513,6 +523,7 @@ func start_run():
 	run_items.clear()
 	encounters.reset_run()
 	ravox.reset_run()
+	steelfist.reset_run()
 	shop_view.tab='weapons'
 	upgrade_counts.clear()
 	weapons = [{'id':c.weapon,'level':1,'clock':0.0}]
@@ -662,6 +673,7 @@ func _physics_process(delta):
 	specialized_combat.update(delta)
 	hit_feedback.update(delta)
 	hero_ability.update(delta)
+	steelfist.update(delta)
 	if state != State.COMBAT:return
 	combat_visuals.update(delta)
 	world_visuals.update(delta)
@@ -734,8 +746,8 @@ func spawn_enemy(kind: String):
 	return true
 
 func update_enemies(dt: float):
-	if rules.boss_wave() and is_reactor() and not encounters.boss_lock:reactor_guardian.update(dt)
-	if rules.boss_wave() and not is_reactor() and not encounters.boss_lock:
+	if rules.boss_wave() and is_reactor() and not encounters.boss_lock and not steelfist.boss_stunned():reactor_guardian.update(dt)
+	if rules.boss_wave() and not is_reactor() and not encounters.boss_lock and not steelfist.boss_stunned():
 		boss_clock -= dt
 		if boss_clock <= 0:
 			boss_phase = (boss_phase+1)%4
@@ -754,6 +766,7 @@ func update_enemies(dt: float):
 		var e = enemies[i]
 		e.hit = maxf(0,e.hit-dt)
 		e.orbit_cd = maxf(0,e.orbit_cd-dt)
+		if steelfist.stunned(e,dt):continue
 		if twinkle.stunned(e,dt):continue
 		var dir: Vector2 = rules.direction(e)
 		var velocity: Vector2 = dir*e.speed
@@ -800,10 +813,11 @@ func update_enemies(dt: float):
 func hurt(amount: float):
 	if tutorial and tutorial.active:return
 	if state != State.COMBAT or hurt_clock>0 or hero_ability.invulnerable(): return
-	hp -= maxf(1,amount-armor)
+	var received=maxf(1,amount-armor)*steelfist.damage_factor()
+	hp -= received
 	hurt_clock = .65
 	sound('hit')
-	hit_feedback.damage(player.position,maxf(1,amount-armor),false,true)
+	hit_feedback.damage(player.position,received,false,true)
 	haptic('hurt')
 	if hp <= 0: hp=0; finish(false)
 
@@ -869,6 +883,7 @@ func damage_enemy(e: Dictionary, power: float):
 		enemies.erase(e)
 		kills += 1
 		twinkle.on_kill()
+		steelfist.on_kill()
 		var reward = int(e.get('coin_reward',enemy_definition(kind).coins))
 		coins += reward
 		vfx.coin(pos,reward)
@@ -1135,6 +1150,7 @@ func _draw():
 	ravox.draw_floor()
 	bombs.draw_floor()
 	twinkle.draw_floor()
+	steelfist.draw_floor()
 	vfx.draw_floor()
 	encounters.draw_floor()
 	enemy_roles.draw_floor()
@@ -1283,7 +1299,8 @@ func mastery_screen(index:int, preview:String=''):
 	var shown=current if preview=='' else preview
 	backdrop('CHARAKTER-MEISTERSCHAFT','Dauerhafte Ziele / kosmetische Belohnungen / keine Werteboni')
 	for i in range(characters.size()):
-		button(characters[i].name,Vector2(100+i*345,230),Vector2(325,75),func():mastery_screen(i),Color('#147F81') if i==index else Color('#243958'))
+		var tab_width=1720.0/characters.size()
+		button(characters[i].name,Vector2(100+i*tab_width,230),Vector2(tab_width-18,75),func():mastery_screen(i),Color('#147F81') if i==index else Color('#243958'))
 	portrait(Vector2(130,360),index,1.2)
 	# Preview can show a locked colour, but never equips it.
 	var art=ui_root.get_child(ui_root.get_child_count()-1)

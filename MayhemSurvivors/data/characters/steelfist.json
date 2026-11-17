@@ -1,0 +1,9 @@
+{
+  "regen_interval": 5,
+  "regen_fraction": 0.02,
+  "double_every": 4,
+  "double_multiplier": 1.5,
+  "heavy_knockback": 55,
+  "buff_kill_extension": 0.2,
+  "buff_extension_cap": 5
+}

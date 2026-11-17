@@ -50,5 +50,18 @@
     "damage": 30,
     "cooldown": 28,
     "color": "#FF9F1C"
+  },
+  "steelfist": {
+    "id": "pipe_burst",
+    "name": "ROHRBRUCH-CHAOS",
+    "description": "300 % Werkzeugschaden im Umkreis. 2 s Betäubung. +50 % Angriffstempo für 5 s; Kills verlängern um je 0,2 s, maximal +5 s.",
+    "cooldown": 35,
+    "radius": 300,
+    "damage_multiplier": 3,
+    "stun": 2,
+    "knockback": 150,
+    "buff_duration": 5,
+    "buff_attack_speed": 0.5,
+    "color": "#5DDCFF"
   }
 }

@@ -1,30 +1,26 @@
-# RF Worlds — Mayhem Survivors 0.16.0
+# RF Worlds — Mayhem Survivors0.17.0
 
-**Wische durch deine Crew. Überstehe neue Gefahren. Verdiene dauerhafte Belohnungen.**
+**STEELFIST — DER STAHLKOLOSS. Timo ist als sechster Held sofort spielbar.**
 
-- Helden und Arenen mit Wischgesten wählen; große Einzelkarten und Pfeilalternative.
-- Drei neue Gegner: Bombling, Longshot, Hexling mit angekündigten Angriffen.
-- Ereignisse in allen vier Arenen ab Welle3.
-- Tages-/Wochenaufgaben und kostenloser wiederholbarer Daily Pass.
-- Dauerhafte Studio-Coins für Ringe, Begleiter und Spielertitel im Studio-Shop.
-- Offline, lokal gespeichert, keine Werbung/In-App-Käufe.
+- Werkzeugduo mit Schraubenschlüssel/Pumpenzange und jedem vierten Doppelschlag.
+- 160 Basis-HP+30%=208 Start-HP,165 Tempo,10% Schadensreduktion und Regeneration.
+- Rohrbruch-Chaos: Druckwelle,2s Stun, verlängerbarer Angriffstempobonus.
+- Zwei Werkzeugentwicklungen, eigene Grafik/Icons/Sounds und komplette Menüintegration.
+- Alle bisherigen Arenen, Helden, Endlos, Tages-/Wochenaufgaben und kostenloser Pass.
 
-[Android-APK 0.16 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/live-rewards-v0.16/Downloads/MayhemSurvivors-v0.16-debug.apk)
+[Android-APK0.17 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/steelfist-v0.17/Downloads/MayhemSurvivors-v0.17-debug.apk)
 
-[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/live-rewards-v0.16/Downloads/MayhemSurvivors-v0.16-source.zip)
+[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/steelfist-v0.17/Downloads/MayhemSurvivors-v0.17-source.zip)
 
-![Tagesaufgaben — native Engine-Vorgabeszene](MayhemSurvivors/tests/live_daily.png)
+![Steelfist — native Engine-Vorgabeszene](MayhemSurvivors/tests/steelfist_hero.png)
 
-![Crew — native Engine-Vorgabeszene](MayhemSurvivors/tests/live_hero.png)
+CHARAKTERE → bis STEELFIST wischen → AUSWÄHLEN → Arena betreten. Als Android-Update
+installieren: ARM64, Android7+, Querformat, offline, Code21, gleiches Paket/Debug-Zertifikat.
+Alte Profile und Studio-Coins bleiben kompatibel, neue Hero-Statistik beginnt leer.
 
-Android7+, ARM64, Querformat, Code20, gleicher Paketname/Debug-Schlüssel. Als Update
-installieren. AUFTRÄGE & SHOP im Hauptmenü: Nach Run-Ende Fortschritt prüfen, Belohnung
-abholen und im Studio-Shop ausgeben. Run-Coins bleiben für den Waffenladen.
-Kalender anhand Geräte-UTC, täglicher Wechsel00:00, WochenwechselMontag. Pass verfällt nicht.
-
-22 Suites / 1.644 Assertions, zwei historische Traces und Lastprobe mit21.600 Schritten.
-APK exportiert, Signatur/Alignment/ARM64/Payload geprüft. Physischer Android-Test von
-Wischbedienung, neuer Balance und FPS/Thermik offen; Screenshots stammen aus nativer Engine.
+23 Suites /1.747 Assertions und beide historischen Traces bestanden. 43.200 Lastschritte,
+acht native Ansichten, APK-Signatur/Alignment/Payload geprüft. Physischer Android-Test
+von Bedienung, neuer Tank-Balance und FPS/Thermik noch offen.
 
 [Anleitung](MayhemSurvivors/README.md) · [Tests](MayhemSurvivors/TEST_REPORT.md) ·
 [Build](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)

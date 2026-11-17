@@ -1,3 +1,65 @@
+# Mayhem Survivors 0.17.0 Alpha — STEELFIST / Der Stahlkoloss
+
+Timo ist als sechster Held sofort verfügbar. CHARAKTERE → bis STEELFIST wischen →
+AUSWÄHLEN → Arena betreten. Keine zusätzliche Freischaltbedingung oder Echtgeldkosten.
+Alle fünf bisherigen Charaktere, vier Arenen, Endlos, Aufgaben, Pass und Studio-Shop
+bleiben enthalten. Statistik- und Meisterschaftsreiter passen jetzt für sechs Helden.
+
+| Startwert | Umsetzung |
+| --- | --- |
+| Leben | 160 Basis-HP +30 % =208 Start-/Max-HP |
+| Bewegung | 165 |
+| Werkzeug-Basisschaden | 25 +25 % Stahlkraft =31,25 ohne Krit |
+| Angriffstempo | 0,8/s =1,25s Grundcooldown |
+| Kritische Chance | 5 % |
+| Schadensreduktion | 10 %, nach dem bestehenden Rüstungsabzug |
+| Regeneration | Alle5 Kampfsekunden 2 % der aktuellen Max-HP |
+
+Der30%-Lebensbonus gilt auf den Start-Grundwert. HP-Upgrades addieren danach wie bei
+allen Helden ihre angegebenen Punkte. Regeneration berücksichtigt diese neuen Max-HP,
+heilt nicht über das Maximum und belebt nicht wieder. Fortschritt der5s-Regeneration
+bleibt zwischen Wellen erhalten; Shop, Levelwahl und Pause lassen sie nicht weiterlaufen.
+
+WERKZEUGDUO: Schraubenschlüssel und Pumpenzange bilden eine gemeinsame Klassenwaffe
+in einem Slot, mit genau zwei animierten Händen. Automatische Halbkreisangriffe vor
+dem Spieler wechseln die Werkzeuge ab. Jeder vierte tatsächliche Angriff trifft mit
+beiden Werkzeugen für insgesamt150% Schaden und55 Rückstoß. Ein Gegner erhält dabei
+einen Schadens-/Krit-Wurf und höchstens eine Todesbelohnung. Kein Ziel: kein Zähleranstieg.
+Der Angriffszähler bleibt über Wellen erhalten und wird bei einem neuen Run zurückgesetzt.
+Andere Klassen können das Werkzeugduo nicht kaufen; Steelfist erhält keine Fremdwaffen.
+Ungeeignete Projektil-/Multishot-Upgrades werden nicht angeboten.
+
+ROHRBRUCH-CHAOS: 35s Cooldown, einmalig300% des aktuellen normalen Werkzeugschadens
+in Radius300. Bis zu150 Rückstoß und2s Betäubung, auch für Bosse. Bereits freigesetzte
+Projektile/Bodengefahren bleiben aktiv; neue Angriffe und Bewegung der betäubten Gegner
+warten. Kontrollierbare Spezialangriffe von Ravox/Eliten/Spuckern/Pack werden unterbrochen.
+Boss-KI und deren neue Spezialangriffe pausieren mit der Betäubung und setzen danach fort.
+5s lang +50% Angriffstempo; jeder tatsächliche Kill während des Buffs verlängert um0,2s,
+höchstens um weitere5s. Keine Verlängerung nach Ablauf, keine dauerhafte Änderung der
+gekauften Angriffswerte. HUD zeigt KRAFT-Restzeit und Fähigkeit-Cooldown. Temporäre Effekte
+enden beim Wellenende/Run-Ende; keine Simulation während Pause, Shop oder Levelwahl.
+
+Werkzeuglevel1–5: +30% Basisschaden, +10 Reichweite und +6% Angriffstempo je Level.
+Auf Level5 eine kostenlose Wahl: DRUCKBRECHER (+20% Schaden/+15% Reichweite/15% längerer
+Cooldown) oder RATSCHENRAUSCH (30% kürzerer Cooldown/15% weniger Schaden). Beide besitzen
+eigene Icons, echte Wirkungen und bleiben Klassenwaffen. Werkstatt zeigt korrekte Werte.
+
+Eigene Illustration nach der bereitgestellten Steelfist-Referenz, separate armlose Basis,
+Handschuh und Werkzeuge. Wasser-/Dampf-Druckwelle, Stun-Sterne, Doppelschlag und Buffring;
+drei eigene synthetisierte Sounds ohne Samples. Meisterschaften/Farbvarianten, Resultate,
+Verlauf und bestehende Aufgaben erfassen den neuen Helden. Alte Profile werden um leere
+Steelfist-Daten ergänzt; bestehende Statistiken und Studio-Coins bleiben erhalten.
+
+Godot4.6.3 stable: project.godot importieren und starten, alle Assets vorhanden. Android
+ARM64-only, offline, Querformat, GL Compatibility. APK0.17.0 / Code21 als Update über0.16.
+23 Suites /1.747 Assertions und beide historischen Traces geprüft. 72 spezifische Checks,
+43.200 Lastschritte und acht native GL-Ansichten. Android-Gerätetest von Bedienung,
+Balance, Update mit vorhandenen Daten und FPS/Thermik bleibt offen. Kein PC-Export.
+
+---
+
+## Historischer Stand vor 0.17
+
 # Mayhem Survivors 0.16.0 Alpha — Crew, Chaos & Belohnungen
 
 Fünf Helden und vier Arenen jetzt als große Einzelkarten: links/rechts über die Karte

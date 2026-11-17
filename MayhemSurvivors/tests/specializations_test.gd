@@ -12,7 +12,8 @@ func check(ok:bool,text:String):
 func near(a:float,b:float) -> bool:return absf(a-b)<.001
 func setup(weapon:String,spec:String=''):
 	if weapon=='bomb':g.saved.settings.tutorial_complete=true;g.saved.kills=500
-	g.selected=4 if weapon=='bomb' else (3 if weapon=='mop' else (0 if weapon=='hammer' else (2 if weapon=='orbit' else 1)))
+	for i in range(g.characters.size()):
+		if g.characters[i].allowed_weapons.has(weapon):g.selected=i;break
 	g.start_run()
 	g.begin_wave()
 	g.crit=0
@@ -36,8 +37,8 @@ func run():
 	root.add_child(g)
 	g.set_physics_process(false)
 	g.saved=Save.defaults()
-	check(Specs.all().size()==14,'Fourteen unique specialization definitions')
-	for weapon in ['hammer','blaster','splitgun','arc','orbit']:
+	check(Specs.all().size()==16,'Sixteen unique specialization definitions')
+	for weapon in g.weapon_data:
 		check(Specs.choices(weapon).size()==2,'Two choices for '+weapon)
 		for id in Specs.choices(weapon):check(Specs.icon(id)!=null,'Real icon loads for '+id)
 	setup('hammer')

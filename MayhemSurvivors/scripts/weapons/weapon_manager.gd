@@ -9,6 +9,10 @@ func update(dt: float):
 		var d = game.weapon_data[w.id]
 		var power = float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult
 		if w.id == 'hammer': power *= 1.0+float(game.characters[game.selected].melee_bonus)
+		if w.id=='tools':
+			game.steelfist.attack(w,dt)
+			if game.state!=game.State.COMBAT:return
+			continue
 		if w.id=='bomb':
 			game.bombs.attack(w,dt)
 			if game.state!=game.State.COMBAT:return
