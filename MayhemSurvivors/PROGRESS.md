@@ -1,6 +1,6 @@
 # 0.20 — DIE MAYHEM WELTEN — implementiert, geprüft und gebaut
 
-Branch feature/world-map-v0.20. Aktuelle Phase: Auslieferung und Android-Abnahme.
+Branch feature/world-map-v0.20. Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen.
 Vier Weltkarten mit Originalemblemen, Touch-/Wischwahl, sichtbaren Voraussetzungen,
 Rekorden und ruhiger Neigungs-/Bewegungsvorschau. Neue Profile: nur Schrottplatz.
 Kampagnensieg in10 öffnet Reaktorzone → Neonhafen → Glutwerk. Alte explizite und
@@ -24,8 +24,10 @@ APK0.20.0/Code24 gebaut/signiert. ARM64/Landscape/GL Compatibility, v2/v3-Signat
 16KB-Alignment, Manifest und World-/Axel-Payload geprüft. Gleicher Update-Schlüssel.
 SHA256:1a24181bb2b9b837439dc5bed2e0aadb67c3fd0e944209b3a9116744f7596b91.
 Quell-ZIP frisch ohne Importcache importiert, alle27 Suiten/2.256 Prüfungen und beide
-Traces erneut bestanden, Laufzeitdateien bytegleich. Nächste technische Aktion:
-GitHub-Artefakte hochladen und öffentliche Downloads vollständig per SHA256 prüfen. Originaldownloads
+Traces erneut bestanden, Laufzeitdateien bytegleich. APK und Quell-ZIP vollständig
+ohne Anmeldung von GitHub geladen und beide SHA256 geprüft. Protokoll:
+../Downloads/VERIFICATION-v0.20.txt. Der Archivstand dokumentiert die Abnahme vor
+der Auslieferung, dieses externe Protokoll die anschließende Veröffentlichung. Originaldownloads
 bleiben erhalten. Danach echte Android-Abnahme und menschliche Fortschrittsbalance.
 Offen: Updateinstallation mit Alt-/Neuprofil, echtes Multitouch/Neigung/Audio, Geräte-
 FPS/Thermik. Keine Hardware-/Balancetests behauptet. Nächster Inhaltsfokus nach
@@ -76,7 +78,7 @@ nächster Inhaltsumfang. Originalprojekte/Downloads bleiben erhalten.
 
 # 0.18 — MAYHEM GARAGE — implementiert, geprüft und gebaut
 
-Aktuelle Phase: Auslieferung und Android-Abnahme. Branch feature/mayhem-garage-v0.18.
+Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen. Branch feature/mayhem-garage-v0.18.
 Nur Bruiser frei, fünf weitere Helden über Crew-Cases. Drei Casearten mit je einem
 kostenlosen Startticket, angezeigten echten Chancen, Duplikat-Bauteilen und garantierter
 fehlender Crew nach zwei Duplikaten. Atomare Speicherung vor Reveal, ausstehender

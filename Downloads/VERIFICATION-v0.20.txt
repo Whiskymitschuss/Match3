@@ -1,0 +1,10 @@
+Anonymous public GitHub download verification — 2026-11-17T22:58:06.382026+00:00
+PASS MayhemSurvivors-v0.20-debug.apk
+66276560 bytes
+SHA256 1a24181bb2b9b837439dc5bed2e0aadb67c3fd0e944209b3a9116744f7596b91
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/world-map-v0.20/Downloads/MayhemSurvivors-v0.20-debug.apk
+PASS MayhemSurvivors-v0.20-source.zip
+84568414 bytes
+SHA256 ebfc99c224b0caa0fc852761a1fd54bfbba6fd5672bef72af5747ed25826e301
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/world-map-v0.20/Downloads/MayhemSurvivors-v0.20-source.zip
+Both complete binary downloads match the published checksums. No authentication used.
