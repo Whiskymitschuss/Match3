@@ -1,3 +1,43 @@
+# 0.18 — MAYHEM GARAGE — gesicherter Entwicklungsentwurf
+
+Branch feature/mayhem-garage-v0.18 auf c36b700 (spielbarer Stand0.17).
+Auftrag: Nur Bruiser frei, übrige Helden über Cases; Waffen/Items/Rüstung verbessern,
+sichtbare Deko und Charaktermenü für Kopf, Körper, Schuhe, Waffen und Zauber.
+
+GESICHERT: eigene Casegrafik (Crew/Arsenal/Style), Katalog mit5 zusätzlichen Helden
+und32 Items, Collection-Prototyp und vorbereitete eigenständige Godot-Modelltests.
+MAYHEM_GARAGE.md enthält Regeln, Werte, UI-Abläufe, Architektur und Reihenfolge.
+
+BLOCKER: Cloud-Entwicklungsumgebung ist während der Implementierung offline gegangen.
+exec-server transport closed; environment_status meldet connectivity=offline.
+Keine Diagnoseaufzeichnung verfügbar; Ursache unbekannt. Keine neuen Godot-Tests oder
+Android-Exports möglich. Tests im neuen Modell sind nur vorbereitet, nicht ausgeführt.
+Katalogkonsistenz separat in JavaScript geprüft; kein Nachweis der GDScript-Lauffähigkeit.
+
+WICHTIG: Neue Module sind NICHT mit SaveManager, HeroUnlocks oder dem Spiel verbunden.
+Die versuchte Integration scheiterte beim Lesen der ersten Datei am Transportabbruch.
+Der Remote-Branch behält daher bewusst0.17-Laufzeitkonfiguration und bisheriges Verhalten.
+Nur Bruiser/Cases/Inventar/Zauber sind Zielregeln, im bisherigen APK noch nicht aktiviert.
+Keine0.18-APK vorhanden. Bestehende veröffentlichte0.17-Downloads bleiben unverändert.
+
+FORTSETZUNG:
+- Branch von GitHub übernehmen; lokale uncommittete Entwürfe zuerst vergleichen.
+- Godot4.6.3 importieren und tests/collection_model_test.gd ausführen.
+- SaveManager defaults/clean um collection ergänzen; alte Datei als pre_garage sichern.
+- HeroUnlocks auf Collection-Eigentümerschaft umstellen, alte Stats/Coins behalten.
+- Tutorial-Leihheld nur bei aktivem Tutorial freigeben; active vor start_run setzen.
+- Atomare Case-/Upgrade-/Equip-Buchungen mit Rollback und ausstehendem Ergebnis.
+- Case-Menüs, Inventar/Werkstatt, sichtbare Gear-Layer und zusätzliche Zauber bauen.
+- Loadout-Snapshot vor Run-Start anwenden, Klassenbindung und Gegnerbalance erhalten.
+- Bestehende Testfixtures explizit mit freier Test-Sammlung ausstatten; keinen versteckten
+  Unlock-Bypass über test_mode einbauen. Alte Kicksy-Tutorialfreigabe-Tests neu ausrichten.
+- Komplette Regression, native UI-Prüfung, Lastprobe, Android-Export/Signatur/Payload,
+  frisches Quell-ZIP und öffentliche Downloads/Prüfsummen erst nach Fertigstellung.
+
+---
+
+## Historischer Stand vor0.18
+
 # 0.17.0 — STEELFIST — implementiert und geprüft
 
 Branch feature/steelfist-v0.17, Basis0.16. Timo als sechster sofort wählbarer Held mit
