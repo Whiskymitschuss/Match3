@@ -1,3 +1,39 @@
+# 0.19 — BREAKER AXEL — implementiert, geprüft und gebaut
+
+Aktuelle Phase: Auslieferung und Android-Abnahme. Branch feature/breaker-axel-v0.19.
+Boss in Welle5 aller vier Arenen, Endlos5/15/25/... . Zehnwelliger Run bleibt erhalten.
+1500 Basis-HP/15% Resistenz/78 Tempo,75s Limit. Eigene Grafik nach Fotovorlage,
+Vorstellung, Presslufthammer, Schockwellen, Zombie-Ansturm, Risse, drei Phasen bei
+70/40%HP. Feste1,25s Warnung auch in Rage, Combo mit eigener Vorwarnung, Stun/Slow/
+Rückstoß und vorhandene Counter verbunden. Sechs originale Sounds, Rageglühen,
+Drillbewegung, HP-Balken und kurze Todesanimation unterhalb der Upgrade-Karten.
+
+Boss-Sieg → garantierte100XP/125 Run-Coins mit Schwierigkeitsboni → mehrere echte
+Levelwahlen → Shop → nächste Welle. Einmalige Rewards, Timerfehlschlag, Cleanup und
+Neustart geprüft. Finale Arenabosse in10 und Victory erhalten. Garage/Cases/Profile
+unverändert. Keine offenen Implementierungsstubs im Axel-Umfang.
+
+Abnahme:26 Suiten /2.144 Prüfungen /0 Fehler und beide historischen Traces bestanden.
+246 gezielte Axel-Checks. Alte Welle5-Flowfixtures an echten Boss-Sieg angepasst,
+Ravox-/Arenagefahrentest auf normale Welle6 verlegt.11 native GL-Ansichten geprüft.
+Finale Lastprobe259.200 Schritte /4.320 simulierte Sekunden /72 Szenarien, max100
+Gegner, max2 Ringe/6 Risse, keine ungültigen Positionen/HP. Künstliche HP/Phasen und
+Pilot; keine FPS-/menschliche Balancebehauptung. Logs tests/results/v0.19-*.log.
+
+Debug-APK0.19.0/Code23 gebaut und geprüft: ARM64/Landscape/GL Compatibility,
+v2/v3-Signatur,16KB-Alignment, Manifest und Boss-Payload. Gleiches Update-Zertifikat.
+SHA256:69d14f75ccc1ad7f9cd25a0269f57ec6da4cac6a593b95de60df1eed4ce46266.
+Nächste technische Aktion: Quell-ZIP frisch ohne Cache testen und GitHub-Downloads
+nach Push vollständig per SHA256 prüfen. Danach Android-Geräteabnahme.
+
+Offen: echte Updateinstallation, Multitouch/Audio auf dem Gerät, Geräte-FPS/Thermik
+und menschliche Boss-/Beutebalance. Weltkarte/lineare Arenenfreigabe bleibt separater
+nächster Inhaltsumfang. Originalprojekte/Downloads bleiben erhalten.
+
+---
+
+## Historischer Stand vor0.19
+
 # 0.18 — MAYHEM GARAGE — implementiert, geprüft und gebaut
 
 Aktuelle Phase: Auslieferung und Android-Abnahme. Branch feature/mayhem-garage-v0.18.

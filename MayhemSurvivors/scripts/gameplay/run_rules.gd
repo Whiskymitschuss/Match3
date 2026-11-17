@@ -2,11 +2,15 @@ extends RefCounted
 var game:Node2D
 var progressive=true
 func _init(g:Node2D):game=g
-func boss_wave() -> bool:
+func boss_wave() -> bool:return game.breaker.scheduled() or final_boss_wave()
+func final_boss_wave() -> bool:
 	return game.wave_number%10==0 if game.run_mode=='endless' else game.wave_number==10
 func current_wave() -> Dictionary:
-	var index=9 if boss_wave() else mini(8,game.wave_number-1)
+	var index=9 if final_boss_wave() else mini(8,game.wave_number-1)
 	var d:Dictionary=game.waves[index].duplicate(true)
+	if game.breaker.scheduled():
+		d.duration=game.breaker.data.duration;d.interval=game.breaker.data.add_interval;d.extra_spawn_every=0
+		d.hp_factor=1.15;d.boss_hp_factor=1.0;d.reward_factor=1.0
 	if game.run_mode=='endless' and game.wave_number>10:
 		var cycle=floori((game.wave_number-1)/10.0)
 		d.interval=maxf(.30,float(d.interval)/(1+cycle*.12))

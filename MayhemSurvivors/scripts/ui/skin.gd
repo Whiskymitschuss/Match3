@@ -42,7 +42,7 @@ static func menu(game:Node2D):
 	game.portrait(Vector2(1230,440),1,1.25)
 	game.button('TUTORIAL MIT KICKSY',Vector2(1100,890),Vector2(690,90),func():game.tutorial.start())
 	game.label_at('6 HELDEN / 4 ARENEN / 2 MODI',Vector2(1145,995),25,Color('#E7D7F3'))
-	game.label_at('v0.18  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
+	game.label_at('v0.19  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='EINSTELLUNGEN':panel(game,Rect2(90,260,1460,415))

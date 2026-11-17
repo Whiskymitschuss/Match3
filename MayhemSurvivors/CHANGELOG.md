@@ -1,3 +1,23 @@
+# 0.19.0 Alpha — 2026-11-17
+
+- Breaker Axel als eigenständiger Boss in Welle5 aller Arenen, wiederkehrend im Endlosmodus.
+- Eigene Grafik nach Fotovorlage, mutierter Presslufthammer und sechs originale Sounds.
+- Drei Bossphasen: Ringstoß, drei/fünf Hammerschläge, gesperrte Sturmspur, Sturm-Ring-
+  Kombinationen und verzögert gefährliche Risse. Rage bei40%, feste Warnzeit1,25s.
+- Schaden/Resistenz, Rückstoß, kurze Bewegungssperre und Slow mit vorhandener Rüstung,
+  Unverwundbarkeit, Frost und Steelfist-Stun verbunden. Hazardcaps unabhängig von Qualität.
+- Boss-XP garantiert eingesammelt, mehrere Levelwahlen vor dem Shop; danach Welle6.
+  Timeout verliert, finale Arenabosse und Victory in Welle10 erhalten.
+- Neue Bossvorstellung und gemeinsamer HP-Balken mit Phasenmarkierungen; doppelte alte
+  Balkendarstellung entfernt. Kurze Todesanimation verdeckt keine Upgrade-Karte.
+- Historische Flowtests erwarten jetzt echten Sieg in Welle5. Ravox-/Hazardprüfungen
+  auf normale Welle6 verlegt. Keine Testmodus-Sonderregel in der Produktionslogik.
+-26 Testsuiten /2.144 Prüfungen plus beide unveränderten historischen Vergleichsläufe grün.
+
+---
+
+## Historischer Stand vor0.19
+
 # 0.18.0 Alpha — 2026-11-17
 
 - Mayhem Garage: echte Case-Öffnung, Sammlung, Ausrüstung und Werkstatt.

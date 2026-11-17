@@ -147,7 +147,7 @@ func update(dt:float):
 					else:at.x=game.player.position.x
 				game.vfx.ground_impact(at,float(h.get('radius',70)),Color('#FFD166'))
 		if h.age>=h.warm+h.duration:hazards.remove_at(i)
-	if not game.rules.boss_wave():return
+	if not game.rules.final_boss_wave():return
 	var boss:Dictionary={}
 	for e in game.enemies:
 		if e.kind=='boss' and e.hp>0:boss=e;break

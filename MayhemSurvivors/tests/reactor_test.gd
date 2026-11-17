@@ -109,8 +109,10 @@ func run():
 				check(g.state==g.State.COMBAT and g.wave_number==wave,arena+' hero %d wave %d starts' % [hero,wave])
 				if wave<10:
 					g.spawn_clock=100
-					g.remaining=.001
-					g._physics_process(.01)
+					if g.breaker.scheduled():
+						g.damage_enemy(g.breaker.actor(),100000)
+						while g.state==g.State.LEVEL_UP:g.apply_upgrade('damage');g.if_more_levels()
+					else:g.remaining=.001;g._physics_process(.01)
 					check(g.state==g.State.SHOP and g.offers.size()==4,arena+' wave %d connects to shop' % wave)
 					g.wave_number+=1
 					g.prepare_wave()

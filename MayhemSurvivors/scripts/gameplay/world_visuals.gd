@@ -5,6 +5,7 @@ const PACK_IDS={'bombling':0,'longshot':1,'hexling':2}
 const DOCKS=preload('res://assets/environments/docks.png')
 const FOUNDRY=preload('res://assets/environments/foundry.png')
 const WORLD_BOSSES=preload('res://assets/enemies/world_bosses.png')
+const AXEL=preload('res://assets/enemies/breaker_axel.png')
 const RAVOX=preload('res://assets/enemies/ravox.png')
 const FLOOR = preload('res://assets/environments/scrapyard.png')
 const REACTOR_FLOOR=preload('res://assets/environments/reactor.png')
@@ -13,7 +14,7 @@ const GUARDIAN_REGION=Rect2(0,70,1254,1168)
 const ROLE_ART=preload('res://assets/enemies/reactor_roles.png')
 const ELITES=preload('res://assets/enemies/elites.png')
 const ENEMIES = preload('res://assets/enemies/enemies_atlas.png')
-const REGIONS = {'ravox':Rect2(0,0,1312,1199),'grunt':Rect2(132,79,377,516),'runner':Rect2(738,60,383,536),'tank':Rect2(26,675,576,566),'boss':Rect2(636,633,571,611),'spitter':Rect2(32,90,704,870),'drone':Rect2(792,72,720,824)}
+const REGIONS = {'breaker_axel':Rect2(0,0,1024,1536),'ravox':Rect2(0,0,1312,1199),'grunt':Rect2(132,79,377,516),'runner':Rect2(738,60,383,536),'tank':Rect2(26,675,576,566),'boss':Rect2(636,633,571,611),'spitter':Rect2(32,90,704,870),'drone':Rect2(792,72,720,824)}
 var game: Node2D
 var deaths: Array = []
 func _init(owner_game: Node2D):game=owner_game
@@ -32,7 +33,7 @@ static func region(kind: String) -> Rect2:
 	return REGIONS.get(kind,Rect2(0,0,1,1))
 static func dimensions(radius: float, kind: String = 'grunt') -> Vector2:
 	var source=region(kind).size
-	var width=radius*(2.9 if PACK_IDS.has(kind) else (3.4 if kind=='ravox' else (2.2 if kind in ['grunt','runner'] else 2.6)))
+	var width=radius*(2.9 if PACK_IDS.has(kind) else (3.4 if kind in ['ravox','breaker_axel'] else (2.2 if kind in ['grunt','runner'] else 2.6)))
 	return Vector2(width,width*source.y/source.x)
 func draw_arena():
 	game.draw_texture_rect(DOCKS if game.arena_id=='docks' else (FOUNDRY if game.arena_id=='foundry' else (REACTOR_FLOOR if game.is_reactor() else FLOOR)),Rect2(0,0,2400,1600),false)
@@ -49,6 +50,7 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	var clock=game.animation_clock if decorative else game.run_time
 	var speed=11.0 if enemy.kind in ['runner','drone'] else (5.0 if enemy.kind in ['boss','tank'] else 8.0)
 	var stride=sin(clock*speed+pos.x*.015)
+	if enemy.kind=='breaker_axel' and game.breaker.stage=='hammer':stride=sin(clock*42)*4
 	var bounce=absf(stride)*(5.0 if enemy.kind=='drone' else (2.0 if enemy.kind=='boss' else 1.6))
 	var face=-1.0 if game.player.position.x<pos.x else 1.0
 	if enemy.kind=='spitter' and float(enemy.get('windup',0))>0:face=-1.0 if enemy.aim.x<pos.x else 1.0
@@ -56,7 +58,12 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	game.draw_circle(Vector2.ZERO,radius*.9,Color(0,0,0,.28))
 	game.draw_set_transform(pos,stride*.018,Vector2(face,1))
 	var tint=Color(2.2,2.2,2.2) if float(enemy.get('hit',0))>0 else Color.WHITE
+	if enemy.kind=='breaker_axel' and game.breaker.tier==3:tint=Color(1.25,.78,.58) if float(enemy.get('hit',0))<=0 else tint
 	game.draw_texture_rect_region(texture_for(enemy,guardian,elite),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
+	if enemy.kind=='breaker_axel' and game.breaker.tier==3:
+		for x in [-.01,.09]:
+			var eye=Vector2(size.x*x,-size.y*.51-bounce)
+			game.draw_circle(eye,6,Color(1,.35,.05,.32));game.draw_circle(eye,2.5,Color('#FFF2A8'))
 	game.draw_set_transform(Vector2.ZERO)
 	if enemy.kind!='boss' and (elite or enemy.kind=='ravox' or enemy.get('hp',1)<enemy.get('max_hp',1)):
 		var bar=pos+Vector2(-radius,-size.y*.66-10)
@@ -84,7 +91,7 @@ func draw_deaths():
 			var at=e.pos+dir*(7+progress*(e.radius+16))
 			game.draw_line(at,at+dir*6,Color(color,alpha),3*alpha+1,true)
 func boss_telegraph() -> Dictionary:
-	if game.is_reactor():return {}
+	if game.is_reactor() or game.breaker.scheduled():return {}
 	# Read the actual combat phase and the locked target, never a guessed attack timer.
 	for e in game.enemies:
 		if e.kind!='boss':continue
@@ -119,6 +126,7 @@ func draw_telegraph():
 			game.draw_line(at-dir*10-dir.orthogonal()*10,at,Color('#FFD166'),3,true)
 
 func texture_for(e:Dictionary,guardian:bool,elite:bool) -> Texture2D:
+	if e.kind=='breaker_axel':return AXEL
 	if PACK_IDS.has(e.kind):return PACK
 	if e.kind=='boss' and game.arena_id in ['docks','foundry']:return WORLD_BOSSES
 	if e.kind=='ravox':return RAVOX

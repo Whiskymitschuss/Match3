@@ -7,7 +7,7 @@ func check(ok:bool,text:String):
 	if ok:passed+=1;print('PASS ',text)
 	else:failed+=1;push_error('FAIL '+text)
 func near(a:float,b:float) -> bool:return absf(a-b)<.01
-func fresh(arena:String='scrapyard',wave:int=5,hero:int=3):
+func fresh(arena:String='scrapyard',wave:int=6,hero:int=3):
 	g.test_mode=true;g.selected=hero;g.arena_id=arena;g.saved.wins=1;g.start_run();g.wave_number=wave;g.begin_wave();g.spawn_clock=999;g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll();g.crit=0
 func spawn() -> Dictionary:
 	g.spawn_enemy('ravox');var e=g.enemies.back();e.pos=g.player.position+Vector2(250,0);e.ravox_clock=0;return e
@@ -19,7 +19,7 @@ func run():
 	for arena in ['scrapyard','reactor']:
 		for wave in range(1,11):
 			fresh(arena,wave)
-			check((g.ravox.select_kind('grunt',.95)=='ravox')==(wave>=5 and wave<=9),'Spawn schedule '+arena+str(wave))
+			check((g.ravox.select_kind('grunt',.95)=='ravox')==(wave>=6 and wave<=9),'Spawn schedule '+arena+str(wave))
 	fresh();var e=spawn()
 	check(e.max_hp>140 and e.speed>=220 and e.ravox_stage=='chase','Actual scaled spawn with initialized behavior')
 	check(g.ravox.select_kind('grunt',.89)=='grunt','Unselected spawn roll preserves existing enemy')
@@ -29,7 +29,7 @@ func run():
 		g.enemies.clear();check(g.spawn_enemy('ravox'),'Remaining wave quota '+str(i))
 	g.enemies.clear();check(not g.spawn_enemy('ravox'),'Four-per-wave cap persists after enemies removed')
 	g.cleanup();check(not g.spawn_enemy('ravox'),'Combat cleanup does not erase wave quota')
-	g.start_run();g.wave_number=5;g.begin_wave();check(g.spawn_enemy('ravox'),'New run resets quota')
+	g.start_run();g.wave_number=6;g.begin_wave();check(g.spawn_enemy('ravox'),'New run resets quota')
 	fresh();e=spawn();var before:Vector2=e.pos
 	check(g.ravox.velocity(e,Vector2.LEFT*220,5)==Vector2.ZERO and e.ravox_stage=='windup' and e.ravox_clock==1.25,'Long first frame starts full warning without consuming it')
 	var target:Vector2=e.ravox_target;var hp:float=g.hp
@@ -49,11 +49,11 @@ func run():
 	check(e.ravox_stage=='recovery','Knockback displacement cancels windup')
 	fresh();e=spawn();g.ravox.velocity(e,Vector2.LEFT,.01);g.twinkle.apply_stun(e,1)
 	check(e.ravox_stage=='recovery' and e.suds_stun==1,'Actual Twinkle soap cancels charge and stuns')
-	fresh('scrapyard',5,0);e=spawn();e.pos=g.player.position+Vector2(150,0);g.ravox.velocity(e,Vector2.LEFT,.01);g.hero_ability.activate()
+	fresh('scrapyard',6,0);e=spawn();e.pos=g.player.position+Vector2(150,0);g.ravox.velocity(e,Vector2.LEFT,.01);g.hero_ability.activate()
 	check(e.ravox_stage=='recovery','Actual Bruiser shockwave interrupts Ravox')
 	fresh();e=spawn();g.ravox.velocity(e,Vector2.LEFT,.01);g.hero_ability.activate();g.twinkle.update(.25)
 	check(e.ravox_stage=='recovery','Tornado interrupts Ravox before knockback')
-	fresh('scrapyard',5,2);e=spawn();g.ravox.velocity(e,Vector2.LEFT,.01);g.ravox.velocity(e,Vector2.LEFT,2);hp=g.hp;g.hero_ability.activate();g.update_enemies(1)
+	fresh('scrapyard',6,2);e=spawn();g.ravox.velocity(e,Vector2.LEFT,.01);g.ravox.velocity(e,Vector2.LEFT,2);hp=g.hp;g.hero_ability.activate();g.update_enemies(1)
 	check(g.hp==hp,'Shade invulnerable dash remains respected')
 	for state in [g.State.PAUSED,g.State.LEVEL_UP,g.State.SHOP]:
 		fresh();e=spawn();g.ravox.velocity(e,Vector2.LEFT,.01);var clock:float=e.ravox_clock;before=e.pos;g.state=state;g._physics_process(2);g.ravox.velocity(e,Vector2.LEFT,2)

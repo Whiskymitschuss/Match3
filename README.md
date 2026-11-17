@@ -1,30 +1,27 @@
-# RF Worlds — Mayhem Survivors0.18.0 / MAYHEM GARAGE
+# RF Worlds — Mayhem Survivors0.19.0 / BREAKER AXEL
 
-**Cases öffnen, Fighter freischalten und deinen eigenen Look ausrüsten.**
+Neuer Untoten-Boss in Welle5 aller vier Arenen: eigene Cartoon-Grafik, mutierter
+Presslufthammer, Schockringe, Hammerraserei, Ansturm und Wutphase unter40% Leben.
+Zehnwelliger Run bleibt: Axel-Sieg → Levelwahl → Shop → Welle6 → Arenaboss in10.
+Endlos:Axel in5/15/25/... . Garage/Cases und dauerhafte Sammlung aus0.18 erhalten.
 
-- Nur Bruiser frei; fünf weitere Fighter über Crew-Cases.
-- Crew-, Arsenal- und Style-Case, je1 kostenloses Startticket, echte Chancen und Garantie.
--32 Sammlungseinträge, Duplikatteile, Werkstattränge1–5 und persönliche Ausrüstung.
-- Sichtbare Kopf-/Körper-/Schuhteile, Waffenstile und Dekoration.
-- Drei zusätzliche aktive Zauber mit separatem Touch-Button.
-- Studio-Coins aus echten Runs sowie bisherigen Aufgaben und kostenlosem Pass.
-- Offline, lokal gespeichert, keine Werbung oder Echtgeldkäufe.
+[Android-APK0.19 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/breaker-axel-v0.19/Downloads/MayhemSurvivors-v0.19-debug.apk)
 
-[Android-APK0.18 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-garage-v0.18/Downloads/MayhemSurvivors-v0.18-debug.apk)
+[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/breaker-axel-v0.19/Downloads/MayhemSurvivors-v0.19-source.zip)
 
-[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-garage-v0.18/Downloads/MayhemSurvivors-v0.18-source.zip)
+[SHA256-Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/breaker-axel-v0.19/Downloads/SHA256SUMS-v0.19.txt)
 
-![Cases — native Engine-Vorgabeszene](MayhemSurvivors/tests/garage_cases.png)
+Als Update über0.18 installieren. Im normalen Run Welle4 überleben und im Shop
+fortsetzen; danach erscheint Axels Vorstellung. Kein neues Profil erforderlich.
+26 Testsuiten /2.144 Prüfungen und beide historischen Vergleichsläufe bestanden.
+Signatur/Alignment/Manifest/Payload werden im BUILD_REPORT protokolliert.
+Physischer Android-/Touch-/FPS-/Balancetest bleibt offen. Weltkarte/Arenenfreigabe
+ist der nächste separate Inhaltsumfang.
 
-![Garage — native Engine-Vorgabeszene](MayhemSurvivors/tests/garage_outfit.png)
+![Breaker Axel Vorstellung](MayhemSurvivors/tests/axel_intro.png)
+![Angekündigter Ansturm](MayhemSurvivors/tests/axel_charge.png)
+![Wutphase](MayhemSurvivors/tests/axel_rage.png)
 
-Hauptmenü → CASES & GARAGE; Charakterauswahl → INVENTAR & STILE. Als Update installieren:
-Android7+, ARM64, Querformat, Code22, gleicher Paketname/Debug-Schlüssel. Stats/Coins/Deko
-bleiben erhalten; alte Gratis-Fighter werden entsprechend der neuen Regel per Case erspielt.
-
-25 Suites /1.898 Assertions, beide historische Traces,86.400 Lastschritte und15 native
-Ansichten geprüft. APK-Signatur/Alignment/ARM64/Payload geprüft. Echte Android-Abnahme
-von Bedienung, Update und neuer Balance offen. Lineare Weltenfreigabe folgt separat.
-
-[Garage-Anleitung](MayhemSurvivors/MAYHEM_GARAGE.md) · [Tests](MayhemSurvivors/TEST_REPORT.md) ·
-[Build](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)
+Godot: [Projektanleitung](MayhemSurvivors/README.md) / [Tests](MayhemSurvivors/TEST_REPORT.md) /
+[Fortschritt](MayhemSurvivors/PROGRESS.md). Quellarchiv enthält alle Laufzeitressourcen,
+Szenen, Skripte, Daten, Tests und Berichte; ohne SDK/Importcache/private Schlüssel.
