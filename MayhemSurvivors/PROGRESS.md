@@ -23,8 +23,9 @@ Pilot; keine FPS-/menschliche Balancebehauptung. Logs tests/results/v0.19-*.log.
 Debug-APK0.19.0/Code23 gebaut und geprüft: ARM64/Landscape/GL Compatibility,
 v2/v3-Signatur,16KB-Alignment, Manifest und Boss-Payload. Gleiches Update-Zertifikat.
 SHA256:69d14f75ccc1ad7f9cd25a0269f57ec6da4cac6a593b95de60df1eed4ce46266.
-Nächste technische Aktion: Quell-ZIP frisch ohne Cache testen und GitHub-Downloads
-nach Push vollständig per SHA256 prüfen. Danach Android-Geräteabnahme.
+Quell-ZIP frisch ohne Importcache importiert: gesamte Suite erneut grün, Laufzeit-
+quellen bytegleich. Nächste technische Aktion: GitHub-Downloads nach Push vollständig
+per SHA256 prüfen und Prüfprotokoll veröffentlichen. Danach Android-Geräteabnahme.
 
 Offen: echte Updateinstallation, Multitouch/Audio auf dem Gerät, Geräte-FPS/Thermik
 und menschliche Boss-/Beutebalance. Weltkarte/lineare Arenenfreigabe bleibt separater

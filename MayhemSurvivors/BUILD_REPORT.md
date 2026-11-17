@@ -23,3 +23,8 @@ Berichte. Ohne Importcache, SDK, APK oder private Schlüssel. Aktuelle Axel-/Gar
 Galerien enthalten; historische reine Screenshotgalerien bleiben im Repository.
 Start nach Import ohne Generatoren. Eigener Export erfordert SDK/JDK/Exporttemplate;
 für ein Update über diese APK zusätzlich denselben privaten Signierschlüssel.
+
+Quell-ZIP zusätzlich frisch ohne Godot-Importcache entpackt und importiert. Alle26
+Suiten /2.144 Prüfungen und beide historischen Traces erneut bestanden. Laufzeit-
+skripte, Szenen, Daten und Assets mit dem getesteten Archiv bytegleich. Logs:
+tests/results/v0.19-clean-import.log und v0.19-clean-tests.log.

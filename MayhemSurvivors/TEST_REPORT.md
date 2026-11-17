@@ -31,6 +31,11 @@ gezielt erzwungen, künstliche HP und vorgegebener Pilot. Positionen/HP endlich,
 max2 Ringe/max6 Risse und begrenzte Statusimpulse. Kein menschlicher Balancetest.
 Physische Android-Updateinstallation, echte Touch-/Audioabnahme, FPS/Thermik offen.
 
+Quell-ZIP zusätzlich frisch ohne Godot-Importcache entpackt und importiert. Alle26
+Suiten /2.144 Prüfungen und beide historischen Traces erneut bestanden. Laufzeit-
+skripte, Szenen, Daten und Assets mit dem getesteten Archiv bytegleich. Logs:
+tests/results/v0.19-clean-import.log und v0.19-clean-tests.log.
+
 ---
 
 ## Historischer Stand vor0.19
