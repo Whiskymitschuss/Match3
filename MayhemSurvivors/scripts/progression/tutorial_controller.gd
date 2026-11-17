@@ -19,8 +19,8 @@ func frozen() -> bool:return active and (step in [0,11,12] or done)
 func start():
 	if active:return
 	previous={'selected':game.selected,'arena':game.arena_id,'mode':game.run_mode}
-	game.character_select();game.selected=1;game.arena_id='scrapyard';game.run_mode='tutorial';game.start_run();game.begin_wave()
-	active=true;step=0;done=true
+	game.character_select();game.selected=1;game.arena_id='scrapyard';game.run_mode='tutorial';active=true;game.start_run();game.begin_wave()
+	step=0;done=true
 	layer=CanvasLayer.new();layer.layer=20;add_child(layer)
 	root=Control.new();root.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(root)
 	enter_step()

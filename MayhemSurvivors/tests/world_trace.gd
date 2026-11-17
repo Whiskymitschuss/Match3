@@ -7,7 +7,7 @@ func run():
 	g.set_physics_process(false)
 	g.enemy_pack.enabled=false;g.arena_events.enabled=false # Frozen legacy encounters; 0.16 has its own tests.
 	g.rules.progressive=false # Frozen pre-0.14 movement/values; new scaling has dedicated tests.
-	g.saved=g.default_save()
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	var trace:Array=[]
 	for hero in range(3):
 		g.selected=hero

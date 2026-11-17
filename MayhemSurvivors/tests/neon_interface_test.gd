@@ -7,7 +7,7 @@ func check(ok:bool,name:String):
 	if ok:passed+=1;print('PASS ',name)
 	else:failed+=1;push_error('FAIL '+name)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();g.saved.wins=1
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
 	var icons=g.UISkin.Icons
 	for id in icons.IDS:check(icons.get_icon(id)!=null and icons.get_icon(id).get_size()==Vector2(128,128),'Finished graphic resource '+id)
 	for u in g.upgrades:check(icons.get_icon(u[0])!=null,'Upgrade uses semantic illustration '+u[0])

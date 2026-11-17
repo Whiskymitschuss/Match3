@@ -13,7 +13,7 @@ func run():
 	game.test_mode=true
 	root.add_child(game)
 	game.set_physics_process(false)
-	game.saved=game.default_save()
+	game.saved=game.default_save();preload('res://tests/legacy_collection.gd').unlock_all(game.saved)
 	game.saved.wins=1
 	for hero in range(3):
 		game.selected=hero

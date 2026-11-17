@@ -10,7 +10,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
-	g.saved=g.default_save()
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	g.start_run()
 	g.begin_wave()
 	var art=load('res://scripts/gameplay/world_visuals.gd')

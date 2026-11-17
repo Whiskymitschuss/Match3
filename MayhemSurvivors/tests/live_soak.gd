@@ -5,7 +5,7 @@ var peak=0
 var peak_hazards=0
 func _initialize():call_deferred('run')
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();g.saved.wins=1
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
 	for difficulty in g.Difficulty.IDS:
 		for arena in g.Arenas.IDS:
 			g.selected_difficulty=difficulty;g.selected=3;g.arena_id=arena;g.run_mode='campaign';g.start_run();g.wave_number=6;g.begin_wave();g.remaining=42;g.rng.seed=160;g.hp=100000;g.max_hp=100000;g.weapons[0].level=5

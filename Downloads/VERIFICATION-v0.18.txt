@@ -1,0 +1,10 @@
+Anonymous public GitHub download verification — 2026-11-17T14:23:35.268899+00:00
+PASS MayhemSurvivors-v0.18-debug.apk
+64176088 bytes
+SHA256 0be1b611d0e0c573d5c12a1b28054a7239c2f717077a994762388490f975c0f4
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-garage-v0.18/Downloads/MayhemSurvivors-v0.18-debug.apk
+PASS MayhemSurvivors-v0.18-source.zip
+59588192 bytes
+SHA256 342a54182e5a6ed57330c33baaa8f831178c6b6f1d5720db98d887dbb4693c58
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-garage-v0.18/Downloads/MayhemSurvivors-v0.18-source.zip
+Both complete binary downloads match the published checksums. No authentication used.

@@ -1,3 +1,20 @@
+# 0.18.0 Alpha — 2026-11-17
+
+- Mayhem Garage: echte Case-Öffnung, Sammlung, Ausrüstung und Werkstatt.
+- Nur Bruiser frei; fünf andere Fighter samt Startwaffe über Crew-Cases.
+- Drei erspielbare Cases, Starttickets, echte Einzelchancen und Neuzugangs-Garantie.
+- Atomare Buchung/Rollback, Neustartbeleg, Duplikatteile und Fundjournal.
+- 32 Einträge, individuelle Loadouts, Werkstattränge1–5 und feste Kampf-Snapshots.
+- Gemalte Ausrüstung, sichtbare Kopf-/Körper-/Schuhteile, Waffenstile und Dekovorschau.
+- Drei zusätzliche aktive Zauber mit getrenntem Multitouch-Button.
+- Dauerhafte Studio-Coins nach echten Runs; Training ohne Farmbelohnung.
+- Gesicherte Profilergänzung: Stats/Coins/Deko erhalten, Roster-Regel umgestellt.
+- 25 Suites /1.898 Assertions, beide historische Traces und Lastprobe grün.
+
+---
+
+## Historischer Stand vor0.18
+
 # 0.17.0 Alpha — 2026-11-17
 
 - STEELFIST / Timo als sechster sofort spielbarer Tank mit eigener Illustration und Rig.

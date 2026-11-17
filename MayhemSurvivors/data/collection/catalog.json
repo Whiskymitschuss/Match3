@@ -1,0 +1,424 @@
+{
+  "heroes": {
+    "sparky": {
+      "name": "SPARKY",
+      "weight": 30,
+      "rarity": "SELTEN",
+      "weapon": "blaster"
+    },
+    "shade": {
+      "name": "SHADE",
+      "weight": 25,
+      "rarity": "SELTEN",
+      "weapon": "orbit"
+    },
+    "twinkle": {
+      "name": "TWINKLE",
+      "weight": 20,
+      "rarity": "EPISCH",
+      "weapon": "mop"
+    },
+    "kicksy": {
+      "name": "KICKSY",
+      "weight": 15,
+      "rarity": "EPISCH",
+      "weapon": "bomb"
+    },
+    "steelfist": {
+      "name": "STEELFIST",
+      "weight": 10,
+      "rarity": "EPISCH",
+      "weapon": "tools"
+    }
+  },
+  "items": {
+    "blaster": {
+      "name": "BLASTER",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "hammer": {
+      "name": "HAMMER",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "splitgun": {
+      "name": "SPLITGUN",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "arc": {
+      "name": "ARC CANNON",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "orbit": {
+      "name": "ORBIT BLADE",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "mop": {
+      "name": "WISCHMOPP",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "bomb": {
+      "name": "MAYHEM-BOMBE",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "tools": {
+      "name": "WERKZEUGDUO",
+      "slot": "weapon",
+      "case": "arsenal",
+      "weight": 5,
+      "rarity": "SELTEN",
+      "description": "Klassenwaffe. Je Werkstattlevel über1: +2 % Waffenschaden.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "heart_module": {
+      "name": "LEBENSKERN",
+      "slot": "item",
+      "case": "arsenal",
+      "weight": 10,
+      "rarity": "SELTEN",
+      "mods": {
+        "hp": 5
+      },
+      "description": "+5 maximale HP je Rang.",
+      "color": "#2ED573",
+      "ranked": true
+    },
+    "ward_module": {
+      "name": "SCHUTZKERN",
+      "slot": "item",
+      "case": "arsenal",
+      "weight": 10,
+      "rarity": "SELTEN",
+      "mods": {
+        "armor": 1
+      },
+      "description": "+1 Rüstung je Rang.",
+      "color": "#2ED573",
+      "ranked": true
+    },
+    "magnet_module": {
+      "name": "SAMMLERKERN",
+      "slot": "item",
+      "case": "arsenal",
+      "weight": 10,
+      "rarity": "SELTEN",
+      "mods": {
+        "magnet": 10
+      },
+      "description": "+10 Sammelradius je Rang.",
+      "color": "#2ED573",
+      "ranked": true
+    },
+    "heal_pulse": {
+      "name": "HEILIMPULS",
+      "slot": "spell",
+      "case": "arsenal",
+      "weight": 10,
+      "rarity": "EPISCH",
+      "description": "Heilt11–15 % deiner Max-HP. 45 s Cooldown.",
+      "color": "#A0F6FF",
+      "ranked": true
+    },
+    "frost_nova": {
+      "name": "FROSTNOVA",
+      "slot": "spell",
+      "case": "arsenal",
+      "weight": 10,
+      "rarity": "EPISCH",
+      "description": "Flächenschaden und2 s Verlangsamung. 35 s Cooldown.",
+      "color": "#A0F6FF",
+      "ranked": true
+    },
+    "phase_blink": {
+      "name": "PHASENSPRUNG",
+      "slot": "spell",
+      "case": "arsenal",
+      "weight": 10,
+      "rarity": "EPISCH",
+      "description": "Kurzer Sprung in Bewegungsrichtung, dabei unverwundbar. 40–32 s Cooldown.",
+      "color": "#A0F6FF",
+      "ranked": true
+    },
+    "hard_hat": {
+      "name": "BAUSTELLENHELM",
+      "slot": "head",
+      "case": "style",
+      "weight": 10,
+      "rarity": "STANDARD",
+      "mods": {
+        "magnet": 2
+      },
+      "description": "+2 Sammelradius je Rang. Sichtbar an deiner Figur.",
+      "color": "#FFD166",
+      "ranked": true
+    },
+    "neon_visor": {
+      "name": "NEONVISIER",
+      "slot": "head",
+      "case": "style",
+      "weight": 8,
+      "rarity": "SELTEN",
+      "mods": {
+        "magnet": 2
+      },
+      "description": "+2 Sammelradius je Rang. Sichtbar an deiner Figur.",
+      "color": "#00D9D0",
+      "ranked": true
+    },
+    "skull_mask": {
+      "name": "SCHÄDELMASKE",
+      "slot": "head",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "mods": {
+        "magnet": 2
+      },
+      "description": "+2 Sammelradius je Rang. Sichtbar an deiner Figur.",
+      "color": "#E879F9",
+      "ranked": true
+    },
+    "scrap_vest": {
+      "name": "SCHROTTWESTE",
+      "slot": "body",
+      "case": "style",
+      "weight": 10,
+      "rarity": "STANDARD",
+      "mods": {
+        "armor": 1
+      },
+      "description": "+1 Rüstung je Rang. Sichtbar an deiner Figur.",
+      "color": "#FF9F1C",
+      "ranked": true
+    },
+    "reactor_plate": {
+      "name": "REAKTORPANZER",
+      "slot": "body",
+      "case": "style",
+      "weight": 8,
+      "rarity": "SELTEN",
+      "mods": {
+        "armor": 1
+      },
+      "description": "+1 Rüstung je Rang. Sichtbar an deiner Figur.",
+      "color": "#00D9D0",
+      "ranked": true
+    },
+    "mayhem_jacket": {
+      "name": "MAYHEMJACKE",
+      "slot": "body",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "mods": {
+        "armor": 1
+      },
+      "description": "+1 Rüstung je Rang. Sichtbar an deiner Figur.",
+      "color": "#A55EEA",
+      "ranked": true
+    },
+    "steel_boots": {
+      "name": "STAHLKAPPEN",
+      "slot": "feet",
+      "case": "style",
+      "weight": 10,
+      "rarity": "STANDARD",
+      "mods": {
+        "speed": 0.01
+      },
+      "description": "+1 % Bewegungstempo je Rang. Sichtbar an deiner Figur.",
+      "color": "#AAB9D0",
+      "ranked": true
+    },
+    "neon_soles": {
+      "name": "NEONSOHLEN",
+      "slot": "feet",
+      "case": "style",
+      "weight": 8,
+      "rarity": "SELTEN",
+      "mods": {
+        "speed": 0.01
+      },
+      "description": "+1 % Bewegungstempo je Rang. Sichtbar an deiner Figur.",
+      "color": "#00D9D0",
+      "ranked": true
+    },
+    "raider_boots": {
+      "name": "RAIDERSTIEFEL",
+      "slot": "feet",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "mods": {
+        "speed": 0.01
+      },
+      "description": "+1 % Bewegungstempo je Rang. Sichtbar an deiner Figur.",
+      "color": "#FF667F",
+      "ranked": true
+    },
+    "cyan_core": {
+      "name": "CYAN CORE",
+      "slot": "skin",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "description": "Leuchtender Waffenstil. Rein optisch, für alle Klassen.",
+      "color": "#00D9D0",
+      "ranked": false
+    },
+    "ember_edge": {
+      "name": "EMBER EDGE",
+      "slot": "skin",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "description": "Leuchtender Waffenstil. Rein optisch, für alle Klassen.",
+      "color": "#FF9F1C",
+      "ranked": false
+    },
+    "void_steel": {
+      "name": "VOID STEEL",
+      "slot": "skin",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "description": "Leuchtender Waffenstil. Rein optisch, für alle Klassen.",
+      "color": "#C578FF",
+      "ranked": false
+    },
+    "comet": {
+      "name": "KOMETENRING",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Ein rotierender Komet umkreist deine Füße. Rein optisch.",
+      "color": "#A0F6FF",
+      "ranked": false,
+      "group": "ring"
+    },
+    "circuit": {
+      "name": "STROMRING",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Leuchtende Schaltsegmente unter deinem Fighter. Rein optisch.",
+      "color": "#00D9D0",
+      "ranked": false,
+      "group": "ring"
+    },
+    "flame": {
+      "name": "GLUTRING",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Cartoon-Flammen tanzen um deinen Standkreis. Rein optisch.",
+      "color": "#FF9F1C",
+      "ranked": false,
+      "group": "ring"
+    },
+    "mini_bot": {
+      "name": "MINI-BOT",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Ein kleiner dekorativer Roboter begleitet dich. Rein optisch.",
+      "color": "#80DEFF",
+      "ranked": false,
+      "group": "buddy"
+    },
+    "bomb_buddy": {
+      "name": "BOMBEN-KUMPEL",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Eine freundliche Fußball-Bombe schwebt mit. Kein Schaden. Rein optisch.",
+      "color": "#FF667F",
+      "ranked": false,
+      "group": "buddy"
+    },
+    "chaos_title": {
+      "name": "CHAOS-LEGENDE",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Dein goldener Spielertitel über dem Fighter. Rein optisch.",
+      "color": "#FFD166",
+      "ranked": false,
+      "group": "title"
+    }
+  },
+  "upgrade_costs": [
+    20,
+    35,
+    55,
+    80
+  ],
+  "cases": {
+    "crew": {
+      "name": "CREW-CASE",
+      "price": 100,
+      "color": "#C578FF",
+      "description": "Ein Fighter. Nach zwei Duplikaten garantiert der nächste Case einen fehlenden Helden."
+    },
+    "arsenal": {
+      "name": "ARSENAL-CASE",
+      "price": 60,
+      "color": "#FF9F1C",
+      "description": "Waffen, passive Items und zusätzliche Zauber für deine Sammlung."
+    },
+    "style": {
+      "name": "STYLE-CASE",
+      "price": 40,
+      "color": "#00D9D0",
+      "description": "Kopf, Rüstung, Schuhe, Waffenstile und sichtbare Dekoration."
+    }
+  }
+}

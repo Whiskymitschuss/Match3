@@ -1,5 +1,6 @@
 extends RefCounted
 const Rewards=preload('res://scripts/progression/daily_rewards.gd')
+const Collection=preload('res://scripts/progression/collection.gd')
 const DifficultyRecords=preload('res://scripts/progression/difficulty_records.gd')
 const Endless=preload('res://scripts/progression/endless_records.gd')
 const Mastery = preload('res://scripts/progression/character_mastery.gd')
@@ -7,7 +8,7 @@ const Records = preload('res://scripts/progression/run_records.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 # Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':{'bruiser':'classic','sparky':'classic','shade':'classic','twinkle':'classic','kicksy':'classic','steelfist':'classic'},'version':3,'unlocked':['bruiser','sparky','shade','twinkle','steelfist'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'tilt':true,'reduced_motion':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
+	return {'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':{'bruiser':'classic','sparky':'classic','shade':'classic','twinkle':'classic','kicksy':'classic','steelfist':'classic'},'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'tilt':true,'reduced_motion':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):
@@ -43,6 +44,10 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 		if data.settings.get(key) is bool:result.settings[key]=data.settings[key]
 	result.endless_records=Endless.sanitize(data.get('endless_records'))
 	result.meta=Rewards.clean(data.get('meta'))
+	result.collection=Collection.clean(data.get('collection'))
+	if not data.has('collection') and not FileAccess.file_exists(sidecar(path,'pre_garage')):backup(raw,sidecar(path,'pre_garage'))
+	for id in result.meta.owned:
+		if Collection.catalog().items.has(id):result.collection.levels[id]=1
 	result.records=Records.sanitize_records(data.get('records'))
 	result.recent_runs=Records.sanitize_history(data.get('recent_runs'))
 	result.arena_records=Records.sanitize_arenas(data.get('arena_records'))

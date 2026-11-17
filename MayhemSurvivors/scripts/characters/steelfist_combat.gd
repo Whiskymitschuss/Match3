@@ -15,7 +15,7 @@ func reset_run():clear();attacks=0;regen_clock=0
 func damage_factor() -> float:return 1.0-float(game.characters[game.selected].get('damage_reduction',0))
 func speed_multiplier() -> float:return 1.0+float(game.hero_ability.data.steelfist.buff_attack_speed) if active() and buff_left>0 else 1.0
 func power(w:Dictionary) -> float:
-	return float(game.weapon_data.tools.damage)*(1+(int(w.level)-1)*.3)*game.damage_mult*(1+float(game.characters[game.selected].melee_bonus))*float(Specs.definition(w).get('power',1))
+	return float(game.weapon_data.tools.damage)*(1+(int(w.level)-1)*.3)*game.damage_mult*(1+float(game.characters[game.selected].melee_bonus))*float(Specs.definition(w).get('power',1))*game.gear_weapon_multiplier('tools')
 func cooldown(w:Dictionary) -> float:
 	return float(game.weapon_data.tools.cooldown)/game.attack_mult/speed_multiplier()/(1+.06*(int(w.level)-1))*float(Specs.definition(w).get('cooldown',1))
 func reach(w:Dictionary) -> float:return (float(game.weapon_data.tools.reach)+10*(int(w.level)-1))*float(Specs.definition(w).get('reach',1))

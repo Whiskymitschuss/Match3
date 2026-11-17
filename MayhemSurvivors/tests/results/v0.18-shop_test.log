@@ -1,0 +1,44 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS First shop opens tutorial without resuming combat
+PASS Tutorial page 0
+PASS Tutorial page 1
+PASS Tutorial page 2
+PASS Tutorial marked seen
+PASS Item purchased once at displayed price
+PASS Item tradeoff and two-piece weapon/item set applied
+PASS Duplicate purchase refused
+PASS Repeated synchronization never stacks bonuses
+PASS Level upgrades preserved during item synchronization
+PASS Third set piece grants armor with item armor
+PASS Attack boost trades maximum HP
+PASS Second set activates attack tempo
+PASS Third flux piece activates projectile bonus
+PASS Salvage refunds coins and removes third-piece bonus
+PASS Last weapon protected
+PASS Unaffordable upgrade refused
+PASS Workbench upgrade 0
+PASS Workbench upgrade 1
+PASS Workbench upgrade 2
+PASS Workbench upgrade 3
+PASS Level five requires specialization
+PASS Maximum level protected
+PASS Workbench connects to existing evolution system
+PASS All four remaining valid items occur in generated offers
+PASS Owned item omitted from offers
+PASS Owned item omitted from offers
+PASS Owned item omitted from offers
+PASS Owned item omitted from offers
+PASS Shop and tutorial freeze simulation
+PASS Inventory tab weapons
+PASS Inventory tab items
+PASS Inventory tab sets
+PASS Detail panels retain shop state
+PASS Run history retains valid owned items
+PASS Tutorial preference survives JSON reload
+PASS Items persist between waves
+PASS Restart resets all per-run item effects
+PASS Crit cap excludes wasted item
+PASS Armor cap excludes wasted item
+PASS HP floor excludes unsafe tradeoff
+RESULT 41 passed / 0 failed

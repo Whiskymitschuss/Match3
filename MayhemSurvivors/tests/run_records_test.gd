@@ -65,7 +65,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
-	g.saved=Save.defaults()
+	g.saved=Save.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	g.selected=2
 	g.start_run()
 	g.begin_wave()

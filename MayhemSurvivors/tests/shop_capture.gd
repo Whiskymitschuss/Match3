@@ -17,7 +17,7 @@ func capture(name:String):
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
 	root.size=Vector2i(1280,591);await process_frame;await process_frame;g.update_safe_area()
-	g.saved=g.default_save();g.saved.settings.shop_help_seen=true;g.selected=1;g.start_run();g.begin_wave();g.cleanup();g.wave_number=4;g.coins=340;g.open_shop()
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.settings.shop_help_seen=true;g.selected=1;g.start_run();g.begin_wave();g.cleanup();g.wave_number=4;g.coins=340;g.open_shop()
 	g.weapons.append({'id':'arc','level':2,'clock':0.0});g.run_items.add('grip');g.run_items.add('plate')
 	g.offers=[{'type':'weapon','id':'splitgun','name':'SPLITGUN','description':'Neue Waffe','rarity':'STANDARD','price':38}]
 	for id in ['battery','coolant','boots']:

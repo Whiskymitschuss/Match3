@@ -169,11 +169,11 @@ func draw_weapons(behind: bool = false):
 				var angle=(pose.angle+PI*.5)*strength if r.get('double_hit',false) or int(r.get('hand',0))==i else .15*(1 if i==0 else -1)
 				game.draw_set_transform(hands[i],angle)
 				var id='wrench' if i==0 else 'pliers'
-				game.draw_texture_rect_region(Art.weapon_texture(id),Rect2(-17,-64,34,84),Art.weapon(id))
+				game.draw_texture_rect_region(Art.weapon_texture(id),Rect2(-17,-64,34,84),Art.weapon(id),game.GearArt.weapon_tint(game.run_loadout))
 				game.draw_set_transform(Vector2.ZERO)
 		elif not pose.is_empty():
 			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))
-			game.draw_texture_rect_region(Art.weapon_texture(pose.id),pose.rect,Art.weapon(pose.id))
+			game.draw_texture_rect_region(Art.weapon_texture(pose.id),pose.rect,Art.weapon(pose.id),game.GearArt.weapon_tint(game.run_loadout))
 			for w in game.weapons:
 				if w.id!=pose.id:continue
 				var spec=Specs.definition(w)
@@ -203,7 +203,7 @@ func draw_weapons(behind: bool = false):
 		game.draw_arc(game.player.position,radius,angle-.35,angle,12,Color(color,.7),3,true)
 		game.draw_set_transform(game.player.position+Vector2.from_angle(angle)*radius,angle+PI*.5)
 		var blade_size:float=orbit_pose.size
-		game.draw_texture_rect_region(Art.TEXTURE,Rect2(Vector2.ONE*(-blade_size/2),Vector2.ONE*blade_size),Art.weapon('orbit'))
+		game.draw_texture_rect_region(Art.TEXTURE,Rect2(Vector2.ONE*(-blade_size/2),Vector2.ONE*blade_size),Art.weapon('orbit'),game.GearArt.weapon_tint(game.run_loadout))
 		if not Specs.definition(w).is_empty():game.draw_texture_rect(Specs.icon(w.spec),Rect2(-11,-11,22,22),false)
 		game.draw_set_transform(Vector2.ZERO)
 

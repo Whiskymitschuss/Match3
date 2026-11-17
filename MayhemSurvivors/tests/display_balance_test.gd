@@ -34,7 +34,7 @@ func run():
 	var fallback=Layout.calculate(Vector2(2340,1080),Vector2(2340,1080),Rect2())
 	check(fallback.safe.size.x==2340,'Unavailable Android insets safely use full viewport')
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
-	g.saved=g.default_save();g.saved.wins=1;g.selected=1
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;g.selected=1
 	for entry in [Vector2i(1280,591),Vector2i(1280,720),Vector2i(1024,768)]:
 		root.size=entry;await process_frame;await process_frame
 		g.update_safe_area();g.main_menu()
