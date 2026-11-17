@@ -2,7 +2,7 @@ extends SceneTree
 var g
 func _initialize():call_deferred('run')
 func capture(id:String):
-	g.queue_redraw()
+	g.refresh_hud();g.queue_redraw()
 	for i in range(10):await process_frame
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png('res://tests/united_'+id+'.png');print('UNITED FRAME ',id)
@@ -23,7 +23,7 @@ func run():
 		g.wave_number=wave;g.prepare_wave();await capture('boss_intro_'+str(wave));g.begin_wave();var e=g.enemies[0];e.pos=g.player.position+Vector2(240,0);e.hp=e.max_hp*.3;g.united.bosses.update(.1);g.united.bosses.clock=0;g.united.bosses.update(.1);g.united.bosses.clock=0;g.united.bosses.update(.1);await capture('boss_combat_'+str(wave))
 	g.pause_game();await capture('pause');g.game_guide.show('rules',0,g.pause_menu);await capture('pause_guide');g.resume();g.coins=900;g.open_shop();await capture('shop')
 	g.main_menu();g.mastery_screen(10);await capture('mastery_nyx');g.statistics(10);await capture('statistics_nyx');g.endless_statistics(2);await capture('endless_page3');g.difficulty_statistics('normal','campaign',2);await capture('difficulty_page3')
-	g.main_menu();g.settings(g.main_menu);await capture('settings');g.garage.show(10);await capture('garage_nyx')
+	g.main_menu();g.settings(g.main_menu);await capture('settings');g.garage.show(10);await capture('garage_nyx');g.main_menu();g.tutorial.start();await capture('tutorial');g.tutorial.stop(false)
 	root.size=Vector2i(2340,1080);await process_frame;g.update_safe_area();g.arena_select(9);await capture('map_wide')
 	root.size=Vector2i(1920,1440);await process_frame;g.update_safe_area();g.game_guide.show('heroes',10);await capture('guide_tablet')
 	g.audio_director.stop();g.free();await process_frame;quit()

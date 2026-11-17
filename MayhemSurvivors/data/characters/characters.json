@@ -119,7 +119,7 @@
     "name": "CINDER",
     "hp": 95,
     "speed": 205,
-    "weapon": "flame",
+    "weapon": "flamer",
     "color": "#FF843E",
     "description": "Feuerherz • +15 % Brandschaden",
     "element_bonus": 0.15,
@@ -128,7 +128,7 @@
     "attack_speed_bonus": 0,
     "crit_bonus": 0,
     "allowed_weapons": [
-      "flame"
+      "flamer"
     ],
     "rarity": "EPISCH",
     "unlock": {

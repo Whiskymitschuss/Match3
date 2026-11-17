@@ -23,7 +23,7 @@ func run():
 	for node in g.ui_root.get_children():
 		if node is Button and node.text=='AUSWÄHLEN':node.pressed.emit();break
 	check(g.selected==5 and g.state==g.State.ARENA_SELECT,'Real selection button selects Steelfist')
-	g.character_select(5);g.selection_shift('hero',1);check(g.hero_cursor==0,'Swipe carousel wraps after sixth hero')
+	g.character_select(10);g.selection_shift('hero',1);check(g.hero_cursor==0,'Swipe carousel wraps after eleventh hero')
 	fresh();g.crit=.05
 	check(g.max_hp==208 and g.hp==208 and g.speed==165,'160 base HP plus30 percent produces208, speed165')
 	check(near(g.crit,.05) and near(g.attack_mult,1) and g.weapons[0].id=='tools','Crit5 percent and one tool-duo slot')

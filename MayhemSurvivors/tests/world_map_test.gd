@@ -58,7 +58,7 @@ func run():
 	check(malformed.cleared==['reactor'] and malformed.claimed==['reactor'] and malformed.unlocked.has('docks'),'Invalid world ids, duplicates and unearned claims sanitized')
 	var old=S.defaults();old.erase('world_progress');old.meta.coins=133;old.collection.parts=77;old.collection.heroes.append('sparky');old.collection.levels.blaster=4;old.collection.loadouts.sparky.weapon='blaster';old.wins=2;old.games=4;old.arena_records.reactor.games=1;old.arena_records.reactor.wins=1;old.arena_records.reactor.highest_wave=10;old.arena_records.foundry.games=1;old.arena_records.scrapyard.games=3;old.arena_records.scrapyard.wins=1
 	S.save_local(old,PATH);var raw=FileAccess.get_file_as_string(PATH);loaded=S.load_local(PATH)
-	check(W.ORDER.slice(0,5).all(func(id):return W.available(loaded,id)),'Pre-map visited arenas and explicit reactor access remain available')
+	check(W.ORDER.slice(0,4).all(func(id):return W.available(loaded,id)) and not W.available(loaded,'gardens'),'Pre-map visited arenas and explicit reactor access remain available')
 	check(loaded.world_progress.cleared.has('reactor') and loaded.world_progress.cleared.has('scrapyard') and not loaded.world_progress.cleared.has('foundry'),'Only genuine attributed old victories count as clears')
 	check(loaded.meta.coins==133 and loaded.collection.parts==77 and loaded.collection.levels.blaster==4 and loaded.collection.heroes.has('sparky'),'Migration preserves wallet, parts, hero and ranks without auto-awarding gifts')
 	check(FileAccess.file_exists(S.sidecar(PATH,'pre_world_map')) and FileAccess.get_file_as_string(S.sidecar(PATH,'pre_world_map'))==raw,'Exact pre-map profile backup created')

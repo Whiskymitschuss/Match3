@@ -26,7 +26,9 @@ func run():
 		var weapon=g.Specs.all()[scene.spec].weapon
 		g.selected=0 if weapon=='hammer' else (2 if weapon=='orbit' else 1)
 		g.arena_id=scene.arena
+		var carried_hurt_clock=g.hurt_clock # Historical trace carried immunity across scenario setup.
 		g.start_run()
+		g.hurt_clock=carried_hurt_clock
 		g.rng.seed=5100+index
 		# Freeze historical wave rules only in this regression harness, never in the app.
 		g.waves=JSON.parse_string(FileAccess.get_file_as_string('res://tests/fixtures/classic_waves_v0.6.json'))

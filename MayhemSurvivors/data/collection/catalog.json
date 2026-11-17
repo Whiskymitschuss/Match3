@@ -375,16 +375,6 @@
       "ranked": false,
       "group": "ring"
     },
-    "flame": {
-      "name": "FLAMMENWERFER",
-      "description": "Klassenwaffe für CINDER. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
-      "slot": "weapon",
-      "case": "arsenal",
-      "rarity": "SELTEN",
-      "color": "#FF843E",
-      "weight": 12,
-      "ranked": true
-    },
     "mini_bot": {
       "name": "MINI-BOT",
       "slot": "deco",
@@ -457,6 +447,27 @@
       "color": "#E875EA",
       "weight": 12,
       "ranked": true
+    },
+    "flamer": {
+      "name": "FLAMMENWERFER",
+      "description": "Klassenwaffe für CINDER. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
+      "slot": "weapon",
+      "case": "arsenal",
+      "rarity": "SELTEN",
+      "color": "#FF843E",
+      "weight": 12,
+      "ranked": true
+    },
+    "flame": {
+      "name": "GLUTRING",
+      "slot": "deco",
+      "case": "style",
+      "weight": 5,
+      "rarity": "EPISCH",
+      "description": "Cartoon-Flammen tanzen um deinen Standkreis. Rein optisch.",
+      "color": "#FF9F1C",
+      "ranked": false,
+      "group": "ring"
     }
   },
   "upgrade_costs": [

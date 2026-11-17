@@ -54,7 +54,7 @@
     "cooldown": 1.25,
     "reach": 130
   },
-  "flame": {
+  "flamer": {
     "name": "FLAMMENWERFER",
     "damage": 6,
     "cooldown": 0.28,

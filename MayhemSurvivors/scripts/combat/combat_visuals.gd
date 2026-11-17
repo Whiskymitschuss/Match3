@@ -42,7 +42,7 @@ func push(effect: Dictionary):
 	if fx.size()<limit(): fx.append(effect)
 func attack(id: String, direction: Vector2, _level: int):
 	var r=rig(id)
-	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw','tools':'steel_swing','flame':'united_flame','cryo':'united_cryo','tesla':'united_tesla','lance':'united_lance','chakram':'united_chakram'}.get(id,'shot'))
+	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw','tools':'steel_swing','flamer':'united_flame','cryo':'united_cryo','tesla':'united_tesla','lance':'united_lance','chakram':'united_chakram'}.get(id,'shot'))
 	r.angle=direction.angle()
 	r.pulse=.115
 	game.vfx.shot(id,direction)
@@ -109,7 +109,7 @@ func hand_positions() -> Array:
 
 func shoulder_positions() -> Array:
 	var face=game.character_facing()
-	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10),Vector2(-8,10),Vector2(-10,13)][mini(5,game.selected)]
+	var local=Vector2(-15,15)
 	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
 
 func elbows(hands: Array) -> Array:
@@ -140,7 +140,7 @@ func arm_segment(a: Vector2, b: Vector2, width: float, color: Color):
 func draw_arms(hands: Array):
 	var shoulders=shoulder_positions()
 	var bends=elbows(hands)
-	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79'),Color('#D59B76'),Color('#A87752')][mini(5,game.selected)]
+	var skin=game.GearArt.skin(game.characters[game.selected].id)
 	var width=8.0 if game.selected in [0,5] else 6.0
 	for i in range(2):
 		arm_segment(shoulders[i],bends[i],width,skin)
@@ -153,7 +153,7 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.texture(game.characters[mini(5,game.selected)].id,true),(Rect2(-11,-11,22,22) if game.selected>=3 else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[mini(5,game.selected)].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[mini(5,game.selected)].id)))
+		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),Rect2(-14,-14,28,28),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):
@@ -169,7 +169,7 @@ func draw_weapons(behind: bool = false):
 				var angle=(pose.angle+PI*.5)*strength if r.get('double_hit',false) or int(r.get('hand',0))==i else .15*(1 if i==0 else -1)
 				game.draw_set_transform(hands[i],angle)
 				var id='wrench' if i==0 else 'pliers'
-				game.draw_texture_rect_region(Art.weapon_texture(id),Rect2(-17,-64,34,84),Art.weapon(id),game.GearArt.weapon_tint(game.run_loadout))
+				game.draw_texture_rect_region(Art.weapon_texture(id),Rect2(-24,-64,48,84),Art.weapon(id),game.GearArt.weapon_tint(game.run_loadout))
 				game.draw_set_transform(Vector2.ZERO)
 		elif not pose.is_empty():
 			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))

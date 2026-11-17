@@ -894,6 +894,7 @@ func hurt(amount: float):
 	received=united.heroes.absorb(received)
 	hp -= received
 	hurt_clock = .65
+	if received<=0:sound('united_impact');return
 	sound('hit')
 	hit_feedback.damage(player.position,received,false,true)
 	haptic('hurt')

@@ -6,14 +6,18 @@ const BOSSES=preload('res://assets/enemies/united_bosses.png')
 const WEAPONS=preload('res://assets/weapons/united_weapons.png')
 const FLOORS=preload('res://assets/environments/united.png')
 const ENEMY_IDS=['grunt','runner','tank','ravox','bombling','longshot','hexling','spitter','drone','slicer','lurker','shieldbug','medic','mortar','frostling','roller','leech','summoner','pyro','elite']
-const WEAPON_IDS=['blaster','hammer','splitgun','arc','orbit','mop','bomb','tools','flame','cryo','tesla','lance','chakram','wrench','pliers','spray']
+const WEAPON_IDS=['blaster','hammer','splitgun','arc','orbit','mop','bomb','tools','flamer','cryo','tesla','lance','chakram','wrench','pliers','spray']
 static var floor_cache={}
 static func cell(t:Texture2D,i:int,columns:int,rows:int) -> Rect2:
 	var step=Vector2(t.get_size())/Vector2(columns,rows)
 	return Rect2(Vector2(i%columns,i/columns)*step,step).grow(-2)
 static func hero(id:String) -> Rect2:return cell(HEROES,maxi(0,R.HEROES.find(id)),4,3)
-static func glove() -> Rect2:return cell(HEROES,11,4,3)
-static func weapon(id:String) -> Rect2:return cell(WEAPONS,maxi(0,WEAPON_IDS.find(id)),4,4)
+static func glove() -> Rect2:
+	var r=cell(HEROES,11,4,3);return Rect2(r.position+r.size*Vector2(.15,.15),r.size*Vector2(.82,.73))
+static func weapon(id:String) -> Rect2:
+	var r=cell(WEAPONS,maxi(0,WEAPON_IDS.find(id)),4,4)
+	if id in ['wrench','pliers']:return Rect2(r.position+r.size*Vector2(.20,0),r.size*Vector2(.60,1))
+	return r
 static func floor_texture(id:String) -> Texture2D:
 	if not floor_cache.has(id):
 		var texture=AtlasTexture.new();texture.atlas=FLOORS;texture.region=cell(FLOORS,maxi(0,R.ARENAS.find(id)),2,5);floor_cache[id]=texture

@@ -29,6 +29,7 @@ func run():
 	for weapon in R.NEW_WEAPONS:
 		check(g.Specs.choices(weapon).size()==2 and C.catalog().items.has(weapon),'Blueprint and two evolutions '+weapon)
 		for spec in g.Specs.choices(weapon):check(g.Specs.icon(spec)!=null,'Unique development icon '+spec)
+	check(C.catalog().items.flame.slot=='deco' and C.catalog().items.flamer.slot=='weapon','Existing flame decoration and new flamethrower have separate persistent ids')
 	var fresh=S.defaults();check(fresh.collection.heroes==['bruiser'] and fresh.world_progress.unlocked==['scrapyard'],'Fresh start preserves intended hero/world locks')
 	fresh.collection.tickets.crew=100
 	for i in range(40):C.open_case(fresh,'crew');C.acknowledge(fresh,int(fresh.collection.pending.serial))
@@ -98,6 +99,19 @@ func run():
 	for arena in R.ARENAS.slice(4):
 		start(0,arena,3);g.remaining=30;g.arena_events.update(.01);check(not g.united.enemies.hazards.is_empty(),'Arena event is functional '+arena)
 		g.arena_events.update(9);check(g.run_events==1,'Arena event survival tracked '+arena)
+	# Actual role effects and per-target projectile semantics.
+	start(0,'scrapyard',9);var medic=dummy('medic');var patient=dummy('grunt',Vector2(130,0));patient.hp=50000;g.united.enemies.release(medic);check(patient.hp==66000,'Medic restores sixteen percent without exceeding max health')
+	var shieldbug=dummy('shieldbug');shieldbug.u_face=shieldbug.pos.direction_to(g.player.position);check(g.united.enemies.factor(shieldbug)==.65,'Shield bug protects its facing');shieldbug.u_face=-shieldbug.u_face;check(g.united.enemies.factor(shieldbug)==1,'Shield bug can be flanked')
+	var pyro=dummy('pyro');g.projectile_pool.clear();g.united.enemies.release(pyro);check(g.shots.filter(func(s):return s.active and s.hostile).size()==8,'Pyro launches eight bounded hostile projectiles')
+	var summoner=dummy('summoner',Vector2(400,0))
+	for i in range(10):g.united.enemies.release(summoner)
+	check(summoner.u_spawned==6,'Summoner has a hard lifetime quota')
+	var leech=dummy('leech');leech.hp=50000;var before=g.hp;g.hurt_clock=0;g.hurt(10);g.united.enemies.contact(leech,before);check(leech.hp==50007,'Leech heals only actual HP damage')
+	start(7,'scrapyard',3);var ice_target=dummy();var ice_weapon={'id':'cryo','level':5,'clock':0.0,'spec':'ice_lance'};g.united.heroes.attack(ice_weapon,.1);var ice_shot=g.shots[0];ice_shot.pos=ice_target.pos;var before_hp=ice_target.hp;g.united.heroes.projectile(ice_shot,ice_target.pos,.01);var once=ice_target.hp;g.united.heroes.projectile(ice_shot,ice_target.pos,.01);check(once<before_hp and ice_target.hp==once,'Piercing ice cannot hit the same enemy twice');check(ice_target.ability_slow_time>1.5,'Frosty passive extends actual slow duration')
+	# Quality settings affect presentation only; all new combat draws are RNG-free.
+	var powers=[]
+	for quality in ['LOW','MEDIUM','HIGH']:g.saved.settings.quality=quality;powers.append(g.united.heroes.power(ice_weapon))
+	check(powers[0]==powers[1] and powers[1]==powers[2],'Graphics quality preserves new weapon damage')
 	# Full current UI routes render all pages and preserve state.
 	g.main_menu()
 	for section in ['rules','heroes','enemies','tech']:
@@ -116,5 +130,14 @@ func run():
 	start(0,'void',10);g.remaining=.001;g._physics_process(.02);check(g.state==g.State.GAME_OVER,'Final boss time limit causes defeat')
 	start();g.hurt(1000000);check(g.state==g.State.GAME_OVER,'Player death causes defeat');start();check(g.state==g.State.COMBAT and g.hp==g.max_hp,'Restart safely clears previous combat')
 	g.run_mode='endless';g.wave_number=12;g.begin_wave();check(g.rules.boss_wave() and g.enemies[0].kind=='champion','Endless repeats boss ladder after wave ten')
+	# Full ten-wave transition path with the production state-machine guard enabled.
+	g.main_menu();g.saved.settings.master=0;g.test_mode=false;g.character_select(0);g.selected=0;g.run_mode='campaign';g.arena_select(0);check(g.choose_arena('scrapyard') and g.state==g.State.WAVE_PREPARATION,'Production menu-to-run transition')
+	for wave in range(1,11):
+		g.begin_wave();g.crit=0
+		if wave%2==0:g.damage_enemy(g.enemies[0],100000000);settle()
+		else:g.remaining=.001;g._physics_process(.01)
+		check(g.state==(g.State.VICTORY if wave==10 else g.State.SHOP),'Production guarded wave transition '+str(wave))
+		if wave<10:g.next_shop_wave();check(g.state==g.State.WAVE_PREPARATION,'Production guarded shop continuation '+str(wave))
+	g.test_mode=true
 	g.saved=original;g.save_game();g.free();await process_frame
 	print('UNITED RESULT ',passed,' passed, ',failed,' failed');quit(1 if failed else 0)

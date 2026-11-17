@@ -43,7 +43,7 @@ func attack(w:Dictionary,dt:float):
 	var spec=game.Specs.definition(w);var amount=power(w)*float(spec.get('damage',1));var dir:Vector2=game.player.position.direction_to(target.pos)
 	w.clock=float(d.cooldown)/game.attack_mult/(1+.06*(int(w.level)-1));game.combat_visuals.attack(w.id,dir,w.level)
 	match w.id:
-		'flame':
+		'flamer':
 			var angle=.9 if spec.get('variant',-1)==0 else .55
 			for e in game.enemies.duplicate():
 				var offset:Vector2=e.pos-game.player.position
