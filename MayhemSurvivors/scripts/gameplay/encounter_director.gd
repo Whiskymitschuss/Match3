@@ -27,7 +27,7 @@ func clear_combat():
 func visible(pos:Vector2) -> bool:
 	return game.enemy_roles.visible(pos)
 func eligible() -> bool:
-	return enabled and game.state==game.State.COMBAT and not promoted and data.elite_waves.has(((game.wave_number-1)%10)+1) and float(game.rules.current_wave().duration)-game.remaining>=float(data.elite_at)
+	return enabled and game.state==game.State.COMBAT and not promoted and ([3,5,7,9] if game.united.enabled else data.elite_waves).has(((game.wave_number-1)%10)+1) and float(game.rules.current_wave().duration)-game.remaining>=float(data.elite_at)
 func promote(e:Dictionary):
 	if not eligible() or not e.kind in ['grunt','runner','tank']:return
 	var definition=game.enemy_data.tank
@@ -147,7 +147,7 @@ func update(dt:float):
 					else:at.x=game.player.position.x
 				game.vfx.ground_impact(at,float(h.get('radius',70)),Color('#FFD166'))
 		if h.age>=h.warm+h.duration:hazards.remove_at(i)
-	if not game.rules.final_boss_wave():return
+	if game.united.enabled or not game.rules.final_boss_wave():return
 	var boss:Dictionary={}
 	for e in game.enemies:
 		if e.kind=='boss' and e.hp>0:boss=e;break

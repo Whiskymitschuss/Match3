@@ -63,5 +63,60 @@
     "buff_duration": 5,
     "buff_attack_speed": 0.5,
     "color": "#5DDCFF"
+  },
+  "cinder": {
+    "id": "firestorm",
+    "name": "FEUERSTURM",
+    "description": "Fünf Sekunden Feuerfeld um dich: kontinuierlicher Flächenschaden.",
+    "cooldown": 35,
+    "color": "#FF843E",
+    "radius": 280,
+    "damage": 40,
+    "distance": 320,
+    "duration": 0.22
+  },
+  "frosty": {
+    "id": "absolute_zero",
+    "name": "NULLPUNKT",
+    "description": "Frostnova: Schaden und 2 s Stillstand für normale Gegner. Bosse werden verlangsamt.",
+    "cooldown": 36,
+    "color": "#89EDFF",
+    "radius": 280,
+    "damage": 40,
+    "distance": 320,
+    "duration": 0.22
+  },
+  "volt": {
+    "id": "overcharge",
+    "name": "ÜBERSPANNUNG",
+    "description": "Sechs Sekunden +40 % Angriffstempo und sofortiger Kettenimpuls.",
+    "cooldown": 35,
+    "color": "#68E7E0",
+    "radius": 280,
+    "damage": 40,
+    "distance": 320,
+    "duration": 0.22
+  },
+  "rook": {
+    "id": "bastion",
+    "name": "BASTION",
+    "description": "Ein Schild fängt bis zu 80 Schaden ab und bleibt höchstens acht Sekunden.",
+    "cooldown": 40,
+    "color": "#8BAEFF",
+    "radius": 280,
+    "damage": 40,
+    "distance": 320,
+    "duration": 0.22
+  },
+  "nyx": {
+    "id": "phase_dance",
+    "name": "PHASENTANZ",
+    "description": "Stürme unverwundbar durch Gegner und hinterlasse vier Sekunden einen Lockvogel.",
+    "cooldown": 30,
+    "color": "#E875EA",
+    "radius": 280,
+    "damage": 40,
+    "distance": 320,
+    "duration": 0.22
   }
 }

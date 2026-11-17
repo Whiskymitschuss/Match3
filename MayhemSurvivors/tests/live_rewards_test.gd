@@ -55,7 +55,7 @@ func run():
 	check(loaded.meta.coins==230 and loaded.meta.owned.has('mini_bot') and loaded.meta.equipped.ring=='flame','Actual save preserves wallet and permanent cosmetics')
 	var dirty={'coins':-10,'owned':['forged','mini_bot','mini_bot'],'equipped':{'ring':'flame','buddy':'mini_bot'}};var clean=R.clean(dirty,now)
 	check(clean.coins==0 and clean.owned==['mini_bot'] and clean.equipped.ring=='' and clean.equipped.buddy=='mini_bot','Corrupt and unowned values sanitized')
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	g.character_select(0);touch(1,Vector2(1100,450),true);drag(1,Vector2(850,460));await process_frame;touch(1,Vector2(850,460),false)
 	check(g.hero_cursor==1 and g.state==g.State.CHARACTER_SELECT,'Real horizontal hero swipe')
@@ -98,7 +98,7 @@ func run():
 	fresh();e=actor('hexling');g.enemy_pack.velocity(e,Vector2.LEFT,.01);g.enemy_pack.velocity(e,Vector2.LEFT,2);g.enemy_pack.interrupt(e);g.enemy_pack.resolve(e)
 	check(g.arena_hazards.items.is_empty(),'Knockback interrupts ready-to-release spell')
 	fresh();e=actor('longshot');g.enemy_pack.velocity(e,Vector2.LEFT,.01);g.state=g.State.PAUSED;var clock=e.pack_clock;g._physics_process(2);check(e.pack_clock==clock,'New AI freezes during pause')
-	for arena in g.Arenas.IDS:
+	for arena in g.Arenas.IDS.slice(0,4): # Current six new events are exercised in united_test.
 		fresh(arena);g.arena_hazards.items.clear();g.remaining=35;g.arena_events.update(.01)
 		check(g.arena_events.active and not g.arena_hazards.items.is_empty(),'Actual arena event '+arena)
 		var amount=g.arena_hazards.items.size();g.state=g.State.SHOP;g.arena_events.update(10);check(g.arena_events.age==0,'Event paused in shop '+arena)

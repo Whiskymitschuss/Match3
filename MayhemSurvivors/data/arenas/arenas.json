@@ -4,7 +4,9 @@
     "description": "Die bewährte Arena. Zehn Wellen gegen die Schrottmeute.",
     "floor": "scrapyard",
     "waves": "waves/waves",
-    "boss_name": "THE OVERLORD"
+    "boss_name": "THE OVERLORD",
+    "boss_art": 4,
+    "rank": 0
   },
   "reactor": {
     "name": "REAKTORZONE",
@@ -20,7 +22,9 @@
       "xp": 120,
       "coins": 140,
       "color": "#2ED573"
-    }
+    },
+    "boss_art": 5,
+    "rank": 1
   },
   "docks": {
     "name": "NEONHAFEN",
@@ -36,7 +40,9 @@
       "xp": 110,
       "coins": 130,
       "color": "#00D9D0"
-    }
+    },
+    "boss_art": 6,
+    "rank": 2
   },
   "foundry": {
     "name": "GLUTWERK",
@@ -52,6 +58,122 @@
       "xp": 120,
       "coins": 140,
       "color": "#FF9F1C"
-    }
+    },
+    "boss_art": 7,
+    "rank": 3
+  },
+  "gardens": {
+    "name": "GIFTGÄRTEN",
+    "description": "Giftfelder ankündigen, Abstand halten, weiterziehen.",
+    "floor": "united",
+    "waves": "waves/waves",
+    "boss_name": "DIE GIFTKÖNIGIN",
+    "boss": {
+      "hp": 3000,
+      "speed": 78,
+      "damage": 20,
+      "radius": 78,
+      "xp": 150,
+      "coins": 150,
+      "color": "#A0DC58"
+    },
+    "event": "poison",
+    "boss_art": 8,
+    "rank": 4
+  },
+  "frost": {
+    "name": "FROSTDEPOT",
+    "description": "Eisimpulse meiden und Fluchtwege freihalten.",
+    "floor": "united",
+    "waves": "waves/waves",
+    "boss_name": "DER FROSTFÜRST",
+    "boss": {
+      "hp": 3000,
+      "speed": 78,
+      "damage": 20,
+      "radius": 78,
+      "xp": 150,
+      "coins": 150,
+      "color": "#89EDFF"
+    },
+    "event": "frost",
+    "boss_art": 9,
+    "rank": 5
+  },
+  "storm": {
+    "name": "STURMDÄCHER",
+    "description": "Blitzbahnen lesen und seitlich ausweichen.",
+    "floor": "united",
+    "waves": "waves/waves",
+    "boss_name": "DIE STURMMASCHINE",
+    "boss": {
+      "hp": 3000,
+      "speed": 78,
+      "damage": 20,
+      "radius": 78,
+      "xp": 150,
+      "coins": 150,
+      "color": "#6DC4FF"
+    },
+    "event": "storm",
+    "boss_art": 10,
+    "rank": 6
+  },
+  "crystal": {
+    "name": "KRISTALLMINE",
+    "description": "Kristallnadeln hinterlassen gefährliche Spuren.",
+    "floor": "united",
+    "waves": "waves/waves",
+    "boss_name": "DER KRISTALLGOLEM",
+    "boss": {
+      "hp": 3000,
+      "speed": 78,
+      "damage": 20,
+      "radius": 78,
+      "xp": 150,
+      "coins": 150,
+      "color": "#DB8AFF"
+    },
+    "event": "crystal",
+    "boss_art": 11,
+    "rank": 7
+  },
+  "carnival": {
+    "name": "CHAOS-KIRMES",
+    "description": "Bombenregen zwischen verblassten Kirmeslichtern.",
+    "floor": "united",
+    "waves": "waves/waves",
+    "boss_name": "DER CHAOSNARR",
+    "boss": {
+      "hp": 3000,
+      "speed": 78,
+      "damage": 20,
+      "radius": 78,
+      "xp": 150,
+      "coins": 150,
+      "color": "#FF8AC9"
+    },
+    "event": "carnival",
+    "boss_art": 12,
+    "rank": 8
+  },
+  "void": {
+    "name": "RISSKERN",
+    "description": "Rissimpulse und ein letzter Kampf gegen den Risskaiser.",
+    "floor": "united",
+    "waves": "waves/waves",
+    "boss_name": "DER RISSKAISER",
+    "boss": {
+      "hp": 3000,
+      "speed": 78,
+      "damage": 20,
+      "radius": 78,
+      "xp": 150,
+      "coins": 150,
+      "color": "#BD79FF"
+    },
+    "event": "void",
+    "boss_art": 13,
+    "rank": 9
   }
 }

@@ -21,7 +21,7 @@ var stagger_left=0.0
 var slow_left=0.0
 var push_velocity=Vector2.ZERO
 func _init(g:Node2D):game=g;data=game.read_data('enemies/breaker_axel')
-func scheduled() -> bool:return enabled and game.run_mode!='tutorial' and game.wave_number%10==5
+func scheduled() -> bool:return enabled and game.run_mode!='tutorial' and game.wave_number%10==(6 if game.united.enabled else 5)
 func actor() -> Dictionary:
 	for e in game.enemies:
 		if e.kind=='breaker_axel' and e.hp>0:return e

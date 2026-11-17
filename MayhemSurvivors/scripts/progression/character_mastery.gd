@@ -1,9 +1,10 @@
 extends RefCounted
+const Roster=preload('res://scripts/core/roster.gd')
 # Derived from validated lifetime character records: no duplicate progress counters.
-const HEROES=['bruiser','sparky','shade','twinkle','kicksy','steelfist']
+const HEROES=Roster.HEROES
 const STYLES=['classic','neon','champion']
 const NAMES={'classic':'ORIGINAL','neon':'NEON CREW','champion':'GOLD CHAMPION'}
-const TITLES={'bruiser':'SCHROTTKÖNIG','sparky':'FUNKENKÖNIGIN','shade':'NACHTMEISTER','twinkle':'GLANZLEGENDE','kicksy':'BOOM-LEGENDE','steelfist':'ROHRLEGENDE'}
+const TITLES={'bruiser':'SCHROTTKÖNIG','sparky':'FUNKENKÖNIGIN','shade':'NACHTMEISTER','twinkle':'GLANZLEGENDE','kicksy':'BOOM-LEGENDE','steelfist':'ROHRLEGENDE','cinder':'FLAMMENLEGENDE','frosty':'FROSTLEGENDE','volt':'STURMLEGENDE','rook':'AEGISLEGENDE','nyx':'MONDLEGENDE'}
 static func goals(saved:Dictionary, hero:String) -> Array:
 	var r=saved.get('records',{}).get(hero,{})
 	return [
@@ -57,3 +58,8 @@ static func insignia(canvas:CanvasItem,at:Vector2,style:String,size:float):
 		canvas.draw_polyline(PackedVector2Array([at+Vector2(size*.3,-size*.6),at+Vector2(-size*.25,0),at+Vector2(size*.25,0),at+Vector2(-size*.3,size*.6)]),c,maxf(1,size*.18),true)
 	else:
 		canvas.draw_colored_polygon(PackedVector2Array([at+Vector2(-size*.5,size*.3),at+Vector2(-size*.65,-size*.4),at+Vector2(-size*.2,0),at+Vector2(0,-size*.55),at+Vector2(size*.2,0),at+Vector2(size*.65,-size*.4),at+Vector2(size*.5,size*.3)]),c)
+
+static func style_defaults() -> Dictionary:
+	var result={}
+	for id in HEROES:result[id]='classic'
+	return result

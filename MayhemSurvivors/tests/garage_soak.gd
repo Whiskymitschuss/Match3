@@ -4,7 +4,7 @@ var steps=0
 var peak=0
 func _initialize():call_deferred('run')
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	for hero in range(6):
 		for arena in g.Arenas.IDS:
 			for spell in ['heal_pulse','frost_nova','phase_blink']:

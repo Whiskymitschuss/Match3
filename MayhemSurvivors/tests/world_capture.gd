@@ -11,7 +11,7 @@ func run():
 	game=load('res://scenes/boot/main.tscn').instantiate()
 	game.test_mode=true
 	root.add_child(game)
-	game.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(game);game.set_physics_process(false)
 	game.saved=game.default_save();preload('res://tests/legacy_collection.gd').unlock_all(game.saved)
 	game.selected=1
 	game.start_run()

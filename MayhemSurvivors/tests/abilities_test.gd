@@ -33,9 +33,9 @@ func run():
 	g=load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode=true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.saved=Save.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
-	check(g.hero_ability.data.size()==6,'All six heroes have data-driven active abilities')
+	check(g.hero_ability.data.size()==11,'All six heroes have data-driven active abilities')
 	setup(0)
 	var near=enemy(g.player.position+Vector2(130,0))
 	var far=enemy(g.player.position+Vector2(500,0))

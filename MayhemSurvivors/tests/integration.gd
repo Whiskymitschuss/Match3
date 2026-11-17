@@ -11,12 +11,12 @@ func run():
 	g = load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode = true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.saved = g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	check(g.state==g.State.MAIN_MENU,'Boot -> main menu')
 	check(g.GameStateMachine.permits(g.State.COMBAT,g.State.SHOP) and not g.GameStateMachine.permits(g.State.COMBAT,g.State.CHARACTER_SELECT),'Defined state transitions')
 	g.character_select()
-	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==6,'Character selection')
+	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==11,'Character selection')
 	for i in range(4):
 		g.selected=i
 		g.start_run()

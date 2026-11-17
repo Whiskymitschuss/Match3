@@ -70,5 +70,95 @@
     "color": "#A55EEA",
     "xp": 10,
     "coins": 5
+  },
+  "slicer": {
+    "hp": 65,
+    "speed": 170,
+    "damage": 10,
+    "radius": 23,
+    "xp": 8,
+    "coins": 4,
+    "color": "#FF6982"
+  },
+  "lurker": {
+    "hp": 70,
+    "speed": 105,
+    "damage": 12,
+    "radius": 23,
+    "xp": 9,
+    "coins": 4,
+    "color": "#BF6DFF"
+  },
+  "shieldbug": {
+    "hp": 140,
+    "speed": 80,
+    "damage": 12,
+    "radius": 30,
+    "xp": 12,
+    "coins": 5,
+    "color": "#6EAAFF"
+  },
+  "medic": {
+    "hp": 75,
+    "speed": 85,
+    "damage": 6,
+    "radius": 24,
+    "xp": 12,
+    "coins": 5,
+    "color": "#74E398"
+  },
+  "mortar": {
+    "hp": 90,
+    "speed": 65,
+    "damage": 14,
+    "radius": 25,
+    "xp": 12,
+    "coins": 6,
+    "color": "#D6B98C"
+  },
+  "frostling": {
+    "hp": 65,
+    "speed": 100,
+    "damage": 10,
+    "radius": 22,
+    "xp": 10,
+    "coins": 4,
+    "color": "#A1F5FF"
+  },
+  "roller": {
+    "hp": 95,
+    "speed": 90,
+    "damage": 15,
+    "radius": 27,
+    "xp": 12,
+    "coins": 5,
+    "color": "#FFCB56"
+  },
+  "leech": {
+    "hp": 60,
+    "speed": 155,
+    "damage": 9,
+    "radius": 22,
+    "xp": 9,
+    "coins": 4,
+    "color": "#FF6F8B"
+  },
+  "summoner": {
+    "hp": 110,
+    "speed": 70,
+    "damage": 8,
+    "radius": 27,
+    "xp": 15,
+    "coins": 7,
+    "color": "#CB82FF"
+  },
+  "pyro": {
+    "hp": 80,
+    "speed": 110,
+    "damage": 11,
+    "radius": 24,
+    "xp": 11,
+    "coins": 5,
+    "color": "#FF9D45"
   }
 }

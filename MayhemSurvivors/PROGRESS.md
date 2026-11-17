@@ -1,3 +1,24 @@
+## v0.21 – Zwischenstand
+
+11 Helden, 10 neue Gegner, 10 Arenen und fünf Bosswellen implementiert. Aktueller Produktionstest: 534 Prüfungen bestanden. Erweiterte Freischaltungen und Handbuchformatierung dabei korrigiert. Historische Regressionen werden mit ausdrücklich dokumentierter alter Bossregel geprüft; der neue Test nutzt aktive Produktionsregeln. Native Grafikprüfung, vollständiger Regressionstest, Dokumentation und APK stehen noch aus.
+
+# 0.21 — MAYHEM UNITED — laufende große Erweiterung
+
+Freigegebener Umfang: einheitlicher Comic-Stil für alle Figuren/Waffen/Gegner/Bosse,
+elf Helden (+5), zehn Arenen (+6), zehn neue Gegnertypen, Bosse in2/4/6/8/10. Axel
+zieht nach Welle6. Neue Klassenwaffen mit je2 Entwicklungen, Effekte/Sounds/Codex,
+Menü-/UI-/UX-/Infoabgleich, Speicherung/Migration, Tests und Android-Build.
+
+Grafiksets erzeugt und eingebunden: modulare11-Helden-Körper +Glove,20 Gegner,
+14 Bosse +Emblem,16 Waffenbilder,zehn Arena-Böden. Daten/Roster/Cases/Records
+auf11 Helden/zehn Welten erweitert; fünf Waffen/zehn Entwicklungen definiert.
+Noch offen: Laufzeitcontroller/Art-Layer/UI, aktualisierter Boss-Flow, Tests/Abnahme
+und Export. NICHT ALS FERTIG AUSLIEFERN. Nächste Aktion: ComicArt und UnitedController.
+
+---
+
+## Historischer Stand vor0.21
+
 # 0.20 — DIE MAYHEM WELTEN — implementiert, geprüft und gebaut
 
 Branch feature/world-map-v0.20. Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen.

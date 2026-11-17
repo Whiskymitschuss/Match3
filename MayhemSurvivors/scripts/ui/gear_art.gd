@@ -22,7 +22,7 @@ static func weapon_tint(loadout:Dictionary) -> Color:
 	return Color.WHITE.lerp(skin_color(loadout),.45) if loadout.get('skin','')!='' else Color.WHITE
 static func dress(canvas:CanvasItem,hero:String,loadout:Dictionary,rect:Rect2):
 	var modern=hero in ['twinkle','kicksy','steelfist']
-	var eye=float({'bruiser':.15,'sparky':.22,'shade':.17,'twinkle':.20,'kicksy':.20,'steelfist':.10}.get(hero,.15))
+	var eye=.17
 	for slot in ['body','feet','head']:
 		var id:String=loadout.get(slot,'')
 		if not C.catalog().items.has(id):continue
@@ -41,7 +41,7 @@ static func preview(canvas:CanvasItem,hero:String,loadout:Dictionary,tint:Color=
 	dress(canvas,hero,loadout,Rect2(0,0,360,360))
 	var id:String=loadout.get('weapon',C.STARTERS[hero]);var hands=[Vector2(200,220),Vector2(260,215)]
 	if id in ['tools','orbit']:hands=[Vector2(108,233),Vector2(254,233)]
-	var shoulders=[Vector2(143,113 if hero in ['twinkle','kicksy','steelfist'] else 128),Vector2(220,113 if hero in ['twinkle','kicksy','steelfist'] else 128)]
+	var shoulders=[Vector2(143,120),Vector2(220,120)]
 	for i in range(2):
 		var elbow=(shoulders[i]+hands[i])*.5+Vector2(-20 if i==0 else 20,0)
 		arm(canvas,shoulders[i],elbow,18,Color('#292537'))

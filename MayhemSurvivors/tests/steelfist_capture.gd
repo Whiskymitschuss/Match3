@@ -7,7 +7,7 @@ func capture(name:String):
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png('res://tests/steelfist_'+name+'.png');print('STEELFIST FRAME ',name)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.settings.shop_help_seen=true;g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.settings.shop_help_seen=true;g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	g.character_select(5);await capture('hero')
 	g.selected=5;g.arena_id='foundry';g.run_mode='campaign';g.start_run();g.begin_wave();g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll();g.spawn_clock=999
 	for i in range(6):

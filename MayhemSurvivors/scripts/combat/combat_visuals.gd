@@ -42,12 +42,12 @@ func push(effect: Dictionary):
 	if fx.size()<limit(): fx.append(effect)
 func attack(id: String, direction: Vector2, _level: int):
 	var r=rig(id)
-	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw','tools':'steel_swing'}.get(id,'shot'))
+	game.sound({'blaster':'blaster_fire','splitgun':'splitgun_fire','hammer':'hammer_slam','arc':'arc_zap','mop':'mop_swish','bomb':'bomb_throw','tools':'steel_swing','flame':'united_flame','cryo':'united_cryo','tesla':'united_tesla','lance':'united_lance','chakram':'united_chakram'}.get(id,'shot'))
 	r.angle=direction.angle()
 	r.pulse=.115
 	game.vfx.shot(id,direction)
 	if id=='tools':r.swing=.32
-	if id in ['hammer','mop']:
+	if id in ['hammer','mop','lance']:
 		r.swing=.26
 		push({'kind':'slam','pos':game.player.position+direction*70,'life':.28,'full':.28,'skin':game.selected})
 	elif id in ['blaster','splitgun']:
@@ -77,13 +77,13 @@ func held_pose() -> Dictionary:
 	var center=game.player.position+Vector2(0,-9)+direction*14-direction*(r.pulse/.115)*5
 	var rect=Rect2(-32,-29,82,70)
 	var grips=[Vector2(-18,18),Vector2(12,4)]
-	if id in ['hammer','mop']:
+	if id in ['hammer','mop','lance']:
 		var progress=1.0-r.swing/.26
 		angle+=sin(progress*PI)*.8 if r.swing>0 else -.3
 		center=game.player.position+Vector2(0,-8)+direction*5
 		rect=Rect2(-14,-43,110,84)
 		grips=[Vector2(5,0),Vector2(27,0)]
-	if id=='bomb':
+	if id in ['bomb','chakram']:
 		rect=Rect2(-25,-25,50,50);grips=[Vector2(-10,5),Vector2(10,5)]
 	if id=='mop' and game.twinkle.tornado_left>0:
 		angle=game.twinkle.tornado_age*TAU*2
@@ -109,7 +109,7 @@ func hand_positions() -> Array:
 
 func shoulder_positions() -> Array:
 	var face=game.character_facing()
-	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10),Vector2(-8,10),Vector2(-10,13)][game.selected]
+	var local=[Vector2(-9,14),Vector2(-8,10),Vector2(-13,13),Vector2(-8,10),Vector2(-8,10),Vector2(-10,13)][mini(5,game.selected)]
 	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
 
 func elbows(hands: Array) -> Array:
@@ -140,7 +140,7 @@ func arm_segment(a: Vector2, b: Vector2, width: float, color: Color):
 func draw_arms(hands: Array):
 	var shoulders=shoulder_positions()
 	var bends=elbows(hands)
-	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79'),Color('#D59B76'),Color('#A87752')][game.selected]
+	var skin=[Color('#BA8052'),Color('#D59B76'),Color('#343046'),Color('#D79A79'),Color('#D59B76'),Color('#A87752')][mini(5,game.selected)]
 	var width=8.0 if game.selected in [0,5] else 6.0
 	for i in range(2):
 		arm_segment(shoulders[i],bends[i],width,skin)
@@ -153,7 +153,7 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),(Rect2(-11,-11,22,22) if game.selected>=3 else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
+		game.draw_texture_rect_region(HeroArt.texture(game.characters[mini(5,game.selected)].id,true),(Rect2(-11,-11,22,22) if game.selected>=3 else Rect2(-19,-17,38,34)),HeroArt.hand_region(game.characters[mini(5,game.selected)].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[mini(5,game.selected)].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):
@@ -210,6 +210,7 @@ func draw_weapons(behind: bool = false):
 func draw_shots():
 	for s in game.shots:
 		if not s.active: continue
+		if game.united.draw_shot(s):continue
 		var skin=int(s.get('skin',game.selected))
 		var color=Color('#FF592E') if s.hostile else Art.color_for(skin)
 		var direction: Vector2=s.vel.normalized()

@@ -21,22 +21,22 @@ func claim(id:String) -> bool:
 	notice='BELOHNUNG GESICHERT: '+W.reward_text(id);busy=false;game.sound('buy');return true
 func show():
 	if not can_enter():return
-	game.change_state(game.State.ARENA_SELECT);game.arena_cursor=posmod(game.arena_cursor,4)
+	game.change_state(game.State.ARENA_SELECT);game.arena_cursor=posmod(game.arena_cursor,W.ORDER.size())
 	var id:String=W.ORDER[game.arena_cursor];var d=game.Arenas.definition(id);var r=W.rewards()[id];var color=Color(r.color)
 	var progress:Dictionary=game.saved.world_progress
 	game.backdrop('DIE MAYHEM WELTEN','%s / %s / %d STUDIO-COINS / %d WERKSTATTTEILE' % [game.characters[game.selected].name,'ENDLOS' if game.run_mode=='endless' else 'KAMPAGNE',game.saved.meta.coins,game.saved.collection.parts])
 	game.selection_swipe.set_context('arena')
 	game.button('MODUS: '+('ENDLOS' if game.run_mode=='endless' else 'KAMPAGNE'),Vector2(1060,75),Vector2(750,85),func():game.run_mode='campaign' if game.run_mode=='endless' else 'endless';show())
 	var route=Control.new();route.name='WorldRoute';route.set_script(preload('res://scripts/ui/world_route.gd'));route.game=game;game.ui_root.add_child(route)
-	for i in range(4):
-		var b=game.button('',Vector2(100+i*435,260),Vector2(400,235),func():game.arena_select(i))
+	for i in range(W.ORDER.size()):
+		var b=game.button('',preload('res://scripts/ui/world_route.gd').card_rect(i).position,Vector2(330,115),func():game.arena_select(i))
 		b.name='WorldCard_'+W.ORDER[i]
 		for kind in ['normal','hover','pressed','disabled','focus']:b.add_theme_stylebox_override(kind,StyleBoxEmpty.new())
 	game.UISkin.panel(game,Rect2(100,530,740,365),color)
-	var art=Control.new();art.set_script(preload('res://scripts/ui/arena_preview.gd'));art.game=game;art.texture=load('res://assets/environments/'+d.floor+'.png');art.position=Vector2(112,542);art.size=Vector2(716,340);art.clip_contents=true;art.mouse_filter=Control.MOUSE_FILTER_IGNORE;art.modulate=Color.WHITE if W.available(game.saved,id) else Color(.5,.45,.6);game.ui_root.add_child(art)
+	var art=Control.new();art.set_script(preload('res://scripts/ui/arena_preview.gd'));art.game=game;art.texture=game.Arenas.texture(id);art.position=Vector2(112,542);art.size=Vector2(716,340);art.clip_contents=true;art.mouse_filter=Control.MOUSE_FILTER_IGNORE;art.modulate=Color.WHITE if W.available(game.saved,id) else Color(.5,.45,.6);game.ui_root.add_child(art)
 	game.UISkin.panel(game,Rect2(900,530,920,365),color)
 	text(d.name,Vector2(925,543),865,47,color)
-	text('BOSS 5: BREAKER AXEL / BOSS 10: '+d.boss_name,Vector2(925,609),865,25)
+	text('BOSSE 2 / 4 / 6 / 8 / 10 / FINALE: '+d.boss_name,Vector2(925,609),865,25)
 	var available=W.available(game.saved,id)
 	var previous=W.previous_world(id)
 	var status='ARENA GESPERRT / Besiege den Boss in Welle 10 auf '+game.Arenas.definition(previous).name if not available else ('WELT GEMEISTERT / Erneut spielen oder nächste Arena wählen' if progress.cleared.has(id) else 'NÄCHSTES ZIEL / Besiege den Boss in Welle 10')

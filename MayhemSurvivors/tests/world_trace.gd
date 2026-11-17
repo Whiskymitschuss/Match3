@@ -4,7 +4,7 @@ func run():
 	var g=load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode=true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.enemy_pack.enabled=false;g.arena_events.enabled=false # Frozen legacy encounters; 0.16 has its own tests.
 	g.rules.progressive=false # Frozen pre-0.14 movement/values; new scaling has dedicated tests.
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)

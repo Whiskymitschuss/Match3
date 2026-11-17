@@ -2,7 +2,7 @@ extends RefCounted
 var game:Node2D
 var progressive=true
 func _init(g:Node2D):game=g
-func boss_wave() -> bool:return game.breaker.scheduled() or final_boss_wave()
+func boss_wave() -> bool:return game.united.bosses.scheduled() if game.united.enabled else (game.breaker.scheduled() or final_boss_wave())
 func final_boss_wave() -> bool:
 	return game.wave_number%10==0 if game.run_mode=='endless' else game.wave_number==10
 func current_wave() -> Dictionary:
@@ -11,6 +11,8 @@ func current_wave() -> Dictionary:
 	if game.breaker.scheduled():
 		d.duration=game.breaker.data.duration;d.interval=game.breaker.data.add_interval;d.extra_spawn_every=0
 		d.hp_factor=1.15;d.boss_hp_factor=1.0;d.reward_factor=1.0
+	if game.united.enabled and boss_wave():
+		d.duration=game.united.bosses.profile().duration;d.interval=2.2;d.extra_spawn_every=0;d.boss_hp_factor=1.0
 	if game.run_mode=='endless' and game.wave_number>10:
 		var cycle=floori((game.wave_number-1)/10.0)
 		d.interval=maxf(.30,float(d.interval)/(1+cycle*.12))
@@ -30,6 +32,7 @@ func scale_stats(values:Dictionary,boss:bool=false) -> Dictionary:
 	return preload('res://scripts/gameplay/difficulty.gd').stats(game,d,false)
 func direction(e:Dictionary) -> Vector2:
 	var target:Vector2=game.player.position
+	if game.united.enabled and game.united.heroes.decoy_time>0 and e.kind not in ['boss','champion','breaker_axel'] and e.pos.distance_to(game.united.heroes.decoy)<450:return e.pos.direction_to(game.united.heroes.decoy)
 	if progressive and game.run_mode!='tutorial' and e.kind in ['grunt','runner','tank']:
 		var anticipation=minf(.30,maxi(0,game.wave_number-1)*.025)
 		target+=game.player.velocity*anticipation

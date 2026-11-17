@@ -1,6 +1,7 @@
 extends RefCounted
+const Roster=preload('res://scripts/core/roster.gd')
 # Profile-wide, once per arena across all campaign difficulties. No combat/case RNG.
-const ORDER=['scrapyard','reactor','docks','foundry']
+const ORDER=Roster.ARENAS
 const MAX_VALUE=1000000000
 static var cache:Dictionary={}
 static func rewards() -> Dictionary:

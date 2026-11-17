@@ -11,7 +11,7 @@ func _draw():
 	draw_style_box(game.style(Color('#121A27')),Rect2(Vector2(1085,30)+top,Vector2(475,130)))
 
 	for e in game.enemies:
-		if e.kind not in ['boss','breaker_axel']:continue
+		if e.kind not in ['boss','breaker_axel','champion']:continue
 		var pos=Vector2(620,247)+Vector2(0,game.safe_logical.position.y)
 		draw_style_box(game.style(Color('#15121D')),Rect2(pos-Vector2(15,100),Vector2(1120,125)))
 		draw_rect(Rect2(pos,Vector2(1070,16)),Color('#382C40'))

@@ -34,7 +34,7 @@ func run():
 		var id:String=W.ORDER[i]
 		check(W.complete(saved,id,'campaign',true,10),'First real campaign completion '+id)
 		check(W.available(saved,id) and (i==3 or W.available(saved,W.ORDER[i+1])),'Completion opens immediate next world '+id)
-		check(saved.world_progress.unlocked.size()==mini(4,i+2),'No further world skipped '+id)
+		check(saved.world_progress.unlocked.size()==mini(10,i+2),'No further world skipped '+id)
 		check(W.eligible(saved,id) and not W.complete(saved,id,'campaign',true,10),'One global first-clear across difficulties '+id)
 		var seed=saved.collection.seed
 		check(W.claim(saved,id) and saved.collection.seed==seed,'Exact claim without consuming case RNG '+id)
@@ -58,7 +58,7 @@ func run():
 	check(malformed.cleared==['reactor'] and malformed.claimed==['reactor'] and malformed.unlocked.has('docks'),'Invalid world ids, duplicates and unearned claims sanitized')
 	var old=S.defaults();old.erase('world_progress');old.meta.coins=133;old.collection.parts=77;old.collection.heroes.append('sparky');old.collection.levels.blaster=4;old.collection.loadouts.sparky.weapon='blaster';old.wins=2;old.games=4;old.arena_records.reactor.games=1;old.arena_records.reactor.wins=1;old.arena_records.reactor.highest_wave=10;old.arena_records.foundry.games=1;old.arena_records.scrapyard.games=3;old.arena_records.scrapyard.wins=1
 	S.save_local(old,PATH);var raw=FileAccess.get_file_as_string(PATH);loaded=S.load_local(PATH)
-	check(W.ORDER.all(func(id):return W.available(loaded,id)),'Pre-map visited arenas and explicit reactor access remain available')
+	check(W.ORDER.slice(0,5).all(func(id):return W.available(loaded,id)),'Pre-map visited arenas and explicit reactor access remain available')
 	check(loaded.world_progress.cleared.has('reactor') and loaded.world_progress.cleared.has('scrapyard') and not loaded.world_progress.cleared.has('foundry'),'Only genuine attributed old victories count as clears')
 	check(loaded.meta.coins==133 and loaded.collection.parts==77 and loaded.collection.levels.blaster==4 and loaded.collection.heroes.has('sparky'),'Migration preserves wallet, parts, hero and ranks without auto-awarding gifts')
 	check(FileAccess.file_exists(S.sidecar(PATH,'pre_world_map')) and FileAccess.get_file_as_string(S.sidecar(PATH,'pre_world_map'))==raw,'Exact pre-map profile backup created')
@@ -71,11 +71,11 @@ func run():
 	for version in [1,2]:
 		var legacy=S.defaults();legacy.erase('world_progress');legacy.version=version;legacy.games=2;legacy.wins=1;S.save_local(legacy,PATH);loaded=S.load_local(PATH)
 		check(loaded.world_progress.cleared.has('scrapyard') and W.available(loaded,'reactor'),'Historic global-only win attribution v'+str(version))
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();clean_profile()
 	g.arena_select(1);await process_frame
 	check(g.state==g.State.ARENA_SELECT and button_named('EnterWorld').disabled,'Actual locked world CTA disabled')
-	check(g.ui_root.get_children().filter(func(n):return n is Button and str(n.name).begins_with('WorldCard_')).size()==4,'Four real world navigation cards')
+	check(g.ui_root.get_children().filter(func(n):return n is Button and str(n.name).begins_with('WorldCard_')).size()==10,'Ten real world navigation cards')
 	var state=g.saved.duplicate(true);check(not g.choose_arena('reactor') and g.saved==state,'Direct start cannot bypass world lock even in test mode')
 	g.arena_select(0);touch(7,Vector2(1200,600),true)
 	var drag=InputEventScreenDrag.new();drag.index=7;drag.position=g.ui_root.get_global_transform()*Vector2(1000,605);g._input(drag);await process_frame;touch(7,Vector2(1000,605),false)

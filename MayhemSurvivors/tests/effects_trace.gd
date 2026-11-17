@@ -4,7 +4,7 @@ func run():
 	var g=load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode=true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.enemy_pack.enabled=false;g.arena_events.enabled=false # Frozen legacy encounters; 0.16 has its own tests.
 	g.rules.progressive=false # Historical movement and values; current progression tested separately.
 	g.ravox.enabled=false # Historical fixture excludes new 0.13 enemy; dedicated tests cover Ravox.

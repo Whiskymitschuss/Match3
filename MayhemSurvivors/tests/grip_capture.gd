@@ -11,7 +11,7 @@ func run():
 	game=load('res://scenes/boot/main.tscn').instantiate()
 	game.test_mode=true
 	root.add_child(game)
-	game.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(game);game.set_physics_process(false)
 	game.character_select()
 	await capture('grip_characters')
 	for hero in range(3):

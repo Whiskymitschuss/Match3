@@ -15,9 +15,9 @@ func fresh(spec:String=''):
 func actor(offset:Vector2,kind:String='grunt') -> Dictionary:
 	g.spawn_enemy(kind);var e=g.enemies.back();e.pos=g.player.position+offset;e.hp=1000;e.max_hp=1000;return e
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
-	check(g.characters.size()==6 and g.characters[5].id=='steelfist','Sixth hero preserves all previous indices')
+	check(g.characters.size()==11 and g.characters[5].id=='steelfist','Sixth hero preserves all previous indices')
 	check(Unlocks.available(g.saved,'steelfist') and g.saved.unlocked.has('steelfist'),'Legacy combat fixture has owned Steelfist')
 	g.character_select(5)
 	for node in g.ui_root.get_children():

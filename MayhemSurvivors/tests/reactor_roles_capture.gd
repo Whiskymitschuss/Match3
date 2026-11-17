@@ -11,7 +11,7 @@ func run():
 	g=load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode=true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	g.selected=1;g.arena_id='reactor';g.start_run()
 	await capture('roles_preparation')

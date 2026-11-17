@@ -22,7 +22,7 @@ static func clean(data,now:int=-1) -> Dictionary:
 		for key in ['kills','waves','skills','wins']:result[scope][key]=integer(source.get(key))
 		if source.get('arenas') is Array:
 			for id in source.arenas:
-				if id in ['scrapyard','reactor','docks','foundry'] and not result[scope].arenas.has(id):result[scope].arenas.append(id)
+				if id in preload('res://scripts/core/roster.gd').ARENAS and not result[scope].arenas.has(id):result[scope].arenas.append(id)
 		if source.get('claimed') is Array:
 			for task in definition()[scope]:
 				if source.claimed.has(task.id):result[scope].claimed.append(task.id)
@@ -47,7 +47,7 @@ static func record(meta:Dictionary,run:Dictionary,now:int=-1):
 		var progress=meta[key]
 		for stat in ['kills','waves','skills']:progress[stat]=mini(1000000000,progress[stat]+integer(run.get(stat)))
 		progress.wins+=int(run.get('won',false) and run.get('mode')=='campaign')
-		if integer(run.get('waves'))>0 and run.get('arena') in ['scrapyard','reactor','docks','foundry'] and not progress.arenas.has(run.arena):progress.arenas.append(run.arena)
+		if integer(run.get('waves'))>0 and run.get('arena') in preload('res://scripts/core/roster.gd').ARENAS and not progress.arenas.has(run.arena):progress.arenas.append(run.arena)
 static func value(meta:Dictionary,scope:String,task:Dictionary) -> int:
 	return meta[scope].arenas.size() if task.stat=='arenas' else int(meta[scope].get(task.stat,0))
 static func claim(meta:Dictionary,scope:String,id:String,now:int=-1) -> bool:

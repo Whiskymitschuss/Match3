@@ -29,6 +29,31 @@
       "weight": 10,
       "rarity": "EPISCH",
       "weapon": "tools"
+    },
+    "cinder": {
+      "name": "CINDER",
+      "rarity": "EPISCH",
+      "weight": 10
+    },
+    "frosty": {
+      "name": "FROSTY",
+      "rarity": "EPISCH",
+      "weight": 10
+    },
+    "volt": {
+      "name": "VOLT",
+      "rarity": "EPISCH",
+      "weight": 10
+    },
+    "rook": {
+      "name": "ROOK",
+      "rarity": "EPISCH",
+      "weight": 10
+    },
+    "nyx": {
+      "name": "NYX",
+      "rarity": "EPISCH",
+      "weight": 10
     }
   },
   "items": {
@@ -351,15 +376,14 @@
       "group": "ring"
     },
     "flame": {
-      "name": "GLUTRING",
-      "slot": "deco",
-      "case": "style",
-      "weight": 5,
-      "rarity": "EPISCH",
-      "description": "Cartoon-Flammen tanzen um deinen Standkreis. Rein optisch.",
-      "color": "#FF9F1C",
-      "ranked": false,
-      "group": "ring"
+      "name": "FLAMMENWERFER",
+      "description": "Klassenwaffe für CINDER. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
+      "slot": "weapon",
+      "case": "arsenal",
+      "rarity": "SELTEN",
+      "color": "#FF843E",
+      "weight": 12,
+      "ranked": true
     },
     "mini_bot": {
       "name": "MINI-BOT",
@@ -393,6 +417,46 @@
       "color": "#FFD166",
       "ranked": false,
       "group": "title"
+    },
+    "cryo": {
+      "name": "KRYOGEWEHR",
+      "description": "Klassenwaffe für FROSTY. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
+      "slot": "weapon",
+      "case": "arsenal",
+      "rarity": "SELTEN",
+      "color": "#89EDFF",
+      "weight": 12,
+      "ranked": true
+    },
+    "tesla": {
+      "name": "TESLASPULE",
+      "description": "Klassenwaffe für VOLT. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
+      "slot": "weapon",
+      "case": "arsenal",
+      "rarity": "SELTEN",
+      "color": "#68E7E0",
+      "weight": 12,
+      "ranked": true
+    },
+    "lance": {
+      "name": "SCHILDLANZE",
+      "description": "Klassenwaffe für ROOK. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
+      "slot": "weapon",
+      "case": "arsenal",
+      "rarity": "SELTEN",
+      "color": "#8BAEFF",
+      "weight": 12,
+      "ranked": true
+    },
+    "chakram": {
+      "name": "MONDCHAKRAM",
+      "description": "Klassenwaffe für NYX. Werkstattrang: +2 % Schaden je zusätzlichem Rang.",
+      "slot": "weapon",
+      "case": "arsenal",
+      "rarity": "SELTEN",
+      "color": "#E875EA",
+      "weight": 12,
+      "ranked": true
     }
   },
   "upgrade_costs": [

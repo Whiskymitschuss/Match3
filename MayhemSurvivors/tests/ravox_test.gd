@@ -12,7 +12,7 @@ func fresh(arena:String='scrapyard',wave:int=6,hero:int=3):
 func spawn() -> Dictionary:
 	g.spawn_enemy('ravox');var e=g.enemies.back();e.pos=g.player.position+Vector2(250,0);e.ravox_clock=0;return e
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	check(g.enemy_data.ravox.hp==140 and g.enemy_data.ravox.speed==220,'Reference base HP and speed')
 	check(g.ravox.data.weapon=='ZERMALMER' and near(g.ravox.data.charge_bonus,1.15),'Crushing gauntlets and fifteen percent charge bonus')

@@ -44,6 +44,11 @@ PASS Max weapon excluded orbit
 PASS Max weapon excluded mop
 PASS Max weapon excluded bomb
 PASS Max weapon excluded tools
+PASS Max weapon excluded flame
+PASS Max weapon excluded cryo
+PASS Max weapon excluded tesla
+PASS Max weapon excluded lance
+PASS Max weapon excluded chakram
 PASS Weapon damage blaster
 PASS Weapon damage hammer
 PASS Weapon damage splitgun
@@ -52,6 +57,11 @@ PASS Weapon damage orbit
 PASS Weapon damage mop
 PASS Weapon damage bomb
 PASS Weapon damage tools
+PASS Weapon damage flame
+PASS Weapon damage cryo
+PASS Weapon damage tesla
+PASS Weapon damage lance
+PASS Weapon damage chakram
 PASS Pause freezes simulation
 PASS Resume
 PASS Projectile pool reuses inactive slot
@@ -83,4 +93,4 @@ PASS Clean restart
 PASS Boss timeout -> game over
 PASS Save and load roundtrip
 PASS Corrupt save fallback and backup
-RESULT 83 passed, 0 failed
+RESULT 93 passed, 0 failed
