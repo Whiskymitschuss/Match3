@@ -1,5 +1,7 @@
 extends RefCounted
 # Visual-only world renderer. It never changes enemies, collisions or gameplay RNG.
+const PACK=preload('res://assets/enemies/enemy_pack.png')
+const PACK_IDS={'bombling':0,'longshot':1,'hexling':2}
 const DOCKS=preload('res://assets/environments/docks.png')
 const FOUNDRY=preload('res://assets/environments/foundry.png')
 const WORLD_BOSSES=preload('res://assets/enemies/world_bosses.png')
@@ -26,10 +28,11 @@ func enemy_defeated(enemy: Dictionary):
 	if deaths.size()>=death_limit():return
 	deaths.append({'kind':enemy.kind,'elite':enemy.get('elite',''),'pos':enemy.pos,'radius':enemy.radius,'life':.38,'full':.38,'face':-1.0 if game.player.position.x<enemy.pos.x else 1.0})
 static func region(kind: String) -> Rect2:
+	if PACK_IDS.has(kind):return Rect2(PACK_IDS[kind]*PACK.get_width()/3.0,0,PACK.get_width()/3.0,PACK.get_height())
 	return REGIONS.get(kind,Rect2(0,0,1,1))
 static func dimensions(radius: float, kind: String = 'grunt') -> Vector2:
 	var source=region(kind).size
-	var width=radius*(3.4 if kind=='ravox' else (2.2 if kind in ['grunt','runner'] else 2.6))
+	var width=radius*(2.9 if PACK_IDS.has(kind) else (3.4 if kind=='ravox' else (2.2 if kind in ['grunt','runner'] else 2.6)))
 	return Vector2(width,width*source.y/source.x)
 func draw_arena():
 	game.draw_texture_rect(DOCKS if game.arena_id=='docks' else (FOUNDRY if game.arena_id=='foundry' else (REACTOR_FLOOR if game.is_reactor() else FLOOR)),Rect2(0,0,2400,1600),false)
@@ -53,7 +56,7 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 	game.draw_circle(Vector2.ZERO,radius*.9,Color(0,0,0,.28))
 	game.draw_set_transform(pos,stride*.018,Vector2(face,1))
 	var tint=Color(2.2,2.2,2.2) if float(enemy.get('hit',0))>0 else Color.WHITE
-	game.draw_texture_rect_region(WORLD_BOSSES if enemy.kind=='boss' and game.arena_id in ['docks','foundry'] else (RAVOX if enemy.kind=='ravox' else (ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if enemy.kind in ['spitter','drone'] else ENEMIES)))),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
+	game.draw_texture_rect_region(texture_for(enemy,guardian,elite),Rect2(Vector2(-size.x*.5,-size.y*.66-bounce),size),source,tint)
 	game.draw_set_transform(Vector2.ZERO)
 	if enemy.kind!='boss' and (elite or enemy.kind=='ravox' or enemy.get('hp',1)<enemy.get('max_hp',1)):
 		var bar=pos+Vector2(-radius,-size.y*.66-10)
@@ -73,7 +76,7 @@ func draw_deaths():
 			base=Vector2(e.radius*3.1,e.radius*3.1*source.size.y/source.size.x)
 		var size=base*Vector2(1+progress*.12,1-progress*.6)
 		game.draw_set_transform(e.pos,0,Vector2(e.face,1))
-		game.draw_texture_rect_region(WORLD_BOSSES if e.kind=='boss' and game.arena_id in ['docks','foundry'] else (RAVOX if e.kind=='ravox' else (ELITES if elite else (GUARDIAN if guardian else (ROLE_ART if e.kind in ['spitter','drone'] else ENEMIES)))),Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
+		game.draw_texture_rect_region(texture_for(e,guardian,elite),Rect2(Vector2(-size.x*.5,-size.y*.66+progress*10),size),source,Color(1,1,1,alpha*.7))
 		game.draw_set_transform(Vector2.ZERO)
 		var color=Color(game.enemy_definition(e.kind).color)
 		for i in range(5):
@@ -114,3 +117,12 @@ func draw_telegraph():
 			var at: Vector2=t.origin+dir*(length*i/6)
 			game.draw_line(at-dir*10+dir.orthogonal()*10,at,Color('#FFD166'),3,true)
 			game.draw_line(at-dir*10-dir.orthogonal()*10,at,Color('#FFD166'),3,true)
+
+func texture_for(e:Dictionary,guardian:bool,elite:bool) -> Texture2D:
+	if PACK_IDS.has(e.kind):return PACK
+	if e.kind=='boss' and game.arena_id in ['docks','foundry']:return WORLD_BOSSES
+	if e.kind=='ravox':return RAVOX
+	if elite:return ELITES
+	if guardian:return GUARDIAN
+	if e.kind in ['spitter','drone']:return ROLE_ART
+	return ENEMIES

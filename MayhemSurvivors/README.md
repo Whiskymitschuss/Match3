@@ -1,3 +1,75 @@
+# Mayhem Survivors 0.16.0 Alpha — Crew, Chaos & Belohnungen
+
+Fünf Helden und vier Arenen jetzt als große Einzelkarten: links/rechts über die Karte
+wischen oder die Pfeile unten nutzen. Auswahl startet erst nach AUSWÄHLEN / ARENA
+BETRETEN. Gesperrte Charaktere/Arenen lassen sich ansehen, aber nicht starten.
+Vertikale Ziehbewegungen und Mehrfingergesten lösen keinen Kauf oder Run-Start aus.
+Die bestehende Safe-Area-Skalierung rechnet Touchpositionen in Layoutkoordinaten um.
+
+## Gegner und Arenenereignisse
+
+| Gegner | Ab Welle | Verhalten | Gleichzeitig |
+| --- | --- | --- | --- |
+| Bombling | 2 | Verfolgt dich, kündigt Explosion im Kreis 1,4s an | 4 |
+| Longshot | 4 | Zielt 1,6s mit festgelegter Linie, feuert ausweichbares Projektil | 2 |
+| Hexling | 6 | Markiert 1,7s ein Ziel, dann zusätzliche 0,8s Bodenwarnung | 2 |
+
+Eigene Cartoon-Grafik, Treffer/Tod/Beute, Unterbrechung durch Seife und Rückstoß.
+Bombling-Selbstexplosion gibt keine Kills oder Beute; rechtzeitiges Besiegen schon.
+Maximal zwei gleichzeitige Windups dieses neuen Packs, Angriffe nur sichtbar im
+Kamerabereich. Bestehendes Spawnbudget, Gegnergrenze100 und Wellen-/Stufenfaktoren.
+Keine neuen Pack-Spawns während Tutorial oder Bosswellen.
+
+Ab Welle3 ein Ereignis je normaler Welle: SCHROTTREGEN, REAKTOR-ÜBERLAST, FLUTALARM
+oder SCHMELZSTURM. Zwei angekündigte Gefahrenmuster, 8s Ereignisdauer. Start frühestens
+nach24s, erst wenn laufende Bodengefahren vorbei sind. Eigene Warntexte, goldene
+Vorwarnungen und tatsächlicher Schaden. Bestehende Reaktor-/Hafenmuster pausieren
+während des Ereignisses. Keine zusätzlichen Ereignisse im Tutorial/Bosskampf.
+
+## Aufgaben, kostenloser Daily Pass und Studio-Shop
+
+Hauptmenü → AUFTRÄGE & SHOP. Fortschritt wird nach beendeten Kampagnen-/Endlos-Runs
+gespeichert, auch bei Niederlage oder bestätigtem Run-Abbruch. Training zählt nicht.
+Vollständiges Schließen beendet wie bisher den aktiven Run ohne Wiederherstellung.
+Neue Ziele zählen ab Installation0.16; alte Rekorde geben keine erfundenen Aufgaben-Kills.
+
+| Ziele | Coins | Pass-XP |
+| --- | --- | --- |
+| Täglich: 100 Kills / 3 überlebte Wellen / 3 Spezialfähigkeiten | 30 / 25 / 20 | 40 / 30 / 30 |
+| Wöchentlich: 1500 Kills / 1 Welle in 3 Arenen / 1 Kampagnensieg | 120 / 80 / 150 | 120 / 80 / 150 |
+
+Belohnungen in ihrem Reiter mit ABHOLEN einsammeln. Tageswechsel00:00UTC, Wochenstart
+Montag00:00UTC anhand der Geräteuhr, vollständig offline. Tages-/Wochenziele wiederholen
+sich; nicht abgeholte Aufgabenbelohnungen enden beim jeweiligen Wechsel. Keine Serverzeit
+oder Online-Prüfung. Wallet, Einkäufe und Pass-Fortschritt verfallen dabei nicht.
+
+Der kostenlose Pass hat sieben Stufen à100XP mit40/50/60/75/90/110/150 Studio-Coins.
+Jede Stufe einmal abholen; nach allen sieben NEUEN PASS STARTEN. Überschüssige XP
+bleiben erhalten. Kein bezahlter Premiumzweig, keine Werbung oder In-App-Käufe.
+
+Studio-Coins sind dauerhaft und getrennt von Run-Coins im Waffenladen. Sechs permanente
+Artikel: Kometenring280, Stromring200, Glutring320, Mini-Bot450, Bomben-Kumpel450,
+Chaos-Legende-Titel180. Kauf schaltet frei und rüstet aus. Ein Ring, ein Begleiter und
+ein Titel gleichzeitig; alles im echten Kampf sichtbar, jederzeit im Studio-Shop ablegbar.
+Keine Werteboni, keine zusätzlichen Waffenhände, keine negativen Guthaben/Doppelkäufe.
+Kauf/Abholen wird sofort lokal geschrieben; bei Schreibfehler zurückgerollt.
+Speicherschema3 kompatibel um meta/version1 ergänzt, alte Statistik bleibt erhalten.
+
+## Start und Prüfung
+
+Godot4.6.3 stable: project.godot importieren und starten. Keine manuellen Reparaturen,
+keine Assetgeneratoren nötig. Android-only, ARM64, Querformat, offline, GL Compatibility.
+APK0.16.0 / Code20, gleicher Paketname und Debug-Schlüssel wie0.15; als Update installieren.
+`python3 tools/run_tests.py --traces`: 22 Suites / 1.644 Assertions und zwei historische
+Traces. Neue Live-Suite80 Checks, Lastprobe21.600 Schritte, sechs native GL-Screenshots.
+Physisches Android-Touchgefühl, neuer Gegnerdruck und Geräte-FPS/Thermik noch offen.
+Quellarchiv enthält alle Laufzeitdateien, Tests/Logs und aktuelle Galerien ohne Cache,
+SDK oder private Signierschlüssel. Ältere reine Screenshots bleiben im Repository.
+
+---
+
+## Historischer Stand vor 0.16
+
 # Mayhem Survivors 0.15.0 Alpha — Normal / Veteran / Mayhem
 
 Drei sofort auswählbare Schwierigkeitsgrade für alle vier Arenen, Kampagne und Endlos.

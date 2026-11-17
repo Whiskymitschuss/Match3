@@ -1,22 +1,24 @@
-# Android-Buildbericht 0.15.0 — 2026-11-17
+# Android-Buildbericht 0.16.0 — 2026-11-17
 
-Exportiert mit Godot 4.6.3 stable, JDK21, Android SDK36 / Build Tools36.0.0 und nativem
-Debug-Template ohne Gradle.
+Export mit Godot4.6.3 stable, JDK21, SDK36/Build Tools36.0.0, nativem Debug-Template.
 
-- builds/android/MayhemSurvivors-v0.15-debug.apk: 58,827,329 Bytes.
-- SHA256 `03cac377a41a24d9810a58a74997e03d4e893cc916e44ca4774e8cea501fb0bf`.
-- com.rfworlds.mayhemsurvivors, versionCode19 / versionName0.15.0.
+- builds/android/MayhemSurvivors-v0.16-debug.apk: 59,813,157 Bytes.
+- SHA256 `09d00b47e03ff8294cb6b387730914ff3a0b910ad919cb4fbfe0350b2a8d4949`.
+- com.rfworlds.mayhemsurvivors / versionCode20 / versionName0.16.0.
 - ARM64-v8a ausschließlich / minSDK24 / targetSDK36 / Landscape / GL Compatibility.
-- Signatur v2/v3 und zipalign -c -P 16 4 geprüft; gleiches Update-Zertifikat:
+- v2/v3-Signatur und zipalign -c -P16 4 geprüft; bisheriges Update-Zertifikat:
   5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce.
-- Nur VIBRATE-Permission; Preset-JSON im Payload, keine Tests und nur ARM64-Libraries.
+- Nur VIBRATE-Permission. Neue Meta-JSON/kompilierte Module/Grafiken im APK-Payload;
+  Tests ausgeschlossen. Keine INTERNET-Berechtigung.
 
-Als Update über 0.14 vorgesehen; lokale Statistik kompatibel ergänzt, alte Werte Normal.
-Keine physische Installation, FPS-/Thermik- oder menschliche Balanceabnahme behauptet.
-Quell-ZIP ohne .godot/SDK/Builds/Signierschlüssel, alle Laufzeitassets und Quelldateien
-enthalten. Aktuelle Galerien enthalten, ältere reine Screenshots im Repository.
-Start nach Import ohne Assetgenerierung. Eigener Export benötigt SDK/JDK/Template und
-bisherigen privaten Signierschlüssel für ein kompatibles Update.
+Als Update über0.15 vorgesehen. Vorhandene lokale Statistik/Meisterschaften bleiben
+kompatibel; neue dauerhafte Wallet beginnt leer. Neues meta-Schema1 unter save/version3.
+Keine physische Installation oder Android-FPS-/Balanceprüfung behauptet. Der lokale
+ADB-Daemon war nicht erreichbar; Export/Signaturprüfung erfolgreich, kein Gerätetest.
+Quell-ZIP ohne .godot/SDK/Builds/Signierschlüssel, sämtliche Laufzeitassets und Quellen,
+Tests/Logs und aktuelle Galerien. Start nach Import ohne Assetgenerierung möglich.
+Eigener Export benötigt SDK/JDK/Template und privaten Schlüssel für kompatible Updates.
 
-Quellarchiv frisch ohne .godot-Cache importiert und danach alle 1.565 Assertions
-sowie beide historischen Traces erneut bestanden (v0.15-final-*.log).
+Quellarchiv zusätzlich frisch ohne Importcache entpackt und mit Godot importiert.
+Die vollständigen22 Suites (1.644 Assertions) und beide Traces erneut bestanden.
+Logs: tests/results/v0.16-clean-import.log und v0.16-clean-tests.log.

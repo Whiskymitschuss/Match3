@@ -1,3 +1,16 @@
+# Stand nach 0.16
+
+Wischwahl, Gegnerpack, vier Arenenereignisse, Tages-/Wochenaufgaben, kostenloser Pass
+und permanenter kosmetischer Studio-Shop implementiert und technisch geprüft.
+Nächste Abnahme: Android-Gerät mit vorhandenem0.15-Profil; Wischen, neue Angriffe,
+Aufgabenfortschritt nach Run-Ende, Abholen/Kaufen/Neustart. Danach anhand echter Runs
+Gegnerdruck und Belohnungstempo abstimmen. Offline-Kalender folgt der Geräteuhr.
+Aktive Run-Wiederherstellung bleibt weiterhin außerhalb dieses Umfangs.
+
+---
+
+## Historischer Stand vor 0.16
+
 # Stand nach 0.15
 
 Drei Schwierigkeitsgrade für beide Modi/vier Arenen integriert und technisch geprüft.

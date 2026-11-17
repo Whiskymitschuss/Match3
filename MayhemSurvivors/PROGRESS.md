@@ -1,3 +1,29 @@
+# 0.16.0 — Wischwahl / Gegner / Aufgaben — implementiert und geprüft
+
+Branch feature/live-rewards-v0.16. Einzelkarten für fünf Helden und vier Arenen mit
+Touch-Wischgesten, Drag-/Multitouch-Schutz und Pfeilalternative. Drei neue Gegner mit
+eigener Atlasgrafik, angekündigten Angriffen und Unterbrechungen. Vier Arenenereignisse.
+Drei tägliche/drei wöchentliche Aufgaben, kostenloser erneuerbarer 7-Stufen-Pass,
+separate dauerhafte Studio-Coins und sechs tatsächliche kosmetische Shopartikel.
+Versionierte lokale Speicherung, kompatibel zu bisherigen Profilen. Kein bezahlter Pass.
+
+22 Suites / 1.644 Assertions und beide historischen Traces grün. Quell-ZIP ohne Cache
+frisch importiert und vollständige Suite erneut bestanden. 80 neue Live-Checks inklusive
+echter GUI-Drag-Sequenz. Lastprobe21.600 Schritte / alle Stufen × vier Arenen, max39
+Gegner/3 Arenagefahren in dieser Probe, Pack-Caps eingehalten, keine NaNs. Sechs native
+Menü-/Kampfansichten geprüft. APK exportiert/signiert, Alignment/Manifest/ARM64/Payload
+geprüft. Alle Laufzeitassets/Quellen/Tests/Berichte im Quellarchiv. Keine offenen Stubs
+im freigegebenen Umfang. GitHub-Auslieferung mit nachgelagerter Download-/Hashprüfung.
+
+Nächster fachlicher Schritt: Installation als Android-Update, echte Wischer, neue
+Gegner-/Eventbalance, Aufgaben nach Run-Ende abholen, Einkäufe nach Neustart prüfen.
+Physische Geräte-FPS/Thermik und Kalenderwechsel offen. Kalender vollständig offline
+anhand Geräte-UTC. Aktive Run-Wiederherstellung bleibt außerhalb dieses Umfangs.
+
+---
+
+## Historischer Stand vor 0.16
+
 # 0.15.0 — Schwierigkeitsgrade / implementiert und geprüft
 
 Branch feature/difficulties-v0.15. Normal/Veteran/Mayhem für Kampagne und Endlos in

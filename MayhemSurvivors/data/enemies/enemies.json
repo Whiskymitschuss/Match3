@@ -43,5 +43,32 @@
     "radius": 32,
     "xp": 18,
     "coins": 8
+  },
+  "bombling": {
+    "hp": 35,
+    "speed": 150,
+    "damage": 12,
+    "radius": 20,
+    "color": "#FF9F1C",
+    "xp": 6,
+    "coins": 3
+  },
+  "longshot": {
+    "hp": 60,
+    "speed": 80,
+    "damage": 10,
+    "radius": 24,
+    "color": "#00D9D0",
+    "xp": 8,
+    "coins": 4
+  },
+  "hexling": {
+    "hp": 100,
+    "speed": 95,
+    "damage": 12,
+    "radius": 26,
+    "color": "#A55EEA",
+    "xp": 10,
+    "coins": 5
   }
 }

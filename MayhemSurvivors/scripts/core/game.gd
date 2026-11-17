@@ -12,6 +12,13 @@ const Difficulty=preload('res://scripts/gameplay/difficulty.gd')
 const DifficultyRecords=preload('res://scripts/progression/difficulty_records.gd')
 var selected_difficulty='normal'
 var run_difficulty='normal'
+var selection_swipe=preload('res://scripts/mobile/selection_swipe.gd').new(self)
+var hero_cursor=0
+var arena_cursor=0
+var reward_hub
+var run_waves=0
+var run_abilities=0
+var run_events=0
 var run_mode='campaign'
 var rules
 var tutorial
@@ -20,6 +27,8 @@ var arena_definition=Arenas.definition('scrapyard')
 var arena_hazards
 var reactor_guardian
 var ravox
+var enemy_pack
+var arena_events
 var enemy_roles
 var encounters
 var bombs
@@ -143,10 +152,13 @@ func _ready():
 	hit_feedback=preload('res://scripts/combat/hit_feedback.gd').new(self)
 	specialized_combat=preload('res://scripts/weapons/specialized_combat.gd').new(self)
 	vfx=preload('res://scripts/combat/mayhem_vfx.gd').new(self)
+	enemy_pack=preload('res://scripts/enemies/enemy_pack.gd').new(self)
+	arena_events=preload('res://scripts/gameplay/arena_events.gd').new(self)
 	ravox=preload('res://scripts/enemies/ravox_controller.gd').new(self)
 	enemy_roles=preload('res://scripts/enemies/reactor_roles.gd').new(self)
 	encounters=preload('res://scripts/gameplay/encounter_director.gd').new(self)
 	load_save()
+	reward_hub=preload('res://scripts/ui/reward_hub.gd').new(self)
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
 	add_child(player)
@@ -233,6 +245,7 @@ func update_music():
 	if audio_director:audio_director.update_settings()
 
 func clear_ui():
+	selection_swipe.set_context('')
 	ui_revision+=1
 	for n in ui_root.get_children():
 		ui_root.remove_child(n)
@@ -324,39 +337,31 @@ func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'por
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(art)
 
-func character_select(page:int=0):
+func character_select(index:int=-1):
+	if index>=0:hero_cursor=index
+	hero_cursor=posmod(hero_cursor,characters.size())
 	change_state(State.CHARACTER_SELECT)
-	backdrop('WÄHLE DEINEN HELDEN','RF WORLDS / MAYHEM CREW')
-	var roles = ['DER BERSERKER','DIE TECHNIKERIN','DER SCHATTEN','DIE REINIGUNGSQUEEN','DIE SPRENGSTOFF-TRAINERIN']
-	page=clampi(page,0,(characters.size()-1)/3)
-	for i in range(page*3,mini(page*3+3,characters.size())):
-		var c = characters[i]
-		var x = 100 + (i%3)*585
-		var card = Panel.new()
-		card.position = Vector2(x,230)
-		card.size = Vector2(550,705)
-		card.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var box = style(Color('#201d35')).duplicate()
-		box.border_color = Color(c.color).darkened(.4)
-		card.add_theme_stylebox_override('panel',box)
-		ui_root.add_child(card)
-		portrait(Vector2(x+77,240),i,1.1)
-		label_at(roles[i],Vector2(x+25,645),23,Color(c.color))
-		label_at(c.name,Vector2(x+25,677),42,Color.WHITE)
-		label_at(Mastery.TITLES[c.id] if Mastery.completed(saved,c.id)==3 else c.description,Vector2(x+25,739),22)
-		label_at('%d HP / %d Tempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(x+25,782),21)
-		label_at((['Nur Hammer','Blaster / Splitgun / Arc Cannon','Nur Orbit Blade','Nur Wischmopp','Nur Mayhem-Bombe'][i]+' • '+('SEIFENCHAOS' if c.id=='twinkle' else hero_ability.data[c.id].name)),Vector2(x+25,808),18,Color(c.color))
-		var enter=button('AUSWÄHLEN' if Unlocks.available(saved,c.id) else 'NOCH GESPERRT',Vector2(x+20,835),Vector2(510,85),func(): selected=i; arena_select(),Color(c.color).darkened(.65))
-		enter.disabled=not Unlocks.available(saved,c.id)
-	button('ZURÜCK',Vector2(100,965),Vector2(340,85),main_menu)
-	button('WEITERE HELDEN →' if page==0 else '← ERSTE HELDEN',Vector2(480,965),Vector2(500,85),func():character_select(1-page))
-	if page==1:
-		UISkin.panel(self,Rect2(1280,250,540,680))
-		label_at('KICKSY / EPISCH',Vector2(1300,290),37,GOLD)
-		var help=label_at('Die Sprengstoff-Trainerin führt dich durchs Tutorial.\n\nFREISCHALTUNG\nTutorial: '+('ABGESCHLOSSEN' if saved.settings.tutorial_complete else 'NOCH OFFEN')+'\nGegner: %d / 500\n\n100 HP / 220 Basistempo\n+10 %% Passiv = 242 Tempo\nMayhem-Bombe + Kettenreaktion' % mini(500,Unlocks.kills(saved)),Vector2(1300,360),25)
-		help.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;help.set_deferred('size',Vector2(490,400))
-		button('TUTORIAL MIT KICKSY',Vector2(1300,800),Vector2(490,100),func():main_menu();tutorial.start())
-	button('MEISTERSCHAFTEN & SKINS',Vector2(1030,965),Vector2(790,85),func():mastery_screen(selected))
+	backdrop('DEINE MAYHEM CREW','Links oder rechts wischen / %d von %d' % [hero_cursor+1,characters.size()])
+	selection_swipe.set_context('hero')
+	var c=characters[hero_cursor]
+	UISkin.panel(self,Rect2(100,245,740,675),Color(c.color))
+	portrait(Vector2(170,245),hero_cursor,1.65)
+	label_at(c.name,Vector2(920,270),64,Color(c.color))
+	label_at(c.description,Vector2(925,365),31)
+	label_at('%d HP / %d Basistempo / %s' % [c.hp,c.speed,weapon_data[c.weapon].name],Vector2(925,425),29)
+	var info=label_at(hero_ability.data[c.id].name+'\n'+hero_ability.data[c.id].description+'\n\nWaffen: '+(' / '.join(c.allowed_weapons.map(func(id):return weapon_data[id].name))),Vector2(925,505),27)
+	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(830,240))
+	var available=Unlocks.available(saved,c.id)
+	if not available:label_at('Freischalten: Tutorial + 500 Gegner (%d / 500)' % mini(500,Unlocks.kills(saved)),Vector2(925,750),25,GOLD)
+	var enter=button('AUSWÄHLEN' if available else 'NOCH GESPERRT',Vector2(925,810),Vector2(850,105),func():selected=hero_cursor;arena_select(),Color(c.color).darkened(.65))
+	enter.disabled=not available
+	button('ZURÜCK',Vector2(100,965),Vector2(350,85),main_menu)
+	button('VORHERIGER',Vector2(500,965),Vector2(300,85),func():selection_shift('hero',-1))
+	button('NÄCHSTER',Vector2(840,965),Vector2(300,85),func():selection_shift('hero',1))
+	button('MEISTERSCHAFT & SKINS',Vector2(1180,965),Vector2(650,85),func():mastery_screen(hero_cursor))
+func selection_shift(kind:String,direction:int):
+	if kind=='hero' and state==State.CHARACTER_SELECT:character_select(hero_cursor+direction);sound('click')
+	elif kind=='arena' and state==State.ARENA_SELECT:arena_cursor=posmod(arena_cursor+direction,Arenas.IDS.size());arena_select();sound('click')
 
 func duration_text(seconds: float) -> String:
 	var value=int(maxf(0,seconds))
@@ -369,7 +374,7 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 	var filters=['all']+Arenas.IDS
 	button('STUFEN-REKORDE',Vector2(800,75),Vector2(480,85),difficulty_statistics)
 	button('ENDLOS-REKORDE',Vector2(550,900),Vector2(520,95),endless_statistics)
-	button('ARENA WECHSELN',Vector2(1330,75),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%3]))
+	button('ARENA WECHSELN',Vector2(1330,75),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%filters.size()]))
 	for i in range(characters.size()+1):
 		var tab=i-1
 		button('ÜBERSICHT' if i==0 else characters[i-1].name,Vector2(100+i*285,235),Vector2(270,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
@@ -460,6 +465,7 @@ func settings(back: Callable):
 	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
 
 func cleanup():
+	if arena_events:arena_events.clear()
 	if encounters:encounters.clear_combat()
 	if combat_visuals: combat_visuals.clear()
 	if world_visuals: world_visuals.clear()
@@ -479,7 +485,7 @@ func cleanup():
 	boss_warning = ''
 
 func start_run():
-	if not Unlocks.available(saved,characters[selected].id):character_select(selected/3);return
+	if not Unlocks.available(saved,characters[selected].id):character_select(selected);return
 	if not Arenas.unlocked(saved,arena_id):arena_select();return
 	run_difficulty=selected_difficulty if selected_difficulty in Difficulty.IDS else 'normal'
 	arena_definition=Arenas.definition(arena_id)
@@ -513,6 +519,7 @@ func start_run():
 	player.position = Vector2(1200,800)
 	facing = 1.0
 	result_recorded = false
+	run_waves=0;run_abilities=0;run_events=0
 	prepare_wave()
 
 func prepare_wave():
@@ -581,6 +588,7 @@ func refresh_hud():
 			if not warning.is_empty(): boss_hud.text += '  %.1f s' % warning.seconds
 
 func _input(event):
+	if selection_swipe.handle(event):get_viewport().set_input_as_handled();return
 	if event is InputEventScreenTouch:
 		var pos = ui_root.get_global_transform().affine_inverse() * event.position
 		if tutorial and tutorial.blocks_touch(pos) and event.index!=stick_id and not event.index in ability_touch_ids:return
@@ -673,10 +681,11 @@ func _physics_process(delta):
 			if enemies.size()>=100:break
 			var roll=rng.randf()
 			var kind=enemy_roles.spawn_kind(current_wave,roll) if is_reactor() else ('tank' if wave_number>=3 and roll<.18 else ('runner' if wave_number>=2 and roll<.55 else 'grunt'))
-			spawn_enemy(ravox.select_kind(kind,roll))
+			spawn_enemy(enemy_pack.choose(ravox.select_kind(kind,roll),roll))
 	encounters.update(delta)
 	if state!=State.COMBAT:return
 	arena_hazards.update(delta)
+	arena_events.update(delta)
 	if state != State.COMBAT:return
 	bombs.update(delta)
 	if state!=State.COMBAT:return
@@ -696,12 +705,14 @@ func _physics_process(delta):
 	if remaining <= 0:
 		if rules.boss_wave(): finish(false)
 		else:
+			run_waves+=1
 			cleanup()
 			open_shop()
 	refresh_hud()
 
 func spawn_enemy(kind: String):
 	if kind=='ravox' and not ravox.allowed():return false
+	if enemy_pack.CONFIG.has(kind) and enemy_pack.count(kind)>=enemy_pack.CONFIG[kind].cap:return false
 	if enemy_roles.data.has(kind) and enemy_roles.count(kind)>=int(enemy_roles.data[kind].cap):return false
 	var d = enemy_definition(kind)
 	var angle = rng.randf()*TAU
@@ -713,6 +724,7 @@ func spawn_enemy(kind: String):
 	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,kind=='boss'),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,kind=='boss')})
 	enemy_roles.initialize(enemies.back())
 	ravox.initialize(enemies.back())
+	enemy_pack.initialize(enemies.back())
 	enemies.back().coin_reward=Difficulty.reward(self,int(enemies.back().coin_reward))
 	enemies.back().xp_reward=Difficulty.reward(self,int(enemies.back().xp_reward))
 	encounters.promote(enemies.back())
@@ -746,6 +758,7 @@ func update_enemies(dt: float):
 		var dir: Vector2 = rules.direction(e)
 		var velocity: Vector2 = dir*e.speed
 		if e.kind=='ravox':velocity=ravox.velocity(e,velocity,dt)
+		if enemy_pack.CONFIG.has(e.kind):velocity=enemy_pack.velocity(e,velocity,dt)
 		if e.kind in ['spitter','drone']:velocity=enemy_roles.velocity(e,velocity,dt)
 		if e.has('elite'):velocity=encounters.movement(e,velocity,dt)
 		if state!=State.COMBAT:return
@@ -761,6 +774,7 @@ func update_enemies(dt: float):
 			e.ability_slow_time=maxf(0,e.ability_slow_time-dt)
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
+			if enemy_pack.CONFIG.has(e.kind) and e.pack_stage in ['windup','release']:break
 			if e.kind=='ravox' and e.ravox_stage in ['windup','dash','recovery']:break
 			if e.has('elite') and e.elite_stage in ['windup','dash']:break
 			if e.kind=='boss' and encounters.boss_lock:break
@@ -779,6 +793,9 @@ func update_enemies(dt: float):
 		if state!=State.COMBAT:return
 		if not (e.kind=='ravox' and e.ravox_stage=='dash') and e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0: hurt(e.damage)
 		if state != State.COMBAT: return
+	for actor in enemies.duplicate():
+		enemy_pack.resolve(actor)
+		if state!=State.COMBAT:return
 
 func hurt(amount: float):
 	if tutorial and tutorial.active:return
@@ -860,6 +877,7 @@ func damage_enemy(e: Dictionary, power: float):
 		sound('death')
 		sound('coin')
 		if kind == 'boss':
+			run_waves+=1
 			if run_mode=='endless':cleanup();open_shop()
 			else:finish(true)
 
@@ -1043,6 +1061,7 @@ func finish(victory: bool):
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	if result_recorded: return
 	result_recorded = true
+	preload('res://scripts/progression/daily_rewards.gd').record(saved.meta,{'mode':run_mode,'arena':arena_id,'kills':kills,'waves':run_waves,'skills':run_abilities,'won':victory})
 	change_state(State.VICTORY if victory else State.GAME_OVER)
 	if run_mode=='campaign':
 		saved.games+=1
@@ -1079,7 +1098,7 @@ func finish(victory: bool):
 	if not improvements.is_empty() or difficulty_best: label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
 	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
-	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected/3))
+	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected))
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
 
 func add_effect(pos: Vector2, color: Color, radius: float, text: String):
@@ -1112,6 +1131,7 @@ func _draw():
 			var kind=['grunt','runner','tank'][i%3]
 			world_visuals.draw_enemy({'kind':kind,'pos':Vector2(250+i*240,650+sin(animation_clock+i)*180),'radius':38.0,'hit':0.0},true)
 		return
+	enemy_pack.draw()
 	ravox.draw_floor()
 	bombs.draw_floor()
 	twinkle.draw_floor()
@@ -1137,6 +1157,7 @@ func _draw():
 		ravox.draw_name(e)
 	combat_visuals.draw_weapons(true)
 	draw_player_character()
+	reward_hub.draw_cosmetics()
 	combat_visuals.draw_weapons(false)
 	bombs.draw()
 	combat_visuals.draw_shots()
@@ -1172,31 +1193,26 @@ func choose_arena(id: String) -> bool:
 	arena_id=id
 	start_run()
 	return true
-func arena_select(page:int=0):
+func arena_select(index:int=-1):
+	if index>=0:arena_cursor=posmod(index,Arenas.IDS.size())
 	change_state(State.ARENA_SELECT)
-	backdrop('WÄHLE DEINE ARENA',characters[selected].name+' / '+('ENDLOS: Bosse alle 10 Wellen' if run_mode=='endless' else 'KAMPAGNE: 10 Wellen'))
-	for i in range(page*2,mini(page*2+2,Arenas.IDS.size())):
-		var id=Arenas.IDS[i]
-		var d=Arenas.definition(id)
-		var x=110+(i%2)*865
-		var art=Control.new()
-		art.set_script(preload('res://scripts/ui/arena_preview.gd'))
-		art.texture=load('res://assets/environments/'+d.floor+'.png')
-		art.position=Vector2(x,260)
-		art.size=Vector2(805,350)
-		art.clip_contents=true
-		art.mouse_filter=Control.MOUSE_FILTER_IGNORE
-		ui_root.add_child(art)
-		label_at(d.name,Vector2(x,635),42,TEAL if i==0 else Color('#2ED573'))
-		label_at(d.description,Vector2(x,705),25)
-		label_at('BOSS: '+d.boss_name,Vector2(x,755),25,GOLD)
-		var available=Arenas.unlocked(saved,id)
-		var enter=button('ARENA BETRETEN' if available else 'ERSTER SIEG BENÖTIGT',Vector2(x,825),Vector2(805,100),func(): choose_arena(id),Color('#147f81') if available else Color('#343749'))
-		enter.disabled=not available
-	button('SCHWIERIGKEIT: '+Difficulty.definition(selected_difficulty).name,Vector2(1010,75),Vector2(800,85),func():difficulty_select(page))
-	button('ZURÜCK',Vector2(110,965),Vector2(350,85),character_select)
-	button('WEITERE ARENEN' if page==0 else 'ERSTE ARENEN',Vector2(490,965),Vector2(600,85),func():arena_select(1-page))
-	button('MODUS: '+('ENDLOS' if run_mode=='endless' else 'KAMPAGNE'),Vector2(1130,965),Vector2(650,85),func():run_mode='campaign' if run_mode=='endless' else 'endless';arena_select(page))
+	backdrop('DEINE ARENA',characters[selected].name+' / '+('ENDLOS' if run_mode=='endless' else 'KAMPAGNE'))
+	selection_swipe.set_context('arena')
+	var id=Arenas.IDS[arena_cursor];var d=Arenas.definition(id)
+	var art=Control.new();art.set_script(preload('res://scripts/ui/arena_preview.gd'));art.texture=load('res://assets/environments/'+d.floor+'.png');art.position=Vector2(100,260);art.size=Vector2(950,530);art.clip_contents=true;art.mouse_filter=Control.MOUSE_FILTER_IGNORE;ui_root.add_child(art)
+	label_at('WISCHEN / %d VON %d' % [arena_cursor+1,Arenas.IDS.size()],Vector2(120,835),30,TEAL)
+	label_at(d.name,Vector2(1100,285),45,TEAL)
+	var info=label_at(d.description+'\n\nBOSS: '+d.boss_name+'\n\n'+('Bosse alle 10 Wellen. Wie lange hältst du durch?' if run_mode=='endless' else '10 Wellen. Ein Endboss. Dein Sieg.'),Vector2(1100,385),29)
+	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(690,330))
+	var available=Arenas.unlocked(saved,id)
+	var enter=button('ARENA BETRETEN' if available else 'ERSTER SIEG BENÖTIGT',Vector2(1100,800),Vector2(690,115),func():choose_arena(id),Color('#147f81'))
+	enter.disabled=not available
+	button('SCHWIERIGKEIT: '+Difficulty.definition(selected_difficulty).name,Vector2(1010,75),Vector2(800,85),func():difficulty_select(arena_cursor))
+	button('ZURÜCK',Vector2(100,965),Vector2(350,85),character_select)
+	button('VORHERIGE',Vector2(490,965),Vector2(280,85),func():selection_shift('arena',-1))
+	button('NÄCHSTE',Vector2(810,965),Vector2(280,85),func():selection_shift('arena',1))
+	button('MODUS: '+('ENDLOS' if run_mode=='endless' else 'KAMPAGNE'),Vector2(1130,965),Vector2(650,85),func():run_mode='campaign' if run_mode=='endless' else 'endless';arena_select())
+
 func challenges_screen():
 	backdrop('ZIELE & STILE','Nur Optik: Alle Ringe behalten die gleichen Kampfwerte.')
 	var rows=[['gold','CHAMPIONRING','Gewinne einen Run.',saved.wins,1],['mayhem','MAYHEMRING','Besiege insgesamt 1.000 Gegner.',saved.kills,1000],['reactor','REAKTORSIEGEL','Besiege den Reaktorwächter.',saved.arena_records.reactor.wins,1]]
@@ -1292,7 +1308,7 @@ func mastery_screen(index:int, preview:String=''):
 		var outfit=Mastery.STYLES[i]
 		var available=Mastery.unlocked(saved,hero,outfit)
 		button(Mastery.NAMES[outfit]+(' ✓' if current==outfit else (' / GESPERRT' if not available else '')),Vector2(720+i*350,815),Vector2(330,85),func():mastery_screen(index,outfit),Color('#147F81') if shown==outfit else Color('#243958'))
-	button('ZURÜCK',Vector2(100,965),Vector2(400,85),func():character_select(index/3))
+	button('ZURÜCK',Vector2(100,965),Vector2(400,85),func():character_select(index))
 	var equip=button('AKTIV' if current==shown else ('AUSRÜSTEN' if Mastery.unlocked(saved,hero,shown) else 'NOCH GESPERRT'),Vector2(1180,965),Vector2(590,85),func():
 		if Mastery.equip(saved,hero,shown):save_game();sound('buy');mastery_screen(index))
 	equip.disabled=current==shown or not Mastery.unlocked(saved,hero,shown)

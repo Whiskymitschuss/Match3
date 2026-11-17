@@ -1,3 +1,19 @@
+# 0.16.0 Alpha — 2026-11-17
+
+- Große Helden-/Arena-Karten mit horizontalen Wischgesten und Pfeilalternative.
+- Drag-/Multitouch-Schutz: Wischen über Auswahlbuttons startet keinen Run.
+- Bombling, Longshot und Hexling mit eigenem Atlas und angekündigten Spezialangriffen.
+- Vier Arenenereignisse: Schrottregen, Reaktor-Überlast, Flutalarm, Schmelzsturm.
+- Drei Tagesaufgaben, drei Wochenziele, kostenloser wiederholbarer 7-Stufen-Pass.
+- Dauerhafte Studio-Coins und sechs echte kosmetische Shopartikel im Kampf.
+- Lokaler Fortschritt, atomare Käufe/Claims, Korruptdatenprüfung, kompatible Profile.
+- Arenafilter der Statistik erreicht jetzt alle vier Arenen.
+- 80 neue Checks; Gesamt1.644 Assertions, 22 Suites und zwei historische Traces.
+
+---
+
+## Historischer Stand vor 0.16
+
 # 0.15.0 Alpha — 2026-11-17
 
 - Normal, Veteran und Mayhem mit eigener Auswahl für Kampagne/Endlos und alle Arenen.

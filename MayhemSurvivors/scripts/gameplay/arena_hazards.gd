@@ -18,7 +18,6 @@ func contains(h: Dictionary, pos: Vector2) -> bool:
 	if h.shape=='lane':return h.rect.grow(27).has_point(pos)
 	return h.pos.distance_to(pos)<=h.radius+27
 func update(dt: float):
-	if not game.is_reactor() and game.arena_id!='docks':return
 	for i in range(items.size()-1,-1,-1):
 		var h=items[i]
 		var previous:float=h.age
@@ -35,6 +34,8 @@ func update(dt: float):
 			game.hurt(h.damage)
 			if game.state!=game.State.COMBAT:return
 		if h.age>=h.warm+h.duration:items.remove_at(i)
+	if not game.is_reactor() and game.arena_id!='docks':return
+	if game.arena_events.active:return
 	if game.wave_number>=3 and not game.rules.boss_wave():
 		clock-=dt
 		if clock<=0:

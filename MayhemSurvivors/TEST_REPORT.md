@@ -1,3 +1,41 @@
+# Testbericht 0.16.0 — 2026-11-17
+
+Godot4.6.3 stable: 22 Suites / 1.644 Assertions / 0 Fehler, beide historischen Traces grün.
+80 Live-Checks: UTC-Tages-/Wochenwechsel, Ziele nur durch echte Run-Daten, Tutorial-
+Ausschluss, drei verschiedene Arenen, Endlos zählt nicht als Kampagnensieg, wiederholte
+Claims abgewiesen, Pass-Stufen/Erneuerung/XP-Überhang, getrennte Wallets, Käufe/Equip,
+Doppelkäufe/ungültigeIDs/negativeCoins, echte JSON-Roundtrip-/Korruptdatenbereinigung.
+Touchkoordinaten und Wischwahl für Held/Arena, vertikale Drags, Mehrfingerabbruch sowie
+echte Input.parse_input_event-GUI-Sequenz innerhalb des Auswahlbuttons ohne Run-Start.
+
+Neue Gegner: echte gesäte Spawnentscheidung, Caps, vollständige Warnzeiten/fester Zielpunkt,
+Unterbrechung vor Release, reale Projektil-/Bodengefahr, einmalige Selbstexplosion ohne
+Beute, Pause. Vier echte Ereignisse mit zweitem Muster/Abschluss und Shop-/Bossausschluss.
+Wave-/Fähigkeitszähler, tatsächliches Finish, Doppel-Finish, Reward-Hub-Kauf und Tabs.
+Alte Twinkle-/Mastery-Fixtures an Einzelkarten angepasst. Alter Reaktor-Rollentest
+isoliert bisherige Rollen explizit; neues Pack separat im echten Spawner geprüft.
+Historische Traces deaktivieren neue Gegner/Ereignisse und frieren alte Wellenregeln ein;
+sie behaupten keine Balanceidentität mit0.15. Aktuelle Inhalte separat getestet.
+
+Lastprobe live_soak.gd: 21.600 feste Schritte / 360 simulierte Sekunden, alle drei
+Stufen × vier Arenen auf Welle6, Twinkle mit künstlichenHP und vorgegebenem Pilot.
+Jedes Ereignis abgeschlossen; maximal39 Gegner / 3 Arenagefahren in dieser Probe,
+Gegnergrenze100, individuelle Pack-Caps, endliche Positionen/HP eingehalten.
+Kein menschlicher Run, keine Android-FPS-/Thermikmessung. Sechs native GL-Compatibility-
+Vorgabeszenen visuell geprüft: Held, Arena, Tagesaufgaben, Pass, Shop, Kampf.
+
+Offen für physische Abnahme: Android-Update mit vorhandenen Daten, echte Wischer auf
+verschiedenen Displays, Unterbrechungen, Uhr-/Tageswechsel, Belohnungstempo, Pack-/Event-
+Balance und Leistung/Thermik. Kein Gerät perADB verbunden; keine Installation behauptet.
+
+Quellarchiv zusätzlich frisch ohne Importcache entpackt und mit Godot importiert.
+Die vollständigen22 Suites (1.644 Assertions) und beide Traces erneut bestanden.
+Logs: tests/results/v0.16-clean-import.log und v0.16-clean-tests.log.
+
+---
+
+## Historischer Stand vor 0.16
+
 # Testbericht 0.15.0 — 2026-11-17
 
 Mit Godot 4.6.3 stable ausgeführt: 21 Suites / 1.565 Assertions / 0 Fehler.

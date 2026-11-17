@@ -25,6 +25,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
+	g.enemy_pack.enabled=false # Isolate original role spawn weights; new 0.16 mix has dedicated coverage.
 	g.saved=Save.defaults()
 	g.saved.wins=1
 	setup()

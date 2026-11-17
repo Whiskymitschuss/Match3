@@ -1,0 +1,79 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS All five heroes have data-driven active abilities
+PASS Bruiser activates shockwave
+PASS Shockwave applies melee bonus in radius only
+PASS Shockwave knocks normal enemy back by configured distance
+PASS Boss takes shockwave damage without forced displacement
+PASS Cooldown prevents repeat activation
+PASS Shockwave damage occurs once, visual effect expires
+PASS Cooldown reaches ready exactly
+PASS Sparky activates grenade
+PASS Grenade locks nearest target and deals no instant damage
+PASS Fuse is respected and target does not track enemy
+PASS Grenade explosion damages actual splash area
+PASS Grenade is consumed once and slows normal enemies
+PASS Boss takes explosion damage but is immune to slow
+PASS Slow multiplies chase movement without altering base speed
+PASS Slow preserves enemy base stats
+PASS Slow expires on combat time
+PASS Expired grenade cannot deal duplicate damage
+PASS No target grenade uses facing fallback
+PASS Shade starts invulnerable dash
+PASS Active dash prevents contact, projectile and hazard damage via shared damage gate
+PASS Dash moves by elapsed time and hits swept segment
+PASS Dash ends at configured distance and removes invulnerability
+PASS Dash hits each crossed enemy only once
+PASS Player can take damage immediately after dash
+PASS Long frame dash uses swept collision, preventing tunneling
+PASS Dash clamps at arena boundaries
+PASS Blocked dash consumes no cooldown
+PASS Moving away from boundary can dash
+PASS Pause freezes fuse and cooldown and rejects activation
+PASS Level-up freezes ability simulation
+PASS Shop freezes and blocks ability
+PASS New run clears cooldown and pending grenade
+PASS Each new wave begins ready
+PASS First touch owns joystick
+PASS Second simultaneous touch activates ability without stealing joystick
+PASS Held or duplicate ability touch cannot retrigger
+PASS Releasing ability finger keeps movement touch intact
+PASS Joystick release resets movement independently
+PASS Ability touch respects UI transform at scale 0.5
+PASS Ability release outside button clears finger ownership
+PASS Ability touch respects UI transform at scale 1.2
+PASS Ability release outside button clears finger ownership
+PASS Dragging joystick onto ability cannot activate it
+PASS Dash itself freezes during pause
+PASS Android lifecycle pauses active ability
+PASS Critical damage has larger, explicit gold number
+PASS Disabling damage numbers preserves actual damage
+PASS High quality bounds number count
+PASS Changing quality reduces existing number backlog immediately
+PASS Low quality bounds number count
+PASS Hit feedback freezes in pause
+PASS Expired damage numbers are released
+PASS Player hit has distinct flash and signed red damage
+PASS Haptics default OFF emits nothing
+PASS Low vibration emits configured light pulse
+PASS Pulse throttle prevents noisy vibration bursts
+PASS High vibration emits stronger pulse
+PASS Unknown vibration event rejected
+PASS New settings survive real disk roundtrip
+PASS Old schema-3 save defaults optional settings safely
+PASS Malformed new settings sanitized
+PASS scrapyard hero 0 ability can win boss and clean safely
+PASS scrapyard hero 0 replay ability resets
+PASS scrapyard hero 1 ability can win boss and clean safely
+PASS scrapyard hero 1 replay ability resets
+PASS scrapyard hero 2 ability can win boss and clean safely
+PASS scrapyard hero 2 replay ability resets
+PASS reactor hero 0 ability can win boss and clean safely
+PASS reactor hero 0 replay ability resets
+PASS reactor hero 1 ability can win boss and clean safely
+PASS reactor hero 1 replay ability resets
+PASS reactor hero 2 ability can win boss and clean safely
+PASS reactor hero 2 replay ability resets
+PASS Real state machine permits character-arena-wave flow
+PASS Settings preserve paused simulation
+ABILITIES RESULT 76 passed, 0 failed

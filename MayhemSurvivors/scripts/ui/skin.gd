@@ -31,7 +31,7 @@ static func menu(game:Node2D):
 	game.label_at('DEIN HELD. DEIN BUILD. DEIN MAYHEM.',Vector2(125,590),29,Color('#F1DEF9'))
 	game.button('SPIELEN',Vector2(115,655),Vector2(830,115),game.character_select,Color('#9C247D'))
 	game.button('CHARAKTERE',Vector2(115,800),Vector2(400,95),game.character_select)
-	game.button('ZIELE & STILE',Vector2(545,800),Vector2(400,95),game.challenges_screen)
+	game.button('AUFTRÄGE & SHOP',Vector2(545,800),Vector2(400,95),func():game.reward_hub.show())
 	game.button('STATISTIK',Vector2(115,925),Vector2(400,90),game.statistics)
 	game.button('EINSTELLUNGEN',Vector2(545,925),Vector2(400,90),func():game.settings(game.main_menu))
 	game.label_at('DIE MAYHEM CREW',Vector2(1240,265),43,Color('#FFE4B7'))
@@ -41,7 +41,7 @@ static func menu(game:Node2D):
 	game.portrait(Vector2(1230,440),1,1.25)
 	game.button('TUTORIAL MIT KICKSY',Vector2(1100,890),Vector2(690,90),func():game.tutorial.start())
 	game.label_at('5 HELDEN / 4 ARENEN / 2 MODI',Vector2(1145,995),25,Color('#E7D7F3'))
-	game.label_at('v0.15  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
+	game.label_at('v0.16  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='EINSTELLUNGEN':panel(game,Rect2(90,260,1460,415))

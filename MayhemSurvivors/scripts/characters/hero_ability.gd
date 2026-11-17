@@ -31,6 +31,7 @@ func activate() -> bool:
 		dash={'from':game.player.position,'target':target,'age':0.0,'duration':d.duration,'power':d.damage*game.damage_mult,'hit':[]}
 	cooldown=d.cooldown
 	activations+=1
+	game.run_abilities+=1
 	game.haptic('ability')
 	game.sound('ability_'+d.id)
 	game.vfx.ability(d.id,game.player.position)
@@ -45,6 +46,7 @@ func activate() -> bool:
 				if game.enemies.has(e) and e.kind!='boss':
 					game.encounters.interrupt_elite(e)
 					game.ravox.interrupt(e)
+					game.enemy_pack.interrupt(e)
 					var dir:Vector2=(e.pos-origin).normalized()
 					if dir==Vector2.ZERO:dir=Vector2.RIGHT
 					e.pos=(e.pos+dir*d.knockback).clamp(Vector2(35,35),Vector2(2365,1565))

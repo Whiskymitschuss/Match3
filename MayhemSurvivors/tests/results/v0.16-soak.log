@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+LIVE SOAK normal scrapyard enemies=29 event=1
+LIVE SOAK normal reactor enemies=23 event=1
+LIVE SOAK normal docks enemies=29 event=1
+LIVE SOAK normal foundry enemies=23 event=1
+LIVE SOAK veteran scrapyard enemies=21 event=1
+LIVE SOAK veteran reactor enemies=33 event=1
+LIVE SOAK veteran docks enemies=21 event=1
+LIVE SOAK veteran foundry enemies=33 event=1
+LIVE SOAK mayhem scrapyard enemies=28 event=1
+LIVE SOAK mayhem reactor enemies=37 event=1
+LIVE SOAK mayhem docks enemies=28 event=1
+LIVE SOAK mayhem foundry enemies=37 event=1
+LIVE SOAK PASS steps=21600 peak_enemies=39 peak_hazards=3 all tiers/four arenas/new pack/events, artificial HP and pilot; no Android FPS claim

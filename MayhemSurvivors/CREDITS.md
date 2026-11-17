@@ -1,3 +1,14 @@
+# Ergänzungen 0.16
+
+Eigene generierte Cartoon-Grafik für Bombling/Longshot/Hexling in enemy_pack.png.
+Eigene SVGs für Aufgaben, Pass und sechs Shopartikel. Begleitroboter/Ringe prozedural
+gezeichnet; Bomben-Kumpel verwendet bestehendes eigenes Bombenartwork. Vorhandene
+Originalsounds/Warnungen und Mayhem-UI weiterverwendet, keine neuen Fremdassets/Plugins.
+
+---
+
+## Historischer Stand vor 0.16
+
 # Ergänzungen 0.15
 
 Eigene Normal-/Veteran-/Mayhem-Symbole als SVG erstellt, keine externen Assets oder

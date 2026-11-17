@@ -5,6 +5,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
+	g.enemy_pack.enabled=false;g.arena_events.enabled=false # Frozen legacy encounters; 0.16 has its own tests.
 	g.rules.progressive=false # Historical movement and values; current progression tested separately.
 	g.ravox.enabled=false # Historical fixture excludes new 0.13 enemy; dedicated tests cover Ravox.
 	g.encounters.enabled=false # Frozen historical combat rules; 0.10 tested separately.

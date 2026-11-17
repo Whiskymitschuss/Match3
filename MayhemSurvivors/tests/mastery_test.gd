@@ -44,7 +44,7 @@ func run():
 	check(M.completed(loaded,'sparky')==0,'Legacy aggregate totals never invent hero mastery')
 	var g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original_save=g.saved.duplicate(true);g.saved=Save.defaults()
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
-	g.character_select();find_button(g,'MEISTERSCHAFTEN & SKINS').pressed.emit()
+	g.character_select();find_button(g,'MEISTERSCHAFT & SKINS').pressed.emit()
 	check(find_button(g,'NEON CREW / GESPERRT')!=null,'Actual character navigation opens mastery')
 	find_button(g,'NEON CREW / GESPERRT').pressed.emit()
 	check(find_button(g,'NOCH GESPERRT').disabled and M.selected(g.saved,'bruiser')=='classic','Locked preview never equips')
