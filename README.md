@@ -1,26 +1,30 @@
-# RF Worlds — Mayhem Survivors0.17.0
+# RF Worlds — Mayhem Survivors0.18.0 / MAYHEM GARAGE
 
-**STEELFIST — DER STAHLKOLOSS. Timo ist als sechster Held sofort spielbar.**
+**Cases öffnen, Fighter freischalten und deinen eigenen Look ausrüsten.**
 
-- Werkzeugduo mit Schraubenschlüssel/Pumpenzange und jedem vierten Doppelschlag.
-- 160 Basis-HP+30%=208 Start-HP,165 Tempo,10% Schadensreduktion und Regeneration.
-- Rohrbruch-Chaos: Druckwelle,2s Stun, verlängerbarer Angriffstempobonus.
-- Zwei Werkzeugentwicklungen, eigene Grafik/Icons/Sounds und komplette Menüintegration.
-- Alle bisherigen Arenen, Helden, Endlos, Tages-/Wochenaufgaben und kostenloser Pass.
+- Nur Bruiser frei; fünf weitere Fighter über Crew-Cases.
+- Crew-, Arsenal- und Style-Case, je1 kostenloses Startticket, echte Chancen und Garantie.
+-32 Sammlungseinträge, Duplikatteile, Werkstattränge1–5 und persönliche Ausrüstung.
+- Sichtbare Kopf-/Körper-/Schuhteile, Waffenstile und Dekoration.
+- Drei zusätzliche aktive Zauber mit separatem Touch-Button.
+- Studio-Coins aus echten Runs sowie bisherigen Aufgaben und kostenlosem Pass.
+- Offline, lokal gespeichert, keine Werbung oder Echtgeldkäufe.
 
-[Android-APK0.17 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/steelfist-v0.17/Downloads/MayhemSurvivors-v0.17-debug.apk)
+[Android-APK0.18 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-garage-v0.18/Downloads/MayhemSurvivors-v0.18-debug.apk)
 
-[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/steelfist-v0.17/Downloads/MayhemSurvivors-v0.17-source.zip)
+[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-garage-v0.18/Downloads/MayhemSurvivors-v0.18-source.zip)
 
-![Steelfist — native Engine-Vorgabeszene](MayhemSurvivors/tests/steelfist_hero.png)
+![Cases — native Engine-Vorgabeszene](MayhemSurvivors/tests/garage_cases.png)
 
-CHARAKTERE → bis STEELFIST wischen → AUSWÄHLEN → Arena betreten. Als Android-Update
-installieren: ARM64, Android7+, Querformat, offline, Code21, gleiches Paket/Debug-Zertifikat.
-Alte Profile und Studio-Coins bleiben kompatibel, neue Hero-Statistik beginnt leer.
+![Garage — native Engine-Vorgabeszene](MayhemSurvivors/tests/garage_outfit.png)
 
-23 Suites /1.747 Assertions und beide historischen Traces bestanden. 43.200 Lastschritte,
-acht native Ansichten, APK-Signatur/Alignment/Payload geprüft. Physischer Android-Test
-von Bedienung, neuer Tank-Balance und FPS/Thermik noch offen.
+Hauptmenü → CASES & GARAGE; Charakterauswahl → INVENTAR & STILE. Als Update installieren:
+Android7+, ARM64, Querformat, Code22, gleicher Paketname/Debug-Schlüssel. Stats/Coins/Deko
+bleiben erhalten; alte Gratis-Fighter werden entsprechend der neuen Regel per Case erspielt.
 
-[Anleitung](MayhemSurvivors/README.md) · [Tests](MayhemSurvivors/TEST_REPORT.md) ·
+25 Suites /1.898 Assertions, beide historische Traces,86.400 Lastschritte und15 native
+Ansichten geprüft. APK-Signatur/Alignment/ARM64/Payload geprüft. Echte Android-Abnahme
+von Bedienung, Update und neuer Balance offen. Lineare Weltenfreigabe folgt separat.
+
+[Garage-Anleitung](MayhemSurvivors/MAYHEM_GARAGE.md) · [Tests](MayhemSurvivors/TEST_REPORT.md) ·
 [Build](MayhemSurvivors/BUILD_REPORT.md) · [Fortschritt](MayhemSurvivors/PROGRESS.md)

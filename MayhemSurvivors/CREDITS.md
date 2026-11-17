@@ -1,3 +1,15 @@
+# Ergänzungen0.18
+
+Eigene generierte Case-Grafik (Crew/Arsenal/Style) und Wearables-Atlas mit9 gemalten
+Ausrüstungsteilen. Eigene19 SVG-Symbole/Alternativgrafiken für Gear, Module, Waffenstile,
+Zauber und Teile. Vorhandene Originalfiguren, Dekoration und Fonts weiterverwendet.
+Sieben eigene synthetisierte Sounds ohne Samples: tools/generate_garage_audio.py.
+Keine zusätzlichen Plugins oder Fremdpakete für die Spiellaufzeit.
+
+---
+
+## Historischer Stand vor0.18
+
 # Ergänzungen 0.17
 
 Steelfist-Grafik nach der vom Nutzer bereitgestellten Figurenreferenz als eigener

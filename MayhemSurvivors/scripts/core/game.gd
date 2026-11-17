@@ -364,7 +364,7 @@ func character_select(index:int=-1):
 	label_at(c.name,Vector2(920,270),64,Color(c.color))
 	if c.id=='steelfist':label_at(c.title,Vector2(925,337),23,GOLD)
 	label_at(c.description,Vector2(925,365),31)
-	label_at('%d HP / %d Basistempo / %s' % [roundi(c.hp*(1+float(c.get('hp_bonus',0)))),c.speed,weapon_data[c.weapon].name],Vector2(925,425),29)
+	label_at('BASIS: %d HP / %d Tempo / %s' % [roundi(c.hp*(1+float(c.get('hp_bonus',0)))),c.speed,weapon_data[Collection.starter(saved,c.id)].name],Vector2(925,425),29)
 	var info=label_at(hero_ability.data[c.id].name+'\n'+hero_ability.data[c.id].description+'\n\nKlassenwaffen: '+(' / '.join(c.allowed_weapons.map(func(id):return weapon_data[id].name))),Vector2(925,505),27)
 	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(830,240))
 	if c.id=='steelfist':

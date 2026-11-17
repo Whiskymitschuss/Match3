@@ -1,3 +1,43 @@
+# Testbericht0.18.0 — 2026-11-17
+
+Godot4.6.3 stable: 25 Suites /1.898 Assertions /0 Fehler, beide historischen Traces grün.
+Neue Collection-Modellsuite60 und Garage-Integration86 Prüfungen. Echte Chancen/
+Garantie, Besitz/Starter, Tickets/Kosten/Seed, ausstehende Belege/Bestätigung, Duplikate,
+Rangkosten/-caps, Klassenbindung, Loadouts, Snapshots, Korruptdaten und Run-Belohnungen.
+
+Integration: neue Roster-Regel und blockierter Direktstart, Tutorial-Leihheld ohne
+Freischaltung, echte persistierte Caseöffnung vor Reveal, Neustart ohne Doppelvergabe,
+Save-Fehler mit vollständigem Rollback, alte Stats/Coins plus Backup, gesperrte Inventar-
+Aktionen im Kampf/Pause/Shop/Levelwahl. Echte Startwerte/keine Doppelanwendung, alle
+acht Waffen mit genau8% Bonus auf Werkstattrang5, zusätzlicher Spell-Heal/Slow/Blink/
+Invulnerabilität/Bounds/Cooldowns und Multitouch, Ergebnisbelohnung genau einmal,
+gespeicherte Upgrades/Outfits, alle Inventarreiter/Chancen/Fundjournal/Assets.
+
+Frühere Kampftests nutzen explizite Legacy-Sammlungsfixtures mit allen Bauplänen auf
+Rang1 und ohne Metaboni. Kein versteckter Unlock-Bypass in test_mode. Alte Kicksy-
+Tutorialfreigabetests an die neue Case-Regel angepasst. Die historischen Traces bleiben
+bei ihren eingefrorenen Wellen-/Encounterregeln; neue Systeme separat geprüft.
+
+garage_soak.gd: 86.400 feste Schritte /1.440 simulierte Sekunden, alle sechs Helden ×
+vier Arenen ×drei Rang5-Zauber mit voller Ausrüstung bei Mayhem/Endlos31,72 Szenarien.
+Max100 Gegner, Positionen/HP endlich, Cooldowns/Unverwundbarkeit gültig. KünstlicheHP
+und vorgegebener Pilot, keine Android-FPS-/Thermikmessung oder menschliche Balanceprobe.
+
+15 native GL-Compatibility-Vorgabeszenen: gesperrter Fighter, Cases, Chancen, echter
+Fund, Ausrüstung, alle sechs Helden, Spells, Waffen, Kampf, tatsächliche Aufdeckanimation.
+Grafikanker verbessert und gemalte Wearables ergänzt. Capture-Testaudio vor Quit
+freigegeben; abschließend keine Script-/Ressourcenfehler. Software-GL-VSync-Warnung
+betrifft die Linux-Prüfumgebung. Physischer Android-/Update-/Touch-/Balancetest offen.
+
+Quell-ZIP zusätzlich frisch ohne Importcache entpackt und importiert. Alle25 Suites
+(1.898 Assertions) und beide historischen Traces erneut bestanden. Laufzeitquellen,
+Szenen, Daten und Assets mit dem getesteten Archiv bytegleich. Logs unter
+tests/results/v0.18-clean-import.log und v0.18-clean-tests.log.
+
+---
+
+## Historischer Stand vor0.18
+
 # Testbericht 0.17.0 — 2026-11-17
 
 Godot4.6.3 stable: 23 Suites /1.747 Assertions /0 Fehler. Beide historischen Traces grün.

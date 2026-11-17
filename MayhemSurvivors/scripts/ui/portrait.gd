@@ -37,7 +37,7 @@ func _draw():
 			var at=Vector2(fmod(i*173.0,500)-70,fmod(i*113+clock*90,520)-100)
 			draw_rect(Rect2(at,Vector2(5,11)),[color,Color('#ffd166'),Color('#e54cff')][i%3])
 		draw_arc(Vector2(180,170),157+sin(clock*4)*6,0,TAU,64,Color(1,.82,.4,.15),8,true)
-	if mode=='wardrobe' or gear.get('head','')!='' or gear.get('body','')!='' or gear.get('feet','')!='' or gear.get('skin','')!='':
+	if mode=='wardrobe' or gear.get('weapon',preload('res://scripts/progression/collection.gd').STARTERS[kind])!=preload('res://scripts/progression/collection.gd').STARTERS[kind] or gear.get('head','')!='' or gear.get('body','')!='' or gear.get('feet','')!='' or gear.get('skin','')!='':
 		draw_set_transform(Vector2(0,bob))
 		preload('res://scripts/ui/gear_art.gd').preview(self,kind,gear,tint)
 		draw_set_transform(Vector2.ZERO)

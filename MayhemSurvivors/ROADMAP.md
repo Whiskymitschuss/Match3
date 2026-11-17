@@ -1,3 +1,19 @@
+# Stand nach0.18
+
+Garage-Kern ist implementiert: Cases, Roster, Inventar/Werkstatt, sichtbare Ausstattung,
+drei Zauber, feste Kampfwerte und Belohnungen. Nächste fachliche Abnahme auf Android:
+Altprofil-Update, drei Starttickets, echte Öffnungen, Ausrüstung und Solo-Zauber testen;
+danach Cases/Teilepreise und Metaboni anhand tatsächlicher Runs abstimmen.
+
+Nächster Inhaltsausbau: lineare Weltenfreigabe Schrottplatz → Neonhafen → Reaktorzone →
+Glutwerk mit klaren Abschlussbelohnungen und Weltübersicht. Noch nicht Teil0.18.
+Danach Boss-Trophäen/Garagenausbau und gezielte Set-Entscheidungen. Kein Ausbau der
+Seltenheiten vor der Balanceabnahme. Aktive Run-Wiederherstellung weiter außerhalb.
+
+---
+
+## Historischer Stand vor0.18
+
 # Stand nach0.17
 
 Steelfist vollständig integriert und technisch geprüft. Nächste Abnahme: als Android-

@@ -1,19 +1,37 @@
-# 0.18 — MAYHEM GARAGE — integrierte Abnahme
+# 0.18 — MAYHEM GARAGE — implementiert, geprüft und gebaut
 
-Umgebung wieder erreichbar, lokaler Entwurf und GitHub-Checkpoint860ddd3 abgeglichen.
-Implementiert: Collection-Speicherung/Migration und Backup, nur Bruiser frei, Case-
-Öffnungen mit atomarer Speicherung/Rollback/Neustartbeleg, echte Chancen/Neuzugangsgarantie,
-Inventar und Werkstatt für32 Einträge, individuelle Loadouts und feste Kampfsnapshots.
-Eigene gemalte Cases und neun Ausrüstungsteile;15 native Ansichten nach Korrektur der
-Anker geprüft. Drei echte zusätzliche Zauber mit eigenem Multitouch-Button. Studio-
-Runbelohnungen, Profile/Altstatistik und vorhandene Dekoration integriert.
+Aktuelle Phase: Auslieferung und Android-Abnahme. Branch feature/mayhem-garage-v0.18.
+Nur Bruiser frei, fünf weitere Helden über Crew-Cases. Drei Casearten mit je einem
+kostenlosen Startticket, angezeigten echten Chancen, Duplikat-Bauteilen und garantierter
+fehlender Crew nach zwei Duplikaten. Atomare Speicherung vor Reveal, ausstehender
+Fund nach Neustart, vollständiger Rollback bei Speicherfehlern. Stats, Studio-Coins,
+Meisterschaften und Dekoration erhalten; pre_garage-Backup bei Altprofilmigration.
 
-Erster Gesamtlauf aller25 Suites und beide historischen Traces grün; neue Modelltests60
-und Garage-Integration86 Prüfungen. Capture-Audiofreigabe korrigiert, finaler nativer
-Durchlauf ohne Ressourcenfehler. Neue Grafikanker in visueller Abnahme. Noch offen:
-abschließende Tests/Lastprobe, Export/Signatur/Payload, Berichte, sauberes Quell-ZIP und
-GitHub-Auslieferung. Keine Android-Geräte-FPS oder Installation behauptet.
-Weltkarte/lineare Arenenfreigabe bleibt separater nächster Entwicklungsschritt.
+Garage mit32 Inventareinträgen, sichtbarer Kopf-/Körper-/Schuh-Ausrüstung, Waffenstilen,
+Modulen, drei zusätzlichen echten Zaubern und Werkstatträngen1–5. Klassenbindung,
+individuelle Loadouts und unveränderliche Run-Snapshots. Eigene gemalte Case-/Gear-
+Atlanten, Symbole, sieben neue Audiocues und Multitouch-Zauberbutton. Studio-Coins
+als einmalige Run-Belohnung; Tutorial verwendet einen Leihhelden ohne Gratisfreigabe.
+
+Abnahme:25 Suites /1.898 Assertions /0 Fehler und beide historischen Traces bestanden.
+Quell-ZIP frisch ohne Cache importiert und gesamte Suite erneut bestanden, Laufzeit-
+quellen bytegleich.86.400 feste Lastschritte /1.440 simulierte Sekunden /72 Szenarien,
+max100 Gegner, keine ungültigen Positionen/HP.15 native GL-Ansichten geprüft und
+Grafikanker verbessert. Keine GDScript-Parser-/Ressourcenfehler in finalen Prüfläufen.
+Alle Logs unter tests/results/v0.18-*.log, aktuelle Galerie tests/garage_*.png.
+
+Debug-APK0.18.0/Code22 erstellt: ARM64, Landscape, GL Compatibility, gleicher Paketname
+und Signierschlüssel. Signatur v2/v3,16KB-Alignment, Manifest und neuer Payload geprüft.
+SHA256:0be1b611d0e0c573d5c12a1b28054a7239c2f717077a994762388490f975c0f4.
+Quell-ZIP enthält alle Laufzeitdateien/Tests/Berichte, keine privaten Schlüssel oder
+Importcaches. GitHub-Downloads werden nach Push separat vollständig gehasht.
+
+Offene fachliche Abnahme: physische Android-Updateinstallation, echtes Multitouch,
+Gear-/Case-/Zauberbalance, Geräte-FPS und Thermik. Kein Gerätetest behauptet.
+Keine offenen Implementierungsstubs im freigegebenen Garage-Umfang. Weltkarte und
+lineare Arenenfreigabe bleiben der nächste separate Entwicklungsschritt.
+Nächste Aktion: als Update installieren; Hauptmenü → CASES & GARAGE, Starttickets
+öffnen, Ausrüstung anlegen, Run starten und nach Neustart Besitz/Studio-Coins prüfen.
 
 ---
 
