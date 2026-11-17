@@ -1,0 +1,5 @@
+{
+ "normal":{"name":"NORMAL","hp":1.0,"speed":1.0,"damage":1.0,"interval":1.0,"reward":1.0,"boss_hp":1.0,"color":"#00D9D0","description":"Die bisherige Herausforderung aus 0.14. Gut für neue Builds und entspanntes Lernen."},
+ "veteran":{"name":"VETERAN","hp":1.22,"speed":1.05,"damage":1.15,"interval":0.90,"reward":1.15,"boss_hp":1.12,"color":"#FF9F1C","description":"Robustere Gegner, mehr Druck und höhere Beute. Für erfahrene Überlebende."},
+ "mayhem":{"name":"MAYHEM","hp":1.45,"speed":1.10,"damage":1.30,"interval":0.82,"reward":1.30,"boss_hp":1.25,"color":"#FF4757","description":"Die härteste Stufe. Präzises Ausweichen und ein starker Build werden entscheidend."}
+}

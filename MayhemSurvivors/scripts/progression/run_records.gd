@@ -31,6 +31,7 @@ static func clean_run(data) -> Dictionary:
 	if not data is Dictionary or not CHARACTERS.has(data.get('character')):return {}
 	if not Arenas.IDS.has(data.get('arena','scrapyard')):return {}
 	var result={'arena':data.get('arena','scrapyard'),'character':data.character,'won':data.get('won',false)==true,'wave':clampi(int(number(data.get('wave'),1)),1,10),'time':number(data.get('time'),0,7200),'kills':int(number(data.get('kills'))),'level':clampi(int(number(data.get('level'),1)),1,999),'damage':number(data.get('damage')),'coins':int(number(data.get('coins'))),'weapons':[]}
+	if data.get('difficulty') in ['normal','veteran','mayhem']:result.difficulty=data.difficulty
 	if data.has('elite_kills'):result.elite_kills=clampi(int(number(data.elite_kills)),0,100)
 	var weapons=data.get('weapons')
 	if weapons is Array:

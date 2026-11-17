@@ -1,3 +1,54 @@
+# Mayhem Survivors 0.15.0 Alpha — Normal / Veteran / Mayhem
+
+Drei sofort auswählbare Schwierigkeitsgrade für alle vier Arenen, Kampagne und Endlos.
+CHARAKTERE → ARENAWAHL → SCHWIERIGKEIT öffnet die Karten. Die Stufe wird beim Start
+festgeschrieben; nachträgliche Menüauswahl beeinflusst keinen laufenden Run.
+Auswahl bleibt für weitere Runs in dieser App-Sitzung erhalten; Neustart beginnt Normal.
+
+| Faktor gegenüber 0.14 | Normal | Veteran | Mayhem |
+| --- | --- | --- | --- |
+| Normale Gegner-HP | 1,00 | 1,22 | 1,45 |
+| Gegner-/Boss-Bewegungstempo | 1,00 | 1,05 | 1,10 |
+| Kontaktschaden | 1,00 | 1,15 | 1,30 |
+| Spawnintervall | 1,00 | 0,90 | 0,82 |
+| Boss-HP | 1,00 | 1,12 | 1,25 |
+| XP-/Coin-Beute | 1,00 | 1,15 | 1,30 |
+
+Faktoren kommen auf die bestehende Wellen-/Endlosprogression. Beute wird pro Belohnung
+gerundet; kleine Coin-Drops steigen deshalb nicht bei jedem Gegner. Eliten erhalten
+HP-/Beutefaktor genau einmal. Gegnerlimit 100, Warnzeiten, Spezialangriffsabläufe,
+Projektile und Arenagefahren unverändert. Dash-Spezialtempo bleibt wie bisher;
+Tempo-Bonus betrifft die normale Bewegung. Keine Charakter-/Waffenwerte verändert.
+Normal entspricht spielmechanisch 0.14. Tutorial bleibt unabhängig von Auswahl Normal.
+Daten editierbar in data/difficulty/presets.json; keine Grafikeinstellung beeinflusst Werte.
+
+## Echte getrennte Rekorde
+
+STATISTIK → STUFEN-REKORDE zeigt getrennt nach Stufe, Modus und Arena Runs, Siege,
+höchste Welle, Kills und Zeit; Kampagne zusätzlich schnellsten Sieg. Endlos zeigt keine
+irreführende Sieganzeige. Bestehende Gesamtstatistik/Meisterschaften bleiben aggregiert.
+HUD, Ergebnis und neue Verlaufseinträge nennen die tatsächlich gespielte Stufe.
+Alte Verlaufseinträge ohne Stufe erscheinen als Normal. Alte Arena-/Endlos-Rekorde
+werden aus vorhandenen Daten zu Normal migriert; Veteran/Mayhem starten leer.
+Speicherschema 3 kompatibel um difficulty_records ergänzt. Ungültige Werte/IDs werden
+abgefangen. Kein Transfer erfundener höherer Rekorde, keine Doppelwertung nach Spielende.
+Die separate Normal-Migration erhält echte vorhandene Zeit-/Wellen-/Siegwerte.
+
+## Prüfung / Start
+
+Godot 4.6.3 stable: project.godot importieren, starten. Android-only / ARM64 / Querformat /
+offline / minSDK24 / targetSDK36 / Code19 / 0.15.0. Als Update über 0.14 installieren.
+`python3 tools/run_tests.py --traces`: 21 Suites / 1.565 Assertions und beide Traces grün.
+52 neue Difficulty-Checks, 21.600 Lastschritte mit allen Stufen in allen Arenen/Welle31.
+Native Galerie tests/difficulty_*.png geprüft, keine Android-Screenshots.
+Physische Android-Abnahme von Bedienung, Leistung und menschlichem Tier-Balancing offen.
+Quell-ZIP enthält alle Laufzeitassets/Szenen/Code/Tests und aktuelle Galerien; ältere reine
+Screenshots im Repository. Keine Generatoren oder manuelle Programmierung zum Start nötig.
+
+---
+
+## Historischer Stand vor 0.15
+
 # Mayhem Survivors 0.14.0 Alpha — Worlds, Endlos & Kicksy
 
 Android-only / Godot 4.6.3 stable / GDScript / offline / ARM64 / Querformat.

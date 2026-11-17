@@ -1,0 +1,55 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Normal exact opening baseline retained
+PASS Actual opening scaling veteran
+PASS Real spawn interval veteran
+PASS Real rounded rewards veteran
+PASS Boss factor veteranscrapyard
+PASS Distinct campaign victory veteranscrapyard
+PASS Endless boss continues veteranscrapyard
+PASS Endless crosses twenty veteranscrapyard
+PASS Boss factor veteranreactor
+PASS Distinct campaign victory veteranreactor
+PASS Endless boss continues veteranreactor
+PASS Endless crosses twenty veteranreactor
+PASS Boss factor veterandocks
+PASS Distinct campaign victory veterandocks
+PASS Endless boss continues veterandocks
+PASS Endless crosses twenty veterandocks
+PASS Boss factor veteranfoundry
+PASS Distinct campaign victory veteranfoundry
+PASS Endless boss continues veteranfoundry
+PASS Endless crosses twenty veteranfoundry
+PASS Actual opening scaling mayhem
+PASS Real spawn interval mayhem
+PASS Real rounded rewards mayhem
+PASS Boss factor mayhemscrapyard
+PASS Distinct campaign victory mayhemscrapyard
+PASS Endless boss continues mayhemscrapyard
+PASS Endless crosses twenty mayhemscrapyard
+PASS Boss factor mayhemreactor
+PASS Distinct campaign victory mayhemreactor
+PASS Endless boss continues mayhemreactor
+PASS Endless crosses twenty mayhemreactor
+PASS Boss factor mayhemdocks
+PASS Distinct campaign victory mayhemdocks
+PASS Endless boss continues mayhemdocks
+PASS Endless crosses twenty mayhemdocks
+PASS Boss factor mayhemfoundry
+PASS Distinct campaign victory mayhemfoundry
+PASS Endless boss continues mayhemfoundry
+PASS Endless crosses twenty mayhemfoundry
+PASS Elite HP receives difficulty factor once
+PASS Elite replacement rewards receive bonus once
+PASS Menu selection cannot mutate active run
+PASS Difficulty never shortens warning
+PASS Training always uses normal values
+PASS Old campaign attributed to Normal only
+PASS Old endless record preserved without invented higher tier
+PASS Difficulty scores survive disk roundtrip independently
+PASS Unknown tier rejected
+PASS Corrupt score fields sanitized
+PASS Game end records once
+PASS Real card button returns to arena selection
+PASS Real record board populated
+DIFFICULTY RESULT 52 passed, 0 failed

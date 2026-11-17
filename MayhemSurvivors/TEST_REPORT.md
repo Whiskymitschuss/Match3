@@ -1,3 +1,25 @@
+# Testbericht 0.15.0 — 2026-11-17
+
+Mit Godot 4.6.3 stable ausgeführt: 21 Suites / 1.565 Assertions / 0 Fehler.
+52 neue Difficulty-Checks: unveränderte Normal-Startwerte, exakte HP/Tempo/Schaden/
+Spawn-/Rewardwerte, alle vier Bosskämpfe auf Veteran/Mayhem, echte Siege mit getrennten
+Rekorden, Endlos-Boss20 → Shop →21, Elitefaktoren genau einmal, nicht änderbare Run-Stufe,
+volle Warnzeit, Tutorial-Normalzwang, reale JSON-Migration/Roundtrip/Korruptwerte/ungültige
+IDs, doppelte Ergebnisverarbeitung, echte Auswahlbutton-Signale und Rekordboard.
+Beide historischen Traces wie bisher explizit unter eingefrorenen alten Wellenregeln grün;
+aktuelle Normal-Regeln und neue Stufen separat geprüft. Keine neue Balanceidentität der
+höheren Stufen behauptet. Die tatsächliche Normal-Statsskalierung ist unverändert.
+
+Lastprobe difficulty_soak.gd: 21.600 feste Schritte / 360 simulierte Sekunden, alle drei
+Stufen × vier Arenen bei Endlos31. Maximal 100 Gegner, Positionen/HP endlich, Tempo<700.
+Künstliche HP und vorgegebener Pilot mit Sparky; kein menschlicher Run und keine Android-
+FPS-/Thermikmessung. Drei native GL-Compatibility-Vorgabeszenen visuell geprüft: Karten,
+Mayhem-Endlos-HUD und getrennte Rekorde. Geräte-/Touch-/Balance-Abnahme noch offen.
+
+---
+
+## Historischer Stand vor 0.15
+
 # Testbericht 0.14.0 — 2026-11-16
 
 Godot 4.6.3 stable: 20 ausgeführte Suites / 1.513 Assertions / 0 Fehler.

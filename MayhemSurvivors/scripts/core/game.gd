@@ -8,6 +8,10 @@ const Mastery = preload('res://scripts/progression/character_mastery.gd')
 const CharacterArt = preload('res://scripts/ui/character_art.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 var menu_motion=preload('res://scripts/mobile/menu_motion.gd').new(self)
+const Difficulty=preload('res://scripts/gameplay/difficulty.gd')
+const DifficultyRecords=preload('res://scripts/progression/difficulty_records.gd')
+var selected_difficulty='normal'
+var run_difficulty='normal'
 var run_mode='campaign'
 var rules
 var tutorial
@@ -363,7 +367,8 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 	var profiles=saved.records if arena_filter=='all' else totals.records
 	backdrop('DEINE STATISTIK','Arena: '+('Alle Arenen' if arena_filter=='all' else Arenas.definition(arena_filter).name))
 	var filters=['all']+Arenas.IDS
-	button('ENDLOS-REKORDE',Vector2(800,75),Vector2(480,85),endless_statistics)
+	button('STUFEN-REKORDE',Vector2(800,75),Vector2(480,85),difficulty_statistics)
+	button('ENDLOS-REKORDE',Vector2(550,900),Vector2(520,95),endless_statistics)
 	button('ARENA WECHSELN',Vector2(1330,75),Vector2(460,85),func():statistics(character,filters[(filters.find(arena_filter)+1)%3]))
 	for i in range(characters.size()+1):
 		var tab=i-1
@@ -413,7 +418,7 @@ func recent_runs_screen(character: int = -1, page: int = 0, arena_filter: String
 		label_at(('Welle %d / 10   LV %d   %d Kills   %s' % [run.wave,run.level,run.kills,duration_text(run.time)])+(' / %d Eliten' % int(run.get('elite_kills',0))),Vector2(940,y+12),25)
 		var loadout=''
 		for w in run.weapons:loadout+='%s Lv.%d  ' % [Specs.label(w) if not Specs.label(w).is_empty() else weapon_data[w.id].name,w.level]
-		label_at(Arenas.definition(run.get('arena','scrapyard')).name+' / '+loadout,Vector2(125,y+65),21)
+		label_at(Arenas.definition(run.get('arena','scrapyard')).name+' / '+Difficulty.definition(run.get('difficulty','normal')).name+' / '+loadout,Vector2(125,y+65),21)
 		label_at('%d Schaden  /  %d Coins' % [run.damage,run.coins],Vector2(1190,y+65),23,GOLD)
 	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func(): statistics(character,arena_filter))
 	var previous=button('← VORHERIGE',Vector2(590,905),Vector2(350,95),func(): recent_runs_screen(character,page-1,arena_filter))
@@ -476,6 +481,7 @@ func cleanup():
 func start_run():
 	if not Unlocks.available(saved,characters[selected].id):character_select(selected/3);return
 	if not Arenas.unlocked(saved,arena_id):arena_select();return
+	run_difficulty=selected_difficulty if selected_difficulty in Difficulty.IDS else 'normal'
 	arena_definition=Arenas.definition(arena_id)
 	waves=read_data(arena_definition.waves)
 	cleanup()
@@ -564,6 +570,7 @@ func refresh_hud():
 	if not is_instance_valid(hud): return
 	var info = 'HP %d / %d    LV %d    XP %d / %d\nWELLE %d / 10    %02d:%02d    COINS %d' % [ceili(hp),max_hp,level,xp,required_xp(),wave_number,int(remaining)/60,int(remaining)%60,coins]
 	if run_mode=='endless':info=info.replace('WELLE %d / 10' % wave_number,'WELLE %d / ENDLOS' % wave_number)
+	if run_mode!='tutorial':info='['+Difficulty.definition(run_difficulty).name+'] '+info
 	if run_mode=='tutorial':info=info.split('\n')[0]+'\nTUTORIAL   COINS %d' % coins
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
@@ -706,7 +713,12 @@ func spawn_enemy(kind: String):
 	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,kind=='boss'),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,kind=='boss')})
 	enemy_roles.initialize(enemies.back())
 	ravox.initialize(enemies.back())
+	enemies.back().coin_reward=Difficulty.reward(self,int(enemies.back().coin_reward))
+	enemies.back().xp_reward=Difficulty.reward(self,int(enemies.back().xp_reward))
 	encounters.promote(enemies.back())
+	if enemies.back().has('elite'):
+		enemies.back().coin_reward=Difficulty.reward(self,int(enemies.back().coin_reward))
+		enemies.back().xp_reward=Difficulty.reward(self,int(enemies.back().xp_reward))
 	return true
 
 func update_enemies(dt: float):
@@ -1038,8 +1050,9 @@ func finish(victory: bool):
 		saved.kills+=kills
 		saved.time+=run_time
 		saved.highest_wave=maxi(int(saved.highest_wave),mini(10,wave_number))
+	var difficulty_best=DifficultyRecords.add(saved,run_difficulty,run_mode,arena_id,wave_number,kills,run_time,victory)
 	var previous_rewards=Mastery.rewards(saved,characters[selected].id)
-	var improvements=RunRecords.add_run(saved,{'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'elite_kills':encounters.elite_kills}) if run_mode=='campaign' else []
+	var improvements=RunRecords.add_run(saved,{'difficulty':run_difficulty,'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'elite_kills':encounters.elite_kills}) if run_mode=='campaign' else []
 	if run_mode=='endless':preload('res://scripts/progression/endless_records.gd').add(saved,arena_id,wave_number,kills,run_time)
 	var unlocked=Arenas.sync(saved)
 	if Unlocks.sync(saved):unlocked.append('KICKSY')
@@ -1049,7 +1062,7 @@ func finish(victory: bool):
 	cleanup()
 	encounters.end_run()
 	sound('victory' if victory else 'defeat')
-	backdrop('ENDLOS BEENDET' if run_mode=='endless' else ('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!'),arena_definition.name+' • '+('SIEG' if victory else 'GAME OVER'))
+	backdrop('ENDLOS BEENDET' if run_mode=='endless' else ('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!'),arena_definition.name+' / '+Difficulty.definition(run_difficulty).name+' • '+('SIEG' if victory else 'GAME OVER'))
 	if victory:
 		var celebration=Control.new()
 		celebration.set_script(preload('res://scripts/ui/victory_fx.gd'))
@@ -1063,7 +1076,7 @@ func finish(victory: bool):
 	if not run_items.owned.is_empty():
 		var items_label=label_at('GEGENSTÄNDE: '+', '.join(run_items.owned.map(func(id):return run_items.data[id].name)),Vector2(110,565),20,TEAL)
 		items_label.text=UISkin.wrap_text(items_label.text,UISkin.BODY,20,1120)
-	if not improvements.is_empty(): label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
+	if not improvements.is_empty() or difficulty_best: label_at('NEUER PERSÖNLICHER BESTWERT',Vector2(110,640),26,GOLD)
 	if not unlocked.is_empty():label_at('FREIGESCHALTET: '+', '.join(unlocked),Vector2(110,685),24,TEAL)
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected/3))
@@ -1180,6 +1193,7 @@ func arena_select(page:int=0):
 		var available=Arenas.unlocked(saved,id)
 		var enter=button('ARENA BETRETEN' if available else 'ERSTER SIEG BENÖTIGT',Vector2(x,825),Vector2(805,100),func(): choose_arena(id),Color('#147f81') if available else Color('#343749'))
 		enter.disabled=not available
+	button('SCHWIERIGKEIT: '+Difficulty.definition(selected_difficulty).name,Vector2(1010,75),Vector2(800,85),func():difficulty_select(page))
 	button('ZURÜCK',Vector2(110,965),Vector2(350,85),character_select)
 	button('WEITERE ARENEN' if page==0 else 'ERSTE ARENEN',Vector2(490,965),Vector2(600,85),func():arena_select(1-page))
 	button('MODUS: '+('ENDLOS' if run_mode=='endless' else 'KAMPAGNE'),Vector2(1130,965),Vector2(650,85),func():run_mode='campaign' if run_mode=='endless' else 'endless';arena_select(page))
@@ -1299,3 +1313,29 @@ func motion_settings():
 	button('NEIGUNG NEU ZENTRIEREN',Vector2(160,620),Vector2(1500,110),func():menu_motion.reset();sound('click'))
 	label_at('Halte das Handy bequem. Die aktuelle Haltung wird als Mitte übernommen.\nOhne Bewegungssensor bleibt die Darstellung stabil. Keine Sensorberechtigung nötig.',Vector2(160,790),29)
 	button('ZURÜCK',Vector2(160,960),Vector2(650,90),func():settings(main_menu if state!=State.PAUSED else pause_menu))
+
+func difficulty_select(page:int=0):
+	backdrop('DEINE SCHWIERIGKEIT','Gleiche Warnzeiten / gleiche Gegnergrenze / eigene Rekorde je Stufe')
+	for i in range(Difficulty.IDS.size()):
+		var id=Difficulty.IDS[i];var d=Difficulty.definition(id);var x=100+i*585
+		UISkin.panel(self,Rect2(x,260,550,650),Color(d.color))
+		UISkin.image(self,load('res://assets/ui/difficulty/'+id+'.svg'),Rect2(x+185,285,180,140))
+		label_at(d.name,Vector2(x+25,445),46,Color(d.color))
+		var detail=label_at(d.description,Vector2(x+25,515),25);detail.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;detail.set_deferred('size',Vector2(490,110))
+		label_at('Gegner-HP: +%d %% / Tempo: +%d %%\nKontaktschaden: +%d %%\nBoss-HP: +%d %% / Beute: +%d %%\nSpawnintervall: %d %%' % [roundi((d.hp-1)*100),roundi((d.speed-1)*100),roundi((d.damage-1)*100),roundi((d.boss_hp-1)*100),roundi((d.reward-1)*100),roundi((d.interval-1)*100)],Vector2(x+25,640),24)
+		button('AKTIV' if selected_difficulty==id else 'AUSWÄHLEN',Vector2(x+25,795),Vector2(500,95),func():selected_difficulty=id;arena_select(page),Color(d.color).darkened(.65))
+	button('ZURÜCK',Vector2(100,965),Vector2(550,85),func():arena_select(page))
+func difficulty_statistics(id:String='normal',mode:String='campaign'):
+	backdrop('STUFEN-REKORDE',Difficulty.definition(id).name+' / '+('KAMPAGNE' if mode=='campaign' else 'ENDLOS'))
+	for i in range(3):
+		var key=Difficulty.IDS[i]
+		button(Difficulty.definition(key).name,Vector2(100+i*440,240),Vector2(420,80),func():difficulty_statistics(key,mode),Color('#147F81') if key==id else Color('#243958'))
+	button('MODUS WECHSELN',Vector2(1430,240),Vector2(390,80),func():difficulty_statistics(id,'endless' if mode=='campaign' else 'campaign'))
+	for i in range(Arenas.IDS.size()):
+		var arena=Arenas.IDS[i];var r=saved.difficulty_records[id][mode][arena];var x=100+(i%2)*870;var y=355+(i/2)*270
+		UISkin.panel(self,Rect2(x,y,820,240))
+		label_at(Arenas.definition(arena).name,Vector2(x+20,y+15),35,TEAL)
+		var info='Runs: %d / Siege: %d / Welle: %d\nKills: %d / Zeit: %s\nSchnellster Sieg: %s' % [r.runs,r.wins,r.highest_wave,r.kills,duration_text(r.time),duration_text(r.fastest_victory) if r.fastest_victory>0 else '—']
+		if mode=='endless':info='Runs: %d / Höchste Welle: %d\nKills: %d / Zeit: %s' % [r.runs,r.highest_wave,r.kills,duration_text(r.time)]
+		label_at(info,Vector2(x+20,y+75),26)
+	button('ZURÜCK',Vector2(100,965),Vector2(550,85),statistics)

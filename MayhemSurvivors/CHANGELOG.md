@@ -1,3 +1,16 @@
+# 0.15.0 Alpha — 2026-11-17
+
+- Normal, Veteran und Mayhem mit eigener Auswahl für Kampagne/Endlos und alle Arenen.
+- Transparente Gegner-/Boss-/Spawn-/Beutefaktoren, feste Warnzeiten und Gegnerlimits.
+- Schwierigkeit im Run festgeschrieben; Tutorial verwendet immer Normal.
+- Getrennte Stufenrekorde je Arena/Modus, echte Normal-Migration alter Profile.
+- Stufe in HUD, Ergebnis und Verlauf; eigene Symbole und übersichtliche Karten.
+- 52 neue Prüfungen, Gesamt 1.565 Assertions und beide bisherigen Traces grün.
+
+---
+
+## Historischer Stand vor 0.15
+
 # 0.14.0 Alpha — 2026-11-16
 
 - Neonhafen und Glutwerk mit eigenen Karten/Bossgrafiken und Gefahrenmustern.

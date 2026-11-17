@@ -1,3 +1,14 @@
+# Stand nach 0.15
+
+Drei Schwierigkeitsgrade für beide Modi/vier Arenen integriert und technisch geprüft.
+Nächster Schritt: Android-Feedback zu Veteran/Mayhem und dem Verhältnis von Druck zu
+Bonusbeute. Danach gezielt balancieren; weitere Inhalte anhand konkreter Runs priorisieren.
+Aktive Run-Wiederherstellung bleibt weiterhin außerhalb dieses Umfangs.
+
+---
+
+## Historischer Stand vor 0.15
+
 # Stand nach 0.14
 
 Vier Arenen, Endlos, neue Gegnerprogression, Kicksy-Tutorial und spielbare Kicksy integriert.

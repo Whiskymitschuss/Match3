@@ -1,3 +1,13 @@
+# Ergänzungen 0.15
+
+Eigene Normal-/Veteran-/Mayhem-Symbole als SVG erstellt, keine externen Assets oder
+neuen Plugins. Vorhandene eigene Mayhem-Menüs/Grafiken/Audio weiterverwendet.
+Datenbasierte Schwierigkeitsprofile und Rekordsystem eigenständig implementiert.
+
+---
+
+## Historischer Stand vor 0.15
+
 # Ergänzungen 0.14
 
 Kicksy-Konzept/Profil und angehängte Referenz von Nutzer / RF Worlds; daraus eigener

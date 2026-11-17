@@ -1,0 +1,109 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Finished graphic resource play
+PASS Finished graphic resource characters
+PASS Finished graphic resource stats
+PASS Finished graphic resource settings
+PASS Finished graphic resource back
+PASS Finished graphic resource next
+PASS Finished graphic resource pause
+PASS Finished graphic resource check
+PASS Finished graphic resource close
+PASS Finished graphic resource help
+PASS Finished graphic resource coins
+PASS Finished graphic resource xp
+PASS Finished graphic resource vital
+PASS Finished graphic resource damage
+PASS Finished graphic resource rapid
+PASS Finished graphic resource speed
+PASS Finished graphic resource crit
+PASS Finished graphic resource armor
+PASS Finished graphic resource magnet
+PASS Finished graphic resource projectile
+PASS Finished graphic resource heal
+PASS Finished graphic resource multi
+PASS Finished graphic resource shop
+PASS Finished graphic resource reroll
+PASS Finished graphic resource weapon
+PASS Finished graphic resource items
+PASS Finished graphic resource sets
+PASS Finished graphic resource upgrade
+PASS Finished graphic resource salvage
+PASS Finished graphic resource lock
+PASS Finished graphic resource clock
+PASS Finished graphic resource trophy
+PASS Finished graphic resource skull
+PASS Finished graphic resource volume
+PASS Finished graphic resource music
+PASS Finished graphic resource haptic
+PASS Finished graphic resource fx
+PASS Finished graphic resource world
+PASS Finished graphic resource history
+PASS Finished graphic resource grip
+PASS Finished graphic resource plate
+PASS Finished graphic resource battery
+PASS Finished graphic resource coolant
+PASS Finished graphic resource boots
+PASS Finished graphic resource lens
+PASS Finished graphic resource pack
+PASS Finished graphic resource shockwave
+PASS Finished graphic resource impulse
+PASS Finished graphic resource shadow_step
+PASS Upgrade uses semantic illustration vital
+PASS Upgrade uses semantic illustration damage
+PASS Upgrade uses semantic illustration rapid
+PASS Upgrade uses semantic illustration speed
+PASS Upgrade uses semantic illustration crit
+PASS Upgrade uses semantic illustration armor
+PASS Upgrade uses semantic illustration magnet
+PASS Upgrade uses semantic illustration projectile
+PASS Upgrade uses semantic illustration heal
+PASS Upgrade uses semantic illustration multi
+PASS Action semantic icon SPIELEN
+PASS Action semantic icon PAUSE
+PASS Action semantic icon CHARAKTERE
+PASS Action semantic icon EINSTELLUNGEN
+PASS Action semantic icon 42 KAUFEN
+PASS Action semantic icon AUFRÜSTEN
+PASS Action semantic icon VERWERTEN
+PASS Action semantic icon REROLL: GRATIS
+PASS Action semantic icon HILFE
+PASS Real full-screen illustrated background LOW
+PASS Animation and blur obey quality LOW
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Real full-screen illustrated background MEDIUM
+PASS Animation and blur obey quality MEDIUM
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Real full-screen illustrated background HIGH
+PASS Animation and blur obey quality HIGH
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
+PASS Statistics uses a readability scrim even while state remains main menu
+PASS Real shop upgrade displays final icon, not a text symbol
+PASS Presentation does not resume shop combat
+PASS Upgrade choices use graphic resources while paused
+PASS Production menu reveal starts visibly faded
+PASS Reveal settles at exact intended touch position
+PASS Rapid navigation cancels stale screen animations
+PASS No invisible interactive control remains after transition
+PASS No invisible interactive control remains after transition
+PASS No invisible interactive control remains after transition
+PASS No invisible interactive control remains after transition
+PASS No invisible interactive control remains after transition
+PASS No invisible interactive control remains after transition
+PASS Full eight-item result wraps inside its panel without covering hero art
+NEON INTERFACE RESULT 106 passed, 0 failed

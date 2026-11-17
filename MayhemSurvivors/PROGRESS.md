@@ -1,3 +1,25 @@
+# 0.15.0 — Schwierigkeitsgrade / implementiert und geprüft
+
+Branch feature/difficulties-v0.15. Normal/Veteran/Mayhem für Kampagne und Endlos in
+allen vier Arenen, Auswahlkarten mit exakten Faktoren, Stufe im Run festgeschrieben.
+Normal behält 0.14-Werte. Warnzeiten und Gegnergrenze unverändert. Tutorial bleibt Normal.
+Eigene Symbole, getrennte Rekorde je Stufe/Modus/Arena, alte Daten korrekt zu Normal
+migriert, Stufe in HUD/Ergebnis/Verlauf. Keine offenen Stubs im freigegebenen Umfang.
+
+21 Suites / 1.565 Assertions und beide historischen Traces grün. Quell-ZIP ohne Cache
+frisch importiert und komplette Suite erneut bestanden. Neue Stufen: 52 spezifische Checks.
+Lastprobe: 21.600 Schritte / alle Stufen × vier Arenen / Endlos31, maximal100 Gegner,
+keine NaNs. Native Galerie aus drei Szenen geprüft. APK gebaut/signiert, Alignment,
+Manifest, ARM64 und Payload geprüft. Veröffentlichung mit anschließender Hashprüfung.
+
+Nächste fachliche Abnahme: Android-Update, Bedienung, Normal-Vergleich und menschliche
+Veteran-/Mayhem-Balance einschließlich Bonusbeute. Keine Geräte-FPS/Thermik behauptet.
+
+
+---
+
+## Historischer Stand vor 0.15
+
 # 0.14.0 — Worlds / Endlos / Kicksy — implementiert und geprüft
 
 Branch feature/worlds-endless-v0.14. Vier Arenen inklusive Neonhafen/Glutwerk mit
