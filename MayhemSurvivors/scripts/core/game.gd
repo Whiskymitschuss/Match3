@@ -118,6 +118,8 @@ var spawn_clock = 0.0
 var hurt_clock = 0.0
 var orbit_angle = 0.0
 var animation_clock = 0.0
+var breaker
+var axel_shop_pending=false
 var boss_clock = 0.0
 var boss_phase = 0
 var boss_charging = false
@@ -155,6 +157,7 @@ func _ready():
 	world_visuals = preload('res://scripts/gameplay/world_visuals.gd').new(self)
 	arena_hazards=preload('res://scripts/gameplay/arena_hazards.gd').new(self)
 	reactor_guardian=preload('res://scripts/bosses/reactor_guardian.gd').new(self)
+	breaker=preload('res://scripts/bosses/breaker_axel.gd').new(self)
 	bombs=preload('res://scripts/characters/kicksy_bombs.gd').new(self)
 	twinkle=preload('res://scripts/characters/twinkle_combat.gd').new(self)
 	steelfist=preload('res://scripts/characters/steelfist_combat.gd').new(self)
@@ -487,6 +490,8 @@ func settings(back: Callable):
 	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
 
 func cleanup():
+	axel_shop_pending=false
+	if breaker:breaker.clear()
 	if equipped_spell:equipped_spell.invulnerability=0;equipped_spell.touch_ids.clear()
 	if arena_events:arena_events.clear()
 	if encounters:encounters.clear_combat()
@@ -554,6 +559,7 @@ func start_run():
 
 func prepare_wave():
 	change_state(State.WAVE_PREPARATION)
+	if breaker.scheduled():breaker.intro();return
 	backdrop(('WELLE %d / ENDLOS' if run_mode=='endless' else 'WELLE %d / 10') % wave_number,arena_definition.boss_name+' ERWACHT' if rules.boss_wave() else arena_definition.name+(' / Verstärkte Gegnergruppen ab Welle 4' if wave_number>=4 else ' / Bewege dich, sammle Kristalle und überlebe!'))
 	label_at('Automatische Waffen • Links unten bewegen\nXP sammeln → Upgrades wählen\nZwischen den Wellen: Ausrüstung kaufen',Vector2(120,350),36)
 	var ability=hero_ability.definition()
@@ -581,7 +587,8 @@ func begin_wave():
 	boss_clock = 3
 	boss_phase = 0
 	boss_charging = false
-	if rules.boss_wave(): spawn_enemy('boss')
+	if breaker.scheduled():spawn_enemy('breaker_axel')
+	elif rules.boss_wave(): spawn_enemy('boss')
 	change_state(State.COMBAT)
 	make_hud()
 
@@ -615,7 +622,9 @@ func refresh_hud():
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
 	for e in enemies:
-		if e.kind == 'boss':
+		if e.kind == 'breaker_axel':
+			boss_hud.text='BREAKER AXEL / PHASE %d / %d / %d HP\n%s' % [breaker.tier,maxi(0,int(e.hp)),int(e.max_hp),breaker.warning_text()]
+		elif e.kind == 'boss':
 			boss_hud.text = '%s   %d / %d%s\n%s' % [arena_definition.boss_name,maxi(0,int(e.hp)),int(e.max_hp),('  /  PHASE %d' % encounters.boss_tier) if encounters.enabled else '',boss_warning]
 			var warning=world_visuals.boss_telegraph()
 			if not warning.is_empty(): boss_hud.text += '  %.1f s' % warning.seconds
@@ -706,7 +715,8 @@ func _physics_process(delta):
 	remaining = maxf(0,remaining-delta)
 	hurt_clock -= delta
 	if absf(move_input.x)>.08: facing = -1.0 if move_input.x<0 else 1.0
-	if not hero_ability.move_dash(delta):player.move_analog(move_input,speed)
+	breaker.tick_player(delta)
+	if not hero_ability.move_dash(delta):player.move_analog(move_input*breaker.control_factor(),speed,breaker.push_velocity)
 	if state != State.COMBAT:return
 	orbit_angle += delta*3.5
 	spawn_clock -= delta
@@ -724,6 +734,8 @@ func _physics_process(delta):
 	arena_hazards.update(delta)
 	arena_events.update(delta)
 	if state != State.COMBAT:return
+	breaker.update(delta)
+	if state!=State.COMBAT:return
 	bombs.update(delta)
 	if state!=State.COMBAT:return
 	twinkle.update(delta)
@@ -748,6 +760,7 @@ func _physics_process(delta):
 	refresh_hud()
 
 func spawn_enemy(kind: String):
+	if kind=='breaker_axel' and (not breaker.scheduled() or not breaker.actor().is_empty()):return false
 	if kind=='ravox' and not ravox.allowed():return false
 	if enemy_pack.CONFIG.has(kind) and enemy_pack.count(kind)>=enemy_pack.CONFIG[kind].cap:return false
 	if enemy_roles.data.has(kind) and enemy_roles.count(kind)>=int(enemy_roles.data[kind].cap):return false
@@ -757,8 +770,9 @@ func spawn_enemy(kind: String):
 	if pos.distance_to(player.position)<450:
 		pos = Vector2(2300 if player.position.x<1200 else 100,1500 if player.position.y<800 else 100)
 	var current_wave=rules.current_wave()
-	var values=rules.scale_stats(WaveBalance.stats(d,current_wave,wave_number,kind=='boss'),kind=='boss')
-	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,kind=='boss'),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,kind=='boss')})
+	var is_boss=kind in ['boss','breaker_axel']
+	var values=rules.scale_stats(WaveBalance.stats(d,current_wave,wave_number,is_boss),is_boss)
+	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,is_boss),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,is_boss)})
 	enemy_roles.initialize(enemies.back())
 	ravox.initialize(enemies.back())
 	enemy_pack.initialize(enemies.back())
@@ -771,8 +785,8 @@ func spawn_enemy(kind: String):
 	return true
 
 func update_enemies(dt: float):
-	if rules.boss_wave() and is_reactor() and not encounters.boss_lock and not steelfist.boss_stunned():reactor_guardian.update(dt)
-	if rules.boss_wave() and not is_reactor() and not encounters.boss_lock and not steelfist.boss_stunned():
+	if rules.final_boss_wave() and is_reactor() and not encounters.boss_lock and not steelfist.boss_stunned():reactor_guardian.update(dt)
+	if rules.final_boss_wave() and not is_reactor() and not encounters.boss_lock and not steelfist.boss_stunned():
 		boss_clock -= dt
 		if boss_clock <= 0:
 			boss_phase = (boss_phase+1)%4
@@ -796,6 +810,7 @@ func update_enemies(dt: float):
 		var dir: Vector2 = rules.direction(e)
 		var velocity: Vector2 = dir*e.speed
 		if e.kind=='ravox':velocity=ravox.velocity(e,velocity,dt)
+		if e.kind=='breaker_axel':velocity=breaker.velocity(e,velocity,dt)
 		if enemy_pack.CONFIG.has(e.kind):velocity=enemy_pack.velocity(e,velocity,dt)
 		if e.kind in ['spitter','drone']:velocity=enemy_roles.velocity(e,velocity,dt)
 		if e.has('elite'):velocity=encounters.movement(e,velocity,dt)
@@ -813,6 +828,7 @@ func update_enemies(dt: float):
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
 			if enemy_pack.CONFIG.has(e.kind) and e.pack_stage in ['windup','release']:break
+			if e.kind=='breaker_axel' and breaker.stage in ['windup','dash','hammer','phase']:break
 			if e.kind=='ravox' and e.ravox_stage in ['windup','dash','recovery']:break
 			if e.has('elite') and e.elite_stage in ['windup','dash']:break
 			if e.kind=='boss' and encounters.boss_lock:break
@@ -826,10 +842,13 @@ func update_enemies(dt: float):
 		var previous_pos:Vector2=e.pos
 		e.pos = (e.pos+velocity*dt).clamp(Vector2(35,35),Vector2(2365,1565))
 		if e.kind=='ravox':ravox.after_move(e,previous_pos,e.pos)
+		if e.kind=='breaker_axel':breaker.after_move(e,previous_pos,e.pos)
 		if state!=State.COMBAT:return
 		if e.has('elite'):encounters.after_move(e,previous_pos,e.pos)
 		if state!=State.COMBAT:return
-		if not (e.kind=='ravox' and e.ravox_stage=='dash') and e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0: hurt(e.damage)
+		if not (e.kind=='ravox' and e.ravox_stage=='dash') and not (e.kind=='breaker_axel' and breaker.stage=='dash') and e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0:
+			if e.kind=='breaker_axel':breaker.hit(breaker.damage(breaker.data.damage,e),e.pos,180,.12)
+			else:hurt(e.damage)
 		if state != State.COMBAT: return
 	for actor in enemies.duplicate():
 		enemy_pack.resolve(actor)
@@ -892,7 +911,7 @@ func update_shots(dt: float):
 func damage_enemy(e: Dictionary, power: float):
 	if e.hp<=0 or not enemies.has(e): return
 	var critical = rng.randf()<crit
-	var amount = power*(2 if critical else 1)*enemy_roles.damage_factor(e)
+	var amount = power*(2 if critical else 1)*enemy_roles.damage_factor(e)*(1.0-float(breaker.data.resistance) if e.kind=='breaker_axel' else 1.0)
 	dealt += minf(e.hp,amount)
 	e.hp -= amount
 	e.hit = .15
@@ -913,10 +932,16 @@ func damage_enemy(e: Dictionary, power: float):
 		coins += reward
 		vfx.coin(pos,reward)
 		earned += reward
-		loot.append({'pos':pos,'xp':int(e.get('xp_reward',enemy_definition(kind).xp))})
+		if kind=='breaker_axel':xp+=int(e.xp_reward)
+		else:loot.append({'pos':pos,'xp':int(e.get('xp_reward',enemy_definition(kind).xp))})
 		sound('death')
 		sound('coin')
-		if kind == 'boss':
+		if kind=='breaker_axel':
+			sound('axel_defeat');run_waves+=1;cleanup();axel_shop_pending=true
+			if level<999 and xp>=required_xp():level_up()
+			else:axel_shop_pending=false;open_shop()
+			var death_fx=Control.new();death_fx.set_script(preload('res://scripts/ui/axel_defeat_fx.gd'));ui_root.add_child(death_fx)
+		elif kind == 'boss':
 			run_waves+=1
 			if run_mode=='endless':cleanup();open_shop()
 			else:finish(true)
@@ -984,6 +1009,7 @@ func level_up():
 
 func if_more_levels():
 	if level<999 and xp>=required_xp(): level_up()
+	elif axel_shop_pending:axel_shop_pending=false;open_shop()
 	else: resume()
 
 func apply_upgrade(id: String):
@@ -1179,6 +1205,7 @@ func _draw():
 		return
 	enemy_pack.draw()
 	ravox.draw_floor()
+	breaker.draw_floor()
 	bombs.draw_floor()
 	twinkle.draw_floor()
 	steelfist.draw_floor()
@@ -1233,6 +1260,7 @@ func _exit_tree():
 
 func is_reactor() -> bool:return arena_id in ['reactor','foundry']
 func enemy_definition(kind: String) -> Dictionary:
+	if kind=='breaker_axel':return breaker.data
 	if enemy_roles.data.has(kind):return enemy_roles.data[kind]
 	return arena_definition.boss if kind=='boss' and arena_definition.has('boss') else enemy_data[kind]
 func choose_arena(id: String) -> bool:
@@ -1249,7 +1277,7 @@ func arena_select(index:int=-1):
 	var art=Control.new();art.set_script(preload('res://scripts/ui/arena_preview.gd'));art.texture=load('res://assets/environments/'+d.floor+'.png');art.position=Vector2(100,260);art.size=Vector2(950,530);art.clip_contents=true;art.mouse_filter=Control.MOUSE_FILTER_IGNORE;ui_root.add_child(art)
 	label_at('WISCHEN / %d VON %d' % [arena_cursor+1,Arenas.IDS.size()],Vector2(120,835),30,TEAL)
 	label_at(d.name,Vector2(1100,285),45,TEAL)
-	var info=label_at(d.description+'\n\nBOSS: '+d.boss_name+'\n\n'+('Bosse alle 10 Wellen. Wie lange hältst du durch?' if run_mode=='endless' else '10 Wellen. Ein Endboss. Dein Sieg.'),Vector2(1100,385),29)
+	var info=label_at(d.description+'\n\nBOSS: '+d.boss_name+'\n\n'+('Axel ab Welle 5, dann alle 10 Wellen. Arenabosse alle 10 Wellen.' if run_mode=='endless' else '10 Wellen. Breaker Axel in Welle 5. Arenaboss in Welle 10.'),Vector2(1100,385),29)
 	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(690,330))
 	var available=Arenas.unlocked(saved,id)
 	var enter=button('ARENA BETRETEN' if available else 'ERSTER SIEG BENÖTIGT',Vector2(1100,800),Vector2(690,115),func():choose_arena(id),Color('#147f81'))

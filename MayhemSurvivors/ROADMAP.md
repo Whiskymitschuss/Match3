@@ -1,3 +1,15 @@
+# Stand nach0.19
+
+Breaker Axel ist als Welle5-Boss in alle vier Arenen und den Endlosmodus integriert.
+Garage/Cases und vorherige Inhalte erhalten. Nächste Abnahme ist der echte Android-
+Durchlauf mit bestehendem Profil und menschlicher Boss-/Beutebalance.
+Nächster separater Inhaltsumfang: Weltkarte und aufeinanderfolgende Arenenfreigaben
+mit Abschlussbelohnungen. Noch nicht Teil0.19; keine neuen Echtgeld-/Onlinefunktionen.
+
+---
+
+## Historischer Stand vor0.19
+
 # Stand nach0.18
 
 Garage-Kern ist implementiert: Cases, Roster, Inventar/Werkstatt, sichtbare Ausstattung,

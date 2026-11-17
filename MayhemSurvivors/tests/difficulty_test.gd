@@ -34,7 +34,7 @@ func run():
 	check(elite.coin_reward==21 and elite.xp_reward==29,'Elite replacement rewards receive bonus once')
 	start('normal');g.selected_difficulty='mayhem';g.spawn_enemy('grunt')
 	check(g.enemies[0].hp==40 and g.run_difficulty=='normal','Menu selection cannot mutate active run')
-	start('mayhem');g.ravox.data.first_wave=5;g.wave_number=5;g.spawn_enemy('ravox');var e=g.enemies[0];e.pos=g.player.position+Vector2(250,0);e.ravox_clock=0;g.ravox.velocity(e,Vector2.LEFT,2)
+	start('mayhem');g.ravox.data.first_wave=5;g.wave_number=6;g.spawn_enemy('ravox');var e=g.enemies[0];e.pos=g.player.position+Vector2(250,0);e.ravox_clock=0;g.ravox.velocity(e,Vector2.LEFT,2)
 	check(e.ravox_clock==1.25,'Difficulty never shortens warning')
 	start('mayhem');var hp=g.hp;g.run_mode='tutorial';g.spawn_enemy('grunt');check(g.enemies[0].hp==40 and g.enemies[0].speed==105,'Training always uses normal values')
 	g.run_mode='campaign'

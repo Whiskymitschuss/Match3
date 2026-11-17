@@ -1,0 +1,10 @@
+Anonymous public GitHub download verification — 2026-11-17T14:53:25.472220+00:00
+PASS MayhemSurvivors-v0.19-debug.apk
+66238279 bytes
+SHA256 69d14f75ccc1ad7f9cd25a0269f57ec6da4cac6a593b95de60df1eed4ce46266
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/breaker-axel-v0.19/Downloads/MayhemSurvivors-v0.19-debug.apk
+PASS MayhemSurvivors-v0.19-source.zip
+72833184 bytes
+SHA256 09086c2d5b09158dde948d0e3e2a6d6ce00acc3c4d1db5efb53a953a1371bdfc
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/breaker-axel-v0.19/Downloads/MayhemSurvivors-v0.19-source.zip
+Both complete binary downloads match the published checksums. No authentication used.

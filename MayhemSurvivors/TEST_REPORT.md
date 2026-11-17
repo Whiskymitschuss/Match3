@@ -1,3 +1,45 @@
+# Testbericht0.19.0 — 2026-11-17
+
+Godot4.6.3 stable:26 Suiten /2.144 Assertions /0 Fehler und beide historischen Traces
+grün. Neue Axel-Suite246 Checks: Schedule, tatsächlicher Spawn/Cap/HP/Resistenz,
+vier Arenen, HUD/Startbutton, Warnzeit und gesperrtes Ziel, Schockwellen-Sweep,
+Hammerschläge/Dodge, Risswarnung und Ablauf, tatsächlicher Ansturm-Sweep/Slow,
+Phasen70/40%, volle Combo-Warnung, Stun/Knockback/Unverwundbarkeit, Pause/Level/Shop,
+einmalige Beute, mehrere echte Upgradebuttons vor Shop, Welle6, Endlos15/16,
+Timeout/GameOver/Neustart und unveränderter finaler Victory in Welle10.
+
+Zusätzlich exakte Gleichheit der Boss-Simulation für LOW/MEDIUM/HIGH, einmalige
+Anwendung des Schwierigkeitsschadens bei Kontakt, Crowd-Control-Freeze und
+Schadensgrace sowie Asset-/Audioprüfung. Sechs PCM-Cues mit gültigem Mono44,1kHz,
+Nicht-Stille und Peaks unter22373 geprüft; keine Sprecher-/Geräteabnahme behauptet.
+
+Bestehende Integration/Reaktor-Flows besiegen Axel tatsächlich in Welle5. Ravox-
+und normale Arenagefahren-Tests nutzen Welle6. Zwei anfängliche Fixturefehler durch
+die geänderte Welle5 sowie daraus folgende Abbrüche behoben; abschließender voller
+Lauf ohne Fehler. Keine Produktions-Sonderfreigabe für test_mode. Die zwei alten
+Traces behalten ihre Referenzdateien unverändert.
+
+Native GL-Compatibility-Abnahme:11 Ansichten, eigene Vorstellung, Ringwarnung/Ring,
+Hammerwarnung/Schlag, Sturmspur, Rage/Risse, Tod, Shop, Welle6 und alter Endboss.
+Bossbar zentralisiert und Todesflash unterhalb der Upgrade-Karten platziert. Capture
+nutzt Dummy-Audio; Mesa-Software-GL meldet erwartete VSync-Warnung. Keine Script-/
+Ressourcenfehler im finalen Capture. Keine echten Android-Screenshots/FPS-Messungen.
+
+Lastprobe:259.200 feste Schritte /4.320 simulierte Sekunden /72 Szenarien mit allen
+sechs Helden ×vier Arenen ×drei Schwierigkeiten in Endlos15, max100 Gegner. Phasen
+gezielt erzwungen, künstliche HP und vorgegebener Pilot. Positionen/HP endlich,
+max2 Ringe/max6 Risse und begrenzte Statusimpulse. Kein menschlicher Balancetest.
+Physische Android-Updateinstallation, echte Touch-/Audioabnahme, FPS/Thermik offen.
+
+Quell-ZIP zusätzlich frisch ohne Godot-Importcache entpackt und importiert. Alle26
+Suiten /2.144 Prüfungen und beide historischen Traces erneut bestanden. Laufzeit-
+skripte, Szenen, Daten und Assets mit dem getesteten Archiv bytegleich. Logs:
+tests/results/v0.19-clean-import.log und v0.19-clean-tests.log.
+
+---
+
+## Historischer Stand vor0.19
+
 # Testbericht0.18.0 — 2026-11-17
 
 Godot4.6.3 stable: 25 Suites /1.898 Assertions /0 Fehler, beide historischen Traces grün.

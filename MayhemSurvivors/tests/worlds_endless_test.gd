@@ -48,7 +48,7 @@ func run():
 	g.level=999;check(g.required_xp()>0 and g.required_xp()<=1000000000,'Long-run XP formula safe')
 	g.xp=2000000000;g.state=g.State.LEVEL_UP;g.if_more_levels();check(g.state==g.State.COMBAT,'Level cap never traps pending upgrades')
 	for arena in ['docks','foundry']:
-		setup(arena,'campaign',5);g.arena_hazards.clock=0;g.arena_hazards.update(.01)
+		setup(arena,'campaign',6);g.arena_hazards.clock=0;g.arena_hazards.update(.01)
 		check(not g.arena_hazards.items.is_empty(),'New arena hazard is real '+arena)
 		var hazard=g.arena_hazards.items[0];check(hazard.warm>=1.6,'Full readable hazard warning '+arena)
 	setup('docks','endless',20);g.remaining=.001;g._physics_process(.01);check(g.state==g.State.GAME_OVER,'Endless boss timeout loses correctly')

@@ -1,3 +1,15 @@
+# Ergänzungen0.19
+
+BREAKER AXEL: eigene mit Bildgenerierung erstellte Cartoon-Bossgrafik nach der vom
+Auftraggeber bereitgestellten Fotoreferenz. Keine fremden Spielfiguren/-sprites.
+Sechs eigene synthetische Pneumatik-/Stein-/Warn-/Ragesounds ohne Fremdsamples,
+reproduzierbar mit tools/generate_axel_audio.py. Anleitung/Referenzfoto muss nicht
+mit dem Projekt verteilt werden. Vorherige Lizenzhinweise bleiben gültig.
+
+---
+
+## Historischer Stand vor0.19
+
 # Ergänzungen0.18
 
 Eigene generierte Case-Grafik (Crew/Arsenal/Style) und Wearables-Atlas mit9 gemalten

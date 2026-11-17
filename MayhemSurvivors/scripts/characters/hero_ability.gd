@@ -45,7 +45,7 @@ func activate() -> bool:
 				if origin.distance_to(e.pos)>d.radius+e.radius:continue
 				game.damage_enemy(e,d.damage*game.damage_mult*(1.0+float(game.characters[game.selected].melee_bonus)))
 				if game.state!=game.State.COMBAT:return true
-				if game.enemies.has(e) and e.kind!='boss':
+				if game.enemies.has(e) and e.kind not in ['boss','breaker_axel']:
 					game.encounters.interrupt_elite(e)
 					game.ravox.interrupt(e)
 					game.enemy_pack.interrupt(e)
@@ -98,7 +98,7 @@ func update(dt:float):
 		if e.pos.distance_to(bomb.target)>bomb.radius+e.radius:continue
 		game.damage_enemy(e,bomb.power)
 		if game.state!=game.State.COMBAT:return
-		if game.enemies.has(e) and e.kind!='boss':
+		if game.enemies.has(e) and e.kind not in ['boss','breaker_axel']:
 			e.ability_slow=definition().slow
 			e.ability_slow_time=definition().slow_duration
 func draw():

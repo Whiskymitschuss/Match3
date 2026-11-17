@@ -19,10 +19,6 @@ func _draw():
 	bar = Rect2(Vector2(80,168)+game.hud_top_left(),Vector2(420,12))
 	draw_rect(bar,Color('#0e182b'))
 	draw_rect(Rect2(bar.position,Vector2(bar.size.x*minf(1,float(game.xp)/game.required_xp()),12)),Color('#00d9d0'))
-	for enemy in game.enemies:
-		if enemy.kind=='boss':
-			draw_rect(Rect2(620,245+game.safe_logical.position.y,680,24),Color('#0e182b'))
-			draw_rect(Rect2(620,245+game.safe_logical.position.y,680*clampf(enemy.hp/enemy.max_hp,0,1),24),Color('#ff4757'))
 
 	# Real equipment art uses the same atlas as the held weapons and shop offers.
 	for i in range(game.weapons.size()):

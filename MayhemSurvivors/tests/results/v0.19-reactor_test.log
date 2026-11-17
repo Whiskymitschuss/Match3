@@ -1,0 +1,280 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Fresh profile cannot enter locked reactor
+PASS Unknown arena rejected
+PASS Character to arena selection connected
+PASS Existing win and kills unlock arena and cosmetic rewards
+PASS Reactor selection starts full ten-wave configuration
+PASS Reactor wave generates bounded timed lane
+PASS A newly spawned lane never deals immediate damage
+PASS Lane warning causes no damage
+PASS Active lane damages player on announced geometry
+PASS Hazard obeys shared damage invulnerability
+PASS Pause freezes reactor warning and run timer
+PASS Level-up freezes hazards
+PASS Shop freezes hazards
+PASS Restart clears active reactor hazards
+PASS Reactor boss uses strengthened HP and unchanged movement
+PASS Cross laser announces both actual damage lanes
+PASS Cross windup starts at zero and guardian holds warning origin
+PASS Guardian does not chase during fixed laser warning
+PASS Next attack creates three preannounced ground bombs
+PASS Mortar targets remain fixed after player moves
+PASS Third attack has its own directed fan warning
+PASS Directed fan emits four bursts and returns to recovery
+PASS Boss victory cleans enemies, projectiles and hazards
+PASS Result records actual arena once
+PASS Reactor victory unlocks cosmetic seal
+PASS Duplicate finish cannot duplicate arena records
+PASS Reactor boss timeout loses run
+PASS Reactor lethal damage loses run
+PASS scrapyard hero 0 wave 1 starts
+PASS scrapyard wave 1 connects to shop
+PASS scrapyard hero 0 wave 2 starts
+PASS scrapyard wave 2 connects to shop
+PASS scrapyard hero 0 wave 3 starts
+PASS scrapyard wave 3 connects to shop
+PASS scrapyard hero 0 wave 4 starts
+PASS scrapyard wave 4 connects to shop
+PASS scrapyard hero 0 wave 5 starts
+PASS scrapyard wave 5 connects to shop
+PASS scrapyard hero 0 wave 6 starts
+PASS scrapyard wave 6 connects to shop
+PASS scrapyard hero 0 wave 7 starts
+PASS scrapyard wave 7 connects to shop
+PASS scrapyard hero 0 wave 8 starts
+PASS scrapyard wave 8 connects to shop
+PASS scrapyard hero 0 wave 9 starts
+PASS scrapyard wave 9 connects to shop
+PASS scrapyard hero 0 wave 10 starts
+PASS scrapyard hero 0 completes connected flow
+PASS scrapyard hero 1 wave 1 starts
+PASS scrapyard wave 1 connects to shop
+PASS scrapyard hero 1 wave 2 starts
+PASS scrapyard wave 2 connects to shop
+PASS scrapyard hero 1 wave 3 starts
+PASS scrapyard wave 3 connects to shop
+PASS scrapyard hero 1 wave 4 starts
+PASS scrapyard wave 4 connects to shop
+PASS scrapyard hero 1 wave 5 starts
+PASS scrapyard wave 5 connects to shop
+PASS scrapyard hero 1 wave 6 starts
+PASS scrapyard wave 6 connects to shop
+PASS scrapyard hero 1 wave 7 starts
+PASS scrapyard wave 7 connects to shop
+PASS scrapyard hero 1 wave 8 starts
+PASS scrapyard wave 8 connects to shop
+PASS scrapyard hero 1 wave 9 starts
+PASS scrapyard wave 9 connects to shop
+PASS scrapyard hero 1 wave 10 starts
+PASS scrapyard hero 1 completes connected flow
+PASS scrapyard hero 2 wave 1 starts
+PASS scrapyard wave 1 connects to shop
+PASS scrapyard hero 2 wave 2 starts
+PASS scrapyard wave 2 connects to shop
+PASS scrapyard hero 2 wave 3 starts
+PASS scrapyard wave 3 connects to shop
+PASS scrapyard hero 2 wave 4 starts
+PASS scrapyard wave 4 connects to shop
+PASS scrapyard hero 2 wave 5 starts
+PASS scrapyard wave 5 connects to shop
+PASS scrapyard hero 2 wave 6 starts
+PASS scrapyard wave 6 connects to shop
+PASS scrapyard hero 2 wave 7 starts
+PASS scrapyard wave 7 connects to shop
+PASS scrapyard hero 2 wave 8 starts
+PASS scrapyard wave 8 connects to shop
+PASS scrapyard hero 2 wave 9 starts
+PASS scrapyard wave 9 connects to shop
+PASS scrapyard hero 2 wave 10 starts
+PASS scrapyard hero 2 completes connected flow
+PASS reactor hero 0 wave 1 starts
+PASS reactor wave 1 connects to shop
+PASS reactor hero 0 wave 2 starts
+PASS reactor wave 2 connects to shop
+PASS reactor hero 0 wave 3 starts
+PASS reactor wave 3 connects to shop
+PASS reactor hero 0 wave 4 starts
+PASS reactor wave 4 connects to shop
+PASS reactor hero 0 wave 5 starts
+PASS reactor wave 5 connects to shop
+PASS reactor hero 0 wave 6 starts
+PASS reactor wave 6 connects to shop
+PASS reactor hero 0 wave 7 starts
+PASS reactor wave 7 connects to shop
+PASS reactor hero 0 wave 8 starts
+PASS reactor wave 8 connects to shop
+PASS reactor hero 0 wave 9 starts
+PASS reactor wave 9 connects to shop
+PASS reactor hero 0 wave 10 starts
+PASS reactor hero 0 completes connected flow
+PASS reactor hero 1 wave 1 starts
+PASS reactor wave 1 connects to shop
+PASS reactor hero 1 wave 2 starts
+PASS reactor wave 2 connects to shop
+PASS reactor hero 1 wave 3 starts
+PASS reactor wave 3 connects to shop
+PASS reactor hero 1 wave 4 starts
+PASS reactor wave 4 connects to shop
+PASS reactor hero 1 wave 5 starts
+PASS reactor wave 5 connects to shop
+PASS reactor hero 1 wave 6 starts
+PASS reactor wave 6 connects to shop
+PASS reactor hero 1 wave 7 starts
+PASS reactor wave 7 connects to shop
+PASS reactor hero 1 wave 8 starts
+PASS reactor wave 8 connects to shop
+PASS reactor hero 1 wave 9 starts
+PASS reactor wave 9 connects to shop
+PASS reactor hero 1 wave 10 starts
+PASS reactor hero 1 completes connected flow
+PASS reactor hero 2 wave 1 starts
+PASS reactor wave 1 connects to shop
+PASS reactor hero 2 wave 2 starts
+PASS reactor wave 2 connects to shop
+PASS reactor hero 2 wave 3 starts
+PASS reactor wave 3 connects to shop
+PASS reactor hero 2 wave 4 starts
+PASS reactor wave 4 connects to shop
+PASS reactor hero 2 wave 5 starts
+PASS reactor wave 5 connects to shop
+PASS reactor hero 2 wave 6 starts
+PASS reactor wave 6 connects to shop
+PASS reactor hero 2 wave 7 starts
+PASS reactor wave 7 connects to shop
+PASS reactor hero 2 wave 8 starts
+PASS reactor wave 8 connects to shop
+PASS reactor hero 2 wave 9 starts
+PASS reactor wave 9 connects to shop
+PASS reactor hero 2 wave 10 starts
+PASS reactor hero 2 completes connected flow
+PASS docks hero 0 wave 1 starts
+PASS docks wave 1 connects to shop
+PASS docks hero 0 wave 2 starts
+PASS docks wave 2 connects to shop
+PASS docks hero 0 wave 3 starts
+PASS docks wave 3 connects to shop
+PASS docks hero 0 wave 4 starts
+PASS docks wave 4 connects to shop
+PASS docks hero 0 wave 5 starts
+PASS docks wave 5 connects to shop
+PASS docks hero 0 wave 6 starts
+PASS docks wave 6 connects to shop
+PASS docks hero 0 wave 7 starts
+PASS docks wave 7 connects to shop
+PASS docks hero 0 wave 8 starts
+PASS docks wave 8 connects to shop
+PASS docks hero 0 wave 9 starts
+PASS docks wave 9 connects to shop
+PASS docks hero 0 wave 10 starts
+PASS docks hero 0 completes connected flow
+PASS docks hero 1 wave 1 starts
+PASS docks wave 1 connects to shop
+PASS docks hero 1 wave 2 starts
+PASS docks wave 2 connects to shop
+PASS docks hero 1 wave 3 starts
+PASS docks wave 3 connects to shop
+PASS docks hero 1 wave 4 starts
+PASS docks wave 4 connects to shop
+PASS docks hero 1 wave 5 starts
+PASS docks wave 5 connects to shop
+PASS docks hero 1 wave 6 starts
+PASS docks wave 6 connects to shop
+PASS docks hero 1 wave 7 starts
+PASS docks wave 7 connects to shop
+PASS docks hero 1 wave 8 starts
+PASS docks wave 8 connects to shop
+PASS docks hero 1 wave 9 starts
+PASS docks wave 9 connects to shop
+PASS docks hero 1 wave 10 starts
+PASS docks hero 1 completes connected flow
+PASS docks hero 2 wave 1 starts
+PASS docks wave 1 connects to shop
+PASS docks hero 2 wave 2 starts
+PASS docks wave 2 connects to shop
+PASS docks hero 2 wave 3 starts
+PASS docks wave 3 connects to shop
+PASS docks hero 2 wave 4 starts
+PASS docks wave 4 connects to shop
+PASS docks hero 2 wave 5 starts
+PASS docks wave 5 connects to shop
+PASS docks hero 2 wave 6 starts
+PASS docks wave 6 connects to shop
+PASS docks hero 2 wave 7 starts
+PASS docks wave 7 connects to shop
+PASS docks hero 2 wave 8 starts
+PASS docks wave 8 connects to shop
+PASS docks hero 2 wave 9 starts
+PASS docks wave 9 connects to shop
+PASS docks hero 2 wave 10 starts
+PASS docks hero 2 completes connected flow
+PASS foundry hero 0 wave 1 starts
+PASS foundry wave 1 connects to shop
+PASS foundry hero 0 wave 2 starts
+PASS foundry wave 2 connects to shop
+PASS foundry hero 0 wave 3 starts
+PASS foundry wave 3 connects to shop
+PASS foundry hero 0 wave 4 starts
+PASS foundry wave 4 connects to shop
+PASS foundry hero 0 wave 5 starts
+PASS foundry wave 5 connects to shop
+PASS foundry hero 0 wave 6 starts
+PASS foundry wave 6 connects to shop
+PASS foundry hero 0 wave 7 starts
+PASS foundry wave 7 connects to shop
+PASS foundry hero 0 wave 8 starts
+PASS foundry wave 8 connects to shop
+PASS foundry hero 0 wave 9 starts
+PASS foundry wave 9 connects to shop
+PASS foundry hero 0 wave 10 starts
+PASS foundry hero 0 completes connected flow
+PASS foundry hero 1 wave 1 starts
+PASS foundry wave 1 connects to shop
+PASS foundry hero 1 wave 2 starts
+PASS foundry wave 2 connects to shop
+PASS foundry hero 1 wave 3 starts
+PASS foundry wave 3 connects to shop
+PASS foundry hero 1 wave 4 starts
+PASS foundry wave 4 connects to shop
+PASS foundry hero 1 wave 5 starts
+PASS foundry wave 5 connects to shop
+PASS foundry hero 1 wave 6 starts
+PASS foundry wave 6 connects to shop
+PASS foundry hero 1 wave 7 starts
+PASS foundry wave 7 connects to shop
+PASS foundry hero 1 wave 8 starts
+PASS foundry wave 8 connects to shop
+PASS foundry hero 1 wave 9 starts
+PASS foundry wave 9 connects to shop
+PASS foundry hero 1 wave 10 starts
+PASS foundry hero 1 completes connected flow
+PASS foundry hero 2 wave 1 starts
+PASS foundry wave 1 connects to shop
+PASS foundry hero 2 wave 2 starts
+PASS foundry wave 2 connects to shop
+PASS foundry hero 2 wave 3 starts
+PASS foundry wave 3 connects to shop
+PASS foundry hero 2 wave 4 starts
+PASS foundry wave 4 connects to shop
+PASS foundry hero 2 wave 5 starts
+PASS foundry wave 5 connects to shop
+PASS foundry hero 2 wave 6 starts
+PASS foundry wave 6 connects to shop
+PASS foundry hero 2 wave 7 starts
+PASS foundry wave 7 connects to shop
+PASS foundry hero 2 wave 8 starts
+PASS foundry wave 8 connects to shop
+PASS foundry hero 2 wave 9 starts
+PASS foundry wave 9 connects to shop
+PASS foundry hero 2 wave 10 starts
+PASS foundry hero 2 completes connected flow
+PASS Classic arena never creates reactor hazards
+PASS Classic Overlord receives the requested stronger boss HP
+PASS All arena statistics, history filters and cosmetic screen render without exceptions
+PASS Schema-2 save upgrades without erasing totals
+PASS Legacy records attributed only to original arena
+PASS Legacy history defaults to classic and past victory grants unlock
+PASS Schema-2 original backup written
+PASS Arena records and equipped reward survive restart
+PASS Invalid arena history rejected
+REACTOR RESULT 277 passed, 0 failed

@@ -152,8 +152,10 @@ func run():
 	for w in range(1,10):
 		g.wave_number=w
 		g.begin_wave()
-		g.remaining=.001
-		g._physics_process(.016)
+		if g.breaker.scheduled():
+			g.damage_enemy(g.breaker.actor(),100000)
+			while g.state==g.State.LEVEL_UP:g.apply_upgrade('damage');g.if_more_levels()
+		else:g.remaining=.001;g._physics_process(.016)
 		check(g.state==g.State.SHOP and g.enemies.is_empty(),'Wave -> shop '+str(w))
 	# Synthetic multitouch events use the same mobile input path as Android.
 	g.begin_wave()

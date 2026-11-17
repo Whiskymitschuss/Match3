@@ -1,3 +1,45 @@
+# Mayhem Survivors0.19.0 Alpha — BREAKER AXEL
+
+Android ARM64 / RF Worlds / Godot4.6.3 stable / vollständig offline.
+Update über0.18 installieren; Paketname und Signierschlüssel bleiben gleich.
+Collection, Garage, Freischaltungen, Studio-Coins und Statistiken werden erhalten.
+
+## Neuer Boss in Welle5
+
+BREAKER AXEL – Der Untote Bodenbrecher. Eigene Cartoon-Grafik nach Fotovorlage,
+mutierter Presslufthammer, dunkler Hoodie, Arbeitsjeans und Werkstiefel. Welle5 ist
+jetzt in allen vier Arenen ein eigener Bosskampf mit75s Limit. Zehn Wellen bleiben:
+Axel-Sieg → Boss-XP/Levelwahl → Shop → Welle6. Die Arenabosse in Welle10 bleiben
+bestehen und geben den Gesamtsieg. Im Endlosmodus kommt Axel in5/15/25/... .
+
+Normal-Basis:1500HP,78Tempo,18Kontaktschaden,15% Schadensresistenz. Drei Phasen
+bei70/40%HP: Ring/Bodenschläge/Ansturm, dann Sturm-Ring-Kombos, zuletzt fünf statt
+drei Hammerschläge,28% mehr Bewegungstempo und20% stärkere Treffer. Die1,25s
+Warnzeit bleibt in jeder Phase gleich. Sichere Ausweichrichtungen, verzögerte
+Bodenrisse und kurze Treffer-Betäubung/Slow/Rückstoß. Effekte folgen den sichtbaren
+Flächen, Schockwellen und Ansturm prüfen auch lange Bewegungsschritte.
+
+Bossbeute:125 Run-Coins und100 automatisch eingesammelte XP (Schwierigkeitsboni
+werden angewendet). Kein verfrühter Gesamtsieg, keine verlorenen Boss-XP, kein
+Doppel-Loot. Zeitablauf mit lebendem Boss zählt als Niederlage.
+
+Sechs eigene neue Sounds, Vorstellung, Boss-HP-Balken mit Phasenmarkierungen,
+Rageglühen, Drillbewegung und kurze Todesanimation. LOW/MEDIUM/HIGH verändern die
+Boss-Simulation nicht. Vorhandene Garage-/Tutorial-/Klassenfähigkeiten verbunden.
+
+## Start und Prüfung
+
+project.godot mit Godot4.6.3 importieren und starten. Keine Generatoren erforderlich.
+Tests: `python3 tools/run_tests.py --traces` /26 Suiten,2.144 Prüfungen und beide
+historischen Vergleichsläufe bestanden. Einzeltest: tests/breaker_axel_test.gd.
+Weitere Nachweise und Grenzen in TEST_REPORT.md, BUILD_REPORT.md und PROGRESS.md.
+Physische Android-/Updateinstallation, Geräte-FPS/Thermik und menschliche Balance
+bleiben offen. Weltkarte/Arenenketten sind weiterhin der nächste separate Schritt.
+
+---
+
+## Historischer Stand vor0.19
+
 # Mayhem Survivors0.18.0 Alpha — MAYHEM GARAGE
 
 Die Garage ist jetzt spielbar: Hauptmenü → CASES & GARAGE. Charakterauswahl → INVENTAR
