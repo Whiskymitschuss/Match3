@@ -7,7 +7,7 @@ func check(ok:bool,name:String):
 	if ok:passed+=1;print('PASS ',name)
 	else:failed+=1;push_error('FAIL '+name)
 func fresh(arena:String='scrapyard',wave:int=4):
-	g.test_mode=true;g.selected=1;g.arena_id=arena;g.saved.wins=1;g.start_run();g.wave_number=wave;g.begin_wave();g.cleanup();g.spawn_clock=999;g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll()
+	g.test_mode=true;g.selected=1;g.arena_id=arena;g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.start_run();g.wave_number=wave;g.begin_wave();g.cleanup();g.spawn_clock=999;g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll()
 func spawn_elite(arena:String='scrapyard') -> Dictionary:
 	fresh(arena);g.remaining=41.9;g.spawn_enemy('grunt');var e=g.enemies.back();e.pos=g.player.position+Vector2(280,0);return e
 func next_attack():

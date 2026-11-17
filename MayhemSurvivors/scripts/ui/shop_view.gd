@@ -18,7 +18,7 @@ func panel(pos:Vector2,size:Vector2,color:Color):
 func show():
 	if game.state!=game.State.SHOP:return
 	if not game.saved.settings.get('shop_help_seen',false) and not (game.tutorial and game.tutorial.active):help_page(0);return
-	game.backdrop('MAYHEM MARKET','Welle %d geschafft  /  %s  /  %d Coins' % [game.wave_number,game.characters[game.selected].name,game.coins])
+	game.backdrop('MAYHEM MARKET','Welle %d geschafft  /  %s  /  %d Run-Coins' % [game.wave_number,game.characters[game.selected].name,game.coins])
 	game.button('WERTE',Vector2(1250,75),Vector2(260,85),stats)
 	game.button('? HILFE',Vector2(1550,75),Vector2(260,85),func():help_page(0))
 	for i in range(game.offers.size()):
@@ -79,7 +79,7 @@ func weapon_details(id:String):
 		if weapon.id==id:w=weapon
 	if w.is_empty():show();return
 	var d=game.weapon_data[id];var spec=game.Specs.definition(w)
-	game.backdrop(game.Specs.label(w) if not spec.is_empty() else d.name,'WAFFENWERKSTATT / Stufe %d / %d Coins' % [w.level,game.coins])
+	game.backdrop(game.Specs.label(w) if not spec.is_empty() else d.name,'WAFFENWERKSTATT / Stufe %d / %d Run-Coins' % [w.level,game.coins])
 	game.weapon_icon(id,Vector2(150,300),Vector2(450,300))
 	var damage=float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult*float(spec.get('power',1.0))
 	if id=='mop':damage*=game.twinkle.area_multiplier()
@@ -103,7 +103,7 @@ func weapon_details(id:String):
 	salvage.disabled=game.weapons.size()<=1
 func confirm_salvage(id:String):
 	game.backdrop('WAFFE VERWERTEN?','Die Waffe und ihre Entwicklung gehen für diesen Run verloren.')
-	text('Du erhältst Coins zurück. Set-Boni werden sofort an deine verbleibende Ausrüstung angepasst.',Vector2(120,340),1500,36)
+	text('Du erhältst Run-Coins zurück. Set-Boni werden sofort an deine verbleibende Ausrüstung angepasst.',Vector2(120,340),1500,36)
 	game.button('BEHALTEN',Vector2(120,650),Vector2(680,110),func():weapon_details(id))
 	game.button('VERWERTEN',Vector2(1000,650),Vector2(680,110),func():game.run_items.salvage(id),Color('#803747'))
 func item_details(id:String):

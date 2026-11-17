@@ -9,7 +9,7 @@ func check(ok:bool,label:String):
 	if ok:passed+=1;print('PASS ',label)
 	else:failed+=1;push_error('FAIL '+label)
 func fresh(arena:String='scrapyard',wave:int=6):
-	g.test_mode=true;g.selected=1;g.run_mode='campaign';g.selected_difficulty='normal';g.arena_id=arena;g.saved.wins=1;g.start_run();g.wave_number=wave;g.begin_wave();g.spawn_clock=999;g.crit=0
+	g.test_mode=true;g.selected=1;g.run_mode='campaign';g.selected_difficulty='normal';g.arena_id=arena;g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.start_run();g.wave_number=wave;g.begin_wave();g.spawn_clock=999;g.crit=0
 func actor(kind:String) -> Dictionary:
 	g.spawn_enemy(kind);var e=g.enemies.back();e.pos=g.player.position+Vector2(120,0);e.pack_clock=0;return e
 func touch(index:int,pos:Vector2,pressed:bool):

@@ -7,7 +7,7 @@ func capture(name:String):
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png('res://tests/live_'+name+'.png');print('LIVE FRAME ',name)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	g.character_select(4);await capture('hero')
 	g.arena_select(2);await capture('arena')
 	g.saved.meta.coins=480;g.saved.meta.daily.kills=100;g.reward_hub.show();await capture('daily')

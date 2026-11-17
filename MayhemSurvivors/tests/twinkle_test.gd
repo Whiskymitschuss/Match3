@@ -10,7 +10,7 @@ func check(ok:bool,name:String):
 func near(a:float,b:float) -> bool:return absf(a-b)<.01
 func _initialize():call_deferred('run')
 func fresh(arena:String='scrapyard'):
-	g.test_mode=true;g.selected=3;g.arena_id=arena;g.saved.wins=1;g.start_run();g.begin_wave();g.cleanup();g.spawn_clock=999;g.crit=0;g.attack_mult=1;g.player.position=Vector2(1200,800)
+	g.test_mode=true;g.selected=3;g.arena_id=arena;g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.start_run();g.begin_wave();g.cleanup();g.spawn_clock=999;g.crit=0;g.attack_mult=1;g.player.position=Vector2(1200,800)
 func enemy(offset:Vector2,kind:String='grunt') -> Dictionary:
 	g.spawn_enemy(kind);var e=g.enemies.back();e.pos=g.player.position+offset;e.hp=1000.0;e.max_hp=1000.0;return e
 func button(text:String):

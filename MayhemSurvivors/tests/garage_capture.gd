@@ -22,7 +22,7 @@ func run():
 	for i in range(6):g.garage.show(i,'head');await capture('hero'+str(i))
 	g.garage.show(0,'spell');await capture('spells')
 	g.garage.show(1,'weapon');await capture('weapons')
-	g.selected=5;g.arena_id='reactor';g.saved.wins=1;g.start_run();g.begin_wave();g.camera.reset_smoothing();g.camera.force_update_scroll();g.spawn_clock=999
+	g.selected=5;g.arena_id='reactor';g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved);g.start_run();g.begin_wave();g.camera.reset_smoothing();g.camera.force_update_scroll();g.spawn_clock=999
 	for i in range(6):
 		g.spawn_enemy('tank' if i%2==0 else 'grunt');var e=g.enemies.back();e.pos=g.player.position+Vector2.from_angle(i*TAU/6)*170;e.hp=1000;e.max_hp=1000
 	g.equipped_spell.activate();await capture('combat')

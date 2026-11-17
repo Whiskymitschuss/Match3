@@ -1,3 +1,65 @@
+# Mayhem Survivors0.20.0 Alpha — DIE MAYHEM WELTEN
+
+RF Worlds / Android ARM64 / Godot4.6.3 stable / vollständig offline.
+Über0.19 installieren. Paketname und Update-Schlüssel bleiben gleich. Keine
+Neuinstallation erforderlich; Sammlung, Garage, Coins und Statistiken bleiben erhalten.
+
+## Weltkarte und Freischaltung
+
+Neue Profile starten auf dem Schrottplatz. Ein Kampagnensieg über den Boss in Welle10
+öffnet die nächste Welt: Schrottplatz → Reaktorzone → Neonhafen → Glutwerk.
+Normal/Veteran/Mayhem zählen gleichermaßen, jeder Erstabschluss aber nur einmal pro
+Profil und Arena. Endlosläufe, Niederlagen, reine Welle10-Ankunft und Axel-Siege
+in Welle5 öffnen keine nächste Welt. Die zehnwellige Kampagne bleibt erhalten.
+
+SPIELEN → Fighter auswählen → Weltkarte. Vier antippbare Karten, Wischwahl, echte
+Arenavorschau mit dezenter Bewegung/Handyneigung, klare Voraussetzungen, Status,
+Bossnamen, persönliche Rekorde und Erstabschlussbelohnungen. Nach einem Sieg führt
+WELTKARTE / BELOHNUNG direkt zur verdienten Belohnung. Goldene Punkte zeigen
+abholbereite Geschenke. Danach Cases öffnen, Werkstatt aufrüsten oder weiterreisen.
+
+| Erster Abschluss | Studio-Coins | Werkstattteile | Case-Tickets |
+| --- | ---: | ---: | --- |
+| Schrottplatz |40|20|1 Crew |
+| Reaktorzone |60|35|1 Arsenal |
+| Neonhafen |80|50|1 Style |
+| Glutwerk |100|70|1 Crew +1 Arsenal |
+
+Belohnungen werden bewusst abgeholt. Fortschritt und Anspruch bleiben beim Neustart
+bestehen. Coins/Teile/Tickets und Abholflag werden gemeinsam gespeichert; Fehler
+rollen die gesamte Belohnung zurück. Keine Kosten, keine Echtgeldfunktion. Ein
+Speicherfehler am Run-Ende zeigt eine echte Wiederholungsaktion auf der Weltkarte.
+
+Die erste Kampagnen-Victory gibt selbst ohne Killbonus mindestens70 Studio-Coins;
+mit der40-Coins-Erstbelohnung reicht das für einen zusätzlichen Crew-Case.20 Teile
+reichen für den ersten permanenten Waffenrang. Über alle vier Erstabschlüsse gibt es
+280 Studio-Coins,175 Teile und fünf Tickets, zusätzlich zu normalen Run-Belohnungen.
+
+## Bestehende Spielstände und Währungen
+
+Alte explizite Arenenfreigaben und bereits gespielte Arenen bleiben offen, auch bei
+früheren Niederlagen oder Endlosversuchen. Echte alte Kampagnensiege zählen als
+Abschluss und erhalten je eine abholbare Erstbelohnung. Unbespielte, bislang nur frei
+angezeigte Arenen folgen der neuen Freischaltkette. Vor der Migration wird einmal
+user://save.pre_world_map.json angelegt. Keine automatische Umbuchung von Coins.
+
+WÄHRUNGEN erklärt drei Zwecke: Run-Coins für den Wellenshop, dauerhafte Studio-Coins
+für Cases/kosmetischen Shop und dauerhafte Teile für Werkstattränge1–5. HUD, Ergebnis
+und Wellenshop unterscheiden die Bezeichnungen. Cases/Garage direkt von der Karte.
+
+## Start und Prüfung
+
+project.godot in Godot4.6.3 importieren und starten; keine Generatoren erforderlich.
+`python3 tools/run_tests.py --traces`:27 Suiten /2.256 Prüfungen und beide historischen
+Vergleichsläufe bestanden.112 gezielte World-Map-Checks.12 native Ansichten inklusive
+Breitbild, Tablet und Speicherfehler; keine Android-Gerätebilder. Physischer Update-,
+Touch-, Neigungs-, Audio- und FPS-/Thermiktest sowie menschliche Fortschrittsbalance offen.
+Details: TEST_REPORT.md / BUILD_REPORT.md / PROGRESS.md.
+
+---
+
+## Historischer Stand vor0.20
+
 # Mayhem Survivors0.19.0 Alpha — BREAKER AXEL
 
 Android ARM64 / RF Worlds / Godot4.6.3 stable / vollständig offline.

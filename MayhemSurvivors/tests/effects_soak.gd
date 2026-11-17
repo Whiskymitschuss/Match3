@@ -6,7 +6,7 @@ func run():
 	root.add_child(g)
 	g.set_physics_process(false)
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
-	g.saved.wins=1
+	g.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	for id in g.Specs.all():
 		var weapon=g.Specs.all()[id].weapon
 		g.arena_id='reactor'

@@ -14,7 +14,7 @@ func run():
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.saved=game.default_save();preload('res://tests/legacy_collection.gd').unlock_all(game.saved)
-	game.saved.wins=1
+	game.saved.wins=1;preload('res://tests/legacy_worlds.gd').unlock_all(game.saved)
 	for hero in range(3):
 		game.selected=hero
 		game.arena_id='reactor' if hero==1 else 'scrapyard'

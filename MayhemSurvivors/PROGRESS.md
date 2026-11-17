@@ -1,3 +1,42 @@
+# 0.20 — DIE MAYHEM WELTEN — implementiert, geprüft und gebaut
+
+Branch feature/world-map-v0.20. Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen.
+Vier Weltkarten mit Originalemblemen, Touch-/Wischwahl, sichtbaren Voraussetzungen,
+Rekorden und ruhiger Neigungs-/Bewegungsvorschau. Neue Profile: nur Schrottplatz.
+Kampagnensieg in10 öffnet Reaktorzone → Neonhafen → Glutwerk. Alte explizite und
+bereits besuchte Arenen bleiben zugänglich; echte alte Siege und Konten erhalten.
+Versionierte World-Sektion1 in Save-Schema3, einmaliges pre_world_map-Backup.
+
+Einmalige Erstbelohnungen:40/60/80/100 Studio-Coins,20/35/50/70 Teile und fünf Case-
+Tickets. Atomarer Claim inklusive Öffnungs-/Renamefehler-Rollback. Gespeicherter
+Anspruch, vollständige Rewards oder keine Änderung; kein erneuter Claim nach Neustart.
+Echte Finish-Save-Wiederholung auf der Karte. Resultat öffnet direkt verdientes
+Geschenk, bestehende Meisterschaftsmeldungen erhalten. Run-/Studio-Coins und Teile
+klar erklärt, Case-/Garage-Zugang und tatsächliche neue Fighter aus Rewardtickets.
+
+27 Suiten /2.256 Prüfungen /0 Fehler und beide historischen Traces grün.112 neue
+Checks inklusive echter Bossketten, Fehlerspeicherung/Retry und Produktions-State-
+Transitions. Explizite legacy_worlds-Fixtures für alte Combat-Suites, kein versteckter
+Unlock-Bypass.12 native GL-Ansichten,2340×1080 und1920×1440 sowie Reduced Motion geprüft.
+Keine offenen Implementierungsstubs im Weltkarten-Umfang.
+
+APK0.20.0/Code24 gebaut/signiert. ARM64/Landscape/GL Compatibility, v2/v3-Signatur,
+16KB-Alignment, Manifest und World-/Axel-Payload geprüft. Gleicher Update-Schlüssel.
+SHA256:1a24181bb2b9b837439dc5bed2e0aadb67c3fd0e944209b3a9116744f7596b91.
+Quell-ZIP frisch ohne Importcache importiert, alle27 Suiten/2.256 Prüfungen und beide
+Traces erneut bestanden, Laufzeitdateien bytegleich. APK und Quell-ZIP vollständig
+ohne Anmeldung von GitHub geladen und beide SHA256 geprüft. Protokoll:
+../Downloads/VERIFICATION-v0.20.txt. Der Archivstand dokumentiert die Abnahme vor
+der Auslieferung, dieses externe Protokoll die anschließende Veröffentlichung. Originaldownloads
+bleiben erhalten. Danach echte Android-Abnahme und menschliche Fortschrittsbalance.
+Offen: Updateinstallation mit Alt-/Neuprofil, echtes Multitouch/Neigung/Audio, Geräte-
+FPS/Thermik. Keine Hardware-/Balancetests behauptet. Nächster Inhaltsfokus nach
+Abnahme: bestehende Aufgaben an den Weltenfortschritt koppeln.
+
+---
+
+## Historischer Stand vor0.20
+
 # 0.19 — BREAKER AXEL — implementiert, geprüft und gebaut
 
 Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen. Branch feature/breaker-axel-v0.19.
@@ -39,7 +78,7 @@ nächster Inhaltsumfang. Originalprojekte/Downloads bleiben erhalten.
 
 # 0.18 — MAYHEM GARAGE — implementiert, geprüft und gebaut
 
-Aktuelle Phase: Auslieferung und Android-Abnahme. Branch feature/mayhem-garage-v0.18.
+Aktuelle Phase: ausgeliefert, Android-Geräteabnahme offen. Branch feature/mayhem-garage-v0.18.
 Nur Bruiser frei, fünf weitere Helden über Crew-Cases. Drei Casearten mit je einem
 kostenlosen Startticket, angezeigten echten Chancen, Duplikat-Bauteilen und garantierter
 fehlender Crew nach zwei Duplikaten. Atomare Speicherung vor Reveal, ausstehender

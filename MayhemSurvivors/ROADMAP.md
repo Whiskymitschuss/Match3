@@ -1,3 +1,16 @@
+# Stand nach0.20
+
+Weltkarte, Arenenkette, gespeicherte Erstabschlüsse und einmalige Belohnungen sind
+integriert. Vorherige Kämpfe, Breaker Axel, Cases und sichtbare Ausrüstung erhalten.
+Nächste Abnahme: echter Android-Update-Durchlauf mit Altprofil und neuem Profil,
+Handyneigung/Touch und menschliche Fortschritts-/Economy-Balance.
+Danach bestehende tägliche/wöchentliche Ziele genauer an den Weltenfortschritt
+anpassen und aus realen Durchläufen gezielt Gegner-/Boss-/Beute-Balance verbessern.
+
+---
+
+## Historischer Stand vor0.20
+
 # Stand nach0.19
 
 Breaker Axel ist als Welle5-Boss in alle vier Arenen und den Endlosmodus integriert.

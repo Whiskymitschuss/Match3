@@ -1,3 +1,14 @@
+# Ergänzungen0.20
+
+Vier eigene SVG-Metall-Embleme für Schrottplatz, Reaktorzone, Neonhafen und Glutwerk,
+programmatisch gezeichnet. Weltkarte und Vorschau nutzen bestehende eigene Arenen-
+und Hintergrundgrafiken, Schriften/Lizenzen und eigene Menü-/Kauf-Sounds. Keine
+fremden Karten, Spielfiguren oder UI-Assets übernommen.
+
+---
+
+## Historischer Stand vor0.20
+
 # Ergänzungen0.19
 
 BREAKER AXEL: eigene mit Bildgenerierung erstellte Cartoon-Bossgrafik nach der vom

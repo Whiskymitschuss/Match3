@@ -1,0 +1,115 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Fresh profile opens only first world
+PASS Fresh access scrapyard
+PASS Fresh access reactor
+PASS Fresh access docks
+PASS Fresh access foundry
+PASS Unknown ids and route edges rejected
+PASS Cannot claim before campaign win
+PASS Invalid completion has no effect ["scrapyard", "campaign", false, 10]
+PASS Invalid completion has no effect ["scrapyard", "campaign", true, 9]
+PASS Invalid completion has no effect ["scrapyard", "endless", true, 10]
+PASS Invalid completion has no effect ["scrapyard", "tutorial", true, 10]
+PASS Invalid completion has no effect ["reactor", "campaign", true, 10]
+PASS Invalid completion has no effect ["forged", "campaign", true, 10]
+PASS New save roundtrip stays locked, never mistaken for legacy
+PASS First real campaign completion scrapyard
+PASS Completion opens immediate next world scrapyard
+PASS No further world skipped scrapyard
+PASS One global first-clear across difficulties scrapyard
+PASS Exact claim without consuming case RNG scrapyard
+PASS Repeated claim cannot duplicate scrapyard
+PASS First real campaign completion reactor
+PASS Completion opens immediate next world reactor
+PASS No further world skipped reactor
+PASS One global first-clear across difficulties reactor
+PASS Exact claim without consuming case RNG reactor
+PASS Repeated claim cannot duplicate reactor
+PASS First real campaign completion docks
+PASS Completion opens immediate next world docks
+PASS No further world skipped docks
+PASS One global first-clear across difficulties docks
+PASS Exact claim without consuming case RNG docks
+PASS Repeated claim cannot duplicate docks
+PASS First real campaign completion foundry
+PASS Completion opens immediate next world foundry
+PASS No further world skipped foundry
+PASS One global first-clear across difficulties foundry
+PASS Exact claim without consuming case RNG foundry
+PASS Repeated claim cannot duplicate foundry
+PASS All once-only rewards survive reload exactly
+PASS All five reward tickets added to existing starter tickets
+PASS Earned first-clear parts fund permanent hammer upgrade 1
+PASS Earned first-clear parts fund permanent hammer upgrade 2
+PASS Earned first-clear parts fund permanent hammer upgrade 3
+PASS Rewards fund rank four without skipping final workshop cost
+PASS First victory affords a crew case and first weapon rank even without kill bonus
+PASS Full reward is never truncated at coins cap
+PASS Full reward is never truncated at earned cap
+PASS Full reward is never truncated at parts cap
+PASS Full reward is never truncated at ticket cap
+PASS Invalid world ids, duplicates and unearned claims sanitized
+PASS Pre-map visited arenas and explicit reactor access remain available
+PASS Only genuine attributed old victories count as clears
+PASS Migration preserves wallet, parts, hero and ranks without auto-awarding gifts
+PASS Exact pre-map profile backup created
+PASS Past arena winners may claim first-clear reward once
+PASS Migrated claim does not return after reboot
+PASS Unused legacy arenas follow new route without invented progress
+PASS Visited endless arena retained without inventing campaign win
+PASS Historic global-only win attribution v1
+PASS Historic global-only win attribution v2
+PASS Actual locked world CTA disabled
+PASS Four real world navigation cards
+PASS Direct start cannot bypass world lock even in test mode
+PASS Real swipe reaches locked preview safely
+PASS Real world card selects first arena
+PASS Currency help explains three separate wallets
+PASS Currency help returns to map with valid start
+PASS Production state machine accepts map-to-run CTA
+PASS Actual final boss unlocks only next world
+PASS First-clear gift awaits deliberate claim
+PASS Result has real world-map and reward route
+PASS Result opens the earned reward directly through production state machine
+PASS Completed world advertises unclaimed reward
+PASS Real claim button grants all currencies exactly
+PASS Claim flag and currencies committed together
+PASS Second live claim rejected
+PASS Reloaded claim remains disabled
+PASS Reward ticket opens a real permanent fighter
+PASS Case opening preserves earned world claim and restart receipt
+PASS Second actual arena victory advances route
+PASS Failed claim rolls back all currencies, tickets and claim flag
+PASS Rename failure rolls back entire reward transaction too
+PASS Retry persists one complete reward
+PASS World transaction blocked during gameplay state 4
+PASS World transaction blocked during gameplay state 7
+PASS World transaction blocked during gameplay state 5
+PASS World transaction blocked during gameplay state 6
+PASS World transaction blocked during gameplay state 3
+PASS Unlocked arena playable in endless
+PASS Endless boss does not clear campaign world
+PASS Any campaign difficulty may open next world
+PASS All four actual worlds connected
+PASS Later defeat preserves previous completions
+PASS Touch-sized bounded CTA at (1280, 720)
+PASS All map buttons inside safe logical layout (1280, 720)
+PASS Touch-sized bounded CTA at (2340, 1080)
+PASS All map buttons inside safe logical layout (2340, 1080)
+PASS Touch-sized bounded CTA at (1920, 1440)
+PASS All map buttons inside safe logical layout (1920, 1440)
+PASS Reduced motion freezes route animation
+PASS Original emblem scrapyard
+PASS Original emblem reactor
+PASS Original emblem docks
+PASS Original emblem foundry
+PASS Actual Axel victory never grants full-world completion
+PASS Actual final-boss timeout never unlocks next world
+PASS Failed finish save retains earned progression in memory and reports failure
+PASS Failed finish cannot claim successful persistence
+PASS Real retry control available after failed finish save
+PASS Retry atomically saves first clear and original run stats once
+PASS Repeated save retry never repeats run result
+PASS Recovered first-clear reward remains exactly once
+WORLD MAP RESULT 112 passed, 0 failed
