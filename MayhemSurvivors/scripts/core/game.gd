@@ -20,6 +20,14 @@ var run_waves=0
 var run_abilities=0
 var run_events=0
 var steelfist
+const Collection=preload('res://scripts/progression/collection.gd')
+const GearArt=preload('res://scripts/ui/gear_art.gd')
+var garage
+var equipped_spell
+var run_gear:Dictionary={}
+var run_loadout:Dictionary={}
+var studio_reward=0
+var spell_button
 var run_mode='campaign'
 var rules
 var tutorial
@@ -161,6 +169,8 @@ func _ready():
 	encounters=preload('res://scripts/gameplay/encounter_director.gd').new(self)
 	load_save()
 	reward_hub=preload('res://scripts/ui/reward_hub.gd').new(self)
+	garage=preload('res://scripts/ui/garage_hub.gd').new(self)
+	equipped_spell=preload('res://scripts/gameplay/equipped_spell.gd').new(self)
 	player = load('res://scenes/characters/player.tscn').instantiate()
 	player.name = 'PlayerController'
 	add_child(player)
@@ -282,7 +292,7 @@ func style(color: Color) -> StyleBoxFlat:
 
 func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: Color = Color('#2F2044')) -> Button:
 	var b = Button.new()
-	var icon_id=UISkin.Icons.button_id(text)
+	var icon_id='' if text in ['‹','›'] else UISkin.Icons.button_id(text)
 	b.text=text.replace('▶','').replace('←','').replace('→','').replace('✓','AKTIV ·').replace('●','').replace('Ⅱ','').replace('? HILFE','HILFE').strip_edges()
 	if not icon_id.is_empty():
 		b.icon=UISkin.Icons.get_icon(icon_id);b.expand_icon=true
@@ -335,6 +345,8 @@ func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'por
 	art.outfit = Mastery.selected(saved,art.kind)
 	art.hunter = Mastery.goals(saved,art.kind)[1].value>=250
 	art.mode = mode
+	art.gear=saved.collection.loadouts[characters[index].id].duplicate(true)
+	art.decor=saved.meta.equipped.duplicate(true)
 	art.motion_enabled=not saved.settings.get('reduced_motion',false)
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(art)
@@ -345,6 +357,7 @@ func character_select(index:int=-1):
 	change_state(State.CHARACTER_SELECT)
 	backdrop('DEINE MAYHEM CREW','Links oder rechts wischen / %d von %d' % [hero_cursor+1,characters.size()])
 	selection_swipe.set_context('hero')
+	button('CASES',Vector2(1420,75),Vector2(400,85),garage.cases)
 	var c=characters[hero_cursor]
 	UISkin.panel(self,Rect2(100,245,740,675),Color(c.color))
 	portrait(Vector2(170,245),hero_cursor,1.65)
@@ -352,7 +365,7 @@ func character_select(index:int=-1):
 	if c.id=='steelfist':label_at(c.title,Vector2(925,337),23,GOLD)
 	label_at(c.description,Vector2(925,365),31)
 	label_at('%d HP / %d Basistempo / %s' % [roundi(c.hp*(1+float(c.get('hp_bonus',0)))),c.speed,weapon_data[c.weapon].name],Vector2(925,425),29)
-	var info=label_at(hero_ability.data[c.id].name+'\n'+hero_ability.data[c.id].description+'\n\nWaffen: '+(' / '.join(c.allowed_weapons.map(func(id):return weapon_data[id].name))),Vector2(925,505),27)
+	var info=label_at(hero_ability.data[c.id].name+'\n'+hero_ability.data[c.id].description+'\n\nKlassenwaffen: '+(' / '.join(c.allowed_weapons.map(func(id):return weapon_data[id].name))),Vector2(925,505),27)
 	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(830,240))
 	if c.id=='steelfist':
 		var traits=label_at('160 Basis-HP +30 % / 10 % Schadensreduktion\n2 % Heilung je 5 s / jeder 4. Schlag: 150 % Schaden',Vector2(925,725),23,TEAL)
@@ -360,13 +373,13 @@ func character_select(index:int=-1):
 		var quote=label_at('„'+c.quote+'“',Vector2(120,848),22,GOLD)
 		quote.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;quote.set_deferred('size',Vector2(695,65))
 	var available=Unlocks.available(saved,c.id)
-	if not available:label_at('Freischalten: Tutorial + 500 Gegner (%d / 500)' % mini(500,Unlocks.kills(saved)),Vector2(925,750),25,GOLD)
+	if not available:label_at('Freischalten: CREW-CASE / Chancen im Case-Menü',Vector2(925,750),25,GOLD)
 	var enter=button('AUSWÄHLEN' if available else 'NOCH GESPERRT',Vector2(925,810),Vector2(850,105),func():selected=hero_cursor;arena_select(),Color(c.color).darkened(.65))
 	enter.disabled=not available
 	button('ZURÜCK',Vector2(100,965),Vector2(350,85),main_menu)
 	button('VORHERIGER',Vector2(500,965),Vector2(300,85),func():selection_shift('hero',-1))
 	button('NÄCHSTER',Vector2(840,965),Vector2(300,85),func():selection_shift('hero',1))
-	button('MEISTERSCHAFT & SKINS',Vector2(1180,965),Vector2(650,85),func():mastery_screen(hero_cursor))
+	button('INVENTAR & STILE',Vector2(1180,965),Vector2(650,85),func():garage.show(hero_cursor))
 func selection_shift(kind:String,direction:int):
 	if kind=='hero' and state==State.CHARACTER_SELECT:character_select(hero_cursor+direction);sound('click')
 	elif kind=='arena' and state==State.ARENA_SELECT:arena_cursor=posmod(arena_cursor+direction,Arenas.IDS.size());arena_select();sound('click')
@@ -474,6 +487,7 @@ func settings(back: Callable):
 	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
 
 func cleanup():
+	if equipped_spell:equipped_spell.invulnerability=0;equipped_spell.touch_ids.clear()
 	if arena_events:arena_events.clear()
 	if encounters:encounters.clear_combat()
 	if combat_visuals: combat_visuals.clear()
@@ -495,21 +509,25 @@ func cleanup():
 	boss_warning = ''
 
 func start_run():
-	if not Unlocks.available(saved,characters[selected].id):character_select(selected);return
+	if not Unlocks.available(saved,characters[selected].id) and not (tutorial and tutorial.active and run_mode=='tutorial'):character_select(selected);return
 	if not Arenas.unlocked(saved,arena_id):arena_select();return
 	run_difficulty=selected_difficulty if selected_difficulty in Difficulty.IDS else 'normal'
 	arena_definition=Arenas.definition(arena_id)
 	waves=read_data(arena_definition.waves)
 	cleanup()
 	var c = characters[selected]
+	run_gear=Collection.snapshot(saved,c.id) if run_mode!='tutorial' else {}
+	run_loadout=saved.collection.loadouts[c.id].duplicate(true) if run_mode!='tutorial' else {}
 	max_hp = roundi(c.hp*(1+float(c.get('hp_bonus',0))))
+	max_hp+=float(run_gear.get('hp',0))
 	hp = max_hp
 	speed = c.speed*(1+float(c.get('move_bonus',0)))
+	speed*=1+float(run_gear.get('speed',0))
 	damage_mult = 1
 	attack_mult = 1.0+float(c.attack_speed_bonus)
 	crit = .05+float(c.crit_bonus)
-	armor = 0
-	magnet = 100
+	armor = int(run_gear.get('armor',0))
+	magnet = 100+float(run_gear.get('magnet',0))
 	projectile_speed = 1
 	multishot = 0
 	level = 1
@@ -526,7 +544,8 @@ func start_run():
 	steelfist.reset_run()
 	shop_view.tab='weapons'
 	upgrade_counts.clear()
-	weapons = [{'id':c.weapon,'level':1,'clock':0.0}]
+	weapons = [{'id':Collection.starter(saved,c.id) if run_mode!='tutorial' else c.weapon,'level':1,'clock':0.0}]
+	equipped_spell.reset();studio_reward=0
 	player.position = Vector2(1200,800)
 	facing = 1.0
 	result_recorded = false
@@ -577,6 +596,9 @@ func make_hud():
 	ability_button.game=self
 	ability_button.focus_mode=Control.FOCUS_NONE
 	ability_button.action_mode=BaseButton.ACTION_MODE_BUTTON_PRESS
+	if equipped_spell.id!='':
+		spell_button=button('',equipped_spell.rect().position,equipped_spell.rect().size,func():equipped_spell.activate())
+		spell_button.set_script(preload('res://scripts/ui/spell_button.gd'));spell_button.game=self
 	joystick = Control.new()
 	joystick.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	joystick.set_script(load('res://scripts/mobile/joystick_visual.gd'))
@@ -600,6 +622,7 @@ func refresh_hud():
 
 func _input(event):
 	if selection_swipe.handle(event):get_viewport().set_input_as_handled();return
+	if equipped_spell and equipped_spell.input(event):get_viewport().set_input_as_handled();return
 	if event is InputEventScreenTouch:
 		var pos = ui_root.get_global_transform().affine_inverse() * event.position
 		if tutorial and tutorial.blocks_touch(pos) and event.index!=stick_id and not event.index in ability_touch_ids:return
@@ -667,12 +690,14 @@ func _physics_process(delta):
 	queue_redraw()
 	if is_instance_valid(joystick): joystick.queue_redraw()
 	if is_instance_valid(ability_button):ability_button.queue_redraw()
+	if is_instance_valid(spell_button):spell_button.queue_redraw()
 	if state != State.COMBAT: return
 	if tutorial and tutorial.active and tutorial.frozen():return
 	vfx.update(delta)
 	specialized_combat.update(delta)
 	hit_feedback.update(delta)
 	hero_ability.update(delta)
+	equipped_spell.update(delta)
 	steelfist.update(delta)
 	if state != State.COMBAT:return
 	combat_visuals.update(delta)
@@ -812,7 +837,7 @@ func update_enemies(dt: float):
 
 func hurt(amount: float):
 	if tutorial and tutorial.active:return
-	if state != State.COMBAT or hurt_clock>0 or hero_ability.invulnerable(): return
+	if state != State.COMBAT or hurt_clock>0 or hero_ability.invulnerable() or equipped_spell.invulnerability>0: return
 	var received=maxf(1,amount-armor)*steelfist.damage_factor()
 	hp -= received
 	hurt_clock = .65
@@ -976,7 +1001,9 @@ func apply_upgrade(id: String):
 		'multi': multishot=mini(4,multishot+1)
 
 func allowed_weapon_ids() -> Array:
-	return characters[selected].allowed_weapons
+	return characters[selected].allowed_weapons.filter(func(id):return saved.collection.levels.has(id) or run_mode=='tutorial')
+
+func gear_weapon_multiplier(id:String) -> float:return 1.0+float(run_gear.get('weapon_bonus',{}).get(id,0))
 
 func can_equip_weapon(id: String) -> bool:
 	return allowed_weapon_ids().has(id)
@@ -1076,6 +1103,7 @@ func finish(victory: bool):
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	if result_recorded: return
 	result_recorded = true
+	studio_reward=Collection.run_reward(saved,run_mode,run_waves,kills,victory)
 	preload('res://scripts/progression/daily_rewards.gd').record(saved.meta,{'mode':run_mode,'arena':arena_id,'kills':kills,'waves':run_waves,'skills':run_abilities,'won':victory})
 	change_state(State.VICTORY if victory else State.GAME_OVER)
 	if run_mode=='campaign':
@@ -1115,6 +1143,8 @@ func finish(victory: bool):
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected))
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
+	label_at('+%d STUDIO-COINS / dauerhafte Sammlung' % studio_reward,Vector2(110,900),28,TEAL)
+	button('CASES & GARAGE',Vector2(1230,900),Vector2(500,95),func():main_menu();garage.cases())
 
 func add_effect(pos: Vector2, color: Color, radius: float, text: String):
 	var cap = 30 if saved.settings.quality=='LOW' else (65 if saved.settings.quality=='MEDIUM' else 110)
@@ -1136,6 +1166,7 @@ func draw_player_character():
 	var tint = Color(2,2,2,1) if hurt_clock>.4 else Mastery.tint(Mastery.selected(saved,characters[selected].id))
 	var rect = Rect2(Vector2(-48,-64-absf(stride)*3),Vector2(96,96))
 	draw_texture_rect_region(CharacterArt.texture(characters[selected].id,true),rect,CharacterArt.body_region(characters[selected].id),tint)
+	GearArt.dress(self,characters[selected].id,run_loadout,rect)
 	Mastery.insignia(self,Vector2(6,-9-absf(stride)*3),Mastery.selected(saved,characters[selected].id),6)
 	draw_set_transform(Vector2.ZERO)
 

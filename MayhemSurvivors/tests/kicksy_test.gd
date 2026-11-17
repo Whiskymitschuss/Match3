@@ -10,7 +10,7 @@ func check(ok:bool,text:String):
 	else:failed+=1;push_error('FAIL '+text)
 func near(a:float,b:float) -> bool:return absf(a-b)<.01
 func fresh(spec:String=''):
-	g.test_mode=true;g.saved.settings.tutorial_complete=true;g.saved.kills=500;g.selected=4;g.run_mode='campaign';g.arena_id='scrapyard';g.start_run();g.begin_wave();g.spawn_clock=999;g.crit=0
+	g.test_mode=true;preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.settings.tutorial_complete=true;g.saved.kills=500;g.selected=4;g.run_mode='campaign';g.arena_id='scrapyard';g.start_run();g.begin_wave();g.spawn_clock=999;g.crit=0
 	if spec!='':g.weapons[0].level=5;g.weapons[0].spec=spec
 func enemy(offset:Vector2) -> Dictionary:
 	g.spawn_enemy('grunt');var e=g.enemies.back();e.pos=g.player.position+offset;e.hp=1000;e.max_hp=1000;e.speed=0;return e
@@ -20,8 +20,9 @@ func run():
 	check(not Unlocks.available(g.saved,'kicksy'),'New profile starts locked')
 	g.saved.kills=500;check(not Unlocks.available(g.saved,'kicksy'),'Kills alone insufficient')
 	g.saved.settings.tutorial_complete=true;g.saved.kills=499;check(not Unlocks.available(g.saved,'kicksy'),'499 kills insufficient')
-	g.saved.endless_records.docks.kills=1;check(Unlocks.available(g.saved,'kicksy'),'Campaign and endless kills combine')
-	check(Unlocks.sync(g.saved) and not Unlocks.sync(g.saved),'Unlock once without duplicate ID')
+	g.saved.endless_records.docks.kills=1;check(not Unlocks.available(g.saved,'kicksy'),'Kills and tutorial do not bypass crew cases')
+	g.saved.collection.heroes.append('kicksy');g.saved.collection.levels.bomb=1
+	Unlocks.sync(g.saved);Unlocks.sync(g.saved);check(g.saved.unlocked.count('kicksy')==1,'Owned case fighter synchronizes without duplicate ID')
 	var path='user://kicksy_test.json';Save.save_local(g.saved,path);var loaded=Save.load_local(path)
 	check(loaded.unlocked.has('kicksy') and Unlocks.available(loaded,'kicksy'),'Unlocked hero survives restart')
 	g.saved=g.default_save();g.saved.unlocked.append('kicksy');Save.save_local(g.saved,path);loaded=Save.load_local(path)
@@ -59,6 +60,6 @@ func run():
 	fresh();g.coins=1000;g.weapons[0].level=4;g.open_shop();check(g.run_items.upgrade('bomb') and g.pending_specialization().id=='bomb','Shop reaches actual development')
 	check(g.choose_specialization('bomb','fireball') and g.pending_specialization().is_empty(),'Development selection completes')
 	g.saved=g.default_save();g.saved.kills=500;g.main_menu();g.tutorial.start();g.tutorial.step=12;g.tutorial.done=true;g.tutorial.next()
-	check(g.saved.unlocked.has('kicksy') and not g.tutorial.active,'Tutorial completion immediately unlocks earned hero')
+	check(not g.saved.unlocked.has('kicksy') and not g.tutorial.active and g.saved.settings.tutorial_complete,'Tutorial completion records training and preserves case lock')
 	g.saved=original;g.save_game();g.queue_free();await process_frame;DirAccess.remove_absolute(path)
 	print('KICKSY RESULT ',passed,' passed, ',failed,' failed');quit(1 if failed else 0)

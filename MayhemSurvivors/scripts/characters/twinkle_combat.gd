@@ -26,14 +26,14 @@ func attack(w:Dictionary,dt:float):
 	var origin:Vector2=game.player.position
 	var direction:Vector2=(target.pos-origin).normalized()
 	if direction==Vector2.ZERO:direction=Vector2(game.facing,0)
-	var power=float(d.damage)*(1+(int(w.level)-1)*.3)*game.damage_mult*area_multiplier()
+	var power=float(d.damage)*(1+(int(w.level)-1)*.3)*game.damage_mult*area_multiplier()*game.gear_weapon_multiplier('mop')
 	game.combat_visuals.attack('mop',direction,int(w.level))
 	if sweeps.size()>=6:sweeps.pop_front()
 	sweeps.append({'origin':origin,'angle':direction.angle(),'reach':reach,'spray_to':target.pos,'spray_from':origin+Vector2(-19*game.character_facing(),-8),'life':.28})
 	# Spray is part of the same attack, never another weapon or fake extra arm.
 	var at:Vector2=target.pos
 	if puddles.size()>=MAX_PUDDLES:puddles.pop_front()
-	puddles.append({'pos':at,'radius':float(d.puddle_radius)+4*(int(w.level)-1),'life':float(d.puddle_duration)+float(spec.get('puddle_extra',0)),'power':float(d.poison_dps)*(1+(int(w.level)-1)*.3)*game.damage_mult*area_multiplier()*float(spec.get('poison',1))})
+	puddles.append({'pos':at,'radius':float(d.puddle_radius)+4*(int(w.level)-1),'life':float(d.puddle_duration)+float(spec.get('puddle_extra',0)),'power':float(d.poison_dps)*(1+(int(w.level)-1)*.3)*game.damage_mult*area_multiplier()*game.gear_weapon_multiplier('mop')*float(spec.get('poison',1))})
 	for e in game.enemies.duplicate():
 		var offset:Vector2=e.pos-origin
 		if offset.length()>reach+e.radius or (offset!=Vector2.ZERO and direction.dot(offset.normalized())<0):continue

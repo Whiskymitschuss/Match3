@@ -29,7 +29,10 @@
       "blaster",
       "splitgun",
       "arc"
-    ]
+    ],
+    "unlock": {
+      "case": "crew"
+    }
   },
   {
     "id": "shade",
@@ -44,7 +47,10 @@
     "crit_bonus": 0.1,
     "allowed_weapons": [
       "orbit"
-    ]
+    ],
+    "unlock": {
+      "case": "crew"
+    }
   },
   {
     "id": "twinkle",
@@ -60,7 +66,10 @@
     "area_bonus": 0.15,
     "allowed_weapons": [
       "mop"
-    ]
+    ],
+    "unlock": {
+      "case": "crew"
+    }
   },
   {
     "id": "kicksy",
@@ -79,8 +88,7 @@
     ],
     "rarity": "EPISCH",
     "unlock": {
-      "tutorial_complete": true,
-      "kills": 500
+      "case": "crew"
     }
   },
   {
@@ -101,6 +109,9 @@
       "tools"
     ],
     "rarity": "EPISCH",
-    "quote": "Wo rohe Kräfte sinnvoll walten, kann kein Rohr die Fresse halten!"
+    "quote": "Wo rohe Kräfte sinnvoll walten, kann kein Rohr die Fresse halten!",
+    "unlock": {
+      "case": "crew"
+    }
   }
 ]

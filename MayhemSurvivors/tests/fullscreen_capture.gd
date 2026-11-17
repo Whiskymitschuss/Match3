@@ -16,7 +16,7 @@ func capture(name:String):
 	print('FULLSCREEN FRAME ',name,' pixels=',im.get_size(),' viewport=',g.get_viewport_rect().size,' side_black_pixels=',black,'/',im.get_height()*4,' safe=',g.safe_logical,' ability=',g.ability_rect())
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
-	g.saved=g.default_save();g.saved.wins=1
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
 	for entry in [[Vector2i(1280,591),'wide'],[Vector2i(1280,720),'16_9'],[Vector2i(1024,768),'tablet']]:
 		root.size=entry[0]
 		await process_frame

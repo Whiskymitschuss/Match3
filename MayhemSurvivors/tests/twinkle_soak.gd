@@ -7,7 +7,7 @@ var peak_sweeps=0
 var victories=0
 func _initialize():call_deferred('run')
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();g.saved.wins=1;g.selected=3;g.saved.settings.shop_help_seen=true
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1;g.selected=3;g.saved.settings.shop_help_seen=true
 	for arena in ['scrapyard','reactor']:
 		for quality in ['LOW','MEDIUM','HIGH']:
 			g.arena_id=arena;g.saved.settings.quality=quality;g.start_run();g.wave_number=9;g.begin_wave();g.spawn_clock=0;g.remaining=60

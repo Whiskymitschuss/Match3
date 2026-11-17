@@ -6,7 +6,7 @@ var max_spawned=0
 var steps=0
 func _initialize():call_deferred('run')
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();g.saved.wins=1
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.saved.wins=1
 	for arena in ['scrapyard','reactor']:
 		for hero in range(4):
 			g.selected=hero;g.arena_id=arena;g.saved.settings.quality=['LOW','MEDIUM','HIGH'][hero%3];g.start_run();g.wave_number=7;g.begin_wave();g.rng.seed=130;g.hp=100000;g.max_hp=100000;g.spawn_clock=0;g.weapons[0].level=4

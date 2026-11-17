@@ -13,7 +13,7 @@ func offer(id:String):
 	g.offers=[{'type':'item','id':id,'name':d.name,'description':d.description,'price':int(d.price)+g.wave_number*4,'rarity':d.rarity}]
 func run():
 	if FileAccess.file_exists('user://save.json'):previous_save=FileAccess.get_file_as_bytes('user://save.json')
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();g.selected=1;g.start_run();g.begin_wave();g.cleanup();g.open_shop()
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.selected=1;g.start_run();g.begin_wave();g.cleanup();g.open_shop()
 	check(g.state==g.State.SHOP and not g.saved.settings.shop_help_seen,'First shop opens tutorial without resuming combat')
 	for page in range(3):g.shop_view.help_page(page);check(g.state==g.State.SHOP,'Tutorial page '+str(page))
 	g.shop_view.finish_help();check(g.saved.settings.shop_help_seen,'Tutorial marked seen')

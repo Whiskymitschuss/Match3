@@ -1,5 +1,5 @@
 extends RefCounted
-# Draft foundation: not yet connected to SaveManager or gameplay. Godot tests pending.
+# Persistent collection model. Case RNG is independent from combat RNG.
 const HEROES=['bruiser','sparky','shade','twinkle','kicksy','steelfist']
 const STARTERS={'bruiser':'hammer','sparky':'blaster','shade':'orbit','twinkle':'mop','kicksy':'bomb','steelfist':'tools'}
 const ALLOWED={'bruiser':['hammer'],'sparky':['blaster','splitgun','arc'],'shade':['orbit'],'twinkle':['mop'],'kicksy':['bomb'],'steelfist':['tools']}

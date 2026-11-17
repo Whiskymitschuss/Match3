@@ -13,7 +13,7 @@ func spawn_elite(arena:String='scrapyard') -> Dictionary:
 func next_attack():
 	g.encounters.recovery=0;g.encounters.boss_lock=false;g.encounters.special_clock=0;g.boss_charging=false;g.boss_phase=0;g.reactor_guardian.clear();g.encounters.hazards.clear();g.encounters.update(.01)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save()
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	for arena in ['scrapyard','reactor']:
 		for wave in range(1,11):

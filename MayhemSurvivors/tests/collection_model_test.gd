@@ -1,5 +1,5 @@
 extends SceneTree
-# Authored for the garage foundation; not executed yet (development host offline).
+# Standalone collection, economy, ownership and opening receipt checks.
 const C=preload('res://scripts/progression/collection.gd')
 const R=preload('res://scripts/progression/daily_rewards.gd')
 var passed=0

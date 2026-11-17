@@ -85,6 +85,7 @@ func weapon_details(id:String):
 	if id=='mop':damage*=game.twinkle.area_multiplier()
 	if id=='hammer':damage*=1.0+float(game.characters[game.selected].melee_bonus)
 	if id=='tools':damage=game.steelfist.power(w)
+	else:damage*=game.gear_weapon_multiplier(id)
 	var cooldown=float(d.cooldown)/game.attack_mult/(1+.06*(w.level-1))*float(spec.get('cooldown',1.0))
 	if id=='orbit':cooldown=.5/game.attack_mult/(1+.08*(w.level-1))*float(spec.get('hit_cooldown',1.0))
 	if id=='tools':cooldown=game.steelfist.cooldown(w)

@@ -8,7 +8,7 @@ func capture(name:String):
 	root.get_texture().get_image().save_png('res://tests/twinkle_'+name+'.png');print('TWINKLE FRAME ',name)
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
-	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save()
+	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	g.character_select(1);await capture('selection')
 	g.selected=3;g.start_run();g.begin_wave();g.player.position=Vector2(1200,800);g.camera.reset_smoothing();g.camera.force_update_scroll();g.crit=0
 	for at in [Vector2(100,0),Vector2(120,85),Vector2(-100,70),Vector2(0,-170)]:

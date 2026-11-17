@@ -7,7 +7,7 @@ func _init(owner_game: Node2D):
 func update(dt: float):
 	for w in game.weapons:
 		var d = game.weapon_data[w.id]
-		var power = float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult
+		var power = float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult*game.gear_weapon_multiplier(w.id)
 		if w.id == 'hammer': power *= 1.0+float(game.characters[game.selected].melee_bonus)
 		if w.id=='tools':
 			game.steelfist.attack(w,dt)

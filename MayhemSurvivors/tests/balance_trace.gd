@@ -5,7 +5,7 @@ func run():
 	g.test_mode=true
 	root.add_child(g)
 	g.set_physics_process(false)
-	g.saved=g.default_save()
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	var trace:Array=[]
 	for hero in range(3):
 		g.selected=hero

@@ -12,7 +12,7 @@ func run():
 	g.test_mode = true
 	root.add_child(g)
 	g.set_physics_process(false)
-	g.saved = g.default_save()
+	g.saved = g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	check(g.state==g.State.MAIN_MENU,'Boot -> main menu')
 	check(g.GameStateMachine.permits(g.State.COMBAT,g.State.SHOP) and not g.GameStateMachine.permits(g.State.COMBAT,g.State.CHARACTER_SELECT),'Defined state transitions')
 	g.character_select()
@@ -224,7 +224,7 @@ func run():
 	check(g.state==g.State.GAME_OVER,'Boss timeout -> game over')
 	g.saved.highest_wave=8
 	g.save_game()
-	g.saved=g.default_save()
+	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	g.load_save()
 	check(g.saved.highest_wave==8,'Save and load roundtrip')
 	var f=FileAccess.open('user://save.json',FileAccess.WRITE)

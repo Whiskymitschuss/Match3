@@ -27,7 +27,7 @@ func attack(w:Dictionary,dt:float):
 	if target==null:return
 	var direction:Vector2=(target.pos-game.player.position).normalized()
 	w.clock=float(d.cooldown)/game.attack_mult/(1+.06*(w.level-1))
-	var power=float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult
+	var power=float(d.damage)*(1+(w.level-1)*.3)*game.damage_mult*game.gear_weapon_multiplier('bomb')
 	var count=mini(5,1+game.multishot)
 	game.combat_visuals.attack('bomb',direction,w.level)
 	for i in range(count):
