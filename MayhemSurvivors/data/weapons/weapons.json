@@ -53,5 +53,35 @@
     "damage": 25,
     "cooldown": 1.25,
     "reach": 130
+  },
+  "flamer": {
+    "name": "FLAMMENWERFER",
+    "damage": 6,
+    "cooldown": 0.28,
+    "reach": 205
+  },
+  "cryo": {
+    "name": "KRYOGEWEHR",
+    "damage": 14,
+    "cooldown": 0.8,
+    "reach": 440
+  },
+  "tesla": {
+    "name": "TESLASPULE",
+    "damage": 18,
+    "cooldown": 1.15,
+    "reach": 380
+  },
+  "lance": {
+    "name": "SCHILDLANZE",
+    "damage": 26,
+    "cooldown": 1,
+    "reach": 170
+  },
+  "chakram": {
+    "name": "MONDCHAKRAM",
+    "damage": 10,
+    "cooldown": 1.1,
+    "reach": 400
   }
 }

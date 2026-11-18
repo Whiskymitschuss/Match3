@@ -12,7 +12,7 @@ func fresh() -> Dictionary:return {'collection':C.defaults(),'meta':R.defaults()
 func run():
 	var s=fresh();s.collection.seed=17018
 	check(s.collection.heroes==['bruiser'] and s.collection.levels=={'hammer':1},'Bruiser and hammer only')
-	check(C.catalog().heroes.size()==5 and C.catalog().items.size()==32,'Catalog has five additional heroes and32 items')
+	check(C.catalog().heroes.size()==10 and C.catalog().items.size()==37,'Catalog has ten additional heroes and37 items')
 	for id in ['crew','arsenal','style']:
 		var sum=0.0
 		for item in C.candidates(s,id):sum+=item.chance
@@ -30,18 +30,18 @@ func run():
 	check(not paid.is_empty() and s.meta.coins==0,'Exact paid case debit')
 	C.acknowledge(s,paid.serial)
 	check(C.open_case(s,'forged').is_empty() and s.meta.coins==0,'Unknown case rejected')
-	s=fresh();s.collection.heroes=['bruiser','sparky','shade','twinkle','kicksy'];s.collection.pity=2
+	s=fresh();s.collection.heroes=C.HEROES.filter(func(id):return id!='steelfist');s.collection.pity=2
 	var pool=C.candidates(s,'crew')
 	check(pool.size()==1 and pool[0].id=='steelfist' and pool[0].chance==1,'Third-case guarantee targets only missing hero')
 	var reveal=C.open_case(s,'crew')
 	check(reveal.id=='steelfist' and s.collection.pity==0,'Guaranteed hero resets pity')
 	C.acknowledge(s,reveal.serial);s.collection.tickets.crew=1;var old=s.collection.heroes.size();var dup=C.open_case(s,'crew')
 	check(dup.duplicate and dup.parts>0 and s.collection.parts==dup.parts and s.collection.heroes.size()==old,'Duplicate becomes parts without duplicate roster entry')
-	s=fresh();s.collection.seed=18018;s.collection.tickets.crew=15
-	for i in range(15):
+	s=fresh();s.collection.seed=18018;s.collection.tickets.crew=30
+	for i in range(30):
 		reveal=C.open_case(s,'crew');check(not reveal.is_empty(),'Crew progression draw '+str(i+1));C.acknowledge(s,reveal.serial)
-	check(s.collection.heroes.size()==6,'All fighters obtained within fifteen crew openings')
-	check(s.collection.history.size()==15,'Opening journal retained')
+	check(s.collection.heroes.size()==11,'All fighters obtained within thirty crew openings')
+	check(s.collection.history.size()==20,'Opening journal retains bounded twenty receipts')
 	s=fresh();s.collection.parts=190
 	for i in range(4):check(C.upgrade(s,'hammer'),'Actual weapon rank upgrade '+str(i+1))
 	check(s.collection.levels.hammer==5 and s.collection.parts==0,'Four upgrades reach rank5 with exact cost')

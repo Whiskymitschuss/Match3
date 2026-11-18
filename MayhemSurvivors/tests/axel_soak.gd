@@ -5,7 +5,7 @@ var peak=0
 var visited={}
 func _initialize():call_deferred('run')
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);root.size=Vector2i(1280,720)
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);root.size=Vector2i(1280,720)
 	await process_frame;await process_frame;g.update_safe_area()
 	for hero in range(6):
 		for arena in g.Arenas.IDS:

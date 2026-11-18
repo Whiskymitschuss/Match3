@@ -113,5 +113,108 @@
     "unlock": {
       "case": "crew"
     }
+  },
+  {
+    "id": "cinder",
+    "name": "CINDER",
+    "hp": 95,
+    "speed": 205,
+    "weapon": "flamer",
+    "color": "#FF843E",
+    "description": "Feuerherz • +15 % Brandschaden",
+    "element_bonus": 0.15,
+    "role": "FLAMMENALCHEMISTIN",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "flamer"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
+  },
+  {
+    "id": "frosty",
+    "name": "FROSTY",
+    "hp": 110,
+    "speed": 190,
+    "weapon": "cryo",
+    "color": "#89EDFF",
+    "description": "Eiszeit • +20 % Verlangsamungsdauer",
+    "slow_bonus": 0.2,
+    "role": "FROSTJÄGERIN",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "cryo"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
+  },
+  {
+    "id": "volt",
+    "name": "VOLT",
+    "hp": 90,
+    "speed": 220,
+    "weapon": "tesla",
+    "color": "#68E7E0",
+    "description": "Hochspannung • +15 % Angriffstempo",
+    "attack_speed_bonus": 0.15,
+    "role": "STROMBÄNDIGER",
+    "melee_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "tesla"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
+  },
+  {
+    "id": "rook",
+    "name": "ROOK",
+    "hp": 145,
+    "speed": 170,
+    "weapon": "lance",
+    "color": "#8BAEFF",
+    "description": "Stahlwacht • +2 Basis-Rüstung",
+    "armor": 2,
+    "role": "SCHILDWÄCHTER",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "lance"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
+  },
+  {
+    "id": "nyx",
+    "name": "NYX",
+    "hp": 85,
+    "speed": 245,
+    "weapon": "chakram",
+    "color": "#E875EA",
+    "description": "Mondklinge • +8 % kritische Chance",
+    "crit_bonus": 0.08,
+    "role": "PHASENTÄNZERIN",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "allowed_weapons": [
+      "chakram"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
   }
 ]

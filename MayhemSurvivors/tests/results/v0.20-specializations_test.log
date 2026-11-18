@@ -1,6 +1,6 @@
 Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
 
-PASS Sixteen unique specialization definitions
+PASS Twenty-six unique specialization definitions
 PASS Two choices for blaster
 PASS Real icon loads for piercer
 PASS Real icon loads for blast
@@ -25,6 +25,21 @@ PASS Real icon loads for fireball
 PASS Two choices for tools
 PASS Real icon loads for pressure_breaker
 PASS Real icon loads for ratchet_rush
+PASS Two choices for flame
+PASS Real icon loads for solar_fan
+PASS Real icon loads for ash_rain
+PASS Two choices for cryo
+PASS Real icon loads for ice_lance
+PASS Real icon loads for frost_burst
+PASS Two choices for tesla
+PASS Real icon loads for thunder_prism
+PASS Real icon loads for storm_grid
+PASS Two choices for lance
+PASS Real icon loads for solar_pike
+PASS Real icon loads for aegis_sweep
+PASS Two choices for chakram
+PASS Real icon loads for twin_moon
+PASS Real icon loads for dusk_spiral
 PASS Real shop purchase reaches level five and charges once
 PASS Level-five purchase opens choice while simulation remains stopped
 PASS Choice description fits its touch card
@@ -141,4 +156,4 @@ PASS ratchet_rush boss victory cleanup in scrapyard
 PASS ratchet_rush result records selected path
 PASS ratchet_rush boss victory cleanup in reactor
 PASS ratchet_rush result records selected path
-SPECIALIZATIONS RESULT 141 passed, 0 failed
+SPECIALIZATIONS RESULT 156 passed, 0 failed

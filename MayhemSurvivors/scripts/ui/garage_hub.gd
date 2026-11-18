@@ -90,7 +90,7 @@ func cases():
 	game.backdrop('MAYHEM CASES','ERSPIELBAR / %d STUDIO-COINS / %d TEILE / %d ÖFFNUNGEN' % [game.saved.meta.coins,game.saved.collection.parts,game.saved.collection.opened])
 	var ids=['crew','arsenal','style']
 	for i in range(3):
-		var id:String=ids[i];var d=C.catalog().cases[id];var x=100+i*585;var ticket=int(game.saved.collection.tickets[id]);var complete=id=='crew' and game.saved.collection.heroes.size()==6
+		var id:String=ids[i];var d=C.catalog().cases[id];var x=100+i*585;var ticket=int(game.saved.collection.tickets[id]);var complete=id=='crew' and game.saved.collection.heroes.size()==C.HEROES.size()
 		game.UISkin.panel(game,Rect2(x,245,550,675),Color(d.color))
 		var texture=AtlasTexture.new();texture.atlas=Art.CASES;texture.region=Art.case_region(id);game.UISkin.image(game,texture,Rect2(x+25,280,500,245))
 		text(d.name,Vector2(x+25,535),500,42,Color(d.color))
@@ -109,7 +109,7 @@ func chances(id:String,offset:int=0):
 	var entries=C.candidates(game.saved,id);var pages=maxi(1,ceili(entries.size()/10.0));offset=clampi(offset,0,pages-1)
 	game.backdrop(C.catalog().cases[id].name+' / CHANCEN','Tatsächliche Einzelchancen / Duplikate: Standard20, Selten35, Episch60 Teile')
 	var source=C.catalog().heroes if id=='crew' else C.catalog().items
-	if id=='crew':text('Crew vollständig: Alle weiteren Funde geben Werkstattteile.' if game.saved.collection.heroes.size()==6 else 'Neuer Fighter spätestens nach %d weiteren Crew-Cases, solange noch einer fehlt.' % (3-game.saved.collection.pity),Vector2(120,245),1650,29,game.TEAL)
+	if id=='crew':text('Crew vollständig: Alle weiteren Funde geben Werkstattteile.' if game.saved.collection.heroes.size()==C.HEROES.size() else 'Neuer Fighter spätestens nach %d weiteren Crew-Cases, solange noch einer fehlt.' % (3-game.saved.collection.pity),Vector2(120,245),1650,29,game.TEAL)
 	for i in range(offset*10,mini(entries.size(),offset*10+10)):
 		var e=entries[i];var x=110+(i%2)*865;var y=330+((i%10)/2)*115;var owned=game.saved.collection.heroes.has(e.id) if id=='crew' else game.saved.collection.levels.has(e.id)
 		game.UISkin.panel(game,Rect2(x,y,815,100))

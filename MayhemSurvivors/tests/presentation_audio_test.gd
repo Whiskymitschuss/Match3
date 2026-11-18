@@ -7,7 +7,7 @@ func check(ok:bool,name:String):
 	if ok:passed+=1;print('PASS ',name)
 	else:failed+=1;push_error('FAIL '+name)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.update_music()
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.update_music()
 	check(g.UISkin.LOGO.get_width()>1000 and g.UISkin.ICON.get_height()>1000,'Production wordmark and app icon imported')
 	check(g.UISkin.HEADING!=g.UISkin.BODY,'Separate licensed heading and body fonts')
 	var found=false

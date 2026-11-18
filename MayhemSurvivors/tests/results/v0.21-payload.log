@@ -1,0 +1,19 @@
+PASS native architecture: arm64-v8a only
+PASS imported runtime atlas and payload assets/characters/united_heroes.png
+PASS imported runtime atlas and payload assets/enemies/united_enemies.png
+PASS imported runtime atlas and payload assets/enemies/united_bosses.png
+PASS imported runtime atlas and payload assets/weapons/united_weapons.png
+PASS imported runtime atlas and payload assets/environments/united.png
+PASS exact runtime data data/enemies/united_roster.json
+PASS exact runtime data data/waves/boss_ladder.json
+PASS exact runtime data data/arenas/arenas.json
+PASS exact runtime data data/characters/characters.json
+PASS exact runtime data data/collection/catalog.json
+PASS compiled runtime script scripts/expansion/united.gd
+PASS compiled runtime script scripts/expansion/hero_combat.gd
+PASS compiled runtime script scripts/expansion/enemy_roster.gd
+PASS compiled runtime script scripts/expansion/boss_director.gd
+PASS compiled runtime script scripts/expansion/comic_art.gd
+PASS compiled runtime script scripts/ui/game_guide.gd
+PASS no test payload
+PASS APK archive CRC

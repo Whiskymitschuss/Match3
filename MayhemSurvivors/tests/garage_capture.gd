@@ -7,7 +7,7 @@ func capture(name:String):
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png('res://tests/garage_'+name+'.png');print('GARAGE FRAME ',name)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();g.garage.save_path='user://garage_capture.json'
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area();g.saved=g.default_save();g.garage.save_path='user://garage_capture.json'
 	g.character_select(5);await capture('locked')
 	g.garage.cases();await capture('cases')
 	g.garage.chances('crew');await capture('chances')

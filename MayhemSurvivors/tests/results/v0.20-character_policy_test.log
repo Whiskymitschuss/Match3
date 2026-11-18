@@ -11,6 +11,11 @@ PASS Forbidden purchase rejected without mutation 0 orbit
 PASS Forbidden purchase rejected without mutation 0 mop
 PASS Forbidden purchase rejected without mutation 0 bomb
 PASS Forbidden purchase rejected without mutation 0 tools
+PASS Forbidden purchase rejected without mutation 0 flame
+PASS Forbidden purchase rejected without mutation 0 cryo
+PASS Forbidden purchase rejected without mutation 0 tesla
+PASS Forbidden purchase rejected without mutation 0 lance
+PASS Forbidden purchase rejected without mutation 0 chakram
 PASS Useless projectile upgrade filtered 0
 PASS Useless multishot upgrade filtered 0
 PASS Stat upgrades cannot grant cross-class weapons 0
@@ -28,6 +33,11 @@ PASS Forbidden purchase rejected without mutation 1 orbit
 PASS Forbidden purchase rejected without mutation 1 mop
 PASS Forbidden purchase rejected without mutation 1 bomb
 PASS Forbidden purchase rejected without mutation 1 tools
+PASS Forbidden purchase rejected without mutation 1 flame
+PASS Forbidden purchase rejected without mutation 1 cryo
+PASS Forbidden purchase rejected without mutation 1 tesla
+PASS Forbidden purchase rejected without mutation 1 lance
+PASS Forbidden purchase rejected without mutation 1 chakram
 PASS Useless projectile upgrade filtered 1
 PASS Useless multishot upgrade filtered 1
 PASS Stat upgrades cannot grant cross-class weapons 1
@@ -45,10 +55,15 @@ PASS Permitted purchase 2 orbit
 PASS Forbidden purchase rejected without mutation 2 mop
 PASS Forbidden purchase rejected without mutation 2 bomb
 PASS Forbidden purchase rejected without mutation 2 tools
+PASS Forbidden purchase rejected without mutation 2 flame
+PASS Forbidden purchase rejected without mutation 2 cryo
+PASS Forbidden purchase rejected without mutation 2 tesla
+PASS Forbidden purchase rejected without mutation 2 lance
+PASS Forbidden purchase rejected without mutation 2 chakram
 PASS Useless projectile upgrade filtered 2
 PASS Useless multishot upgrade filtered 2
 PASS Stat upgrades cannot grant cross-class weapons 2
 PASS One held weapon and exactly two finite grip points over 16 aim angles 2
 PASS Orbit weapon adds no extra holding hands 2
 PASS Rig state cleared on restart 2
-CHARACTER POLICY RESULT 51 passed, 0 failed
+CHARACTER POLICY RESULT 66 passed, 0 failed

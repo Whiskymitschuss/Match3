@@ -1,3 +1,18 @@
+# Ergänzungen 0.21
+
+Fünf eigene mit Bildgenerierung erstellte Comic-Atlanten für elf modulare Heldenkörper,
+Handkomponente, neunzehn normale Gegner/Elite, vierzehn Bossfiguren/Emblem, sechzehn
+Waffenmotive und zehn Arenaböden. Gestaltung nach den vom Auftraggeber vorgegebenen
+Figuren und eigener Spielidentität; keine übernommenen Fremdspiel-Sprites. Arme,
+Animationen, Telegraphen und Effekte werden von eigenem Godot-Code ergänzt.
+Sechs Welt-Embleme, fünf Fähigkeitsicons und zehn Entwicklungsicons sind eigene SVGs.
+14 eigene synthetische Sounds ohne Fremdsamples; Generator und Lizenz im Projekt.
+Bestehende Font- und Assetlizenzen bleiben gültig. Keine Laufzeit-Abhängigkeit zu einem
+kostenpflichtigen Plugin oder Generator. Bereitgestellte private Referenzfotos sind
+nicht Bestandteil der Auslieferung.
+
+---
+
 # Ergänzungen0.20
 
 Vier eigene SVG-Metall-Embleme für Schrottplatz, Reaktorzone, Neonhafen und Glutwerk,

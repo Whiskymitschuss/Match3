@@ -1,6 +1,89 @@
 {
-  "scrapyard": {"color":"#FFAA43", "coins":40, "parts":20, "tickets":{"crew":1}},
-  "reactor": {"color":"#2EDB9C", "coins":60, "parts":35, "tickets":{"arsenal":1}},
-  "docks": {"color":"#36D7F4", "coins":80, "parts":50, "tickets":{"style":1}},
-  "foundry": {"color":"#FF654B", "coins":100, "parts":70, "tickets":{"crew":1,"arsenal":1}}
+  "scrapyard": {
+    "color": "#FFAA43",
+    "coins": 40,
+    "parts": 20,
+    "tickets": {
+      "crew": 1
+    }
+  },
+  "reactor": {
+    "color": "#2EDB9C",
+    "coins": 60,
+    "parts": 35,
+    "tickets": {
+      "arsenal": 1
+    }
+  },
+  "docks": {
+    "color": "#36D7F4",
+    "coins": 80,
+    "parts": 50,
+    "tickets": {
+      "style": 1
+    }
+  },
+  "foundry": {
+    "color": "#FF654B",
+    "coins": 100,
+    "parts": 70,
+    "tickets": {
+      "crew": 1,
+      "arsenal": 1
+    }
+  },
+  "gardens": {
+    "color": "#A0DC58",
+    "coins": 120,
+    "parts": 80,
+    "tickets": {
+      "crew": 1,
+      "arsenal": 1
+    }
+  },
+  "frost": {
+    "color": "#89EDFF",
+    "coins": 140,
+    "parts": 90,
+    "tickets": {
+      "style": 1,
+      "arsenal": 1
+    }
+  },
+  "storm": {
+    "color": "#6DC4FF",
+    "coins": 160,
+    "parts": 100,
+    "tickets": {
+      "crew": 1,
+      "arsenal": 1
+    }
+  },
+  "crystal": {
+    "color": "#DB8AFF",
+    "coins": 180,
+    "parts": 110,
+    "tickets": {
+      "style": 1,
+      "arsenal": 1
+    }
+  },
+  "carnival": {
+    "color": "#FF8AC9",
+    "coins": 200,
+    "parts": 120,
+    "tickets": {
+      "crew": 1,
+      "arsenal": 1
+    }
+  },
+  "void": {
+    "color": "#BD79FF",
+    "coins": 220,
+    "parts": 130,
+    "tickets": {
+      "style": 1,
+      "arsenal": 1
+    }
+  }
 }

@@ -22,7 +22,7 @@ static func weapon_tint(loadout:Dictionary) -> Color:
 	return Color.WHITE.lerp(skin_color(loadout),.45) if loadout.get('skin','')!='' else Color.WHITE
 static func dress(canvas:CanvasItem,hero:String,loadout:Dictionary,rect:Rect2):
 	var modern=hero in ['twinkle','kicksy','steelfist']
-	var eye=float({'bruiser':.15,'sparky':.22,'shade':.17,'twinkle':.20,'kicksy':.20,'steelfist':.10}.get(hero,.15))
+	var eye=.17
 	for slot in ['body','feet','head']:
 		var id:String=loadout.get(slot,'')
 		if not C.catalog().items.has(id):continue
@@ -41,16 +41,16 @@ static func preview(canvas:CanvasItem,hero:String,loadout:Dictionary,tint:Color=
 	dress(canvas,hero,loadout,Rect2(0,0,360,360))
 	var id:String=loadout.get('weapon',C.STARTERS[hero]);var hands=[Vector2(200,220),Vector2(260,215)]
 	if id in ['tools','orbit']:hands=[Vector2(108,233),Vector2(254,233)]
-	var shoulders=[Vector2(143,113 if hero in ['twinkle','kicksy','steelfist'] else 128),Vector2(220,113 if hero in ['twinkle','kicksy','steelfist'] else 128)]
+	var shoulders=Hero.shoulders(hero)
 	for i in range(2):
 		var elbow=(shoulders[i]+hands[i])*.5+Vector2(-20 if i==0 else 20,0)
-		arm(canvas,shoulders[i],elbow,18,Color('#292537'))
-		arm(canvas,elbow,hands[i],15,Color('#B38462') if hero!='shade' else Color('#363049'))
+		arm(canvas,shoulders[i],elbow,22,skin(hero))
+		arm(canvas,elbow,hands[i],15,skin(hero).darkened(.08))
 	if id=='tools':
-		for i in range(2):canvas.draw_texture_rect_region(Weapon.weapon_texture('wrench'),Rect2(hands[i]-Vector2(24,130),Vector2(48,160)),Weapon.weapon('wrench' if i==0 else 'pliers'),weapon_tint(loadout))
+		for i in range(2):canvas.draw_texture_rect_region(Weapon.weapon_texture('wrench'),Rect2(hands[i]-Vector2(40,130),Vector2(80,160)),Weapon.weapon('wrench' if i==0 else 'pliers'),weapon_tint(loadout))
 	elif id=='orbit':canvas.draw_texture_rect_region(Weapon.weapon_texture(id),Rect2(270,160,90,90),Weapon.weapon(id),weapon_tint(loadout))
 	else:canvas.draw_texture_rect_region(Weapon.weapon_texture(id),Rect2(155,155,160,120),Weapon.weapon(id),weapon_tint(loadout))
-	for i in range(2):canvas.draw_texture_rect_region(Hero.texture(hero,true),Rect2(hands[i]-Vector2(18,18),Vector2(36,36)),Hero.hand_region(hero),tint)
+	for i in range(2):canvas.draw_texture_rect_region(Hero.texture(hero,true),Rect2(hands[i]-Vector2(22,22),Vector2(44,44)),Hero.hand_region(hero),tint)
 
 static func arm(canvas:CanvasItem,a:Vector2,b:Vector2,width:float,color:Color):
 	canvas.draw_line(a,b,Color('#10121C'),width+5,true)
@@ -59,3 +59,6 @@ static func arm(canvas:CanvasItem,a:Vector2,b:Vector2,width:float,color:Color):
 	for at in [a,b]:canvas.draw_circle(at,width*.5,color)
 	var side=(b-a).normalized().orthogonal()*width*.2
 	canvas.draw_line(a+side,b+side,color.lightened(.3),width*.23,true)
+
+static func skin(hero:String) -> Color:
+	return Color({'bruiser':'#BA8052','sparky':'#D59B76','shade':'#343046','twinkle':'#D79A79','kicksy':'#D59B76','steelfist':'#A87752','cinder':'#8F593C','frosty':'#D3A699','volt':'#A06B4D','rook':'#56617D','nyx':'#B88C80'}.get(hero,'#BA8052'))

@@ -7,7 +7,7 @@ func capture(id:String):
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png('res://tests/world_map_'+id+'.png');print('WORLD MAP FRAME ',id)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	g.saved=g.default_save();g.world_map.save_path='user://world_map_capture_020.json';g.garage.save_path=g.world_map.save_path;g.main_menu();g.character_select();g.arena_select(0);await capture('fresh')
 	g.arena_select(1);await capture('locked')
 	g.world_map.wallet_help();await capture('currencies')

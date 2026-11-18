@@ -11,6 +11,7 @@ PASS Menu button has touch target and display typography
 PASS Menu button has touch target and display typography
 PASS Menu button has touch target and display typography
 PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
 PASS Menu music selected
 PASS Eight-bar looping score menu_theme
 PASS Eight-bar looping score combat_theme
@@ -29,4 +30,4 @@ PASS Burst coin events coalesced without voice flooding
 PASS Polished shop retains existing flow
 PASS Polished result retains game over
 PASS Restart retains clean run semantics
-PRESENTATION AUDIO RESULT 29 passed, 0 failed
+PRESENTATION AUDIO RESULT 30 passed, 0 failed

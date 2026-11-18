@@ -143,5 +143,85 @@
     "color": "#FF9F1C",
     "power": 0.85,
     "cooldown": 0.7
+  },
+  "solar_fan": {
+    "weapon": "flamer",
+    "name": "SOLARFÄCHER",
+    "description": "Breiterer Flammenkegel und +25 % Schaden.",
+    "color": "#FF843E",
+    "variant": 0,
+    "damage": 1.25
+  },
+  "ash_rain": {
+    "weapon": "flamer",
+    "name": "ASCHEREGEN",
+    "description": "Flammen hinterlassen länger brennende Felder.",
+    "color": "#FF843E",
+    "variant": 1,
+    "damage": 1.0
+  },
+  "ice_lance": {
+    "weapon": "cryo",
+    "name": "EISLANZE",
+    "description": "Durchschlägt vier Ziele.",
+    "color": "#89EDFF",
+    "variant": 0,
+    "damage": 1.0
+  },
+  "frost_burst": {
+    "weapon": "cryo",
+    "name": "FROSTSPLITTER",
+    "description": "Drei Eissplitter und stärkere Verlangsamung.",
+    "color": "#89EDFF",
+    "variant": 1,
+    "damage": 1.0
+  },
+  "thunder_prism": {
+    "weapon": "tesla",
+    "name": "DONNERPRISMA",
+    "description": "Fünf Kettensprünge und +20 % Schaden.",
+    "color": "#68E7E0",
+    "variant": 0,
+    "damage": 1.2
+  },
+  "storm_grid": {
+    "weapon": "tesla",
+    "name": "STURMNETZ",
+    "description": "Jeder Kettenkontakt verlangsamt Gegner kurz.",
+    "color": "#68E7E0",
+    "variant": 1,
+    "damage": 1.0
+  },
+  "solar_pike": {
+    "weapon": "lance",
+    "name": "SONNENPIKE",
+    "description": "Mehr Reichweite und +35 % Schaden.",
+    "color": "#8BAEFF",
+    "variant": 0,
+    "damage": 1.35
+  },
+  "aegis_sweep": {
+    "weapon": "lance",
+    "name": "AEGIS-SCHWUNG",
+    "description": "Breiter Rundumschlag mit starkem Rückstoß.",
+    "color": "#8BAEFF",
+    "variant": 1,
+    "damage": 1.0
+  },
+  "twin_moon": {
+    "weapon": "chakram",
+    "name": "ZWILLINGSMOND",
+    "description": "Zwei Chakrams in einem Fächer.",
+    "color": "#E875EA",
+    "variant": 0,
+    "damage": 1.35
+  },
+  "dusk_spiral": {
+    "weapon": "chakram",
+    "name": "DÄMMERSPIRALE",
+    "description": "Langsamer Rückflug und stärkerer Trefferschaden.",
+    "color": "#E875EA",
+    "variant": 1,
+    "damage": 1.0
   }
 }

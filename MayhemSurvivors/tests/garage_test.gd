@@ -19,7 +19,7 @@ func fresh(hero:int=0,spell:String='',rank:int=1):
 func touch(index:int,pos:Vector2,down:bool):
 	var event=InputEventScreenTouch.new();event.index=index;event.position=g.ui_root.get_global_transform()*pos;event.pressed=down;g._input(event)
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();g.garage.save_path=path
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();g.garage.save_path=path
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	check(g.saved.unlocked==['bruiser'],'Only Bruiser in real new profile')
 	for id in C.HEROES:check(Unlocks.available(g.saved,id)==(id=='bruiser'),'Real roster gate '+id)

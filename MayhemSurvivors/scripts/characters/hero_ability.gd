@@ -24,7 +24,7 @@ func ready_to_use() -> bool:
 func activate() -> bool:
 	if not ready_to_use():return false
 	var d=definition()
-	if d.id=='shadow_step':
+	if d.id in ['shadow_step','phase_dance']:
 		var direction:Vector2=game.move_input.normalized() if game.move_input.length_squared()>.01 else Vector2(game.facing,0)
 		var target=(game.player.position+direction*d.distance).clamp(Vector2(45,45),Vector2(2355,1555))
 		if target.distance_to(game.player.position)<5:return false
@@ -36,6 +36,7 @@ func activate() -> bool:
 	game.sound('ability_'+d.id)
 	game.vfx.ability(d.id,game.player.position)
 	match d.id:
+		'firestorm','absolute_zero','overcharge','bastion','phase_dance':game.united.heroes.active()
 		'pipe_burst':
 			game.steelfist.activate()
 		'shockwave':
@@ -45,7 +46,7 @@ func activate() -> bool:
 				if origin.distance_to(e.pos)>d.radius+e.radius:continue
 				game.damage_enemy(e,d.damage*game.damage_mult*(1.0+float(game.characters[game.selected].melee_bonus)))
 				if game.state!=game.State.COMBAT:return true
-				if game.enemies.has(e) and e.kind not in ['boss','breaker_axel']:
+				if game.enemies.has(e) and e.kind not in ['boss','breaker_axel','champion']:
 					game.encounters.interrupt_elite(e)
 					game.ravox.interrupt(e)
 					game.enemy_pack.interrupt(e)
@@ -98,7 +99,7 @@ func update(dt:float):
 		if e.pos.distance_to(bomb.target)>bomb.radius+e.radius:continue
 		game.damage_enemy(e,bomb.power)
 		if game.state!=game.State.COMBAT:return
-		if game.enemies.has(e) and e.kind not in ['boss','breaker_axel']:
+		if game.enemies.has(e) and e.kind not in ['boss','breaker_axel','champion']:
 			e.ability_slow=definition().slow
 			e.ability_slow_time=definition().slow_duration
 func draw():
@@ -112,7 +113,7 @@ func draw():
 			game.draw_line(r.pos+dir*r.radius*t,r.pos+dir*(r.radius*t+15),color,4,true)
 	for a in afterimages:
 		game.draw_set_transform(a.pos,0,Vector2(game.character_facing(),1))
-		game.draw_texture_rect_region(game.CharacterArt.GAMEPLAY_TEXTURE,Rect2(-48,-64,96,96),game.CharacterArt.body_region(game.characters[game.selected].id),Color(.65,.37,.92,a.life*2.2))
+		game.draw_texture_rect_region(game.CharacterArt.texture(game.characters[game.selected].id,true),Rect2(-48,-64,96,96),game.CharacterArt.body_region(game.characters[game.selected].id),Color(.65,.37,.92,a.life*2.2))
 		game.draw_set_transform(Vector2.ZERO)
 	if not grenade.is_empty():
 		var t:float=clampf(grenade.age/grenade.fuse,0,1)

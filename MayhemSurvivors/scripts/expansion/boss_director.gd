@@ -1,0 +1,86 @@
+extends RefCounted
+const R=preload('res://scripts/core/roster.gd')
+var game:Node2D
+var ladder:Dictionary
+var stage='chase'
+var clock=2.5
+var tier=1
+var pattern=0
+var attack=''
+var origin=Vector2.ZERO
+var target=Vector2.ZERO
+var hit=false
+func _init(g:Node2D):game=g;ladder=game.read_data('waves/boss_ladder')
+func slot() -> int:return ((game.wave_number-1)%10)+1
+func scheduled() -> bool:return game.united.enabled and game.run_mode!='tutorial' and slot()%2==0
+func profile() -> Dictionary:
+	var s=slot();var d:Dictionary
+	if s==6:d=game.breaker.data.duplicate(true);d.boss_art=0;d.pattern='drill';d.name='BREAKER AXEL';d.duration=75
+	elif s==10:d={'name':game.arena_definition.boss_name,'hp':6000.0,'speed':78.0,'damage':20.0,'radius':78.0,'xp':150,'coins':150,'boss_art':int(game.arena_definition.get('boss_art',4)),'pattern':game.arena_definition.get('event',{'scrapyard':'debris','reactor':'storm','docks':'tide','foundry':'fire'}.get(game.arena_id,'storm')),'duration':90,'color':game.arena_definition.get('boss',{}).get('color','#FF9F1C')}
+	else:d=ladder.get(str(s),ladder['2']).duplicate(true);d.boss_art=int(d.art);d.color='#C68CFF'
+	var rank=int(game.arena_definition.get('rank',0));d.hp=float(d.hp)*(1+rank*.08);d.damage=float(d.damage)*(1+rank*.035)
+	return d
+func actor() -> Dictionary:
+	for e in game.enemies:
+		if e.kind in ['boss','champion'] and e.hp>0:return e
+	return {}
+func clear():stage='chase';clock=2.5;tier=1;pattern=0;attack='';hit=false
+func rage(e:Dictionary) -> bool:return game.breaker.tier==3 if e.kind=='breaker_axel' else (tier==3 and R.BOSS_KINDS.has(e.kind))
+func touch_damage(e:Dictionary) -> float:return e.damage*(1.15 if tier==3 else 1.0)
+func update(dt:float):
+	if not scheduled() or slot()==6 or game.state!=game.State.COMBAT:return
+	var e=actor()
+	if e.is_empty():return
+	var next=3 if e.hp/e.max_hp<=.35 else (2 if e.hp/e.max_hp<=.7 else 1)
+	if next>tier:
+		tier=next;stage='phase';clock=1.1;game.united.enemies.removed(e);game.sound('united_rage');game.encounters.warn('%s / PHASE %d' % [e.boss_name,tier]);return
+	if float(e.get('steel_stun',0))>0:return
+	if stage in ['windup','dash'] and (not game.enemy_roles.visible(e.pos) or (stage=='windup' and e.pos.distance_to(origin)>8)):
+		game.united.enemies.removed(e);stage='recovery';clock=2;return
+	clock=maxf(0,clock-dt)
+	if clock>0:return
+	if stage in ['chase','recovery','phase']:
+		if not game.enemy_roles.visible(e.pos):return
+		origin=e.pos;target=game.player.position;hit=false;attack=['ring','fan','charge','zones'][pattern%4];pattern+=1;stage='windup';clock=1.5
+		game.boss_warning={'ring':'IMPULSRING / GRÜNE ÖFFNUNG NUTZEN','fan':'PROJEKTILFÄCHER / SEITLICH AUSWEICHEN','charge':'STURMSPUR VERLASSEN','zones':'MARKIERUNGEN VERLASSEN'}[attack];game.sound('united_warning')
+		if attack=='charge':target=(origin+origin.direction_to(target)*440).clamp(Vector2(40,40),Vector2(2360,1560))
+		if attack=='ring':game.united.enemies.ring(origin,230+(45 if tier==3 else 0),origin.direction_to(target).angle()+PI*.5,1.5,touch_damage(e),e)
+		if attack=='zones':
+			if e.boss_pattern in ['storm','frost','void']:
+				game.united.enemies.lane(true,target.x,1.5,touch_damage(e),e);game.united.enemies.lane(false,target.y,1.5,touch_damage(e),e)
+			else:
+				for offset in [Vector2.ZERO,Vector2(-180,100),Vector2(180,-100)]:game.united.enemies.circle((target+offset).clamp(Vector2(100,100),Vector2(2300,1500)),90,1.5,1.6 if e.boss_pattern=='poison' else .4,touch_damage(e)*.75,e,Color('#C48AFF'),'slow' if e.boss_pattern=='frost' else '')
+	elif stage=='windup':
+		if attack=='fan':
+			var angle:float=origin.direction_to(target).angle()
+			for i in range(7+(2 if tier==3 else 0)):
+				game.shoot(origin,Vector2.from_angle(angle+(i-(3 if tier<3 else 4))*.17),touch_damage(e)*.7,true,250,3.2,'united_boss')
+		if attack=='charge':stage='dash';clock=2.5
+		else:stage='recovery';clock=2.4 if tier<3 else 1.7;game.boss_warning=''
+	else:stage='recovery';clock=2.0
+func velocity(e:Dictionary,normal:Vector2,dt:float) -> Vector2:
+	if stage in ['windup','phase']:return Vector2.ZERO
+	if stage=='dash':return e.pos.direction_to(target)*minf(470,e.pos.distance_to(target)/maxf(.0001,dt))
+	return normal*(1.3 if tier==3 else 1.0)
+func after_move(e:Dictionary,before:Vector2,after:Vector2):
+	if stage!='dash':return
+	if not hit and Geometry2D.get_closest_point_to_segment(game.player.position,before,after).distance_to(game.player.position)<e.radius+27:hit=true;game.breaker.hit(touch_damage(e),before,260,.18)
+	if game.state==game.State.COMBAT and after.distance_to(target)<1:
+		stage='recovery';clock=1.8;game.boss_warning=''
+		if tier>=2:game.united.enemies.ring(after,220,after.direction_to(game.player.position).angle()+PI*.5,1.5,touch_damage(e),e)
+func draw():
+	if stage!='windup' or actor().is_empty():return
+	if attack=='charge':
+		var side:Vector2=origin.direction_to(target).orthogonal()*(actor().radius+27)
+		game.draw_colored_polygon(PackedVector2Array([origin+side,target+side,target-side,origin-side]),Color(1,.7,.2,.15));game.draw_line(origin+side,target+side,Color('#FFD166'),3,true);game.draw_line(origin-side,target-side,Color('#FFD166'),3,true)
+	elif attack=='fan':
+		var angle:float=origin.direction_to(target).angle()
+		for delta in [-.7,0,.7]:game.draw_line(origin,origin+Vector2.from_angle(angle+delta)*600,Color(1,.8,.3,.5),3,true)
+func intro():
+	var d=profile();var art=preload('res://scripts/expansion/comic_art.gd')
+	game.backdrop('BOSSWELLE %d / 10' % slot(),d.name+' / '+game.arena_definition.name)
+	var texture=AtlasTexture.new();texture.atlas=art.BOSSES;texture.region=art.boss_region(d.boss_art);game.UISkin.image(game,texture,Rect2(110,265,620,680))
+	game.UISkin.panel(game,Rect2(790,280,1010,590),Color('#FF9F45'))
+	game.label_at(d.name,Vector2(825,315),55,game.GOLD)
+	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,420),31)
+	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),game.begin_wave,Color('#8A432E'))

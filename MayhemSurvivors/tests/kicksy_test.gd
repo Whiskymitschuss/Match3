@@ -15,7 +15,7 @@ func fresh(spec:String=''):
 func enemy(offset:Vector2) -> Dictionary:
 	g.spawn_enemy('grunt');var e=g.enemies.back();e.pos=g.player.position+offset;e.hp=1000;e.max_hp=1000;e.speed=0;return e
 func run():
-	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save()
+	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save()
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	check(not Unlocks.available(g.saved,'kicksy'),'New profile starts locked')
 	g.saved.kills=500;check(not Unlocks.available(g.saved,'kicksy'),'Kills alone insufficient')

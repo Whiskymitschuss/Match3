@@ -42,7 +42,7 @@ func run():
 	check(loaded.hero_styles==Save.defaults().hero_styles,'Invalid and locked stored selections sanitized')
 	old.version=1;old.erase('records');old.wins=100;old.kills=10000;Save.save_local(old,path);loaded=Save.load_local(path)
 	check(M.completed(loaded,'sparky')==0,'Legacy aggregate totals never invent hero mastery')
-	var g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original_save=g.saved.duplicate(true);g.saved=Save.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
+	var g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original_save=g.saved.duplicate(true);g.saved=Save.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	g.character_select();find_button(g,'INVENTAR & STILE').pressed.emit();g.mastery_screen(g.hero_cursor)
 	check(find_button(g,'NEON CREW / GESPERRT')!=null,'Actual character navigation opens mastery')

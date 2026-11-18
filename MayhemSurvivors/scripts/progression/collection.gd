@@ -1,8 +1,9 @@
 extends RefCounted
+const Roster=preload('res://scripts/core/roster.gd')
 # Persistent collection model. Case RNG is independent from combat RNG.
-const HEROES=['bruiser','sparky','shade','twinkle','kicksy','steelfist']
-const STARTERS={'bruiser':'hammer','sparky':'blaster','shade':'orbit','twinkle':'mop','kicksy':'bomb','steelfist':'tools'}
-const ALLOWED={'bruiser':['hammer'],'sparky':['blaster','splitgun','arc'],'shade':['orbit'],'twinkle':['mop'],'kicksy':['bomb'],'steelfist':['tools']}
+const HEROES=Roster.HEROES
+const STARTERS=Roster.STARTERS
+const ALLOWED=Roster.ALLOWED
 const SLOTS=['head','body','feet','weapon','item','spell','skin']
 static var cache:Dictionary={}
 static func catalog() -> Dictionary:

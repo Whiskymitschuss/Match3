@@ -73,6 +73,18 @@ PASS Actual arena event foundry
 PASS Event paused in shop foundry
 PASS Second announced pulse foundry
 PASS Event completes once foundry
+PASS Event paused in shop gardens
+PASS Event completes once gardens
+PASS Event paused in shop frost
+PASS Event completes once frost
+PASS Event paused in shop storm
+PASS Event completes once storm
+PASS Event paused in shop crystal
+PASS Event completes once crystal
+PASS Event paused in shop carnival
+PASS Event completes once carnival
+PASS Event paused in shop void
+PASS Event completes once void
 PASS No extra event during boss
 PASS Actual wave completion increments quest count
 PASS Finished run records real mission counters
@@ -80,4 +92,64 @@ PASS Duplicate result never duplicates mission progress
 PASS Real claim button backend saves wallet
 PASS Shop uses separate currency
 PASS All reward tabs are populated
-LIVE REWARDS RESULT 80 passed, 0 failed
+LIVE REWARDS RESULT 92 passed, 12 failed
+ERROR: FAIL Actual arena event gardens
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:103)
+ERROR: FAIL Second announced pulse gardens
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:105)
+ERROR: FAIL Actual arena event frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:103)
+ERROR: FAIL Second announced pulse frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:105)
+ERROR: FAIL Actual arena event storm
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:103)
+ERROR: FAIL Second announced pulse storm
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:105)
+ERROR: FAIL Actual arena event crystal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:103)
+ERROR: FAIL Second announced pulse crystal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:105)
+ERROR: FAIL Actual arena event carnival
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:103)
+ERROR: FAIL Second announced pulse carnival
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:105)
+ERROR: FAIL Actual arena event void
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:103)
+ERROR: FAIL Second announced pulse void
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/live_rewards_test.gd:10)
+       [1] run (res://tests/live_rewards_test.gd:105)

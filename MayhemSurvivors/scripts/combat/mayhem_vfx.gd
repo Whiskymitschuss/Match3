@@ -107,6 +107,11 @@ func shot(weapon:String,direction:Vector2):
 		event('sweep',game.player.position,Color('#FFB347'),105,direction,.24)
 		ground_impact(game.player.position+direction*70,95,Color('#FFB347'))
 	elif weapon=='arc':event('charge',origin,Color('#45F7FF'),32,direction,.2)
+	elif weapon=='flamer':event('sweep',game.player.position,Color('#FF9F45'),180,direction,.22);burst(origin,Color('#FFB553'),limits().burst,'wisp',140)
+	elif weapon=='cryo':event('charge',origin,Color('#98EDFF'),30,direction,.18);burst(origin,Color('#C9F8FF'),limits().burst,'spark',140)
+	elif weapon=='tesla':event('electric',origin,Color('#7CFFE5'),42,direction,.24)
+	elif weapon=='lance':event('sweep',game.player.position,Color('#FFD166'),170,direction,.24)
+	elif weapon=='chakram':event('slash',origin,Color('#E875EA'),45,direction,.24)
 func impact(pos:Vector2,weapon:String,hostile:bool=false):
 	var color=Color('#FF7040') if hostile else (Color('#A55EEA') if weapon=='orbit' else Color('#FFD166'))
 	burst(pos,color,limits().burst,'spark',180)
@@ -124,6 +129,11 @@ func ability(kind:String,pos:Vector2):
 	match kind:
 		'shockwave':ground_impact(pos,245,Color('#FF9F1C'))
 		'impulse':event('charge',pos,Color('#00D9D0'),40,Vector2.RIGHT,.25)
+		'firestorm':explosion(pos,220,Color('#FF9F45'))
+		'absolute_zero':ground_impact(pos,280,Color('#98EDFF'));burst(pos,Color('#C9F8FF'),limits().burst*2,'spark',230)
+		'overcharge':event('electric',pos,Color('#7CFFE5'),130,Vector2.RIGHT,.45)
+		'bastion':event('charge',pos,Color('#8BAEFF'),100,Vector2.RIGHT,.4)
+		'phase_dance':burst(pos,Color('#E875EA'),limits().burst*2,'wisp',120)
 		'shadow_step':burst(pos,Color('#A55EEA'),limits().burst*2,'wisp',100)
 func beam(origin:Vector2,target:Vector2):
 	burst(target,Color('#72F7FF'),limits().burst,'spark',130)

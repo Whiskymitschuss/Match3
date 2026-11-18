@@ -27,7 +27,7 @@ func death_limit() -> int:
 	return 12 if game.saved.settings.quality=='LOW' else (20 if game.saved.settings.quality=='MEDIUM' else 32)
 func enemy_defeated(enemy: Dictionary):
 	if deaths.size()>=death_limit():return
-	deaths.append({'kind':enemy.kind,'elite':enemy.get('elite',''),'pos':enemy.pos,'radius':enemy.radius,'life':.38,'full':.38,'face':-1.0 if game.player.position.x<enemy.pos.x else 1.0})
+	deaths.append({'kind':enemy.kind,'comic_art':preload('res://scripts/expansion/comic_art.gd').boss_index(game,enemy),'elite':enemy.get('elite',''),'pos':enemy.pos,'radius':enemy.radius,'life':.38,'full':.38,'face':-1.0 if game.player.position.x<enemy.pos.x else 1.0})
 static func region(kind: String) -> Rect2:
 	if PACK_IDS.has(kind):return Rect2(PACK_IDS[kind]*PACK.get_width()/3.0,0,PACK.get_width()/3.0,PACK.get_height())
 	return REGIONS.get(kind,Rect2(0,0,1,1))
@@ -36,8 +36,10 @@ static func dimensions(radius: float, kind: String = 'grunt') -> Vector2:
 	var width=radius*(2.9 if PACK_IDS.has(kind) else (3.4 if kind in ['ravox','breaker_axel'] else (2.2 if kind in ['grunt','runner'] else 2.6)))
 	return Vector2(width,width*source.y/source.x)
 func draw_arena():
+	if game.united and game.united.enabled:game.draw_texture_rect(game.Arenas.texture(game.arena_id),Rect2(0,0,2400,1600),false);return
 	game.draw_texture_rect(DOCKS if game.arena_id=='docks' else (FOUNDRY if game.arena_id=='foundry' else (REACTOR_FLOOR if game.is_reactor() else FLOOR)),Rect2(0,0,2400,1600),false)
 func draw_enemy(enemy: Dictionary, decorative: bool = false):
+	if game.united and game.united.enabled:preload('res://scripts/expansion/comic_art.gd').draw_enemy(game,enemy,decorative);return
 	var radius: float=enemy.radius
 	var guardian=game.is_reactor() and enemy.kind=='boss'
 	var elite=enemy.get('elite','')!=''
@@ -71,6 +73,9 @@ func draw_enemy(enemy: Dictionary, decorative: bool = false):
 		game.draw_line(bar,bar+Vector2(radius*2,0),Color('#101323'),7,true)
 		game.draw_line(bar,bar+Vector2(radius*2*ratio,0),Color('#FF6376'),4,true)
 func draw_deaths():
+	if game.united and game.united.enabled:
+		for e in deaths:preload('res://scripts/expansion/comic_art.gd').draw_death(game,e)
+		return
 	for e in deaths:
 		var progress=1.0-e.life/e.full
 		var alpha=1.0-progress
@@ -91,7 +96,7 @@ func draw_deaths():
 			var at=e.pos+dir*(7+progress*(e.radius+16))
 			game.draw_line(at,at+dir*6,Color(color,alpha),3*alpha+1,true)
 func boss_telegraph() -> Dictionary:
-	if game.is_reactor() or game.breaker.scheduled():return {}
+	if game.united.enabled or game.is_reactor() or game.breaker.scheduled():return {}
 	# Read the actual combat phase and the locked target, never a guessed attack timer.
 	for e in game.enemies:
 		if e.kind!='boss':continue

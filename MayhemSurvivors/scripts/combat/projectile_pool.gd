@@ -9,9 +9,11 @@ func acquire(pos: Vector2, direction: Vector2, power: float, hostile: bool, spee
 		if items.size()>=MAX_PROJECTILES: return
 		shot={}
 		items.append(shot)
-	shot.merge({'active':true,'pos':pos,'vel':direction*speed,'damage':power,'hostile':hostile,'life':life,'spec':'','hit_enemies':[],'hits_left':1,'splash_power':0.0,'enemy_kind':''},true)
+	shot.clear()
+	shot.merge({'active':true,'united':false,'pos':pos,'vel':direction*speed,'damage':power,'hostile':hostile,'life':life,'spec':'','hit_enemies':[],'hits_left':1,'splash_power':0.0,'enemy_kind':''},true)
 	return shot
 func clear():
 	for item in items:
 		item.active=false
 		item.hit_enemies.clear()
+		if item.has('united_hits'):item.united_hits.clear()

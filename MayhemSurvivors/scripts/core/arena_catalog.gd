@@ -1,6 +1,7 @@
 extends RefCounted
+const Roster=preload('res://scripts/core/roster.gd')
 const Worlds=preload('res://scripts/progression/world_progress.gd')
-const IDS = ['scrapyard','reactor','docks','foundry']
+const IDS=Roster.ARENAS
 static func definition(id: String) -> Dictionary:
 	var data=JSON.parse_string(FileAccess.get_file_as_string('res://data/arenas/arenas.json'))
 	return data.get(id,data.scrapyard)
@@ -16,3 +17,5 @@ static func sync(saved: Dictionary) -> Array[String]:
 			saved.unlocked_styles.append(id)
 			added.append({'gold':'CHAMPIONRING','mayhem':'MAYHEMRING','reactor':'REAKTORSIEGEL'}[id])
 	return added
+
+static func texture(id:String) -> Texture2D:return preload('res://scripts/expansion/comic_art.gd').floor_texture(id)

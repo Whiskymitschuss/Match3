@@ -1,33 +1,21 @@
-# RF Worlds — Mayhem Survivors0.20.0 / DIE MAYHEM WELTEN
+# RF Worlds — Mayhem Survivors 0.21.0 Alpha
 
-Weltkarte und klare Kampagnenfreischaltung:
-**Schrottplatz → Reaktorzone → Neonhafen → Glutwerk.**
-Ein Kampagnensieg in Welle10 öffnet die nächste Arena. Je Welt einmalige Belohnung
-mit Studio-Coins, Werkstattteilen und Case-Tickets. Neue Profile starten auf Welt1;
-Altprofile behalten explizite Freigaben und bereits gespielte Arenen. Echte alte
-Siege bleiben erhalten und erhalten eine abholbare Erstbelohnung.
+**Android-Update:** [APK herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-united-v0.21/Downloads/MayhemSurvivors-v0.21-debug.apk)
 
-[Android-APK0.20 herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/world-map-v0.20/Downloads/MayhemSurvivors-v0.20-debug.apk)
+[Komplettes Godot-Quellprojekt als ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-united-v0.21/Downloads/MayhemSurvivors-v0.21-source.zip) · [SHA256-Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/mayhem-united-v0.21/Downloads/SHA256SUMS-v0.21.txt)
 
-[Vollständiges Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/world-map-v0.20/Downloads/MayhemSurvivors-v0.20-source.zip)
+11 Helden, 10 zusätzliche Gegner, 10 Arenen; Bosse in Welle 2/4/6/8/10.
+Fünf neue Klassen samt Waffen/Fähigkeiten und zehn Entwicklungen. Gemeinsamer Comic-Stil,
+überarbeitete Kataloge, Handbuch, Tutorial und zusätzliche eigene Sounds/Effekte.
 
-[SHA256-Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/world-map-v0.20/Downloads/SHA256SUMS-v0.20.txt)
+APK über die bisherige App installieren. Gleicher Paketname und Update-Schlüssel;
+Coins, Sammlung und lokale Statistiken bleiben erhalten. Keine Deinstallation nötig.
+Nur Android ARM64, Querformat und Offline-Einzelspieler. Keine Werbung oder Echtgeldkäufe.
 
-Über0.19 installieren. SPIELEN → Fighter → Weltkarte. Nach dem Sieg WELTKARTE /
-BELOHNUNG öffnen und das Geschenk abholen. Cases/Garage und Währungshilfe direkt
-von der Karte. Die erste Welt gibt40 Studio-Coins +20 Teile +1 Crew-Ticket, zusätzlich
-zur normalen Run-Belohnung. Vorhandene Sammlung/Coins/Statistiken bleiben erhalten.
+28 Suiten / 3.764 Prüfungen und historische Traces bestanden. 110 Belastungsszenarien
+und 38 native GL-Ansichten. Export/Signatur geprüft. Physische Geräteabnahme und
+menschliches Balancing der Erweiterung stehen aus. Details im Projekt.
 
-27 Testsuiten /2.256 Prüfungen und beide historischen Traces bestanden.112 neue
-Checks,12 native Ansichten inklusive Breitbild/Tablet und Speicherfehler. APK gebaut,
-signiert, Alignment/Manifest/ARM64/Payload geprüft. Physischer Android-/Touch-/Sensor-/
-FPS-/Thermik- und menschlicher Balancetest offen.
+[Projekt und Prüfberichte](MayhemSurvivors/README.md)
 
-![Weltkarte](MayhemSurvivors/tests/world_map_fresh.png)
-![Erstbelohnung](MayhemSurvivors/tests/world_map_reward.png)
-![Währungen](MayhemSurvivors/tests/world_map_currencies.png)
-
-[Anleitung](MayhemSurvivors/README.md) / [Tests](MayhemSurvivors/TEST_REPORT.md) /
-[Buildbericht](MayhemSurvivors/BUILD_REPORT.md) / [Fortschritt](MayhemSurvivors/PROGRESS.md).
-Alle GDScript-Dateien, Daten, Szenen und Laufzeitassets im Quellarchiv; keine privaten
-Schlüssel oder Importcaches. Vorherige Downloads bleiben unverändert.
+[Öffentliche Downloadprüfung](Downloads/VERIFY-v0.21.txt) · [Änderungen / PR #4](https://github.com/Whiskymitschuss/Match3/pull/4)

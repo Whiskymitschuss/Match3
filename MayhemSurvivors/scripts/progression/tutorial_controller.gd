@@ -99,9 +99,11 @@ func redraw_card():
 	var origin=Vector2(520,300) if full else (Vector2(510,0) if shop else Vector2(500,765))
 	var size=Vector2(1240,440) if full else Vector2(920,255 if shop else 285)
 	var panel=Panel.new();panel.position=origin;panel.size=size;panel.mouse_filter=Control.MOUSE_FILTER_STOP;panel.add_theme_stylebox_override('panel',game.UISkin.box(Color('#211631'),Color('#E879F9')));root.add_child(panel)
-	var avatar=TextureRect.new();avatar.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;var face=AtlasTexture.new();face.atlas=game.CharacterArt.texture('kicksy');face.region=game.CharacterArt.region('kicksy');avatar.texture=face;avatar.position=origin+Vector2(18,20);avatar.size=Vector2(230,320) if full else Vector2(145,185);avatar.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;avatar.mouse_filter=Control.MOUSE_FILTER_IGNORE;root.add_child(avatar)
+	var holder=Control.new();holder.position=origin+Vector2(5,25);holder.size=Vector2(255,320) if full else Vector2(160,185);holder.mouse_filter=Control.MOUSE_FILTER_IGNORE;root.add_child(holder)
+	var avatar=Control.new();avatar.set_script(preload('res://scripts/ui/portrait.gd'));avatar.kind='kicksy';avatar.gear={'weapon':'bomb'};avatar.color=Color('#E879F9');avatar.mouse_filter=Control.MOUSE_FILTER_IGNORE;avatar.scale=Vector2.ONE*(.69 if full else .44);holder.add_child(avatar)
 	if not game.saved.settings.get('reduced_motion',false):
-		avatar.pivot_offset=avatar.size*.5;avatar.scale=Vector2.ONE*.65;avatar.create_tween().tween_property(avatar,'scale',Vector2.ONE,.28).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		holder.pivot_offset=holder.size*.5;holder.scale=Vector2.ONE*.65;holder.create_tween().tween_property(holder,'scale',Vector2.ONE,.28).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
 	var offset=285 if full else 185
 	text('KICKSY / %d VON %d' % [step+1,TITLES.size()],origin+Vector2(offset,14),size.x-offset-20,18).modulate=Color('#E879F9')
 	text(TITLES[step],origin+Vector2(offset,42),size.x-offset-20,27).modulate=Color('#FFD166')

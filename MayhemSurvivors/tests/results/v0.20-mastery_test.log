@@ -54,6 +54,51 @@ PASS Below kills threshold steelfist
 PASS Cumulative kills steelfist
 PASS Full mastery title steelfist
 PASS Equip earned gold steelfist
+PASS Fresh cinder
+PASS Locked cinder
+PASS Below wave threshold cinder
+PASS Wave threshold cinder
+PASS Equip earned neon cinder
+PASS Below kills threshold cinder
+PASS Cumulative kills cinder
+PASS Full mastery title cinder
+PASS Equip earned gold cinder
+PASS Fresh frosty
+PASS Locked frosty
+PASS Below wave threshold frosty
+PASS Wave threshold frosty
+PASS Equip earned neon frosty
+PASS Below kills threshold frosty
+PASS Cumulative kills frosty
+PASS Full mastery title frosty
+PASS Equip earned gold frosty
+PASS Fresh volt
+PASS Locked volt
+PASS Below wave threshold volt
+PASS Wave threshold volt
+PASS Equip earned neon volt
+PASS Below kills threshold volt
+PASS Cumulative kills volt
+PASS Full mastery title volt
+PASS Equip earned gold volt
+PASS Fresh rook
+PASS Locked rook
+PASS Below wave threshold rook
+PASS Wave threshold rook
+PASS Equip earned neon rook
+PASS Below kills threshold rook
+PASS Cumulative kills rook
+PASS Full mastery title rook
+PASS Equip earned gold rook
+PASS Fresh nyx
+PASS Locked nyx
+PASS Below wave threshold nyx
+PASS Wave threshold nyx
+PASS Equip earned neon nyx
+PASS Below kills threshold nyx
+PASS Cumulative kills nyx
+PASS Full mastery title nyx
+PASS Equip earned gold nyx
 PASS Reject unknown IDs
 PASS Save real styles
 PASS Reload all progress and selections
@@ -71,4 +116,4 @@ PASS Real defeat awards reached wave and cumulative kills
 PASS Duplicate result never duplicates progress
 PASS Real victory unlocks gold and master title
 PASS Result announces newly earned reward
-MASTERY RESULT 71 passed, 0 failed
+MASTERY RESULT 116 passed, 0 failed

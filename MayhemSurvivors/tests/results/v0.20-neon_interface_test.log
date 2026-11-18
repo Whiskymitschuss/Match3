@@ -77,6 +77,7 @@ PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
 PASS Real full-screen illustrated background MEDIUM
 PASS Animation and blur obey quality MEDIUM
 PASS Actual navigation has icon and quality-aware feedback
@@ -86,8 +87,10 @@ PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
+PASS Actual navigation has icon and quality-aware feedback
 PASS Real full-screen illustrated background HIGH
 PASS Animation and blur obey quality HIGH
+PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
 PASS Actual navigation has icon and quality-aware feedback
@@ -109,4 +112,4 @@ PASS No invisible interactive control remains after transition
 PASS No invisible interactive control remains after transition
 PASS No invisible interactive control remains after transition
 PASS Full eight-item result wraps inside its panel without covering hero art
-NEON INTERFACE RESULT 109 passed, 0 failed
+NEON INTERFACE RESULT 112 passed, 0 failed

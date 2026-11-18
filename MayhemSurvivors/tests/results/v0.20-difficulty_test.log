@@ -20,6 +20,30 @@ PASS Boss factor veteranfoundry
 PASS Distinct campaign victory veteranfoundry
 PASS Endless boss continues veteranfoundry
 PASS Endless crosses twenty veteranfoundry
+PASS Boss factor veterangardens
+PASS Distinct campaign victory veterangardens
+PASS Endless boss continues veterangardens
+PASS Endless crosses twenty veterangardens
+PASS Boss factor veteranfrost
+PASS Distinct campaign victory veteranfrost
+PASS Endless boss continues veteranfrost
+PASS Endless crosses twenty veteranfrost
+PASS Boss factor veteranstorm
+PASS Distinct campaign victory veteranstorm
+PASS Endless boss continues veteranstorm
+PASS Endless crosses twenty veteranstorm
+PASS Boss factor veterancrystal
+PASS Distinct campaign victory veterancrystal
+PASS Endless boss continues veterancrystal
+PASS Endless crosses twenty veterancrystal
+PASS Boss factor veterancarnival
+PASS Distinct campaign victory veterancarnival
+PASS Endless boss continues veterancarnival
+PASS Endless crosses twenty veterancarnival
+PASS Boss factor veteranvoid
+PASS Distinct campaign victory veteranvoid
+PASS Endless boss continues veteranvoid
+PASS Endless crosses twenty veteranvoid
 PASS Actual opening scaling mayhem
 PASS Real spawn interval mayhem
 PASS Real rounded rewards mayhem
@@ -39,6 +63,30 @@ PASS Boss factor mayhemfoundry
 PASS Distinct campaign victory mayhemfoundry
 PASS Endless boss continues mayhemfoundry
 PASS Endless crosses twenty mayhemfoundry
+PASS Boss factor mayhemgardens
+PASS Distinct campaign victory mayhemgardens
+PASS Endless boss continues mayhemgardens
+PASS Endless crosses twenty mayhemgardens
+PASS Boss factor mayhemfrost
+PASS Distinct campaign victory mayhemfrost
+PASS Endless boss continues mayhemfrost
+PASS Endless crosses twenty mayhemfrost
+PASS Boss factor mayhemstorm
+PASS Distinct campaign victory mayhemstorm
+PASS Endless boss continues mayhemstorm
+PASS Endless crosses twenty mayhemstorm
+PASS Boss factor mayhemcrystal
+PASS Distinct campaign victory mayhemcrystal
+PASS Endless boss continues mayhemcrystal
+PASS Endless crosses twenty mayhemcrystal
+PASS Boss factor mayhemcarnival
+PASS Distinct campaign victory mayhemcarnival
+PASS Endless boss continues mayhemcarnival
+PASS Endless crosses twenty mayhemcarnival
+PASS Boss factor mayhemvoid
+PASS Distinct campaign victory mayhemvoid
+PASS Endless boss continues mayhemvoid
+PASS Endless crosses twenty mayhemvoid
 PASS Elite HP receives difficulty factor once
 PASS Elite replacement rewards receive bonus once
 PASS Menu selection cannot mutate active run
@@ -52,4 +100,4 @@ PASS Corrupt score fields sanitized
 PASS Game end records once
 PASS Real card button returns to arena selection
 PASS Real record board populated
-DIFFICULTY RESULT 52 passed, 0 failed
+DIFFICULTY RESULT 100 passed, 0 failed

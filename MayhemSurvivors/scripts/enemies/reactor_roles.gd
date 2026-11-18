@@ -36,7 +36,7 @@ func visible(pos:Vector2) -> bool:
 	var screen:Vector2=game.get_global_transform_with_canvas()*pos
 	return game.get_viewport_rect().grow(-90).has_point(screen)
 func shield_source(e:Dictionary):
-	if not game.is_reactor() or e.kind in ['boss','breaker_axel','drone'] or e.hp<=0:return null
+	if not game.is_reactor() or e.kind in ['boss','breaker_axel','champion','drone'] or e.hp<=0:return null
 	for d in drones:
 		if d.hp>0 and d.pos.distance_squared_to(e.pos)<=pow(float(data.drone.shield_radius),2):return d
 	return null

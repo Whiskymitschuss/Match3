@@ -77,6 +77,120 @@ PASS Recurring actual boss foundry30
 PASS Boss kill continues into shop foundry30
 PASS Next endless wave after boss foundry30
 PASS Endless quota storage bounded foundry30
+PASS Both statistics modes include gardens
+PASS Real arena art gardens
+PASS Campaign boss actually spawns gardens
+PASS Campaign win gardens
+PASS Endless HUD preserves max HP gardens10
+PASS Recurring actual boss gardens10
+PASS Boss kill continues into shop gardens10
+PASS Next endless wave after boss gardens10
+PASS Endless quota storage bounded gardens10
+PASS Endless HUD preserves max HP gardens20
+PASS Recurring actual boss gardens20
+PASS Boss kill continues into shop gardens20
+PASS Next endless wave after boss gardens20
+PASS Endless quota storage bounded gardens20
+PASS Endless HUD preserves max HP gardens30
+PASS Recurring actual boss gardens30
+PASS Boss kill continues into shop gardens30
+PASS Next endless wave after boss gardens30
+PASS Endless quota storage bounded gardens30
+PASS Both statistics modes include frost
+PASS Real arena art frost
+PASS Campaign boss actually spawns frost
+PASS Campaign win frost
+PASS Endless HUD preserves max HP frost10
+PASS Recurring actual boss frost10
+PASS Boss kill continues into shop frost10
+PASS Next endless wave after boss frost10
+PASS Endless quota storage bounded frost10
+PASS Endless HUD preserves max HP frost20
+PASS Recurring actual boss frost20
+PASS Boss kill continues into shop frost20
+PASS Next endless wave after boss frost20
+PASS Endless quota storage bounded frost20
+PASS Endless HUD preserves max HP frost30
+PASS Recurring actual boss frost30
+PASS Boss kill continues into shop frost30
+PASS Next endless wave after boss frost30
+PASS Endless quota storage bounded frost30
+PASS Both statistics modes include storm
+PASS Real arena art storm
+PASS Campaign boss actually spawns storm
+PASS Campaign win storm
+PASS Endless HUD preserves max HP storm10
+PASS Recurring actual boss storm10
+PASS Boss kill continues into shop storm10
+PASS Next endless wave after boss storm10
+PASS Endless quota storage bounded storm10
+PASS Endless HUD preserves max HP storm20
+PASS Recurring actual boss storm20
+PASS Boss kill continues into shop storm20
+PASS Next endless wave after boss storm20
+PASS Endless quota storage bounded storm20
+PASS Endless HUD preserves max HP storm30
+PASS Recurring actual boss storm30
+PASS Boss kill continues into shop storm30
+PASS Next endless wave after boss storm30
+PASS Endless quota storage bounded storm30
+PASS Both statistics modes include crystal
+PASS Real arena art crystal
+PASS Campaign boss actually spawns crystal
+PASS Campaign win crystal
+PASS Endless HUD preserves max HP crystal10
+PASS Recurring actual boss crystal10
+PASS Boss kill continues into shop crystal10
+PASS Next endless wave after boss crystal10
+PASS Endless quota storage bounded crystal10
+PASS Endless HUD preserves max HP crystal20
+PASS Recurring actual boss crystal20
+PASS Boss kill continues into shop crystal20
+PASS Next endless wave after boss crystal20
+PASS Endless quota storage bounded crystal20
+PASS Endless HUD preserves max HP crystal30
+PASS Recurring actual boss crystal30
+PASS Boss kill continues into shop crystal30
+PASS Next endless wave after boss crystal30
+PASS Endless quota storage bounded crystal30
+PASS Both statistics modes include carnival
+PASS Real arena art carnival
+PASS Campaign boss actually spawns carnival
+PASS Campaign win carnival
+PASS Endless HUD preserves max HP carnival10
+PASS Recurring actual boss carnival10
+PASS Boss kill continues into shop carnival10
+PASS Next endless wave after boss carnival10
+PASS Endless quota storage bounded carnival10
+PASS Endless HUD preserves max HP carnival20
+PASS Recurring actual boss carnival20
+PASS Boss kill continues into shop carnival20
+PASS Next endless wave after boss carnival20
+PASS Endless quota storage bounded carnival20
+PASS Endless HUD preserves max HP carnival30
+PASS Recurring actual boss carnival30
+PASS Boss kill continues into shop carnival30
+PASS Next endless wave after boss carnival30
+PASS Endless quota storage bounded carnival30
+PASS Both statistics modes include void
+PASS Real arena art void
+PASS Campaign boss actually spawns void
+PASS Campaign win void
+PASS Endless HUD preserves max HP void10
+PASS Recurring actual boss void10
+PASS Boss kill continues into shop void10
+PASS Next endless wave after boss void10
+PASS Endless quota storage bounded void10
+PASS Endless HUD preserves max HP void20
+PASS Recurring actual boss void20
+PASS Boss kill continues into shop void20
+PASS Next endless wave after boss void20
+PASS Endless quota storage bounded void20
+PASS Endless HUD preserves max HP void30
+PASS Recurring actual boss void30
+PASS Boss kill continues into shop void30
+PASS Next endless wave after boss void30
+PASS Endless quota storage bounded void30
 PASS Endless score beyond ten retained
 PASS Endless does not pollute campaign denominator
 PASS Endless results recorded once
@@ -117,4 +231,4 @@ PASS Actual workshop upgrade tracked
 PASS Actual pause and resume tracked
 PASS Completed training saves only completion and restores mode
 PASS Tutorial cancellation safe
-WORLDS ENDLESS RESULT 117 passed, 0 failed
+WORLDS ENDLESS RESULT 231 passed, 0 failed

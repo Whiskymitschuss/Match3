@@ -10,6 +10,8 @@ func _init(g:Node2D):game=g
 func clear():active=false;triggered=false;age=0;pulse=0
 func update(dt:float):
 	if not enabled or game.state!=game.State.COMBAT or game.run_mode=='tutorial' or game.rules.boss_wave() or game.wave_number<3:return
+	if not game.arena_id in ['scrapyard','reactor','docks','foundry']:
+		game.united.event_update(self,dt);return
 	if not triggered:
 		if float(game.rules.current_wave().duration)-game.remaining<24 or not game.arena_hazards.items.is_empty() or not game.encounters.hazards.is_empty():return
 		triggered=true;active=true;age=0;pulse=0;game.encounters.warn(NAMES[game.arena_id]+' / GOLDENE WARNFLÄCHEN VERLASSEN');game.sound('elite_warning');spawn_pattern()

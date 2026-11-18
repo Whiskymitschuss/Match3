@@ -4,7 +4,7 @@ func run():
 	var g=load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode=true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.enemy_pack.enabled=false;g.arena_events.enabled=false # Frozen legacy encounters; 0.16 has its own tests.
 	g.rules.progressive=false # Historical movement and values; current progression tested separately.
 	g.ravox.enabled=false # Historical fixture excludes new 0.13 enemy; dedicated tests cover Ravox.
@@ -26,7 +26,9 @@ func run():
 		var weapon=g.Specs.all()[scene.spec].weapon
 		g.selected=0 if weapon=='hammer' else (2 if weapon=='orbit' else 1)
 		g.arena_id=scene.arena
+		var carried_hurt_clock=g.hurt_clock # Historical trace carried immunity across scenario setup.
 		g.start_run()
+		g.hurt_clock=carried_hurt_clock
 		g.rng.seed=5100+index
 		# Freeze historical wave rules only in this regression harness, never in the app.
 		g.waves=JSON.parse_string(FileAccess.get_file_as_string('res://tests/fixtures/classic_waves_v0.6.json'))

@@ -35,9 +35,9 @@ func run():
 	g=load('res://scenes/boot/main.tscn').instantiate()
 	g.test_mode=true
 	root.add_child(g)
-	g.set_physics_process(false)
+	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
 	g.saved=Save.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
-	check(Specs.all().size()==16,'Sixteen unique specialization definitions')
+	check(Specs.all().size()==26,'Twenty-six unique specialization definitions')
 	for weapon in g.weapon_data:
 		check(Specs.choices(weapon).size()==2,'Two choices for '+weapon)
 		for id in Specs.choices(weapon):check(Specs.icon(id)!=null,'Real icon loads for '+id)
@@ -201,6 +201,7 @@ func run():
 	for voice in g.sfx_players:voice.stop();voice.stream=null
 	g.alert_audio.stop();g.alert_audio.stream=null
 	for id in Specs.all():
+		if Specs.all()[id].weapon in preload('res://scripts/core/roster.gd').NEW_WEAPONS:continue # Live expansion paths are tested with production boss rules in united_test.
 		var weapon=Specs.all()[id].weapon
 		for arena in ['scrapyard','reactor']:
 			g.arena_id=arena

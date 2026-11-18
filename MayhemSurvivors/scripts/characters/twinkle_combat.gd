@@ -41,7 +41,7 @@ func attack(w:Dictionary,dt:float):
 		game.damage_enemy(e,power)
 		if game.state!=game.State.COMBAT:return
 func apply_stun(e:Dictionary,duration:float):
-	if e.kind in ['boss','breaker_axel'] or float(e.get('suds_resist',0))>0:return
+	if e.kind in ['boss','breaker_axel','champion'] or float(e.get('suds_resist',0))>0:return
 	e.suds_stun=duration;e.suds_resist=float(game.weapon_data.mop.stun_resistance)
 	game.encounters.interrupt_elite(e)
 	game.ravox.interrupt(e)
@@ -51,7 +51,7 @@ func stunned(e:Dictionary,dt:float) -> bool:
 	e.suds_resist=maxf(0,float(e.get('suds_resist',0))-dt)
 	var was=float(e.get('suds_stun',0))>0
 	e.suds_stun=maxf(0,float(e.get('suds_stun',0))-dt)
-	return was and e.kind not in ['boss','breaker_axel']
+	return was and e.kind not in ['boss','breaker_axel','champion']
 func on_kill():
 	if not active() or game.state!=game.State.COMBAT or game.kills%20!=0 or game.hp<=0:return
 	var before:float=game.hp
@@ -79,7 +79,7 @@ func update(dt:float):
 			if e.pos.distance_to(field.pos)<=field.radius+e.radius:dose=maxf(dose,float(field.power)*minf(dt,field.life))
 		if duration>0 and e.pos.distance_to(game.player.position)<=float(game.hero_ability.definition().radius)+e.radius:
 			dose+=float(game.hero_ability.definition().damage)*game.damage_mult*area_multiplier()*duration
-			if e.kind not in ['boss','breaker_axel']:
+			if e.kind not in ['boss','breaker_axel','champion']:
 				game.encounters.interrupt_elite(e)
 				game.ravox.interrupt(e)
 				game.enemy_pack.interrupt(e)
