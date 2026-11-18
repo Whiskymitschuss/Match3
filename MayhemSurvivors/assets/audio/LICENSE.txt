@@ -10,3 +10,5 @@ Mayhem United 0.21: fourteen original deterministic weapon, danger and ability c
 0.23.0: core_collect, core_warning, core_blast, container_warning and container_impact are original deterministic synthesized sounds. No external recordings or samples.
 
 0.24.0: valve_turn, valve_ready, steam_warning and steam_hiss are original deterministic synthesized cues, without external recordings or samples.
+
+0.25.0: combo_fault, combo_ion, combo_umbra — original deterministic synthesized mono 22050 Hz sounds, created for RF Worlds; same project license. No samples from external works.

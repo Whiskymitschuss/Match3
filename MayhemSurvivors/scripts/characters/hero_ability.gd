@@ -31,6 +31,7 @@ func activate() -> bool:
 		dash={'from':game.player.position,'target':target,'age':0.0,'duration':d.duration,'power':d.damage*game.damage_mult,'hit':[]}
 	cooldown=d.cooldown
 	activations+=1
+	game.synergies.ability_started(d.id)
 	game.run_abilities+=1
 	game.haptic('ability')
 	game.sound('ability_'+d.id)
@@ -46,6 +47,7 @@ func activate() -> bool:
 				if origin.distance_to(e.pos)>d.radius+e.radius:continue
 				game.damage_enemy(e,d.damage*game.damage_mult*(1.0+float(game.characters[game.selected].melee_bonus)))
 				if game.state!=game.State.COMBAT:return true
+				game.synergies.ability_hit(e,'shockwave')
 				if game.enemies.has(e) and e.kind not in ['boss','breaker_axel','champion']:
 					game.encounters.interrupt_elite(e)
 					game.ravox.interrupt(e)
@@ -99,6 +101,7 @@ func update(dt:float):
 		if e.pos.distance_to(bomb.target)>bomb.radius+e.radius:continue
 		game.damage_enemy(e,bomb.power)
 		if game.state!=game.State.COMBAT:return
+		game.synergies.ability_hit(e,'impulse')
 		if game.enemies.has(e) and e.kind not in ['boss','breaker_axel','champion']:
 			e.ability_slow=definition().slow
 			e.ability_slow_time=definition().slow_duration

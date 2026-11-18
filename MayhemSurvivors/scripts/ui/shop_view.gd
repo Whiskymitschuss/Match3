@@ -22,6 +22,7 @@ func show():
 	game.button('WERTE',Vector2(1250,75),Vector2(260,85),stats)
 	game.button('? HILFE',Vector2(1550,75),Vector2(260,85),func():help_page(0))
 	if game.characters[game.selected].id=='bruiser':game.button('HAMMER-PFADE',Vector2(865,75),Vector2(350,85),func():game.queue_ui_action(game.bruiser_builds.show))
+	if not game.synergies.module_id().is_empty():game.button('KLASSENMODUL / REGELN',Vector2(865,169),Vector2(680,65),func():game.queue_ui_action(func():game.synergies.show_help(show)))
 	for i in range(game.offers.size()):
 		var o=game.offers[i];var x=100+i*435
 		panel(Vector2(x,245),Vector2(400,495),Color('#19222F'))
@@ -36,7 +37,7 @@ func show():
 		text(o.name,Vector2(x+20,390),360,29,game.GOLD)
 		if o.type=='item':
 			var lines=o.description.split('\n')
-			for j in range(lines.size()):text(lines[j],Vector2(x+20,465+j*43),360,23,Color('#2ED573') if lines[j].begins_with('+') else Color('#FF6376'))
+			for j in range(lines.size()):text(lines[j],Vector2(x+20,465+j*43),360,23,Color('#2ED573') if lines[j].begins_with('+') else (Color('#FF6376') if lines[j].begins_with('-') else Color('#BCE9E8')))
 		elif o.type=='weapon':
 			var d=game.weapon_data[o.id]
 			text(o.description+'\nBasis: %d Schaden / %.2f s' % [d.damage,d.cooldown],Vector2(x+20,465),360,23)
@@ -45,11 +46,11 @@ func show():
 		if o.type=='item':
 			var family=game.run_items.data[o.id].family
 			text('SET: '+game.run_items.FAMILIES[family].name if game.run_items.FAMILIES.has(family) else 'UNABHÄNGIGES MODUL',Vector2(x+20,590),360,21,color)
-		var buy=game.button('GEKAUFT' if o.get('sold',false) else '%d ● KAUFEN' % o.price,Vector2(x+20,640),Vector2(360,85),func():game.buy_offer(i))
+		var buy=game.button('GEKAUFT' if o.get('sold',false) else '%d ● KAUFEN' % o.price,Vector2(x+20,640),Vector2(360,85),func():game.queue_ui_action(func():game.buy_offer(i)))
 		buy.disabled=o.get('sold',false) or game.coins<o.price
 	for i in range(3):
 		var key=['weapons','items','sets'][i]
-		game.button(['WAFFEN (%d)' % game.weapons.size(),'GEGENSTÄNDE (%d)' % game.run_items.owned.size(),'SETS'][i],Vector2(100+i*350,770),Vector2(330,85),func():tab=key;show(),Color('#8B491A') if tab==key else Color('#263342'))
+		game.button(['WAFFEN (%d)' % game.weapons.size(),'GEGENSTÄNDE (%d)' % game.run_items.owned.size(),'SETS'][i],Vector2(100+i*350,770),Vector2(330,85),func():game.queue_ui_action(func():tab=key;show()),Color('#8B491A') if tab==key else Color('#263342'))
 	game.button('REROLL: '+('GRATIS' if game.rerolls==0 else '%d ●' % (5+game.rerolls*3)),Vector2(1300,770),Vector2(480,90),game.reroll_shop)
 	game.button('NÄCHSTE WELLE →',Vector2(1300,900),Vector2(480,105),game.next_shop_wave,Color('#8B491A'))
 	match tab:
@@ -62,10 +63,10 @@ func show():
 		'items':
 			if game.run_items.owned.is_empty():text('Gegenstände ändern deinen Build. Vorteile und Nachteile stehen direkt auf den Karten.',Vector2(110,900),1080,26)
 			for i in range(game.run_items.owned.size()):
-				var id=game.run_items.owned[i];var at=Vector2(100+i*143,880)
-				game.button('',at,Vector2(132,135),func():item_details(id))
-				icon(game.run_items.icon(id),at+Vector2(28,8),Vector2(76,76))
-				text(game.run_items.data[id].name,at+Vector2(7,92),118,16)
+				var id=game.run_items.owned[i];var at=Vector2(100+(i%8)*143,865+floori(i/8.0)*93)
+				game.button('',at,Vector2(132,85),func():game.queue_ui_action(func():item_details(id)))
+				icon(game.run_items.icon(id),at+Vector2(44,4),Vector2(44,44))
+				text(game.run_items.data[id].name,at+Vector2(5,52),122,15)
 		'sets':
 			var counts=game.run_items.counts();var i=0
 			for family in game.run_items.FAMILIES:
@@ -113,6 +114,7 @@ func confirm_salvage(id:String):
 	game.button('VERWERTEN',Vector2(1000,650),Vector2(680,110),func():game.run_items.salvage(id),Color('#803747'))
 func item_details(id:String):
 	if not game.run_items.data.has(id):return
+	if game.run_items.data[id].has('hero'):game.synergies.show_help(show);return
 	var d=game.run_items.data[id]
 	game.backdrop(d.name,'GEGENSTAND / Gilt bis zum Ende dieses Runs')
 	icon(game.run_items.icon(id),Vector2(180,300),Vector2(250,250))

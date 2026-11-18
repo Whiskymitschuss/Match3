@@ -47,7 +47,8 @@ func run():
 		g.generate_offers()
 		for o in g.offers:
 			if o.type=='item':seen[o.id]=true
-	check(seen.size()==4,'All four remaining valid items occur in generated offers')
+	var eligible=g.run_items.data.keys().filter(func(id):return g.run_items.valid(id))
+	check(seen.size()==eligible.size() and eligible.all(func(id):return seen.has(id)),'Every eligible remaining item occurs; wrong-class modules omitted')
 	for o in g.offers:check(not (o.type=='item' and g.run_items.owned.has(o.id)),'Owned item omitted from offers')
 	var timer=g.remaining;var time=g.run_time
 	g._physics_process(1)
