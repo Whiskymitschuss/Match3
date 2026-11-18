@@ -1,0 +1,243 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Class and starting-weapon eligibility 0 fault_core
+PASS Class and starting-weapon eligibility 0 ion_relay
+PASS Class and starting-weapon eligibility 0 umbra_spool
+PASS Guaranteed relevant module only 0 0
+PASS Guaranteed relevant module only 0 1
+PASS Guaranteed relevant module only 0 2
+PASS Guaranteed relevant module only 0 3
+PASS Guaranteed relevant module only 0 4
+PASS Class and starting-weapon eligibility 1 fault_core
+PASS Class and starting-weapon eligibility 1 ion_relay
+PASS Class and starting-weapon eligibility 1 umbra_spool
+PASS Guaranteed relevant module only 1 0
+PASS Guaranteed relevant module only 1 1
+PASS Guaranteed relevant module only 1 2
+PASS Guaranteed relevant module only 1 3
+PASS Guaranteed relevant module only 1 4
+PASS Class and starting-weapon eligibility 2 fault_core
+PASS Class and starting-weapon eligibility 2 ion_relay
+PASS Class and starting-weapon eligibility 2 umbra_spool
+PASS Guaranteed relevant module only 2 0
+PASS Guaranteed relevant module only 2 1
+PASS Guaranteed relevant module only 2 2
+PASS Guaranteed relevant module only 2 3
+PASS Guaranteed relevant module only 2 4
+PASS Class and starting-weapon eligibility 3 fault_core
+PASS Class and starting-weapon eligibility 3 ion_relay
+PASS Class and starting-weapon eligibility 3 umbra_spool
+PASS Guaranteed relevant module only 3 0
+PASS Guaranteed relevant module only 3 1
+PASS Guaranteed relevant module only 3 2
+PASS Guaranteed relevant module only 3 3
+PASS Guaranteed relevant module only 3 4
+PASS Class and starting-weapon eligibility 4 fault_core
+PASS Class and starting-weapon eligibility 4 ion_relay
+PASS Class and starting-weapon eligibility 4 umbra_spool
+PASS Guaranteed relevant module only 4 0
+PASS Guaranteed relevant module only 4 1
+PASS Guaranteed relevant module only 4 2
+PASS Guaranteed relevant module only 4 3
+PASS Guaranteed relevant module only 4 4
+PASS Class and starting-weapon eligibility 5 fault_core
+PASS Class and starting-weapon eligibility 5 ion_relay
+PASS Class and starting-weapon eligibility 5 umbra_spool
+PASS Guaranteed relevant module only 5 0
+PASS Guaranteed relevant module only 5 1
+PASS Guaranteed relevant module only 5 2
+PASS Guaranteed relevant module only 5 3
+PASS Guaranteed relevant module only 5 4
+PASS Class and starting-weapon eligibility 6 fault_core
+PASS Class and starting-weapon eligibility 6 ion_relay
+PASS Class and starting-weapon eligibility 6 umbra_spool
+PASS Guaranteed relevant module only 6 0
+PASS Guaranteed relevant module only 6 1
+PASS Guaranteed relevant module only 6 2
+PASS Guaranteed relevant module only 6 3
+PASS Guaranteed relevant module only 6 4
+PASS Class and starting-weapon eligibility 7 fault_core
+PASS Class and starting-weapon eligibility 7 ion_relay
+PASS Class and starting-weapon eligibility 7 umbra_spool
+PASS Guaranteed relevant module only 7 0
+PASS Guaranteed relevant module only 7 1
+PASS Guaranteed relevant module only 7 2
+PASS Guaranteed relevant module only 7 3
+PASS Guaranteed relevant module only 7 4
+PASS Class and starting-weapon eligibility 8 fault_core
+PASS Class and starting-weapon eligibility 8 ion_relay
+PASS Class and starting-weapon eligibility 8 umbra_spool
+PASS Guaranteed relevant module only 8 0
+PASS Guaranteed relevant module only 8 1
+PASS Guaranteed relevant module only 8 2
+PASS Guaranteed relevant module only 8 3
+PASS Guaranteed relevant module only 8 4
+PASS Class and starting-weapon eligibility 9 fault_core
+PASS Class and starting-weapon eligibility 9 ion_relay
+PASS Class and starting-weapon eligibility 9 umbra_spool
+PASS Guaranteed relevant module only 9 0
+PASS Guaranteed relevant module only 9 1
+PASS Guaranteed relevant module only 9 2
+PASS Guaranteed relevant module only 9 3
+PASS Guaranteed relevant module only 9 4
+PASS Class and starting-weapon eligibility 10 fault_core
+PASS Class and starting-weapon eligibility 10 ion_relay
+PASS Class and starting-weapon eligibility 10 umbra_spool
+PASS Guaranteed relevant module only 10 0
+PASS Guaranteed relevant module only 10 1
+PASS Guaranteed relevant module only 10 2
+PASS Guaranteed relevant module only 10 3
+PASS Guaranteed relevant module only 10 4
+PASS Cannot buy module without coins
+PASS Exact-price real module purchase
+PASS No double purchase or duplicate
+PASS Owned class module leaves offer pool
+PASS Module retained, transient effects cleared at next wave
+PASS Run restart removes modules
+PASS Cannot buy module without coins
+PASS Exact-price real module purchase
+PASS No double purchase or duplicate
+PASS Owned class module leaves offer pool
+PASS Module retained, transient effects cleared at next wave
+PASS Run restart removes modules
+PASS Cannot buy module without coins
+PASS Exact-price real module purchase
+PASS No double purchase or duplicate
+PASS Owned class module leaves offer pool
+PASS Module retained, transient effects cleared at next wave
+PASS Run restart removes modules
+PASS Unowned module leaves original hit/RNG behavior LOW
+PASS Actual shockwave activation LOW
+PASS Shockwave prepares surviving targets LOW
+PASS Actual hammer consumes exactly +60 percent LOW
+PASS Following hammer returns to normal LOW
+PASS Marks expire in combat LOW
+PASS Hammer development uses same bonus quake LOW
+PASS Hammer development uses same bonus crusher LOW
+PASS Actual impulse grenade charges surviving targets LOW
+PASS Actual blaster collision chains to exactly two reachable neighbors LOW
+PASS Discharge consumes mark and starts global cooldown LOW
+PASS Cooldown prevents a second proc and preserves its mark LOW
+PASS Relay recovers after combat cooldown LOW
+PASS Secondary damage cannot crit, consume a mark or re-trigger LOW
+PASS Arc primary chains charge targets without triggering the relay LOW
+PASS Arc evolution charges relay conductor LOW
+PASS Arc evolution charges relay overcharge LOW
+PASS Blaster evolution procs once; pierce and splash cannot loop piercer LOW
+PASS Blaster evolution procs once; pierce and splash cannot loop blast LOW
+PASS Actual shadow step arms next blade LOW
+PASS Only first actual orbit contact amplified +80 percent LOW
+PASS Orbit evolution consumes one charged hit wide LOW
+PASS Orbit evolution consumes one charged hit swift LOW
+PASS Unused shadow charge expires LOW
+PASS All proc clocks and actions freeze 7 LOW
+PASS All proc clocks and actions freeze 5 LOW
+PASS All proc clocks and actions freeze 6 LOW
+PASS Cleanup cancels charge, cooldown and effects LOW
+PASS Unowned module leaves original hit/RNG behavior MEDIUM
+PASS Actual shockwave activation MEDIUM
+PASS Shockwave prepares surviving targets MEDIUM
+PASS Actual hammer consumes exactly +60 percent MEDIUM
+PASS Following hammer returns to normal MEDIUM
+PASS Marks expire in combat MEDIUM
+PASS Hammer development uses same bonus quake MEDIUM
+PASS Hammer development uses same bonus crusher MEDIUM
+PASS Actual impulse grenade charges surviving targets MEDIUM
+PASS Actual blaster collision chains to exactly two reachable neighbors MEDIUM
+PASS Discharge consumes mark and starts global cooldown MEDIUM
+PASS Cooldown prevents a second proc and preserves its mark MEDIUM
+PASS Relay recovers after combat cooldown MEDIUM
+PASS Secondary damage cannot crit, consume a mark or re-trigger MEDIUM
+PASS Arc primary chains charge targets without triggering the relay MEDIUM
+PASS Arc evolution charges relay conductor MEDIUM
+PASS Arc evolution charges relay overcharge MEDIUM
+PASS Blaster evolution procs once; pierce and splash cannot loop piercer MEDIUM
+PASS Blaster evolution procs once; pierce and splash cannot loop blast MEDIUM
+PASS Actual shadow step arms next blade MEDIUM
+PASS Only first actual orbit contact amplified +80 percent MEDIUM
+PASS Orbit evolution consumes one charged hit wide MEDIUM
+PASS Orbit evolution consumes one charged hit swift MEDIUM
+PASS Unused shadow charge expires MEDIUM
+PASS All proc clocks and actions freeze 7 MEDIUM
+PASS All proc clocks and actions freeze 5 MEDIUM
+PASS All proc clocks and actions freeze 6 MEDIUM
+PASS Cleanup cancels charge, cooldown and effects MEDIUM
+PASS Unowned module leaves original hit/RNG behavior HIGH
+PASS Actual shockwave activation HIGH
+PASS Shockwave prepares surviving targets HIGH
+PASS Actual hammer consumes exactly +60 percent HIGH
+PASS Following hammer returns to normal HIGH
+PASS Marks expire in combat HIGH
+PASS Hammer development uses same bonus quake HIGH
+PASS Hammer development uses same bonus crusher HIGH
+PASS Actual impulse grenade charges surviving targets HIGH
+PASS Actual blaster collision chains to exactly two reachable neighbors HIGH
+PASS Discharge consumes mark and starts global cooldown HIGH
+PASS Cooldown prevents a second proc and preserves its mark HIGH
+PASS Relay recovers after combat cooldown HIGH
+PASS Secondary damage cannot crit, consume a mark or re-trigger HIGH
+PASS Arc primary chains charge targets without triggering the relay HIGH
+PASS Arc evolution charges relay conductor HIGH
+PASS Arc evolution charges relay overcharge HIGH
+PASS Blaster evolution procs once; pierce and splash cannot loop piercer HIGH
+PASS Blaster evolution procs once; pierce and splash cannot loop blast HIGH
+PASS Actual shadow step arms next blade HIGH
+PASS Only first actual orbit contact amplified +80 percent HIGH
+PASS Orbit evolution consumes one charged hit wide HIGH
+PASS Orbit evolution consumes one charged hit swift HIGH
+PASS Unused shadow charge expires HIGH
+PASS All proc clocks and actions freeze 7 HIGH
+PASS All proc clocks and actions freeze 5 HIGH
+PASS All proc clocks and actions freeze 6 HIGH
+PASS Cleanup cancels charge, cooldown and effects HIGH
+PASS Wrong weapon cannot consume a combo 0
+PASS Selling required weapon disables module 0
+PASS Reacquired required weapon re-enables owned module 0
+PASS Actual timed wave-end clears marks and charge 0
+PASS Wrong weapon cannot consume a combo 1
+PASS Selling required weapon disables module 1
+PASS Reacquired required weapon re-enables owned module 1
+PASS Actual timed wave-end clears marks and charge 1
+PASS Wrong weapon cannot consume a combo 2
+PASS Selling required weapon disables module 2
+PASS Reacquired required weapon re-enables owned module 2
+PASS Actual timed wave-end clears marks and charge 2
+PASS Bosses receive bounded combo with existing resistance rules 0
+PASS Bosses receive bounded combo with existing resistance rules 1
+PASS Bosses receive bounded combo with existing resistance rules 2
+PASS Proc kills grant each enemy exactly one normal reward
+PASS Removed enemy cannot award another proc or reward
+PASS Boss death blocks late chain damage 2
+PASS Boss death blocks late chain damage 10
+PASS Player death clears pending combo
+PASS Restart after loss remains usable
+PASS Run-history sanitizer preserves all new IDs once
+PASS Native HUD module opens rules in paused state 0
+PASS Rules return resumes combat and restores usable HUD 0
+PASS Shop module rules use actual control 0
+PASS Shop rules return restores shop 0
+PASS Native HUD module opens rules in paused state 1
+PASS Rules return resumes combat and restores usable HUD 1
+PASS Shop module rules use actual control 1
+PASS Shop rules return restores shop 1
+PASS Native HUD module opens rules in paused state 2
+PASS Rules return resumes combat and restores usable HUD 2
+PASS Shop module rules use actual control 2
+PASS Shop rules return restores shop 2
+PASS Actual touch purchases displayed class module once 0
+PASS Actual inventory touch opens owned module rules 0
+PASS Module details return to usable inventory 0
+PASS Actual touch purchases displayed class module once 1
+PASS Actual inventory touch opens owned module rules 1
+PASS Module details return to usable inventory 1
+PASS Actual touch purchases displayed class module once 2
+PASS Actual inventory touch opens owned module rules 2
+PASS Module details return to usable inventory 2
+PASS Own imported combo sound combo_fault
+PASS Own imported combo sound combo_ion
+PASS Own imported combo sound combo_umbra
+PASS Own imported module icon fault_core
+PASS Own imported module icon ion_relay
+PASS Own imported module icon umbra_spool
+PASS Synergy manager has no reference cycle
+SYNERGIES RESULT 240 passed, 0 failed; native_touch=false

@@ -1,3 +1,36 @@
+# Android-Build 0.25.0 — 2026-11-18
+
+Tatsächlicher Debug-Export mit Godot 4.6.3 stable, JDK 21, Android SDK 36 und
+Build Tools 36.0.0. Nach den letzten UI-Korrekturen erneut erzeugt und geprüft.
+
+- MayhemSurvivors-v0.25.0-debug.apk / 76180130 Bytes.
+- SHA256: `60fca96d5cc2262388d9454b781d7f13f88c72408f9c2f29ab127550c5173f7d`.
+- com.rfworlds.mayhemsurvivors / versionCode 31 / versionName 0.25.0.
+- Nur ARM64-v8a / minSDK 24 / targetSDK 36 / Querformat / GL Compatibility.
+- Signatur v2/v3 und 16-KiB-zipalign tatsächlich verifiziert. Gleiches Zertifikat:
+  `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
+- Nur VIBRATE-Permission, kein Internetrecht. APK-CRC, exakte Item-/Fähigkeits-/
+  Bossdaten, kompilierter Synergiencontroller und Aufrufer, drei importierte Icons
+  und drei Soundimporte geprüft. Keine Tests im APK.
+- Quell-ZIP ohne Cache, SDK, APKs und private Schlüssel. Frisch entpackt/importiert:
+  34 Suiten / 5.434 Prüfungen und beide Traces grün. 720 Laufzeitdateien und beide
+  Projekt-/Exportkonfigurationen bytegleich zur geprüften Entpackung.
+
+Über die vorhandene App installieren. Paketname, Schlüssel und Profilschema 3
+bleiben kompatibel; die neue Run-Item-Historie erkennt alle drei Modulkennungen.
+Der Export meldet einen nicht erreichbaren ADB-Daemon (tcp:5037); das APK wurde
+unabhängig davon erfolgreich gebaut und mit den SDK-Werkzeugen verifiziert.
+Es wurde kein Gerät angeschlossen und keine Installation auf Android behauptet.
+
+Rohprotokolle: tests/results/v0.25.0-{build,signature,alignment,manifest,payload,
+clean-import,clean-tests,source-integrity}.log. Öffentliche Artefakte und SHA256SUMS
+unter Downloads. Der vollständige anonyme Downloadnachweis wird nach dem Upload
+separat in Downloads/VERIFY-v0.25.0.txt und einem Downloadprotokoll dokumentiert.
+
+---
+
+## Vorherige Builds
+
 # Android-Build 0.24.0 — 2026-11-18
 
 Tatsächlicher erfolgreicher Debug-Export mit Godot 4.6.3 stable, JDK 21,

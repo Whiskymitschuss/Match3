@@ -1,3 +1,15 @@
+# 0.25.0 — Kampf-Kombinationen
+
+- Bruchkern, Ionenrelais und Schattenspule als klassengebundene Run-Gegenstände.
+- Reale Verbindungen zu Schockwelle, Impuls, Arc, Schattenschritt, Hammer,
+  Blaster und Orbit Blade, inklusive beider Waffenentwicklungen.
+- Garantiertes relevantes Shopangebot, einmaliger Kauf, genaue Regeln, neue
+  HUD-Anzeige mit sicherem Hilfe-/Zurückweg und sichtbare Zielmarkierungen.
+- Begrenzte, nicht rekursive Stromketten, eigene Effektringe, Symbole und Sounds.
+- Pausen-/Wellen-/Run-Bereinigung, sichere Lebensdauer und neue Statistik-IDs.
+- Shop: neutrale Beschreibungstexte lesbar; Inventar mit zwei Reihen.
+- Neue Kampf-, Touch-, Qualitäts-, Belastungs- und stationäre Schadenstests.
+
 # 0.24.0 Alpha — Glutwerk (2026-11-18)
 
 - Zwei freiwillige Dampfventile mit Druckfenster, klarer Richtung und einmaligem Gebrauch je Welle.
