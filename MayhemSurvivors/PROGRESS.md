@@ -1,26 +1,20 @@
-# Mayhem Survivors 0.21.1 — Case-Navigation repariert
+# Mayhem Survivors0.21.2 — Bossbalance
 
-Stand 2026-11-18 / Branch fix/case-exit-v0.21.1 / Basis 0.21 (65fad26).
+2026-11-18 / Branch balance/bosses-v0.21.2 / Basis0.21.1 ee06f8d.
+Nutzer meldete sehr kurze Bosse nach5:55-Neonhafen-Sieg. Fokus: ausschließlich Bosse.
 
-Ursache reproduziert: Beim Bestätigen wurde derselbe Dictionary-Beleg geleert, den
-der Inventar-Callback danach noch las. Nach dem ersten Fehler funktionierten auch
-weitere Klicks auf dem alten Bildschirm nicht mehr. Baseline: 58 bestandene und
-14 absichtlich fehlgeschlagene Reproduktionsprüfungen gegen die alte Version.
+HP600/1800/3200/5500/12500, unterschiedliche Eröffnungen, frühere Attacken,
+weniger Leerlauf, etwas höhere Beweglichkeit abW6. Angriffe bleiben bei HP-Phasen
+bestehen. Vollständige Warnzeiten und Schadenswerte erhalten. Expliziter Bossbonus
+für Orbit/Tesla; normale Gegnerwellen und Sprengkern-Schaden bleiben gleich.
+HP/Bonus-/Werkstattangaben an tatsächliche Werte angepasst. Case-Hotfix bleibt enthalten.
 
-Behoben: unabhängiger Beleg-Snapshot für die Button-Callbacks. Garage-Aktionen werden
-nach der Touch-Verarbeitung ausgeführt; verspätete Klicks alter Menüseiten verworfen.
-Keine Änderung an Wahrscheinlichkeiten, Preisen, freigeschalteten Helden/Items,
-Währungen oder Save-Schema. Bereits gespeicherte Funde sind weiter verwendbar.
+30 Suiten /4590 Prüfungen, beide Traces,748 neue Bossprüfungen und110 Szenarien Soak
+bestanden. 91 Durchsatzszenarien vorher/nachher;15 native Ansichten geprüft.
+APK gebaut und signiert / versionCode27 / SHA256 83f428e40f8f2bb004eb58894542384524d32b60a25345c32874e3282cfadabb.
+Nächste Übergabeschritte: Quell-ZIP frisch prüfen, hochladen, anonym zurückladen und
+Hashes vergleichen. Danach menschliche Boss-Abnahme auf Android, bevorzugt derselbe
+Sparky/Sprengkern-Build im Neonhafen. Keine endgültige menschliche Balance behauptet.
 
-74 neue GUI-Prüfungen bestanden: Crew/Arsenal/Style, beide Zielbuttons, Zurück und
-Hauptmenü, richtige Inventarkategorie, Duplikate, gespeicherter Fund, Speicherfehler
-mit Wiederholung, Animation/Überspringen, Doppeltipp, Breitbild/Tablet. Derselbe Lauf
-mit echten InputEventScreenTouch-Ereignissen im nativen GL-Fenster: ebenfalls 74/0.
-29 Suiten / 3.838 Prüfungen und beide historischen Traces bestanden. Android-APK
-exportiert, Signatur und Alignment geprüft, ARM64 / versionCode26 / versionName0.21.1.
-
-APK/Quellprojekt/Prüfsummen liegen unter Downloads im Hotfix-Branch. Beide
-Dateien vollständig anonym von GitHub zurückgeladen; SHA256 und Dateigrößen stimmen.
-Prüfprotokoll: tests/results/v0.21.1-download.log; PR #5 ist offen, nicht gemergt.
-Nächster Schritt: Update auf dem Android-Gerät installieren und den gemeldeten
-Case-Ablauf dort abnehmen. Keine physische Installation hier behauptet.
+Arbeitskopie: ältere Download-Binaries per sparse-checkout ausgelassen; alle Versionen
+bleiben in Git/GitHub erhalten. Keine historischen Dateien aus der Git-Historie entfernt.

@@ -1,3 +1,24 @@
+# Mayhem Survivors0.21.2 Alpha — Bossbalance
+
+Die fünf Bosskämpfe sind robuster und eröffnen mit unterschiedlichen Angriffen.
+Basis-HP:600/1800/3200/5500/12500. Frühere Attacken, weniger Leerlauf und höhere
+Beweglichkeit abW6; Warnzeiten, Schaden und Zeitlimits bleiben erhalten. HP-Phasen
+löschen laufende Angriffe nicht mehr. Normale Gegnerwellen und Sprengkern-Schaden
+bleiben gleich. Orbit und Tesla besitzen klar ausgewiesene Bossboni.
+
+Neonhafen NORMAL: Abschlussboss14.500 statt6.960HP. Ein starker Build bleibt wirksam;
+keine künstliche Mindestkampfdauer oder Phasen-Unverwundbarkeit. Details:BOSS_BALANCE.md.
+
+Über die bestehende App installieren, nicht deinstallieren. versionCode27 / gleicher
+Update-Schlüssel. Case-Hotfix und bisheriger Fortschritt bleiben erhalten.
+
+30 Suiten /4590 Checks, beide Traces,748 Bossprüfungen,110 Belastungsszenarien und
+15 native Ansichten bestanden. Menschliche Balanceabnahme auf Android steht aus.
+
+---
+
+## Vorheriger Stand
+
 # Mayhem Survivors 0.21.1 Alpha — Case-Hotfix
 
 Dieses Update behebt das Festhängen nach der Case-Öffnung. „ZUM INVENTAR“ und

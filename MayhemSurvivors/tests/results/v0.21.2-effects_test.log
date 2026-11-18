@@ -1,0 +1,43 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Organic hit emits cartoon droplets
+PASS Visual hit never changes position, health or gameplay RNG
+PASS Critical hit adds starburst and splat
+PASS Actual enemy death connects splatter without duplicate rewards
+PASS Coin feedback shows the actual earned reward without legacy death rings
+PASS Death paints ground stain and comic poof
+PASS Repeated death cannot duplicate splatter/rewards
+PASS Pause freezes particles and ground decals
+PASS Level-up freezes all new effects
+PASS Shop freezes all new effects
+PASS Expired particles, stains and event slots are released
+PASS LOW particle pool cap respected
+PASS LOW decal and event caps respected
+PASS LOW expired dictionary slot is reused
+PASS MEDIUM particle pool cap respected
+PASS MEDIUM decal and event caps respected
+PASS MEDIUM expired dictionary slot is reused
+PASS HIGH particle pool cap respected
+PASS HIGH decal and event caps respected
+PASS HIGH expired dictionary slot is reused
+PASS Thousands of cosmetic spawns leave gameplay RNG untouched
+PASS Quality downgrade trims existing backlogs immediately
+PASS Splatter OFF removes stains immediately but preserves blast scorch
+PASS Splatter OFF removes active blood particles
+PASS Splatter OFF prevents new blood while sparks remain
+PASS Actual gun attack emits muzzle flash
+PASS Blade contact emits slash effect
+PASS Lightning attack emits electrical branches
+PASS Hammer attack emits ground cracks and swing arc
+PASS Bruiser ability emits shockwave ground effect
+PASS Sparky fuse expiry emits electrical explosion
+PASS Shade ability emits violet wisps
+PASS Mechanical reactor guardian emits sparks instead of blood
+PASS Reactor bomb emits explosion only at actual hazard activation
+PASS Hazard activation event is not repeated every frame
+PASS Cleanup clears effects on wave change and run end
+PASS Splatter preference survives real disk roundtrip
+PASS Existing schema-3 save receives enabled default
+PASS Malformed setting is safely defaulted
+PASS Splatter setting exposed in real touch menu
+EFFECTS RESULT 40 passed, 0 failed

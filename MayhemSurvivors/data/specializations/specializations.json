@@ -76,24 +76,26 @@
   "wide": {
     "weapon": "orbit",
     "name": "FERNSCHNEIDE",
-    "description": "Orbit-Radius 185. 30 % mehr Schaden, 20 % langsamerer Umlauf; 10 % kürzeres Trefferintervall.",
+    "description": "Orbit-Radius 185. 30 % mehr Schaden, 20 % langsamerer Umlauf; 10 % kürzeres Trefferintervall. Kontakte gegen Bosse: ×3,4 Schaden.",
     "color": "#00D9D0",
     "power": 1.3,
     "radius": 185,
     "angular": 0.8,
     "hit_cooldown": 0.9,
-    "size": 90
+    "size": 90,
+    "boss_power": 3.4
   },
   "swift": {
     "weapon": "orbit",
     "name": "WIRBELKLINGE",
-    "description": "Orbit-Radius 90. 65 % schnellerer Umlauf und 45 % kürzeres Trefferintervall, 80 % Schaden.",
+    "description": "Orbit-Radius 90. 65 % schnellerer Umlauf und 45 % kürzeres Trefferintervall, 80 % Schaden. Kontakte gegen Bosse: ×2,2 Schaden.",
     "color": "#A55EEA",
     "power": 0.8,
     "radius": 90,
     "angular": 1.65,
     "hit_cooldown": 0.55,
-    "size": 58
+    "size": 58,
+    "boss_power": 2.2
   },
   "soap_storm": {
     "weapon": "mop",

@@ -29,7 +29,7 @@ func fire(w:Dictionary,d:Dictionary,power:float,dt:float):
 			if e.pos.distance_to(blade)<e.radius+28 and e.orbit_cd<=0:
 				e.orbit_cd=.5/game.attack_mult/(1+.08*(w.level-1))*d.hit_cooldown
 				game.combat_visuals.impact(e.pos,'orbit')
-				game.damage_enemy(e,power*d.power)
+				game.damage_enemy(e,game.united.bosses.weapon_power(w,e,power*d.power))
 				if game.state!=game.State.COMBAT:return
 		return
 	w.clock-=dt

@@ -1,0 +1,69 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Spitter has independent data-driven base stats
+PASS Spawn grants initial grace period
+PASS Combat camera includes test spitter
+PASS Visible spitter starts full warning without instant projectile
+PASS Warning stays locked and lasts configured duration
+PASS Spitter fires exactly one pooled projectile after warning
+PASS Enemy projectile uses readable configured damage and speed
+PASS Projectile follows announced target instead of player movement
+PASS Shot returns to cooldown
+PASS Pooled spitter shot applies actual swept player collision damage once
+PASS Consumed spitter shot cannot hit a second time
+PASS Pool reuse clears enemy shot appearance metadata
+PASS Cooldown prevents duplicate shot
+PASS Spitter retreats gently when approached
+PASS Spitter holds its preferred engagement distance
+PASS Distant spitter approaches rather than camping forever
+PASS Offscreen spitter cannot start an unseen attack
+PASS Spitter leaving view during warning does not fire offscreen
+PASS Long frame still starts full warning instead of skipping windup
+PASS Killed spitter cannot finish a pending shot
+PASS At most two spitter warnings overlap
+PASS Pause freezes warning and prevents firing
+PASS Level-up freezes new enemy AI
+PASS Shop freezes new enemy AI
+PASS Drone uses its own stats
+PASS Drone movement honors configured speed without hidden multipliers
+PASS Nearby ally receives 30 percent damage reduction
+PASS Drones and bosses never receive drone protection
+PASS Real damage and statistics account for shield reduction
+PASS Overlapping drones never stack reduction
+PASS Leaving aura immediately removes protection
+PASS Remaining live drone still supplies one shield
+PASS Killing final drone immediately releases all allies
+PASS Damage returns to full value after drone death
+PASS Spitter awards correct coins and XP
+PASS Spitter death/rewards cannot be duplicated
+PASS Drone awards configured rewards
+PASS Organic spitter emits its own cartoon splatter
+PASS Mechanical drone emits sparks without blood
+PASS Central spawn API enforces six-spitter cap
+PASS Central spawn API enforces two-drone cap
+PASS Capped spitter roll becomes grunt instead of increasing spawn count
+PASS Capped drone roll becomes grunt
+PASS Valid normalized composition and unchanged duration wave 1
+PASS Wave one remains familiar without new enemies
+PASS Valid normalized composition and unchanged duration wave 2
+PASS Spitter introduced from wave two
+PASS Valid normalized composition and unchanged duration wave 3
+PASS Valid normalized composition and unchanged duration wave 4
+PASS Shield drone introduced from wave four
+PASS Valid normalized composition and unchanged duration wave 5
+PASS Valid normalized composition and unchanged duration wave 6
+PASS Valid normalized composition and unchanged duration wave 7
+PASS Valid normalized composition and unchanged duration wave 8
+PASS Valid normalized composition and unchanged duration wave 9
+PASS Valid normalized composition and unchanged duration wave 10
+PASS Actual wave spawner produces spitter at its introduction wave
+PASS Actual wave spawner produces drone at its introduction wave
+PASS spitter sprite region fits actual generated atlas
+PASS spitter art dimensions valid
+PASS drone sprite region fits actual generated atlas
+PASS drone art dimensions valid
+PASS Classic arena cannot inherit reactor shielding
+PASS Cleanup removes shields and hostile projectiles
+PASS Arena change returns to original classic wave configuration
+PASS Android interruption freezes spitter windup
+REACTOR ROLES RESULT 66 passed, 0 failed

@@ -76,7 +76,7 @@ func chain(w:Dictionary,amount:float,count:int):
 		if nearest==null:break
 		hit.append(nearest);game.combat_visuals.beam(at,nearest.pos);at=nearest.pos
 		if game.Specs.definition(w).get('variant',-1)==1:nearest.ability_slow=.6;nearest.ability_slow_time=1.2
-		game.damage_enemy(nearest,amount*(1-i*.09))
+		game.damage_enemy(nearest,game.united.bosses.weapon_power(w,nearest,amount*(1-i*.09)))
 		if game.state!=game.State.COMBAT:return
 func projectile(s:Dictionary,before:Vector2,dt:float):
 	s.united_age+=dt

@@ -1,7 +1,7 @@
 {
   "2": {
     "name": "SÄUREPANZER",
-    "hp": 420,
+    "hp": 600,
     "speed": 88,
     "damage": 10,
     "radius": 54,
@@ -9,11 +9,17 @@
     "coins": 45,
     "art": 1,
     "pattern": "acid",
-    "duration": 60
+    "duration": 60,
+    "sequence": [
+      "fan",
+      "zones",
+      "ring",
+      "charge"
+    ]
   },
   "4": {
     "name": "SCHROTTWALZE",
-    "hp": 950,
+    "hp": 1800,
     "speed": 95,
     "damage": 13,
     "radius": 61,
@@ -21,18 +27,59 @@
     "coins": 75,
     "art": 2,
     "pattern": "charge",
-    "duration": 65
+    "duration": 65,
+    "sequence": [
+      "charge",
+      "ring",
+      "zones",
+      "fan"
+    ]
   },
   "8": {
     "name": "STURMADMIRAL",
-    "hp": 2450,
-    "speed": 90,
+    "hp": 5500,
+    "speed": 95,
     "damage": 17,
     "radius": 69,
     "xp": 130,
     "coins": 135,
     "art": 3,
     "pattern": "storm",
-    "duration": 80
+    "duration": 80,
+    "sequence": [
+      "zones",
+      "fan",
+      "charge",
+      "ring"
+    ]
+  },
+  "6": {
+    "hp": 3200,
+    "speed": 85,
+    "sequence": [
+      "charge",
+      "hammer",
+      "ring"
+    ]
+  },
+  "10": {
+    "hp": 12500,
+    "speed": 85,
+    "sequence": [
+      "charge",
+      "fan",
+      "zones",
+      "ring"
+    ]
+  },
+  "cadence": {
+    "opening_delay": 1.4,
+    "phase_pause": 0.8,
+    "recovery": [
+      2.2,
+      1.9,
+      1.7
+    ],
+    "charge_recovery": 1.6
   }
 }
