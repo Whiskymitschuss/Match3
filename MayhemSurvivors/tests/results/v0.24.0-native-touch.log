@@ -1,0 +1,223 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS Exactly two optional valves; no automatic steam 0 LOW
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 0 MEDIUM
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 0 HIGH
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 1 LOW
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 1 MEDIUM
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 1 HIGH
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 5 LOW
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 5 MEDIUM
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Exactly two optional valves; no automatic steam 5 HIGH
+PASS Moving through never releases the valve
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Full 1.6 second telegraph; no early damage or push
+PASS Directional footprint damages only enemies inside
+PASS Surviving enemy pushed along arrow; operator remains safe
+PASS Sweet pressure grants exact bounded bonus plus ordinary XP/coins
+PASS Environmental steam has no critical RNG draw
+PASS Used handwheel cannot spawn another burst
+PASS One damage and bonus resolution per handwheel
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Second distinct valve has the only other wave bonus
+PASS Wave cleanup retains only receipt
+PASS Restart resets all foundry receipts
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Pressure snapshot controls bonus 0.15
+PASS Pressure-based damage derives from data 0.15
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Pressure snapshot controls bonus 0.7
+PASS Pressure-based damage derives from data 0.7
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Pressure snapshot controls bonus 0.95
+PASS Pressure-based damage derives from data 0.95
+PASS Pressure cycles safely without an automatic release
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Sweet pressure without a kill gives no bonus
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Valve clocks, warning and collision frozen 7
+PASS Release API rejects paused or shop use 7
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Valve clocks, warning and collision frozen 5
+PASS Release API rejects paused or shop use 5
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Valve clocks, warning and collision frozen 6
+PASS Release API rejects paused or shop use 6
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Player has full warning inside steam
+PASS Player entering jet takes actual damage
+PASS Lingering steam art cannot deal duplicate damage
+PASS Valve requires full hold
+PASS Real proximity hold releases one directional burst
+PASS Death stops pending kills and posthumous rewards
+PASS Restart remains usable after steam death
+PASS Late window and public action reject unfinished activation
+PASS Valid valve/jet geometry at arena edge (45.0, 45.0)
+PASS Valid valve/jet geometry at arena edge (45.0, 45.0)
+PASS Valid valve/jet geometry at arena edge (2355.0, 45.0)
+PASS Valid valve/jet geometry at arena edge (2355.0, 45.0)
+PASS Valid valve/jet geometry at arena edge (45.0, 1555.0)
+PASS Valid valve/jet geometry at arena edge (45.0, 1555.0)
+PASS Valid valve/jet geometry at arena edge (2355.0, 1555.0)
+PASS Valid valve/jet geometry at arena edge (2355.0, 1555.0)
+PASS Ofenkönig casts real crossing steam lanes with full warning
+PASS Boss is not damaged before its own warning expires
+PASS Environmental boss damage capped and no boss knockback
+PASS Boss pattern grants no handwheel bonus
+PASS Final kill clears owned steam warnings and reaches victory
+PASS Phase threshold preserves the announced steam attack
+PASS Displaced owner cancels steam before collision
+PASS Recurring foundry rules in campaign
+PASS Recurring foundry rules in endless
+PASS Recurring foundry rules in tutorial
+PASS No normal valve stations in starter/boss wave 1
+PASS No normal valve stations in starter/boss wave 2
+PASS No normal valve stations in starter/boss wave 4
+PASS No normal valve stations in starter/boss wave 6
+PASS No normal valve stations in starter/boss wave 8
+PASS No normal valve stations in starter/boss wave 10
+PASS Existing hot floor lanes remain active
+PASS Help loader preserves foundry and sanitizes duplicates
+PASS Kicksy appears before first foundry encounter
+PASS Actual coach touch saves acknowledgement and returns to briefing
+PASS Foundry help reopens while simulation stays paused
+PASS Actual help return preserves usable pause menu
+PASS Imported original foundry sound valve_turn
+PASS Imported original foundry sound valve_ready
+PASS Imported original foundry sound steam_warning
+PASS Imported original foundry sound steam_hiss
+PASS Both managers release without a reference cycle
+FOUNDRY RESULT 217 passed, 0 failed; native_touch=true

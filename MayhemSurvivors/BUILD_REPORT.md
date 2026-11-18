@@ -1,3 +1,32 @@
+# Android-Build 0.24.0 — 2026-11-18
+
+Tatsächlicher erfolgreicher Debug-Export mit Godot 4.6.3 stable, JDK 21,
+Android SDK 36 und Build Tools 36.0.0.
+
+- MayhemSurvivors-v0.24.0-debug.apk / 76145918 Bytes.
+- SHA256: `7beeaccb66d0ee0f9103fb4e8df8d86ec58e8f358e57b3549a942ad8d2b68b0a`.
+- com.rfworlds.mayhemsurvivors / versionCode 30 / versionName 0.24.0.
+- ARM64-v8a ausschließlich / minSDK 24 / targetSDK 36 / Querformat / GL Compatibility.
+- Signatur v2/v3 und 16-KiB-zipalign geprüft. Zertifikat unverändert:
+  `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
+- Nur VIBRATE-Permission, keine Internetberechtigung. APK-CRC, exakte Arenendaten,
+  kompilierter Ventilcontroller, Texturimport und vier Soundimporte verifiziert.
+- Keine Tests im APK. Quellprojekt mit allen notwendigen Dateien, ohne Cache,
+  SDK, APKs oder private Schlüssel. Frisch importiert: 33 Suiten / 5.194 Prüfungen,
+  beide Traces und 706 bytegleiche Laufzeitdateien plus Konfigurationen.
+
+Als Update über die vorhandene App vorgesehen. Profilschema 3 bleibt kompatibel;
+vorhandene Arenenhilfen bleiben erhalten, der neue Glutwerk-Status wird defensiv geladen.
+Keine tatsächliche Installation auf einem physischen Android-Gerät erfolgt.
+
+Rohprotokolle unter tests/results/v0.24.0-*: build, signature, alignment, manifest,
+payload, clean-import, clean-tests und source-integrity. Artefakte/Prüfsummen unter
+Downloads; vollständige anonyme Downloadprüfung folgt separat nach dem Upload.
+
+---
+
+## Vorherige Builds
+
 # Android-Build 0.23.0 — 2026-11-18
 
 Tatsächlicher erfolgreicher Debug-Export: Godot 4.6.3 stable, JDK 21, Android SDK 36,

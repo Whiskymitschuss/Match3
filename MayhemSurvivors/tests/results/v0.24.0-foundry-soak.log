@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FOUNDRY SOAK 0 LOW complete
+FOUNDRY SOAK 0 MEDIUM complete
+FOUNDRY SOAK 0 HIGH complete
+FOUNDRY SOAK 1 LOW complete
+FOUNDRY SOAK 1 MEDIUM complete
+FOUNDRY SOAK 1 HIGH complete
+FOUNDRY SOAK 5 LOW complete
+FOUNDRY SOAK 5 MEDIUM complete
+FOUNDRY SOAK 5 HIGH complete
+FOUNDRY SOAK PASS scenarios=9 simulation_steps=23760 simulated_seconds=396.0 peak_enemies=100 arena_hazards=2 projectile_pool=10

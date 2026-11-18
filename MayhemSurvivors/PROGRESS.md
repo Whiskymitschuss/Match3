@@ -1,29 +1,25 @@
-# Mayhem Survivors 0.23.0 — Reaktorzone & Neonhafen
+# Mayhem Survivors 0.24.0 — Glutwerk
 
-2026-11-18 / Branch feature/arena-mechanics-v0.23.0 / Basis 0.22.0 aee52e2.
+2026-11-18 / Branch feature/foundry-valves-v0.24.0 / Basis 0.23.0 898fdd7.
 Phase 19: Übergabe und Dokumentation. Implementierung und lokale Prüfung abgeschlossen.
 
-Umgesetzt: Kerne sammeln und freiwillig überladen, nutzbare Container-Doppelladungen,
-begrenzte Manöver-Boni, reguläre Gegnerbeute, eigene Boss-Zonenangriffe, Kicksy-Hilfe
-beim ersten Auftreten und in der Pause, HUD/Ergebnisdetails/Weltkarteninfo, zwei eigene
-SVGs und fünf eigene Audiocues. Kampagne und Endlos; Waffenwerte, Boss-HP, Profile und
-Case-Fix erhalten. Keine Online-Systeme.
+Umgesetzt: zwei freiwillige Ventile, Druckfenster, feste Dampfrichtung, Rückstoß,
+begrenzter Bonus und reguläre Gegnerbeute; Ofenkönig-Dampfbahnen, gespeicherte
+Kicksy-Hilfe, HUD/Weltkarte, eigene Grafik und vier eigene Sounds. Kampfwerte,
+Boss-HP, bestehende Profile und Case-Fix erhalten. Keine Online-Systeme.
 
-32 Suiten / 4.977 Prüfungen und beide Traces nach frischem Import bestanden.
-220 neue Prüfungen zusätzlich mit nativen Touch-Ereignissen. 21 native Ansichten /
-drei Seitenverhältnisse, zwölf gezielte Soak-Szenarien mit bis 100 Gegnern und 110
-Helden-/Arenenkombinationen bestanden. 694 Laufzeitdateien und Konfigurationen
-bytegleich zum Testprojekt. Keine offenen Script-/Parser-/Ressourcenfehler.
+33 Suiten / 5.194 Prüfungen und beide Traces nach frischem Import bestanden.
+217 neue Prüfungen zusätzlich mit nativen Touch-Ereignissen. 16 native Ansichten /
+drei Seitenverhältnisse, neun gezielte Belastungsszenarien bis 100 Gegner und alle
+110 Helden-/Arenenkombinationen bestanden. 706 Laufzeitdateien und
+Konfigurationen bytegleich zur Testentpackung. Keine offenen Script-/Parserfehler.
 
-Android-APK gebaut / versionCode 29 / ARM64 / gleiche Signatur / Alignment geprüft.
-APK-SHA256: 7a1e8343408b2b5d76e931536b402a9e16ceeda2ed08f2513586f211c0be605f.
-Finales Quell-ZIP per CRC und gegen alle 694 geprüften Laufzeitdateien verifiziert.
-APK und ZIP auf GitHub veröffentlicht, vollständig anonym heruntergeladen und beide
-SHA256-Prüfsummen bestätigt. Nachweis: Downloads/VERIFY-v0.23.0.txt und
-tests/results/v0.23.0-download.log. Pull Request #8 offen und konfliktfrei; nicht gemergt.
-Nächster Schritt: menschlicher Praxistest der Arenenmechaniken auf Android.
+Android-APK gebaut / versionCode 30 / ARM64 / gleiche Signatur / Alignment geprüft.
+APK-SHA256: 7beeaccb66d0ee0f9103fb4e8df8d86ec58e8f358e57b3549a942ad8d2b68b0a.
+Nächster Schritt: finalen Quellstand verpacken, APK/ZIP auf GitHub bereitstellen,
+öffentliche Downloads vollständig mit SHA256 vergleichen und PR anlegen.
 
-Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60-FPS-Messung.
-Praxistest: beide Arenen mit Bruiser und Sparky; Manöver und Bossmuster ausprobieren.
-Details: ARENA_MECHANICS.md, TEST_REPORT.md, BUILD_REPORT.md. Temporäre Entpackungen
-älterer Prüfungen wurden entfernt; sämtliche Git-Versionen bleiben erhalten.
+Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60 FPS.
+Praxistest: Glutwerk mit beiden Ventilen, verschiedenen Druckwerten und Ofenkönig.
+Details: FOUNDRY.md, TEST_REPORT.md, BUILD_REPORT.md. Temporäre Entpackungen alter
+Prüfungen entfernt; Git-Historie und veröffentlichte Versionen erhalten.
