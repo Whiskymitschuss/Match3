@@ -1,30 +1,23 @@
-# Android-Buildbericht 0.21.0 — 2026-11-18
+# Android-Hotfix 0.21.1 — 2026-11-18
 
-Godot 4.6.3 stable / JDK 21 / Android SDK 36 / Build Tools 36.0.0.
-Export: `godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.21-debug.apk`.
+Godot 4.6.3 stable / JDK21 / Android SDK36 / Build Tools36.0.0.
+Tatsächlicher Debug-Export mit `--export-debug Android` erfolgreich.
 
-- Debug-APK: 76,014,568 Bytes.
-- SHA256: `bac59810199b766622b8f8fba15dc3c206d47a68ab06e3285777ecbbffcc86ab`.
-- Paket com.rfworlds.mayhemsurvivors / versionCode 25 / versionName 0.21.0.
-- Ausschließlich ARM64-v8a / minSDK 24 / targetSDK 36 / Landscape / GL Compatibility.
-- APK v2/v3 signiert; zipalign mit 16-KiB-Prüfung. Zertifikat wie in 0.20:
+- MayhemSurvivors-v0.21.1-debug.apk / 76014568 Bytes.
+- SHA256 `17e554a6aee05b43ef563b7044953f1775918f4adbaf90689058e48218db989c`.
+- com.rfworlds.mayhemsurvivors / versionCode26 / versionName0.21.1.
+- Ausschließlich ARM64-v8a / minSDK24 / targetSDK36 / Landscape / GL Compatibility.
+- v2/v3-Signatur und zipalign -c -P16 4 geprüft. Identischer Update-Schlüssel:
   5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce.
-- Nur VIBRATE, kein INTERNET. Immersiv und Edge-to-edge konfiguriert.
-- Alle neuen Laufzeit-Atlanten, Daten und kompilierten Controller im Payload geprüft;
-  keine Tests im APK. Details in tests/results/v0.21-payload.log.
+- Kompilierter Garage-Controller vorhanden; Archiv-CRC geprüft. Nur VIBRATE-Permission,
+  kein INTERNET. Keine Änderung am lokalen Save-Schema.
 
-ADB-Daemon nicht erreichbar. Das verhindert hier die Installation auf einem Gerät,
-nicht den tatsächlichen Export. Keine physische Start-/Update-/Sensor-/Audio- oder
-FPS-Abnahme behauptet. Über die vorhandene App installieren und Daten behalten.
+Über die vorhandene Version installieren, keine Deinstallation nötig. Bereits
+freigeschaltete Figuren und zuvor gespeicherte Case-Funde bleiben erhalten.
+ADB-Geräteinstallation war hier nicht möglich; der native Touch-Test ist ein Linux-
+GL-Test. Keine physische Android-Abnahme behauptet.
 
-Quell-ZIP enthält alle Laufzeitquellen, Szenen, Daten, Assets, Fontlizenzen, Generatoren,
-Tests und Berichte. Ohne .godot, APKs, SDK/JDK oder private Signierschlüssel. Eine
-aktuelle Auswahl nativer Aufnahmen liegt bei; vollständige Screenshotgalerien im Repo.
-Für eigenen Export SDK/JDK/Template und denselben privaten Schlüssel für kompatible
-Updates konfigurieren. Das Projekt selbst startet nach dem Import ohne Programmierung.
-
-Quellarchiv ohne Cache frisch importiert: alle 28 Suiten / 3.764 Prüfungen und beide
-historischen Traces erneut bestanden. 662 Laufzeitdateien bytegleich zum getesteten
-Archiv. Protokolle: v0.21-clean-import.log, v0.21-clean-tests.log und
-v0.21-source-integrity.log. Öffentliche Prüfsummen stehen im Downloads-Verzeichnis;
-die vollständige Downloadprüfung wird im Repository protokolliert.
+Quell-ZIP mit vollständigen Laufzeitquellen, Assets, Szenen, Tests und Berichten;
+keine Importcaches, SDKs, APKs oder privaten Schlüssel. Inhalt per CRC und bytegleichem
+Vergleich mit den getesteten Projektdateien geprüft. Öffentliche Downloads und
+Prüfsummen im Downloads-Verzeichnis, separates Downloadprotokoll im Repository.

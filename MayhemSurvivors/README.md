@@ -1,3 +1,20 @@
+# Mayhem Survivors 0.21.1 Alpha — Case-Hotfix
+
+Dieses Update behebt das Festhängen nach der Case-Öffnung. „ZUM INVENTAR“ und
+„WEITERE CASES“ führen wieder zur richtigen Seite. Touch-Navigation und Doppeltipps
+sind abgesichert. Die Inhalte aus 0.21, Cases und vorhandene Spielstände bleiben erhalten.
+
+Über die vorhandene App installieren; vorher nicht deinstallieren. Paketname und
+Update-Schlüssel sind identisch. Android versionCode26 / 0.21.1 / ARM64.
+
+29 Suiten / 3.838 Prüfungen und beide historischen Traces bestanden. 74 neue echte
+GUI-Prüfungen, zusätzlich alle 74 mit Touch-Ereignissen im nativen GL-Fenster bestanden.
+Physische Android-Abnahme steht aus. Details: TEST_REPORT.md und BUILD_REPORT.md.
+
+---
+
+## Inhalt des unveränderten 0.21-Updates
+
 # Mayhem Survivors 0.21.0 Alpha — MAYHEM UNITED
 
 RF Worlds / Android ARM64 / Godot 4.6.3 stable / GDScript / vollständig offline.

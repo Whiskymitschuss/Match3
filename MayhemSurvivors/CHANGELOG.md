@@ -1,3 +1,13 @@
+# 0.21.1 Alpha — Case-Navigation (2026-11-18)
+
+- „ZUM INVENTAR“ liest nach Bestätigung einen unabhängigen Öffnungsbeleg und hängt nicht mehr fest.
+- „WEITERE CASES“, Inventar-Zurück und Hauptmenü bleiben nach der Fundanzeige erreichbar.
+- Garage-Navigation läuft nach dem Touch-Ereignis; verspätete Doppeltipps alter Seiten werden verworfen.
+- Bereits gespeicherte Funde, Eigentum und Währungen erhalten; keine Änderung der Case-Ökonomie.
+- 74 GUI-Prüfungen, nativer Touch-Lauf, 29 Regressionstestsuiten und Android-Debug-Build geprüft.
+
+---
+
 # 0.21.0 Alpha — MAYHEM UNITED (2026-11-18)
 
 - Zehn Arenen mit schrittweiser Freigabe und eigenen Abschlussbossen; fünf Bosswellen pro Run.
