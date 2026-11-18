@@ -14,3 +14,5 @@ Update-Schlüssel. Physische Android-Abnahme steht aus. Inhalt von 0.21 bleibt e
 11 Helden, 19 normale Gegner, 10 Arenen und Bossleiter 2/4/6/8/10.
 
 [Projekt und Prüfberichte](../MayhemSurvivors/README.md)
+
+[Downloadprüfung](VERIFY-v0.21.1.txt) · [Hotfix / PR #5](https://github.com/Whiskymitschuss/Match3/pull/5)

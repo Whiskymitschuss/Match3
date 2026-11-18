@@ -19,7 +19,8 @@ mit echten InputEventScreenTouch-Ereignissen im nativen GL-Fenster: ebenfalls 74
 29 Suiten / 3.838 Prüfungen und beide historischen Traces bestanden. Android-APK
 exportiert, Signatur und Alignment geprüft, ARM64 / versionCode26 / versionName0.21.1.
 
-APK/Quellprojekt/Prüfsummen liegen unter Downloads im Hotfix-Branch. Nach dem Upload
-wird der vollständige anonyme Download samt Hash geprüft und separat protokolliert.
+APK/Quellprojekt/Prüfsummen liegen unter Downloads im Hotfix-Branch. Beide
+Dateien vollständig anonym von GitHub zurückgeladen; SHA256 und Dateigrößen stimmen.
+Prüfprotokoll: tests/results/v0.21.1-download.log; PR #5 ist offen, nicht gemergt.
 Nächster Schritt: Update auf dem Android-Gerät installieren und den gemeldeten
 Case-Ablauf dort abnehmen. Keine physische Installation hier behauptet.
