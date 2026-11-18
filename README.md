@@ -17,3 +17,5 @@ und 38 native GL-Ansichten. Export/Signatur geprüft. Physische Geräteabnahme u
 menschliches Balancing der Erweiterung stehen aus. Details im Projekt.
 
 [Projekt und Prüfberichte](MayhemSurvivors/README.md)
+
+[Öffentliche Downloadprüfung](Downloads/VERIFY-v0.21.txt) · [Änderungen / PR #4](https://github.com/Whiskymitschuss/Match3/pull/4)
