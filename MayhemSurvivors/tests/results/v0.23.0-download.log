@@ -1,0 +1,10 @@
+Anonymous complete public download verification — 2026-11-18T17:56:26.689852+00:00
+PASS MayhemSurvivors-v0.23.0-debug.apk
+76103712 bytes
+SHA256 7a1e8343408b2b5d76e931536b402a9e16ceeda2ed08f2513586f211c0be605f
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/MayhemSurvivors-v0.23.0-debug.apk
+PASS MayhemSurvivors-v0.23.0-source.zip
+84902276 bytes
+SHA256 95db4154e1b29f77a31100b5b888f29456888a273f792e22a357cd7ae0e8ba11
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/MayhemSurvivors-v0.23.0-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.

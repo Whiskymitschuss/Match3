@@ -12,6 +12,9 @@ dritten normalen Welle, in Kampagne und Endlos. Boss-HP, Waffenwerte und Case-Fi
 32 Suiten / 4.977 Prüfungen und beide Traces nach frischem Import bestanden;
 220 Prüfungen zusätzlich mit nativem Touch, 21 GL-Ansichten und beide Belastungsläufe.
 Gleicher Paketname und Schlüssel: als Update über die bestehende App installieren.
-Menschliche Balance- und Android-Geräteabnahme stehen aus.
+APK und ZIP wurden vollständig anonym heruntergeladen; beide SHA256-Prüfsummen
+stimmen überein. Menschliche Balance- und Android-Geräteabnahme stehen aus.
 
 [Projekt und Prüfberichte](../MayhemSurvivors/README.md)
+
+[Downloadprüfung](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/VERIFY-v0.23.0.txt) · [Pull Request #8](https://github.com/Whiskymitschuss/Match3/pull/8)

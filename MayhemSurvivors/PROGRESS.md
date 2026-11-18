@@ -17,8 +17,11 @@ bytegleich zum Testprojekt. Keine offenen Script-/Parser-/Ressourcenfehler.
 
 Android-APK gebaut / versionCode 29 / ARM64 / gleiche Signatur / Alignment geprüft.
 APK-SHA256: 7a1e8343408b2b5d76e931536b402a9e16ceeda2ed08f2513586f211c0be605f.
-Nächster Schritt: finalen Quellstand verpacken, APK/ZIP auf GitHub bereitstellen,
-öffentliche vollständige Downloads mit SHA256 vergleichen und PR anlegen.
+Finales Quell-ZIP per CRC und gegen alle 694 geprüften Laufzeitdateien verifiziert.
+APK und ZIP auf GitHub veröffentlicht, vollständig anonym heruntergeladen und beide
+SHA256-Prüfsummen bestätigt. Nachweis: Downloads/VERIFY-v0.23.0.txt und
+tests/results/v0.23.0-download.log. Pull Request #8 offen und konfliktfrei; nicht gemergt.
+Nächster Schritt: menschlicher Praxistest der Arenenmechaniken auf Android.
 
 Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60-FPS-Messung.
 Praxistest: beide Arenen mit Bruiser und Sparky; Manöver und Bossmuster ausprobieren.
