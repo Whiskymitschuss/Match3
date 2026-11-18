@@ -1,0 +1,96 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Boot -> main menu
+PASS Defined state transitions
+PASS Character selection
+PASS Character stats 0
+PASS Character stats 1
+PASS Character stats 2
+PASS Character stats 3
+PASS Analog diagonal movement
+PASS Arena limits
+PASS Safe spawn grunt
+PASS Chase AI grunt
+PASS Safe spawn runner
+PASS Chase AI runner
+PASS Safe spawn tank
+PASS Chase AI tank
+PASS Automatic blaster attack
+PASS Swept projectile hit
+PASS Death once and coin reward once
+PASS XP crystal drop
+PASS XP pickup
+PASS XP formula level one
+PASS Level up pauses combat
+PASS Level-up freezes time
+PASS Multiple queued levels processed sequentially
+PASS Damage upgrade
+PASS Vital upgrade
+PASS All passive upgrades
+PASS Healing upgrade
+PASS Invalid heal filtered
+PASS Multishot cap
+PASS Four shop offers
+PASS Shop purchase debits exact price
+PASS Duplicate purchase rejected
+PASS First reroll free
+PASS Second reroll costs eight
+PASS Cannot spend negative coins
+PASS Max weapon excluded blaster
+PASS Max weapon excluded hammer
+PASS Max weapon excluded splitgun
+PASS Max weapon excluded arc
+PASS Max weapon excluded orbit
+PASS Max weapon excluded mop
+PASS Max weapon excluded bomb
+PASS Max weapon excluded tools
+PASS Max weapon excluded flamer
+PASS Max weapon excluded cryo
+PASS Max weapon excluded tesla
+PASS Max weapon excluded lance
+PASS Max weapon excluded chakram
+PASS Weapon damage blaster
+PASS Weapon damage hammer
+PASS Weapon damage splitgun
+PASS Weapon damage arc
+PASS Weapon damage orbit
+PASS Weapon damage mop
+PASS Weapon damage bomb
+PASS Weapon damage tools
+PASS Weapon damage flamer
+PASS Weapon damage cryo
+PASS Weapon damage tesla
+PASS Weapon damage lance
+PASS Weapon damage chakram
+PASS Pause freezes simulation
+PASS Resume
+PASS Projectile pool reuses inactive slot
+PASS Projectile damages only one collider
+PASS Player contact damage cooldown
+PASS Wave -> shop 1
+PASS Wave -> shop 2
+PASS Wave -> shop 3
+PASS Wave -> shop 4
+PASS Wave -> shop 5
+PASS Wave -> shop 6
+PASS Wave -> shop 7
+PASS Wave -> shop 8
+PASS Wave -> shop 9
+PASS Touch joystick captures finger and analog drag
+PASS Second finger does not steal joystick
+PASS Touch release resets joystick
+PASS Android interruption pauses
+PASS Death during enemy iteration cleans safely
+PASS Strengthened classic boss spawn
+PASS Boss starts without unannounced dash
+PASS Boss telegraph
+PASS Boss radial attack
+PASS Boss charge warning locks target
+PASS Boss death -> victory
+PASS Result recorded once
+PASS Lethal damage -> game over
+PASS Clean restart
+PASS Boss timeout -> game over
+PASS Save and load roundtrip
+PASS Corrupt save fallback and backup
+RESULT 93 passed, 0 failed
