@@ -27,7 +27,8 @@
     "name": "ORBIT BLADE",
     "damage": 10,
     "cooldown": 0.5,
-    "reach": 135
+    "reach": 135,
+    "boss_power": 2.0
   },
   "mop": {
     "name": "WISCHMOPP",
@@ -70,7 +71,8 @@
     "name": "TESLASPULE",
     "damage": 18,
     "cooldown": 1.15,
-    "reach": 380
+    "reach": 380,
+    "boss_power": 1.25
   },
   "lance": {
     "name": "SCHILDLANZE",

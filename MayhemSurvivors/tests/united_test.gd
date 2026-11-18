@@ -93,7 +93,7 @@ func run():
 	for wave in [2,4,8,10]:
 		start(0,'void',wave);var boss=g.enemies[0];boss.pos=at+Vector2(220,0);g.united.bosses.clock=0;g.united.update(.01)
 		check(g.united.bosses.stage=='windup' and g.united.bosses.clock==1.5,'Boss starts full warning '+str(wave))
-		boss.hp=boss.max_hp*.3;g.united.update(.01);check(g.united.bosses.tier==3 and g.united.bosses.stage=='phase','Boss rage enters readable transition '+str(wave))
+		boss.hp=boss.max_hp*.3;g.united.update(.01);check(g.united.bosses.stage=='windup' and g.united.bosses.tier==1,'Threshold damage preserves locked boss warning '+str(wave));g.united.bosses.stage='recovery';g.united.update(.01);check(g.united.bosses.tier==3 and g.united.bosses.stage=='phase','Boss rage enters readable transition '+str(wave))
 		g.pause_game();var clock=g.united.bosses.clock;g._physics_process(3);check(g.united.bosses.clock==clock,'Boss pause freezes phase '+str(wave));g.resume()
 	# Pool metadata must not leak across old and new projectile types.
 	start();var shot=g.shoot(at,Vector2.RIGHT,1,false,600,1,'cryo');shot.united=true;shot.united_hits=[{}];shot.active=false

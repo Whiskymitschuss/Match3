@@ -376,6 +376,7 @@ func character_select(index:int=-1):
 	label_at(c.description,Vector2(925,365),31)
 	label_at('BASIS: %d HP / %d Tempo / %s' % [roundi(c.hp*(1+float(c.get('hp_bonus',0)))),c.speed,weapon_data[Collection.starter(saved,c.id)].name],Vector2(925,425),29)
 	var info=label_at(hero_ability.data[c.id].name+'\n'+hero_ability.data[c.id].description+'\n\nKlassenwaffen: '+(' / '.join(c.allowed_weapons.map(func(id):return weapon_data[id].name))),Vector2(925,505),27)
+	if float(weapon_data[c.weapon].get('boss_power',1))>1:info.text+='\nKlassenwaffe gegen Bosse: ×%.2f Schaden' % weapon_data[c.weapon].boss_power
 	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.set_deferred('size',Vector2(830,240))
 	if c.id=='steelfist':
 		var traits=label_at('160 Basis-HP +30 % / 10 % Schadensreduktion\n2 % Heilung je 5 s / jeder 4. Schlag: 150 % Schaden',Vector2(925,725),23,TEAL)
@@ -637,11 +638,11 @@ func refresh_hud():
 	boss_hud.text = ''
 	for e in enemies:
 		if e.kind == 'breaker_axel':
-			boss_hud.text='BREAKER AXEL / PHASE %d / %d / %d HP\n%s' % [breaker.tier,maxi(0,int(e.hp)),int(e.max_hp),breaker.warning_text()]
+			boss_hud.text='BREAKER AXEL / PHASE %d / %d / %d HP\n%s' % [breaker.tier,maxi(0,ceili(e.hp)),roundi(e.max_hp),breaker.warning_text()]
 		elif united.enabled and e.kind in ['boss','champion']:
-			boss_hud.text='%s / PHASE %d / %d / %d HP\n%s' % [e.get('boss_name',arena_definition.boss_name),united.bosses.tier,maxi(0,int(e.hp)),int(e.max_hp),boss_warning]
+			boss_hud.text='%s / PHASE %d / %d / %d HP\n%s' % [e.get('boss_name',arena_definition.boss_name),united.bosses.tier,maxi(0,ceili(e.hp)),roundi(e.max_hp),boss_warning]
 		elif e.kind == 'boss' and not united.enabled:
-			boss_hud.text = '%s   %d / %d%s\n%s' % [arena_definition.boss_name,maxi(0,int(e.hp)),int(e.max_hp),('  /  PHASE %d' % encounters.boss_tier) if encounters.enabled else '',boss_warning]
+			boss_hud.text = '%s   %d / %d%s\n%s' % [arena_definition.boss_name,maxi(0,ceili(e.hp)),roundi(e.max_hp),('  /  PHASE %d' % encounters.boss_tier) if encounters.enabled else '',boss_warning]
 			var warning=world_visuals.boss_telegraph()
 			if not warning.is_empty(): boss_hud.text += '  %.1f s' % warning.seconds
 

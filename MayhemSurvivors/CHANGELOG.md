@@ -1,3 +1,14 @@
+# 0.21.2 Alpha — Bossbalance (2026-11-18)
+
+- Robustere Bossleiter:600/1800/3200/5500/12500 Basis-HP mit bisherigen Weltfaktoren.
+- Unterschiedliche Eröffnungen, frühere Attacken, kürzere Erholung und mehr Beweglichkeit.
+- Phasenschaden bricht laufende Angriffswarnungen nicht mehr ab; keine Unverwundbarkeit.
+- Orbit/Tesla mit sichtbarem Bossbonus für faire Klassenchancen. Normale Wellen und Sprengkern unverändert.
+- Boss-HP und tatsächliche Waffen-/Bosswerte in Menüs korrigiert. Case-Hotfix erhalten.
+- 30 Suiten /4590 Checks,91 Durchsatzszenarien,110 Soak-Szenarien und15 native Ansichten geprüft.
+
+---
+
 # 0.21.1 Alpha — Case-Navigation (2026-11-18)
 
 - „ZUM INVENTAR“ liest nach Bestätigung einen unabhängigen Öffnungsbeleg und hängt nicht mehr fest.

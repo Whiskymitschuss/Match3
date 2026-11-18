@@ -36,7 +36,7 @@ func update(dt: float):
 				if e.pos.distance_to(blade)<e.radius+28 and e.orbit_cd<=0:
 					e.orbit_cd = .5/game.attack_mult/(1+.08*(w.level-1))
 					game.combat_visuals.impact(e.pos,'orbit')
-					game.damage_enemy(e,power)
+					game.damage_enemy(e,game.united.bosses.weapon_power(w,e,power))
 			continue
 		w.clock -= dt
 		if w.clock>0: continue
