@@ -14,7 +14,10 @@ bestanden. 91 Durchsatzszenarien vorher/nachher;15 native Ansichten geprüft.
 APK gebaut und signiert / versionCode27 / SHA256 83f428e40f8f2bb004eb58894542384524d32b60a25345c32874e3282cfadabb.
 Quell-ZIP frisch ohne Cache importiert: erneut alle30 Suiten /4590 Checks und beide
 Traces bestanden. 662 Laufzeitdateien bytegleich. Pakete und Prüfsummen unter Downloads;
-öffentliche Downloadprüfung wird separat protokolliert. Nächster Schritt: menschliche
+öffentliche Downloads vollständig und ohne Anmeldung geprüft: APK und ZIP stimmen
+mit beiden veröffentlichten SHA256-Prüfsummen überein. Nachweis unter
+tests/results/v0.21.2-download.log und Downloads/VERIFY-v0.21.2.txt.
+Pull Request #6 offen und konfliktfrei; nicht gemergt. Nächster Schritt: menschliche
 Boss-Abnahme auf Android, bevorzugt Sparky/Sprengkern im Neonhafen. Keine endgültige
 menschliche Balance behauptet.
 
