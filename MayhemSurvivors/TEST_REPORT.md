@@ -31,3 +31,7 @@ Mesa llvmpipe unter Linux; keine Android-Gerätebilder.
 
 Offen: erneuter menschlicher Neonhafen-Durchlauf mit Sparky/Sprengkern, danach weitere
 Klassen/Welten. Physische Android-Update-/Touch-/Audio-/FPS-/Thermikabnahme bleibt nötig.
+
+Quell-ZIP zusätzlich ohne Importcache frisch entpackt und importiert. Alle30 Suiten /
+4590 Prüfungen und beide Traces erneut bestanden;662 Laufzeitdateien bytegleich.
+Logs:v0.21.2-clean-import.log, v0.21.2-clean-tests.log, v0.21.2-source-integrity.log.

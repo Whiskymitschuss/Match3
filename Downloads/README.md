@@ -4,7 +4,7 @@
 
 [Godot-Quellprojekt](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/MayhemSurvivors-v0.21.2-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/SHA256SUMS-v0.21.2.txt)
 
-Robustere und aktivere Bosskämpfe. Eigene Eröffnungen, längere Bossleiter und faire
+Robustere und aktivere Bosskämpfe. Eigene Eröffnungen, robustere Bossleiter und faire
 Bonuswerte für Orbit/Tesla. Normale Gegnerwellen und Sprengkern-Schaden unverändert.
 Neonhafen-Endboss14.500 statt6.960HP. Case-Hotfix und Fortschritt erhalten.
 

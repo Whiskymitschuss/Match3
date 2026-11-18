@@ -16,3 +16,7 @@ Tatsächlicher signierter Debug-Export erfolgreich.
 erhalten; kein Save-Schemawechsel. Kein erreichbares Android-Gerät zur Installation.
 Quell-ZIP mit kompletten Laufzeitdateien, Assets, Szenen, Daten, Tests und Berichten;
 ohne Cache/SDK/APKs/private Schlüssel. Öffentliche Downloads mit separaten Prüfsummen.
+
+Quell-ZIP zusätzlich ohne Importcache frisch entpackt und importiert. Alle30 Suiten /
+4590 Prüfungen und beide Traces erneut bestanden;662 Laufzeitdateien bytegleich.
+Logs:v0.21.2-clean-import.log, v0.21.2-clean-tests.log, v0.21.2-source-integrity.log.
