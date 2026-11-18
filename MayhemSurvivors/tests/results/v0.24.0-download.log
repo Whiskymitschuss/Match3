@@ -1,0 +1,10 @@
+Anonymous complete public download verification — 2026-11-18T18:49:21.596244+00:00
+PASS MayhemSurvivors-v0.24.0-debug.apk
+76145918 bytes
+SHA256 7beeaccb66d0ee0f9103fb4e8df8d86ec58e8f358e57b3549a942ad8d2b68b0a
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/foundry-valves-v0.24.0/Downloads/MayhemSurvivors-v0.24.0-debug.apk
+PASS MayhemSurvivors-v0.24.0-source.zip
+86513377 bytes
+SHA256 334a20f836e0dec3b674d742747a1e3c07ea03de79391ce02f48261e3724cd70
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/foundry-valves-v0.24.0/Downloads/MayhemSurvivors-v0.24.0-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.

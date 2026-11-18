@@ -16,8 +16,11 @@ Konfigurationen bytegleich zur Testentpackung. Keine offenen Script-/Parserfehle
 
 Android-APK gebaut / versionCode 30 / ARM64 / gleiche Signatur / Alignment geprüft.
 APK-SHA256: 7beeaccb66d0ee0f9103fb4e8df8d86ec58e8f358e57b3549a942ad8d2b68b0a.
-Nächster Schritt: finalen Quellstand verpacken, APK/ZIP auf GitHub bereitstellen,
-öffentliche Downloads vollständig mit SHA256 vergleichen und PR anlegen.
+Finales Quell-ZIP per CRC und gegen alle 706 getesteten Laufzeitdateien verifiziert.
+APK und ZIP auf GitHub veröffentlicht, vollständig anonym heruntergeladen und beide
+SHA256-Prüfsummen bestätigt. Nachweis: Downloads/VERIFY-v0.24.0.txt und
+tests/results/v0.24.0-download.log. Pull Request #9 offen und konfliktfrei; nicht gemergt.
+Nächster Schritt: menschlicher Glutwerk-Praxistest auf Android.
 
 Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60 FPS.
 Praxistest: Glutwerk mit beiden Ventilen, verschiedenen Druckwerten und Ofenkönig.
