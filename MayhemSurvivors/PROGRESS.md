@@ -16,8 +16,11 @@ erhalten. Keine Online-Systeme oder zusätzlichen Inhaltsmengen in diesem Update
 
 Android-Debug-APK gebaut, ARM64 / versionCode 28 / Signatur und Alignment geprüft.
 APK-SHA256: 307330fe72bd4620c10b15c3b15747dc445ee9f6e3d84d893a37aceaad7a08f9.
-Nächster Schritt: finalen Quellstand verpacken, APK/ZIP hochladen und öffentliche
-Downloads vollständig mit Prüfsummen vergleichen. Danach menschliche Android-Abnahme:
+Finales Quell-ZIP verpackt und per CRC sowie gegen alle getesteten Laufzeitdateien
+geprüft. APK und ZIP auf GitHub hochgeladen, vollständig anonym heruntergeladen und
+beide SHA256-Werte bestätigt. Nachweise: Downloads/VERIFY-v0.22.0.txt und
+tests/results/v0.22.0-download.log. Pull Request #7 offen und konfliktfrei, nicht gemergt.
+Nächster Schritt: menschliche Android-Abnahme:
 Bruiser / beide Pfade / Bergung annehmen und ignorieren / Weltbelohnung abholen.
 
 Offen: physische Geräteabnahme, menschliche Balance, Akkulaufzeit und Temperatur.
