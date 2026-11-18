@@ -1,0 +1,83 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS New wallet empty
+PASS Training never farms challenges
+PASS Incomplete weekly cannot pay
+PASS Three distinct arenas unlock explorer
+PASS Weekly kill reward pays actual coins
+PASS Endless never counts as campaign victory
+PASS Campaign weekly victory funds free pass
+PASS Weekly reward only once
+PASS No exploration credit without surviving a wave
+PASS Earn and claim daily reward
+PASS Daily claim once
+PASS Other actual goals fund pass
+PASS Pass coins exactly once
+PASS Locked tiers and premature renewal rejected
+PASS New UTC day resets quests only
+PASS New week resets weekly goals
+PASS Claim pass tier 2
+PASS Claim pass tier 3
+PASS Claim pass tier 4
+PASS Claim pass tier 5
+PASS Claim pass tier 6
+PASS Claim pass tier 7
+PASS Renew free pass without losing overflow
+PASS New pass has independent claims
+PASS Permanent item purchase and equip
+PASS No duplicate charge
+PASS Independent cosmetic groups
+PASS No negative wallet or locked equip
+PASS Unknown purchase rejected
+PASS Actual save preserves wallet and permanent cosmetics
+PASS Corrupt and unowned values sanitized
+PASS Real horizontal hero swipe
+PASS Actual GUI touch drag inside select button cannot select
+PASS Multitouch cancels selection gesture and consumes both releases
+PASS Vertical drag never selects or advances
+PASS Real arena swipe
+PASS Accessible arrow alternative
+PASS Full telegraph bombling
+PASS Locked aim bombling
+PASS Interrupt bombling
+PASS Enemy cap bombling
+PASS Full telegraph longshot
+PASS Locked aim longshot
+PASS Interrupt longshot
+PASS Enemy cap longshot
+PASS Full telegraph hexling
+PASS Locked aim hexling
+PASS Interrupt hexling
+PASS Enemy cap hexling
+PASS Actual wave spawner integrates new pack without extra RNG
+PASS Bombling explodes once without free kill rewards
+PASS Already removed suicide cannot duplicate
+PASS Longshot fires actual hostile projectile
+PASS Hexling creates real second-stage warning
+PASS Stun cancels a release before projectile creation
+PASS Knockback interrupts ready-to-release spell
+PASS New AI freezes during pause
+PASS Actual arena event scrapyard
+PASS Event paused in shop scrapyard
+PASS Second announced pulse scrapyard
+PASS Event completes once scrapyard
+PASS Actual arena event reactor
+PASS Event paused in shop reactor
+PASS Second announced pulse reactor
+PASS Event completes once reactor
+PASS Actual arena event docks
+PASS Event paused in shop docks
+PASS Second announced pulse docks
+PASS Event completes once docks
+PASS Actual arena event foundry
+PASS Event paused in shop foundry
+PASS Second announced pulse foundry
+PASS Event completes once foundry
+PASS No extra event during boss
+PASS Actual wave completion increments quest count
+PASS Finished run records real mission counters
+PASS Duplicate result never duplicates mission progress
+PASS Real claim button backend saves wallet
+PASS Shop uses separate currency
+PASS All reward tabs are populated
+LIVE REWARDS RESULT 80 passed, 0 failed

@@ -1,0 +1,80 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS Actual case opens crew
+PASS Usable GUI button ZUM INVENTAR
+PASS Real GUI leaves reveal: crew / ZUM INVENTAR
+PASS Navigation keeps exact rewards and clears only receipt crew
+PASS Acknowledgement persists crew
+PASS Inventory category matches actual reward crew
+PASS Usable GUI button ZURÜCK
+PASS Inventory back button still works crew
+PASS Actual case opens crew
+PASS Usable GUI button WEITERE CASES
+PASS Real GUI leaves reveal: crew / WEITERE CASES
+PASS Navigation keeps exact rewards and clears only receipt crew
+PASS Acknowledgement persists crew
+PASS Usable GUI button HAUPTMENÜ
+PASS Cases main menu still works crew
+PASS Actual case opens arsenal
+PASS Usable GUI button ZUM INVENTAR
+PASS Real GUI leaves reveal: arsenal / ZUM INVENTAR
+PASS Navigation keeps exact rewards and clears only receipt arsenal
+PASS Acknowledgement persists arsenal
+PASS Inventory category matches actual reward arsenal
+PASS Usable GUI button ZURÜCK
+PASS Inventory back button still works arsenal
+PASS Actual case opens arsenal
+PASS Usable GUI button WEITERE CASES
+PASS Real GUI leaves reveal: arsenal / WEITERE CASES
+PASS Navigation keeps exact rewards and clears only receipt arsenal
+PASS Acknowledgement persists arsenal
+PASS Usable GUI button HAUPTMENÜ
+PASS Cases main menu still works arsenal
+PASS Actual case opens style
+PASS Usable GUI button ZUM INVENTAR
+PASS Real GUI leaves reveal: style / ZUM INVENTAR
+PASS Navigation keeps exact rewards and clears only receipt style
+PASS Acknowledgement persists style
+PASS Inventory category matches actual reward style
+PASS Usable GUI button ZURÜCK
+PASS Inventory back button still works style
+PASS Actual case opens style
+PASS Usable GUI button WEITERE CASES
+PASS Real GUI leaves reveal: style / WEITERE CASES
+PASS Navigation keeps exact rewards and clears only receipt style
+PASS Acknowledgement persists style
+PASS Usable GUI button HAUPTMENÜ
+PASS Cases main menu still works style
+PASS Actual case opens crew
+PASS First queued navigation wins without duplicate reward
+PASS Actual case opens crew
+PASS Usable GUI button ZUM INVENTAR
+PASS Saved stuck reveal recovers without another draw
+PASS Actual case opens crew
+PASS Duplicate fixture
+PASS Usable GUI button ZUM INVENTAR
+PASS Duplicate parts preserved exactly
+PASS Actual case opens style
+PASS Usable GUI button WEITERE CASES
+PASS Failed acknowledgement rolls back and retains reward
+PASS Usable GUI button WEITERE CASES
+PASS Real retry works after saving recovers
+PASS Actual case opens crew
+PASS Production case animation starts
+PASS Usable GUI button ZUM INVENTAR
+PASS Animated/skip route leaves reveal false
+PASS Actual case opens crew
+PASS Production case animation starts
+PASS Usable GUI button ÜBERSPRINGEN
+PASS Usable GUI button ZUM INVENTAR
+PASS Animated/skip route leaves reveal true
+PASS Actual case opens arsenal
+PASS Usable GUI button WEITERE CASES
+PASS Scaled GUI navigation (2340, 1080)
+PASS Actual case opens arsenal
+PASS Usable GUI button WEITERE CASES
+PASS Scaled GUI navigation (1920, 1440)
+CASE NAVIGATION RESULT 74 passed, 0 failed; native_touch=true

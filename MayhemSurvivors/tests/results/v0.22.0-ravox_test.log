@@ -1,0 +1,55 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Reference base HP and speed
+PASS Crushing gauntlets and fifteen percent charge bonus
+PASS Spawn schedule scrapyard1
+PASS Spawn schedule scrapyard2
+PASS Spawn schedule scrapyard3
+PASS Spawn schedule scrapyard4
+PASS Spawn schedule scrapyard5
+PASS Spawn schedule scrapyard6
+PASS Spawn schedule scrapyard7
+PASS Spawn schedule scrapyard8
+PASS Spawn schedule scrapyard9
+PASS Spawn schedule scrapyard10
+PASS Spawn schedule reactor1
+PASS Spawn schedule reactor2
+PASS Spawn schedule reactor3
+PASS Spawn schedule reactor4
+PASS Spawn schedule reactor5
+PASS Spawn schedule reactor6
+PASS Spawn schedule reactor7
+PASS Spawn schedule reactor8
+PASS Spawn schedule reactor9
+PASS Spawn schedule reactor10
+PASS Actual scaled spawn with initialized behavior
+PASS Unselected spawn roll preserves existing enemy
+PASS Second Ravox allowed
+PASS Active cap of two falls back to ordinary spawn
+PASS Remaining wave quota 0
+PASS Remaining wave quota 1
+PASS Four-per-wave cap persists after enemies removed
+PASS Combat cleanup does not erase wave quota
+PASS New run resets quota
+PASS Long first frame starts full warning without consuming it
+PASS Aim locked while player dodges
+PASS Charge only after full warning
+PASS Swept long-frame charge hits once at exact bonus
+PASS Finished charge never deals duplicate damage
+PASS Stepping out of telegraph avoids charge
+PASS Collision uses actual slowed movement, never predicted full dash
+PASS Knockback displacement cancels windup
+PASS Actual Twinkle soap cancels charge and stuns
+PASS Actual Bruiser shockwave interrupts Ravox
+PASS Tornado interrupts Ravox before knockback
+PASS Shade invulnerable dash remains respected
+PASS Warning and motion freeze in 7
+PASS Warning and motion freeze in 5
+PASS Warning and motion freeze in 6
+PASS No offscreen warning starts
+PASS Moving camera away cancels unseen release
+PASS Death rewards exactly once
+PASS Own death animation keeps correct sprite identity
+PASS Death clears active warning and enemy
+PASS Restart safe after Ravox encounter
+RAVOX RESULT 52 passed, 0 failed

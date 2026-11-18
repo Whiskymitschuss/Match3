@@ -1,0 +1,119 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Fresh bruiser
+PASS Locked bruiser
+PASS Below wave threshold bruiser
+PASS Wave threshold bruiser
+PASS Equip earned neon bruiser
+PASS Below kills threshold bruiser
+PASS Cumulative kills bruiser
+PASS Full mastery title bruiser
+PASS Equip earned gold bruiser
+PASS Fresh sparky
+PASS Locked sparky
+PASS Below wave threshold sparky
+PASS Wave threshold sparky
+PASS Equip earned neon sparky
+PASS Below kills threshold sparky
+PASS Cumulative kills sparky
+PASS Full mastery title sparky
+PASS Equip earned gold sparky
+PASS Fresh shade
+PASS Locked shade
+PASS Below wave threshold shade
+PASS Wave threshold shade
+PASS Equip earned neon shade
+PASS Below kills threshold shade
+PASS Cumulative kills shade
+PASS Full mastery title shade
+PASS Equip earned gold shade
+PASS Fresh twinkle
+PASS Locked twinkle
+PASS Below wave threshold twinkle
+PASS Wave threshold twinkle
+PASS Equip earned neon twinkle
+PASS Below kills threshold twinkle
+PASS Cumulative kills twinkle
+PASS Full mastery title twinkle
+PASS Equip earned gold twinkle
+PASS Fresh kicksy
+PASS Locked kicksy
+PASS Below wave threshold kicksy
+PASS Wave threshold kicksy
+PASS Equip earned neon kicksy
+PASS Below kills threshold kicksy
+PASS Cumulative kills kicksy
+PASS Full mastery title kicksy
+PASS Equip earned gold kicksy
+PASS Fresh steelfist
+PASS Locked steelfist
+PASS Below wave threshold steelfist
+PASS Wave threshold steelfist
+PASS Equip earned neon steelfist
+PASS Below kills threshold steelfist
+PASS Cumulative kills steelfist
+PASS Full mastery title steelfist
+PASS Equip earned gold steelfist
+PASS Fresh cinder
+PASS Locked cinder
+PASS Below wave threshold cinder
+PASS Wave threshold cinder
+PASS Equip earned neon cinder
+PASS Below kills threshold cinder
+PASS Cumulative kills cinder
+PASS Full mastery title cinder
+PASS Equip earned gold cinder
+PASS Fresh frosty
+PASS Locked frosty
+PASS Below wave threshold frosty
+PASS Wave threshold frosty
+PASS Equip earned neon frosty
+PASS Below kills threshold frosty
+PASS Cumulative kills frosty
+PASS Full mastery title frosty
+PASS Equip earned gold frosty
+PASS Fresh volt
+PASS Locked volt
+PASS Below wave threshold volt
+PASS Wave threshold volt
+PASS Equip earned neon volt
+PASS Below kills threshold volt
+PASS Cumulative kills volt
+PASS Full mastery title volt
+PASS Equip earned gold volt
+PASS Fresh rook
+PASS Locked rook
+PASS Below wave threshold rook
+PASS Wave threshold rook
+PASS Equip earned neon rook
+PASS Below kills threshold rook
+PASS Cumulative kills rook
+PASS Full mastery title rook
+PASS Equip earned gold rook
+PASS Fresh nyx
+PASS Locked nyx
+PASS Below wave threshold nyx
+PASS Wave threshold nyx
+PASS Equip earned neon nyx
+PASS Below kills threshold nyx
+PASS Cumulative kills nyx
+PASS Full mastery title nyx
+PASS Equip earned gold nyx
+PASS Reject unknown IDs
+PASS Save real styles
+PASS Reload all progress and selections
+PASS Existing v0.10 profile earns goals without forcing outfit
+PASS Never attribute another hero progress
+PASS Invalid and locked stored selections sanitized
+PASS Legacy aggregate totals never invent hero mastery
+PASS Actual character navigation opens mastery
+PASS Locked preview never equips
+PASS Real equip button persists unlocked selection
+PASS Equip writes actual local save
+PASS Character card reflects saved skin
+PASS Cosmetic skin changes no combat stats
+PASS Real defeat awards reached wave and cumulative kills
+PASS Duplicate result never duplicates progress
+PASS Real victory unlocks gold and master title
+PASS Result announces newly earned reward
+MASTERY RESULT 116 passed, 0 failed

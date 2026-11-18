@@ -42,6 +42,9 @@ var reactor_guardian
 var ravox
 var enemy_pack
 var arena_events
+var scrapyard_salvage
+var bruiser_builds
+var result_details:Dictionary={}
 var enemy_roles
 var encounters
 var bombs
@@ -172,6 +175,8 @@ func _ready():
 	vfx=preload('res://scripts/combat/mayhem_vfx.gd').new(self)
 	enemy_pack=preload('res://scripts/enemies/enemy_pack.gd').new(self)
 	arena_events=preload('res://scripts/gameplay/arena_events.gd').new(self)
+	scrapyard_salvage=preload('res://scripts/gameplay/scrapyard_salvage.gd').new(self)
+	bruiser_builds=preload('res://scripts/ui/bruiser_builds.gd').new(self)
 	ravox=preload('res://scripts/enemies/ravox_controller.gd').new(self)
 	enemy_roles=preload('res://scripts/enemies/reactor_roles.gd').new(self)
 	encounters=preload('res://scripts/gameplay/encounter_director.gd').new(self)
@@ -234,7 +239,7 @@ func update_safe_area():
 	var chrome=ui_root.get_node_or_null('HudChrome')
 	if chrome:chrome.queue_redraw()
 	if is_instance_valid(hud):hud.position=Vector2(75,35)+hud_top_left()
-	if is_instance_valid(boss_hud):boss_hud.position=Vector2(620,150)+Vector2(0,safe_logical.position.y)
+	if is_instance_valid(boss_hud):boss_hud.position=Vector2(620,222)+Vector2(0,safe_logical.position.y)
 	if is_instance_valid(pause_button):pause_button.position=Vector2(1690,40)+hud_top_right()
 	if is_instance_valid(ability_button):ability_button.position=ability_rect().position
 	stick_id=-1
@@ -283,6 +288,7 @@ func clear_ui():
 
 func label_at(text: String, pos: Vector2, size: int = 32, color: Color = Color.WHITE, parent: Node = null) -> Label:
 	var l = Label.new()
+	l.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	l.text = text
 	l.position = pos
 	l.add_theme_font_size_override('font_size',size)
@@ -337,6 +343,9 @@ func backdrop(title: String, subtitle: String = ''):
 
 func schedule_menu_reveal():call_deferred('_reveal_menu',ui_revision)
 func _reveal_menu(revision:int):UISkin.reveal(self,revision)
+func queue_ui_action(action:Callable):call_deferred('_apply_ui_action',ui_revision,action)
+func _apply_ui_action(revision:int,action:Callable):
+	if revision==ui_revision and action.is_valid():action.call()
 
 func main_menu():
 	if tutorial and tutorial.active:tutorial.stop(false);return
@@ -344,6 +353,18 @@ func main_menu():
 	cleanup()
 	player.position = Vector2(1200,800)
 	UISkin.menu(self)
+
+func play():
+	if saved.games>0 or saved.settings.get('onboarding_seen',false) or saved.settings.tutorial_complete:character_select();return
+	backdrop('WILLKOMMEN, FIGHTER!','Kicksy zeigt dir Bewegung, Kampf und Werkstatt mit deinem ersten Helden Bruiser.')
+	UISkin.panel(self,Rect2(100,265,720,670),TEAL)
+	portrait(Vector2(190,280),4,1.5)
+	label_at('DEIN ERSTER RUN',Vector2(925,315),56,GOLD)
+	var help=label_at('Links bewegen, automatisch kämpfen, rechts die Schockwelle auslösen.\n\nIm Training probierst du alle wichtigen Tasten selbst aus. Du kannst es jederzeit verlassen und später wiederholen.',Vector2(925,420),32)
+	help.text=UISkin.wrap_text(help.text,UISkin.BODY,32,820)
+	button('MIT KICKSY ÜBEN',Vector2(925,725),Vector2(850,105),func():queue_ui_action(func():saved.settings.onboarding_seen=true;save_game();tutorial.start()),Color('#147F81'))
+	button('DIREKT ZUR CREW',Vector2(925,865),Vector2(850,95),func():queue_ui_action(func():saved.settings.onboarding_seen=true;save_game();character_select()))
+	button('ZURÜCK',Vector2(100,965),Vector2(500,85),func():queue_ui_action(main_menu))
 
 func portrait(pos: Vector2, index: int, factor: float = 1.0, mode: String = 'portrait'):
 	var art = Control.new()
@@ -505,6 +526,7 @@ func cleanup():
 	if breaker:breaker.clear()
 	if equipped_spell:equipped_spell.invulnerability=0;equipped_spell.touch_ids.clear()
 	if arena_events:arena_events.clear()
+	if scrapyard_salvage:scrapyard_salvage.clear()
 	if encounters:encounters.clear_combat()
 	if combat_visuals: combat_visuals.clear()
 	if world_visuals: world_visuals.clear()
@@ -555,6 +577,8 @@ func start_run():
 	run_time = 0
 	wave_number = 1
 	run_items.clear()
+	scrapyard_salvage.reset_run()
+	result_details.clear()
 	encounters.reset_run()
 	ravox.reset_run()
 	steelfist.reset_run()
@@ -590,6 +614,9 @@ func prepare_wave():
 		label_at('Elite besiegen: zusätzliche Beutewahl im nächsten Shop.',Vector2(120,900),24,TEAL)
 	if wave_number>=5 and not rules.boss_wave():label_at('RAVOX / Orange Sturmbahn verlassen / Seife und Schockwelle unterbrechen',Vector2(120,950),24,Color('#FFAA55'))
 	if rules.boss_wave():label_at('Bossphasen bei 65 % und 30 % HP / Neue Angriffe werden gold markiert',Vector2(120,850),25,GOLD)
+	if scrapyard_salvage.available():
+		label_at('OPTIONALE BERGUNG / Ab Sekunde 24 im türkisen Kreis 1,2 s anhalten.',Vector2(120,755),28,TEAL)
+		label_at('Zwei Einschlagsalven ausweichen: +%d Run-Coins. Ignorieren ist erlaubt.' % scrapyard_salvage.reward(),Vector2(120,800),25,GOLD)
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 
 func begin_wave():
@@ -610,7 +637,7 @@ func make_hud():
 	clear_ui()
 	var chrome=Control.new();chrome.name='HudChrome';chrome.set_script(preload('res://scripts/ui/hud_chrome.gd'));chrome.game=self;ui_root.add_child(chrome)
 	hud = label_at('',Vector2(75,35)+hud_top_left(),30)
-	boss_hud = label_at('',Vector2(620,150)+Vector2(0,safe_logical.position.y),32,Color('#FF4757'))
+	boss_hud = label_at('',Vector2(620,222)+Vector2(0,safe_logical.position.y),32,Color('#FF4757'))
 	pause_button=button('Ⅱ',Vector2(1690,40)+hud_top_right(),Vector2(140,100),pause_game)
 	ability_button=button('',ability_rect().position,ABILITY_RECT.size,func():hero_ability.activate())
 	ability_button.set_script(preload('res://scripts/ui/ability_button.gd'))
@@ -636,6 +663,8 @@ func refresh_hud():
 	if saved.settings.get('show_fps',false):info+='\n%.0f FPS / %d Gegner / %d Projektile' % [Engine.get_frames_per_second(),enemies.size(),shots.filter(func(s):return s.active).size()]
 	if hud.text != info: hud.text = info
 	boss_hud.text = ''
+	var warning_stage=breaker.stage if breaker.scheduled() else united.bosses.stage
+	boss_hud.add_theme_color_override('font_color',GOLD if warning_stage in ['windup','phase'] else Color('#F6EDDD'))
 	for e in enemies:
 		if e.kind == 'breaker_axel':
 			boss_hud.text='BREAKER AXEL / PHASE %d / %d / %d HP\n%s' % [breaker.tier,maxi(0,ceili(e.hp)),roundi(e.max_hp),breaker.warning_text()]
@@ -751,6 +780,7 @@ func _physics_process(delta):
 	if state!=State.COMBAT:return
 	arena_hazards.update(delta)
 	arena_events.update(delta)
+	scrapyard_salvage.update(delta)
 	if state != State.COMBAT:return
 	united.update(delta)
 	if state!=State.COMBAT:return
@@ -1188,9 +1218,19 @@ func finish(victory: bool):
 	for reward in Mastery.rewards(saved,characters[selected].id):
 		if not previous_rewards.has(reward):unlocked.append(reward)
 	world_map.persist()
+	result_details={'victory':victory,'improvements':improvements,'difficulty_best':difficulty_best,'world_first_clear':world_first_clear,'unlocked':unlocked}
 	cleanup()
 	encounters.end_run()
 	sound('victory' if victory else 'defeat')
+	show_result()
+
+func show_result():
+	if result_details.is_empty() or state not in [State.VICTORY,State.GAME_OVER]:return
+	var victory:bool=result_details.victory
+	var improvements:Array=result_details.improvements
+	var difficulty_best:bool=result_details.difficulty_best
+	var world_first_clear:bool=result_details.world_first_clear
+	var unlocked:Array=result_details.unlocked
 	backdrop('ENDLOS BEENDET' if run_mode=='endless' else ('MAYHEM GEMEISTERT!' if victory else 'DAS WAR EIN MAYHEM!'),arena_definition.name+' / '+Difficulty.definition(run_difficulty).name+' • '+('SIEG' if victory else 'GAME OVER'))
 	if victory:
 		var celebration=Control.new()
@@ -1218,9 +1258,26 @@ func finish(victory: bool):
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected))
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
-	label_at('+%d STUDIO-COINS\nDauerhaft für deine Sammlung' % studio_reward,Vector2(110,900),25,TEAL)
+	button('+%d STUDIO-COINS / DETAILS' % studio_reward,Vector2(110,900),Vector2(540,95),func():queue_ui_action(reward_details))
 	button('WELTKARTE / BELOHNUNG',Vector2(690,900),Vector2(500,95),func():world_map.persist();arena_select(Arenas.IDS.find(arena_id)))
 	button('CASES & GARAGE',Vector2(1230,900),Vector2(500,95),func():main_menu();garage.cases())
+
+func reward_details():
+	if result_details.is_empty() or state not in [State.VICTORY,State.GAME_OVER]:return
+	backdrop('DEIN FORTSCHRITT','Run-Coins und Studio-Coins haben getrennte Zwecke. Alle Belohnungen sind erspielbar.')
+	var parts=Collection.reward_breakdown(run_mode,run_waves,kills,result_details.victory)
+	var rows=[['STUDIO-COINS','+%d DAUERHAFT' % studio_reward,'%d überlebte Wellen: +%d\n%d Kills: +%d\nKampagnensieg: +%d\n\nBereits deinem Profil gutgeschrieben. Für Cases und den kosmetischen Shop.' % [run_waves,parts.waves,kills,parts.kills,parts.victory]],['RUN-COINS','%d IM RUN VERDIENT' % earned,'Davon Bergung: %d\nBergungen geschafft: %d\n\nFür Käufe im Wellenshop. Ein neuer Durchlauf startet bei null Run-Coins.' % [scrapyard_salvage.total_coins,scrapyard_salvage.completed]],['WELTABSCHLUSS','BELOHNUNG BEREIT' if WorldProgress.eligible(saved,arena_id) else ('BEREITS ABGEHOLT' if saved.world_progress.claimed.has(arena_id) else 'DEIN NÄCHSTES ZIEL'),WorldProgress.reward_text(arena_id)+'\n\n'+('Auf der Weltkarte einmalig abholen. Die nächste Welt ist bereits offen.' if WorldProgress.eligible(saved,arena_id) else ('Diese Erstbelohnung gehört bereits deinem Profil. Wähle auf der Weltkarte dein nächstes Ziel.' if saved.world_progress.claimed.has(arena_id) else 'Besiege den Arenaboss in Welle 10. Erstabschlüsse bringen zusätzliche dauerhafte Beute.'))]]
+	for i in range(3):
+		var x=100+i*585
+		UISkin.panel(self,Rect2(x,270,550,610),TEAL if i<2 else GOLD)
+		UISkin.image(self,UISkin.Icons.get_icon(['coins','coins','world'][i]),Rect2(x+195,290,160,145))
+		label_at(rows[i][0],Vector2(x+30,460),39,GOLD)
+		label_at(rows[i][1],Vector2(x+30,520),26,TEAL)
+		var detail=label_at(rows[i][2],Vector2(x+30,580),26)
+		detail.text=UISkin.wrap_text(detail.text,UISkin.BODY,26,485)
+	button('ZUM ERGEBNIS',Vector2(100,945),Vector2(540,100),func():queue_ui_action(show_result))
+	button('WELTKARTE / BELOHNUNG',Vector2(680,945),Vector2(550,100),func():queue_ui_action(func():world_map.persist();arena_select(Arenas.IDS.find(arena_id))))
+	button('AUFTRÄGE & PASS',Vector2(1270,945),Vector2(550,100),func():queue_ui_action(func():main_menu();reward_hub.show()))
 
 func add_effect(pos: Vector2, color: Color, radius: float, text: String):
 	var cap = 30 if saved.settings.quality=='LOW' else (65 if saved.settings.quality=='MEDIUM' else 110)
@@ -1264,6 +1321,7 @@ func _draw():
 	encounters.draw_floor()
 	enemy_roles.draw_floor()
 	arena_hazards.draw()
+	scrapyard_salvage.draw()
 	if is_reactor():reactor_guardian.draw()
 	world_visuals.draw_telegraph()
 	enemy_roles.draw_telegraphs()

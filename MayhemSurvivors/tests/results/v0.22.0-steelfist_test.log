@@ -1,0 +1,93 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Sixth hero preserves all previous indices
+PASS Legacy combat fixture has owned Steelfist
+PASS Real selection button selects Steelfist
+PASS Swipe carousel wraps after eleventh hero
+PASS 160 base HP plus30 percent produces208, speed165
+PASS Crit5 percent and one tool-duo slot
+PASS Class cannot acquire unrelated weapons
+PASS Unsupported projectile upgrades excluded
+PASS 25 base damage plus25 percent, 0.8 attacks per second
+PASS No attack counter advance without valid target
+PASS Attack damage sequence 1
+PASS Attack damage sequence 2
+PASS Attack damage sequence 3
+PASS Attack damage sequence 4
+PASS Front half-circle ignores rear and distant enemies
+PASS Fourth hit displaces and drives two-tool animation
+PASS Exactly two animated hands and shoulders
+PASS Double hit resolves one death and one reward
+PASS Removed double-hit target cannot reward twice
+PASS All incoming damage reduced by10 percent
+PASS Tank still obeys shared contact-damage cooldown
+PASS Armor then percentage reduction applied once
+PASS No regeneration before five combat seconds
+PASS Two percent of current maximum regenerated at five seconds
+PASS Long frame processes both regeneration ticks
+PASS Regen uses upgraded228 max HP
+PASS Regen cannot overheal
+PASS Regen cannot revive a dead hero
+PASS Actual ultimate starts35 second cooldown
+PASS 300 percent melee damage, two-second area stun
+PASS Pressure wave has actual knockback and effect
+PASS Temporary buff changes attack timing without mutating permanent stats
+PASS Ultimate cannot double-activate
+PASS Kill extension capped at five extra seconds
+PASS Expired buff cannot be revived by kill
+PASS Actual ultimate kill extends newly active buff
+PASS All Steelfist simulation frozen in 7
+PASS All Steelfist simulation frozen in 5
+PASS All Steelfist simulation frozen in 6
+PASS Pressure interrupts and stuns ravox
+PASS No release during stun ravox
+PASS Pressure interrupts and stuns longshot
+PASS No release during stun longshot
+PASS Pressure interrupts and stuns spitter
+PASS No release during stun spitter
+PASS Boss movement and attack controllers freeze scrapyard
+PASS Boss recovers from finite stun scrapyard
+PASS Victory cleans buffs and effects scrapyard
+PASS Boss movement and attack controllers freeze reactor
+PASS Boss recovers from finite stun reactor
+PASS Victory cleans buffs and effects reactor
+PASS Boss movement and attack controllers freeze docks
+PASS Boss recovers from finite stun docks
+PASS Victory cleans buffs and effects docks
+PASS Boss movement and attack controllers freeze foundry
+PASS Boss recovers from finite stun foundry
+PASS Victory cleans buffs and effects foundry
+PASS Boss movement and attack controllers freeze gardens
+PASS Boss recovers from finite stun gardens
+PASS Victory cleans buffs and effects gardens
+PASS Boss movement and attack controllers freeze frost
+PASS Boss recovers from finite stun frost
+PASS Victory cleans buffs and effects frost
+PASS Boss movement and attack controllers freeze storm
+PASS Boss recovers from finite stun storm
+PASS Victory cleans buffs and effects storm
+PASS Boss movement and attack controllers freeze crystal
+PASS Boss recovers from finite stun crystal
+PASS Victory cleans buffs and effects crystal
+PASS Boss movement and attack controllers freeze carnival
+PASS Boss recovers from finite stun carnival
+PASS Victory cleans buffs and effects carnival
+PASS Boss movement and attack controllers freeze void
+PASS Boss recovers from finite stun void
+PASS Victory cleans buffs and effects void
+PASS Real evolved weapon damage pressure_breaker
+PASS Real evolved cooldown pressure_breaker
+PASS Real evolved weapon damage ratchet_rush
+PASS Real evolved cooldown ratchet_rush
+PASS Actual shop reaches weapon level5
+PASS Actual development closes and shop remains usable
+PASS New weapon details and build screen populated
+PASS Restart resets all hero runtime counters
+PASS Result records hero and tool weapon
+PASS Hero records and styles survive JSON roundtrip
+PASS 0.16 migration adds empty hero record and preserves wallet and old stats
+PASS Seven statistics tabs fit inside touch layout
+PASS Own audible cue steel_swing
+PASS Own audible cue ability_pipe_burst
+PASS Own audible cue steel_regen
+STEELFIST RESULT 90 passed, 0 failed

@@ -1,3 +1,16 @@
+# 0.22.0 Alpha — Schrottplatz & Bruiser (2026-11-18)
+
+- Erster Einstieg mit Kicksy: Training mit dem freien Bruiser statt gesperrtem Leihhelden.
+- Echte Hammer-, Schockwellen-, Shop- und Pausenlektionen; passende Tasten markiert.
+- Freiwillige Schrottplatz-Bergung ab Welle 3 mit voller Vorwarnung und einmaliger Run-Beute.
+- Hammer-Pfade zeigen beide Entwicklungen und eine Vorschau mit aktuellen Spielerwerten.
+- Ergebnisdetails erklären Studio-Coins, Run-Coins und einmalige Weltbelohnungen.
+- Boss-/Spieleranzeigen getrennt, Warntext gold; dekorative Labels blockieren keine Eingaben.
+- Neue Seiten wechseln nach dem Touch-Ereignis; veraltete Doppeltipps werden verworfen.
+- Drei eigene Audiocues. Bossbalance 0.21.2, Case-Hotfix und bestehende Profile erhalten.
+
+---
+
 # 0.21.2 Alpha — Bossbalance (2026-11-18)
 
 - Robustere Bossleiter:600/1800/3200/5500/12500 Basis-HP mit bisherigen Weltfaktoren.
