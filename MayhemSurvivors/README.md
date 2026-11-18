@@ -1,3 +1,32 @@
+# Mayhem Survivors 0.22.0 Alpha — Schrottplatz & Bruiser
+
+Ein abgestimmter erster Durchlauf: Kicksy trainiert mit deinem freien Bruiser,
+seinem Hammer und der Schockwelle. Im ersten Einstieg kannst du das Training
+wählen oder direkt starten; bestehende Spieler kommen weiter direkt zur Crew.
+Im Training zeigen Rahmen die passenden Tasten. Alles benutzt die echten Systeme.
+
+Auf dem Schrottplatz erscheint in normalen Kampagnenwellen ab Welle 3 nach
+24 Sekunden ein freiwilliges Bergungsterminal. Im türkisen Kreis 1,2 Sekunden
+anhalten nimmt den Auftrag an. Zwei Einschlagsalven ausweichen: nach sieben
+Sekunden und Ablauf aller Einschläge erhältst du 20 + 4 × Welle Run-Coins.
+Die letzten zehn Sekunden ist keine Annahme mehr möglich. Ignorieren ist erlaubt.
+
+Im Wellenshop zeigt HAMMER-PFADE die Gruppen- und Einzelzielentwicklung samt
+Vorschau mit deinen aktuellen Werten. Auf Stufe 5 bleibt die Auswahl kostenlos.
+Die neuen Ergebnisdetails erklären beide Coin-Arten und den Erstabschluss;
+Weltbelohnungen werden weiter einmalig auf der Weltkarte abgeholt.
+
+Bossbalance 0.21.2 und Case-Navigationsfix enthalten. Gleicher Paketname und
+Update-Schlüssel / versionCode 28. Über die vorhandene Android-App installieren.
+Spielstände, Helden, Gegenstände und Währungen bleiben erhalten.
+
+Details: FIRST_ARENA.md, TEST_REPORT.md und BUILD_REPORT.md. Physische Android-
+Abnahme und menschliche Bewertung von Schwierigkeit und Spielfreude bleiben offen.
+
+---
+
+## Bisherige Versionen und vollständiger Spielumfang
+
 # Mayhem Survivors0.21.2 Alpha — Bossbalance
 
 Die fünf Bosskämpfe sind robuster und eröffnen mit unterschiedlichen Angriffen.

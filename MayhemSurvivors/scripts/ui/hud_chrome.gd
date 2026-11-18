@@ -12,7 +12,7 @@ func _draw():
 
 	for e in game.enemies:
 		if e.kind not in ['boss','breaker_axel','champion']:continue
-		var pos=Vector2(620,247)+Vector2(0,game.safe_logical.position.y)
+		var pos=Vector2(620,319)+Vector2(0,game.safe_logical.position.y)
 		draw_style_box(game.style(Color('#15121D')),Rect2(pos-Vector2(15,100),Vector2(1120,125)))
 		draw_rect(Rect2(pos,Vector2(1070,16)),Color('#382C40'))
 		draw_rect(Rect2(pos,Vector2(1070*clampf(e.hp/e.max_hp,0,1),16)),Color('#FF673F') if e.kind=='breaker_axel' else Color('#BA55DF'))

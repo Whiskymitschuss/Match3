@@ -1,3 +1,37 @@
+# Android-Build 0.22.0 — 2026-11-18
+
+Tatsächlicher erfolgreicher Debug-Export mit Godot 4.6.3 stable / JDK 21 /
+Android SDK 36 / Build Tools 36.0.0.
+
+- Datei: MayhemSurvivors-v0.22.0-debug.apk / **76.052.611 Bytes**.
+- SHA256: `307330fe72bd4620c10b15c3b15747dc445ee9f6e3d84d893a37aceaad7a08f9`.
+- Paket: com.rfworlds.mayhemsurvivors / versionCode 28 / versionName 0.22.0.
+- ARM64-v8a ausschließlich / minSDK 24 / targetSDK 36 / Querformat / GL Compatibility.
+- Signaturen v2 und v3 sowie zipalign -c -P 16 -v 4 erfolgreich verifiziert.
+- Signierschlüssel unverändert: Zertifikat-SHA256
+  `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
+- Nur VIBRATE-Berechtigung; keine Internetberechtigung, keine Online-Abhängigkeit.
+- APK-CRC, exakte Tutorial-/Arenendaten, drei neue kompilierte Controller und drei
+  Soundimporte geprüft. Keine Testdateien im APK.
+
+Die APK ist als Update über die bestehende App vorgesehen. Profil-Schema 3 bleibt
+kompatibel; die neue optionale Einführungsmarkierung wird defensiv geladen.
+Eine Installation auf einem physischen Gerät wurde hier nicht durchgeführt.
+
+Das vollständige Godot-Quellprojekt enthält Szenen, GDScript, Daten, alle notwendigen
+Assets, Tests, Werkzeuge, Lizenzen und Berichte. Cache, SDK, APKs und private Schlüssel
+sind ausgeschlossen. Nach frischem Quellimport sind alle 31 Suiten / 4.757 Prüfungen
+und beide Traces bestanden; 674 Laufzeitdateien und beide Konfigurationen bytegleich.
+
+Rohprotokolle: tests/results/v0.22.0-build.log, -signature.log, -alignment.log,
+-manifest.log, -payload.log, -clean-import.log, -clean-tests.log und -source-integrity.log.
+Öffentliche Artefakte und ihre Prüfsummen liegen im Repository unter Downloads.
+Die anonyme vollständige Downloadprüfung wird nach dem Upload separat protokolliert.
+
+---
+
+## Vorheriger Build
+
 # Android-Build 0.21.2 — 2026-11-18
 
 Godot4.6.3 stable / JDK21 / Android SDK36 / Build Tools36.0.0.

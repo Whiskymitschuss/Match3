@@ -1,17 +1,17 @@
-# RF Worlds — Mayhem Survivors 0.21.2
+# RF Worlds — Mayhem Survivors 0.22.0
 
-**[Android-Update herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/MayhemSurvivors-v0.21.2-debug.apk)**
+**[Android-Update herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/first-arena-v0.22.0/Downloads/MayhemSurvivors-v0.22.0-debug.apk)**
 
-[Godot-Quellprojekt](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/MayhemSurvivors-v0.21.2-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/SHA256SUMS-v0.21.2.txt) · [Downloadprüfung](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/VERIFY-v0.21.2.txt)
+[Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/first-arena-v0.22.0/Downloads/MayhemSurvivors-v0.22.0-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/first-arena-v0.22.0/Downloads/SHA256SUMS-v0.22.0.txt)
 
-Robustere und aktivere Bosskämpfe mit eigenen Eröffnungen und sichtbaren Bossboni
-für Orbit/Tesla. Normale Gegnerwellen und Sprengkern-Schaden bleiben unverändert.
-Der Neonhafen-Endboss hat 14.500 statt 6.960 HP. Der Case-Hotfix ist enthalten.
+Kicksy trainiert mit Bruiser. Freiwillige Bergungen auf dem Schrottplatz bringen
+zusätzliche Run-Coins. Neue Hammer-Pfade zeigen beide Entwicklungen und eine echte
+Wertevorschau. Ergebnisdetails erklären deine dauerhafte Beute. Drei neue Sounds,
+klare Bossanzeige und sichere Touch-Rückwege. Bossbalance und Case-Hotfix enthalten.
 
-Als Update über die bestehende App installieren; gleicher Paketname und Schlüssel.
-30 Suiten mit 4.590 bestandenen Checks und beide historischen Traces, 110
-Belastungsszenarien und 15 native Ansichten geprüft. APK und ZIP wurden vollständig
-öffentlich heruntergeladen und ihre SHA256-Prüfsummen bestätigt. Menschliche
-Balance- und Android-Geräteabnahme stehen aus.
+Als Update über die bestehende App installieren; Paketname und Schlüssel gleich.
+31 Suiten mit 4.757 Prüfungen und beide Traces nach frischem Import bestanden;
+167 neue Prüfungen und 74 Case-Prüfungen zusätzlich mit nativem Touch.
+Android-Geräteabnahme und menschliche Balancebewertung stehen aus.
 
-[Projekt und Prüfberichte](../MayhemSurvivors/README.md) · [Pull Request #6](https://github.com/Whiskymitschuss/Match3/pull/6)
+[Projekt und Prüfberichte](../MayhemSurvivors/README.md)

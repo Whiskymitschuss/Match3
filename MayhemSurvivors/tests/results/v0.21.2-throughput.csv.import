@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://v3ntbjxci5k"
+
+[deps]
+
+files=["res://tests/results/v0.21.2-throughput.weapon.translation", "res://tests/results/v0.21.2-throughput.spec.translation", "res://tests/results/v0.21.2-throughput.wave.translation", "res://tests/results/v0.21.2-throughput.before.translation", "res://tests/results/v0.21.2-throughput.after.translation", "res://tests/results/v0.21.2-throughput.before.translation", "res://tests/results/v0.21.2-throughput.after.translation", "res://tests/results/v0.21.2-throughput.before.translation", "res://tests/results/v0.21.2-throughput.after.translation"]
+
+source_file="res://tests/results/v0.21.2-throughput.csv"
+dest_files=["res://tests/results/v0.21.2-throughput.weapon.translation", "res://tests/results/v0.21.2-throughput.spec.translation", "res://tests/results/v0.21.2-throughput.wave.translation", "res://tests/results/v0.21.2-throughput.before.translation", "res://tests/results/v0.21.2-throughput.after.translation", "res://tests/results/v0.21.2-throughput.before.translation", "res://tests/results/v0.21.2-throughput.after.translation", "res://tests/results/v0.21.2-throughput.before.translation", "res://tests/results/v0.21.2-throughput.after.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

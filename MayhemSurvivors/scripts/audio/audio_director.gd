@@ -8,7 +8,7 @@ var ui_voices:Array[AudioStreamPlayer]=[]
 var music_voices={}
 var track=''
 var music_tween:Tween
-const CUES=['united_warning','united_rage','axel_warning','axel_rage','ravox_warning','boss_phase','elite_warning','warning','boss_radial_warning','boss_charge_warning','victory','defeat']
+const CUES=['salvage_start','united_warning','united_rage','axel_warning','axel_rage','ravox_warning','boss_phase','elite_warning','warning','boss_radial_warning','boss_charge_warning','victory','defeat']
 func _init(g:Node2D):
 	game=g
 	for i in range(2):
@@ -37,7 +37,7 @@ func play(id:String):
 	last_played[id]=now
 	if id in CUES:
 		game.alert_audio.stop();game.alert_audio.stream=stream(id);game.alert_audio.volume_db=linear_to_db(sfx_gain());game.alert_audio.play();return
-	var voices=ui_voices if id in ['elite_reward','click','buy','level','spec_evolve'] else game.sfx_players
+	var voices=ui_voices if id in ['elite_reward','click','buy','level','spec_evolve','salvage_offer','salvage_complete'] else game.sfx_players
 	for voice in voices:
 		if not voice.playing:
 			voice.stream=stream(id);voice.volume_db=linear_to_db(sfx_gain())+(-7 if id in ['xp','coin'] else -4);voice.play();return
