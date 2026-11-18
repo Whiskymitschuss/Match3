@@ -458,6 +458,31 @@ PASS Cooldown and suitable upgrades chakram dusk_spiral
 PASS Actual active ability and cooldown 10
 PASS Decoy and actual phase dash
 PASS New skill clocks freeze on pause 10
+PASS Exactly two hands on shared rig bruiser
+PASS Exactly two hands on shared rig sparky
+PASS Exactly two hands on shared rig shade
+PASS Exactly two hands on shared rig twinkle
+PASS Exactly two hands on shared rig kicksy
+PASS Exactly two hands on shared rig steelfist
+PASS Exactly two hands on shared rig cinder
+PASS Exactly two hands on shared rig frosty
+PASS Exactly two hands on shared rig volt
+PASS Exactly two hands on shared rig rook
+PASS Exactly two hands on shared rig nyx
+PASS Real cached original sound united_flame
+PASS Real cached original sound united_cryo
+PASS Real cached original sound united_tesla
+PASS Real cached original sound united_lance
+PASS Real cached original sound united_chakram
+PASS Real cached original sound united_warning
+PASS Real cached original sound united_rage
+PASS Real cached original sound united_impact
+PASS Real cached original sound united_pyro
+PASS Real cached original sound ability_firestorm
+PASS Real cached original sound ability_absolute_zero
+PASS Real cached original sound ability_overcharge
+PASS Real cached original sound ability_bastion
+PASS Real cached original sound ability_phase_dance
 PASS New enemy AI slicer
 PASS Enemy per-type cap slicer
 PASS New enemy death and reward once slicer
@@ -564,4 +589,4 @@ PASS Production guarded shop continuation 8
 PASS Production guarded wave transition 9
 PASS Production guarded shop continuation 9
 PASS Production guarded wave transition 10
-UNITED RESULT 564 passed, 0 failed
+UNITED RESULT 589 passed, 0 failed

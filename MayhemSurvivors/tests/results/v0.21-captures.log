@@ -1,0 +1,43 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+UNITED FRAME home
+UNITED FRAME map_locked
+UNITED FRAME map_gardens
+UNITED FRAME hero_bruiser
+UNITED FRAME hero_twinkle
+UNITED FRAME hero_steelfist
+UNITED FRAME hero_cinder
+UNITED FRAME hero_frosty
+UNITED FRAME hero_volt
+UNITED FRAME hero_rook
+UNITED FRAME hero_nyx
+UNITED FRAME guide_hero
+UNITED FRAME guide_enemy
+UNITED FRAME guide_rules
+UNITED FRAME guide_tech
+UNITED FRAME new_enemies_firestorm
+UNITED FRAME boss_intro_2
+UNITED FRAME boss_combat_2
+UNITED FRAME boss_intro_4
+UNITED FRAME boss_combat_4
+UNITED FRAME boss_intro_6
+UNITED FRAME boss_combat_6
+UNITED FRAME boss_intro_8
+UNITED FRAME boss_combat_8
+UNITED FRAME boss_intro_10
+UNITED FRAME boss_combat_10
+UNITED FRAME pause
+UNITED FRAME pause_guide
+UNITED FRAME shop
+UNITED FRAME mastery_nyx
+UNITED FRAME statistics_nyx
+UNITED FRAME endless_page3
+UNITED FRAME difficulty_page3
+UNITED FRAME settings
+UNITED FRAME garage_nyx
+UNITED FRAME tutorial
+UNITED FRAME map_wide
+UNITED FRAME guide_tablet

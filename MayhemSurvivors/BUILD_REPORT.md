@@ -1,30 +1,27 @@
-# Android-Buildbericht0.20.0 — 2026-11-17
+# Android-Buildbericht 0.21.0 — 2026-11-18
 
-Godot4.6.3 stable / JDK21 / Android SDK36 / Build Tools36.0.0 / natives Debug-Template.
+Godot 4.6.3 stable / JDK 21 / Android SDK 36 / Build Tools 36.0.0.
+Export: `godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.21-debug.apk`.
 
-- builds/android/MayhemSurvivors-v0.20-debug.apk: 66,276,560 Bytes.
-- SHA256 `1a24181bb2b9b837439dc5bed2e0aadb67c3fd0e944209b3a9116744f7596b91`.
-- com.rfworlds.mayhemsurvivors / versionCode24 / versionName0.20.0.
-- ARM64-v8a ausschließlich / minSDK24 / targetSDK36 / Landscape / GL Compatibility.
-- Gleicher Update-Schlüssel, APK-Signatur v2/v3 und zipalign -c -P16 4 geprüft.
-- Zertifikat SHA256:5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce.
-- Nur VIBRATE-Permission, kein INTERNET. Neue Progressions-JSON, kompilierte Weltkarte/
-  Routengrafik/Modelle, vier Embleme und bestehender Axel-Controller im Payload geprüft.
-  Keine Testskripte im APK. Keine neuen Geräteberechtigungen.
+- Debug-APK: 76,018,664 Bytes.
+- SHA256: `364e45173979aa2412d781ab4423ad6cbf722545c71a9e26f2bf80a0efc5a3c6`.
+- Paket com.rfworlds.mayhemsurvivors / versionCode 25 / versionName 0.21.0.
+- Ausschließlich ARM64-v8a / minSDK 24 / targetSDK 36 / Landscape / GL Compatibility.
+- APK v2/v3 signiert; zipalign mit 16-KiB-Prüfung. Zertifikat wie in 0.20:
+  5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce.
+- Nur VIBRATE, kein INTERNET. Immersiv und Edge-to-edge konfiguriert.
+- Alle neuen Laufzeit-Atlanten, Daten und kompilierten Controller im Payload geprüft;
+  keine Tests im APK. Details in tests/results/v0.21-payload.log.
 
-Über0.19 installieren; gleiche App und lokale Daten. Neue Map-Felder mit eigener
-Version1 unter bestehendem Save-Schema3. Vor Migration pre_world_map-Backup; alte
-Freigaben/besuchte Arenen und echte Siege bleiben erhalten.
+ADB-Daemon nicht erreichbar. Das verhindert hier die Installation auf einem Gerät,
+nicht den tatsächlichen Export. Keine physische Start-/Update-/Sensor-/Audio- oder
+FPS-Abnahme behauptet. Über die vorhandene App installieren und Daten behalten.
 
-ADB-Daemon nicht erreichbar; Export und Signaturprüfung erfolgreich. Keine physische
-Installation, echte Sensor-/Touch-/Audioabnahme oder FPS-/Thermikmessung behauptet.
-Quell-ZIP ohne .godot, Builds, SDK oder private Schlüssel, alle Runtimequellen, Szenen,
-Daten/Assets, Tests und Berichte. Aktuelle Weltkarten-, Garage- und Axel-Galerien
-enthalten; ältere reine Screenshotgalerien bleiben im Repository. Start nach Import
-ohne Generatoren. Für eigenen Export SDK/JDK/Template und für kompatible Updates
-denselben privaten Signierschlüssel verwenden.
+Quell-ZIP enthält alle Laufzeitquellen, Szenen, Daten, Assets, Fontlizenzen, Generatoren,
+Tests und Berichte. Ohne .godot, APKs, SDK/JDK oder private Signierschlüssel. Eine
+aktuelle Auswahl nativer Aufnahmen liegt bei; vollständige Screenshotgalerien im Repo.
+Für eigenen Export SDK/JDK/Template und denselben privaten Schlüssel für kompatible
+Updates konfigurieren. Das Projekt selbst startet nach dem Import ohne Programmierung.
 
-Quell-ZIP zusätzlich frisch ohne Godot-Importcache entpackt und importiert. Alle27
-Suiten /2.256 Prüfungen und beide historischen Traces erneut bestanden. Laufzeit-
-skripte, Szenen, Daten und Assets mit dem getesteten Archiv bytegleich. Logs:
-tests/results/v0.20-clean-import.log und v0.20-clean-tests.log.
+Frischer ZIP-Import und Wiederholung aller Suiten sowie öffentliche Downloadprüfung
+werden vor der Übergabe ergänzend protokolliert.

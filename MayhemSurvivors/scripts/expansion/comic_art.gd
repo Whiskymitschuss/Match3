@@ -50,3 +50,9 @@ static func draw_death(g:Node2D,e:Dictionary):
 	var index=int(e.get('comic_art',4)) if boss else (19 if e.get('elite','')!='' else maxi(0,ENEMY_IDS.find(e.kind)))
 	var size=Vector2.ONE*float(e.radius)*(3.2 if boss else 2.9)*Vector2(1+t*.2,1-t*.65)
 	g.draw_set_transform(e.pos,0,Vector2(e.face,1));g.draw_texture_rect_region(texture,Rect2(-size*Vector2(.5,.72),size),cell(texture,index,5,3 if boss else 4),Color(1,1,1,1-t));g.draw_set_transform(Vector2.ZERO)
+
+# Shoulder socket centers measured in the shared 360-unit portrait coordinate system.
+# The same anchors drive both menu and combat rigs; no embedded extra arms.
+static func shoulders(id:String) -> Array:
+	var points={'bruiser':[Vector2(152,143),Vector2(258,139)],'sparky':[Vector2(155,145),Vector2(241,143)],'shade':[Vector2(118,145),Vector2(231,143)],'twinkle':[Vector2(140,145),Vector2(244,143)],'kicksy':[Vector2(173,143),Vector2(265,144)],'steelfist':[Vector2(134,130),Vector2(248,132)],'cinder':[Vector2(131,137),Vector2(238,137)],'frosty':[Vector2(139,146),Vector2(247,143)],'volt':[Vector2(139,133),Vector2(245,133)],'rook':[Vector2(122,127),Vector2(247,130)],'nyx':[Vector2(152,145),Vector2(250,144)]}
+	return points.get(id,points.bruiser)

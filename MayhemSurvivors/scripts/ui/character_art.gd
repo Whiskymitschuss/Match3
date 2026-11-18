@@ -1,6 +1,6 @@
 extends RefCounted
 const Comic=preload('res://scripts/expansion/comic_art.gd')
-# Menu illustrations remain complete; the gameplay bases contain NO arms/hands.
+# Shared bodies contain NO arms/hands; portraits and gameplay use the same rig.
 # Exactly two arms and glove components are attached by CombatVisuals at runtime.
 const TEXTURE = preload('res://assets/characters/heroes_atlas.png')
 const GAMEPLAY_TEXTURE = preload('res://assets/characters/hero_rig.png')
@@ -13,3 +13,5 @@ const TWINKLE=preload('res://assets/characters/twinkle_atlas.png')
 const KICKSY=preload('res://assets/characters/kicksy_atlas.png')
 const STEELFIST=preload('res://assets/characters/steelfist_atlas.png')
 static func texture(_kind:String,_gameplay:bool=false) -> Texture2D:return Comic.HEROES
+
+static func shoulders(kind:String) -> Array:return Comic.shoulders(kind)

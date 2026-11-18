@@ -108,9 +108,12 @@ func hand_positions() -> Array:
 	return [game.player.position+Vector2(-19*face,5),game.player.position+Vector2(19*face,4)]
 
 func shoulder_positions() -> Array:
-	var face=game.character_facing()
-	var local=Vector2(-15,15)
-	return [game.player.position+Vector2(local.x*face,-25),game.player.position+Vector2(local.y*face,-25)]
+	var face=game.character_facing();var result=[]
+	var stride=sin(game.animation_clock*12) if game.state==game.State.COMBAT and game.move_input.length_squared()>.01 else 0.0
+	for point in HeroArt.shoulders(game.characters[game.selected].id):
+		var at:Vector2=Vector2(-48,-64-absf(stride)*3)+Vector2(point)*(96.0/360)
+		at.x*=face;result.append(game.player.position+at.rotated(stride*.035))
+	return result
 
 func elbows(hands: Array) -> Array:
 	var shoulders=shoulder_positions()

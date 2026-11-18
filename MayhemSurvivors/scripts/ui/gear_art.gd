@@ -41,7 +41,7 @@ static func preview(canvas:CanvasItem,hero:String,loadout:Dictionary,tint:Color=
 	dress(canvas,hero,loadout,Rect2(0,0,360,360))
 	var id:String=loadout.get('weapon',C.STARTERS[hero]);var hands=[Vector2(200,220),Vector2(260,215)]
 	if id in ['tools','orbit']:hands=[Vector2(108,233),Vector2(254,233)]
-	var shoulders=[Vector2(124,130),Vector2(232,130)]
+	var shoulders=Hero.shoulders(hero)
 	for i in range(2):
 		var elbow=(shoulders[i]+hands[i])*.5+Vector2(-20 if i==0 else 20,0)
 		arm(canvas,shoulders[i],elbow,22,skin(hero))

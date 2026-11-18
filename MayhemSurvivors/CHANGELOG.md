@@ -1,3 +1,16 @@
+# 0.21.0 Alpha — MAYHEM UNITED (2026-11-18)
+
+- Zehn Arenen mit schrittweiser Freigabe und eigenen Abschlussbossen; fünf Bosswellen pro Run.
+- Fünf neue Helden samt Klassenwaffen, aktiven Fähigkeiten und zehn echten Entwicklungen.
+- Zehn zusätzliche Gegner mit Schutz, Heilung, Teleport, Sturm, Frost, Beschwörung und Fernangriffen.
+- Gemeinsamer Comic-Stil für alle Helden/Gegner/Bosse/Waffen/Böden; identische Rig-Anker in Menü/Kampf.
+- Handbuch/Bestiarium/Technik, größere paginierte Kataloge, Tutorial, Icons, Sounds und Effekte abgestimmt.
+- Kompatible lokale Profile und Cases; Flammen-Deko bleibt getrennt von der neuen Flamer-Waffe.
+- Projectile-Pool setzt Waffenmetadaten vollständig zurück; neuer Run startet ohne alten Trefferschutz.
+- Android 0.21.0 / versionCode25 / ARM64; Tests, Belastung und native Grafikprüfung dokumentiert.
+
+---
+
 # 0.20.0 Alpha — 2026-11-17
 
 - Weltkarte mit vier echten Arenenvorschauen und eigenen Metall-Emblemen, Touchkarten,

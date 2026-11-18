@@ -72,6 +72,9 @@ func run():
 			10:check(g.united.heroes.decoy_time==4 and g.hero_ability.move_dash(.1),'Decoy and actual phase dash')
 		var before=g.united.heroes.fire_clock+g.united.heroes.shield_time+g.united.heroes.overcharge+g.united.heroes.decoy_time;g.pause_game();g._physics_process(2)
 		check(is_equal_approx(before,g.united.heroes.fire_clock+g.united.heroes.shield_time+g.united.heroes.overcharge+g.united.heroes.decoy_time),'New skill clocks freeze on pause '+str(hero));g.resume()
+	for hero in range(11):
+		start(hero,'scrapyard',3);check(g.combat_visuals.hand_positions().size()==2 and g.combat_visuals.shoulder_positions().size()==2,'Exactly two hands on shared rig '+R.HEROES[hero])
+	for id in ['united_flame','united_cryo','united_tesla','united_lance','united_chakram','united_warning','united_rage','united_impact','united_pyro','ability_firestorm','ability_absolute_zero','ability_overcharge','ability_bastion','ability_phase_dance']:check(g.audio_director.cache.has(id) and g.audio_director.cache[id].get_length()>0,'Real cached original sound '+id)
 	# Each new enemy attacks or protects with real data, bounded simultaneous/total spawning.
 	for id in R.NEW_ENEMIES:
 		start(0,'scrapyard',9);var e=dummy(id,Vector2(220,0));var hp=g.hp;e.u_clock=0
