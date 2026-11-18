@@ -1,3 +1,15 @@
+# 0.23.0 Alpha — Reaktorzone & Neonhafen (2026-11-18)
+
+- Energiekerne und freiwillige Überladung als eigene Reaktor-Mechanik ab Welle 3.
+- Container-Doppelladungen mit festen Warnflächen, Gegner- und Spielerschaden im Neonhafen.
+- Begrenzte Manöver-Boni plus reguläre Gegnerbeute; keine kritischen Umwelttreffer.
+- Passende Zonenangriffe für Reaktorwächter und Dock-Tyrann mit gedeckeltem Umweltschaden.
+- Kicksy-Einführung, erneut erreichbare Pause-Hilfe, HUD-Status, Weltkarteninfo und Beutedetails.
+- Zwei eigene SVG-Illustrationen und fünf Soundeffekte; sämtliche Qualitätsstufen gleich balanciert.
+- Boss-HP, Waffenwerte, Case-Fix und vorhandene Profile erhalten. Keine Online-Systeme.
+
+---
+
 # 0.22.0 Alpha — Schrottplatz & Bruiser (2026-11-18)
 
 - Erster Einstieg mit Kicksy: Training mit dem freien Bruiser statt gesperrtem Leihhelden.

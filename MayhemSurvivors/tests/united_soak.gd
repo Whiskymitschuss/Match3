@@ -11,6 +11,7 @@ func limits():
 	peak_enemies=maxi(peak_enemies,g.enemies.size());peak_shots=maxi(peak_shots,g.shots.size());peak_hazards=maxi(peak_hazards,g.united.enemies.hazards.size())
 	assert(g.enemies.size()<=100 and g.shots.size()<=320 and g.loot.size()<=240)
 	assert(g.united.enemies.hazards.size()<=12 and g.united.heroes.fire_fields.size()<=6)
+	assert(g.arena_mechanics.hazards.size()<=6 and g.arena_mechanics.cores.size()<=3)
 	assert(g.player.position.is_finite() and is_finite(g.hp) and is_finite(g.dealt))
 	for e in g.enemies:assert(e.pos.is_finite() and is_finite(e.hp) and e.hp>0)
 	assert(g.state==g.State.COMBAT)
@@ -34,6 +35,7 @@ func run():
 			g.wave_number=10;g.begin_wave();g.max_hp=100000;g.hp=g.max_hp;var boss=g.enemies[0];boss.pos=g.player.position+Vector2(240,0);boss.hp=boss.max_hp*.3;g.united.bosses.update(.01)
 			for pattern in range(4):g.united.bosses.stage='chase';g.united.bosses.pattern=pattern;g.united.bosses.clock=0;g.united.bosses.update(.01);advance(120)
 			g.pause_game();var at=g.player.position;var timer=g.remaining;g._physics_process(3);assert(g.player.position==at and g.remaining==timer);g.resume()
+			g.cleanup();assert(g.arena_mechanics.hazards.is_empty() and g.arena_mechanics.cores.is_empty())
 			g.cleanup();assert(g.enemies.is_empty() and g.united.enemies.hazards.is_empty() and g.united.heroes.fire_fields.is_empty() and g.shots.all(func(s):return not s.active))
 			scenarios+=1
 		print('UNITED SOAK HERO ',R.HEROES[hero],' / 10 arenas complete')

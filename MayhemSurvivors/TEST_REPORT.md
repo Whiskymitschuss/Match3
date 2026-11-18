@@ -1,3 +1,61 @@
+# Testbericht 0.23.0 — 2026-11-18
+
+**32 Suiten / 4.977 bestandene Prüfungen / 0 Fehler**, nach frischem Entpacken und
+Import ohne Projektcache. Beide historischen Vergleichsläufe unverändert bestanden.
+Godot 4.6.3 stable. Rohprotokolle unter tests/results/v0.23.0-*.
+
+## Neue Arenenmechaniken
+
+arena_mechanics_test: 220 Prüfungen, zusätzlich alle 220 im nativen GL-Fenster mit
+InputEventScreenTouch-Ereignissen bestanden. Geprüft sind tatsächliche Hammer- und
+Blasterangriffe, Kernerzeugung/-aufnahme, bewusstes Aktivieren, vollständige Warnzeit,
+Gegner- und Spielerschaden, normale Beute plus begrenzter Bonus, keine kritischen
+Arena-Treffer und unverbrauchter Crit-RNG, kein Doppelschaden oder wiederholter Bonus.
+
+Feste Containerpositionen, seitliches Ausweichen, zwei begrenzte Doppelladungen,
+leere Abwürfe ohne Bonus, genaue Kollisionsränder und lange Frames sind geprüft.
+Pause, Level-Up, Shop, Tod und Neustart halten bzw. bereinigen die neuen Systeme.
+
+Die tatsächlichen Arenenbosse kündigen drei eigene Ziele mit zwei Sekunden an.
+HP-Phasen löschen laufende Warnungen nicht; Tod und Versetzen des Besitzers bereinigen
+sie. Umweltschaden am Boss ist auf 0,5 % je Treffer begrenzt. Bossflächen bezahlen
+keinen Bonus. Andere Arenen und Tutorial bleiben isoliert; Endlos wiederholt die Regeln.
+
+Kicksy-Einführung, gespeicherte/sanitisierte Bestätigung, reale Touch-Rückwege und
+erneutes Öffnen in der Pause sind getestet. Fünf eigene Soundimporte geprüft.
+
+## Belastung und Darstellung
+
+- Arena-Soak: 12 Szenarien (Bruiser/Sparky × zwei Arenen × LOW/MEDIUM/HIGH),
+  28.800 Simulationsschritte / 480 s, bis 100 Gegner, zwei eigene Gefahren und
+  25 Projektilpool-Slots. Begrenzungen, Pause und Bereinigung bestanden.
+- United-Soak: elf Helden × zehn Arenen / 110 Szenarien / 92.400 Schritte / 1.540 s,
+  inklusive neuer Bossflächen; Spitzenwerte 38 Gegner, 22 Pool-Slots, vier United-
+  Gefahren. Eigene Gefahren ≤6 und Kerne ≤3 sowie zweimalige Bereinigung geprüft.
+- 21 native GL-Ansichten: Coach, Status, Kerne, Entladung, Container, Bossmuster,
+  Pause-Hilfe und Weltkarte. Ansichten in 1600×900, 2400×1080 und 1440×1080.
+  Die zu lange Abwurfmeldung wurde gekürzt und erneut gerendert/geprüft.
+- Vergleichsläufe: World 33 Punkte / 3.600 Schritte; Effects 87 Punkte / 8.700 Schritte.
+- Frischer Quellimport: 694 Laufzeitdateien und Projekt-/Exportkonfiguration
+  bytegleich. Alle 32 Suiten und beide Traces erneut bestanden.
+- Android-APK tatsächlich gebaut, Signatur, Manifest, ARM64, Alignment, exakte Daten,
+  neue Controller, Textur-/Soundimporte und Archiv-CRC geprüft.
+
+## Grenzen
+
+Keine physische Android-Geräteabnahme. Diese Tests belegen keine menschliche
+Schwierigkeit, 60 FPS, Akkulaufzeit, Temperatur oder korrektes Verhalten auf jedem
+Cutout-/Sensorgerät. Die nativen Bilder stammen von Linux/Mesa. Fehlende V-Sync-
+Steuerung und kein erreichbarer ADB-Daemon sind erwartete Umgebungsgrenzen;
+keine Parser-, Script- oder Ressourcenfehler in den finalen Prüfläufen.
+
+Nächster Praxistest: in beiden Arenen Nah- und Fernkampf, Überladung bewusst nutzen
+bzw. ignorieren, Gegner unter Container locken, Bonus prüfen und Arenaboss besiegen.
+
+---
+
+## Vorherige Prüfberichte
+
 # Testbericht 0.22.0 — 2026-11-18
 
 **31 Suiten / 4.757 bestandene Prüfungen / 0 Fehler**, nach frischem Entpacken und

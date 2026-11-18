@@ -6,3 +6,5 @@ Steelfist 0.17: steel_swing, ability_pipe_burst and steel_regen are original det
 Mayhem United 0.21: fourteen original deterministic weapon, danger and ability cues. No external recordings or samples. Reproduce with tools/generate_united_audio.py (Python standard library).
 
 0.22.0: salvage_offer, salvage_start and salvage_complete are original deterministic synthesized cues by RF Worlds project tooling; no external recordings or samples.
+
+0.23.0: core_collect, core_warning, core_blast, container_warning and container_impact are original deterministic synthesized sounds. No external recordings or samples.

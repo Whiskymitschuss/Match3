@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180" viewBox="0 0 240 180">
+<defs><linearGradient id="steel" x2="0" y2="1"><stop stop-color="#528ca5"/><stop offset="1" stop-color="#1c354e"/></linearGradient><linearGradient id="edge" x2="0" y2="1"><stop stop-color="#b6d7e5"/><stop offset="1" stop-color="#577787"/></linearGradient><pattern id="stripe" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="28" height="28" fill="#ffd166"/><rect width="14" height="28" fill="#172438"/></pattern></defs>
+<path d="m15 8 209 0 10 18v140l-12 8H17L6 163V26z" fill="url(#edge)" stroke="#100d25" stroke-width="10" stroke-linejoin="round"/>
+<rect x="22" y="24" width="196" height="128" rx="5" fill="url(#steel)" stroke="#10283d" stroke-width="5"/>
+<g stroke="#0c253b" stroke-width="12"><path d="M50 29v117M84 29v117M156 29v117M190 29v117"/></g>
+<g stroke="#6eb5c6" stroke-width="4"><path d="M46 30v112M80 30v112M152 30v112M186 30v112"/></g>
+<path d="M27 143h187v17H27z" fill="url(#stripe)" stroke="#172438" stroke-width="3"/>
+<path d="M20 17h201M20 167h201" stroke="#d8f5ff" stroke-width="4"/>
+<rect x="99" y="53" width="42" height="58" rx="6" fill="#102438" stroke="#00d9d0" stroke-width="3"/>
+<path d="m123 61-15 25h13l-5 18 17-28h-13z" fill="#ffd166"/>
+<g fill="#e2f2f4" stroke="#172438" stroke-width="2"><circle cx="18" cy="20" r="5"/><circle cx="222" cy="20" r="5"/><circle cx="18" cy="160" r="5"/><circle cx="222" cy="160" r="5"/></g></svg>

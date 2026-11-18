@@ -1,11 +1,11 @@
-"""Package the complete runnable 0.22.0 project, excluding generated cache and old capture galleries."""
+"""Package the complete runnable 0.23.0 project, excluding generated cache and old capture galleries."""
 from pathlib import Path
 import argparse, zipfile
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path);args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.22.0-source.zip'
+out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.23.0-source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
-captures={'first_arena_welcome','first_arena_build_paths','first_arena_salvage_active','first_arena_reward_details','first_arena_boss_2400','first_arena_training_ability','boss_balance_intro_10','boss_balance_opening_4','boss_balance_opening_8','boss_balance_orbit_details','boss_balance_shade_selection','case_navigation_reveal','case_navigation_inventory','united_home','united_map_gardens','united_hero_steelfist','united_hero_cinder','united_new_enemies_firestorm','united_boss_combat_6','united_guide_hero','united_tutorial'}
+captures={'arena_mechanics_reactor_coach','arena_mechanics_reactor_warning','arena_mechanics_container_landed_1600','arena_mechanics_container_warning_2400','arena_mechanics_docks_boss_warning','arena_mechanics_reactor_boss_warning','first_arena_welcome','first_arena_build_paths','first_arena_salvage_active','first_arena_reward_details','case_navigation_reveal','case_navigation_inventory','united_home','united_map_gardens','united_hero_steelfist','united_hero_cinder','united_new_enemies_firestorm','united_guide_hero','united_tutorial'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(root.rglob('*')):
   rel=f.relative_to(root)

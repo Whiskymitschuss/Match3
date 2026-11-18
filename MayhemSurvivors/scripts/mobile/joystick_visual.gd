@@ -4,6 +4,12 @@ var game
 func _draw():
 	if not game: return
 	game.encounters.draw_notice(self)
+	var arena_status:String=game.arena_mechanics.status()
+	if not arena_status.is_empty():
+		var at=Vector2(65,218)+game.hud_top_left()
+		draw_style_box(game.style(Color('#121A27')),Rect2(at,Vector2(520,80)))
+		var lines=arena_status.split('\n')
+		for i in range(lines.size()):draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(14,29+i*29),lines[i],HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color('#8FE5DC'))
 	var p: Vector2 = game.stick_origin if game.stick_id>=0 else game.joystick_rest()
 	draw_texture_rect(preload('res://assets/ui/joystick_base.svg'),Rect2(p-Vector2(140,140),Vector2(280,280)),false)
 	draw_texture_rect(preload('res://assets/ui/joystick_thumb.svg'),Rect2(p+game.stick_pos-Vector2(56,56),Vector2(112,112)),false)

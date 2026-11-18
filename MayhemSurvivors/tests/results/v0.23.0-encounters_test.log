@@ -1,0 +1,107 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Elite schedule scrapyard wave 1
+PASS Elite schedule scrapyard wave 2
+PASS Elite schedule scrapyard wave 3
+PASS Elite schedule scrapyard wave 4
+PASS Elite schedule scrapyard wave 5
+PASS Elite schedule scrapyard wave 6
+PASS Elite schedule scrapyard wave 7
+PASS Elite schedule scrapyard wave 8
+PASS Elite schedule scrapyard wave 9
+PASS Elite schedule scrapyard wave 10
+PASS Elite schedule reactor wave 1
+PASS Elite schedule reactor wave 2
+PASS Elite schedule reactor wave 3
+PASS Elite schedule reactor wave 4
+PASS Elite schedule reactor wave 5
+PASS Elite schedule reactor wave 6
+PASS Elite schedule reactor wave 7
+PASS Elite schedule reactor wave 8
+PASS Elite schedule reactor wave 9
+PASS Elite schedule reactor wave 10
+PASS Real promoted elite uses heavy stats and arena identity
+PASS Promotion replaces one normal enemy without an extra node
+PASS Only one promotion per wave
+PASS No elite before eighteen elapsed seconds
+PASS Ram stops and begins full warning
+PASS Warning begins at full duration without special damage
+PASS Ram target and origin remain locked after player moves
+PASS Ram enters dash only after windup
+PASS Ram swept collision hits once even over a long frame
+PASS Shared hurt cooldown prevents duplicate dash damage
+PASS Slowed ram damages only along actual travelled segment
+PASS Long acquisition frame does not skip telegraph
+PASS Knockback cancels a locked warning
+PASS Offscreen elite cannot finish a special attack
+PASS Elite windup freezes outside combat 7
+PASS Elite windup freezes outside combat 5
+PASS Elite windup freezes outside combat 6
+PASS Actual Bruiser shockwave cancels elite windup
+PASS Shockwave interruption works even against arena wall
+PASS Shade dash retains invulnerability against new encounter hazards
+PASS Reactor has its own pulse archetype
+PASS Pulse creates one bounded ring after warning
+PASS Visible ring opening and danger arc match hit geometry
+PASS Inner and outer ring zones are safe
+PASS Standing in actual gap receives no pulse damage
+PASS Actual closed ring arc applies damage
+PASS Killing elite cancels its active ring
+PASS Real death queues exactly one cache
+PASS Repeated death cannot duplicate cache or elite count
+PASS Elite grants actual extra coins and XP crystal
+PASS Wave cleanup preserves cache for connected shop
+PASS Cannot bypass reward by starting next wave
+PASS Underlying shop actions blocked while reward is pending
+PASS Cache coin choice affects spendable and lifetime run earnings
+PASS Stale reward callback cannot claim a second option
+PASS Reward returns to real market and next wave
+PASS Cache correctly hands off to mandatory weapon evolution
+PASS Evolution returns to market after elite cache
+PASS Cache choice damage
+PASS Choice effect applied damage
+PASS Item synchronization retains elite bonus
+PASS Cache choice vital
+PASS Choice effect applied vital
+PASS Item synchronization retains elite bonus
+PASS Restart resets rewards, encounter count and tier
+PASS Cache identifiers cannot be reused across runs
+PASS Actual cache button chooses correct effect once 0
+PASS Actual cache button chooses correct effect once 1
+PASS Actual cache button chooses correct effect once 2
+PASS Opening boss retains base behavior scrapyard
+PASS Phase two begins with full recovery after long frame scrapyard
+PASS Transition clears hostile but retains friendly shots scrapyard
+PASS Pause freezes new phase scrapyard
+PASS Phase two creates arena-specific actual attack scrapyard
+PASS Special preserves existing boss attack cursor scrapyard
+PASS New boss attack retains full readable warning scrapyard
+PASS Boss patterns expire after long frames scrapyard
+PASS Phase three threshold scrapyard
+PASS Third phase introduces open impulse ring scrapyard
+PASS Boss ring has real escape opening scrapyard
+PASS Boss does not regress phases scrapyard
+PASS Level-up freezes new hazards scrapyard
+PASS Victory cleans every new combat object scrapyard
+PASS Large damage can skip directly to phase three scrapyard
+PASS Loss cleans encounter state scrapyard
+PASS Opening boss retains base behavior reactor
+PASS Phase two begins with full recovery after long frame reactor
+PASS Transition clears hostile but retains friendly shots reactor
+PASS Pause freezes new phase reactor
+PASS Phase two creates arena-specific actual attack reactor
+PASS Special preserves existing boss attack cursor reactor
+PASS New boss attack retains full readable warning reactor
+PASS Boss patterns expire after long frames reactor
+PASS Phase three threshold reactor
+PASS Third phase introduces open impulse ring reactor
+PASS Boss ring has real escape opening reactor
+PASS Boss does not regress phases reactor
+PASS Level-up freezes new hazards reactor
+PASS Victory cleans every new combat object reactor
+PASS Large damage can skip directly to phase three reactor
+PASS Loss cleans encounter state reactor
+PASS Lethal new hazard cleans during iteration scrapyard
+PASS Lethal new hazard cleans during iteration reactor
+PASS Run record persists elite kills compatibly
+ENCOUNTERS RESULT 104 passed, 0 failed

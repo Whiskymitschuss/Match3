@@ -43,6 +43,8 @@ var ravox
 var enemy_pack
 var arena_events
 var scrapyard_salvage
+var arena_mechanics
+var arena_coach
 var bruiser_builds
 var result_details:Dictionary={}
 var enemy_roles
@@ -176,6 +178,8 @@ func _ready():
 	enemy_pack=preload('res://scripts/enemies/enemy_pack.gd').new(self)
 	arena_events=preload('res://scripts/gameplay/arena_events.gd').new(self)
 	scrapyard_salvage=preload('res://scripts/gameplay/scrapyard_salvage.gd').new(self)
+	arena_mechanics=preload('res://scripts/gameplay/arena_mechanics.gd').new(self)
+	arena_coach=preload('res://scripts/ui/arena_coach.gd').new(self)
 	bruiser_builds=preload('res://scripts/ui/bruiser_builds.gd').new(self)
 	ravox=preload('res://scripts/enemies/ravox_controller.gd').new(self)
 	enemy_roles=preload('res://scripts/enemies/reactor_roles.gd').new(self)
@@ -527,6 +531,7 @@ func cleanup():
 	if equipped_spell:equipped_spell.invulnerability=0;equipped_spell.touch_ids.clear()
 	if arena_events:arena_events.clear()
 	if scrapyard_salvage:scrapyard_salvage.clear()
+	if arena_mechanics:arena_mechanics.clear()
 	if encounters:encounters.clear_combat()
 	if combat_visuals: combat_visuals.clear()
 	if world_visuals: world_visuals.clear()
@@ -578,6 +583,7 @@ func start_run():
 	wave_number = 1
 	run_items.clear()
 	scrapyard_salvage.reset_run()
+	arena_mechanics.reset_run()
 	result_details.clear()
 	encounters.reset_run()
 	ravox.reset_run()
@@ -595,6 +601,7 @@ func start_run():
 
 func prepare_wave():
 	change_state(State.WAVE_PREPARATION)
+	if arena_coach.offer():return
 	if united.enabled and rules.boss_wave():united.bosses.intro();return
 	if breaker.scheduled():breaker.intro();return
 	backdrop(('WELLE %d / ENDLOS' if run_mode=='endless' else 'WELLE %d / 10') % wave_number,arena_definition.boss_name+' ERWACHT' if rules.boss_wave() else arena_definition.name+(' / Verstärkte Gegnergruppen ab Welle 4' if wave_number>=4 else ' / Bewege dich, sammle Kristalle und überlebe!'))
@@ -617,6 +624,9 @@ func prepare_wave():
 	if scrapyard_salvage.available():
 		label_at('OPTIONALE BERGUNG / Ab Sekunde 24 im türkisen Kreis 1,2 s anhalten.',Vector2(120,755),28,TEAL)
 		label_at('Zwei Einschlagsalven ausweichen: +%d Run-Coins. Ignorieren ist erlaubt.' % scrapyard_salvage.reward(),Vector2(120,800),25,GOLD)
+	if arena_mechanics.normal_wave():
+		label_at('REAKTOR / Drei Kerne sammeln, am Terminal 1,2 s anhalten.' if arena_id=='reactor' else 'NEONHAFEN / Container treffen dich und Gegner. Zwei Kills pro Doppelladung bringen einen Bonus.',Vector2(120,755),25,TEAL)
+		label_at('Arena-Tipps kannst du in der Pause erneut öffnen.',Vector2(120,800),25,GOLD)
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 
 func begin_wave():
@@ -631,6 +641,7 @@ func begin_wave():
 	elif united.enabled and united.bosses.scheduled() and not rules.final_boss_wave():spawn_enemy('champion')
 	elif rules.boss_wave(): spawn_enemy('boss')
 	change_state(State.COMBAT)
+	arena_mechanics.begin_wave()
 	make_hud()
 
 func make_hud():
@@ -731,6 +742,7 @@ func pause_menu():
 	button('EINSTELLUNGEN',Vector2(120,460),Vector2(620,110),func(): settings(pause_menu))
 	button('HANDBUCH',Vector2(120,740),Vector2(620,110),func():game_guide.show('rules',0,pause_menu))
 	button('HAUPTMENÜ',Vector2(120,600),Vector2(620,110),confirm_leave)
+	if arena_mechanics.supported():button('ARENA-TIPPS',Vector2(120,880),Vector2(620,100),func():queue_ui_action(func():arena_coach.show(pause_menu)))
 
 func resume():
 	change_state(State.COMBAT)
@@ -781,6 +793,7 @@ func _physics_process(delta):
 	arena_hazards.update(delta)
 	arena_events.update(delta)
 	scrapyard_salvage.update(delta)
+	arena_mechanics.update(delta)
 	if state != State.COMBAT:return
 	united.update(delta)
 	if state!=State.COMBAT:return
@@ -977,9 +990,9 @@ func update_shots(dt: float):
 					if state != State.COMBAT: return
 					break
 
-func damage_enemy(e: Dictionary, power: float):
+func damage_enemy(e: Dictionary, power: float, source:String='weapon'):
 	if e.hp<=0 or not enemies.has(e): return
-	var critical = rng.randf()<crit
+	var critical = source!='arena' and rng.randf()<crit
 	var amount = power*(2 if critical else 1)*enemy_roles.damage_factor(e)*united.enemies.factor(e)*(1.0-float(breaker.data.resistance) if e.kind=='breaker_axel' else 1.0)
 	dealt += minf(e.hp,amount)
 	e.hp -= amount
@@ -996,6 +1009,7 @@ func damage_enemy(e: Dictionary, power: float):
 		encounters.removed(e)
 		enemies.erase(e)
 		kills += 1
+		arena_mechanics.defeated(e,source)
 		twinkle.on_kill()
 		steelfist.on_kill()
 		var reward = int(e.get('coin_reward',enemy_definition(kind).coins))
@@ -1266,7 +1280,8 @@ func reward_details():
 	if result_details.is_empty() or state not in [State.VICTORY,State.GAME_OVER]:return
 	backdrop('DEIN FORTSCHRITT','Run-Coins und Studio-Coins haben getrennte Zwecke. Alle Belohnungen sind erspielbar.')
 	var parts=Collection.reward_breakdown(run_mode,run_waves,kills,result_details.victory)
-	var rows=[['STUDIO-COINS','+%d DAUERHAFT' % studio_reward,'%d überlebte Wellen: +%d\n%d Kills: +%d\nKampagnensieg: +%d\n\nBereits deinem Profil gutgeschrieben. Für Cases und den kosmetischen Shop.' % [run_waves,parts.waves,kills,parts.kills,parts.victory]],['RUN-COINS','%d IM RUN VERDIENT' % earned,'Davon Bergung: %d\nBergungen geschafft: %d\n\nFür Käufe im Wellenshop. Ein neuer Durchlauf startet bei null Run-Coins.' % [scrapyard_salvage.total_coins,scrapyard_salvage.completed]],['WELTABSCHLUSS','BELOHNUNG BEREIT' if WorldProgress.eligible(saved,arena_id) else ('BEREITS ABGEHOLT' if saved.world_progress.claimed.has(arena_id) else 'DEIN NÄCHSTES ZIEL'),WorldProgress.reward_text(arena_id)+'\n\n'+('Auf der Weltkarte einmalig abholen. Die nächste Welt ist bereits offen.' if WorldProgress.eligible(saved,arena_id) else ('Diese Erstbelohnung gehört bereits deinem Profil. Wähle auf der Weltkarte dein nächstes Ziel.' if saved.world_progress.claimed.has(arena_id) else 'Besiege den Arenaboss in Welle 10. Erstabschlüsse bringen zusätzliche dauerhafte Beute.'))]]
+	var arena_receipt='Davon Bergung: %d\nBergungen geschafft: %d' % [scrapyard_salvage.total_coins,scrapyard_salvage.completed] if arena_id=='scrapyard' else 'Manöver-Bonus: %d\nDurch Arena besiegt: %d' % [arena_mechanics.total_coins,arena_mechanics.arena_kills]
+	var rows=[['STUDIO-COINS','+%d DAUERHAFT' % studio_reward,'%d überlebte Wellen: +%d\n%d Kills: +%d\nKampagnensieg: +%d\n\nBereits deinem Profil gutgeschrieben. Für Cases und den kosmetischen Shop.' % [run_waves,parts.waves,kills,parts.kills,parts.victory]],['RUN-COINS','%d IM RUN VERDIENT' % earned,arena_receipt+'\n\nFür Käufe im Wellenshop. Ein neuer Durchlauf startet bei null Run-Coins.'],['WELTABSCHLUSS','BELOHNUNG BEREIT' if WorldProgress.eligible(saved,arena_id) else ('BEREITS ABGEHOLT' if saved.world_progress.claimed.has(arena_id) else 'DEIN NÄCHSTES ZIEL'),WorldProgress.reward_text(arena_id)+'\n\n'+('Auf der Weltkarte einmalig abholen. Die nächste Welt ist bereits offen.' if WorldProgress.eligible(saved,arena_id) else ('Diese Erstbelohnung gehört bereits deinem Profil. Wähle auf der Weltkarte dein nächstes Ziel.' if saved.world_progress.claimed.has(arena_id) else 'Besiege den Arenaboss in Welle 10. Erstabschlüsse bringen zusätzliche dauerhafte Beute.'))]]
 	for i in range(3):
 		var x=100+i*585
 		UISkin.panel(self,Rect2(x,270,550,610),TEAL if i<2 else GOLD)
@@ -1321,6 +1336,7 @@ func _draw():
 	encounters.draw_floor()
 	enemy_roles.draw_floor()
 	arena_hazards.draw()
+	arena_mechanics.draw()
 	scrapyard_salvage.draw()
 	if is_reactor():reactor_guardian.draw()
 	world_visuals.draw_telegraph()

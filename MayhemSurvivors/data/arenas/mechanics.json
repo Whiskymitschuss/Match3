@@ -1,0 +1,34 @@
+{
+  "reactor": {
+    "name": "KERNÜBERLADUNG",
+    "kills_per_core": 4,
+    "cores_required": 3,
+    "hold": 1.2,
+    "warm": 2.5,
+    "radius": 180,
+    "enemy_damage": 220,
+    "damage_per_wave": 20,
+    "player_damage": 14,
+    "bonus_base": 18,
+    "bonus_per_wave": 4,
+    "boss_warm": 2.0,
+    "boss_radius": 125
+  },
+  "docks": {
+    "name": "CONTAINER-MANÖVER",
+    "drop_times": [16, 40],
+    "size": [180, 140],
+    "warm": 2.0,
+    "enemy_damage": 200,
+    "damage_per_wave": 20,
+    "player_damage": 12,
+    "bonus_kills": 2,
+    "bonus_base": 12,
+    "bonus_per_wave": 4,
+    "boss_warm": 2.0
+  },
+  "limits": {
+    "hazards": 6,
+    "boss_fraction_cap": 0.005
+  }
+}
