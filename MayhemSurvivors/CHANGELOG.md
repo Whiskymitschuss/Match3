@@ -1,3 +1,14 @@
+# 0.24.0 Alpha — Glutwerk (2026-11-18)
+
+- Zwei freiwillige Dampfventile mit Druckfenster, klarer Richtung und einmaligem Gebrauch je Welle.
+- Druckabhängiger Flächenschaden, Rückstoß für normale Gegner und begrenzte Manöver-Boni.
+- Eigene kreuzende Dampfbahnen für den Ofenkönig; voller Vorlauf und bestehende Boss-Schadensgrenze.
+- Datengestützte Kicksy-Erklärungen, gespeicherte Hilfe, HUD und Weltkarteninfo für das Glutwerk.
+- Eine eigene SVG-Ventilgrafik und vier Audiocues. Schwache Rückreferenz verhindert einen Manager-Zyklus.
+- Bodenbahnen, Waffenwerte, Boss-HP, Case-Fix und vorhandene Profile erhalten.
+
+---
+
 # 0.23.0 Alpha — Reaktorzone & Neonhafen (2026-11-18)
 
 - Energiekerne und freiwillige Überladung als eigene Reaktor-Mechanik ab Welle 3.

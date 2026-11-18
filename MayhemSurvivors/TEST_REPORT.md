@@ -1,3 +1,57 @@
+# Testbericht 0.24.0 — 2026-11-18
+
+**33 Suiten / 5.194 bestandene Prüfungen / 0 Fehler**, nach frischem Entpacken und
+Import ohne Projektcache. Beide historischen Vergleichsläufe unverändert bestanden.
+Godot 4.6.3 stable. Rohprotokolle unter tests/results/v0.24.0-*.
+
+## Glutwerk
+
+foundry_test: 217 Prüfungen, zusätzlich alle 217 im nativen GL-Fenster mit
+InputEventScreenTouch-Ereignissen bestanden. Bruiser, Sparky und Steelfist sowie
+LOW/MEDIUM/HIGH: tatsächliches Anhalten, voller Vorlauf, gespeicherter Druck,
+richtungsgebundener Schaden, Rückstoß, sichere Bedienposition, normales XP-/Coin-Loot
+und begrenzte Bonuszahlung. Niedriger und hoher Druck sowie leere Bahnen geben keinen
+Bonus. Verwendete Ventile sind gegen Wiederholung geschützt.
+
+Pause, Level-Up und Shop frieren Druck und Warnungen ein. Letzte Sekunden, lange
+Frames, Randpositionen, eigener Schaden, Tod und Neustart werden abgefangen.
+Ofenkönig: echte kreuzende Dampfbahnen, vollständige Vorwarnung, HP-Phasen, Besitzertod
+und Versetzen, gedeckelter Umweltschaden, kein Boss-Rückstoß oder Ventilbonus.
+Kampagne/Endlos/Tutorial, Hilfestatus, native Hilfe-Rückwege und vier Soundimporte
+geprüft. Beide Manager werden nach der vorgesehenen UI-Bereinigung freigegeben;
+eine schwache Rückreferenz verhindert einen dauerhaften Referenzzyklus.
+
+## Regression, Belastung und Darstellung
+
+- Alle bisherigen Mechanik-, Case-, Welt-, Waffen-, Save- und Bossprüfungen bestanden.
+- Foundry-Soak: 9 Szenarien (drei Helden × drei Grafikstufen), 23.760 Schritte / 396 s,
+  Normalwelle und Boss, bis 100 Gegner, zwei eigene Gefahren und zehn Pool-Slots.
+  Level-Ups werden auch im Bossabschnitt korrekt durch den Test verarbeitet.
+- United-Soak: elf Helden × zehn Arenen / 110 Szenarien / 92.400 Schritte / 1.540 s;
+  Spitzenwerte 38 Gegner, 22 Pool-Slots und vier United-Gefahren. Bestanden.
+- 16 native GL-Ansichten in 1600×900, 2400×1080 und 1440×1080: Coach, Weltkarte,
+  Druck, Richtung, Vorwarnung, Einschlag, vertikaler Stoß, Pause und Ofenkönig.
+- World-Trace: 33 Punkte / 3.600 Schritte. Effects-Trace: 87 Punkte / 8.700 Schritte.
+- Frischer Quellimport: 706 Laufzeitdateien sowie Projekt-/Exportkonfiguration
+  bytegleich; alle 33 Suiten und beide Traces erneut bestanden.
+- Android-Debug-APK tatsächlich gebaut; Signatur, Architektur, Manifest, Alignment,
+  exakte Daten, Controller, Textur-/Soundimporte und Archiv-CRC geprüft.
+
+## Offene Abnahme
+
+Keine physische Android-Geräteprüfung. Native Linux-/Mesa-Bilder und Headless-Tests
+belegen keine menschliche Schwierigkeit, 60 FPS, Akkulaufzeit, Temperatur oder
+Cutout-/Sensorverhalten auf jedem Gerät. Keine Script-/Parser-/Ressourcenfehler in
+den finalen Läufen; fehlende V-Sync-Steuerung und kein erreichbarer ADB-Daemon sind
+bekannte Grenzen der lokalen Umgebung.
+
+Nächster Praxistest: Glutwerk, beide Handräder, unterschiedliche Druckwerte und
+Ofenkönig; freiwillige Nutzung und Nichtbenutzung vergleichen.
+
+---
+
+## Vorherige Prüfberichte
+
 # Testbericht 0.23.0 — 2026-11-18
 
 **32 Suiten / 4.977 bestandene Prüfungen / 0 Fehler**, nach frischem Entpacken und

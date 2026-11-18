@@ -1,20 +1,17 @@
-# RF Worlds — Mayhem Survivors 0.23.0
+# RF Worlds — Mayhem Survivors 0.24.0
 
-**[Android-Update herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/MayhemSurvivors-v0.23.0-debug.apk)**
+**[Android-Update herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/foundry-valves-v0.24.0/Downloads/MayhemSurvivors-v0.24.0-debug.apk)**
 
-[Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/MayhemSurvivors-v0.23.0-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/SHA256SUMS-v0.23.0.txt)
+[Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/foundry-valves-v0.24.0/Downloads/MayhemSurvivors-v0.24.0-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/foundry-valves-v0.24.0/Downloads/SHA256SUMS-v0.24.0.txt)
 
-Reaktorzone: drei Energiekerne sammeln und eine Überladung für Gegner nutzen.
-Neonhafen: angekündigte Container treffen Gegner und Spieler. Begrenzte Manöver-Boni,
-passende Boss-Zonenangriffe, Kicksy-Hilfe, neue Sounds und Illustrationen. Ab der
-dritten normalen Welle, in Kampagne und Endlos. Boss-HP, Waffenwerte und Case-Fix erhalten.
+Glutwerk: zwei freiwillige Dampfventile, grünes Druckfenster, gerichteter Rückstoß
+und begrenzte Manöver-Boni. Neue Ofenkönig-Bahnen, Kicksy-Hilfe, Grafik und vier
+Sounds. Ab der dritten normalen Welle in Kampagne und Endlos. Bodenbahnen, Waffen,
+Boss-HP, vorhandene Profile und Case-Navigation erhalten.
 
-32 Suiten / 4.977 Prüfungen und beide Traces nach frischem Import bestanden;
-220 Prüfungen zusätzlich mit nativem Touch, 21 GL-Ansichten und beide Belastungsläufe.
-Gleicher Paketname und Schlüssel: als Update über die bestehende App installieren.
-APK und ZIP wurden vollständig anonym heruntergeladen; beide SHA256-Prüfsummen
-stimmen überein. Menschliche Balance- und Android-Geräteabnahme stehen aus.
+33 Suiten / 5.194 Prüfungen und beide Traces nach frischem Import bestanden;
+217 Prüfungen zusätzlich mit nativem Touch, 16 GL-Ansichten und beide Belastungsläufe.
+Gleicher Paketname und Schlüssel: über die vorhandene App installieren.
+Menschliche Balance- und Android-Geräteabnahme stehen aus.
 
 [Projekt und Prüfberichte](../MayhemSurvivors/README.md)
-
-[Downloadprüfung](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-mechanics-v0.23.0/Downloads/VERIFY-v0.23.0.txt) · [Pull Request #8](https://github.com/Whiskymitschuss/Match3/pull/8)

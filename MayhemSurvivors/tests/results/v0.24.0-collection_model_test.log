@@ -1,0 +1,78 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Bruiser and hammer only
+PASS Catalog has ten additional heroes and37 items
+PASS Real chances normalized crew
+PASS Real chances normalized arsenal
+PASS Real chances normalized style
+PASS Persisted seed gives same result on same state
+PASS First crew ticket unlocks real hero
+PASS Hero includes its starter blueprint
+PASS Free ticket consumed without charging coins
+PASS Pending reveal blocks another draw
+PASS Only matching receipt can be acknowledged
+PASS Receipt cannot be acknowledged twice
+PASS Insufficient wallet cannot pay for next case
+PASS Exact paid case debit
+PASS Unknown case rejected
+PASS Third-case guarantee targets only missing hero
+PASS Guaranteed hero resets pity
+PASS Duplicate becomes parts without duplicate roster entry
+PASS Crew progression draw 1
+PASS Crew progression draw 2
+PASS Crew progression draw 3
+PASS Crew progression draw 4
+PASS Crew progression draw 5
+PASS Crew progression draw 6
+PASS Crew progression draw 7
+PASS Crew progression draw 8
+PASS Crew progression draw 9
+PASS Crew progression draw 10
+PASS Crew progression draw 11
+PASS Crew progression draw 12
+PASS Crew progression draw 13
+PASS Crew progression draw 14
+PASS Crew progression draw 15
+PASS Crew progression draw 16
+PASS Crew progression draw 17
+PASS Crew progression draw 18
+PASS Crew progression draw 19
+PASS Crew progression draw 20
+PASS Crew progression draw 21
+PASS Crew progression draw 22
+PASS Crew progression draw 23
+PASS Crew progression draw 24
+PASS Crew progression draw 25
+PASS Crew progression draw 26
+PASS Crew progression draw 27
+PASS Crew progression draw 28
+PASS Crew progression draw 29
+PASS Crew progression draw 30
+PASS All fighters obtained within thirty crew openings
+PASS Opening journal retains bounded twenty receipts
+PASS Actual weapon rank upgrade 1
+PASS Actual weapon rank upgrade 2
+PASS Actual weapon rank upgrade 3
+PASS Actual weapon rank upgrade 4
+PASS Four upgrades reach rank5 with exact cost
+PASS Maximum rank cannot consume more parts
+PASS Rank5 gives8 percent weapon damage
+PASS Unowned and unknown upgrades rejected
+PASS Weapon class binding enforced
+PASS Locked fighter cannot equip
+PASS Unlocked compatible fighter can equip
+PASS Alternative starter selection
+PASS Equip slot reactor_plate
+PASS Equip slot neon_soles
+PASS Equip slot heart_module
+PASS Equip slot frost_nova
+PASS Combat snapshot records actual gear modifiers
+PASS Snapshot detached from later inventory changes
+PASS Decoration interoperates with existing cosmetic wallet
+PASS Corrupt and duplicate IDs sanitized
+PASS Invalid counters and pending receipt sanitized
+PASS Training cannot fund cases
+PASS Completed run funds permanent wallet
+PASS Empty abandoned run gives no reward
+PASS Run reward has defined cap
+COLLECTION MODEL RESULT 75 passed, 0 failed

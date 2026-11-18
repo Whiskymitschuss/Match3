@@ -50,7 +50,7 @@ func update(dt:float):
 		if attack=='zones':
 			var arena_warm=game.arena_mechanics.boss_zones(e,target)
 			if arena_warm>0:
-				clock=arena_warm;game.boss_warning='KERNENTLADUNG / GELBE KREISE VERLASSEN' if game.arena_id=='reactor' else 'CONTAINERABWURF / ZIELFLÄCHEN VERLASSEN'
+				clock=arena_warm;game.boss_warning=game.arena_mechanics.zone_title().to_upper()+' / GELBE MARKIERUNGEN VERLASSEN'
 			elif e.boss_pattern in ['storm','frost','void']:
 				game.united.enemies.lane(true,target.x,1.5,touch_damage(e),e);game.united.enemies.lane(false,target.y,1.5,touch_damage(e),e)
 			else:
@@ -90,7 +90,7 @@ func intro():
 	var actual=game.rules.scale_stats(game.WaveBalance.stats(d,game.rules.current_wave(),game.wave_number,true),true)
 	game.label_at('%d HP / %.0f Kontaktschaden' % [roundi(actual.hp),actual.damage],Vector2(825,380),26,game.TEAL)
 	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
-	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+('Kernentladungen' if game.arena_id=='reactor' else 'Containerabwürfe')+' / 2 s Vorwarnung',Vector2(825,825),25,game.TEAL)
+	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+game.arena_mechanics.zone_title()+' / 2 s Vorwarnung',Vector2(825,825),25,game.TEAL)
 	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),game.begin_wave,Color('#8A432E'))
 
 func attack_order(e:Dictionary) -> Array:
