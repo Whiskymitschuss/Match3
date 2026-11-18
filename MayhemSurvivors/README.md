@@ -52,8 +52,7 @@ besitzen je zwei Entwicklungen auf Run-Stufe 5: insgesamt 26 echte Kampfpfade.
 Werkstattränge 1–5 gelten dauerhaft und geben Waffen maximal +8 % Schaden.
 Klassenbindungen, sinnvolle Upgrades und Set-Zuordnungen gelten auch für die neuen Waffen.
 
-Zehn neue Gegner: Klingenflitzer, Rissspringer, Schildkäfer, Feldsanitäter, Mörserkrabbler,
-Frostwicht, Schrottroller, Blutegel, Beschwörer und Brandling. Ihre Rollen umfassen
+Zehn neue Gegner: Sichelschreck, Schattenlauerer, Panzerkäfer, Sporenmedik, Mörserwicht, Frostgeist, Stachelrad, Blutfleder, Knochenrufer, Glutstachel. Ihre Rollen umfassen
 Zickzack, Teleport mit Warnfläche, gerichteten Schutz, begrenzte Heilung, Mörser,
 Frost, Sturm, Lebensraub, begrenzte Beschwörung und radiale Schüsse.
 

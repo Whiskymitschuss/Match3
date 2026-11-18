@@ -79,7 +79,7 @@ func draw():
 func intro():
 	var d=profile();var art=preload('res://scripts/expansion/comic_art.gd')
 	game.backdrop('BOSSWELLE %d / 10' % slot(),d.name+' / '+game.arena_definition.name)
-	var texture=AtlasTexture.new();texture.atlas=art.BOSSES;texture.region=art.cell(art.BOSSES,d.boss_art,5,3);game.UISkin.image(game,texture,Rect2(110,265,620,680))
+	var texture=AtlasTexture.new();texture.atlas=art.BOSSES;texture.region=art.boss_region(d.boss_art);game.UISkin.image(game,texture,Rect2(110,265,620,680))
 	game.UISkin.panel(game,Rect2(790,280,1010,590),Color('#FF9F45'))
 	game.label_at(d.name,Vector2(825,315),55,game.GOLD)
 	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,420),31)

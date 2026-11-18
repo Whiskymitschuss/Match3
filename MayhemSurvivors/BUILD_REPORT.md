@@ -3,8 +3,8 @@
 Godot 4.6.3 stable / JDK 21 / Android SDK 36 / Build Tools 36.0.0.
 Export: `godot --headless --path . --export-debug Android builds/android/MayhemSurvivors-v0.21-debug.apk`.
 
-- Debug-APK: 76,018,664 Bytes.
-- SHA256: `364e45173979aa2412d781ab4423ad6cbf722545c71a9e26f2bf80a0efc5a3c6`.
+- Debug-APK: 76,014,568 Bytes.
+- SHA256: `bac59810199b766622b8f8fba15dc3c206d47a68ab06e3285777ecbbffcc86ab`.
 - Paket com.rfworlds.mayhemsurvivors / versionCode 25 / versionName 0.21.0.
 - Ausschließlich ARM64-v8a / minSDK 24 / targetSDK 36 / Landscape / GL Compatibility.
 - APK v2/v3 signiert; zipalign mit 16-KiB-Prüfung. Zertifikat wie in 0.20:
@@ -23,5 +23,8 @@ aktuelle Auswahl nativer Aufnahmen liegt bei; vollständige Screenshotgalerien i
 Für eigenen Export SDK/JDK/Template und denselben privaten Schlüssel für kompatible
 Updates konfigurieren. Das Projekt selbst startet nach dem Import ohne Programmierung.
 
-Frischer ZIP-Import und Wiederholung aller Suiten sowie öffentliche Downloadprüfung
-werden vor der Übergabe ergänzend protokolliert.
+Quellarchiv ohne Cache frisch importiert: alle 28 Suiten / 3.764 Prüfungen und beide
+historischen Traces erneut bestanden. 662 Laufzeitdateien bytegleich zum getesteten
+Archiv. Protokolle: v0.21-clean-import.log, v0.21-clean-tests.log und
+v0.21-source-integrity.log. Öffentliche Prüfsummen stehen im Downloads-Verzeichnis;
+die vollständige Downloadprüfung wird im Repository protokolliert.

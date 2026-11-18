@@ -28,7 +28,7 @@ func show(section:String='rules',page:int=0,return_to:Callable=Callable()):
 	elif section=='enemies':
 		var ids=Art.ENEMY_IDS.slice(0,19);total=ids.size()+14;page=posmod(page,total)
 		var boss=page>=ids.size();var id:String=ids[page] if not boss else 'boss';var idx=page-ids.size() if boss else page
-		var texture=AtlasTexture.new();texture.atlas=Art.BOSSES if boss else Art.ENEMIES;texture.region=Art.cell(texture.atlas,idx,5,3 if boss else 4);game.UISkin.image(game,texture,Rect2(140,385,570,480))
+		var texture=AtlasTexture.new();texture.atlas=Art.BOSSES if boss else Art.ENEMIES;texture.region=Art.boss_region(idx) if boss else Art.enemy_region(idx);game.UISkin.image(game,texture,Rect2(140,385,570,480))
 		if not boss:
 			var d=game.enemy_definition(id);var info=game.united.enemies.data.get(id,{})
 			text(info.get('name',id.to_upper()),Vector2(790,390),980,52,Color(d.color))

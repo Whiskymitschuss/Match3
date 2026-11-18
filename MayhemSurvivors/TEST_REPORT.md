@@ -42,9 +42,15 @@ Gefundene und behobene Fehler: Handbuch-Variablenkollision und Zahlenformatierun
 fehlende neue Heldenfreigaben; alte feste Menülängen; Namenskollision zwischen der
 bestehenden Flammen-Deko und neuer Waffe (jetzt dauerhaft getrennte IDs flame/flamer);
 Pool-Metadaten beim Wiederverwenden; unpassende Arm-/Waffengrößen; Boss-HUD-Schwellen;
-Tutorial-Avatar nach Atlaswechsel. Alte Deko und gespeicherte Währungen bleiben gültig.
+Tutorial-Avatar nach Atlaswechsel; gemessene Bildausschnitte gegen angeschnittene
+Gegner und Nachbarzellen sowie kurze, lesbare HUD-Waffennamen. Alte Deko und gespeicherte Währungen bleiben gültig.
 
 Offen: physische Android-Installation/Update, Mehrfinger-Eingabe, Notch/Systemleisten,
 Neigung, Lautstärkewirkung, Lesbarkeit bei echter Bewegung, Langzeit-FPS/Thermik und
 menschliche Balance der neuen Bossdichte sowie Case-/Weltprogression. Keine dieser
 Geräteprüfungen wird durch Headless- oder Linux-Aufnahmen als bestanden ausgegeben.
+
+Finales Quellarchiv zusätzlich ohne Importcache frisch entpackt/importiert. Erneut
+28 Suiten / 3.764 Prüfungen und beide historischen Traces bestanden; 662 Laufzeitdateien
+bytegleich zum geprüften Archiv. Spätere Paketergänzungen betreffen nur Dokumentation
+und Prüfprotokolle.
