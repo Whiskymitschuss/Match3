@@ -17,3 +17,6 @@ Belastungsläufe und stationäre Bossproben. Gleicher Paketname und Signierschl�
 abnahme stehen aus. Details und Downloadnachweis siehe Projektberichte.
 
 [Projekt und Prüfberichte](MayhemSurvivors/README.md)
+
+APK und ZIP vollständig anonym heruntergeladen; beide SHA256-Prüfsummen bestätigt.
+[Downloadnachweis](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-synergies-v0.25.0/Downloads/VERIFY-v0.25.0.txt) · [Änderungen / Pull Request #10](https://github.com/Whiskymitschuss/Match3/pull/10)

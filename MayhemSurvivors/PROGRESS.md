@@ -1,7 +1,7 @@
 # Mayhem Survivors 0.25.0 — Kampf-Kombinationen
 
 2026-11-18 / Branch feature/combat-synergies-v0.25.0 / Basis 0.24.0 fbef5a6.
-Phase 19: Implementierung, Prüfungen und lokale Übergabepakete abgeschlossen.
+Phase 19: Implementierung, Prüfungen, Pakete und öffentliche Übergabe abgeschlossen.
 
 Umgesetzt: Bruchkern, Ionenrelais, Schattenspule; reale Fähigkeiten-/Waffen-
 Verbindungen inklusive Entwicklungen; begrenzte Procs, garantierter Shopplatz,
@@ -18,8 +18,9 @@ Keine offenen Script-/Parserfehler. Frühere Fixture-/UI-Korrekturen im Testberi
 Android-APK gebaut / code31 / ARM64 / gleiche Signatur / 16-KiB-Alignment geprüft.
 APK-SHA256: 60fca96d5cc2262388d9454b781d7f13f88c72408f9c2f29ab127550c5173f7d.
 Finales Quell-ZIP per CRC und gegen alle 720 getesteten Laufzeitdateien geprüft.
-Nächster Schritt: Quellen/APK/ZIP auf GitHub veröffentlichen und beide Downloads
-vollständig prüfen. Der öffentliche Nachweis folgt separat, ohne den Paketinhalt
-nachträglich zu verändern.
+APK und ZIP auf GitHub veröffentlicht, vollständig anonym heruntergeladen und beide
+SHA256-Prüfsummen bestätigt. Nachweise: Downloads/VERIFY-v0.25.0.txt und
+tests/results/v0.25.0-download.log. PR #10 offen und konfliktfrei; nicht gemergt.
+Artefakte unverändert. Nächster Schritt: menschlicher Android-Praxistest der Module.
 Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60 FPS.
 Details: SYNERGIES.md, TEST_REPORT.md, BUILD_REPORT.md.
