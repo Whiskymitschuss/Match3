@@ -85,6 +85,7 @@ func after_move(e:Dictionary,before:Vector2,after:Vector2):
 func contact(e:Dictionary,before_hp:float):
 	if e.kind=='leech' and game.hp<before_hp and game.enemies.has(e):e.hp=minf(e.max_hp,e.hp+(before_hp-game.hp)*.7)
 func removed(e:Dictionary):
+	if game.arena_mechanics:game.arena_mechanics.remove_owner(e)
 	for i in range(hazards.size()-1,-1,-1):
 		if is_same(hazards[i].get('owner'),e):hazards.remove_at(i)
 func circle(at:Vector2,radius:float,warm:float,duration:float,damage:float,owner:Dictionary={},color:Color=Color('#FF9F45'),status:String=''):

@@ -36,6 +36,7 @@ func update(dt: float):
 		if h.age>=h.warm+h.duration:items.remove_at(i)
 	if not game.is_reactor() and game.arena_id!='docks':return
 	if game.arena_events.active:return
+	if game.arena_mechanics.supported() and game.arena_id=='docks':return
 	if game.wave_number>=3 and not game.rules.boss_wave():
 		clock-=dt
 		if clock<=0:

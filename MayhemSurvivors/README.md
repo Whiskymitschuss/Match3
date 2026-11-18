@@ -1,3 +1,29 @@
+# Mayhem Survivors 0.23.0 Alpha — Arenen zu deinem Vorteil nutzen
+
+Die Reaktorzone und der Neonhafen bekommen eigene Mechaniken, zusätzliche Run-Beute,
+passende Boss-Zonenangriffe, eigene Illustrationen und Sounds. Kampagne und Endlos;
+bisheriger Fortschritt, Boss-HP, Waffenwerte und der Case-Navigationsfix bleiben erhalten.
+
+- Reaktorzone: Ab der dritten normalen Welle jeden vierten besiegten Gegner nach einem
+  Energiekern absuchen. Drei Kerne sammeln, am Terminal 1,2 Sekunden anhalten und die
+  angekündigte Überladung für Gegner nutzen. Die Entladung trifft auch dich.
+- Neonhafen: Zwei feste Container-Doppelladungen pro normaler Welle. Zwei Sekunden zum
+  Ausweichen; Gegner unter die Container locken und zusätzliche Run-Coins verdienen.
+- Kicksy erklärt das beim ersten Auftreten. ARENA-TIPPS in der Pause öffnet die Hilfe
+  erneut. HUD, Weltkarte und Ergebnisdetails zeigen die passenden Informationen.
+- Die beiden Arenenbosse verwenden Kern- bzw. Containerflächen mit vollen Warnzeiten.
+  Umweltschaden an Bossen ist begrenzt und erzeugt keinen Manöver-Bonus.
+
+Details und konkrete Werte: ARENA_MECHANICS.md, TEST_REPORT.md und BUILD_REPORT.md.
+Neue Effekte sind eigene Assets. Alles bleibt offline und ohne zusätzliche Plugins.
+Android ARM64 / Godot 4.6.3 / versionCode 29 / gleicher Paketname und Update-Schlüssel.
+Als Update über die vorhandene App installieren. Menschliche Balance und physische
+Android-Abnahme bleiben erforderlich.
+
+---
+
+## Vorherige Updates
+
 # Mayhem Survivors 0.22.0 Alpha — Schrottplatz & Bruiser
 
 Ein abgestimmter erster Durchlauf: Kicksy trainiert mit deinem freien Bruiser,

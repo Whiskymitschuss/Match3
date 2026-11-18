@@ -10,7 +10,7 @@
   },
   "reactor": {
     "name": "REAKTORZONE",
-    "description": "Strombahnen, Kernbomben und der Reaktorwächter.",
+    "description": "Sammle Energiekerne und locke Gegner in deine Überladung.",
     "floor": "reactor",
     "waves": "waves/reactor",
     "boss_name": "REAKTORWÄCHTER",
@@ -28,7 +28,7 @@
   },
   "docks": {
     "name": "NEONHAFEN",
-    "description": "Flutimpulse, schnelle Jäger und der Dock-Tyrann.",
+    "description": "Weiche Containerabwürfen aus und locke Verfolger in die Einschlagzone.",
     "floor": "docks",
     "waves": "waves/waves",
     "boss_name": "DOCK-TYRANN",

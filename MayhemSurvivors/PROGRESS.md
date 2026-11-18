@@ -1,29 +1,26 @@
-# Mayhem Survivors 0.22.0 — Schrottplatz & Bruiser
+# Mayhem Survivors 0.23.0 — Reaktorzone & Neonhafen
 
-2026-11-18 / Branch feature/first-arena-v0.22.0 / Basis 0.21.2 deab8e1.
+2026-11-18 / Branch feature/arena-mechanics-v0.23.0 / Basis 0.22.0 aee52e2.
 Phase 19: Übergabe und Dokumentation. Implementierung und lokale Prüfung abgeschlossen.
 
-Umgesetzt: optionaler erster Einstieg, produktives Kicksy-Training mit Bruiser,
-Touch-Markierungen, freiwillige Bergung mit einmaliger Run-Beute, zwei Hammer-Pfade
-mit echter Wertevorschau, klare Ergebnisdetails, getrennte Boss-/Spieleranzeigen,
-Touch-sichere neue Seitenwechsel und drei eigene Audiocues. Bossbalance und Case-Fix
-erhalten. Keine Online-Systeme oder zusätzlichen Inhaltsmengen in diesem Update.
+Umgesetzt: Kerne sammeln und freiwillig überladen, nutzbare Container-Doppelladungen,
+begrenzte Manöver-Boni, reguläre Gegnerbeute, eigene Boss-Zonenangriffe, Kicksy-Hilfe
+beim ersten Auftreten und in der Pause, HUD/Ergebnisdetails/Weltkarteninfo, zwei eigene
+SVGs und fünf eigene Audiocues. Kampagne und Endlos; Waffenwerte, Boss-HP, Profile und
+Case-Fix erhalten. Keine Online-Systeme.
 
-31 Suiten / 4.757 Checks und beide Traces nach frischem Quellimport bestanden.
-167 neue Prüfungen zusätzlich mit nativem Touch; Case-Navigation 74 native Prüfungen.
-18 native Ansichten / drei Seitenverhältnisse und 110 Soak-Szenarien bestanden.
-674 Laufzeitdateien und Projekt-/Exportkonfigurationen bytegleich zur Testentpackung.
+32 Suiten / 4.977 Prüfungen und beide Traces nach frischem Import bestanden.
+220 neue Prüfungen zusätzlich mit nativen Touch-Ereignissen. 21 native Ansichten /
+drei Seitenverhältnisse, zwölf gezielte Soak-Szenarien mit bis 100 Gegnern und 110
+Helden-/Arenenkombinationen bestanden. 694 Laufzeitdateien und Konfigurationen
+bytegleich zum Testprojekt. Keine offenen Script-/Parser-/Ressourcenfehler.
 
-Android-Debug-APK gebaut, ARM64 / versionCode 28 / Signatur und Alignment geprüft.
-APK-SHA256: 307330fe72bd4620c10b15c3b15747dc445ee9f6e3d84d893a37aceaad7a08f9.
-Finales Quell-ZIP verpackt und per CRC sowie gegen alle getesteten Laufzeitdateien
-geprüft. APK und ZIP auf GitHub hochgeladen, vollständig anonym heruntergeladen und
-beide SHA256-Werte bestätigt. Nachweise: Downloads/VERIFY-v0.22.0.txt und
-tests/results/v0.22.0-download.log. Pull Request #7 offen und konfliktfrei, nicht gemergt.
-Nächster Schritt: menschliche Android-Abnahme:
-Bruiser / beide Pfade / Bergung annehmen und ignorieren / Weltbelohnung abholen.
+Android-APK gebaut / versionCode 29 / ARM64 / gleiche Signatur / Alignment geprüft.
+APK-SHA256: 7a1e8343408b2b5d76e931536b402a9e16ceeda2ed08f2513586f211c0be605f.
+Nächster Schritt: finalen Quellstand verpacken, APK/ZIP auf GitHub bereitstellen,
+öffentliche vollständige Downloads mit SHA256 vergleichen und PR anlegen.
 
-Offen: physische Geräteabnahme, menschliche Balance, Akkulaufzeit und Temperatur.
-Keine Behauptung, dass das Gesamtspiel bereits perfekt oder die 60-FPS-Abnahme erfolgt ist.
-Details: FIRST_ARENA.md, TEST_REPORT.md, BUILD_REPORT.md. Frühere Download-Binaries
-sind nur aus der Arbeitskopie per sparse-checkout ausgeblendet; Git-Historie erhalten.
+Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60-FPS-Messung.
+Praxistest: beide Arenen mit Bruiser und Sparky; Manöver und Bossmuster ausprobieren.
+Details: ARENA_MECHANICS.md, TEST_REPORT.md, BUILD_REPORT.md. Temporäre Entpackungen
+älterer Prüfungen wurden entfernt; sämtliche Git-Versionen bleiben erhalten.

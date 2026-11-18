@@ -12,6 +12,7 @@ func update(dt:float):
 	if not enabled or game.state!=game.State.COMBAT or game.run_mode=='tutorial' or game.rules.boss_wave() or game.wave_number<3:return
 	# In the current campaign the scrapyard event is an opt-in salvage contract.
 	if game.united.enabled and game.arena_id=='scrapyard' and game.run_mode=='campaign':return
+	if game.arena_mechanics.supported():return
 	if not game.arena_id in ['scrapyard','reactor','docks','foundry']:
 		game.united.event_update(self,dt);return
 	if not triggered:
