@@ -26,28 +26,25 @@ static func panel(game:Node2D,rect:Rect2,accent:Color=Color('#795396')) -> Panel
 static func menu(game:Node2D):
 	game.clear_ui();background(game,true)
 	image(game,STUDIO,Rect2(105,48,250,100))
-	game.label_at('ÜBERLEBE DAS CHAOS',Vector2(1490,82),25,Color('#D6C4E6'))
-	image(game,LOGO,Rect2(75,160,950,425))
+	game.label_at('OFFLINE · SINGLEPLAYER',Vector2(1430,80),25,Color('#D6C4E6'))
+	image(game,LOGO,Rect2(75,155,950,425))
 	game.label_at('DEIN HELD. DEIN BUILD. DEIN MAYHEM.',Vector2(125,590),29,Color('#F1DEF9'))
 	game.button('SPIELEN',Vector2(115,655),Vector2(830,115),func():game.queue_ui_action(game.play),Color('#9C247D'))
-	game.button('CHARAKTERE',Vector2(115,800),Vector2(400,95),game.character_select)
-	game.button('AUFTRÄGE & SHOP',Vector2(545,800),Vector2(400,95),func():game.reward_hub.show())
-	game.button('STATISTIK',Vector2(115,925),Vector2(400,90),game.statistics)
-	game.button('EINSTELLUNGEN',Vector2(545,925),Vector2(400,90),func():game.settings(game.main_menu))
-	game.button('CASES & GARAGE',Vector2(1100,165),Vector2(690,85),func():game.garage.cases(),Color('#683485'))
-	game.label_at('DIE MAYHEM CREW',Vector2(1240,265),43,Color('#FFE4B7'))
-	game.label_at('ZEHN WELTEN. FÜNF BOSSE PRO RUN.',Vector2(1160,325),25,Color('#EDCEFB'))
-	game.portrait(Vector2(1045,535),0,.97)
-	game.portrait(Vector2(1490,540),2,.94)
-	game.portrait(Vector2(1230,440),1,1.25)
-	game.button('TUTORIAL',Vector2(1100,890),Vector2(330,90),func():game.tutorial.start())
-	game.button('HANDBUCH',Vector2(1460,890),Vector2(330,90),func():game.game_guide.show('rules',0,game.main_menu))
-	game.label_at('11 HELDEN / 10 ARENEN / 2 MODI',Vector2(1145,995),25,Color('#E7D7F3'))
-	game.label_at('v0.25.0  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
+	game.button('CHARAKTERE',Vector2(115,800),Vector2(400,95),func():game.queue_ui_action(game.character_select))
+	game.button('AUFTRÄGE',Vector2(545,800),Vector2(400,95),func():game.queue_ui_action(func():game.reward_hub.show()))
+	game.button('STATISTIK',Vector2(115,925),Vector2(400,90),func():game.queue_ui_action(game.statistics))
+	game.button('EINSTELLUNGEN',Vector2(545,925),Vector2(400,90),func():game.queue_ui_action(func():game.settings(game.main_menu)))
+	var selected=game.selected if game.saved.collection.heroes.has(game.characters[game.selected].id) else 0
+	var c=game.characters[selected]
+	game.label_at('15 KÄMPFER · 10 WELTEN · 2 MODI',Vector2(1090,210),29,Color('#D7C0EC'))
+	panel(game,Rect2(1080,270,710,620),Color(c.color))
+	game.portrait(Vector2(1140,295),selected,1.52,'wardrobe')
+	game.label_at(c.name,Vector2(1110,845),38,Color(c.color))
+	game.button('SAMMLUNG',Vector2(1080,940),Vector2(710,90),func():game.queue_ui_action(func():game.garage.show(selected)))
+	game.label_at('v0.26.0 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
-	if title=='EINSTELLUNGEN':panel(game,Rect2(90,260,1460,415))
-	elif title=='DEIN BUILD':
+	if title=='DEIN BUILD':
 		panel(game,Rect2(90,260,500,600));panel(game,Rect2(620,260,570,350));panel(game,Rect2(1210,260,570,350));panel(game,Rect2(620,620,1160,210))
 	elif title.contains('STATISTIK'):
 		panel(game,Rect2(90,335,830,510));panel(game,Rect2(950,335,850,510))

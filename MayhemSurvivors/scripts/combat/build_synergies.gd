@@ -43,13 +43,13 @@ func before_hit(e:Dictionary,weapon:String) -> Dictionary:
 	if not live() or not active():return {}
 	var id=module_id();var d=definition().combo
 	if id=='fault_core' and weapon=='hammer' and tagged(e):
-		e.erase('synergy_tag');e.erase('synergy_ttl');procs+=1;burst(e.pos,'combo_fault')
+		e.erase('synergy_tag');e.erase('synergy_ttl');procs+=1;game.recap.proc();burst(e.pos,'combo_fault')
 		return {'multiplier':1+float(d.bonus)}
 	if id=='umbra_spool' and weapon=='orbit' and armed>0:
-		armed=0;procs+=1;burst(e.pos,'combo_umbra')
+		armed=0;procs+=1;game.recap.proc();burst(e.pos,'combo_umbra')
 		return {'multiplier':1+float(d.bonus)}
 	if id=='ion_relay' and weapon=='blaster' and tagged(e) and cooldown<=0:
-		e.erase('synergy_tag');e.erase('synergy_ttl');cooldown=float(d.cooldown);procs+=1
+		e.erase('synergy_tag');e.erase('synergy_ttl');cooldown=float(d.cooldown);procs+=1;game.recap.proc()
 		return {'discharge':true,'origin':e.pos}
 	return {}
 func after_hit(e:Dictionary,weapon:String,power:float,event:Dictionary):

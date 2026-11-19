@@ -1,11 +1,11 @@
-"""Package the complete runnable 0.25.0 project, excluding generated cache and old capture galleries."""
+"""Package the complete runnable 0.26.0 project, excluding generated cache and old capture galleries."""
 from pathlib import Path
 import argparse, zipfile
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path);args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.25.0-source.zip'
+out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.26.0-source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
-captures={'synergy_bruiser_1600','synergy_sparky_1600','synergy_shade_1600','synergy_rules_1','synergy_shop_0','foundry_coach','foundry_ready_2400','foundry_warning_1600','foundry_impact_1600','foundry_boss_warning','foundry_map','arena_mechanics_reactor_coach','arena_mechanics_reactor_warning','arena_mechanics_container_landed_1600','arena_mechanics_container_warning_2400','first_arena_welcome','first_arena_build_paths','first_arena_salvage_active','first_arena_reward_details','case_navigation_reveal','case_navigation_inventory','united_home','united_hero_steelfist','united_hero_cinder','united_new_enemies_firestorm'}
+captures={'presentation_pack_home_1600','presentation_pack_audio_1600','presentation_pack_graphics_1600','presentation_pack_controls_1600','presentation_pack_viper_select','presentation_pack_echo_select','presentation_pack_nova_select','presentation_pack_rivet_select','presentation_pack_skins_two','recap_result_1600','recap_overview_1600','recap_waves_1600','recap_endless_page','synergy_bruiser_1600','foundry_warning_1600','case_navigation_reveal','case_navigation_inventory'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(root.rglob('*')):
   rel=f.relative_to(root)

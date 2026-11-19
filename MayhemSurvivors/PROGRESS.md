@@ -1,26 +1,40 @@
-# Mayhem Survivors 0.25.0 — Kampf-Kombinationen
+# Mayhem Survivors 0.26.0 — Crew & Präsentation
 
-2026-11-18 / Branch feature/combat-synergies-v0.25.0 / Basis 0.24.0 fbef5a6.
-Phase 19: Implementierung, Prüfungen, Pakete und öffentliche Übergabe abgeschlossen.
+Stand 2026-11-19. Phase 19: Implementierung, lokale Abnahme und Android-Export
+abgeschlossen. Basis: 0.25.0 / 65694ab. Branch: feature/run-analysis-v0.26.0.
+Bestätigter Umfang: insgesamt 15 Kämpfer, neues Hauptmenü, geordnete Settings,
+Waffen-Skins, neue Musik/Sounds/Effekte und Run-Analyse.
 
-Umgesetzt: Bruchkern, Ionenrelais, Schattenspule; reale Fähigkeiten-/Waffen-
-Verbindungen inklusive Entwicklungen; begrenzte Procs, garantierter Shopplatz,
-Kaufprüfung, Regelansichten, Bereitschafts-HUD, Zielmarkierungen, eigene Icons und
-Sounds. Sichere Touch-Wege für Kauf/Inventar/Hilfe. Profil und alte Systeme erhalten.
+## Implementiert
 
-Frischer ZIP-Import ohne Cache: 34 Suiten / 5.434 Prüfungen und beide Traces grün.
-240 neue Prüfungen zusätzlich nativ mit Touch. 16 native Ansichten / drei Formate.
-27 neue Belastungsszenarien bis 100 Gegner: Grafikstufen mit identischem Schaden/
-Proc-Anzahl. 110 Helden-/Arena-Szenarien und 54 stationäre Bossproben bestanden.
-720 Laufzeitdateien und Projekt-/Exportkonfiguration bytegleich zur Testentpackung.
-Keine offenen Script-/Parserfehler. Frühere Fixture-/UI-Korrekturen im Testbericht.
+Viper, Echo, Nova und Rivet mit eigenen Comicgrafiken, Zwei-Hand-Rig, Klassenwerten,
+Passiven, aktiven Fähigkeiten, Projektileffekten und Sounds. Cases, Meisterschaft,
+Speicherung und Klassenwaffen angeschlossen. Bestehende elf Figuren erhalten.
+Sechs Hauptaktionen; Audio/Grafik/Steuerung als Settings-Tabs; Tutorial und Handbuch
+unter Steuerung. Sichere Menü-Rückwege und Pause/Fortsetzen.
+Fünf sichtbare Waffen-Finishes mit Mustern, Schussfarben und Live-Vorschau;
+Cases oder Studio-Coin-Kauf, atomare Speicherung, keine Kampfwerteboni.
+Drei eigene arrangierte Musikstücke, überarbeitete SFX und Master-Peak-Limiter.
+Run-Analyse mit echten Kampfwerten, Wellen/Bossfilter, lokalem Verlauf, maximal
+20 Runs und 50 Wellenzeilen; Gesamtwerte auch bei längeren Endlosläufen korrekt.
 
-Android-APK gebaut / code31 / ARM64 / gleiche Signatur / 16-KiB-Alignment geprüft.
-APK-SHA256: 60fca96d5cc2262388d9454b781d7f13f88c72408f9c2f29ab127550c5173f7d.
-Finales Quell-ZIP per CRC und gegen alle 720 getesteten Laufzeitdateien geprüft.
-APK und ZIP auf GitHub veröffentlicht, vollständig anonym heruntergeladen und beide
-SHA256-Prüfsummen bestätigt. Nachweise: Downloads/VERIFY-v0.25.0.txt und
-tests/results/v0.25.0-download.log. PR #10 offen und konfliktfrei; nicht gemergt.
-Artefakte unverändert. Nächster Schritt: menschlicher Android-Praxistest der Module.
-Offen: physische Android-Abnahme, menschliche Balance, Temperatur/Akku/60 FPS.
-Details: SYNERGIES.md, TEST_REPORT.md, BUILD_REPORT.md.
+## Abnahme und Export
+
+36 Suiten / 5.761 Prüfungen / 0 Fehler am frisch entpackten Projekt; beide
+historischen Traces grün. 767 Laufzeitdateien plus Konfiguration bytegleich.
+218 native GL-Touchchecks und 40 Ansichten in drei Displayformaten geprüft.
+Vier Belastungsläufe: 90 Analyse-, 150 Figuren/Arena-, 27 Modul- und zwölf
+Crew-Szenarien bestanden. Keine finalen Parser-/Script-/Ressourcenfehler.
+Debug-APK wirklich gebaut, ARM64/Paket/Code32/Signatur/Alignment/CRC und Inhalte
+geprüft. Auslieferung mit Quell-ZIP und Prüfsummen; öffentliche Downloadprüfung
+wird separat im Repo unter Downloads/VERIFY-v0.26.0.txt protokolliert.
+
+## Offene Abnahme und nächster Schritt
+
+Keine offenen Pflichtfunktionen im bestätigten Updateumfang. Physische Android-
+Abnahme bleibt offen: Installation über bestehenden Spielstand, neue Klassen,
+Skins, Musik, Mehrfingerbedienung, Unterbrechung, Neigung/Safe Area und lange Runs.
+Menschliche Balance, Temperatur, Akku und 60 FPS müssen am Gerät gemessen werden.
+Nächster Schritt: Android-Geräteabnahme und gezielte Korrekturen aus deren Befunden.
+
+Details: PRESENTATION_UPDATE.md, RUN_ANALYSIS.md, TEST_REPORT.md, BUILD_REPORT.md.

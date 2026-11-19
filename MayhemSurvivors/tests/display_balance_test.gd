@@ -51,6 +51,8 @@ func run():
 		click.button_index=MOUSE_BUTTON_LEFT;click.position=g.ui_root.get_global_transform()*(g.pause_button.position+g.pause_button.size*.5)
 		click.pressed=true;root.push_input(click,true)
 		click=click.duplicate();click.pressed=false;root.push_input(click,true)
+		# The menu transition runs after the GUI input callback has unwound.
+		await process_frame;await process_frame
 		check(g.state==g.State.PAUSED,'Actual pause GUI button remains clickable outside the reference content width '+str(entry))
 		var time=g.run_time;g._physics_process(1)
 		check(g.run_time==time,'Pause still stops gameplay after fullscreen resize '+str(entry))

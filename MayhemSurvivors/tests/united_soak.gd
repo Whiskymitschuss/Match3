@@ -24,7 +24,7 @@ func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true)
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	var started=Time.get_ticks_usec()
-	for hero in range(11):
+	for hero in range(g.characters.size()):
 		for arena in R.ARENAS:
 			g.main_menu();g.selected=hero;g.arena_id=arena;g.run_mode='campaign';g.start_run();g.wave_number=9;g.begin_wave();g.rng.seed=2117+hero;g.max_hp=100000;g.hp=g.max_hp;g.coins=900
 			g.weapons[0].level=5;var choices=g.Specs.choices(g.weapons[0].id);g.weapons[0].spec=choices[scenarios%2]

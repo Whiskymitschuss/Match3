@@ -1,0 +1,27 @@
+PASS independent FFmpeg decode of all original scores; stereo, finite signal, audible RMS and no clipped samples.
+[
+  {
+    "track": "menu_theme",
+    "seconds": 36.923,
+    "channels": 2,
+    "peak": 0.89162,
+    "rms": 0.213746,
+    "sha256": "e86d18dbeab40ea6ef3b2c37289a735ec457218b28c237944f5f72399b8afb66"
+  },
+  {
+    "track": "combat_theme",
+    "seconds": 28.235,
+    "channels": 2,
+    "peak": 0.880056,
+    "rms": 0.233756,
+    "sha256": "a1177234d78ba2af85b37172e1369d98049d9a61978e361270e6316e74775464"
+  },
+  {
+    "track": "boss_theme",
+    "seconds": 25.946,
+    "channels": 2,
+    "peak": 0.934034,
+    "rms": 0.227406,
+    "sha256": "463472b8d91932f33d758f57ac465db66fdbfd77e70cc453718f5c8322e699e4"
+  }
+]

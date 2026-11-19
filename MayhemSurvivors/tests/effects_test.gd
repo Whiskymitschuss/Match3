@@ -129,6 +129,9 @@ func run():
 	check(Save.load_local(path).settings.splatter,'Malformed setting is safely defaulted')
 	DirAccess.remove_absolute(path)
 	g.main_menu();g.settings(g.main_menu)
+	for node in g.ui_root.get_children():
+		if node is Button and node.text=='GRAFIK':node.pressed.emit()
+	await process_frame;await process_frame
 	check(g.ui_root.get_children().any(func(c):return c is Button and c.text.begins_with('CARTOON-SPLATTER:')),'Splatter setting exposed in real touch menu')
 	g.queue_free()
 	await process_frame

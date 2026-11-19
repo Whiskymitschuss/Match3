@@ -18,8 +18,7 @@ static func case_region(id:String) -> Rect2:return Rect2(['crew','arsenal','styl
 static func skin_color(loadout:Dictionary) -> Color:
 	var id:String=loadout.get('skin','')
 	return Color(C.catalog().items[id].color) if C.catalog().items.has(id) else Color.WHITE
-static func weapon_tint(loadout:Dictionary) -> Color:
-	return Color.WHITE.lerp(skin_color(loadout),.45) if loadout.get('skin','')!='' else Color.WHITE
+static func weapon_tint(loadout:Dictionary) -> Color:return preload('res://scripts/ui/weapon_skins.gd').tint(loadout)
 static func dress(canvas:CanvasItem,hero:String,loadout:Dictionary,rect:Rect2):
 	var modern=hero in ['twinkle','kicksy','steelfist']
 	var eye=.17
@@ -50,7 +49,9 @@ static func preview(canvas:CanvasItem,hero:String,loadout:Dictionary,tint:Color=
 		for i in range(2):canvas.draw_texture_rect_region(Weapon.weapon_texture('wrench'),Rect2(hands[i]-Vector2(40,130),Vector2(80,160)),Weapon.weapon('wrench' if i==0 else 'pliers'),weapon_tint(loadout))
 	elif id=='orbit':canvas.draw_texture_rect_region(Weapon.weapon_texture(id),Rect2(270,160,90,90),Weapon.weapon(id),weapon_tint(loadout))
 	else:canvas.draw_texture_rect_region(Weapon.weapon_texture(id),Rect2(155,155,160,120),Weapon.weapon(id),weapon_tint(loadout))
-	for i in range(2):canvas.draw_texture_rect_region(Hero.texture(hero,true),Rect2(hands[i]-Vector2(22,22),Vector2(44,44)),Hero.hand_region(hero),tint)
+	if id not in ['tools','orbit']:preload('res://scripts/ui/weapon_skins.gd').livery(canvas,Rect2(155,155,160,120),loadout)
+	elif id=='orbit':preload('res://scripts/ui/weapon_skins.gd').livery(canvas,Rect2(270,160,90,90),loadout)
+	for i in range(2):canvas.draw_texture_rect_region(Hero.hand_texture(),Rect2(hands[i]-Vector2(22,22),Vector2(44,44)),Hero.hand_region(hero),tint)
 
 static func arm(canvas:CanvasItem,a:Vector2,b:Vector2,width:float,color:Color):
 	canvas.draw_line(a,b,Color('#10121C'),width+5,true)
@@ -61,4 +62,4 @@ static func arm(canvas:CanvasItem,a:Vector2,b:Vector2,width:float,color:Color):
 	canvas.draw_line(a+side,b+side,color.lightened(.3),width*.23,true)
 
 static func skin(hero:String) -> Color:
-	return Color({'bruiser':'#BA8052','sparky':'#D59B76','shade':'#343046','twinkle':'#D79A79','kicksy':'#D59B76','steelfist':'#A87752','cinder':'#8F593C','frosty':'#D3A699','volt':'#A06B4D','rook':'#56617D','nyx':'#B88C80'}.get(hero,'#BA8052'))
+	return Color({'bruiser':'#BA8052','sparky':'#D59B76','shade':'#343046','twinkle':'#D79A79','kicksy':'#D59B76','steelfist':'#A87752','cinder':'#8F593C','frosty':'#D3A699','volt':'#A06B4D','rook':'#56617D','nyx':'#B88C80','viper':'#AF7D63','echo':'#855837','nova':'#B5886C','rivet':'#B97E52'}.get(hero,'#BA8052'))

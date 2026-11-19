@@ -17,7 +17,7 @@ func _init(g:Node2D):
 	if directory:
 		for file in directory.get_files():
 			if file.ends_with('.wav'):cache[file.get_basename()]=load('res://assets/audio/'+file)
-	for name in ['menu_theme','combat_theme']:
+	for name in ['menu_theme','combat_theme','boss_theme']:
 		var resource=load('res://assets/audio/'+name+'.ogg');resource.loop=true;cache[name]=resource
 		var voice=AudioStreamPlayer.new();voice.stream=resource;game.add_child(voice);music_voices[name]=voice
 	game.music=music_voices.menu_theme
@@ -43,7 +43,7 @@ func play(id:String):
 			voice.stream=stream(id);voice.volume_db=linear_to_db(sfx_gain())+(-7 if id in ['xp','coin'] else -4);voice.play();return
 func state_changed(next:int):
 	var wanted=track
-	if next in [game.State.COMBAT,game.State.WAVE_PREPARATION]:wanted='combat_theme'
+	if next in [game.State.COMBAT,game.State.WAVE_PREPARATION]:wanted='boss_theme' if game.rules.boss_wave() and next==game.State.COMBAT else 'combat_theme'
 	elif next in [game.State.MAIN_MENU,game.State.CHARACTER_SELECT,game.State.ARENA_SELECT,game.State.SHOP,game.State.VICTORY,game.State.GAME_OVER]:wanted='menu_theme'
 	if wanted.is_empty():wanted='menu_theme'
 	var changed=wanted!=track

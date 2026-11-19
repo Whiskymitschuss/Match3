@@ -21,7 +21,7 @@ func settle():
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false)
 	var original=g.saved.duplicate(true);g.saved=S.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);g.garage.save_path='user://united_test.json';g.world_map.save_path='user://united_test.json'
-	check(g.united.enabled and g.characters.size()==11 and g.Arenas.IDS.size()==10,'Production expansion is enabled; eleven heroes, ten worlds')
+	check(g.united.enabled and g.characters.size()==15 and g.Arenas.IDS.size()==10,'Production expansion is enabled; fifteen heroes, ten worlds')
 	check(g.united.enemies.data.size()==10 and R.NEW_ENEMIES.all(func(id):return g.enemy_definition(id).hp>0),'Ten additional real enemy definitions')
 	for id in R.HEROES:
 		check(g.hero_ability.data.has(id) and C.ALLOWED[id].has(R.STARTERS[id]),'Hero ability and class weapon connected '+id)
@@ -33,7 +33,7 @@ func run():
 	var fresh=S.defaults();check(fresh.collection.heroes==['bruiser'] and fresh.world_progress.unlocked==['scrapyard'],'Fresh start preserves intended hero/world locks')
 	fresh.collection.tickets.crew=100
 	for i in range(40):C.open_case(fresh,'crew');C.acknowledge(fresh,int(fresh.collection.pending.serial))
-	check(R.HEROES.all(func(id):return fresh.collection.heroes.has(id)),'All eleven heroes obtainable from earned crew cases')
+	check(R.HEROES.all(func(id):return fresh.collection.heroes.has(id)),'All fifteen heroes obtainable from earned crew cases')
 	# All ten maps through all ten actual waves, without legacy boss fixture.
 	g.saved=S.defaults();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	for index in range(10):
@@ -72,7 +72,7 @@ func run():
 			10:check(g.united.heroes.decoy_time==4 and g.hero_ability.move_dash(.1),'Decoy and actual phase dash')
 		var before=g.united.heroes.fire_clock+g.united.heroes.shield_time+g.united.heroes.overcharge+g.united.heroes.decoy_time;g.pause_game();g._physics_process(2)
 		check(is_equal_approx(before,g.united.heroes.fire_clock+g.united.heroes.shield_time+g.united.heroes.overcharge+g.united.heroes.decoy_time),'New skill clocks freeze on pause '+str(hero));g.resume()
-	for hero in range(11):
+	for hero in range(g.characters.size()):
 		start(hero,'scrapyard',3);check(g.combat_visuals.hand_positions().size()==2 and g.combat_visuals.shoulder_positions().size()==2,'Exactly two hands on shared rig '+R.HEROES[hero])
 	for id in ['united_flame','united_cryo','united_tesla','united_lance','united_chakram','united_warning','united_rage','united_impact','united_pyro','ability_firestorm','ability_absolute_zero','ability_overcharge','ability_bastion','ability_phase_dance']:check(g.audio_director.cache.has(id) and g.audio_director.cache[id].get_length()>0,'Real cached original sound '+id)
 	# Each new enemy attacks or protects with real data, bounded simultaneous/total spawning.
@@ -120,7 +120,7 @@ func run():
 	for section in ['rules','heroes','enemies','tech']:
 		for page in range(11 if section=='heroes' else (33 if section=='enemies' else 1)):g.game_guide.show(section,page)
 		check(g.state==g.State.MAIN_MENU,'Guide pages keep valid state '+section)
-	for i in range(11):g.character_select(i)
+	for i in range(g.characters.size()):g.character_select(i)
 	for i in range(10):g.arena_select(i)
 	check(g.ui_root.get_children().filter(func(n):return str(n.name).begins_with('WorldCard_')).size()==10,'All ten world cards connected')
 	g.main_menu();g.statistics();g.mastery_screen(1);g.endless_statistics(2);g.difficulty_statistics('normal','campaign',2)

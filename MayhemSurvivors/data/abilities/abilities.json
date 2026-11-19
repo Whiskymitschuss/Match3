@@ -118,5 +118,51 @@
     "damage": 40,
     "distance": 320,
     "duration": 0.22
+  },
+  "viper": {
+    "id": "toxin_cloud",
+    "name": "TOXINNEBEL",
+    "description": "Vier Sekunden Giftnebel: 8 Schaden pro Sekunde im markierten Bereich.",
+    "cooldown": 32,
+    "duration": 4,
+    "radius": 180,
+    "damage": 8,
+    "color": "#B2EB42"
+  },
+  "echo": {
+    "id": "sonic_burst",
+    "name": "BASSSTOSS",
+    "description": "Schallwelle: 36 Schaden, Rückstoß und 1 Sekunde Betäubung gegen normale Gegner.",
+    "cooldown": 24,
+    "radius": 240,
+    "damage": 36,
+    "push": 130,
+    "stun": 1,
+    "color": "#FFAE45"
+  },
+  "nova": {
+    "id": "light_pulse",
+    "name": "LICHTPULS",
+    "description": "Heilt 20 HP und erzeugt einen Schild mit 35 HP für höchstens 6 Sekunden.",
+    "cooldown": 30,
+    "heal": 20,
+    "shield": 35,
+    "duration": 6,
+    "color": "#FFE8A1"
+  },
+  "rivet": {
+    "id": "repair_drone",
+    "name": "REPARATURDRONE",
+    "description": "Eine Drohne kämpft 6 Sekunden mit, feuert automatisch und heilt alle 1,5 Sekunden 1 HP.",
+    "cooldown": 28,
+    "duration": 6,
+    "damage": 8,
+    "interval": 0.45,
+    "color": "#6EDDD2",
+    "heal_interval": 1.5,
+    "heal": 1,
+    "reach": 430,
+    "projectile_speed": 700,
+    "projectile_lifetime": 0.9
   }
 }

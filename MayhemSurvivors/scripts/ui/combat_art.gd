@@ -10,7 +10,7 @@ static func weapon(id:String) -> Rect2:return Comic.weapon(id)
 static func projectile(skin: int, hostile: bool = false) -> Rect2:
 	return cell(Vector2(2,1) if hostile else Vector2(clampi(skin,0,2),2))
 static func color_for(skin: int) -> Color:
-	if skin>=3:return Color(['#A55EEA','#FF9F1C','#5DDCFF','#FF943D','#98EDFF','#7CFFE5','#8EAFFF','#F36FE4'][clampi(skin-3,0,7)])
+	if skin>=3:return Color(['#A55EEA','#FF9F1C','#5DDCFF','#FF943D','#98EDFF','#7CFFE5','#8EAFFF','#F36FE4','#B2EB42','#FFAE45','#FFE8A1','#6EDDD2'][clampi(skin-3,0,11)])
 	return COLORS[clampi(skin,0,2)]
 
 static func weapon_texture(_id:String) -> Texture2D:return Comic.WEAPONS

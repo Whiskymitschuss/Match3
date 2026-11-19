@@ -1,3 +1,20 @@
+# 0.26.0 — 15 Kämpfer, neues Menü und Präsentation
+
+- Viper, Echo, Nova und Rivet: eigene Comicgrafik, gemeinsame Zwei-Hand-Rigs,
+  Klassenwerte, Passiven, Fähigkeiten, Effekte, Sounds, Cases und Meisterschaften.
+- Neues Hauptmenü und Settings mit Audio-/Grafik-/Steuerungs-Tabs; Tutorial und
+  Handbuch erreichbar, sichere Zurückwege und keine Engine-Diagnosen im Produkt.
+- Fünf sichtbare Waffen-Finishes mit Vorschau und direktem Studio-Coin-Kauf;
+  kosmetische Wirkung, sichere Speicherung, keine Veränderung der Kampfwerte.
+- Drei eigene arrangierte Musikstücke, neue/überarbeitete SFX, Master-Peak-Limiter.
+- Korrekte Orbit-Blade-Textur aus dem Waffenatlas; eigene Schussformen für neue Figuren.
+- Lokale Run-Analyse: Wellen/Bosse, aktive Zeit, wirklicher HP-Verlust und zusätzlicher
+  Modulschaden. Ergebnis- und Verlaufszugang, Bossfilter und mobile Seitennavigation.
+- Endlos-Runs im Verlauf ohne Kampagnenzähler zu erhöhen; höchstens 20 Runs und
+  50 Wellenzeilen pro Analyse, vollständige Gesamtwerte. Defensive Ladeprüfung.
+- Alte Charaktere, Spielstände und Bestwerte erhalten; keine erfundenen Detailwerte.
+- Umfangreiche Kampf-, UI-, Touch-, Speicher-, Medien- und Belastungsprüfungen.
+
 # 0.25.0 — Kampf-Kombinationen
 
 - Bruchkern, Ionenrelais und Schattenspule als klassengebundene Run-Gegenstände.

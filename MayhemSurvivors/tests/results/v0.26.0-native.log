@@ -1,0 +1,94 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS Actual combat clock records once LOW
+PASS Measurement APIs freeze in 7 LOW
+PASS Measurement APIs freeze in 5 LOW
+PASS Measurement APIs freeze in 6 LOW
+PASS Actual armored HP loss measured LOW
+PASS Invulnerability prevents duplicate hit measurement LOW
+PASS Timed normal wave produces complete receipt LOW
+PASS No overkill, duplicate kill or duplicate coins in receipt LOW
+PASS Receipt closes before shop LOW
+PASS Shop spending and time cannot mutate finished receipt LOW
+PASS Next wave records real boss type LOW
+PASS Actual boss death stores fight duration and name LOW
+PASS Result and persisted campaign history share immutable analysis LOW
+PASS Repeated finish cannot duplicate measurement or history LOW
+PASS New run resets all measurements LOW
+PASS Actual combat clock records once MEDIUM
+PASS Measurement APIs freeze in 7 MEDIUM
+PASS Measurement APIs freeze in 5 MEDIUM
+PASS Measurement APIs freeze in 6 MEDIUM
+PASS Actual armored HP loss measured MEDIUM
+PASS Invulnerability prevents duplicate hit measurement MEDIUM
+PASS Timed normal wave produces complete receipt MEDIUM
+PASS No overkill, duplicate kill or duplicate coins in receipt MEDIUM
+PASS Receipt closes before shop MEDIUM
+PASS Shop spending and time cannot mutate finished receipt MEDIUM
+PASS Next wave records real boss type MEDIUM
+PASS Actual boss death stores fight duration and name MEDIUM
+PASS Result and persisted campaign history share immutable analysis MEDIUM
+PASS Repeated finish cannot duplicate measurement or history MEDIUM
+PASS New run resets all measurements MEDIUM
+PASS Actual combat clock records once HIGH
+PASS Measurement APIs freeze in 7 HIGH
+PASS Measurement APIs freeze in 5 HIGH
+PASS Measurement APIs freeze in 6 HIGH
+PASS Actual armored HP loss measured HIGH
+PASS Invulnerability prevents duplicate hit measurement HIGH
+PASS Timed normal wave produces complete receipt HIGH
+PASS No overkill, duplicate kill or duplicate coins in receipt HIGH
+PASS Receipt closes before shop HIGH
+PASS Shop spending and time cannot mutate finished receipt HIGH
+PASS Next wave records real boss type HIGH
+PASS Actual boss death stores fight duration and name HIGH
+PASS Result and persisted campaign history share immutable analysis HIGH
+PASS Repeated finish cannot duplicate measurement or history HIGH
+PASS New run resets all measurements HIGH
+PASS Actual module marginal damage and activation 0
+PASS Already lethal base hit grants no invented bonus damage 0
+PASS Actual module marginal damage and activation 2
+PASS Already lethal base hit grants no invented bonus damage 2
+PASS Both actual secondary chain hits measured once
+PASS Relay with no neighbor records activation and zero bonus honestly
+PASS Lethal loss caps at actual HP and closes before cleanup 0
+PASS Boss timeout distinguished from death 0
+PASS Lethal loss caps at actual HP and closes before cleanup 1
+PASS Boss timeout distinguished from death 1
+PASS Lethal loss caps at actual HP and closes before cleanup 2
+PASS Boss timeout distinguished from death 2
+PASS Leaving a paused run preserves clock and honest outcome
+PASS Final-boss victory stores exactly one completed boss wave
+PASS Endless history preserves wave and does not inflate campaign statistics
+PASS Real JSON roundtrip preserves new bounded history
+PASS Old records retain an explicit missing-analysis state
+PASS Malformed analysis rejected <null>
+PASS Malformed analysis rejected []
+PASS Malformed analysis rejected {  }
+PASS Malformed analysis rejected { "version": 2, "waves": [] }
+PASS Malformed analysis rejected { "version": 1, "waves": ["bad", { "wave": 0, "outcome": "cleared" }] }
+PASS Untrusted counts, duplicates, enums, NaN and text sanitized
+PASS Sanitizer does not mutate caller data
+PASS Long endless analysis keeps last 50 waves and all cumulative totals
+PASS Re-sanitization preserves bounded long-run totals
+PASS Snapshots detach from live run data
+PASS Analysis never consumes gameplay RNG
+PASS Actual result button opens report without changing game state
+PASS Boss filter has useful empty state
+PASS Return restores usable result
+PASS Actual statistics button opens history
+PASS Actual stored-history pagination advances
+PASS Actual stored-history pagination goes back
+PASS Actual stored-history button opens report
+PASS Module page explains unpurchased module
+PASS History return preserves usable list
+PASS Old run explains absent detail instead of fabricated zero chart
+PASS Actual long-history pagination advances
+PASS Actual pagination goes back
+PASS Actual boss filter toggles
+PASS Tutorial never writes player run measurements
+PASS Recorder and view release without reference cycles
+RECAP RESULT 88 passed, 0 failed; native_touch=true

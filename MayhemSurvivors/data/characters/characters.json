@@ -216,5 +216,92 @@
     "unlock": {
       "case": "crew"
     }
+  },
+  {
+    "id": "viper",
+    "name": "VIPER",
+    "hp": 95,
+    "speed": 215,
+    "weapon": "blaster",
+    "color": "#B2EB42",
+    "role": "GIFTJÄGERIN",
+    "description": "Giftspitzen • Blaster-Treffer vergiften 3 Sekunden",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "blaster"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    },
+    "poison_duration": 3.0,
+    "poison_dps": 2.0
+  },
+  {
+    "id": "echo",
+    "name": "ECHO",
+    "hp": 110,
+    "speed": 205,
+    "weapon": "splitgun",
+    "color": "#FFAE45",
+    "role": "SCHALLBRECHER",
+    "description": "Schallkraft • +12 % Fernkampfschaden",
+    "ranged_bonus": 0.12,
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "splitgun"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
+  },
+  {
+    "id": "nova",
+    "name": "NOVA",
+    "hp": 105,
+    "speed": 200,
+    "weapon": "arc",
+    "color": "#FFE8A1",
+    "role": "LICHTSANITÄTERIN",
+    "description": "Erste Hilfe • Jeder 25. Kill heilt 3 HP",
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "arc",
+      "blaster"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    },
+    "heal_every_kills": 25,
+    "heal_per_cycle": 3
+  },
+  {
+    "id": "rivet",
+    "name": "RIVET",
+    "hp": 100,
+    "speed": 220,
+    "weapon": "blaster",
+    "color": "#6EDDD2",
+    "role": "NIETENJÄGER",
+    "description": "Schnellniet • +20 % Projektiltempo",
+    "projectile_bonus": 0.2,
+    "melee_bonus": 0,
+    "attack_speed_bonus": 0,
+    "crit_bonus": 0,
+    "allowed_weapons": [
+      "blaster"
+    ],
+    "rarity": "EPISCH",
+    "unlock": {
+      "case": "crew"
+    }
   }
 ]

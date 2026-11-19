@@ -4,7 +4,7 @@ const Roster=preload('res://scripts/core/roster.gd')
 const HEROES=Roster.HEROES
 const STYLES=['classic','neon','champion']
 const NAMES={'classic':'ORIGINAL','neon':'NEON CREW','champion':'GOLD CHAMPION'}
-const TITLES={'bruiser':'SCHROTTKÖNIG','sparky':'FUNKENKÖNIGIN','shade':'NACHTMEISTER','twinkle':'GLANZLEGENDE','kicksy':'BOOM-LEGENDE','steelfist':'ROHRLEGENDE','cinder':'FLAMMENLEGENDE','frosty':'FROSTLEGENDE','volt':'STURMLEGENDE','rook':'AEGISLEGENDE','nyx':'MONDLEGENDE'}
+const TITLES={'bruiser':'SCHROTTKÖNIG','sparky':'FUNKENKÖNIGIN','shade':'NACHTMEISTER','twinkle':'GLANZLEGENDE','kicksy':'BOOM-LEGENDE','steelfist':'ROHRLEGENDE','cinder':'FLAMMENLEGENDE','frosty':'FROSTLEGENDE','volt':'STURMLEGENDE','rook':'AEGISLEGENDE','nyx':'MONDLEGENDE','viper':'GIFTLEGENDE','echo':'BASSLEGENDE','nova':'LICHTLEGENDE','rivet':'NIETENLEGENDE'}
 static func goals(saved:Dictionary, hero:String) -> Array:
 	var r=saved.get('records',{}).get(hero,{})
 	return [

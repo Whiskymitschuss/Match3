@@ -12,6 +12,7 @@ static func hand_region(_kind:String) -> Rect2:return Comic.glove()
 const TWINKLE=preload('res://assets/characters/twinkle_atlas.png')
 const KICKSY=preload('res://assets/characters/kicksy_atlas.png')
 const STEELFIST=preload('res://assets/characters/steelfist_atlas.png')
-static func texture(_kind:String,_gameplay:bool=false) -> Texture2D:return Comic.HEROES
+static func hand_texture() -> Texture2D:return Comic.HEROES
+static func texture(_kind:String,_gameplay:bool=false) -> Texture2D:return Comic.hero_texture(_kind)
 
 static func shoulders(kind:String) -> Array:return Comic.shoulders(kind)
