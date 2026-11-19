@@ -54,6 +54,30 @@
       "name": "NYX",
       "rarity": "EPISCH",
       "weight": 10
+    },
+    "viper": {
+      "name": "VIPER",
+      "rarity": "EPISCH",
+      "weight": 10,
+      "weapon": "blaster"
+    },
+    "echo": {
+      "name": "ECHO",
+      "rarity": "EPISCH",
+      "weight": 10,
+      "weapon": "splitgun"
+    },
+    "nova": {
+      "name": "NOVA",
+      "rarity": "EPISCH",
+      "weight": 10,
+      "weapon": "arc"
+    },
+    "rivet": {
+      "name": "RIVET",
+      "rarity": "EPISCH",
+      "weight": 10,
+      "weapon": "blaster"
     }
   },
   "items": {
@@ -329,9 +353,10 @@
       "case": "style",
       "weight": 6,
       "rarity": "EPISCH",
-      "description": "Leuchtender Waffenstil. Rein optisch, für alle Klassen.",
+      "description": "Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.",
       "color": "#00D9D0",
-      "ranked": false
+      "ranked": false,
+      "price": 240
     },
     "ember_edge": {
       "name": "EMBER EDGE",
@@ -339,9 +364,10 @@
       "case": "style",
       "weight": 6,
       "rarity": "EPISCH",
-      "description": "Leuchtender Waffenstil. Rein optisch, für alle Klassen.",
+      "description": "Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.",
       "color": "#FF9F1C",
-      "ranked": false
+      "ranked": false,
+      "price": 240
     },
     "void_steel": {
       "name": "VOID STEEL",
@@ -349,9 +375,10 @@
       "case": "style",
       "weight": 6,
       "rarity": "EPISCH",
-      "description": "Leuchtender Waffenstil. Rein optisch, für alle Klassen.",
+      "description": "Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.",
       "color": "#C578FF",
-      "ranked": false
+      "ranked": false,
+      "price": 300
     },
     "comet": {
       "name": "KOMETENRING",
@@ -468,6 +495,28 @@
       "color": "#FF9F1C",
       "ranked": false,
       "group": "ring"
+    },
+    "arctic_chrome": {
+      "name": "ARCTIC CHROME",
+      "slot": "skin",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "description": "Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.",
+      "color": "#A3EFFF",
+      "ranked": false,
+      "price": 300
+    },
+    "toxic_stripe": {
+      "name": "TOXIC STRIPE",
+      "slot": "skin",
+      "case": "style",
+      "weight": 6,
+      "rarity": "EPISCH",
+      "description": "Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.",
+      "color": "#B2EB42",
+      "ranked": false,
+      "price": 300
     }
   },
   "upgrade_costs": [

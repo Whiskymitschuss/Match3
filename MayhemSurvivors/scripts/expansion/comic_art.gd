@@ -1,5 +1,7 @@
 extends RefCounted
 const R=preload('res://scripts/core/roster.gd')
+const CREW=preload('res://assets/characters/mayhem_crew.png')
+const CREW_IDS=['viper','echo','nova','rivet']
 const HEROES=preload('res://assets/characters/united_heroes.png')
 const ENEMIES=preload('res://assets/enemies/united_enemies.png')
 const BOSSES=preload('res://assets/enemies/united_bosses.png')
@@ -11,7 +13,8 @@ static var floor_cache={}
 static func cell(t:Texture2D,i:int,columns:int,rows:int) -> Rect2:
 	var step=Vector2(t.get_size())/Vector2(columns,rows)
 	return Rect2(Vector2(i%columns,i/columns)*step,step).grow(-2)
-static func hero(id:String) -> Rect2:return cell(HEROES,maxi(0,R.HEROES.find(id)),4,3)
+static func hero_texture(id:String) -> Texture2D:return CREW if id in CREW_IDS else HEROES
+static func hero(id:String) -> Rect2:return cell(CREW,CREW_IDS.find(id),2,2) if id in CREW_IDS else cell(HEROES,maxi(0,R.HEROES.find(id)),4,3)
 static func glove() -> Rect2:
 	var r=cell(HEROES,11,4,3);return Rect2(r.position+r.size*Vector2(.15,.15),r.size*Vector2(.82,.73))
 static func weapon(id:String) -> Rect2:
@@ -55,7 +58,7 @@ static func draw_death(g:Node2D,e:Dictionary):
 # The same anchors drive both menu and combat rigs; no embedded extra arms.
 static func shoulders(id:String) -> Array:
 	var points={'bruiser':[Vector2(152,143),Vector2(258,139)],'sparky':[Vector2(155,145),Vector2(241,143)],'shade':[Vector2(118,145),Vector2(231,143)],'twinkle':[Vector2(140,145),Vector2(244,143)],'kicksy':[Vector2(173,143),Vector2(265,144)],'steelfist':[Vector2(134,130),Vector2(248,132)],'cinder':[Vector2(131,137),Vector2(238,137)],'frosty':[Vector2(139,146),Vector2(247,143)],'volt':[Vector2(139,133),Vector2(245,133)],'rook':[Vector2(122,127),Vector2(247,130)],'nyx':[Vector2(152,145),Vector2(250,144)]}
-	return points.get(id,points.bruiser)
+	return {'viper':[Vector2(146,125),Vector2(234,124)],'echo':[Vector2(135,127),Vector2(253,127)],'nova':[Vector2(145,128),Vector2(237,127)],'rivet':[Vector2(134,130),Vector2(253,128)]}.get(id,points.get(id,points.bruiser))
 
 # Generated drawings have organic silhouettes; use measured bounds instead of grid cuts.
 static func enemy_region(index:int) -> Rect2:

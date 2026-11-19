@@ -1,0 +1,136 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS Actual master bus protects music and layered effects from clipping
+PASS Fifteen complete data-driven fighters
+PASS Only Bruiser starts unlocked
+PASS Actual class starter and binding viper
+PASS Own consistent body and two-hand rig viper
+PASS Real ability and cooldown viper
+PASS New class clocks freeze viper 7
+PASS New class clocks freeze viper 5
+PASS New class clocks freeze viper 6
+PASS Wave cleanup removes new combat objects viper
+PASS Actual class starter and binding echo
+PASS Own consistent body and two-hand rig echo
+PASS Real ability and cooldown echo
+PASS New class clocks freeze echo 7
+PASS New class clocks freeze echo 5
+PASS New class clocks freeze echo 6
+PASS Wave cleanup removes new combat objects echo
+PASS Actual class starter and binding nova
+PASS Own consistent body and two-hand rig nova
+PASS Real ability and cooldown nova
+PASS New class clocks freeze nova 7
+PASS New class clocks freeze nova 5
+PASS New class clocks freeze nova 6
+PASS Wave cleanup removes new combat objects nova
+PASS Actual class starter and binding rivet
+PASS Own consistent body and two-hand rig rivet
+PASS Real ability and cooldown rivet
+PASS New class clocks freeze rivet 7
+PASS New class clocks freeze rivet 5
+PASS New class clocks freeze rivet 6
+PASS Wave cleanup removes new combat objects rivet
+PASS Viper primary hit applies poison LOW
+PASS Exactly six poison damage, no secondary crit/RNG LOW
+PASS Toxin cloud uses bounded half-second ticks LOW
+PASS Cloud actual area, duration and exact damage LOW
+PASS Echo real weapon passive and preview use same multiplier LOW
+PASS Sonic burst deals damage, interrupts and pushes normal enemy LOW
+PASS Boss resists sonic control but takes actual damage LOW
+PASS Nova light pulse heals and creates real shield LOW
+PASS Shield absorbs before actual HP-loss measurement LOW
+PASS Medic barrier expires LOW
+PASS Medic passive heals exactly once per twenty-five kills LOW
+PASS Rivet data-driven projectile bonus LOW
+PASS Drone uses existing projectile pool LOW
+PASS Drone projectile deals actual collision damage LOW
+PASS Drone heals four HP during its finite duration LOW
+PASS Drone shots clear at wave end LOW
+PASS Viper primary hit applies poison MEDIUM
+PASS Exactly six poison damage, no secondary crit/RNG MEDIUM
+PASS Toxin cloud uses bounded half-second ticks MEDIUM
+PASS Cloud actual area, duration and exact damage MEDIUM
+PASS Echo real weapon passive and preview use same multiplier MEDIUM
+PASS Sonic burst deals damage, interrupts and pushes normal enemy MEDIUM
+PASS Boss resists sonic control but takes actual damage MEDIUM
+PASS Nova light pulse heals and creates real shield MEDIUM
+PASS Shield absorbs before actual HP-loss measurement MEDIUM
+PASS Medic barrier expires MEDIUM
+PASS Medic passive heals exactly once per twenty-five kills MEDIUM
+PASS Rivet data-driven projectile bonus MEDIUM
+PASS Drone uses existing projectile pool MEDIUM
+PASS Drone projectile deals actual collision damage MEDIUM
+PASS Drone heals four HP during its finite duration MEDIUM
+PASS Drone shots clear at wave end MEDIUM
+PASS Viper primary hit applies poison HIGH
+PASS Exactly six poison damage, no secondary crit/RNG HIGH
+PASS Toxin cloud uses bounded half-second ticks HIGH
+PASS Cloud actual area, duration and exact damage HIGH
+PASS Echo real weapon passive and preview use same multiplier HIGH
+PASS Sonic burst deals damage, interrupts and pushes normal enemy HIGH
+PASS Boss resists sonic control but takes actual damage HIGH
+PASS Nova light pulse heals and creates real shield HIGH
+PASS Shield absorbs before actual HP-loss measurement HIGH
+PASS Medic barrier expires HIGH
+PASS Medic passive heals exactly once per twenty-five kills HIGH
+PASS Rivet data-driven projectile bonus HIGH
+PASS Drone uses existing projectile pool HIGH
+PASS Drone projectile deals actual collision damage HIGH
+PASS Drone heals four HP during its finite duration HIGH
+PASS Drone shots clear at wave end HIGH
+PASS Skin cannot spend unavailable coins cyan_core
+PASS Exact cosmetic purchase cyan_core
+PASS Owned skin cannot be charged twice cyan_core
+PASS Real compatible finish equip cyan_core
+PASS Skin cannot spend unavailable coins ember_edge
+PASS Exact cosmetic purchase ember_edge
+PASS Owned skin cannot be charged twice ember_edge
+PASS Real compatible finish equip ember_edge
+PASS Skin cannot spend unavailable coins void_steel
+PASS Exact cosmetic purchase void_steel
+PASS Owned skin cannot be charged twice void_steel
+PASS Real compatible finish equip void_steel
+PASS Skin cannot spend unavailable coins arctic_chrome
+PASS Exact cosmetic purchase arctic_chrome
+PASS Owned skin cannot be charged twice arctic_chrome
+PASS Real compatible finish equip arctic_chrome
+PASS Skin cannot spend unavailable coins toxic_stripe
+PASS Exact cosmetic purchase toxic_stripe
+PASS Owned skin cannot be charged twice toxic_stripe
+PASS Real compatible finish equip toxic_stripe
+PASS Weapon skin leaves damage, RNG, XP and rewards unchanged cyan_core
+PASS Weapon skin leaves damage, RNG, XP and rewards unchanged ember_edge
+PASS Weapon skin leaves damage, RNG, XP and rewards unchanged void_steel
+PASS Weapon skin leaves damage, RNG, XP and rewards unchanged arctic_chrome
+PASS Weapon skin leaves damage, RNG, XP and rewards unchanged toxic_stripe
+PASS Old schema safely retains new fighters and equipped skins
+PASS Actual boss selects new looping boss score
+PASS Pause preserves boss track while ducking
+PASS Original arranged score length menu_theme
+PASS Original arranged score length combat_theme
+PASS Original arranged score length boss_theme
+PASS New imported original effect ability_toxin_cloud
+PASS New imported original effect ability_sonic_burst
+PASS New imported original effect ability_light_pulse
+PASS New imported original effect ability_repair_drone
+PASS New imported original effect crew_heal
+PASS New imported original effect drone_pulse
+PASS New imported original effect skin_equip
+PASS Home touch opens coherent settings tabs
+PASS Three independent audio sliders
+PASS Music slider applies immediately and saves
+PASS Native graphics toggle updates saved setting
+PASS Native controls toggle changes only menu movement
+PASS Native handbook returns to the active settings category
+PASS Settings returns to clean usable home
+PASS Native collection exposes actual weapon skin inventory
+PASS Native cosmetic purchase consumes exactly displayed price
+PASS Native skin equip updates actual per-fighter loadout
+PASS Tutorial cannot interrupt a paused run
+PASS Settings back path preserves paused gameplay and resumes safely
+PASS New managers release after complete UI lifecycle
+PRESENTATION PACK RESULT 130 passed, 0 failed; native_touch=true

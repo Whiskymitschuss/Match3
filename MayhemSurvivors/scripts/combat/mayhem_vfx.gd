@@ -97,7 +97,7 @@ func enemy_died(enemy:Dictionary):
 	event('poof',enemy.pos,color,enemy.radius*1.8,Vector2.RIGHT,.35)
 	if sound_clock<=0 and game.saved.settings.get('splatter',true):game.sound('fx_splat');sound_clock=.09
 func shot(weapon:String,direction:Vector2):
-	var color=Color('#FFB347') if weapon=='splitgun' else Color('#45F7FF')
+	var color=preload('res://scripts/ui/weapon_skins.gd').color(game.run_loadout,Color('#FFB347') if weapon=='splitgun' else game.combat_visuals.Art.color_for(game.selected))
 	var origin=game.player.position+direction*62+Vector2(0,-9)
 	if weapon in ['blaster','splitgun']:
 		if weapon==game.combat_visuals.primary_id():event('muzzle',origin,color,40 if weapon=='splitgun' else 30,direction,.10)

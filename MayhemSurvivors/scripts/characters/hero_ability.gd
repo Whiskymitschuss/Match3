@@ -37,6 +37,7 @@ func activate() -> bool:
 	game.sound('ability_'+d.id)
 	game.vfx.ability(d.id,game.player.position)
 	match d.id:
+		'toxin_cloud','sonic_burst','light_pulse','repair_drone':game.crew.activate()
 		'firestorm','absolute_zero','overcharge','bastion','phase_dance':game.united.heroes.active()
 		'pipe_burst':
 			game.steelfist.activate()

@@ -12,7 +12,7 @@ func fresh() -> Dictionary:return {'collection':C.defaults(),'meta':R.defaults()
 func run():
 	var s=fresh();s.collection.seed=17018
 	check(s.collection.heroes==['bruiser'] and s.collection.levels=={'hammer':1},'Bruiser and hammer only')
-	check(C.catalog().heroes.size()==10 and C.catalog().items.size()==37,'Catalog has ten additional heroes and37 items')
+	check(C.catalog().heroes.size()==14 and C.catalog().items.size()==39,'Catalog has fourteen unlockable heroes and 39 real items')
 	for id in ['crew','arsenal','style']:
 		var sum=0.0
 		for item in C.candidates(s,id):sum+=item.chance
@@ -37,10 +37,10 @@ func run():
 	check(reveal.id=='steelfist' and s.collection.pity==0,'Guaranteed hero resets pity')
 	C.acknowledge(s,reveal.serial);s.collection.tickets.crew=1;var old=s.collection.heroes.size();var dup=C.open_case(s,'crew')
 	check(dup.duplicate and dup.parts>0 and s.collection.parts==dup.parts and s.collection.heroes.size()==old,'Duplicate becomes parts without duplicate roster entry')
-	s=fresh();s.collection.seed=18018;s.collection.tickets.crew=30
-	for i in range(30):
+	s=fresh();s.collection.seed=18018;s.collection.tickets.crew=60
+	for i in range(60):
 		reveal=C.open_case(s,'crew');check(not reveal.is_empty(),'Crew progression draw '+str(i+1));C.acknowledge(s,reveal.serial)
-	check(s.collection.heroes.size()==11,'All fighters obtained within thirty crew openings')
+	check(s.collection.heroes.size()==15,'All fighters obtained within sixty crew openings')
 	check(s.collection.history.size()==20,'Opening journal retains bounded twenty receipts')
 	s=fresh();s.collection.parts=190
 	for i in range(4):check(C.upgrade(s,'hammer'),'Actual weapon rank upgrade '+str(i+1))

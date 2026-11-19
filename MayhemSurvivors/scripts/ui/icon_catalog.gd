@@ -1,6 +1,6 @@
 extends RefCounted
 static var cache:Dictionary={}
-const IDS=['play','characters','stats','settings','back','next','pause','check','close','help','coins','xp','vital','damage','rapid','speed','crit','armor','magnet','projectile','heal','multi','shop','reroll','weapon','items','sets','upgrade','salvage','lock','clock','trophy','skull','volume','music','haptic','fx','world','history','grip','plate','battery','coolant','boots','lens','pack','shockwave','impulse','shadow_step']
+const IDS=['analysis','play','characters','stats','settings','back','next','pause','check','close','help','coins','xp','vital','damage','rapid','speed','crit','armor','magnet','projectile','heal','multi','shop','reroll','weapon','items','sets','upgrade','salvage','lock','clock','trophy','skull','volume','music','haptic','fx','world','history','grip','plate','battery','coolant','boots','lens','pack','shockwave','impulse','shadow_step']
 static func get_icon(id:String) -> Texture2D:
 	if not IDS.has(id):return null
 	if not cache.has(id):cache[id]=load('res://assets/ui/icons/'+id+'.svg')
@@ -8,6 +8,14 @@ static func get_icon(id:String) -> Texture2D:
 static func button_id(text:String) -> String:
 	if text.is_empty():return ''
 	var t=text.to_upper()
+	if t.contains('SAMMLUNG'):return 'items'
+	if t=='AUDIO':return 'volume'
+	if t=='GRAFIK':return 'fx'
+	if t=='STEUERUNG':return 'speed'
+	if t.contains('ANALYSE'):return 'analysis'
+	if t=='ÜBERBLICK':return 'stats'
+	if t=='WELLEN & BOSSE':return 'skull'
+	if t=='KLASSENMODUL':return 'sets'
 	if t.contains('VERWERTEN'):return 'salvage'
 	if t.contains('ERREICHT'):return 'check'
 	if t=='ZUM LADEN':return 'shop'

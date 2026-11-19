@@ -16,7 +16,7 @@ func run():
 	check(g.state==g.State.MAIN_MENU,'Boot -> main menu')
 	check(g.GameStateMachine.permits(g.State.COMBAT,g.State.SHOP) and not g.GameStateMachine.permits(g.State.COMBAT,g.State.CHARACTER_SELECT),'Defined state transitions')
 	g.character_select()
-	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==11,'Character selection')
+	check(g.state==g.State.CHARACTER_SELECT and g.characters.size()==15,'Character selection')
 	for i in range(4):
 		g.selected=i
 		g.start_run()

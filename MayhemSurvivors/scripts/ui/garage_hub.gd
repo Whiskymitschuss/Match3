@@ -8,7 +8,7 @@ var page=0
 var busy=false
 var error=''
 var save_path='user://save.json'
-const SLOT_NAMES={'weapon':'WAFFEN','head':'KOPF','body':'KÖRPER','feet':'SCHUHE','item':'ITEMS','spell':'ZAUBER','skin':'WAFFENSTIL','deco':'DEKO'}
+const SLOT_NAMES={'weapon':'WAFFEN','head':'KOPF','body':'KÖRPER','feet':'SCHUHE','item':'ITEMS','spell':'ZAUBER','skin':'WAFFEN-SKINS','deco':'DEKO'}
 func _init(g:Node2D):game=g
 func enter() -> bool:
 	if game.state in [game.State.COMBAT,game.State.PAUSED,game.State.LEVEL_UP,game.State.SHOP,game.State.WAVE_PREPARATION]:return false
@@ -16,7 +16,9 @@ func enter() -> bool:
 func text(value:String,at:Vector2,width:float,font:int=26,color:Color=Color.WHITE) -> Label:
 	var node=game.label_at(value,at,font,color);node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;node.set_deferred('size',Vector2(width,160));return node
 func image_item(id:String,rect:Rect2):
-	if C.catalog().items[id].slot=='weapon':game.weapon_icon(id,rect.position,rect.size)
+	if C.catalog().items[id].slot=='skin':
+		var preview=Control.new();preview.set_script(preload('res://scripts/ui/skin_preview.gd'));preview.position=rect.position;preview.size=rect.size;preview.weapon=game.saved.collection.loadouts[game.characters[hero].id].weapon;preview.finish=id;game.ui_root.add_child(preview)
+	elif C.catalog().items[id].slot=='weapon':game.weapon_icon(id,rect.position,rect.size)
 	else:game.UISkin.image(game,Art.icon(id),rect)
 func transact(kind:String,id:String='',serial:int=-1) -> bool:
 	if busy or not enter():return false
@@ -25,6 +27,10 @@ func transact(kind:String,id:String='',serial:int=-1) -> bool:
 		'open':ok=not C.open_case(game.saved,id).is_empty()
 		'ack':ok=C.acknowledge(game.saved,serial)
 		'upgrade':ok=C.upgrade(game.saved,id)
+		'skin_buy':
+			var d=C.catalog().items.get(id,{})
+			if d.get('slot','')=='skin' and not game.saved.collection.levels.has(id) and game.saved.meta.coins>=int(d.get('price',300)):
+				game.saved.meta.coins-=int(d.get('price',300));game.saved.collection.levels[id]=1;ok=true
 		'equip':ok=C.equip(game.saved,game.characters[hero].id,id)
 		'off':
 			if slot!='weapon' and game.saved.collection.heroes.has(game.characters[hero].id):
@@ -70,6 +76,11 @@ func show(index:int=-1,category:String='weapon',offset:int=0):
 			if transact('equip',id):game.sound('garage_equip')
 			show(hero,slot,page))
 		b.disabled=equipped or rank==0 or not compatible or not owned_hero
+		if d.slot=='skin' and rank==0:
+			var buy=button('KAUFEN / %d COINS' % int(d.get('price',300)),Vector2(x+15,825),Vector2(300,75),func():
+				if transact('skin_buy',id):game.sound('skin_equip')
+				show(hero,slot,page))
+			buy.disabled=game.saved.meta.coins<int(d.get('price',300))
 		if d.ranked:
 			var cost=int(C.catalog().upgrade_costs[maxi(0,mini(3,rank-1))]);var upgrade=button('RANG 5 MAX' if rank>=5 else '%d TEILE AUFRÜSTEN' % cost,Vector2(x+15,825),Vector2(300,75),func():
 				if transact('upgrade',id):game.sound('garage_upgrade')

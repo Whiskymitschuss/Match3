@@ -6,13 +6,17 @@ var back:Callable
 func _init(g:Node2D):game=g
 func text(value:String,at:Vector2,width:float,font:int=29,color:Color=Color.WHITE):
 	var l=game.label_at(value,at,font,color);l.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;l.set_deferred('size',Vector2(width,500));return l
+func leave():
+	var target=back;back=Callable()
+	if target.is_valid():target.call()
+	else:game.main_menu()
 func show(section:String='rules',page:int=0,return_to:Callable=Callable()):
 	if game.state in [game.State.COMBAT,game.State.LEVEL_UP,game.State.SHOP]:return
 	if return_to.is_valid():back=return_to
 	if not back.is_valid():back=game.main_menu
-	game.backdrop('MAYHEM HANDBUCH','Klare Regeln / echte Werte / elf Helden / zehn Welten')
-	var tabs=['rules','heroes','enemies','tech'];var names=['SPIELREGELN','HELDEN & WAFFEN','BESTIARIUM','TECHNIK']
-	for i in range(4):game.button(names[i],Vector2(100+i*435,245),Vector2(410,80),func():show(tabs[i],0),Color('#66417C') if section==tabs[i] else Color('#2F2044'))
+	game.backdrop('MAYHEM HANDBUCH','Klare Regeln / echte Werte / 15 Kämpfer / zehn Welten')
+	var tabs=['rules','heroes','enemies','tech'];var names=['SPIELREGELN','HELDEN & WAFFEN','BESTIARIUM','SPIELINFO']
+	for i in range(4):game.button(names[i],Vector2(100+i*435,245),Vector2(410,80),func():game.queue_ui_action(func():show(tabs[i],0)),Color('#66417C') if section==tabs[i] else Color('#2F2044'))
 	game.UISkin.panel(game,Rect2(100,355,1720,565))
 	var total=1
 	if section=='rules':
@@ -39,11 +43,10 @@ func show(section:String='rules',page:int=0,return_to:Callable=Callable()):
 			text(boss_names[idx],Vector2(790,390),980,50,game.GOLD)
 			text('Bossangriffe besitzen feste Vorwarnzeiten. Verlasse Sturmspuren seitlich und nutze grüne Ringöffnungen.\n\nDie Gegner in 2 / 4 / 6 / 8 werden stärker. In Welle 10 kämpfst du gegen den eigenen Abschlussboss deiner Arena.\n\nEin Boss muss vor Ablauf der Zeit fallen. Danach bleiben Coins und XP erhalten; der Shop oder der Arenenabschluss folgt.',Vector2(790,490),930,30)
 	elif section=='tech':
-		text('ANDROID / OFFLINE',Vector2(150,390),1400,48,game.GOLD)
-		text('Version 0.25.0 Alpha / Godot 4.6 / ARM64 / GL Compatibility\nReferenzlayout 1920 × 1080 / Querformat / sichere Bildschirmabstände\n\nAktuell: %.0f FPS / %d Gegner / %d aktive Projektile\nQualität: %s / Effekte begrenzt, Kampfwerte unverändert\n\nLokales Profil mit Backups. Keine Werbung, Käufe oder Server.\nBei Unterbrechung pausiert der Kampf automatisch.' % [Engine.get_frames_per_second(),game.enemies.size(),game.shots.filter(func(s):return s.active).size(),game.saved.settings.quality],Vector2(150,475),1500,30)
-		game.button('FPS-ANZEIGE: '+('AN' if game.saved.settings.show_fps else 'AUS'),Vector2(1190,800),Vector2(570,90),func():game.saved.settings.show_fps=not game.saved.settings.show_fps;game.save_game();show('tech'))
-	game.button('ZURÜCK',Vector2(100,965),Vector2(400,85),func():back.call())
+		text('RF WORLDS / MAYHEM SURVIVORS',Vector2(150,390),1500,48,game.GOLD)
+		text('Version 0.26.0 Alpha\n15 Kämpfer / 10 Welten / Kampagne und Endlos\n\nDein Fortschritt bleibt auf diesem Gerät gespeichert.\nDas Spiel funktioniert vollständig offline.\nKeine Werbung und keine Echtgeldkäufe.\n\nBei einer Unterbrechung pausiert der Kampf automatisch.\nMusik, Darstellung und Steuerung findest du in den Einstellungen.',Vector2(150,485),1500,33)
+	game.button('ZURÜCK',Vector2(100,965),Vector2(400,85),func():game.queue_ui_action(leave))
 	if total>1:
-		game.button('VORHERIGE',Vector2(800,965),Vector2(430,85),func():show(section,page-1))
+		game.button('VORHERIGE',Vector2(800,965),Vector2(430,85),func():game.queue_ui_action(func():show(section,page-1)))
 		text('%d / %d' % [page+1,total],Vector2(1270,985),150,28,game.GOLD)
-		game.button('NÄCHSTE',Vector2(1430,965),Vector2(390,85),func():show(section,page+1))
+		game.button('NÄCHSTE',Vector2(1430,965),Vector2(390,85),func():game.queue_ui_action(func():show(section,page+1)))
