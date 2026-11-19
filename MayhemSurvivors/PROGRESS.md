@@ -38,3 +38,12 @@ Menschliche Balance, Temperatur, Akku und 60 FPS müssen am Gerät gemessen werd
 Nächster Schritt: Android-Geräteabnahme und gezielte Korrekturen aus deren Befunden.
 
 Details: PRESENTATION_UPDATE.md, RUN_ANALYSIS.md, TEST_REPORT.md, BUILD_REPORT.md.
+
+## Veröffentlichung abgeschlossen
+
+0.26.0 auf GitHub veröffentlicht: Quellstand 13ce3b5, Artefakte 9021125.
+APK (78.253.509 Bytes) und Quell-ZIP (85.384.396 Bytes) vollständig ohne Anmeldung
+heruntergeladen; beide SHA256-Werte sowie öffentliche Prüfsummendatei bestätigt.
+Nachweis: Downloads/VERIFY-v0.26.0.txt. Pull Request #11 offen zur Prüfung:
+https://github.com/Whiskymitschuss/Match3/pull/11 — nicht automatisch gemergt.
+Nächster fachlicher Schritt bleibt die physische Android-Geräteabnahme.

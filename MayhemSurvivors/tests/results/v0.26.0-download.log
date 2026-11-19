@@ -1,0 +1,14 @@
+Anonymous complete public download verification — 2026-11-19T01:45:07.154313+00:00
+PASS MayhemSurvivors-v0.26.0-debug.apk
+78253509 bytes
+SHA256 7b391770889ef82cba735e8f50a5f8e2a10a509c0e254d5f1618e5c51988702f
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/run-analysis-v0.26.0/Downloads/MayhemSurvivors-v0.26.0-debug.apk
+PASS MayhemSurvivors-v0.26.0-source.zip
+85384396 bytes
+SHA256 68c147b0a7e65f5a93bd9878a18d67b32c8360f27bcd2d6b617dd8b4806a84a4
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/run-analysis-v0.26.0/Downloads/MayhemSurvivors-v0.26.0-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.
+PASS public SHA256SUMS-v0.26.0.txt matches the verified full downloads.
+Source commit: 13ce3b5
+Artifact commit: 9021125
+Pull request: https://github.com/Whiskymitschuss/Match3/pull/11

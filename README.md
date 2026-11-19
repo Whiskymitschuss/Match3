@@ -15,3 +15,7 @@ Signatur und Inhalte geprüft. Als Update über die vorhandene App installieren;
 Spielstände bleiben erhalten. Physische Android-Abnahme und Balance stehen aus.
 
 [Projekt und Prüfberichte](MayhemSurvivors/README.md)
+
+APK und ZIP vollständig anonym heruntergeladen; beide SHA256-Prüfsummen und die
+öffentliche Prüfsummendatei bestätigt.
+[Downloadnachweis](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/run-analysis-v0.26.0/Downloads/VERIFY-v0.26.0.txt) · [Änderungen / Pull Request #11](https://github.com/Whiskymitschuss/Match3/pull/11)
