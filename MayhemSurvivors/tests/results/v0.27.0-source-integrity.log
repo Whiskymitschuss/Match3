@@ -1,0 +1,4 @@
+PASS fresh cache-free source import; 38 suites / 9890 passed / 0 failed; both legacy traces.
+790 runtime files plus project.godot and export_presets.cfg byte-identical to APK source tree.
+105 GDScript tests and tools/run_tests.py byte-identical.
+Runtime hash snapshot is checked again against the final source archive.

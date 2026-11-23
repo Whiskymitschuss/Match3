@@ -64,7 +64,7 @@
   },
   "gardens": {
     "name": "GIFTGÄRTEN",
-    "description": "Giftfelder ankündigen, Abstand halten, weiterziehen.",
+    "description": "Aktiviere Sporenfilter: Reinigungspulse treffen Gegner und entfernen fremde Kreisfelder.",
     "floor": "united",
     "waves": "waves/waves",
     "boss_name": "DIE GIFTKÖNIGIN",
@@ -83,7 +83,7 @@
   },
   "frost": {
     "name": "FROSTDEPOT",
-    "description": "Eisimpulse meiden und Fluchtwege freihalten.",
+    "description": "Zünde Thermofackeln: Wärme schützt im Kreis vor Frost und verlangsamt Gegner.",
     "floor": "united",
     "waves": "waves/waves",
     "boss_name": "DER FROSTFÜRST",
@@ -102,7 +102,7 @@
   },
   "storm": {
     "name": "STURMDÄCHER",
-    "description": "Blitzbahnen lesen und seitlich ausweichen.",
+    "description": "Blitzableiter richten eine feste Bahn auf Gegner: ausweichen, Verfolger hineinlocken.",
     "floor": "united",
     "waves": "waves/waves",
     "boss_name": "DIE STURMMASCHINE",
@@ -121,7 +121,7 @@
   },
   "crystal": {
     "name": "KRISTALLMINE",
-    "description": "Kristallnadeln hinterlassen gefährliche Spuren.",
+    "description": "Verbinde drei Runen und nutze das angekündigte Kristallkreuz gegen Verfolger.",
     "floor": "united",
     "waves": "waves/waves",
     "boss_name": "DER KRISTALLGOLEM",
@@ -140,7 +140,7 @@
   },
   "carnival": {
     "name": "CHAOS-KIRMES",
-    "description": "Bombenregen zwischen verblassten Kirmeslichtern.",
+    "description": "Zünde eine gestaffelte Bombenkaskade und locke Gegner durch die drei Markierungen.",
     "floor": "united",
     "waves": "waves/waves",
     "boss_name": "DER CHAOSNARR",
@@ -159,7 +159,7 @@
   },
   "void": {
     "name": "RISSKERN",
-    "description": "Rissimpulse und ein letzter Kampf gegen den Risskaiser.",
+    "description": "Rissanker ziehen normale Gegner in einen Gefahrenring. Der Innenkreis bleibt sicher.",
     "floor": "united",
     "waves": "waves/waves",
     "boss_name": "DER RISSKAISER",

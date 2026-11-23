@@ -54,7 +54,7 @@ func show():
 	if game.run_mode=='endless':
 		var e:Dictionary=game.saved.endless_records[id]
 		record_text='ENDLOS: BESTWELLE %d / %d RUNS\nGESAMT %d KILLS' % [e.highest_wave,e.runs,e.kills]
-	if id in ['reactor','docks','foundry']:text(d.description,Vector2(120,690),695,23,game.GOLD)
+	if id!='scrapyard':text(d.description,Vector2(120,690),695,23,game.GOLD)
 	text(record_text,Vector2(120,758),695,23)
 	game.button('WÄHRUNGEN',Vector2(100,910),Vector2(350,45),wallet_help)
 	game.button('CASES & GARAGE',Vector2(490,910),Vector2(350,45),func():game.garage.cases())

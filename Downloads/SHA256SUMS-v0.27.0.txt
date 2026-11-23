@@ -1,0 +1,2 @@
+209e6e4bbb6d59603f4345e79a756f94e98c69c00021e1aacf91ea6ece5f9df2  MayhemSurvivors-v0.27.0-debug.apk
+619e445abc5fdd13cdf2457b73483003835cc485144253dc679a63820de12f06  MayhemSurvivors-v0.27.0-source.zip

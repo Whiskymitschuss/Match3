@@ -1,0 +1,103 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Project expands the visible game canvas instead of letterboxing
+PASS Full-bleed background covers complete viewport (1920.0, 1080.0)
+PASS Touch buttons stay inside safe area (1920.0, 1080.0)
+PASS Camera never exposes outside-arena black background (1920.0, 1080.0)
+PASS Full-bleed background covers complete viewport (2340.0, 1080.0)
+PASS Touch buttons stay inside safe area (2340.0, 1080.0)
+PASS Camera never exposes outside-arena black background (2340.0, 1080.0)
+PASS Full-bleed background covers complete viewport (2560.0, 1080.0)
+PASS Touch buttons stay inside safe area (2560.0, 1080.0)
+PASS Camera never exposes outside-arena black background (2560.0, 1080.0)
+PASS Full-bleed background covers complete viewport (1920.0, 1440.0)
+PASS Touch buttons stay inside safe area (1920.0, 1440.0)
+PASS Camera never exposes outside-arena black background (1920.0, 1440.0)
+PASS Full-bleed background covers complete viewport (3840.0, 1080.0)
+PASS Touch buttons stay inside safe area (3840.0, 1080.0)
+PASS Camera never exposes outside-arena black background (3840.0, 1080.0)
+PASS Cutout/system-bar safe area maps correctly [P: (100.0, 0.0), S: (2240.0, 1080.0)]
+PASS Cutout/system-bar safe area maps correctly [P: (0.0, 0.0), S: (2220.0, 1080.0)]
+PASS Cutout/system-bar safe area maps correctly [P: (100.0, 30.0), S: (2120.0, 1020.0)]
+PASS Unavailable Android insets safely use full viewport
+PASS Actual menu backdrop fills expanded canvas (1280, 591)
+PASS Actual HUD anchors adapt (1280, 591)
+PASS Expanded-layout multitouch activates ability without stealing joystick (1280, 591)
+PASS Expanded-layout releases reset both touches (1280, 591)
+PASS Actual pause GUI button remains clickable outside the reference content width (1280, 591)
+PASS Pause still stops gameplay after fullscreen resize (1280, 591)
+PASS Actual menu backdrop fills expanded canvas (1280, 720)
+PASS Actual HUD anchors adapt (1280, 720)
+PASS Expanded-layout multitouch activates ability without stealing joystick (1280, 720)
+PASS Expanded-layout releases reset both touches (1280, 720)
+PASS Actual pause GUI button remains clickable outside the reference content width (1280, 720)
+PASS Pause still stops gameplay after fullscreen resize (1280, 720)
+PASS Actual menu backdrop fills expanded canvas (1024, 768)
+PASS Actual HUD anchors adapt (1024, 768)
+PASS Expanded-layout multitouch activates ability without stealing joystick (1024, 768)
+PASS Expanded-layout releases reset both touches (1024, 768)
+PASS Actual pause GUI button remains clickable outside the reference content width (1024, 768)
+PASS Pause still stops gameplay after fullscreen resize (1024, 768)
+PASS Touch inside cutout/unsafe band cannot start joystick
+PASS Joystick remains usable inside simulated notched safe area
+PASS Reactor opening wave 1 is exactly unchanged from 0.6
+PASS Classic opening wave 1 is exactly unchanged from 0.6
+PASS Reactor opening wave 2 is exactly unchanged from 0.6
+PASS Classic opening wave 2 is exactly unchanged from 0.6
+PASS Reactor opening wave 3 is exactly unchanged from 0.6
+PASS Classic opening wave 3 is exactly unchanged from 0.6
+PASS Opening wave 1 retains its previous values
+PASS Opening wave 1 retains spawn count and rewards
+PASS Opening wave 2 retains its previous values
+PASS Opening wave 2 retains spawn count and rewards
+PASS Opening wave 3 retains its previous values
+PASS Opening wave 3 retains spawn count and rewards
+PASS Late wave 4 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 4
+PASS Late-wave reinforcement groups are bounded 4
+PASS Wave length unchanged 4
+PASS Late wave 5 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 5
+PASS Late-wave reinforcement groups are bounded 5
+PASS Wave length unchanged 5
+PASS Late wave 6 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 6
+PASS Late-wave reinforcement groups are bounded 6
+PASS Wave length unchanged 6
+PASS Late wave 7 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 7
+PASS Late-wave reinforcement groups are bounded 7
+PASS Wave length unchanged 7
+PASS Late wave 8 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 8
+PASS Late-wave reinforcement groups are bounded 8
+PASS Wave length unchanged 8
+PASS Late wave 9 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 9
+PASS Late-wave reinforcement groups are bounded 9
+PASS Wave length unchanged 9
+PASS Late wave 10 strengthens normal enemies
+PASS Late-wave extra enemies do not inflate per-enemy rewards 10
+PASS Late-wave reinforcement groups are bounded 10
+PASS Wave length unchanged 10
+PASS Classic wave 1 follows requested opening/late-game split
+PASS Classic wave 2 follows requested opening/late-game split
+PASS Classic wave 3 follows requested opening/late-game split
+PASS Classic wave 4 follows requested opening/late-game split
+PASS Classic wave 5 follows requested opening/late-game split
+PASS Classic wave 6 follows requested opening/late-game split
+PASS Classic wave 7 follows requested opening/late-game split
+PASS Classic wave 8 follows requested opening/late-game split
+PASS Classic wave 9 follows requested opening/late-game split
+PASS Classic wave 10 follows requested opening/late-game split
+PASS Actual fourth-wave enemy gets all configured modifiers
+PASS Actual fourth-wave drops use rounded balanced rewards
+PASS Late tank health and speed scale as configured
+PASS Late tank rewards are adjusted without discarding drops
+PASS Reactor boss lasts longer while movement/contact values stay fair
+PASS Boss rewards remain unchanged
+PASS Four regular fourth-wave spawn cycles create four enemies
+PASS Fifth cycle adds the announced reinforcement group
+PASS Reinforcement group cannot exceed existing 100-enemy cap
+PASS Actual classic late wave is also stronger with controlled rewards
+DISPLAY BALANCE RESULT 100 passed, 0 failed

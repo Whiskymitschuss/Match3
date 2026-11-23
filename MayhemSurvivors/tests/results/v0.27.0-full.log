@@ -1,0 +1,81 @@
+integration 
+RESULT 93 passed, 0 failed
+combat_visuals_test 
+COMBAT VISUAL RESULT 28 passed, 0 failed
+character_policy_test 
+CHARACTER POLICY RESULT 66 passed, 0 failed
+world_visuals_test 
+WORLD VISUAL RESULT 36 passed, 0 failed
+run_records_test 
+RUN RECORDS RESULT 28 passed, 0 failed
+reactor_test 
+REACTOR RESULT 637 passed, 0 failed
+abilities_test 
+ABILITIES RESULT 76 passed, 0 failed
+specializations_test 
+SPECIALIZATIONS RESULT 156 passed, 0 failed
+effects_test 
+EFFECTS RESULT 40 passed, 0 failed
+reactor_roles_test 
+REACTOR ROLES RESULT 66 passed, 0 failed
+display_balance_test 
+DISPLAY BALANCE RESULT 100 passed, 0 failed
+shop_test 
+RESULT 41 passed / 0 failed
+presentation_audio_test 
+PRESENTATION AUDIO RESULT 28 passed, 0 failed
+neon_interface_test 
+NEON INTERFACE RESULT 107 passed, 0 failed
+encounters_test 
+ENCOUNTERS RESULT 104 passed, 0 failed
+mastery_test 
+MASTERY RESULT 152 passed, 0 failed
+twinkle_test 
+TWINKLE RESULT 65 passed, 0 failed
+ravox_test 
+RAVOX RESULT 52 passed, 0 failed
+worlds_endless_test 
+WORLDS ENDLESS RESULT 231 passed, 0 failed
+kicksy_test 
+KICKSY RESULT 40 passed, 0 failed
+difficulty_test 
+DIFFICULTY RESULT 100 passed, 0 failed
+live_rewards_test 
+LIVE REWARDS RESULT 80 passed, 0 failed
+steelfist_test 
+STEELFIST RESULT 90 passed, 0 failed
+collection_model_test 
+COLLECTION MODEL RESULT 105 passed, 0 failed
+garage_test 
+GARAGE RESULT 97 passed, 0 failed
+breaker_axel_test 
+BREAKER AXEL RESULT 498 passed, 0 failed
+world_map_test 
+WORLD MAP RESULT 124 passed, 0 failed
+united_test 
+UNITED RESULT 605 passed, 0 failed
+case_navigation_test 
+CASE NAVIGATION RESULT 74 passed, 0 failed; native_touch=false
+boss_balance_test 
+BOSS BALANCE RESULT 748 passed, 0 failed
+first_arena_test 
+FIRST ARENA RESULT 167 passed, 0 failed; native_touch=false
+arena_mechanics_test 
+ARENA MECHANICS RESULT 220 passed, 0 failed; native_touch=false
+foundry_test 
+FOUNDRY RESULT 217 passed, 0 failed; native_touch=false
+synergies_test 
+SYNERGIES RESULT 272 passed, 0 failed; native_touch=false
+recap_test 
+RECAP RESULT 88 passed, 0 failed; native_touch=false
+presentation_pack_test 
+PRESENTATION PACK RESULT 130 passed, 0 failed; native_touch=false
+tactics_test 
+TACTICS RESULT 686 passed, 0 failed; native_touch=false
+progress_comparison_test 
+PROGRESS COMPARISON RESULT 3443 passed, 0 failed; native_touch=false
+world_trace 
+WORLD REGRESSION PASS: 33 checkpoints, 3600 fixed-clock steps, 3 heroes; HP, XP, kills, coins, damage, enemies, projectiles and critical RNG compared with v0.2.2
+effects_trace 
+EFFECTS REGRESSION PASS: 87 checkpoints / 8700 steps / all 10 specializations, abilities and classic boss; LEGACY WAVE RULES IN TEST HARNESS (both arenas rebalanced in 0.6.1); quality=HIGH
+All requested suites passed.

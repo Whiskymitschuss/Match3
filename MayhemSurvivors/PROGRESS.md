@@ -1,49 +1,37 @@
-# Mayhem Survivors 0.26.0 — Crew & Präsentation
+# Mayhem Survivors 0.27.0 — Arena-Taktik und Fortschritt
 
-Stand 2026-11-19. Phase 19: Implementierung, lokale Abnahme und Android-Export
-abgeschlossen. Basis: 0.25.0 / 65694ab. Branch: feature/run-analysis-v0.26.0.
-Bestätigter Umfang: insgesamt 15 Kämpfer, neues Hauptmenü, geordnete Settings,
-Waffen-Skins, neue Musik/Sounds/Effekte und Run-Analyse.
+Stand 2026-11-23. Phase 19: Implementierung, lokale Abnahme und Android-Export
+abgeschlossen. Basis 0.26.0 / 35d2d7e; Branch feature/arena-tactics-v0.27.0.
 
 ## Implementiert
 
-Viper, Echo, Nova und Rivet mit eigenen Comicgrafiken, Zwei-Hand-Rig, Klassenwerten,
-Passiven, aktiven Fähigkeiten, Projektileffekten und Sounds. Cases, Meisterschaft,
-Speicherung und Klassenwaffen angeschlossen. Bestehende elf Figuren erhalten.
-Sechs Hauptaktionen; Audio/Grafik/Steuerung als Settings-Tabs; Tutorial und Handbuch
-unter Steuerung. Sichere Menü-Rückwege und Pause/Fortsetzen.
-Fünf sichtbare Waffen-Finishes mit Mustern, Schussfarben und Live-Vorschau;
-Cases oder Studio-Coin-Kauf, atomare Speicherung, keine Kampfwerteboni.
-Drei eigene arrangierte Musikstücke, überarbeitete SFX und Master-Peak-Limiter.
-Run-Analyse mit echten Kampfwerten, Wellen/Bossfilter, lokalem Verlauf, maximal
-20 Runs und 50 Wellenzeilen; Gesamtwerte auch bei längeren Endlosläufen korrekt.
+Sechs freiwillige Manöver für die späteren Welten: Filter, Wärme, Blitzableiter,
+Runenrelais, Bombenkaskade und Ringsog. Passende Abschlussbosszonen, feste Warn-
+Geometrie, sichere Räume, Countdown und Erholungsfenster. Einmalige Run-Boni,
+Gegnerbeute, Pause/Tod/Wellenende/Endlos und Objektbereinigung angeschlossen.
+Kicksy-Ersthilfe, gespeicherte Bestätigung, Pause-Hilfe und Weltkartenbeschreibung.
+Run-Vergleich mit gleichen Rahmenbedingungen, tatsächlichen Messwerten und klarem
+Leerzustand. Case-Ziele und Duplikatschutz sichtbar. Statistik für alle 15 Figuren.
+Sechs Original-SVGs und drei PCM-Cues. Bestehende Preise, Chancen, Waffenwerte,
+Boss-HP und Angriffskadenz beibehalten; verbrauchter Nova-Schild korrekt angezeigt.
 
-## Abnahme und Export
+## Prüfung und Export
 
-36 Suiten / 5.761 Prüfungen / 0 Fehler am frisch entpackten Projekt; beide
-historischen Traces grün. 767 Laufzeitdateien plus Konfiguration bytegleich.
-218 native GL-Touchchecks und 40 Ansichten in drei Displayformaten geprüft.
-Vier Belastungsläufe: 90 Analyse-, 150 Figuren/Arena-, 27 Modul- und zwölf
-Crew-Szenarien bestanden. Keine finalen Parser-/Script-/Ressourcenfehler.
-Debug-APK wirklich gebaut, ARM64/Paket/Code32/Signatur/Alignment/CRC und Inhalte
-geprüft. Auslieferung mit Quell-ZIP und Prüfsummen; öffentliche Downloadprüfung
-wird separat im Repo unter Downloads/VERIFY-v0.26.0.txt protokolliert.
+Frisches Quellprojekt: 38 Suiten / 9890 Prüfungen / 0 Fehler, beide Traces grün.
+790 Laufzeitdateien plus Konfiguration bytegleich zum APK-Quellstand. Drei native
+Suiten (686/3443/74 Funktionsprüfungen inklusive Touch-Wege) bestanden. 30 GL-
+Ansichten in drei Formaten kontrolliert. Zwei Soaks: 54 Taktik- und 90 Analyse-
+Szenarien, 100 Gegner, begrenzte Effekte und identische Kampfergebnisse je Qualität.
+Debug-APK tatsächlich gebaut: Code33, ARM64, Paket, Signatur, Alignment und Inhalte
+geprüft. Quell-ZIP und Prüfsummen gehören zur Übergabe. Öffentlicher Downloadbeleg
+wird nach dem Upload separat unter Downloads/VERIFY-v0.27.0.txt protokolliert.
 
-## Offene Abnahme und nächster Schritt
+## Offen und nächster Schritt
 
-Keine offenen Pflichtfunktionen im bestätigten Updateumfang. Physische Android-
-Abnahme bleibt offen: Installation über bestehenden Spielstand, neue Klassen,
-Skins, Musik, Mehrfingerbedienung, Unterbrechung, Neigung/Safe Area und lange Runs.
-Menschliche Balance, Temperatur, Akku und 60 FPS müssen am Gerät gemessen werden.
-Nächster Schritt: Android-Geräteabnahme und gezielte Korrekturen aus deren Befunden.
-
-Details: PRESENTATION_UPDATE.md, RUN_ANALYSIS.md, TEST_REPORT.md, BUILD_REPORT.md.
-
-## Veröffentlichung abgeschlossen
-
-0.26.0 auf GitHub veröffentlicht: Quellstand 13ce3b5, Artefakte 9021125.
-APK (78.253.509 Bytes) und Quell-ZIP (85.384.396 Bytes) vollständig ohne Anmeldung
-heruntergeladen; beide SHA256-Werte sowie öffentliche Prüfsummendatei bestätigt.
-Nachweis: Downloads/VERIFY-v0.26.0.txt. Pull Request #11 offen zur Prüfung:
-https://github.com/Whiskymitschuss/Match3/pull/11 — nicht automatisch gemergt.
-Nächster fachlicher Schritt bleibt die physische Android-Geräteabnahme.
+Keine offenen Funktionen im bestätigten Updateumfang. Physische Android-Abnahme
+bleibt ausstehend: über bestehenden Spielstand installieren, drei Klassen-Runs
+vergleichen, Manöver/Bosse, Touch, Neigung, Safe Area und Audio ausprobieren.
+Menschliche Balance, Temperatur, Akku und 60 FPS am Gerät messen. Bisher keine
+neuen menschlichen Android-Rundaten erhalten; Simulationen ersetzen diese
+Daten nicht. Nächster fachlicher Schritt: gezielte Korrekturen nach Geräte-
+abnahme. Regeln: ARENA_TACTICS.md. Nachweise: TEST_REPORT.md / BUILD_REPORT.md.

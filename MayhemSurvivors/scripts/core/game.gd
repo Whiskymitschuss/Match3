@@ -450,7 +450,8 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 		var tab=i-1
 		var tab_width=1720.0/6
 		button('ÜBERSICHT' if i==0 else characters[i-1].name,Vector2(100+(i-first_tab)*tab_width,235),Vector2(tab_width-14,80),func(): statistics(tab,arena_filter),Color('#147f81') if tab==character else Color('#243958'))
-	button('WEITERE HELDEN',Vector2(110,810),Vector2(700,70),func():statistics(5 if first_tab==0 else -1,arena_filter))
+	button('WEITERE HELDEN',Vector2(110,810),Vector2(700,70),func():queue_ui_action(func():statistics(first_tab+5 if first_tab+6<characters.size()+1 else -1,arena_filter)))
+	button('RUNS VERGLEICHEN',Vector2(1010,810),Vector2(750,70),func():queue_ui_action(func():recap_view.show_recent_compare(character,arena_filter))).disabled=recap_view.comparison_reference(character,arena_filter).is_empty()
 	if character<0:
 		label_at('KAMPAGNEN-RUNDEN',Vector2(120,365),28,TEAL)
 		var rate=100.0*float(totals.wins)/float(totals.games) if totals.games>0 else 0.0
@@ -681,7 +682,7 @@ func refresh_hud():
 		if e.kind == 'breaker_axel':
 			boss_hud.text='BREAKER AXEL / PHASE %d / %d / %d HP\n%s' % [breaker.tier,maxi(0,ceili(e.hp)),roundi(e.max_hp),breaker.warning_text()]
 		elif united.enabled and e.kind in ['boss','champion']:
-			boss_hud.text='%s / PHASE %d / %d / %d HP\n%s' % [e.get('boss_name',arena_definition.boss_name),united.bosses.tier,maxi(0,ceili(e.hp)),roundi(e.max_hp),boss_warning]
+			boss_hud.text='%s / PHASE %d / %d / %d HP\n%s' % [e.get('boss_name',arena_definition.boss_name),united.bosses.tier,maxi(0,ceili(e.hp)),roundi(e.max_hp),united.bosses.hint()]
 		elif e.kind == 'boss' and not united.enabled:
 			boss_hud.text = '%s   %d / %d%s\n%s' % [arena_definition.boss_name,maxi(0,ceili(e.hp)),roundi(e.max_hp),('  /  PHASE %d' % encounters.boss_tier) if encounters.enabled else '',boss_warning]
 			var warning=world_visuals.boss_telegraph()
@@ -781,7 +782,7 @@ func _physics_process(delta):
 	hurt_clock -= delta
 	if absf(move_input.x)>.08: facing = -1.0 if move_input.x<0 else 1.0
 	breaker.tick_player(delta)
-	if not hero_ability.move_dash(delta):player.move_analog(move_input*breaker.control_factor(),speed*(.6 if united.enemies.slow_time>0 else 1.0),breaker.push_velocity)
+	if not hero_ability.move_dash(delta):player.move_analog(move_input*breaker.control_factor(),speed*(.6 if united.enemies.slow_time>0 and not arena_mechanics.worlds.protects_slow() else 1.0),breaker.push_velocity)
 	if state != State.COMBAT:return
 	orbit_angle += delta*3.5
 	spawn_clock -= delta
@@ -1307,6 +1308,7 @@ func show_result():
 	button('+%d STUDIO-COINS / DETAILS' % studio_reward,Vector2(110,900),Vector2(540,95),func():queue_ui_action(reward_details))
 	button('WELTKARTE / BELOHNUNG',Vector2(690,900),Vector2(500,95),func():world_map.persist();arena_select(Arenas.IDS.find(arena_id)))
 	button('CASES & GARAGE',Vector2(1230,900),Vector2(500,95),func():main_menu();garage.cases())
+	label_at(Collection.next_case(saved).label,Vector2(110,858),23,TEAL)
 
 func reward_details():
 	if result_details.is_empty() or state not in [State.VICTORY,State.GAME_OVER]:return

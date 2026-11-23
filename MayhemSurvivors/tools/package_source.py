@@ -1,11 +1,11 @@
-"""Package the complete runnable 0.26.0 project, excluding generated cache and old capture galleries."""
+"""Package the complete runnable 0.27.0 project, excluding generated cache and old capture galleries."""
 from pathlib import Path
 import argparse, zipfile
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path);args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.26.0-source.zip'
+out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.27.0-source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
-captures={'presentation_pack_home_1600','presentation_pack_audio_1600','presentation_pack_graphics_1600','presentation_pack_controls_1600','presentation_pack_viper_select','presentation_pack_echo_select','presentation_pack_nova_select','presentation_pack_rivet_select','presentation_pack_skins_two','recap_result_1600','recap_overview_1600','recap_waves_1600','recap_endless_page','synergy_bruiser_1600','foundry_warning_1600','case_navigation_reveal','case_navigation_inventory'}
+captures={'tactics_void_warning', 'case_navigation_reveal', 'tactics_compare_empty', 'tactics_storm_warning', 'tactics_carnival_warning', 'tactics_crystal_boss', 'tactics_crystal_warning', 'tactics_cases', 'presentation_pack_home_1600', 'tactics_frost_boss', 'tactics_gardens_tool', 'tactics_frost_heat', 'tactics_compare_1600'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(root.rglob('*')):
   rel=f.relative_to(root)

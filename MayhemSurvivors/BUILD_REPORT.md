@@ -1,3 +1,41 @@
+# Android-Build 0.27.0 — 2026-11-23
+
+Tatsächlicher Debug-Export nach den finalen Laufzeitänderungen: Godot 4.6.3 stable,
+JDK 21, Android SDK 36 und Build Tools 36.0.0.
+
+- MayhemSurvivors-v0.27.0-debug.apk / **78354194 Bytes**.
+- SHA256: `209e6e4bbb6d59603f4345e79a756f94e98c69c00021e1aacf91ea6ece5f9df2`.
+- com.rfworlds.mayhemsurvivors / versionCode 33 / versionName 0.27.0.
+- Nur ARM64-v8a / minSDK 24 / targetSDK 36 / Querformat / GL Compatibility.
+- Signatur v2/v3 und 16-KiB-zipalign tatsächlich geprüft. Gleiches Zertifikat:
+  `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
+- Nur VIBRATE-Permission; keine Internetberechtigung. APK-CRC und exakte Arena-/
+  Taktik-/Charakter-/Sammlungs-/Fähigkeitsdaten verifiziert. Kompilierte Taktik- und
+  Vergleichscontroller, sechs Werkzeug-SVGs und drei neue Soundimporte vorhanden.
+  Bestehende Musik und Funktionen enthalten. Keine Tests oder Capturegalerien im APK.
+- Frisch entpacktes Projekt: 38 Suiten / 9.890 Prüfungen und beide Traces grün.
+  790 Laufzeitdateien plus Konfiguration sowie Tests/Runner bytegleich geprüft.
+- Quell-ZIP mit allen Laufzeitdateien, Szenen, Assets, Daten, Tests, Berichten und
+  Generatoren; 13 ausgewählte Abnahmebilder. Kein Cache, SDK, APK oder privater
+  Signierschlüssel. Finale Archivbytes werden gegen den getesteten Stand verglichen.
+
+Als Update über die bestehende App installieren. Paketname, Signierschlüssel und
+lokales Profilschema 3 bleiben kompatibel. Figuren, Welten, Gegenstände und bisherige
+Statistik bleiben erhalten. Die neuen Arena-Hilfen werden defensiv geladen.
+
+Nicht erreichbarer lokaler ADB-Daemon (tcp:5037) im Exportlog; der Export und die
+unabhängigen SDK-Prüfungen waren erfolgreich. Keine physische Android-Installation
+oder Leistungsmessung behauptet. Details: TEST_REPORT.md und ARENA_TACTICS.md.
+
+Protokolle unter tests/results/v0.27.0-*: build, signature, alignment, manifest,
+payload, clean-import, clean-tests, source-integrity und archive. Öffentliche APK,
+ZIP und SHA256SUMS unter Downloads. Der nach dem Upload erstellte vollständige
+anonyme Downloadnachweis liegt separat unter Downloads/VERIFY-v0.27.0.txt.
+
+---
+
+## Frühere Builds
+
 # Android-Build 0.26.0 — 2026-11-19
 
 Tatsächlicher Debug-Export mit Godot 4.6.3 stable, JDK 21, Android SDK 36 und

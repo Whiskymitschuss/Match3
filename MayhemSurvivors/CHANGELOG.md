@@ -1,3 +1,18 @@
+# 0.27.0 — Arena-Taktik und Fortschritt (2026-11-23)
+
+- Eigene freiwillige Manöver für Giftgärten, Frostdepot, Sturmdächer, Kristallmine,
+  Chaos-Kirmes und Risskern, mit Kollisionsgeometrie aus derselben Warnfläche.
+- Reinigung gegnerischer Kreisfelder, zeitlich begrenzter Frostschutz, feste
+  Blitzbahnen, geordnete Runen, gestaffelte Bomben und kontrollierter Ringsog.
+- Einmalige Run-Boni, normale Beute, Pause, Tod, Wellenende und Endlos angeschlossen.
+- Sechs passende Abschlussbossmuster, Countdown und Erholungsanzeige; der
+  Fächer zeichnet die tatsächlichen sieben/neun Schussrichtungen vor.
+- Erstbesuch mit Kicksy, gespeicherte Bestätigung, Pause-Hilfe und Weltkarteninfo.
+- Run-Vergleich mit gleichen Rahmenbedingungen und ehrlichem Leerzustand.
+- Case-Ziele und existierender Duplikatschutz sichtbar; keine Änderung der Preise.
+- Statistiknavigation erreicht alle 15 Figuren. Nova zeigt einen verbrauchten
+  Schild nicht länger als aktive Fähigkeit an. Sechs Original-SVGs und drei PCM-Cues.
+
 # 0.26.0 — 15 Kämpfer, neues Menü und Präsentation
 
 - Viper, Echo, Nova und Rivet: eigene Comicgrafik, gemeinsame Zwei-Hand-Rigs,

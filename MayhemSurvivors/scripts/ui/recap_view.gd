@@ -1,6 +1,7 @@
 extends RefCounted
 const Data=preload('res://scripts/progression/recap_data.gd')
 const ICON=preload('res://assets/ui/icons/analysis.svg')
+const Compare=preload('res://scripts/progression/run_comparison.gd')
 const MODULES={'bruiser':'fault_core','sparky':'ion_relay','shade':'umbra_spool'}
 const OUTCOMES={'cleared':'GESCHAFFT','defeat':'GEFALLEN','timeout':'ZEIT ABGELAUFEN','abandoned':'BEENDET','interrupted':'UNTERBROCHEN'}
 var owner_ref:WeakRef
@@ -12,6 +13,7 @@ var back:Callable
 var tab='overview'
 var page=0
 var only_bosses=false
+var compare_index=0
 func _init(g:Node2D):owner_ref=weakref(g)
 static func time_text(seconds:float) -> String:
 	var tenths=roundi(seconds*10)
@@ -28,19 +30,19 @@ func leave():
 	else:game.main_menu()
 func show_current():
 	if game.state not in [game.State.VICTORY,game.State.GAME_OVER]:return
-	show({'character':game.characters[game.selected].id,'arena':game.arena_id,'difficulty':game.run_difficulty,'mode':game.run_mode,'won':game.state==game.State.VICTORY,'wave':game.wave_number,'time':game.run_time,'weapons':game.weapons.duplicate(true),'items':game.run_items.owned.duplicate(),'analysis':game.recap.snapshot()},game.show_result)
+	show({'character':game.characters[game.selected].id,'arena':game.arena_id,'difficulty':game.run_difficulty,'mode':game.run_mode,'won':game.state==game.State.VICTORY,'wave':game.wave_number,'time':game.run_time,'level':game.level,'kills':game.kills,'damage':game.dealt,'coins':game.earned,'weapons':game.weapons.duplicate(true),'items':game.run_items.owned.duplicate(),'analysis':game.recap.snapshot()},game.show_result)
 func show(run:Dictionary,return_to:Callable):
 	if game.state not in [game.State.MAIN_MENU,game.State.VICTORY,game.State.GAME_OVER]:return
-	report=game.RunRecords.clean_run(run);analysis=Data.clean(report.get('analysis'));back=return_to;tab='overview';page=0;only_bosses=false;render()
+	report=game.RunRecords.clean_run(run);analysis=Data.clean(report.get('analysis'));back=return_to;tab='overview';page=0;only_bosses=false;compare_index=0;render()
 func select(value:String):tab=value;page=0;render()
 func render():
 	if report.is_empty():return
 	var hero=game.RunRecords.CHARACTERS.find(report.character)
 	var mode='ENDLOS' if report.get('mode','campaign')=='endless' else 'KAMPAGNE'
 	game.backdrop('DEINE RUN-ANALYSE',game.characters[hero].name+' / '+game.Arenas.definition(report.arena).name+' / '+mode+' / '+game.Difficulty.definition(report.get('difficulty','normal')).name)
-	for i in range(3):
-		var key=['overview','waves','module'][i]
-		action(['ÜBERBLICK','WELLEN & BOSSE','KLASSENMODUL'][i],Rect2(100+i*585,245,550,80),func():select(key),Color('#64417C') if tab==key else Color('#2F2044'))
+	for i in range(4):
+		var key=['overview','waves','module','compare'][i]
+		action(['ÜBERBLICK','WELLEN & BOSSE','KLASSENMODUL','VERGLEICH'][i],Rect2(100+i*435,245,410,80),func():select(key),Color('#64417C') if tab==key else Color('#2F2044'))
 	action('ZURÜCK',Rect2(100,960,480,90),leave)
 	if analysis.is_empty():
 		game.UISkin.panel(game,Rect2(100,370,1720,530),game.TEAL)
@@ -50,7 +52,39 @@ func render():
 		return
 	if tab=='overview':overview()
 	elif tab=='waves':waves()
+	elif tab=='compare':comparison()
 	else:module()
+func comparison_reference(character:int=-1,arena_filter:String='all') -> Dictionary:
+	for run in game.saved.recent_runs:
+		if (character<0 or run.character==game.characters[character].id) and (arena_filter=='all' or run.arena==arena_filter) and not Data.clean(run.get('analysis')).is_empty():return run
+	return {}
+func show_recent_compare(character:int=-1,arena_filter:String='all'):
+	if game.state not in [game.State.MAIN_MENU,game.State.VICTORY,game.State.GAME_OVER]:return
+	var reference=comparison_reference(character,arena_filter)
+	if reference.is_empty():return
+	show(reference,func():game.statistics(character,arena_filter));tab='compare';render()
+func comparison_card(run:Dictionary,at:Vector2,title:String):
+	var hero=game.RunRecords.CHARACTERS.find(run.character);var m=Compare.metrics(run)
+	game.UISkin.panel(game,Rect2(at,Vector2(835,470)),Color(game.characters[hero].color))
+	text(title,Rect2(at+Vector2(25,18),Vector2(780,40)),25,game.TEAL)
+	text(game.characters[hero].name+' / '+('SIEG' if run.won else 'WELLE %d' % run.wave),Rect2(at+Vector2(25,65),Vector2(780,60)),42,game.GOLD)
+	var values=[['KAMPFZEIT',time_text(m.seconds)],['HP-VERLUST','%.1f HP' % m.received],['SCHADEN / SEKUNDE','%.1f' % m.dps],['KILLS / RUN-COINS','%d / %d' % [m.kills,m.coins]]]
+	for i in range(values.size()):
+		text(values[i][0],Rect2(at+Vector2(25,150+i*54),Vector2(440,46)),26)
+		text(values[i][1],Rect2(at+Vector2(490,145+i*54),Vector2(310,50)),32,game.TEAL)
+	var equipment=' / '.join(run.weapons.map(func(w):return game.weapon_data[w.id].name+' Lv.'+str(w.level)))
+	text(equipment,Rect2(at+Vector2(25,385),Vector2(780,65)),24)
+func comparison():
+	var options=Compare.candidates(game.saved.recent_runs,report)
+	if options.is_empty():
+		game.UISkin.panel(game,Rect2(100,370,1710,500),game.TEAL)
+		text('DEIN NÄCHSTER VERGLEICH BRAUCHT EINEN ZWEITEN RUN',Rect2(145,420,1620,100),42,game.GOLD)
+		text('Spiele dieselbe Arena mit derselben Schwierigkeit und demselben Modus erneut. Du kannst dabei einen anderen Kämpfer ausprobieren. Danach lassen sich hier deine tatsächlichen Kampfzeiten, HP-Verluste und Builds nebeneinander ansehen.\n\nNur gespeicherte Messdaten werden verwendet. Kampagne und Endlos werden getrennt verglichen.',Rect2(145,550,1530,260),32)
+		return
+	compare_index=posmod(compare_index,options.size());var other=options[compare_index]
+	comparison_card(report,Vector2(100,360),'AUSGEWÄHLTER RUN');comparison_card(other,Vector2(975,360),'FRÜHERER RUN %d / %d' % [compare_index+1,options.size()])
+	text('Gleiche Arena, Schwierigkeit und gleicher Modus. Builds, Ausbau, Spielweise und Spielversion können abweichen. Die Werte sind kein automatisches Stärke-Ranking.',Rect2(115,850,1660,88),25,game.TEAL)
+	action('FRÜHEREN RUN WECHSELN',Rect2(975,960,835,90),func():compare_index+=1;render()).disabled=options.size()<2
 func metric(rect:Rect2,title:String,value:String,detail:String,color:Color):
 	game.UISkin.panel(game,rect,color)
 	text(title,Rect2(rect.position+Vector2(25,17),Vector2(rect.size.x-50,50)),26,color)

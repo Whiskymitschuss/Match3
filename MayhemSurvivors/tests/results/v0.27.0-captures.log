@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TACTICS FRAME gardens_tool
+TACTICS FRAME gardens_warning
+TACTICS FRAME gardens_coach
+TACTICS FRAME gardens_boss
+TACTICS FRAME frost_tool
+TACTICS FRAME frost_warning
+TACTICS FRAME frost_heat
+TACTICS FRAME frost_coach
+TACTICS FRAME frost_boss
+TACTICS FRAME storm_tool
+TACTICS FRAME storm_warning
+TACTICS FRAME storm_coach
+TACTICS FRAME storm_boss
+TACTICS FRAME crystal_tool
+TACTICS FRAME crystal_warning
+TACTICS FRAME crystal_coach
+TACTICS FRAME crystal_boss
+TACTICS FRAME carnival_tool
+TACTICS FRAME carnival_warning
+TACTICS FRAME carnival_coach
+TACTICS FRAME carnival_boss
+TACTICS FRAME void_tool
+TACTICS FRAME void_warning
+TACTICS FRAME void_coach
+TACTICS FRAME void_boss
+TACTICS FRAME compare_1600
+TACTICS FRAME compare_2400
+TACTICS FRAME compare_1440
+TACTICS FRAME compare_empty
+TACTICS FRAME cases

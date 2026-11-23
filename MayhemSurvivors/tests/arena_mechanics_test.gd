@@ -103,7 +103,7 @@ func run():
 	for mode in ['tutorial','campaign','endless']:
 		start('reactor',13,0,mode);check(g.arena_mechanics.normal_wave()==(mode!='tutorial'),'Endless repeats mechanics, tutorial remains isolated '+mode)
 	for arena in g.Arenas.IDS:
-		start(arena);check(g.arena_mechanics.supported()==(arena in ['reactor','docks','foundry']),'Other worlds retain their mechanics '+arena)
+		start(arena);check(g.arena_mechanics.supported()==(arena!='scrapyard'),'All non-scrapyard worlds use explicit tactical controllers '+arena)
 	start();g.arena_mechanics.charge=3;g.remaining=6;g.arena_mechanics.update(.01);check(g.arena_mechanics.stage=='expired','No late unreachable reactor activation')
 	for corner in [Vector2(45,45),Vector2(2355,45),Vector2(45,1555),Vector2(2355,1555)]:
 		start();g.player.position=corner;g.arena_mechanics.begin_wave();check(g.arena_mechanics.terminal.distance_to(corner)>75,'Terminal never auto-activates under idle edge player')
