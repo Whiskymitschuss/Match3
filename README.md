@@ -20,3 +20,5 @@ Physische Android- und Play-Console-Abnahme stehen aus.
 
 Bestehende eigene Spielstände bleiben bei regulären Updates erhalten. Jeder neue
 lokale Spieler beginnt unabhängig bei null. Keine Anmeldung und kein Cloud-Sync.
+
+[Öffentlicher Downloadnachweis](Downloads/VERIFY-v0.28.1-beta2.txt) · [Änderungen / Draft-PR #14](https://github.com/Whiskymitschuss/Match3/pull/14)

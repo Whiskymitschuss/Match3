@@ -22,14 +22,21 @@ im Export-Preset. Standard-Androidvorlagen, SDK Build-Tools 36.1 und vollständi
 OpenJDK-21-Compiler eingerichtet. Store-Build erfolgreich; Bundletool, Signatur, Manifest, CRC und native 16-KiB-
 Ausrichtung verifiziert. Store-Texte, Datenschutzhinweise und Console-Übergabe vorbereitet.
 
-Offen: Artefakt- und Quell-Download nach Veröffentlichung prüfen, danach neuen
-App-Eintrag/Testerkreis in der Play Console einrichten. Keine Store-Veröffentlichung
+Öffentliche vollständige AAB-/ZIP-Downloads und Prüfsummendatei anonym geprüft.
+Offen: neuen App-Eintrag/Testerkreis in der Play Console einrichten. Keine Store-Veröffentlichung
 behaupten. Store-Bilder, echte Kontakt-/Zielgruppenangaben und Android-Geräteabnahme
 stehen aus. Aktive Runs nach vollständigem App-Ende nicht wiederherstellbar.
 
 Abschließender Paketnachweis: Quell-ZIP CRC/sichere Pfade, 802 Laufzeit-/Konfigurations-
 dateien bytegleich, frischer Import ohne Cache und Erstspieler-Test 37/0 bestanden.
 Private Upload-Schlüssel im separaten Workspace-Backup; niemals öffentlich veröffentlichen.
+
+Veröffentlicht auf GitHub: Source 9ff3b1d, Artefakte 06b6000; AAB 76353437 Bytes,
+Quell-ZIP 79644097 Bytes, SHA256 nach vollständigem anonymem Download bestätigt.
+Nachweis Downloads/VERIFY-v0.28.1-beta2.txt. Draft-PR #14 offen, nicht gemergt.
+Technische Übergabe fertig; kein Store-Testlink und keine Play-Console-Veröffentlichung.
+Nächster Schritt: Store-Eintrag, App-Signierung, Inhalte/Kontakt/Grafiken und Testerkreis
+in der vorhandenen Console einrichten, Release-AAB hochladen, Geräteabnahme durchführen.
 
 ---
 
