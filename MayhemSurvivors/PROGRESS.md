@@ -24,3 +24,12 @@ Safe Area, Sensoren, Klang, Balance, Stabilität, Akku/Temperatur und 60 FPS.
 Aktive Runs werden nach vollständigem App-Ende nicht fortgesetzt. Kein Cloud-Sync,
 keine Anmeldung. Kein persönlicher Spielstand oder privater Schlüssel im Quellpaket.
 Nächster Schritt: geschlossener Gerätetest nach BETA_TESTING.md und gezielte Befundkorrektur.
+
+## Veröffentlichung abgeschlossen
+
+Geschlossene Beta 1 auf GitHub: Quellstand 4a99671, Artefakte e12b430.
+APK (78.383.759 Bytes) und vollständiges Quell-ZIP (79.397.772 Bytes) ohne Anmeldung
+komplett heruntergeladen. Beide SHA256-Werte und öffentliche Prüfsummendatei bestätigt.
+Nachweis: Downloads/VERIFY-v0.28.0-beta1.txt. PR #13 offen und konfliktfrei, nicht
+automatisch gemergt: https://github.com/Whiskymitschuss/Match3/pull/13.
+Jetzt folgt die physische geschlossene Android-Beta nach BETA_TESTING.md.

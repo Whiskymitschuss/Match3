@@ -1,0 +1,14 @@
+Anonymous complete public download verification — 2026-11-23T14:47:57.666977+00:00
+PASS MayhemSurvivors-v0.28.0-beta1-debug.apk
+78383759 bytes
+SHA256 e421b13f789b766ae111514e802864c12bfcb5944f6665da0131baa31a60c8c5
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/offline-beta-v0.28.0/Downloads/MayhemSurvivors-v0.28.0-beta1-debug.apk
+PASS MayhemSurvivors-v0.28.0-beta1-source.zip
+79397772 bytes
+SHA256 b798f9a5d222e965436efa917beeb28e54c0ce48a53bb6bd69b5c506128d38ff
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/offline-beta-v0.28.0/Downloads/MayhemSurvivors-v0.28.0-beta1-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.
+PASS public checksum manifest equals both verified complete downloads.
+Source commit: 4a99671
+Artifact commit: e12b430
+Pull request: https://github.com/Whiskymitschuss/Match3/pull/13

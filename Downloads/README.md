@@ -11,3 +11,7 @@ Als Update installieren; vorher nicht deinstallieren. Aktive Runs können nach
 vollständigem App-Ende noch nicht fortgesetzt werden. Physische Geräteabnahme offen.
 
 [Projekt und Berichte](../MayhemSurvivors/README.md) · [Beta-Testanleitung](../MayhemSurvivors/BETA_TESTING.md)
+
+40 Suiten / 9.973 Prüfungen und beide Traces am frischen Quellprojekt bestanden.
+APK, Signatur und vollständige anonyme Downloads geprüft.
+[Downloadnachweis](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/offline-beta-v0.28.0/Downloads/VERIFY-v0.28.0-beta1.txt) · [Änderungen / Pull Request #13](https://github.com/Whiskymitschuss/Match3/pull/13)
