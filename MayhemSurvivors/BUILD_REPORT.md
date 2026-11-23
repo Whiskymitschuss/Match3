@@ -1,3 +1,42 @@
+# Google-Play-Build 0.28.1 Beta 2 — 2026-11-23
+
+Tatsächlich gebautes **Release-App-Bundle** für die neue Play-Console-App.
+Godot 4.6.3 stable / vollständiges OpenJDK 21.0.13 / Android SDK 36 / Build-Tools 36.1.0 /
+offizielle Android-Gradle-Vorlage (AGP 8.6.1, Gradle 8.11.1).
+
+- Datei: MayhemSurvivors-v0.28.1-beta2-store.aab / **76353437 Bytes**.
+- SHA256: `252886e9a650cbc02014aa42bce307e890090661fd422d10b08afbb350815e95`.
+- Paket com.rfworlds.mayhemsurvivors / Code 35 / Name 0.28.1-beta2.
+- Release, debuggable false / ARM64 ausschließlich / minSDK 24 / targetSDK 36.
+- Nur VIBRATE, keine Internetberechtigung, Android-Cloudbackup deaktiviert.
+- Eigener RSA-4096-Uploadschlüssel; SHA256 des Zertifikats:
+  `2A:18:95:FA:8D:27:ED:97:53:0C:E0:18:F9:CC:AE:D3:E7:B2:82:43:62:5C:F1:EF:B4:AC:EA:F7:4D:23:4F:8C`.
+- Private Schlüssel und Passwort nur außerhalb des öffentlichen Repositories;
+  separates privates Backup im Workspace. Keine Geheimnisse im Preset/Quellpaket.
+
+Bundletool-Validierung, JAR-Signatur, vollständiger ZIP-CRC und Release-Manifest
+geprüft. Native ARM64-Bibliotheken behalten die Bytes der offiziellen Vorlage;
+16-KiB-ELF-Ausrichtung und BundleConfig PAGE_ALIGNMENT_16K bestätigt. Keine
+mitgelieferten Spielstände, Schlüssel oder Tests. JAR-Manifest zuerst angeordnet,
+damit Streaming- und Random-Access-Leser dieselbe Signatur sehen. Bei einem eigenen
+Uploadzertifikat sind Self-Signed-/Trust-Chain-/Timestamp-Hinweise von jarsigner
+zu erwarten; die tatsächliche JAR-Signatur wurde verifiziert.
+
+Behobene Buildhindernisse: Java-Proxy-Konfiguration, fehlende Build-Tools 36.1,
+unvollständige Java-Laufzeit ohne javac und knapper Workspace-Speicher. Installierte
+Compilerpakete liegen im beschreibbaren Toolchain-Verzeichnis. Historische Git-
+Binärdateien platzsparend gepackt, Originalhistorie erhalten. Nicht benötigte
+native ABIs aus der generierten Release-AAR entfernt; nur ARM64 wird ausgeliefert.
+AGP weist darauf hin, dass SDK 36 neuer ist als sein getestetes SDK 35; der Build
+und die anschließende Bundle-Validierung waren erfolgreich. Kein ADB-Gerät verbunden.
+
+Das Bundle ist noch nicht in einer Play Console angenommen oder veröffentlicht.
+Es ist keine direkt installierbare APK. Play App Signing, App-Eintrag, Kontakt- und
+Inhaltsangaben, Store-Grafiken, Testerkreis und Android-Geräteabnahme stehen aus;
+PLAY_STORE_HANDOFF.md führt die tatsächlichen nächsten Schritte auf.
+
+---
+
 # Android-Build 0.28.0 Beta 1 — 2026-11-23
 
 Tatsächlicher Debug-Export nach allen Laufzeitänderungen: Godot 4.6.3 stable,

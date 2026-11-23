@@ -1,0 +1,608 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Production expansion is enabled; fifteen heroes, ten worlds
+PASS Ten additional real enemy definitions
+PASS Hero ability and class weapon connected bruiser
+PASS Art, save and mastery exist bruiser
+PASS Hero ability and class weapon connected sparky
+PASS Art, save and mastery exist sparky
+PASS Hero ability and class weapon connected shade
+PASS Art, save and mastery exist shade
+PASS Hero ability and class weapon connected twinkle
+PASS Art, save and mastery exist twinkle
+PASS Hero ability and class weapon connected kicksy
+PASS Art, save and mastery exist kicksy
+PASS Hero ability and class weapon connected steelfist
+PASS Art, save and mastery exist steelfist
+PASS Hero ability and class weapon connected cinder
+PASS Art, save and mastery exist cinder
+PASS Hero ability and class weapon connected frosty
+PASS Art, save and mastery exist frosty
+PASS Hero ability and class weapon connected volt
+PASS Art, save and mastery exist volt
+PASS Hero ability and class weapon connected rook
+PASS Art, save and mastery exist rook
+PASS Hero ability and class weapon connected nyx
+PASS Art, save and mastery exist nyx
+PASS Hero ability and class weapon connected viper
+PASS Art, save and mastery exist viper
+PASS Hero ability and class weapon connected echo
+PASS Art, save and mastery exist echo
+PASS Hero ability and class weapon connected nova
+PASS Art, save and mastery exist nova
+PASS Hero ability and class weapon connected rivet
+PASS Art, save and mastery exist rivet
+PASS Blueprint and two evolutions flamer
+PASS Unique development icon solar_fan
+PASS Unique development icon ash_rain
+PASS Blueprint and two evolutions cryo
+PASS Unique development icon ice_lance
+PASS Unique development icon frost_burst
+PASS Blueprint and two evolutions tesla
+PASS Unique development icon thunder_prism
+PASS Unique development icon storm_grid
+PASS Blueprint and two evolutions lance
+PASS Unique development icon solar_pike
+PASS Unique development icon aegis_sweep
+PASS Blueprint and two evolutions chakram
+PASS Unique development icon twin_moon
+PASS Unique development icon dusk_spiral
+PASS Existing flame decoration and new flamethrower have separate persistent ids
+PASS Fresh start preserves intended hero/world locks
+PASS All fifteen heroes obtainable from earned crew cases
+PASS Campaign opens world in order scrapyard
+PASS Boss schedule scrapyard 1
+PASS Real boss/normal wave reaches shop scrapyard 1
+PASS Boss schedule scrapyard 2
+PASS Actual scheduled boss scrapyard 2
+PASS Correct unified boss portrait scrapyard 2
+PASS Boss reward cannot duplicate scrapyard 2
+PASS Real boss/normal wave reaches shop scrapyard 2
+PASS Boss schedule scrapyard 3
+PASS Real boss/normal wave reaches shop scrapyard 3
+PASS Boss schedule scrapyard 4
+PASS Actual scheduled boss scrapyard 4
+PASS Correct unified boss portrait scrapyard 4
+PASS Boss reward cannot duplicate scrapyard 4
+PASS Real boss/normal wave reaches shop scrapyard 4
+PASS Boss schedule scrapyard 5
+PASS Real boss/normal wave reaches shop scrapyard 5
+PASS Boss schedule scrapyard 6
+PASS Actual scheduled boss scrapyard 6
+PASS Correct unified boss portrait scrapyard 6
+PASS Boss reward cannot duplicate scrapyard 6
+PASS Real boss/normal wave reaches shop scrapyard 6
+PASS Boss schedule scrapyard 7
+PASS Real boss/normal wave reaches shop scrapyard 7
+PASS Boss schedule scrapyard 8
+PASS Actual scheduled boss scrapyard 8
+PASS Correct unified boss portrait scrapyard 8
+PASS Boss reward cannot duplicate scrapyard 8
+PASS Real boss/normal wave reaches shop scrapyard 8
+PASS Boss schedule scrapyard 9
+PASS Real boss/normal wave reaches shop scrapyard 9
+PASS Boss schedule scrapyard 10
+PASS Actual scheduled boss scrapyard 10
+PASS Correct unified boss portrait scrapyard 10
+PASS Boss reward cannot duplicate scrapyard 10
+PASS Arena final victory recorded scrapyard
+PASS All first-clear gifts once only scrapyard
+PASS Campaign opens world in order reactor
+PASS Boss schedule reactor 1
+PASS Real boss/normal wave reaches shop reactor 1
+PASS Boss schedule reactor 2
+PASS Actual scheduled boss reactor 2
+PASS Correct unified boss portrait reactor 2
+PASS Boss reward cannot duplicate reactor 2
+PASS Real boss/normal wave reaches shop reactor 2
+PASS Boss schedule reactor 3
+PASS Real boss/normal wave reaches shop reactor 3
+PASS Boss schedule reactor 4
+PASS Actual scheduled boss reactor 4
+PASS Correct unified boss portrait reactor 4
+PASS Boss reward cannot duplicate reactor 4
+PASS Real boss/normal wave reaches shop reactor 4
+PASS Boss schedule reactor 5
+PASS Real boss/normal wave reaches shop reactor 5
+PASS Boss schedule reactor 6
+PASS Actual scheduled boss reactor 6
+PASS Correct unified boss portrait reactor 6
+PASS Boss reward cannot duplicate reactor 6
+PASS Real boss/normal wave reaches shop reactor 6
+PASS Boss schedule reactor 7
+PASS Real boss/normal wave reaches shop reactor 7
+PASS Boss schedule reactor 8
+PASS Actual scheduled boss reactor 8
+PASS Correct unified boss portrait reactor 8
+PASS Boss reward cannot duplicate reactor 8
+PASS Real boss/normal wave reaches shop reactor 8
+PASS Boss schedule reactor 9
+PASS Real boss/normal wave reaches shop reactor 9
+PASS Boss schedule reactor 10
+PASS Actual scheduled boss reactor 10
+PASS Correct unified boss portrait reactor 10
+PASS Boss reward cannot duplicate reactor 10
+PASS Arena final victory recorded reactor
+PASS All first-clear gifts once only reactor
+PASS Campaign opens world in order docks
+PASS Boss schedule docks 1
+PASS Real boss/normal wave reaches shop docks 1
+PASS Boss schedule docks 2
+PASS Actual scheduled boss docks 2
+PASS Correct unified boss portrait docks 2
+PASS Boss reward cannot duplicate docks 2
+PASS Real boss/normal wave reaches shop docks 2
+PASS Boss schedule docks 3
+PASS Real boss/normal wave reaches shop docks 3
+PASS Boss schedule docks 4
+PASS Actual scheduled boss docks 4
+PASS Correct unified boss portrait docks 4
+PASS Boss reward cannot duplicate docks 4
+PASS Real boss/normal wave reaches shop docks 4
+PASS Boss schedule docks 5
+PASS Real boss/normal wave reaches shop docks 5
+PASS Boss schedule docks 6
+PASS Actual scheduled boss docks 6
+PASS Correct unified boss portrait docks 6
+PASS Boss reward cannot duplicate docks 6
+PASS Real boss/normal wave reaches shop docks 6
+PASS Boss schedule docks 7
+PASS Real boss/normal wave reaches shop docks 7
+PASS Boss schedule docks 8
+PASS Actual scheduled boss docks 8
+PASS Correct unified boss portrait docks 8
+PASS Boss reward cannot duplicate docks 8
+PASS Real boss/normal wave reaches shop docks 8
+PASS Boss schedule docks 9
+PASS Real boss/normal wave reaches shop docks 9
+PASS Boss schedule docks 10
+PASS Actual scheduled boss docks 10
+PASS Correct unified boss portrait docks 10
+PASS Boss reward cannot duplicate docks 10
+PASS Arena final victory recorded docks
+PASS All first-clear gifts once only docks
+PASS Campaign opens world in order foundry
+PASS Boss schedule foundry 1
+PASS Real boss/normal wave reaches shop foundry 1
+PASS Boss schedule foundry 2
+PASS Actual scheduled boss foundry 2
+PASS Correct unified boss portrait foundry 2
+PASS Boss reward cannot duplicate foundry 2
+PASS Real boss/normal wave reaches shop foundry 2
+PASS Boss schedule foundry 3
+PASS Real boss/normal wave reaches shop foundry 3
+PASS Boss schedule foundry 4
+PASS Actual scheduled boss foundry 4
+PASS Correct unified boss portrait foundry 4
+PASS Boss reward cannot duplicate foundry 4
+PASS Real boss/normal wave reaches shop foundry 4
+PASS Boss schedule foundry 5
+PASS Real boss/normal wave reaches shop foundry 5
+PASS Boss schedule foundry 6
+PASS Actual scheduled boss foundry 6
+PASS Correct unified boss portrait foundry 6
+PASS Boss reward cannot duplicate foundry 6
+PASS Real boss/normal wave reaches shop foundry 6
+PASS Boss schedule foundry 7
+PASS Real boss/normal wave reaches shop foundry 7
+PASS Boss schedule foundry 8
+PASS Actual scheduled boss foundry 8
+PASS Correct unified boss portrait foundry 8
+PASS Boss reward cannot duplicate foundry 8
+PASS Real boss/normal wave reaches shop foundry 8
+PASS Boss schedule foundry 9
+PASS Real boss/normal wave reaches shop foundry 9
+PASS Boss schedule foundry 10
+PASS Actual scheduled boss foundry 10
+PASS Correct unified boss portrait foundry 10
+PASS Boss reward cannot duplicate foundry 10
+PASS Arena final victory recorded foundry
+PASS All first-clear gifts once only foundry
+PASS Campaign opens world in order gardens
+PASS Boss schedule gardens 1
+PASS Real boss/normal wave reaches shop gardens 1
+PASS Boss schedule gardens 2
+PASS Actual scheduled boss gardens 2
+PASS Correct unified boss portrait gardens 2
+PASS Boss reward cannot duplicate gardens 2
+PASS Real boss/normal wave reaches shop gardens 2
+PASS Boss schedule gardens 3
+PASS Real boss/normal wave reaches shop gardens 3
+PASS Boss schedule gardens 4
+PASS Actual scheduled boss gardens 4
+PASS Correct unified boss portrait gardens 4
+PASS Boss reward cannot duplicate gardens 4
+PASS Real boss/normal wave reaches shop gardens 4
+PASS Boss schedule gardens 5
+PASS Real boss/normal wave reaches shop gardens 5
+PASS Boss schedule gardens 6
+PASS Actual scheduled boss gardens 6
+PASS Correct unified boss portrait gardens 6
+PASS Boss reward cannot duplicate gardens 6
+PASS Real boss/normal wave reaches shop gardens 6
+PASS Boss schedule gardens 7
+PASS Real boss/normal wave reaches shop gardens 7
+PASS Boss schedule gardens 8
+PASS Actual scheduled boss gardens 8
+PASS Correct unified boss portrait gardens 8
+PASS Boss reward cannot duplicate gardens 8
+PASS Real boss/normal wave reaches shop gardens 8
+PASS Boss schedule gardens 9
+PASS Real boss/normal wave reaches shop gardens 9
+PASS Boss schedule gardens 10
+PASS Actual scheduled boss gardens 10
+PASS Correct unified boss portrait gardens 10
+PASS Boss reward cannot duplicate gardens 10
+PASS Arena final victory recorded gardens
+PASS All first-clear gifts once only gardens
+PASS Campaign opens world in order frost
+PASS Boss schedule frost 1
+PASS Real boss/normal wave reaches shop frost 1
+PASS Boss schedule frost 2
+PASS Actual scheduled boss frost 2
+PASS Correct unified boss portrait frost 2
+PASS Boss reward cannot duplicate frost 2
+PASS Real boss/normal wave reaches shop frost 2
+PASS Boss schedule frost 3
+PASS Real boss/normal wave reaches shop frost 3
+PASS Boss schedule frost 4
+PASS Actual scheduled boss frost 4
+PASS Correct unified boss portrait frost 4
+PASS Boss reward cannot duplicate frost 4
+PASS Real boss/normal wave reaches shop frost 4
+PASS Boss schedule frost 5
+PASS Real boss/normal wave reaches shop frost 5
+PASS Boss schedule frost 6
+PASS Actual scheduled boss frost 6
+PASS Correct unified boss portrait frost 6
+PASS Boss reward cannot duplicate frost 6
+PASS Real boss/normal wave reaches shop frost 6
+PASS Boss schedule frost 7
+PASS Real boss/normal wave reaches shop frost 7
+PASS Boss schedule frost 8
+PASS Actual scheduled boss frost 8
+PASS Correct unified boss portrait frost 8
+PASS Boss reward cannot duplicate frost 8
+PASS Real boss/normal wave reaches shop frost 8
+PASS Boss schedule frost 9
+PASS Real boss/normal wave reaches shop frost 9
+PASS Boss schedule frost 10
+PASS Actual scheduled boss frost 10
+PASS Correct unified boss portrait frost 10
+PASS Boss reward cannot duplicate frost 10
+PASS Arena final victory recorded frost
+PASS All first-clear gifts once only frost
+PASS Campaign opens world in order storm
+PASS Boss schedule storm 1
+PASS Real boss/normal wave reaches shop storm 1
+PASS Boss schedule storm 2
+PASS Actual scheduled boss storm 2
+PASS Correct unified boss portrait storm 2
+PASS Boss reward cannot duplicate storm 2
+PASS Real boss/normal wave reaches shop storm 2
+PASS Boss schedule storm 3
+PASS Real boss/normal wave reaches shop storm 3
+PASS Boss schedule storm 4
+PASS Actual scheduled boss storm 4
+PASS Correct unified boss portrait storm 4
+PASS Boss reward cannot duplicate storm 4
+PASS Real boss/normal wave reaches shop storm 4
+PASS Boss schedule storm 5
+PASS Real boss/normal wave reaches shop storm 5
+PASS Boss schedule storm 6
+PASS Actual scheduled boss storm 6
+PASS Correct unified boss portrait storm 6
+PASS Boss reward cannot duplicate storm 6
+PASS Real boss/normal wave reaches shop storm 6
+PASS Boss schedule storm 7
+PASS Real boss/normal wave reaches shop storm 7
+PASS Boss schedule storm 8
+PASS Actual scheduled boss storm 8
+PASS Correct unified boss portrait storm 8
+PASS Boss reward cannot duplicate storm 8
+PASS Real boss/normal wave reaches shop storm 8
+PASS Boss schedule storm 9
+PASS Real boss/normal wave reaches shop storm 9
+PASS Boss schedule storm 10
+PASS Actual scheduled boss storm 10
+PASS Correct unified boss portrait storm 10
+PASS Boss reward cannot duplicate storm 10
+PASS Arena final victory recorded storm
+PASS All first-clear gifts once only storm
+PASS Campaign opens world in order crystal
+PASS Boss schedule crystal 1
+PASS Real boss/normal wave reaches shop crystal 1
+PASS Boss schedule crystal 2
+PASS Actual scheduled boss crystal 2
+PASS Correct unified boss portrait crystal 2
+PASS Boss reward cannot duplicate crystal 2
+PASS Real boss/normal wave reaches shop crystal 2
+PASS Boss schedule crystal 3
+PASS Real boss/normal wave reaches shop crystal 3
+PASS Boss schedule crystal 4
+PASS Actual scheduled boss crystal 4
+PASS Correct unified boss portrait crystal 4
+PASS Boss reward cannot duplicate crystal 4
+PASS Real boss/normal wave reaches shop crystal 4
+PASS Boss schedule crystal 5
+PASS Real boss/normal wave reaches shop crystal 5
+PASS Boss schedule crystal 6
+PASS Actual scheduled boss crystal 6
+PASS Correct unified boss portrait crystal 6
+PASS Boss reward cannot duplicate crystal 6
+PASS Real boss/normal wave reaches shop crystal 6
+PASS Boss schedule crystal 7
+PASS Real boss/normal wave reaches shop crystal 7
+PASS Boss schedule crystal 8
+PASS Actual scheduled boss crystal 8
+PASS Correct unified boss portrait crystal 8
+PASS Boss reward cannot duplicate crystal 8
+PASS Real boss/normal wave reaches shop crystal 8
+PASS Boss schedule crystal 9
+PASS Real boss/normal wave reaches shop crystal 9
+PASS Boss schedule crystal 10
+PASS Actual scheduled boss crystal 10
+PASS Correct unified boss portrait crystal 10
+PASS Boss reward cannot duplicate crystal 10
+PASS Arena final victory recorded crystal
+PASS All first-clear gifts once only crystal
+PASS Campaign opens world in order carnival
+PASS Boss schedule carnival 1
+PASS Real boss/normal wave reaches shop carnival 1
+PASS Boss schedule carnival 2
+PASS Actual scheduled boss carnival 2
+PASS Correct unified boss portrait carnival 2
+PASS Boss reward cannot duplicate carnival 2
+PASS Real boss/normal wave reaches shop carnival 2
+PASS Boss schedule carnival 3
+PASS Real boss/normal wave reaches shop carnival 3
+PASS Boss schedule carnival 4
+PASS Actual scheduled boss carnival 4
+PASS Correct unified boss portrait carnival 4
+PASS Boss reward cannot duplicate carnival 4
+PASS Real boss/normal wave reaches shop carnival 4
+PASS Boss schedule carnival 5
+PASS Real boss/normal wave reaches shop carnival 5
+PASS Boss schedule carnival 6
+PASS Actual scheduled boss carnival 6
+PASS Correct unified boss portrait carnival 6
+PASS Boss reward cannot duplicate carnival 6
+PASS Real boss/normal wave reaches shop carnival 6
+PASS Boss schedule carnival 7
+PASS Real boss/normal wave reaches shop carnival 7
+PASS Boss schedule carnival 8
+PASS Actual scheduled boss carnival 8
+PASS Correct unified boss portrait carnival 8
+PASS Boss reward cannot duplicate carnival 8
+PASS Real boss/normal wave reaches shop carnival 8
+PASS Boss schedule carnival 9
+PASS Real boss/normal wave reaches shop carnival 9
+PASS Boss schedule carnival 10
+PASS Actual scheduled boss carnival 10
+PASS Correct unified boss portrait carnival 10
+PASS Boss reward cannot duplicate carnival 10
+PASS Arena final victory recorded carnival
+PASS All first-clear gifts once only carnival
+PASS Campaign opens world in order void
+PASS Boss schedule void 1
+PASS Real boss/normal wave reaches shop void 1
+PASS Boss schedule void 2
+PASS Actual scheduled boss void 2
+PASS Correct unified boss portrait void 2
+PASS Boss reward cannot duplicate void 2
+PASS Real boss/normal wave reaches shop void 2
+PASS Boss schedule void 3
+PASS Real boss/normal wave reaches shop void 3
+PASS Boss schedule void 4
+PASS Actual scheduled boss void 4
+PASS Correct unified boss portrait void 4
+PASS Boss reward cannot duplicate void 4
+PASS Real boss/normal wave reaches shop void 4
+PASS Boss schedule void 5
+PASS Real boss/normal wave reaches shop void 5
+PASS Boss schedule void 6
+PASS Actual scheduled boss void 6
+PASS Correct unified boss portrait void 6
+PASS Boss reward cannot duplicate void 6
+PASS Real boss/normal wave reaches shop void 6
+PASS Boss schedule void 7
+PASS Real boss/normal wave reaches shop void 7
+PASS Boss schedule void 8
+PASS Actual scheduled boss void 8
+PASS Correct unified boss portrait void 8
+PASS Boss reward cannot duplicate void 8
+PASS Real boss/normal wave reaches shop void 8
+PASS Boss schedule void 9
+PASS Real boss/normal wave reaches shop void 9
+PASS Boss schedule void 10
+PASS Actual scheduled boss void 10
+PASS Correct unified boss portrait void 10
+PASS Boss reward cannot duplicate void 10
+PASS Arena final victory recorded void
+PASS All first-clear gifts once only void
+PASS Ten-world campaign has complete end
+PASS Live weapon damage flamer 
+PASS Cooldown and suitable upgrades flamer 
+PASS Live weapon damage flamer solar_fan
+PASS Cooldown and suitable upgrades flamer solar_fan
+PASS Live weapon damage flamer ash_rain
+PASS Cooldown and suitable upgrades flamer ash_rain
+PASS Actual active ability and cooldown 6
+PASS Firestorm causes bounded tick damage
+PASS New skill clocks freeze on pause 6
+PASS Live weapon damage cryo 
+PASS Cooldown and suitable upgrades cryo 
+PASS Live weapon damage cryo ice_lance
+PASS Cooldown and suitable upgrades cryo ice_lance
+PASS Live weapon damage cryo frost_burst
+PASS Cooldown and suitable upgrades cryo frost_burst
+PASS Actual active ability and cooldown 7
+PASS Freeze hits and stops normal enemies
+PASS New skill clocks freeze on pause 7
+PASS Live weapon damage tesla 
+PASS Cooldown and suitable upgrades tesla 
+PASS Live weapon damage tesla thunder_prism
+PASS Cooldown and suitable upgrades tesla thunder_prism
+PASS Live weapon damage tesla storm_grid
+PASS Cooldown and suitable upgrades tesla storm_grid
+PASS Actual active ability and cooldown 8
+PASS Overcharge speeds attacks and chains
+PASS New skill clocks freeze on pause 8
+PASS Live weapon damage lance 
+PASS Cooldown and suitable upgrades lance 
+PASS Live weapon damage lance solar_pike
+PASS Cooldown and suitable upgrades lance solar_pike
+PASS Live weapon damage lance aegis_sweep
+PASS Cooldown and suitable upgrades lance aegis_sweep
+PASS Actual active ability and cooldown 9
+PASS Shield absorbs actual damage
+PASS New skill clocks freeze on pause 9
+PASS Live weapon damage chakram 
+PASS Cooldown and suitable upgrades chakram 
+PASS Live weapon damage chakram twin_moon
+PASS Cooldown and suitable upgrades chakram twin_moon
+PASS Live weapon damage chakram dusk_spiral
+PASS Cooldown and suitable upgrades chakram dusk_spiral
+PASS Actual active ability and cooldown 10
+PASS Decoy and actual phase dash
+PASS New skill clocks freeze on pause 10
+PASS Exactly two hands on shared rig bruiser
+PASS Exactly two hands on shared rig sparky
+PASS Exactly two hands on shared rig shade
+PASS Exactly two hands on shared rig twinkle
+PASS Exactly two hands on shared rig kicksy
+PASS Exactly two hands on shared rig steelfist
+PASS Exactly two hands on shared rig cinder
+PASS Exactly two hands on shared rig frosty
+PASS Exactly two hands on shared rig volt
+PASS Exactly two hands on shared rig rook
+PASS Exactly two hands on shared rig nyx
+PASS Exactly two hands on shared rig viper
+PASS Exactly two hands on shared rig echo
+PASS Exactly two hands on shared rig nova
+PASS Exactly two hands on shared rig rivet
+PASS Real cached original sound united_flame
+PASS Real cached original sound united_cryo
+PASS Real cached original sound united_tesla
+PASS Real cached original sound united_lance
+PASS Real cached original sound united_chakram
+PASS Real cached original sound united_warning
+PASS Real cached original sound united_rage
+PASS Real cached original sound united_impact
+PASS Real cached original sound united_pyro
+PASS Real cached original sound ability_firestorm
+PASS Real cached original sound ability_absolute_zero
+PASS Real cached original sound ability_overcharge
+PASS Real cached original sound ability_bastion
+PASS Real cached original sound ability_phase_dance
+PASS New enemy AI slicer
+PASS Enemy per-type cap slicer
+PASS New enemy death and reward once slicer
+PASS New enemy AI lurker
+PASS Enemy windup cannot deal immediate damage lurker
+PASS Enemy per-type cap lurker
+PASS New enemy death and reward once lurker
+PASS New enemy AI shieldbug
+PASS Enemy per-type cap shieldbug
+PASS New enemy death and reward once shieldbug
+PASS New enemy AI medic
+PASS Enemy windup cannot deal immediate damage medic
+PASS Enemy per-type cap medic
+PASS New enemy death and reward once medic
+PASS New enemy AI mortar
+PASS Enemy windup cannot deal immediate damage mortar
+PASS Enemy per-type cap mortar
+PASS New enemy death and reward once mortar
+PASS New enemy AI frostling
+PASS Enemy windup cannot deal immediate damage frostling
+PASS Enemy per-type cap frostling
+PASS New enemy death and reward once frostling
+PASS New enemy AI roller
+PASS Enemy windup cannot deal immediate damage roller
+PASS Enemy per-type cap roller
+PASS New enemy death and reward once roller
+PASS New enemy AI leech
+PASS Enemy per-type cap leech
+PASS New enemy death and reward once leech
+PASS New enemy AI summoner
+PASS Enemy windup cannot deal immediate damage summoner
+PASS Enemy per-type cap summoner
+PASS New enemy death and reward once summoner
+PASS New enemy AI pyro
+PASS Enemy windup cannot deal immediate damage pyro
+PASS Enemy per-type cap pyro
+PASS New enemy death and reward once pyro
+PASS Visible hazard gives full warning time
+PASS Hazard deals damage after warning
+PASS Green ring gap matches collision
+PASS Danger field count bounded independently of visual quality
+PASS Boss starts full warning 2
+PASS Threshold damage preserves locked boss warning 2
+PASS Boss rage enters readable transition 2
+PASS Boss pause freezes phase 2
+PASS Boss starts full warning 4
+PASS Threshold damage preserves locked boss warning 4
+PASS Boss rage enters readable transition 4
+PASS Boss pause freezes phase 4
+PASS Boss starts full warning 8
+PASS Threshold damage preserves locked boss warning 8
+PASS Boss rage enters readable transition 8
+PASS Boss pause freezes phase 8
+PASS Boss starts full warning 10
+PASS Threshold damage preserves locked boss warning 10
+PASS Boss rage enters readable transition 10
+PASS Boss pause freezes phase 10
+PASS Pooled projectile resets previous weapon hit history
+PASS Optional arena equipment is available gardens
+PASS Completed optional arena event tracked gardens
+PASS Optional arena equipment is available frost
+PASS Completed optional arena event tracked frost
+PASS Optional arena equipment is available storm
+PASS Completed optional arena event tracked storm
+PASS Optional arena equipment is available crystal
+PASS Completed optional arena event tracked crystal
+PASS Optional arena equipment is available carnival
+PASS Completed optional arena event tracked carnival
+PASS Optional arena equipment is available void
+PASS Completed optional arena event tracked void
+PASS Medic restores sixteen percent without exceeding max health
+PASS Shield bug protects its facing
+PASS Shield bug can be flanked
+PASS Pyro launches eight bounded hostile projectiles
+PASS Summoner has a hard lifetime quota
+PASS Leech heals only actual HP damage
+PASS Piercing ice cannot hit the same enemy twice
+PASS Frosty passive extends actual slow duration
+PASS Graphics quality preserves new weapon damage
+PASS Guide pages keep valid state rules
+PASS Guide pages keep valid state heroes
+PASS Guide pages keep valid state enemies
+PASS Guide pages keep valid state tech
+PASS All ten world cards connected
+PASS Profile migration preserves progress and opens only earned next world
+PASS Expanded save defaults survive reload
+PASS Final boss time limit causes defeat
+PASS Player death causes defeat
+PASS Restart safely clears previous combat
+PASS Endless repeats boss ladder after wave ten
+PASS Production menu-to-run transition
+PASS Production guarded wave transition 1
+PASS Production guarded shop continuation 1
+PASS Production guarded wave transition 2
+PASS Production guarded shop continuation 2
+PASS Production guarded wave transition 3
+PASS Production guarded shop continuation 3
+PASS Production guarded wave transition 4
+PASS Production guarded shop continuation 4
+PASS Production guarded wave transition 5
+PASS Production guarded shop continuation 5
+PASS Production guarded wave transition 6
+PASS Production guarded shop continuation 6
+PASS Production guarded wave transition 7
+PASS Production guarded shop continuation 7
+PASS Production guarded wave transition 8
+PASS Production guarded shop continuation 8
+PASS Production guarded wave transition 9
+PASS Production guarded shop continuation 9
+PASS Production guarded wave transition 10
+UNITED RESULT 605 passed, 0 failed

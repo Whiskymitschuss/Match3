@@ -1,0 +1,43 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS New profile starts locked
+PASS Kills alone insufficient
+PASS 499 kills insufficient
+PASS Kills and tutorial do not bypass crew cases
+PASS Owned case fighter synchronizes without duplicate ID
+PASS Unlocked hero survives restart
+PASS Stored ID without earned criteria rejected
+PASS Direct start cannot bypass lock
+PASS Actual stats include ten percent passive over base220
+PASS Bomb class and supported upgrades
+PASS Automatic bomb allocated from pool
+PASS No hit before actual fuse
+PASS One explosion hits area without self damage
+PASS Pool slots released after explosion
+PASS Hard pool cap independent of effects quality
+PASS Multishot produces three real bombs
+PASS Streubombe primary strike plus three delayed events
+PASS Three secondary hits with no recursive explosion
+PASS Brand field created at detonation, never aged before birth
+PASS Brand DPS exact
+PASS Overlapping fire does not stack
+PASS Fields expire even after long frames
+PASS Real chain ability starts three explosions and cooldown
+PASS Chain jumps between three real targets
+PASS Bombs frozen in 7
+PASS Bombs frozen in 5
+PASS Bombs frozen in 6
+PASS Kicksy wins and cleans pool scrapyard
+PASS Kicksy wins and cleans pool reactor
+PASS Kicksy wins and cleans pool docks
+PASS Kicksy wins and cleans pool foundry
+PASS Kicksy wins and cleans pool gardens
+PASS Kicksy wins and cleans pool frost
+PASS Kicksy wins and cleans pool storm
+PASS Kicksy wins and cleans pool crystal
+PASS Kicksy wins and cleans pool carnival
+PASS Kicksy wins and cleans pool void
+PASS Shop reaches actual development
+PASS Development selection completes
+PASS Tutorial completion records training and preserves case lock
+KICKSY RESULT 40 passed, 0 failed

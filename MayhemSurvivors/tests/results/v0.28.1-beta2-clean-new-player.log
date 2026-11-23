@@ -1,0 +1,40 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Actual first boot starts with zero earned progress and no free cases
+PASS Production first boot selects Bruiser and world one
+PASS First player receives tutorial introduction
+PASS Production fighter lock bruiser
+PASS Production fighter lock sparky
+PASS Production fighter lock shade
+PASS Production fighter lock twinkle
+PASS Production fighter lock kicksy
+PASS Production fighter lock steelfist
+PASS Production fighter lock cinder
+PASS Production fighter lock frosty
+PASS Production fighter lock volt
+PASS Production fighter lock rook
+PASS Production fighter lock nyx
+PASS Production fighter lock viper
+PASS Production fighter lock echo
+PASS Production fighter lock nova
+PASS Production fighter lock rivet
+PASS No unearned case transaction crew
+PASS No false free-case prompt crew
+PASS No unearned case transaction arsenal
+PASS No false free-case prompt arsenal
+PASS No unearned case transaction style
+PASS No false free-case prompt style
+PASS First Play opens real Kicksy onboarding
+PASS Tutorial completion does not grant heroes, tickets, currency or run statistics
+PASS First player persists successfully
+PASS Restart preserves a genuinely zero-progress trained player
+PASS Every additional local player also starts from zero
+PASS First real run has only base hammer and no carried run coins
+PASS Only actual completed run earns its calculated studio coins
+PASS First map boss unlocks exactly the next world through real gameplay
+PASS First-clear reward earns the first actual crew ticket
+PASS Earned ticket unlocks a real second fighter
+PASS Earned fighter and world reward survive reload
+PASS Earned progress never leaks into another local player
+PASS App update preserves existing wallet and tickets without resetting real players
+NEW PLAYER RESULT 37 passed, 0 failed

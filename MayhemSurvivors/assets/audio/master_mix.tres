@@ -1,15 +1,9 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://bhbvxvicq25q"]
 
 [sub_resource type="AudioEffectHardLimiter" id="Limiter"]
 resource_name = "Peak Protection"
-pre_gain_db = 0.0
 ceiling_db = -0.8
 
 [resource]
-bus/0/name = &"Master"
-bus/0/solo = false
-bus/0/mute = false
-bus/0/bypass_fx = false
-bus/0/volume_db = 0.0
 bus/0/effect/0/effect = SubResource("Limiter")
 bus/0/effect/0/enabled = true

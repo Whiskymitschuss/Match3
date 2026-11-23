@@ -1,0 +1,9 @@
+PASS Bundletool 1.18.3 validate
+PASS Release JAR upload signature; self-signed upload certificate expected
+PASS All signed entry CRCs and lengths unchanged by manifest-first ZIP ordering
+PASS package com.rfworlds.mayhemsurvivors, version 35 / 0.28.1-beta2
+PASS debuggable false, allowBackup false, SDK 24 / 36, only VIBRATE
+PASS ARM64-only libc++_shared.so and libgodot_android.so
+PASS ELF LOAD alignment 16384 and BundleConfig PAGE_ALIGNMENT_16K
+PASS ZIP CRC; no tests, private keys, profile manifests or player saves
+AAB 76353437 bytes SHA256 252886e9a650cbc02014aa42bce307e890090661fd422d10b08afbb350815e95

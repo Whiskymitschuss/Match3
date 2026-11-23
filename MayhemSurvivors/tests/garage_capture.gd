@@ -11,7 +11,7 @@ func run():
 	g.character_select(5);await capture('locked')
 	g.garage.cases();await capture('cases')
 	g.garage.chances('crew');await capture('chances')
-	g.garage.open_case('crew');await capture('reveal');g.garage.transact('ack','',g.saved.collection.pending.serial)
+	g.saved.collection.tickets.crew=1;g.garage.open_case('crew');await capture('reveal');g.garage.transact('ack','',g.saved.collection.pending.serial)
 	preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	for id in g.Collection.catalog().items:g.saved.collection.levels[id]=3 if g.Collection.catalog().items[id].ranked else 1
 	for id in ['comet','mini_bot']:g.saved.meta.owned.append(id)

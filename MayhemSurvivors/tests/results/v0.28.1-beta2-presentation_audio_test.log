@@ -1,0 +1,32 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Production wordmark and app icon imported
+PASS Separate licensed heading and body fonts
+PASS Main menu actually displays new wordmark
+PASS Decorations cannot intercept touch
+PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
+PASS Menu button has touch target and display typography
+PASS Menu music selected
+PASS Eight-bar looping score menu_theme
+PASS Eight-bar looping score combat_theme
+PASS Combat score selected for actual wave
+PASS Pause ducks music
+PASS Audio/UI do not unpause gameplay
+PASS Resume restores music loudness
+PASS Shop returns to workshop music
+PASS Music mute leaves effects enabled
+PASS Effects mute leaves music enabled
+PASS Master zero mutes music and effects
+PASS UI purchase sound has reserved voice despite saturated effects
+PASS Critical boss cue has reserved voice
+PASS Frequent audio resources cached
+PASS Burst coin events coalesced without voice flooding
+PASS Polished shop retains existing flow
+PASS Polished result retains game over
+PASS Restart retains clean run semantics
+PRESENTATION AUDIO RESULT 29 passed, 0 failed

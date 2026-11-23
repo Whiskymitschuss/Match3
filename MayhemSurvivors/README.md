@@ -1,49 +1,53 @@
-# RF Worlds — Mayhem Survivors 0.28.0 Beta 1
+# RF Worlds — Mayhem Survivors 0.28.1 Beta 2
 
 Android / Godot 4.6.3 stable / GDScript / ARM64 / vollständig offline.
-Geschlossene Beta mit 15 Kämpfern, zehn Welten, Kampagne und Endlos.
+15 Kämpfer, zehn Welten, Kampagne und Endlos. Store-Beta für eine neue Play-Console-App.
 
-## Neu für den Betatest
+## Der neue Spielerstart
 
-- Fünf lokale Spielerprofile mit eigenen Freischaltungen, Coins, Ausrüstung,
-  Einstellungen, Aufgaben, Pass und Statistiken. Auswahl je Spieler bleibt erhalten.
-- Bestehender Spielstand bleibt als Spieler 1 erhalten; letzter aktiver Spieler
-  wird beim Neustart geladen. Profilwechsel während eines Runs ist gesperrt.
-- Atomare Speicherung mit gültiger Vorgängersicherung, automatischer Wiederherstellung,
-  Profilübersicht-Reparatur und bestätigter manueller Sicherungsladung.
-- Cases, Aufgaben und Weltbelohnungen speichern im richtigen Spielerprofil.
-- Android-Zurück mit sicheren Menüwegen, Case-Bestätigung, Abbruchdialogen und
-  Schutz vor versehentlichem App-Ende. Eingefrorene Angebote bleiben erhalten.
-- Beta-Hilfe mit Testanleitung und manuell kopierbarem Bericht ohne Spielernamen.
+Nur Bruiser, Hammer Rang 1 und Welt 1 sind verfügbar. Studio-Coins, Teile, Tickets,
+Cases, Statistiken, Weltabschlüsse und Passfortschritt beginnen bei null. Weitere
+Kämpfer, Gegenstände, Skins und Dekorationen müssen erspielt werden. Kicksy erklärt
+im Tutorial die Steuerung. Training schenkt keinen dauerhaften Fortschritt.
 
-[Installation, Daten und Testwege](BETA_TESTING.md) · [Arena-Taktik](ARENA_TACTICS.md)
+Bis zu fünf lokale Profile halten ihre Sammlungen, Aufgaben, Währungen,
+Einstellungen und Statistiken getrennt. Jeder neue Spieler startet unter denselben
+Bedingungen. Bestehende eigene Daten bleiben bei Updates erhalten. Atomare
+Speicherung, automatische Wiederherstellung und Sicherungen bleiben verfügbar.
+Keine Anmeldung, Werbung, Echtgeldkäufe, Server oder Internetberechtigung.
 
-## Installieren und spielen
+[Google-Play-Übergabe](PLAY_STORE_HANDOFF.md) · [Betatest](BETA_TESTING.md) · [Arena-Taktik](ARENA_TACTICS.md)
 
-Die signierte Debug-APK über die vorhandene Version installieren. Nicht vorher
-deinstallieren: Android löscht dabei die lokalen App-Daten. Paketname bleibt
-com.rfworlds.mayhemsurvivors, versionCode 34, gleicher Signierschlüssel.
-MinSDK 24 / targetSDK 36 / ARM64-v8a / Querformat / GL Compatibility. Nur Vibration
-als Berechtigung. Keine Anmeldung, Werbung, Echtgeldkäufe oder Internetpflicht.
+## Spielen und testen
 
-Links mit dem Touch-Joystick bewegen; Waffen greifen automatisch an. Rechts die
+Links per Touch-Joystick bewegen; Waffen greifen automatisch an. Rechts die
 Fähigkeit benutzen. Bosse in Welle 2/4/6/8/10, Wellenshop, XP-Upgrades, Entwicklungen,
-Cases und Sammlung. Neue Manöver in späteren Welten ab normalen Wellen 3.
+Cases und Sammlung. Aufgaben, Weltbelohnungen und Runs liefern erspielte Spielmittel.
+Dauerhafter Fortschritt wird gesichert. Ein aktiver Run wird nach vollständigem
+App-Ende nicht wiederhergestellt. Normale Android-Unterbrechung pausiert.
 
-Dauerhafter Fortschritt wird gesichert. Aktive Runs sind nach vollständigem
-App-Ende weiterhin nicht wiederaufnehmbar. Normale Android-Unterbrechung pausiert.
-Daten werden nicht automatisch zwischen Handys übertragen.
+Das signierte Release-AAB gehört in die Google Play Console. Die App wurde dort
+noch nicht angelegt oder veröffentlicht. Der Testlink entsteht nach Einrichtung
+der App und Tester. Google Play signiert die installierbare App über Play App Signing;
+die bisherige Debug-APK besitzt einen anderen Schlüssel. Details in der Übergabe.
 
-## Projekt und Prüfung
+## Godot-Projekt und Exporte
 
-project.godot in Godot 4.6.3 öffnen und starten. Alle Szenen, Assets, Musik, Sounds
-und Daten sind enthalten. Python/NumPy/FFmpeg dienen nur optionalen Generatoren,
-nicht zum Spielen. Ausschließlich Android-Exportpreset.
+project.godot mit Godot 4.6.3 stable öffnen und importieren; die Hauptszene ist bereits
+konfiguriert. Keine Szenen oder Skripte müssen von Hand zusammengesetzt werden.
+Android-Paket com.rfworlds.mayhemsurvivors / VersionCode 35 / API 24–36 / Querformat /
+GL Compatibility. Preset Android für Entwicklungs-APKs; Preset Google Play für Release-AAB.
 
-Tests: `python tools/run_tests.py --traces` mit Godot auf PATH.
-[Fortschritt](PROGRESS.md) · [Tests](TEST_REPORT.md) · [Build](BUILD_REPORT.md) ·
-[Änderungen](CHANGELOG.md) · [Nächste Schritte](ROADMAP.md).
+Für Store-Neubauten: passende Android-Exportvorlagen, vollständiges JDK und Android SDK
+in Godot konfigurieren. tools/build_store.py liest externen Keystore und Passwortdatei,
+installiert bei Bedarf die passende Vorlage und hält nur die benötigten ARM64-Bibliotheken.
+Private Schlüssel niemals im Projekt oder GitHub speichern. Der tatsächliche Upload-Schlüssel
+wurde getrennt im privaten Workspace-Verzeichnis gesichert.
 
-Physische Android-Abnahme, Tastatur/Safe Area, Touchgefühl, subjektiver Klang,
-menschliche Balance, Temperatur, Akku und gemessene 60 FPS werden im geschlossenen
-Test geprüft. Automatisierte Prüfungen und Linux-GL-Bilder ersetzen diese Abnahme nicht.
+## Nachweise
+
+41 Suiten / 10014 Prüfungen bestanden, dazu beide historischen Regressionstraces.
+Native Profil- und Case-Touchtests: 42 beziehungsweise 74 Prüfungen bestanden.
+15 neue UI-Ansichten in drei Formaten erzeugt; relevante Willkommens- und Case-
+Ansichten visuell geprüft. Keine Aussage über echte Geräte-FPS oder Store-Freigabe.
+TEST_REPORT.md und BUILD_REPORT.md enthalten die tatsächlichen Prüfungen und Grenzen.

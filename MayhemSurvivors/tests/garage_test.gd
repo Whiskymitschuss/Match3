@@ -26,7 +26,7 @@ func run():
 	g.selected=5;g.start_run();check(g.state==g.State.CHARACTER_SELECT,'Locked fighter cannot bypass selection')
 	g.main_menu();g.tutorial.start();check(g.state==g.State.COMBAT and g.selected==1 and g.tutorial.active,'Locked Sparky is a training-only loan')
 	g.tutorial.stop(true);check(not Unlocks.available(g.saved,'sparky') and not Unlocks.available(g.saved,'kicksy'),'Tutorial does not unlock case fighters')
-	g.garage.cases();var initial=g.saved.duplicate(true);g.saved.collection.seed=18018
+	g.garage.cases();check(not g.garage.open_case('crew'),'New player has no unearned case');g.saved.collection.tickets.crew=1;g.saved.collection.tickets.style=1;g.saved.collection.seed=18018
 	check(g.garage.open_case('crew'),'Real free crew opening succeeds')
 	var receipt=g.saved.collection.pending.duplicate(true);var drawn=receipt.id
 	check(Unlocks.available(g.saved,drawn) and g.saved.collection.levels.has(C.STARTERS[drawn]),'Case unlocks actual fighter and starter')

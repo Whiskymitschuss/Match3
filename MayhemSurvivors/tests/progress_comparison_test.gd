@@ -39,8 +39,9 @@ func run():
 	g.saved=g.default_save();g.saved.settings.master=0;g.saved.settings.reduced_motion=true;g.garage.save_path=PATH;g.saved.settings.shop_help_seen=true
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
 	for id in ['crew','arsenal','style']:
+		g.saved.meta.coins=0
 		var d=C.catalog().cases[id];var progress=C.case_progress(g.saved,id);var price=int(d.price)
-		check(progress.ticket==1 and progress.ready and progress.missing>0,'Fresh account has actual free ticket '+id)
+		check(progress.ticket==0 and not progress.ready and progress.missing>0,'Fresh account must earn its first case '+id)
 		g.saved.collection.tickets[id]=0
 		for coins in [0,price-1,price,price+25]:
 			g.saved.meta.coins=coins;var before=g.saved.duplicate(true);progress=C.case_progress(g.saved,id)
