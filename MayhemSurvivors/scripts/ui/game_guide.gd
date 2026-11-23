@@ -44,7 +44,7 @@ func show(section:String='rules',page:int=0,return_to:Callable=Callable()):
 			text('Bossangriffe besitzen feste Vorwarnzeiten. Verlasse Sturmspuren seitlich und nutze grüne Ringöffnungen.\n\nDie Gegner in 2 / 4 / 6 / 8 werden stärker. In Welle 10 kämpfst du gegen den eigenen Abschlussboss deiner Arena.\n\nEin Boss muss vor Ablauf der Zeit fallen. Danach bleiben Coins und XP erhalten; der Shop oder der Arenenabschluss folgt.',Vector2(790,490),930,30)
 	elif section=='tech':
 		text('RF WORLDS / MAYHEM SURVIVORS',Vector2(150,390),1500,48,game.GOLD)
-		text('Version 0.27.0 Alpha\n15 Kämpfer / 10 Welten / Kampagne und Endlos\n\nDein Fortschritt bleibt auf diesem Gerät gespeichert.\nDas Spiel funktioniert vollständig offline.\nKeine Werbung und keine Echtgeldkäufe.\n\nBei einer Unterbrechung pausiert der Kampf automatisch.\nMusik, Darstellung und Steuerung findest du in den Einstellungen.',Vector2(150,485),1500,33)
+		text('Version 0.28.0 Beta 1\n15 Kämpfer / 10 Welten / Kampagne und Endlos\n\nDein Fortschritt bleibt auf diesem Gerät gespeichert.\nDas Spiel funktioniert vollständig offline.\nKeine Werbung und keine Echtgeldkäufe.\n\nBei einer Unterbrechung pausiert der Kampf automatisch.\nMusik, Darstellung und Steuerung findest du in den Einstellungen.',Vector2(150,485),1500,33)
 	game.button('ZURÜCK',Vector2(100,965),Vector2(400,85),func():game.queue_ui_action(leave))
 	if total>1:
 		game.button('VORHERIGE',Vector2(800,965),Vector2(430,85),func():game.queue_ui_action(func():show(section,page-1)))

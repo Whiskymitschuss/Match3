@@ -1,3 +1,42 @@
+# Android-Build 0.28.0 Beta 1 — 2026-11-23
+
+Tatsächlicher Debug-Export nach allen Laufzeitänderungen: Godot 4.6.3 stable,
+JDK 21, SDK 36 und Build Tools 36.0.0.
+
+- MayhemSurvivors-v0.28.0-beta1-debug.apk / **78383759 Bytes**.
+- SHA256: `e421b13f789b766ae111514e802864c12bfcb5944f6665da0131baa31a60c8c5`.
+- com.rfworlds.mayhemsurvivors / versionCode 34 / versionName 0.28.0-beta1.
+- Nur ARM64-v8a / minSDK 24 / targetSDK 36 / Querformat / GL Compatibility.
+- Signatur v2/v3 und 16-KiB-zipalign tatsächlich geprüft. Gleiches Zertifikat:
+  `5257c320e25fd161cf38a6c39194379ffede531877b53f1eeb9df62e47d875ce`.
+- Nur VIBRATE-Permission, keine Internetberechtigung. APK-CRC, Daten, kompilierte
+  Speicher-/Profil-/Beta-Controller und originales Profilicon nachgewiesen.
+  Spielinhalte, bestehende Musik und Sounds enthalten. Keine Tests/Capturegalerien.
+- Frisches Quellprojekt: 40 Suiten / 9973 Prüfungen und beide Traces grün;
+  800 Laufzeitdateien plus Konfiguration sowie Tests/Runner bytegleich zum APK-Stand.
+- Quell-ZIP enthält alle Assets, Szenen, Daten, Skripte, Tests, Generatoren und
+  Berichte sowie 13 ausgewählte Abnahmebilder. Kein Cache, SDK, APK, privater
+  Schlüssel oder persönlicher Spielstand. Finale Archivintegrität separat geprüft.
+
+Über die vorhandene App installieren, nicht vorher deinstallieren. Paketname,
+Signierschlüssel und Datenformat 3 bleiben kompatibel; der bisherige Spielstand
+bleibt Spieler 1 am bisherigen Pfad. Zusätzliche Daten liegen im lokalen Profilbereich.
+Android-Backup ins Netz bleibt deaktiviert. Details: BETA_TESTING.md.
+
+Der nicht erreichbare lokale ADB-Daemon (tcp:5037) verhindert den Export nicht.
+Keine physische Installation oder Android-Leistungsmessung behauptet. Diese
+Debug-APK dient dem geschlossenen Test, keiner Store-Veröffentlichung. Für letztere
+werden später ein Release-Build und ein Android App Bundle benötigt.
+
+Logs: tests/results/v0.28.0-beta1-{build,signature,alignment,manifest,payload,
+clean-import,clean-tests,source-integrity,archive}.log. Öffentliche Artefakte und
+Prüfsummen unter Downloads. Vollständiger anonymer Downloadnachweis nach dem Upload
+separat unter Downloads/VERIFY-v0.28.0-beta1.txt.
+
+---
+
+## Frühere Builds
+
 # Android-Build 0.27.0 — 2026-11-23
 
 Tatsächlicher Debug-Export nach den finalen Laufzeitänderungen: Godot 4.6.3 stable,

@@ -1,11 +1,11 @@
-"""Package the complete runnable 0.27.0 project, excluding generated cache and old capture galleries."""
+"""Package the complete runnable 0.28.0-beta1 project, excluding generated cache and old capture galleries."""
 from pathlib import Path
 import argparse, zipfile
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path);args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.27.0-source.zip'
+out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.28.0-beta1-source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
-captures={'tactics_void_warning', 'case_navigation_reveal', 'tactics_compare_empty', 'tactics_storm_warning', 'tactics_carnival_warning', 'tactics_crystal_boss', 'tactics_crystal_warning', 'tactics_cases', 'presentation_pack_home_1600', 'tactics_frost_boss', 'tactics_gardens_tool', 'tactics_frost_heat', 'tactics_compare_1600'}
+captures={'beta_profiles_1600', 'beta_home_1600', 'beta_profiles_2400', 'tactics_void_warning', 'case_navigation_reveal', 'beta_settings_1600', 'beta_help_1600', 'beta_rename', 'beta_restore', 'beta_profiles_1440', 'beta_run_exit', 'beta_guide', 'tactics_compare_1600'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(root.rglob('*')):
   rel=f.relative_to(root)

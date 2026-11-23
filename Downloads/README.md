@@ -1,18 +1,13 @@
-# RF Worlds — Mayhem Survivors 0.27.0
+# RF Worlds — Mayhem Survivors 0.28.0 Beta 1
 
-**[Android-Update herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/MayhemSurvivors-v0.27.0-debug.apk)**
+**[Android-Beta herunterladen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/offline-beta-v0.28.0/Downloads/MayhemSurvivors-v0.28.0-beta1-debug.apk)**
 
-[Godot-Quellprojekt ZIP](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/MayhemSurvivors-v0.27.0-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/SHA256SUMS-v0.27.0.txt)
+[Komplettes Godot-Projekt](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/offline-beta-v0.28.0/Downloads/MayhemSurvivors-v0.28.0-beta1-source.zip) · [Prüfsummen](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/offline-beta-v0.28.0/Downloads/SHA256SUMS-v0.28.0-beta1.txt)
 
-Sechs neue interaktive Arena-Manöver und passende Abschlussbossmuster: Reinigung,
-Wärme, Blitzableiter, Runenrelais, Bombenkaskade und Rissanker. Sichtbarer Boss-
-Countdown und Erholungsfenster, Vergleich eigener gespeicherter Runs und klare
-Case-Ziele mit Duplikatschutz. 15 Kämpfer, zehn Welten und bestehende Spielstände
-bleiben verbunden. Physische Android-Geräteabnahme und menschliche Balance offen.
+Fünf getrennte lokale Spielerprofile, bestehender Fortschritt als Spieler 1,
+Sicherungen und Wiederherstellung, profilbezogene Käufe/Belohnungen, sichere
+Android-Zurückwege und Beta-Hilfe. Vollständig offline, ohne Anmeldung oder Cloud.
+Als Update installieren; vorher nicht deinstallieren. Aktive Runs können nach
+vollständigem App-Ende noch nicht fortgesetzt werden. Physische Geräteabnahme offen.
 
-[Projekt und Prüfberichte](../MayhemSurvivors/README.md)
-
-38 Suiten / 9.890 Prüfungen und beide Traces am frischen Quellprojekt bestanden.
-APK und ZIP vollständig anonym heruntergeladen; beide SHA256-Werte und die
-öffentliche Prüfsummendatei bestätigt.
-[Downloadnachweis](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/VERIFY-v0.27.0.txt) · [Änderungen / Pull Request #12](https://github.com/Whiskymitschuss/Match3/pull/12)
+[Projekt und Berichte](../MayhemSurvivors/README.md) · [Beta-Testanleitung](../MayhemSurvivors/BETA_TESTING.md)

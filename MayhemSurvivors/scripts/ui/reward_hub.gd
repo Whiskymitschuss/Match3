@@ -16,7 +16,7 @@ func action(kind:String,id:String='',index:int=-1):
 		'equip':ok=Rewards.equip(game.saved.meta,id)
 		'off':game.saved.meta.equipped={'ring':'','buddy':'','title':''};ok=true
 	if ok:
-		if game.SaveManager.save_local(game.saved)!=OK:game.saved.meta=before;error='Speichern fehlgeschlagen. Bitte erneut versuchen.'
+		if game.SaveManager.save_local(game.saved,game.active_save_path())!=OK:game.saved.meta=before;error='Speichern fehlgeschlagen. Bitte erneut versuchen.'
 		else:error='';game.sound('buy')
 	show(tab,page)
 func text(value:String,pos:Vector2,width:float,size:int=27,color:Color=Color.WHITE):

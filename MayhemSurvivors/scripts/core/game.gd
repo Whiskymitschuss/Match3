@@ -151,6 +151,13 @@ var music: AudioStreamPlayer
 var result_recorded = false
 var style_cache: Dictionary = {}
 var test_mode = false
+var profile_root='user://'
+var profiles
+var profile_view
+var beta_view
+var save_error=''
+var ui_back_action:Callable
+var ui_back_priority=0
 
 func read_data(path: String):
 	return JSON.parse_string(FileAccess.get_file_as_string('res://data/' + path + '.json'))
@@ -171,6 +178,8 @@ func _ready():
 	crew=preload('res://scripts/characters/crew_combat.gd').new(self)
 	recap_view=preload('res://scripts/ui/recap_view.gd').new(self)
 	settings_view=preload('res://scripts/ui/settings_view.gd').new(self)
+	profile_view=preload('res://scripts/ui/profile_view.gd').new(self)
+	beta_view=preload('res://scripts/ui/beta_view.gd').new(self)
 	shop_view=preload('res://scripts/ui/shop_view.gd').new(self)
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
 	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
@@ -273,10 +282,42 @@ func default_save():
 	return SaveManager.defaults()
 
 func load_save():
-	saved = SaveManager.load_local()
+	if profiles==null:profiles=preload('res://scripts/progression/player_profiles.gd').new(profile_root)
+	apply_profile(profiles.load_active())
 
-func save_game():
-	SaveManager.save_local(saved)
+func active_save_path() -> String:return profiles.active_path() if profiles else 'user://save.json'
+func remember_selection():
+	saved.selection={'character':characters[selected].id,'arena':arena_id,'difficulty':selected_difficulty,'mode':run_mode if run_mode in ['campaign','endless'] else 'campaign'}
+func save_game() -> bool:
+	if profiles==null or not SaveManager.valid_file(saved):return false
+	remember_selection()
+	var ok=profiles.save_active(saved)
+	save_error=profiles.error
+	if is_instance_valid(ui_root):
+		var access=ui_root.get_node_or_null('ProfileAccess')
+		if access:access.text='PROFIL: '+profiles.active_name()+(' / SPEICHERFEHLER' if not ok else '')
+	return ok
+func apply_profile(data:Dictionary):
+	saved=data
+	var choice=saved.get('selection',{})
+	selected=maxi(0,Collection.HEROES.find(choice.get('character','bruiser')))
+	if not saved.collection.heroes.has(characters[selected].id):selected=0
+	hero_cursor=selected;arena_id=str(choice.get('arena','scrapyard'));arena_cursor=maxi(0,Arenas.IDS.find(arena_id));selected_difficulty=str(choice.get('difficulty','normal'));run_mode=str(choice.get('mode','campaign'))
+	run_difficulty=selected_difficulty;arena_definition=Arenas.definition(arena_id)
+	save_error=''
+	if garage:garage.save_path='';garage.error=''
+	if world_map:world_map.save_path='';world_map.error='';world_map.notice=''
+	if reward_hub:reward_hub.error=''
+	if audio_director:audio_director.update_settings()
+	if vfx:vfx.apply_settings()
+	menu_motion.reset()
+func switch_profile(id:String) -> bool:
+	if state!=State.MAIN_MENU:return false
+	remember_selection()
+	if not profiles.switch_to(id,saved):save_error=profiles.error;return false
+	apply_profile(profiles.load_active());main_menu();recap.reset();result_details.clear();result_recorded=false
+	run_time=0;kills=0;dealt=0;earned=0;coins=0;run_waves=0;run_abilities=0;run_events=0;wave_number=1;level=1
+	return true
 
 func sound(id: String):
 	if audio_director:audio_director.play(id)
@@ -288,6 +329,7 @@ func update_music():
 	if audio_director:audio_director.update_settings()
 
 func clear_ui():
+	ui_back_action=Callable();ui_back_priority=0
 	selection_swipe.set_context('')
 	ui_revision+=1
 	for n in ui_root.get_children():
@@ -346,6 +388,8 @@ func button(text: String, pos: Vector2, size: Vector2, action: Callable, color: 
 	b.add_theme_stylebox_override('hover',style(color.lightened(.15)))
 	b.add_theme_stylebox_override('pressed',style(Color('#78246B')))
 	b.pressed.connect(func(): sound('click'); action.call())
+	var priority=3 if b.text=='ZURÜCK' else (2 if b.text in ['FORTSETZEN','WEITERSPIELEN'] else (1 if b.text in ['HAUPTMENÜ','ZUM ERGEBNIS'] else 0))
+	if priority>ui_back_priority:ui_back_priority=priority;ui_back_action=action
 	ui_root.add_child(b)
 	return b
 
@@ -357,6 +401,7 @@ func backdrop(title: String, subtitle: String = ''):
 	schedule_menu_reveal()
 	label_at(title,Vector2(100,75),64,GOLD)
 	label_at(subtitle,Vector2(105,162),27,TEAL)
+	if save_error!='':label_at(save_error,Vector2(105,211),21,Color('#FF6370'))
 
 func schedule_menu_reveal():call_deferred('_reveal_menu',ui_revision)
 func _reveal_menu(revision:int):UISkin.reveal(self,revision)
@@ -728,10 +773,42 @@ func _notification(what):
 		if OS.has_feature('android'):DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		call_deferred('update_safe_area')
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		if state == State.COMBAT: pause_game()
+		handle_back()
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_game()
 		get_tree().quit()
+
+func handle_back():
+	var focus=get_viewport().gui_get_focus_owner()
+	if focus is LineEdit and DisplayServer.virtual_keyboard_get_height()>0:DisplayServer.virtual_keyboard_hide();focus.release_focus();return
+	if state==State.COMBAT:pause_game();return
+	if ui_back_action.is_valid():queue_ui_action(ui_back_action);return
+	if state in [State.WAVE_PREPARATION,State.LEVEL_UP,State.SHOP]:confirm_frozen_run_exit();return
+	if state==State.MAIN_MENU:confirm_exit()
+func confirm_frozen_run_exit():
+	if ui_root.has_node('LeaveRunOverlay'):return
+	var previous=ui_back_action;var priority=ui_back_priority
+	var overlay=Control.new();overlay.name='LeaveRunOverlay';overlay.size=Vector2(1920,1080);overlay.mouse_filter=Control.MOUSE_FILTER_STOP;overlay.z_index=100;ui_root.add_child(overlay)
+	var shade=ColorRect.new();shade.position=ui_bleed.position;shade.size=ui_bleed.size;shade.color=Color(0,0,0,.8);shade.mouse_filter=Control.MOUSE_FILTER_STOP;overlay.add_child(shade)
+	var panel=Panel.new();panel.position=Vector2(290,310);panel.size=Vector2(1340,460);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_theme_stylebox_override('panel',style(Color('#33213E')));overlay.add_child(panel)
+	label_at('DIESEN RUN BEENDEN?',Vector2(335,350),52,GOLD,overlay)
+	label_at('Der Durchlauf zählt als Niederlage. Dein dauerhafter Fortschritt bleibt erhalten.',Vector2(335,450),28,Color.WHITE,overlay)
+	var cancel=func():
+		if not is_instance_valid(overlay) or overlay.is_queued_for_deletion():return
+		ui_back_action=previous;ui_back_priority=priority;overlay.queue_free()
+	var back_button=button('WEITERSPIELEN',Vector2(335,610),Vector2(575,100),func():queue_ui_action(cancel));back_button.reparent(overlay)
+	var leave=button('RUN BEENDEN',Vector2(975,610),Vector2(600,100),func():queue_ui_action(func():
+		if not is_instance_valid(overlay) or overlay.is_queued_for_deletion():return
+		finish(false);main_menu()))
+	leave.reparent(overlay);ui_back_action=cancel;ui_back_priority=3
+func confirm_exit():
+	if state!=State.MAIN_MENU:return
+	backdrop('MAYHEM FÜR HEUTE BEENDEN?','Dein dauerhafter Fortschritt wird lokal gespeichert.')
+	label_at('Bis zur nächsten Runde!',Vector2(150,350),56,GOLD)
+	button('ZURÜCK',Vector2(150,540),Vector2(700,110),func():queue_ui_action(main_menu))
+	button('APP BEENDEN',Vector2(1000,540),Vector2(750,110),func():queue_ui_action(func():
+		if save_game():get_tree().quit()
+		else:confirm_exit()))
 
 func pause_game():
 	if state != State.COMBAT: return
@@ -1407,6 +1484,8 @@ func _draw():
 			if e.text!='': draw_string(UISkin.BODY,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
+	ui_back_action=Callable()
+	if beta_view:beta_view.dispose()
 	if recap_view:recap_view.dispose()
 	if settings_view:settings_view.dispose()
 	if audio_director:audio_director.stop()

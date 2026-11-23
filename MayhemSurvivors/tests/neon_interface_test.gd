@@ -35,7 +35,7 @@ func run():
 	await process_frame
 	var button:Button=null
 	for child in g.ui_root.get_children():
-		if child is Button:button=child;break
+		if child is Button and child.text=='SPIELEN':button=child;break
 	check(button!=null and button.modulate.a<1,'Production menu reveal starts visibly faded')
 	await create_timer(.55).timeout
 	check(is_instance_valid(button) and is_equal_approx(button.modulate.a,1) and button.position==Vector2(115,655),'Reveal settles at exact intended touch position')

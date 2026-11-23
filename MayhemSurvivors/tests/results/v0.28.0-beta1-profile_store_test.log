@@ -1,0 +1,40 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Existing schema-3 legacy save written
+PASS Old player remains in place with complete local progress
+PASS New profile really persisted René
+PASS New player has independent fresh progression René
+PASS New profile really persisted Nina
+PASS New player has independent fresh progression Nina
+PASS New profile really persisted Tom
+PASS New player has independent fresh progression Tom
+PASS New profile really persisted Lina
+PASS New player has independent fresh progression Lina
+PASS Five-profile limit cannot consume or overwrite existing saves
+PASS Names trim controls and reject duplicates and emptiness
+PASS Only canonical fixed profile identifiers become file paths
+PASS Forged index cannot escape the profile directory
+PASS Switch commits old progress before changing index
+PASS Player-specific wallet and settings saved
+PASS Restart restores selected profile and its wallet
+PASS Switch back to original profile
+PASS No new-player coins or stats leak into legacy player
+PASS Primary and active player cannot be removed
+PASS Inactive profile removed from selection without overwriting others
+PASS Removed identifiers are not silently reused
+PASS Rolling backup retains the previous complete transaction
+PASS Corrupt primary automatically recovers its own backup and preserves bad bytes
+PASS Recovery actually repairs the primary file
+PASS Valid committed primary wins over an abandoned temporary write
+PASS A complete staged file is a final recovery source when both committed snapshots fail
+PASS Fully damaged saves safely load defaults and expose their status
+PASS Explicit subsequent save can establish a new valid primary
+PASS Failed promotion cannot replace an existing directory
+PASS Missing-parent write reports failure rather than false persistence
+PASS Invalid data cannot overwrite a valid primary
+PASS Explicit restore loads the previous committed snapshot
+PASS Manual restoration cannot modify another player
+PASS Oversized corrupt input is bounded and archived without parsing
+PASS Profile manifest recovers its own valid previous snapshot
+PASS Lost manifest reconstructs known valid profile files and skips removed archives
+PROFILE STORE RESULT 37 passed, 0 failed

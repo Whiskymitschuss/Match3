@@ -9,6 +9,8 @@ func _initialize():
 	call_deferred('run')
 func run():
 	g = load('res://scenes/boot/main.tscn').instantiate()
+	g.profile_root='user://integration_beta_test/'
+	DirAccess.make_dir_recursive_absolute(g.profile_root)
 	g.test_mode = true
 	root.add_child(g)
 	preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false)
@@ -229,11 +231,12 @@ func run():
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	g.load_save()
 	check(g.saved.highest_wave==8,'Save and load roundtrip')
-	var f=FileAccess.open('user://save.json',FileAccess.WRITE)
+	var path=g.active_save_path();var backup=JSON.parse_string(FileAccess.get_file_as_string(g.SaveManager.sidecar(path,'backup')))
+	var f=FileAccess.open(path,FileAccess.WRITE)
 	f.store_string('{corrupt')
 	f.close()
 	g.load_save()
-	check(g.saved.games==0 and FileAccess.file_exists('user://save.corrupt.json'),'Corrupt save fallback and backup')
+	check(g.saved.games==backup.games and FileAccess.file_exists(g.SaveManager.sidecar(path,'corrupt')),'Corrupt save recovers valid previous snapshot and archives bad bytes')
 	g.save_game()
 	print('RESULT ',passed,' passed, ',failed,' failed')
 	g.music.stop()
