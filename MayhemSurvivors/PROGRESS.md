@@ -35,3 +35,12 @@ Menschliche Balance, Temperatur, Akku und 60 FPS am Gerät messen. Bisher keine
 neuen menschlichen Android-Rundaten erhalten; Simulationen ersetzen diese
 Daten nicht. Nächster fachlicher Schritt: gezielte Korrekturen nach Geräte-
 abnahme. Regeln: ARENA_TACTICS.md. Nachweise: TEST_REPORT.md / BUILD_REPORT.md.
+
+## Veröffentlichung abgeschlossen
+
+0.27.0 auf GitHub veröffentlicht: Quellstand 824d663, Artefakte 468e3ce.
+APK (78.354.194 Bytes) und Quell-ZIP (81.005.353 Bytes) vollständig ohne Anmeldung
+heruntergeladen. Beide SHA256-Prüfsummen und öffentliche Prüfsummendatei bestätigt.
+Nachweis: Downloads/VERIFY-v0.27.0.txt. Pull Request #12 offen und konfliktfrei,
+nicht automatisch gemergt: https://github.com/Whiskymitschuss/Match3/pull/12.
+Nächster fachlicher Schritt bleibt die physische Android-Abnahme.

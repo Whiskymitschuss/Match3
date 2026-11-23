@@ -11,3 +11,8 @@ Case-Ziele mit Duplikatschutz. 15 Kämpfer, zehn Welten und bestehende Spielstä
 bleiben verbunden. Physische Android-Geräteabnahme und menschliche Balance offen.
 
 [Projekt und Prüfberichte](../MayhemSurvivors/README.md)
+
+38 Suiten / 9.890 Prüfungen und beide Traces am frischen Quellprojekt bestanden.
+APK und ZIP vollständig anonym heruntergeladen; beide SHA256-Werte und die
+öffentliche Prüfsummendatei bestätigt.
+[Downloadnachweis](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/VERIFY-v0.27.0.txt) · [Änderungen / Pull Request #12](https://github.com/Whiskymitschuss/Match3/pull/12)
