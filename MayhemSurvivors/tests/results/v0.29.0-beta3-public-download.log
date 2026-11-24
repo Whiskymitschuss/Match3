@@ -1,0 +1,14 @@
+Anonymous complete public download verification — 2026-11-24T22:16:32.262135+00:00
+PASS MayhemSurvivors-v0.29.0-beta3-store.aab
+76388236 bytes
+SHA256 42184a1b4666226b3c350e77ba94e69e6d80c398240b719fa450cd0770ba3f4d
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/run-resume-backups-v0.29.0/Downloads/MayhemSurvivors-v0.29.0-beta3-store.aab
+PASS MayhemSurvivors-v0.29.0-beta3-source.zip
+76929693 bytes
+SHA256 47868f80ced91fc7b262183b988f4689df68cb345b8e8bf60f7cf98274967e95
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/run-resume-backups-v0.29.0/Downloads/MayhemSurvivors-v0.29.0-beta3-source.zip
+PASS MayhemSurvivors-v0.29.0-Beta3-Update.txt
+2046 bytes
+SHA256 20dcdaf97b2505cf39bb00e897375aeae536806ab14bb27844fb170ea8559ce4
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/run-resume-backups-v0.29.0/Downloads/MayhemSurvivors-v0.29.0-Beta3-Update.txt
+All three complete downloads match local bytes and published binary SHA256 values; no authentication.

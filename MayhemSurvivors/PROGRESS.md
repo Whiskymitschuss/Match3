@@ -1,3 +1,20 @@
+# Übergabe 0.29.0 Beta 3 — abgeschlossen am 24.11.2026
+
+Code, Dokumentation, signiertes AAB und vollständiges Quell-ZIP im Branch
+feature/run-resume-backups-v0.29.0 veröffentlicht. Draft-PR #15 erstellt, nicht
+zusammengeführt. Alle drei öffentlichen Downloads (AAB/ZIP/TXT) vollständig ohne
+Anmeldung gelesen und SHA256/Bytezahl mit lokalen Originalen abgeglichen.
+Nachweis: Downloads/VERIFY-v0.29.0-beta3.txt, separat nach dem Quellpaket erstellt.
+AAB 76388236 Bytes, ZIP 76929693 Bytes; Prüfsummen im Downloadverzeichnis.
+
+Implementierung und automatisierte Prüfung dieses Updates erledigt. Nächster
+Schritt beim Nutzer: neues internes Play-Release Code36 mit bestehendem Schlüssel;
+echter Android-Test für Fortsetzen, Store-Update und nativen Dateidialog. Kein
+Console-Upload, keine Play-Freigabe oder Geräteinstallation durch diese Sitzung.
+Das Quell-ZIP bildet den geprüften Stand vor dem nachträglichen Downloadnachweis ab.
+
+---
+
 # 0.29.0 Beta 3 — Run fortsetzen und portable Profil-Dateien
 
 Stand 2026-11-24. Branch feature/run-resume-backups-v0.29.0.

@@ -21,3 +21,5 @@ laut Nutzer-Screenshot verarbeitet; dieser Code 36 wird nicht automatisch hochge
 
 Physische Android-Abnahme einschließlich des nativen Dateidialogs steht aus.
 Private Upload-Schlüssel und persönliche Spielstände sind nicht im Quellprojekt.
+
+[Öffentlicher Downloadnachweis](Downloads/VERIFY-v0.29.0-beta3.txt) · [Änderungen / Draft-PR #15](https://github.com/Whiskymitschuss/Match3/pull/15)
