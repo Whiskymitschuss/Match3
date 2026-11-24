@@ -1,27 +1,32 @@
-# Mayhem Survivors — geschlossene Beta 1
+# Mayhem Survivors — Google Play Beta 2
 
-Diese Android-Debug-Version ist für einen kleinen geschlossenen Testkreis gedacht.
-Godot 4.6.3 / ARM64 / Android ab API 24 / Querformat. Sie spielt vollständig offline.
-Es gibt keine Anmeldung, Server, Werbung oder Echtgeldkäufe.
+Diese Version bereitet den Test einer neuen App über Google Play vor. Das Release-
+AAB wird in der vorhandenen Play Console hochgeladen. Die App ist dort noch nicht
+angelegt; es gibt daher noch keinen Store-Testlink. Siehe PLAY_STORE_HANDOFF.md.
+Godot 4.6.3 / ARM64 / Android ab API 24 / Querformat / vollständig offline.
 
-## Installieren und Spielstand behalten
+## Neue Installation und eigene Spielstände
 
-Die Beta als Update über die vorhandene Version installieren. Nicht vorher
-Deinstallieren: Android löscht bei einer Deinstallation die lokalen App-Daten.
-Paketname und Signierschlüssel bleiben gleich. Der bisherige Fortschritt bleibt
-als **Spieler 1** erhalten. Über den Profilbutton oben im Hauptmenü kannst du ihn
-umbenennen und bis zu vier weitere Spieler anlegen.
+Jeder neue Spieler startet mit Bruiser und Hammer Rang 1 auf dem Schrottplatz.
+Coins, Teile, Tickets, Cases, Ausrüstung, Statistik, Weltabschlüsse und Passfortschritt
+beginnen bei null. Es werden keine Entwickler-Spielstände mitgeliefert. Das Tutorial
+bietet Hilfe und vergibt keine dauerhaften Geschenke. Weitere Inhalte werden erspielt.
 
 Jedes Handy hat eigene lokale Daten. Innerhalb der App gibt es fünf getrennte
-Profile mit eigenen Freischaltungen, Coins, Ausrüstung, Statistiken, Aufgaben,
-Passfortschritt, Einstellungen sowie zuletzt gewähltem Kämpfer und Arena.
-Nach einem Neustart lädt die App das zuletzt aktive Profil. Ein laufender Run
-muss beendet werden, bevor du das Profil wechseln kannst.
+Profile mit eigenen Freischaltungen, Währungen, Ausrüstung, Statistiken, Aufgaben,
+Passfortschritt, Einstellungen sowie zuletzt gewähltem Kämpfer und Arena. Jedes
+zusätzliche Profil startet ebenfalls bei null. Nach einem Neustart lädt die App das
+zuletzt aktive Profil. Ein laufender Run muss vor einem Profilwechsel beendet werden.
+
+Reguläre Updates behalten bestehende eigene Spielstände. Die bisherige Debug-APK
+hat einen anderen Schlüssel als eine von Google signierte Store-App. Für einen
+Erstspieler-Test eine separate Android-Testumgebung ohne vorhandene App-Daten nutzen.
+Eine Deinstallation oder Androids Funktion „Speicherinhalt löschen“ entfernt lokale
+Daten. Die App überträgt keine Spielstände zwischen Handys.
 
 Das aktive Profil und das Startprofil sind gegen Entfernen geschützt. Andere
-Profile kannst du nach Bestätigung aus der Auswahl entfernen. Ihre lokalen
-Dateien werden intern archiviert und nicht mit einem anderen Profil vermischt.
-Es gibt keine automatische Übertragung zwischen Handys.
+Profile können bestätigt aus der Auswahl entfernt werden; Dateien bleiben intern
+archiviert und werden nicht mit einem anderen Spieler vermischt.
 
 ## Sicherungen
 
@@ -42,8 +47,8 @@ Android-Unterbrechung pausiert das Spiel; die Simulation läuft dabei nicht weit
 
 ## Die wichtigsten Testwege
 
-1. Update über 0.27 installieren und alte Figuren, Welten, Coins und Ausrüstung prüfen.
-2. Zwei eigene Profile anlegen. Mit beiden getrennt spielen und Cases öffnen.
+1. Über den Play-Testlink frisch starten: nur Bruiser/Hammer und Schrottplatz; Coins, Teile, Tickets und Fortschritt null.
+2. Zwei eigene Profile anlegen. Mit beiden getrennt spielen, Belohnungen verdienen und erst dann Cases öffnen.
 3. Aufgabe beziehungsweise Weltbelohnung abholen. Danach zum anderen Profil wechseln
    und sicherstellen, dass es dessen Guthaben und Freischaltungen nicht verändert.
 4. Musik, Grafik und Kämpfer je Profil unterschiedlich einstellen. App komplett

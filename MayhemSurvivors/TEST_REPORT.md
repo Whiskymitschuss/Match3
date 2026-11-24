@@ -1,3 +1,47 @@
+# Testbericht 0.28.1 Beta 2 — 2026-11-23
+
+**41 Suiten / 10014 bestandene Prüfungen / 0 Fehler** im vollständigen Projektlauf.
+Beide historischen Regressionstraces zusätzlich bestanden (33 + 87 Kontrollpunkte).
+Die Zahlen beziehen sich auf automatisierte Prüfungen, nicht auf echte Android-Geräte.
+Rohprotokolle: tests/results/v0.28.1-beta2-*.log.
+
+Neue Erstspieler-Suite: 37 Prüfungen vom tatsächlichen Boot mit isoliertem leerem
+App-Speicher bis zu Run-Belohnung, Weltfinale, einmaliger Weltbelohnung und erster
+erspielter Crew-Case. Prüft alle 15 Kämpfersperren, keine Gratis-Cases, keine
+Tutorial-Geschenke, Neustart, Zusatzprofil, unabhängige Fortschritte und Erhalt
+bereits vorhandener Coins/Tickets bei einem Update.
+
+Sammlungs-/Garage-/Weltkarten- und Fortschrittsprüfungen verwenden jetzt explizit
+erarbeitete Test-Tickets statt Produktions-Gratistickets. Ein alter Erwartungswert
+für kostenlose Cases wurde korrigiert; der abschließende vollständige Lauf ist grün.
+Native Touch-Navigation unter Godot GL/Mesa: Profile 42/0, Cases 74/0. Ein zusätzlicher
+Lauf während eines vollen Build-Dateisystems scheiterte am Anlegen des Testordners;
+nach Freigabe von Platz erneut 42/0. Keine Daten produktiver Spieler wurden verwendet.
+
+15 native Erstspieler-Ansichten in 1600×900, 2400×1080 und 1440×1080 erzeugt.
+Willkommens- und Case-Ansicht mit Null-Guthaben, gesperrten Kaufbuttons und lesbarem
+Einstieg visuell geprüft. Diese Aufnahmen sind Linux-Godot-Ansichten, keine Android-
+Gerätescreenshots. Alle Headless-Tests und Native-Tests ersetzen keine echte Geräteabnahme.
+
+Release-AAB mit Bundletool 1.18.3 validiert; JAR-Uploadsignatur überprüft. Manifest:
+Paket/Version/API-Level richtig, debuggable false, allowBackup false, nur VIBRATE.
+Ausschließlich ARM64-Libraries; beide ELF-LOAD-Segmente 16-KiB-kompatibel, BundleConfig
+PAGE_ALIGNMENT_16K. ZIP-CRC korrekt, keine Testdateien, privaten Schlüssel oder Spieler-
+Spielstände im Bundle. Alle signierten Einträge bleiben bei JAR-Reihenfolge-Korrektur
+bytegleich (CRC/Größe); abschließende Signaturprüfung ohne Streaming-Inkonsistenz.
+
+Offen: Play-Console-Annahme/Veröffentlichung, Installation und Erstspieler-Flow auf
+realen Android-Geräten, Updateverhalten der späteren Store-Signatur, echte Safe Areas,
+Sensorik, Tastatur, subjektiver Klang, Langzeitstabilität, Balance und Geräteperformance.
+Aktive Runs werden nach vollständigem App-Ende weiterhin nicht wiederhergestellt.
+
+Frisch entpackter Quellstand ohne Importcache ebenfalls vollständig importiert;
+die 37 Erstspieler-Prüfungen erneut bestanden. 802 Laufzeit-/Konfigurationsdateien
+bytegleich zum Snapshot des gebauten Release-Bundles. Quelle enthält keine
+privaten Schlüssel, App-Spielstände oder generierten Android-/Godot-Build-Caches.
+
+---
+
 # Testbericht 0.28.0 Beta 1 — 2026-11-23
 
 Godot 4.6.3 stable. Am frisch entpackten Projekt ohne vorhandenen Importcache:

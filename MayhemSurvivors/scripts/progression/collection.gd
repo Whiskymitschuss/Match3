@@ -16,7 +16,7 @@ static func empty_loadout(hero:String) -> Dictionary:return {'head':'','body':''
 static func defaults() -> Dictionary:
 	var loadouts={}
 	for hero in HEROES:loadouts[hero]=empty_loadout(hero)
-	return {'version':1,'heroes':['bruiser'],'levels':{'hammer':1},'loadouts':loadouts,'parts':0,'tickets':{'crew':1,'arsenal':1,'style':1},'pity':0,'opened':0,'seed':maxi(1,int(Time.get_unix_time_from_system()*1000+Time.get_ticks_usec())%2147483646),'history':[],'pending':{}}
+	return {'version':1,'heroes':['bruiser'],'levels':{'hammer':1},'loadouts':loadouts,'parts':0,'tickets':{'crew':0,'arsenal':0,'style':0},'pity':0,'opened':0,'seed':maxi(1,int(Time.get_unix_time_from_system()*1000+Time.get_ticks_usec())%2147483646),'history':[],'pending':{}}
 static func clean(source) -> Dictionary:
 	var result=defaults()
 	if not source is Dictionary:return result

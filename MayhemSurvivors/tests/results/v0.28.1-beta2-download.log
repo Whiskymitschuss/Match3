@@ -1,0 +1,14 @@
+Anonymous full-download verification — 2026-11-23T23:37:20.298916+00:00
+PASS MayhemSurvivors-v0.28.1-beta2-store.aab
+76353437 bytes
+SHA256 252886e9a650cbc02014aa42bce307e890090661fd422d10b08afbb350815e95
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/store-beta-v0.28.1/Downloads/MayhemSurvivors-v0.28.1-beta2-store.aab
+PASS MayhemSurvivors-v0.28.1-beta2-source.zip
+79644097 bytes
+SHA256 67ea51aedf0dd0618830bfbdda2f91357080745402a34c333ddb0ef01d0ee982
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/store-beta-v0.28.1/Downloads/MayhemSurvivors-v0.28.1-beta2-source.zip
+PASS public checksum manifest matches both complete anonymous downloads.
+Source commit: 9ff3b1d
+Artifact commit: 06b6000
+No Play Console upload, acceptance or public Store publication claimed.
+Review: https://github.com/Whiskymitschuss/Match3/pull/14 (draft; not merged).

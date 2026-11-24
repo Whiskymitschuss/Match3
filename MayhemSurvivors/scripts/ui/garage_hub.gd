@@ -169,7 +169,7 @@ func history(offset:int=0):
 	if not enter():return
 	var entries=game.saved.collection.history;var pages=maxi(1,ceili(entries.size()/8.0));offset=clampi(offset,0,pages-1)
 	game.backdrop('DEINE LETZTEN FUNDE','Öffnungsbelege / lokal gespeichert')
-	if entries.is_empty():text('Noch keine Cases geöffnet. Dein Startticket wartet!',Vector2(120,350),1600,38,game.GOLD)
+	if entries.is_empty():text('Noch keine Cases geöffnet. Spiele Runs und verdiene Studio-Coins oder Weltbelohnungen!',Vector2(120,350),1600,32,game.GOLD)
 	for i in range(offset*8,mini(entries.size(),offset*8+8)):
 		var e=entries[i];var d=C.catalog().heroes[e.id] if e.hero else C.catalog().items[e.id]
 		text('#%d / %s / %s' % [e.serial,d.name,('+%d TEILE' % e.parts) if e.duplicate else 'NEU'],Vector2(130,280+(i%8)*80),1600,32,game.TEAL if not e.duplicate else game.GOLD)

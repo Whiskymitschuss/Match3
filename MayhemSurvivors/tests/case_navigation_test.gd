@@ -36,6 +36,7 @@ func tap(label:String):
 	await settle()
 func fresh(kind:String,duplicate:bool=false,animated:bool=false):
 	g.main_menu();g.saved=Save.defaults();g.saved.settings.master=0;g.saved.settings.reduced_motion=not animated;g.saved.collection.seed=18018;g.garage.save_path=PATH
+	g.saved.collection.tickets[kind]=1 # Earned-ticket fixture for reveal navigation.
 	if duplicate:
 		g.saved.collection.heroes=C.HEROES.duplicate()
 		for id in C.catalog().items:g.saved.collection.levels[id]=1

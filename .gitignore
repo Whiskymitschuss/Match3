@@ -2,3 +2,14 @@
 *.apk
 *.idsig
 *.zip
+
+*.aab
+*.jks
+*.keystore
+*.p12
+*.key
+*.password
+MayhemSurvivors/android/
+
+__pycache__/
+*.pyc

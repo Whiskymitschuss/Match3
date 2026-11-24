@@ -422,7 +422,7 @@ func play():
 	UISkin.panel(self,Rect2(100,265,720,670),TEAL)
 	portrait(Vector2(190,280),4,1.5)
 	label_at('DEIN ERSTER RUN',Vector2(925,315),56,GOLD)
-	var help=label_at('Links bewegen, automatisch kämpfen, rechts die Schockwelle auslösen.\n\nIm Training probierst du alle wichtigen Tasten selbst aus. Du kannst es jederzeit verlassen und später wiederholen.',Vector2(925,420),32)
+	var help=label_at('Du startest mit Bruiser, Hammer und Welt 1. Coins, Teile und Tickets: 0. Weitere Inhalte erspielst du dir.\n\nKicksy zeigt dir Bewegung, automatische Angriffe und die Schockwelle. Das Training kannst du jederzeit wiederholen.',Vector2(925,420),32)
 	help.text=UISkin.wrap_text(help.text,UISkin.BODY,32,820)
 	button('MIT KICKSY ÜBEN',Vector2(925,725),Vector2(850,105),func():queue_ui_action(func():saved.settings.onboarding_seen=true;save_game();tutorial.start()),Color('#147F81'))
 	button('DIREKT ZUR CREW',Vector2(925,865),Vector2(850,95),func():queue_ui_action(func():saved.settings.onboarding_seen=true;save_game();character_select()))

@@ -1,3 +1,17 @@
+# 0.28.1 Beta 2 — neuer Store-Spielerstart
+
+- Neue Spieler und lokale Zusatzprofile: nur Bruiser/Hammer/Welt 1, sämtliche
+  erspielten Guthaben und Fortschritte null; drei Gratistickets entfernt.
+- Kicksy-Einstieg, leeres Case-Journal und Beta-Hilfe erklären den neuen Start.
+- Echte erspielte Freischaltungen und vorhandene eigene Spielstände bleiben erhalten.
+- Neues Produktionsstart-Szenario prüft bis zur ersten erspielten Crew-Case;
+  Ticket-Fixtures und erwartete Weltbelohnungen angepasst.
+- Google-Play-Preset, signierter Release-AAB, privater Upload-Schlüssel und
+  wiederverwendbarer ARM64-Store-Builder mit sicherer externer Schlüsselübergabe.
+- Store-Texte, lokale Datenschutzhinweise und Play-Console-Übergabe vorbereitet.
+- 41 Suiten / 10014 Prüfungen, beide Regressionstraces, Native-Touch-Prüfungen,
+  Bundle-/Signatur-/Manifest- und 16-KiB-ELF-Prüfungen bestanden.
+
 # 0.28.0 Beta 1 — Offline-Profile und Betatest (2026-11-23)
 
 - Fünf lokale Profile, Namen und Aktivierung; bisheriger Spielstand bleibt Spieler 1.

@@ -1,3 +1,62 @@
+# Ergänzung 24.11.2026 — Inhaltsübersicht und Console-Fortschritt
+
+Nutzer-Screenshots bestätigen: App in Google Play Console angelegt, Release-AAB
+mit VersionCode 35 hochgeladen und verarbeitet; Entwurf des internen Testreleases.
+Letzter gezeigter Stand: Tester noch nicht hinterlegt, Freigabe und Testlink nicht
+bestätigt. Nutzer kann sein eigenes Google-Konto als ersten internen Tester nutzen.
+Mapping-/Native-Symbol-Hinweise sind für den internen Test nicht blockierend.
+
+Angeforderte teilbare TXT-Übersicht erstellt:
+Downloads/MayhemSurvivors-v0.28.1-Beta2-Spielumfang.txt.
+Inhalte aus aktuellem Katalog abgeglichen: 15 Kämpfer, 10 Welten, 13 Waffen,
+26 Entwicklungen, 39 Sammlungseinträge, Profile, Quests, Pass, UI/Audio und Grenzen.
+Keine Änderung am Spiel/Bundle und keine neue Store-Version. UTF-8 gelesen und
+Inhalte geprüft; kein neuer Gameplay-Testlauf für diese Dokumentationsänderung.
+
+---
+
+# 0.28.1 Beta 2 — neuer Store-Spieler startet bei null
+
+Stand 2026-11-23. Branch feature/store-beta-v0.28.1. Nutzerkorrektur: neue App
+in vorhandener Google Play Console, noch kein App-Eintrag. Alle neuen Spieler
+starten bei null. Vollständig offline; lokale Profile bleiben getrennt.
+
+Implementiert: keine kostenlosen Start-Cases mehr; nur Bruiser/Hammer Rang 1,
+Schrottplatz, keine Guthaben, Tickets, Teile, Statistiken, Welt- oder Passfortschritte.
+Kicksy-Einstieg und leeres Case-Journal entsprechend erklärt. Bestehende eigene
+Spielstände bleiben bei Updates erhalten; keine globale Rücksetzung. Neue Tests
+prüfen den echten Produktionsstart bis zur ersten erspielten Crew-Case und
+Profiltrennung. Alte Tests erhalten benötigte Tickets jetzt ausdrücklich als Fixture.
+
+Verifiziert: vollständiger Lauf von 41 Suiten / 10014 Prüfungen / 0 Fehler,
+zusätzlich beide Regressionstraces (33 / 87 Checkpoints). Native Case-Navigation
+74/0 und Profile 42/0. 15 Erstspieler-Ansichten in drei Formaten aufgenommen;
+Willkommens- und Case-Ansicht visuell geprüft. Kein physisches Android-Gerät.
+
+Google-Play-Preset: Release AAB / ARM64 / API 24–36 / VersionCode 35. Separater
+privater Upload-Schlüssel außerhalb des Repositories erzeugt; keine Geheimnisse
+im Export-Preset. Standard-Androidvorlagen, SDK Build-Tools 36.1 und vollständiger
+OpenJDK-21-Compiler eingerichtet. Store-Build erfolgreich; Bundletool, Signatur, Manifest, CRC und native 16-KiB-
+Ausrichtung verifiziert. Store-Texte, Datenschutzhinweise und Console-Übergabe vorbereitet.
+
+Öffentliche vollständige AAB-/ZIP-Downloads und Prüfsummendatei anonym geprüft.
+Offen: neuen App-Eintrag/Testerkreis in der Play Console einrichten. Keine Store-Veröffentlichung
+behaupten. Store-Bilder, echte Kontakt-/Zielgruppenangaben und Android-Geräteabnahme
+stehen aus. Aktive Runs nach vollständigem App-Ende nicht wiederherstellbar.
+
+Abschließender Paketnachweis: Quell-ZIP CRC/sichere Pfade, 802 Laufzeit-/Konfigurations-
+dateien bytegleich, frischer Import ohne Cache und Erstspieler-Test 37/0 bestanden.
+Private Upload-Schlüssel im separaten Workspace-Backup; niemals öffentlich veröffentlichen.
+
+Veröffentlicht auf GitHub: Source 9ff3b1d, Artefakte 06b6000; AAB 76353437 Bytes,
+Quell-ZIP 79644097 Bytes, SHA256 nach vollständigem anonymem Download bestätigt.
+Nachweis Downloads/VERIFY-v0.28.1-beta2.txt. Draft-PR #14 offen, nicht gemergt.
+Technische Übergabe fertig; kein Store-Testlink und keine Play-Console-Veröffentlichung.
+Nächster Schritt: Store-Eintrag, App-Signierung, Inhalte/Kontakt/Grafiken und Testerkreis
+in der vorhandenen Console einrichten, Release-AAB hochladen, Geräteabnahme durchführen.
+
+---
+
 # 0.28.0 Beta 1 — lokale Spielerprofile
 
 Stand 2026-11-23. Phase 19: Implementierung und technische Übergabe für den

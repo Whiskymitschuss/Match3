@@ -14,9 +14,11 @@ func run():
 	check(s.collection.heroes==['bruiser'] and s.collection.levels=={'hammer':1},'Bruiser and hammer only')
 	check(C.catalog().heroes.size()==14 and C.catalog().items.size()==39,'Catalog has fourteen unlockable heroes and 39 real items')
 	for id in ['crew','arsenal','style']:
+		check(s.collection.tickets[id]==0 and C.open_case(s,id).is_empty(),'Fresh player cannot open an unearned '+id+' case')
 		var sum=0.0
 		for item in C.candidates(s,id):sum+=item.chance
 		check(absf(sum-1)<.000001,'Real chances normalized '+id)
+	s.collection.tickets.crew=1 # Explicitly earned ticket fixture, never production defaults.
 	var same=s.duplicate(true);var first=C.open_case(s,'crew');var second=C.open_case(same,'crew')
 	check(first==second and s.collection.seed==same.collection.seed,'Persisted seed gives same result on same state')
 	check(first.hero and not first.duplicate and s.collection.heroes.has(first.id),'First crew ticket unlocks real hero')
@@ -30,7 +32,7 @@ func run():
 	check(not paid.is_empty() and s.meta.coins==0,'Exact paid case debit')
 	C.acknowledge(s,paid.serial)
 	check(C.open_case(s,'forged').is_empty() and s.meta.coins==0,'Unknown case rejected')
-	s=fresh();s.collection.heroes=C.HEROES.filter(func(id):return id!='steelfist');s.collection.pity=2
+	s=fresh();s.collection.tickets.crew=1;s.collection.heroes=C.HEROES.filter(func(id):return id!='steelfist');s.collection.pity=2
 	var pool=C.candidates(s,'crew')
 	check(pool.size()==1 and pool[0].id=='steelfist' and pool[0].chance==1,'Third-case guarantee targets only missing hero')
 	var reveal=C.open_case(s,'crew')
