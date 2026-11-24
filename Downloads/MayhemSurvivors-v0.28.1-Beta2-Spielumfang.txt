@@ -1,0 +1,707 @@
+RF WORLDS | MAYHEM SURVIVORS
+SPIELUMFANG UND BETA-STATUS
+Stand: 24. November 2026
+Version: 0.28.1 Beta 2 | Android-VersionCode: 35
+
+Diese Datei beschreibt die tatsächlich implementierten Inhalte des aktuellen Builds.
+Kämpfer, Welten und Sammelobjekte werden im Spiel freigeschaltet. Die Übersicht
+bedeutet daher nicht, dass ein neuer Spieler bereits alles besitzt. An Spielbalance
+und Darstellung kann sich während der Beta noch etwas ändern.
+
+========================================================================
+1. AUF EINEN BLICK
+========================================================================
+
+- Android-Spiel im Querformat, ausschließlich ARM64.
+- 2D-Arena-Survival-Roguelite mit automatischen Waffen und Touch-Joystick.
+- 15 Kämpfer mit eigenen Waffenregeln, passiven Stärken und Spezialfähigkeiten.
+- 10 nacheinander freischaltbare Arenen mit eigenem Abschlussboss.
+- Kampagne mit 10 Wellen; Bossbegegnungen in Welle 2, 4, 6, 8 und 10.
+- Endlosmodus sowie NORMAL, VETERAN und MAYHEM als Schwierigkeitsstufen.
+- 13 Grundwaffen, 26 Waffenentwicklungen und 10 Level-Up-Upgrades.
+- 39 Einträge im dauerhaften Gegenstandskatalog einschließlich der 13 Waffen.
+- 3 Case-Arten, Werkstatt, Ausrüstung, Zauber, 5 Waffen-Skins und sichtbare Deko.
+- Tägliche Aufgaben, Wochenherausforderungen und ein kostenlos erspielbarer Pass.
+- Bis zu 5 getrennte lokale Spielerprofile, vollständig offline.
+- Keine Anmeldung, Werbung, Echtgeldkäufe, Multiplayer oder Spielserver.
+
+========================================================================
+2. SO STARTET JEDER NEUE SPIELER
+========================================================================
+
+- Freigeschaltet: BRUISER, HAMMER auf Werkstattrang 1 und SCHROTTPLATZ.
+- Studio-Coins: 0. Werkstattteile: 0. Case-Tickets: 0.
+- Keine kostenlosen Start-Cases, zusätzlichen Gegenstände, Zauber, Skins oder
+  Dekorationen.
+- Keine gewonnenen Runs, Weltabschlüsse, Statistik- oder Passfortschritte.
+- Weitere Kämpfer und Gegenstände werden durch erspielte Belohnungen und Cases
+  freigeschaltet.
+- Der Sieg über den Abschlussboss einer Welt öffnet die nächste Welt. Die
+  Erstabschluss-Belohnung wird auf der Weltkarte abgeholt.
+- Kicksy bietet das Tutorial an. Das Training schenkt keine dauerhaften Kämpfer,
+  Coins oder Tickets.
+- Jedes zusätzlich angelegte lokale Profil beginnt ebenfalls bei null. Andere
+  Spieler und Entwickler-Spielstände werden nicht übernommen.
+- Ein reguläres Update behält den eigenen bisherigen Fortschritt. Es setzt
+  bestehende Spieler nicht pauschal zurück.
+
+========================================================================
+3. STEUERUNG UND VOLLSTÄNDIGER SPIELABLAUF
+========================================================================
+
+Hauptmenü -> Kämpfer wählen -> Welt wählen -> Welle vorbereiten -> kämpfen -> XP und
+Run-Coins sammeln -> Level-Up auswählen -> Wellenshop -> nächste Welle -> Weltfinale
+-> Ergebnis und dauerhafte Belohnungen.
+
+- Links unten: virtueller Analog-Joystick mit Deadzone und Rückstellung.
+- Freie Bewegung, diagonale Steuerung und Arena-Grenzen.
+- Waffen suchen Ziele und greifen automatisch an; keine manuelle Zielsteuerung
+  nötig.
+- Rechts: Spezialfähigkeit des Kämpfers; zusätzliche Zauber nach Freischaltung und
+  Ausrüstung.
+- Multitouch erlaubt Bewegung und Fähigkeit gleichzeitig.
+- Kämpfer und Arenen können per Wischgeste durchgesehen werden.
+- XP-Kristalle werden in Spielnähe angezogen. Level-Ups bieten drei gültige
+  Verbesserungen.
+- Während Level-Up, Shop und Pause stehen Kampf und Wellentimer still.
+- HUD mit Leben, XP, Level, Welle, Timer, Coins, Waffen, Fähigkeit und
+  Boss-Lebensleiste.
+- Pause oben rechts und Android-Zurücknavigation mit sicheren Menüwegen.
+- Android-Unterbrechungen pausieren das Gameplay.
+
+========================================================================
+4. ALLE 15 KÄMPFER
+========================================================================
+
+BRUISER ist der Startkämpfer. Die weiteren 14 Kämpfer sind im aktuellen System über
+Crew-Cases freischaltbar. Waffen sind an die jeweilige Klasse gebunden.
+
+01. BRUISER
+Startwaffe: HAMMER
+Passive Stärke: Panzerfaust / +10% Nahkampfschaden
+Spezialfähigkeit: SCHOCKWELLE
+Trifft Gegner im Umkreis und stößt normale Gegner zurück.
+Abklingzeit der Spezialfähigkeit: 12 Sekunden.
+
+02. SPARKY
+Startwaffe: BLASTER
+Passive Stärke: Funkenpilot / +15% Angriffstempo
+Spezialfähigkeit: IMPULSGRANATE
+Wirft automatisch eine Granate zum nächsten Gegner. Explosion verlangsamt normale
+Gegner.
+Abklingzeit der Spezialfähigkeit: 10 Sekunden.
+
+03. SHADE
+Startwaffe: ORBIT BLADE
+Passive Stärke: Nachtklinge / +10% kritische Chance
+Spezialfähigkeit: SCHATTENSCHRITT
+Schnellt in Bewegungsrichtung. Während des Schritts unverwundbar, trifft jeden
+durchquerten Gegner einmal.
+Abklingzeit der Spezialfähigkeit: 8 Sekunden.
+
+04. TWINKLE
+Startwaffe: WISCHMOPP
+Passive Stärke: Blitzblank: +15 % Flächenschaden
+Spezialfähigkeit: TWINKLE TORNADO
+5 Sekunden Seifenwirbel. Flächenschaden und Rückstoß; Bosse widerstehen Kontrolle.
+Abklingzeit der Spezialfähigkeit: 45 Sekunden.
+
+05. KICKSY
+Startwaffe: MAYHEM-BOMBE
+Passive Stärke: Schneller Zunder / +10 % Bewegungstempo
+Spezialfähigkeit: KETTENREAKTION
+Drei Explosionen springen zum nächsten Gegner. Auch ohne Ziel detoniert eine
+Bombenkette vor dir.
+Abklingzeit der Spezialfähigkeit: 28 Sekunden.
+
+06. STEELFIST
+Startwaffe: WERKZEUGDUO
+Passive Stärke: Stahlkraft / +25 % Nahkampfschaden
+Spezialfähigkeit: ROHRBRUCH-CHAOS
+300 % Werkzeugschaden im Umkreis. 2 s Betäubung. +50 % Angriffstempo für 5 s; Kills
+verlängern um je 0,2 s, maximal +5 s.
+Abklingzeit der Spezialfähigkeit: 35 Sekunden.
+
+07. CINDER
+Startwaffe: FLAMMENWERFER
+Passive Stärke: Feuerherz / +15 % Brandschaden
+Spezialfähigkeit: FEUERSTURM
+Fünf Sekunden Feuerfeld um dich: kontinuierlicher Flächenschaden.
+Abklingzeit der Spezialfähigkeit: 35 Sekunden.
+
+08. FROSTY
+Startwaffe: KRYOGEWEHR
+Passive Stärke: Eiszeit / +20 % Verlangsamungsdauer
+Spezialfähigkeit: NULLPUNKT
+Frostnova: Schaden und 2 s Stillstand für normale Gegner. Bosse werden verlangsamt.
+Abklingzeit der Spezialfähigkeit: 36 Sekunden.
+
+09. VOLT
+Startwaffe: TESLASPULE
+Passive Stärke: Hochspannung / +15 % Angriffstempo
+Spezialfähigkeit: ÜBERSPANNUNG
+Sechs Sekunden +40 % Angriffstempo und sofortiger Kettenimpuls.
+Abklingzeit der Spezialfähigkeit: 35 Sekunden.
+
+10. ROOK
+Startwaffe: SCHILDLANZE
+Passive Stärke: Stahlwacht / +2 Basis-Rüstung
+Spezialfähigkeit: BASTION
+Ein Schild fängt bis zu 80 Schaden ab und bleibt höchstens acht Sekunden.
+Abklingzeit der Spezialfähigkeit: 40 Sekunden.
+
+11. NYX
+Startwaffe: MONDCHAKRAM
+Passive Stärke: Mondklinge / +8 % kritische Chance
+Spezialfähigkeit: PHASENTANZ
+Stürme unverwundbar durch Gegner und hinterlasse vier Sekunden einen Lockvogel.
+Abklingzeit der Spezialfähigkeit: 30 Sekunden.
+
+12. VIPER
+Startwaffe: BLASTER
+Passive Stärke: Giftspitzen / Blaster-Treffer vergiften 3 Sekunden
+Spezialfähigkeit: TOXINNEBEL
+Vier Sekunden Giftnebel: 8 Schaden pro Sekunde im markierten Bereich.
+Abklingzeit der Spezialfähigkeit: 32 Sekunden.
+
+13. ECHO
+Startwaffe: SPLITGUN
+Passive Stärke: Schallkraft / +12 % Fernkampfschaden
+Spezialfähigkeit: BASSSTOSS
+Schallwelle: 36 Schaden, Rückstoß und 1 Sekunde Betäubung gegen normale Gegner.
+Abklingzeit der Spezialfähigkeit: 24 Sekunden.
+
+14. NOVA
+Startwaffe: ARC CANNON
+Passive Stärke: Erste Hilfe / Jeder 25. Kill heilt 3 HP
+Spezialfähigkeit: LICHTPULS
+Heilt 20 HP und erzeugt einen Schild mit 35 HP für höchstens 6 Sekunden.
+Abklingzeit der Spezialfähigkeit: 30 Sekunden.
+
+15. RIVET
+Startwaffe: BLASTER
+Passive Stärke: Schnellniet / +20 % Projektiltempo
+Spezialfähigkeit: REPARATURDRONE
+Eine Drohne kämpft 6 Sekunden mit, feuert automatisch und heilt alle 1,5 Sekunden 1
+HP.
+Abklingzeit der Spezialfähigkeit: 28 Sekunden.
+
+Kämpfer werden nicht gegen Echtgeld freigeschaltet. Kicksy ist zugleich
+Tutorial-Coach; das Absolvieren des Tutorials schaltet sie nicht automatisch als
+spielbaren Kämpfer frei.
+
+========================================================================
+5. ALLE 10 ARENEN UND ABSCHLUSSBOSSE
+========================================================================
+
+01. SCHROTTPLATZ
+Weltfinale: THE OVERLORD
+Zehn Wellen, fünf Bosse und freiwillige Bergungen für zusätzliche Run-Coins.
+
+02. REAKTORZONE
+Weltfinale: REAKTORWÄCHTER
+Sammle Energiekerne und locke Gegner in deine Überladung.
+
+03. NEONHAFEN
+Weltfinale: DOCK-TYRANN
+Weiche Containerabwürfen aus und locke Verfolger in die Einschlagzone.
+
+04. GLUTWERK
+Weltfinale: OFENKÖNIG
+Nutze Dampfventile im grünen Druckbereich und dränge Gegner in heiße Bahnen.
+
+05. GIFTGÄRTEN
+Weltfinale: DIE GIFTKÖNIGIN
+Aktiviere Sporenfilter: Reinigungspulse treffen Gegner und entfernen fremde
+Kreisfelder.
+
+06. FROSTDEPOT
+Weltfinale: DER FROSTFÜRST
+Zünde Thermofackeln: Wärme schützt im Kreis vor Frost und verlangsamt Gegner.
+
+07. STURMDÄCHER
+Weltfinale: DIE STURMMASCHINE
+Blitzableiter richten eine feste Bahn auf Gegner: ausweichen, Verfolger
+hineinlocken.
+
+08. KRISTALLMINE
+Weltfinale: DER KRISTALLGOLEM
+Verbinde drei Runen und nutze das angekündigte Kristallkreuz gegen Verfolger.
+
+09. CHAOS-KIRMES
+Weltfinale: DER CHAOSNARR
+Zünde eine gestaffelte Bombenkaskade und locke Gegner durch die drei Markierungen.
+
+10. RISSKERN
+Weltfinale: DER RISSKAISER
+Rissanker ziehen normale Gegner in einen Gefahrenring. Der Innenkreis bleibt sicher.
+
+Die Welten werden in dieser Reihenfolge geöffnet. Einen Kampagnenabschluss und
+dessen Erstbelohnung kann man nicht durch einen beliebigen Zwischenboss ersetzen.
+Endlosfortschritt zählt nicht als Kampagnensieg.
+
+Arenen-Ereignisse und taktische Aktionen:
+- Schrottplatz: freiwillige Bergungen und angekündigte Einschläge für zusätzliche
+  Run-Coins.
+- Reaktorzone: Energiekerne sammeln, Terminal aktivieren und Gegner in die
+  Überladung locken.
+- Neonhafen: Containerabwürfen ausweichen und Gegner in Einschlagzonen führen.
+- Glutwerk: Dampfventile im passenden Druckbereich auslösen; heiße Bahnen und
+  Rückstoß beachten.
+- Giftgärten: Sporenfilter und Reinigungspulse gegen Gegner und fremde
+  Kreisfelder.
+- Frostdepot: Thermofackeln, Wärmekreise und Schutz gegen Frost-Verlangsamung.
+- Sturmdächer: Blitzableiter ausrichten und die angekündigte Blitzbahn verlassen.
+- Kristallmine: Runen verbinden und das angekündigte Kristallkreuz nutzen.
+- Chaos-Kirmes: gestaffelte Bombenkaskaden mit drei Markierungen.
+- Risskern: Rissanker ziehen normale Gegner in einen Gefahrenring; der Innenkreis
+  bleibt sicher.
+- Die Aktionen besitzen eigene Erklärungen und Vorwarnungen. Gefahren können auch
+  den Spieler treffen; die jeweilige Anleitung zeigt sichere Bereiche.
+
+========================================================================
+6. WELLEN, GEGNER UND BOSSE
+========================================================================
+
+- Zehn Kampagnenwellen pro Welt. Jeder zweite Wellenabschnitt enthält einen Boss.
+- Welle 2: SÄUREPANZER.
+- Welle 4: SCHROTTWALZE.
+- Welle 6: BREAKER AXEL mit Presslufthammer-Angriffen.
+- Welle 8: STURMADMIRAL.
+- Welle 10: Abschlussboss der gewählten Welt.
+- Bossangriffe werden durch sichtbare Warnflächen, Sturmspuren, sichere
+  Ringöffnungen und akustische Signale angekündigt.
+- Phasenwechsel und Wutphasen verändern das Angriffsmuster. Erholungsfenster
+  lassen gezielte Gegenangriffe zu.
+- Gegnerdruck, Zusammensetzung und Werte steigen im Verlauf. Schwierigkeitsgrad,
+  Welt und Endlosfortschritt beeinflussen die Herausforderung.
+- Gleichzeitig aktive Gegner und Effekte sind begrenzt. Grafikstufen ändern die
+  Darstellung, nicht Gegnerwerte oder Belohnungen.
+- Sieg, Niederlage und Boss-Zeitlimit sind mit dem Ergebnisbildschirm und den
+  Belohnungen verbunden.
+
+Enthaltene normale und spezielle Gegner-Typen:
+- GRUNT: Standardverfolger.
+- RUNNER: schneller Verfolger.
+- TANK: robuster, langsamer Gegner.
+- RAVOX: aggressiver Gegner mit angekündigtem Sturmangriff.
+- BOMBLING, LONGSHOT und HEXLING: weitere Gegnerrollen mit eigenen Angriffen.
+- SICHELSCHRECK: Agiler Jäger. Schlägt Haken und schneidet Laufwege ab.
+- SCHATTENLAUERER: Markiert einen Sprungpunkt. Verlasse den violetten Kreis.
+- PANZERKÄFER: Frontal 35 % Schutz. Seitlich angreifen.
+- SPORENMEDIK: Heilt bis zu drei normale Gegner in der Nähe. Zuerst ausschalten.
+- MÖRSERWICHT: Bombardiert die markierte Position nach 1,4 Sekunden.
+- FROSTGEIST: Sein angekündigter Eisstoß verlangsamt dich bei einem Treffer.
+- STACHELRAD: Kündigt eine feste Sturmspur an. Seitlich ausweichen.
+- BLUTFLEDER: Heilt sich nur, wenn sie dich tatsächlich verletzt.
+- KNOCHENRUFER: Ruft begrenzt Verstärkung. Unterbrich die Beschwörung.
+- GLUTSTACHEL: Stoppt vor einer angekündigten radialen Feuersalve.
+
+Insgesamt 17 normale und spezielle Gegner-Typen in der Gegnerkonfiguration,
+zusätzlich Boss- und Weltbossvarianten. Nicht jeder Typ erscheint in jeder Welle.
+
+========================================================================
+7. ALLE 13 WAFFEN UND IHRE ENTWICKLUNGEN
+========================================================================
+
+Run-Waffen steigen von Stufe 1 bis 5. Für jede Grundwaffe existieren zwei
+Entwicklungsrichtungen. Welche Waffen ausgerüstet werden dürfen, bestimmt der
+Kämpfer. Die dauerhafte Werkstattverbesserung ist ein separates System.
+
+BLASTER
+- DURCHBRECHER: Ein Geschoss trifft bis zu drei verschiedene Gegner. Gleicher
+  Trefferschaden.
+- SPRENGKERN: 80 % Direktschaden. Zusätzlich 55 % Basisschaden an anderen Gegnern
+  in Radius 100.
+
+HAMMER
+- ERDBEBEN: Rundumschlag in Radius 250. 80 % Trefferschaden, 15 % längere
+  Abklingzeit.
+- DONNERFAUST: Einzelziel statt Rundumschlag. 90 % Schaden, 40 % kürzere
+  Abklingzeit.
+
+SPLITGUN
+- FOKUSFÄCHER: Engerer Fächer, 20 % mehr Schaden je Kugel und 25 % mehr
+  Reichweite.
+- SCHROTHAGEL: Fünf statt drei Kugeln. Breiter Fächer mit 70 % Schaden je Kugel.
+
+ARC CANNON
+- KETTENSTURM: Bis zu fünf Ziele. 85 % Trefferschaden und 60 mehr
+  Sprungreichweite.
+- HOCHSPANNUNG: Einzelziel: 65 % mehr Schaden und 20 % kürzere Abklingzeit.
+
+ORBIT BLADE
+- FERNSCHNEIDE: Orbit-Radius 185. 30 % mehr Schaden, 20 % langsamerer Umlauf; 10 %
+  kürzeres Trefferintervall. Kontakte gegen Bosse: ×3,4 Schaden.
+- WIRBELKLINGE: Orbit-Radius 90. 65 % schnellerer Umlauf und 45 % kürzeres
+  Trefferintervall, 80 % Schaden. Kontakte gegen Bosse: ×2,2 Schaden.
+
+WISCHMOPP
+- SEIFENSTURM: 40 % mehr Wischreichweite und 1,25 Sekunden Betäubung. Gift bleibt
+  unverändert.
+- CHEMIEFLUT: 60 % mehr Giftschaden. Pfützen bleiben eine Sekunde länger bestehen.
+
+MAYHEM-BOMBE
+- STREUBOMBE: Jede Bombe erzeugt drei kleine Explosionen mit je 30 % Schaden.
+  Keine rekursive Kette.
+- FEUERBALL: Explosionen hinterlassen drei Sekunden Brandfelder. Überlappend gilt
+  das stärkste Feld.
+
+WERKZEUGDUO
+- DRUCKBRECHER: +20 % Schaden und +15 % Reichweite. 15 % längere Abklingzeit.
+  Jeder vierte Schlag bleibt ein Doppelangriff.
+- RATSCHENRAUSCH: 30 % kürzere Abklingzeit bei 15 % weniger Schaden. Jeder vierte
+  Schlag trifft weiterhin doppelt.
+
+FLAMMENWERFER
+- SOLARFÄCHER: Breiterer Flammenkegel und +25 % Schaden.
+- ASCHEREGEN: Flammen hinterlassen länger brennende Felder.
+
+KRYOGEWEHR
+- EISLANZE: Durchschlägt vier Ziele.
+- FROSTSPLITTER: Drei Eissplitter und stärkere Verlangsamung.
+
+TESLASPULE
+- DONNERPRISMA: Fünf Kettensprünge und +20 % Schaden.
+- STURMNETZ: Jeder Kettenkontakt verlangsamt Gegner kurz.
+
+SCHILDLANZE
+- SONNENPIKE: Mehr Reichweite und +35 % Schaden.
+- AEGIS-SCHWUNG: Breiter Rundumschlag mit starkem Rückstoß.
+
+MONDCHAKRAM
+- ZWILLINGSMOND: Zwei Chakrams in einem Fächer.
+- DÄMMERSPIRALE: Langsamer Rückflug und stärkerer Trefferschaden.
+
+
+========================================================================
+8. DIE 10 LEVEL-UP-VERBESSERUNGEN
+========================================================================
+
+- VITAL BOOST: +20 maximale und aktuelle HP
+- HEAVY IMPACT: +12% Schaden
+- RAPID FIRE: +10% Angriffstempo
+- SWIFT FEET: +8% Bewegungstempo
+- CRITICAL EYE: +5% kritische Chance
+- IRON SKIN: +2 Rüstung
+- MAGNET FIELD: +25% Sammelradius
+- PROJECTILE BOOST: +12% Projektiltempo
+- FIELD MEDIC: Heilt 25 HP
+- MULTISHOT: +1 Projektil (Blaster / Splitgun)
+
+Nur gültige Verbesserungen werden angeboten. Bei mehreren erreichten Leveln laufen
+die Auswahlen nacheinander ab; der Kampf bleibt während der Auswahl angehalten.
+
+========================================================================
+9. SHOP UND BUILD-ENTSCHEIDUNGEN IM RUN
+========================================================================
+
+- Zwischen den Wellen pausierter Shop mit vier Angeboten.
+- Kauf von passenden Waffen, Waffenstufen, Charakterverbesserungen,
+  Run-Gegenständen und Heilung.
+- Ein kostenloser Reroll pro Shopbesuch; weitere Rerolls kosten Run-Coins.
+- Waffendetails, Werte, Entwicklungswahl und Hilfe erklären die Auswirkungen.
+- Käufe prüfen Guthaben, Klassenregeln und Maximalstufen.
+- Run-Gegenstände kombinieren Vorteile und Nachteile. Drei Klassenmodule erzeugen
+  besondere Kombinationen zwischen Angriffen und Fähigkeiten.
+
+Enthaltene Run-Gegenstände:
+- WUCHTGRIFF: +10 % Schaden / -4 % Bewegungstempo
+- PANZERPLATTE: +2 Rüstung / -5 % Bewegungstempo
+- ÜBERLASTZELLE: +8 % Angriffstempo / -10 maximale HP
+- IONENKÜHLER: +18 % Projektiltempo / -4 % Schaden
+- PHASENSTIEFEL: +10 % Bewegungstempo / -10 maximale HP
+- PRÄZISIONSLINSE: +5 % Krit-Chance / -1 Rüstung
+- SCHROTTMAGNET: +25 % Sammelradius / -4 % Angriffstempo
+- VITALPAKET: +20 maximale/aktuelle HP / -4 % Schaden
+- BRUCHKERN: Schockwelle markiert 6 s. / Nächster Hammer: +60 %.
+- IONENRELAIS: Strom markiert 4 s. / Blaster: 2 Ketten ×55 %.
+- SCHATTENSPULE: Schattenschritt lädt 4 s. / Nächste Klinge: +80 %.
+
+Run-Coins, Run-Upgrades und diese Run-Gegenstände gelten für den aktuellen
+Durchlauf. Die dauerhafte Sammlung bleibt davon getrennt.
+
+========================================================================
+10. CASES, WÄHRUNGEN UND DAUERHAFTE SAMMLUNG
+========================================================================
+
+Drei getrennte Spielmittel:
+- RUN-COINS: Beute innerhalb eines Durchlaufs; für den Wellenshop.
+- STUDIO-COINS: dauerhafte erspielte Währung für Cases, Skins und Dekorationen.
+- WERKSTATTTEILE: dauerhafte Teile zum Verbessern geeigneter Sammelgegenstände.
+
+Case-Arten:
+- CREW-CASE / 100 Studio-Coins: Ein Fighter. Nach zwei Duplikaten garantiert der
+  nächste Case einen fehlenden Helden.
+- ARSENAL-CASE / 60 Studio-Coins: Waffen, passive Items und zusätzliche Zauber für
+  deine Sammlung.
+- STYLE-CASE / 40 Studio-Coins: Kopf, Rüstung, Schuhe, Waffenstile und sichtbare
+  Dekoration.
+
+- Erspielte Tickets können die Öffnung der entsprechenden Case bezahlen.
+- Öffnungschancen können im Spiel eingesehen werden.
+- Ein neu erhaltener Kämpfer bringt seine passende Startwaffe mit.
+- Doppelte Funde werden in Werkstattteile umgewandelt.
+- Nach zwei Crew-Duplikaten garantiert die folgende Crew-Case einen noch fehlenden
+  Kämpfer, solange einer fehlt.
+- Ein Fund wird vor seiner Anzeige gespeichert. Bestätigung und Navigation sollen
+  keine doppelte Belohnung erzeugen.
+- Die letzten Case-Funde können im Journal nachgesehen werden.
+- Alle Cases werden ausschließlich mit erspielten Spielmitteln geöffnet; es gibt
+  keine Echtgeldkäufe.
+
+Dauerhafte Gegenstände: 39 Katalogeinträge einschließlich der 13 Waffen.
+
+KOPF
+- BAUSTELLENHELM: +2 Sammelradius je Rang. Sichtbar an deiner Figur.
+- NEONVISIER: +2 Sammelradius je Rang. Sichtbar an deiner Figur.
+- SCHÄDELMASKE: +2 Sammelradius je Rang. Sichtbar an deiner Figur.
+
+KÖRPER / RÜSTUNG
+- SCHROTTWESTE: +1 Rüstung je Rang. Sichtbar an deiner Figur.
+- REAKTORPANZER: +1 Rüstung je Rang. Sichtbar an deiner Figur.
+- MAYHEMJACKE: +1 Rüstung je Rang. Sichtbar an deiner Figur.
+
+SCHUHE
+- STAHLKAPPEN: +1 % Bewegungstempo je Rang. Sichtbar an deiner Figur.
+- NEONSOHLEN: +1 % Bewegungstempo je Rang. Sichtbar an deiner Figur.
+- RAIDERSTIEFEL: +1 % Bewegungstempo je Rang. Sichtbar an deiner Figur.
+
+PASSIVE MODULE
+- LEBENSKERN: +5 maximale HP je Rang.
+- SCHUTZKERN: +1 Rüstung je Rang.
+- SAMMLERKERN: +10 Sammelradius je Rang.
+
+ZUSÄTZLICHE ZAUBER
+- HEILIMPULS: Heilt11–15 % deiner Max-HP. 45 s Cooldown.
+- FROSTNOVA: Flächenschaden und2 s Verlangsamung. 35 s Cooldown.
+- PHASENSPRUNG: Kurzer Sprung in Bewegungsrichtung, dabei unverwundbar. 40–32 s
+  Cooldown.
+
+WAFFEN-SKINS
+- CYAN CORE: Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.
+- EMBER EDGE: Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.
+- VOID STEEL: Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.
+- ARCTIC CHROME: Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.
+- TOXIC STRIPE: Eigene Lackierung, Muster und Schussfarbe. Ohne Wertebonus.
+
+SICHTBARE DEKORATION
+- KOMETENRING: Ein rotierender Komet umkreist deine Füße. Rein optisch.
+- STROMRING: Leuchtende Schaltsegmente unter deinem Fighter. Rein optisch.
+- MINI-BOT: Ein kleiner dekorativer Roboter begleitet dich. Rein optisch.
+- BOMBEN-KUMPEL: Eine freundliche Fußball-Bombe schwebt mit. Kein Schaden. Rein
+  optisch.
+- CHAOS-LEGENDE: Dein goldener Spielertitel über dem Fighter. Rein optisch.
+- GLUTRING: Cartoon-Flammen tanzen um deinen Standkreis. Rein optisch.
+
+Die Garage verwaltet Kopf, Körper, Schuhe, Waffe, passives Item, Zusatzzauber und
+Waffen-Skin. Geeignete Gegenstände lassen sich mit Teilen bis Rang 5 verbessern.
+Rein optische Skins und Deko geben keinen Wertebonus. Begleiter wie MINI-BOT und
+BOMBEN-KUMPEL sind dekorativ und kämpfen nicht automatisch für dich.
+
+Permanente Waffenränge geben je zusätzlichem Rang über 1 einen kleinen Waffenbonus.
+Die Run-Waffenstufe beginnt in einem neuen Run wieder bei 1. Damit sind
+Werkstattfortschritt und Entwicklung innerhalb eines Runs zwei getrennte
+Entscheidungen.
+
+========================================================================
+11. AUFGABEN, PASS UND KÄMPFER-MEISTERSCHAFT
+========================================================================
+
+Tägliche Aufgaben:
+- MONSTERJAGD: Besiege 100 Gegner in beendeten Runs. Belohnung: 30 Studio-Coins
+  und 40 Pass-XP.
+- STANDHAFT: Überlebe insgesamt 3 Wellen. Belohnung: 25 Studio-Coins und 30
+  Pass-XP.
+- SPEZIALIST: Nutze 3 Spezialfähigkeiten. Belohnung: 20 Studio-Coins und 30
+  Pass-XP.
+
+Wöchentliche Herausforderungen:
+- MAYHEM-MEISTER: Besiege 1500 Gegner diese Woche. Belohnung: 120 Studio-Coins und
+  120 Pass-XP.
+- WELTENBUMMLER: Überlebe eine Welle in 3 verschiedenen Arenen. Belohnung: 80
+  Studio-Coins und 80 Pass-XP.
+- WÖCHENTLICHER TRIUMPH: Gewinne eine Kampagne. Belohnung: 150 Studio-Coins und
+  150 Pass-XP.
+
+Kostenloser erspielbarer Pass: sieben Belohnungsstufen. Enthaltene Coin-Belohnungen:
+40, 50, 60, 75, 90, 110, 150. Belohnungen müssen entsprechend dem Fortschritt
+freigespielt und abgeholt werden; es gibt keinen bezahlten Premium-Pass.
+
+Meisterschaft pro Kämpfer:
+- Welle 5 erreichen: Neon-Crew-Farbvariante.
+- 250 Gegner insgesamt mit dem Kämpfer besiegen: Jägerabzeichen.
+- Einen Durchlauf mit dem Kämpfer gewinnen: Gold-Champion-Farbvariante.
+- Abgeschlossene Meisterschaftsziele werden pro Kämpfer ausgewertet; vollständige
+  Meisterschaft besitzt einen eigenen Titel.
+
+========================================================================
+12. MENÜS, GRAFIK, MUSIK UND EINSTELLUNGEN
+========================================================================
+
+- Hauptmenü mit eigener Mayhem-Survivors-Wortmarke und RF-Worlds-Branding.
+- Kämpferauswahl, Weltkarte, Cases, Garage, Aufgaben, Statistiken, Run-Analyse und
+  Hilfebereiche.
+- Eigenständige Comic-Figuren, sichtbare Waffen und passende
+  Waffen-/Projektiloptik.
+- Trefferreaktionen, Schusseffekte, Explosionen, Blitz-, Gift-, Frost-, Seifen-
+  und Cartoon-Splatter-Effekte.
+- Animierte Menüs und Übergänge. Neigung kann den Menühintergrund leicht bewegen;
+  Schaltflächen bleiben fest.
+- Eigene Musik für Menü, Kampf und Boss sowie Effekte für Waffen, Treffer, XP,
+  Kauf, Cases, Warnungen, Sieg und Niederlage.
+- Lautstärken für Gesamt, Musik und Effekte getrennt einstellbar.
+- Grafikstufen NIEDRIG, MITTEL und HOCH.
+- Schadenszahlen, Cartoon-Splatter, ruhige Menüs und FPS-Anzeige schaltbar.
+- Neigung ein/aus, Neigung neu zentrieren und Vibration aus/dezent/stark.
+- Tutorial erneut starten, Handbuch öffnen, Profile verwalten und lokale Sicherung
+  laden.
+- Berücksichtigung unterschiedlicher Seitenverhältnisse und Safe-Area-Abstände.
+  Echte Geräte werden in der Beta weiter geprüft.
+
+========================================================================
+13. EIGENE SPIELSTÄNDE UND SICHERUNGEN
+========================================================================
+
+- Bis zu fünf lokale Spielerprofile pro Gerät.
+- Eigene Namen, Freischaltungen, Coins, Teile, Inventare, Aufgaben,
+  Passfortschritte, Einstellungen und Statistiken.
+- Gewählter Kämpfer, Welt, Modus und Schwierigkeitsgrad werden je Profil behalten.
+- Beim Neustart wird das zuletzt aktive Profil geladen.
+- Ein Profilwechsel ist während eines laufenden Runs gesperrt.
+- Automatisches lokales Speichern mit geprüften temporären Dateien und
+  Vorgängersicherung.
+- Beschädigte Spielstände werden abgefangen; eine gültige lokale Sicherung kann
+  automatisch wiederhergestellt werden.
+- Manuelle Wiederherstellung benötigt eine Bestätigung und betrifft nur das aktive
+  Profil.
+- Ein Schreibfehler wird gemeldet; ein Profilwechsel darf ungesicherten
+  Fortschritt nicht einfach verwerfen.
+- Keine Anmeldung und keine Übertragung oder Zusammenführung zwischen Handys.
+- Deinstallation oder Löschen der Android-App-Daten entfernt lokale Spielstände
+  und Sicherungen.
+
+Wichtig: Ein aktiver Run kann nach vollständigem Beenden der App noch nicht
+fortgesetzt werden. Dauerhafter Sammlung-/Statistikfortschritt wird gespeichert;
+eine normale Android-Unterbrechung pausiert den aktuellen Kampf.
+
+========================================================================
+14. STATISTIK, ERGEBNIS UND BETA-HILFE
+========================================================================
+
+- Sieg- und Niederlagenbildschirm mit Welle, Zeit, Kills, Level, Schaden, Coins
+  und verwendeten Waffen.
+- Anzeige erspielter dauerhafter Belohnungen und neuer Weltfreischaltungen.
+- Statistik je Kämpfer und Arena sowie Rekorde für Kampagne und Endlos.
+- Verlauf vergangener Runs, Run-Analyse, Build- und Fortschrittsvergleiche.
+- Kämpfer-Meisterschaft und sichtbare Fortschrittsziele.
+- Einstellungen -> Profil -> Beta-Hilfe mit Testanleitung und kopierbarem
+  Diagnosebericht.
+- Der Diagnosebericht enthält technische Angaben und den Spielzustand, aber keinen
+  Spielernamen und keinen kompletten Spielstand.
+- Berichte werden nicht automatisch hochgeladen. Der Spieler teilt sie bei Bedarf
+  selbst.
+
+========================================================================
+15. TECHNISCHER UND GOOGLE-PLAY-STAND
+========================================================================
+
+- Build: 0.28.1-beta2, VersionCode 35.
+- Paketname: com.rfworlds.mayhemsurvivors.
+- Engine: Godot 4.6.3 stable, GDScript, GL Compatibility.
+- Android ab API 24 (Android 7.0), ausschließlich ARM64, Querformat.
+- Signiertes Release-App-Bundle (.aab) erstellt; ca. 76 MB.
+- Release ist nicht als debuggable markiert; nur optionale Vibrationsberechtigung,
+  keine Internetberechtigung.
+- Android-Cloudbackup deaktiviert.
+- Bundletool, Signatur, Manifest, Archivintegrität und native 16-KiB-Ausrichtung
+  wurden geprüft.
+- 41 automatisierte Testsuiten mit insgesamt 10.014 bestandenen Prüfungen.
+- Zusätzliche Regressionstraces sowie native Godot-Touchtests: Profile 42
+  Prüfungen und Case-Navigation 74 Prüfungen bestanden.
+- Das frisch entpackte Quellprojekt wurde importiert und hat die 37
+  Erstspieler-Prüfungen erneut bestanden.
+- Das beweist nicht die Performance oder fehlerfreie Darstellung auf jedem echten
+  Android-Gerät.
+
+Letzter durch deine Screenshots belegter Play-Console-Stand am 24.11.2026:
+- Die App ist angelegt und das App-Bundle mit VersionCode 35 wurde hochgeladen und
+  verarbeitet.
+- Die Console zeigt den Entwurf eines internen Testreleases.
+- Im letzten Screenshot sind noch keine Tester hinterlegt; eine Freigabe und ein
+  funktionierender Store-Testlink sind bisher nicht bestätigt.
+- Du kannst deine eigene Google-Konto-Adresse als ersten internen Tester eintragen
+  und zunächst selbst testen.
+- Die Warnungen zu Offenlegungsdatei und nativen Debug-Symbolen betreffen
+  zusätzliche Absturzanalysen; sie blockieren den internen Test nicht.
+- Eine öffentliche Store-Veröffentlichung oder Google-Freigabe wird hier nicht als
+  bereits erfolgt dargestellt.
+
+========================================================================
+16. WAS NOCH OFFEN IST
+========================================================================
+
+- Internen Testerkreis speichern, Release freigeben und über den Testlink aus dem
+  Play Store installieren.
+- Erstinstallation auf einem echten Android-Gerät prüfen: Bruiser/Welt 1
+  verfügbar, sämtliche Guthaben und Fortschritte null.
+- Eigene Profile, Speichern, App-Neustart, Käufe, Cases, Weltfreischaltung und
+  einmalige Belohnungen auf echten Geräten testen.
+- Android-Unterbrechungen, Tastatur, Zurücktaste, Multitouch, Neigung und Safe
+  Areas mit echten Geräten prüfen.
+- Balance aller Kämpfer, Arenen, Bosse und Schwierigkeitsgrade im Betatest
+  bewerten.
+- Längere Runs auf Stabilität, Lesbarkeit, Klang, Akkuverbrauch, Wärme und
+  Bildrate testen. 60 FPS sind ein Ziel, keine für jedes Gerät belegte Zusage.
+- Für die öffentliche Veröffentlichung: vollständige Store-Angaben, echte
+  Kontaktdaten, Inhaltsbewertung, Zielgruppe, Datenschutzerklärung, Store-Grafiken
+  und passende Gerätescreenshots prüfen bzw. fertigstellen.
+- Zusätzliche Testvorgaben für den späteren Produktionszugriff hängen vom
+  Entwicklerkonto ab; maßgeblich ist die Anzeige deiner Play Console.
+- Aktive Runs nach vollständigem App-Ende fortsetzen ist noch nicht enthalten.
+- Online-Modus, Multiplayer, Cloud-Sync, Werbung, Echtgeldkäufe und ein
+  kostenpflichtiger Pass sind nicht enthalten.
+
+========================================================================
+17. EMPFOHLENER ERSTER TEST
+========================================================================
+
+1. Mit dem freigegebenen internen Testlink auf deinem eigenen Google-Konto beitreten
+und über den Play Store installieren.
+2. Prüfen, dass du bei null startest: nur Bruiser, Hammer und Schrottplatz.
+3. Kicksy-Tutorial spielen und anschließend einen regulären Run beginnen.
+4. Bewegung, Schockwelle, Trefferwarnungen, XP, Upgrades und Shop ausprobieren.
+5. Nach einem Run prüfen, ob Studio-Coins und Statistik korrekt gespeichert sind.
+6. App vollständig schließen und wieder öffnen: eigener dauerhafter Fortschritt muss
+erhalten bleiben.
+7. Erste Welt abschließen, Weltbelohnung einmal abholen und die erspielte Crew-Case
+öffnen.
+8. Prüfen, ob der neue Kämpfer mit passender Startwaffe dauerhaft freigeschaltet
+ist.
+9. Zweites lokales Profil anlegen: dieses muss wieder bei null starten.
+10. Bei Problemen in der Beta-Hilfe den Bericht kopieren und genaue Schritte, Gerät
+und Android-Version ergänzen.
+
+========================================================================
+18. DATEIEN UND LINKS
+========================================================================
+
+Google-Play-App-Bundle (Upload-Datei, nicht direkt installierbar):
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/store-beta-v0.28.1/Downloads/MayhemSurvivors-v0.28.1-beta2-store.aab
+
+Komplettes Godot-Quellprojekt als ZIP:
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/store-beta-v0.28.1/Downloads/MayhemSurvivors-v0.28.1-beta2-source.zip
+
+Anleitung für Play Console und Testfreigabe:
+https://github.com/Whiskymitschuss/Match3/blob/feature/store-beta-v0.28.1/MayhemSurvivors/PLAY_STORE_HANDOFF.md
+
+Testanleitung:
+https://github.com/Whiskymitschuss/Match3/blob/feature/store-beta-v0.28.1/MayhemSurvivors/BETA_TESTING.md
+
+Repository:
+https://github.com/Whiskymitschuss/Match3
+
+Private Signierschlüssel und Passwörter sind bewusst nicht Bestandteil dieser
+teilbaren Übersicht.
+
+RF WORLDS | MAYHEM SURVIVORS | BETA 2

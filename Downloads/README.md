@@ -10,3 +10,5 @@ Neue Spieler: Bruiser/Hammer/Welt 1, Coins/Teile/Tickets/Fortschritt null.
 Release-AAB für Google Play; nicht direkt installierbar. Noch kein Store-Testlink.
 Privater Upload-Schlüssel ist nicht veröffentlicht. Frühere Debug-APKs sind
 Entwicklungsstände und keine Play-Console-Uploads.
+
+[Aktueller Spielumfang und Beta-Status als TXT](https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/store-beta-v0.28.1/Downloads/MayhemSurvivors-v0.28.1-Beta2-Spielumfang.txt)

@@ -1,3 +1,20 @@
+# Ergänzung 24.11.2026 — Inhaltsübersicht und Console-Fortschritt
+
+Nutzer-Screenshots bestätigen: App in Google Play Console angelegt, Release-AAB
+mit VersionCode 35 hochgeladen und verarbeitet; Entwurf des internen Testreleases.
+Letzter gezeigter Stand: Tester noch nicht hinterlegt, Freigabe und Testlink nicht
+bestätigt. Nutzer kann sein eigenes Google-Konto als ersten internen Tester nutzen.
+Mapping-/Native-Symbol-Hinweise sind für den internen Test nicht blockierend.
+
+Angeforderte teilbare TXT-Übersicht erstellt:
+Downloads/MayhemSurvivors-v0.28.1-Beta2-Spielumfang.txt.
+Inhalte aus aktuellem Katalog abgeglichen: 15 Kämpfer, 10 Welten, 13 Waffen,
+26 Entwicklungen, 39 Sammlungseinträge, Profile, Quests, Pass, UI/Audio und Grenzen.
+Keine Änderung am Spiel/Bundle und keine neue Store-Version. UTF-8 gelesen und
+Inhalte geprüft; kein neuer Gameplay-Testlauf für diese Dokumentationsänderung.
+
+---
+
 # 0.28.1 Beta 2 — neuer Store-Spieler startet bei null
 
 Stand 2026-11-23. Branch feature/store-beta-v0.28.1. Nutzerkorrektur: neue App
