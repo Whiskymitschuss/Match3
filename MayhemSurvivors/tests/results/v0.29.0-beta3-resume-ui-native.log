@@ -1,0 +1,49 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+RESUME UI FRAME pause_1600
+PASS Actual usable control SICHERN & HAUPTMENÜ
+PASS Pause saves and returns to a real Continue menu
+RESUME UI FRAME home_1600
+PASS Actual usable control FORTSETZEN
+PASS Native Continue restores exact run into pause
+PASS Actual usable control FORTSETZEN
+PASS Second explicit Continue starts combat
+PASS Actual usable control FORTSETZEN
+PASS Native resumed shop keeps offers and rerolls
+RESUME UI FRAME shop_1600
+PASS Actual usable control SICHERN & HAUPTMENÜ
+PASS Frozen shop can save and leave without surrendering
+PASS Level choices survive native restore
+RESUME UI FRAME level_1600
+RESUME UI FRAME settings_1600
+PASS Actual usable control EXPORT / IMPORT
+PASS Actual settings open both portable-backup actions
+RESUME UI FRAME backup_1600
+PASS Real portable backup prepared for native confirmation
+RESUME UI FRAME preview_1600
+PASS Actual usable control ABBRECHEN
+PASS Cancel does not import or alter profile list
+PASS Actual usable control ALS NEUES PROFIL IMPORTIEREN
+PASS Actual native import creates and activates an independent resumable profile
+PASS Actual usable control ZURÜCK
+PASS Transfer returns to profile settings safely
+PASS Actual usable control ZURÜCK
+PASS Imported player returns to real Continue menu
+RESUME UI FRAME settings_2400
+PASS Actual usable control EXPORT / IMPORT
+PASS Touch-safe backup layout (2400, 1080)
+RESUME UI FRAME preview_2400
+PASS Actual usable control ABBRECHEN
+PASS Actual usable control ZURÜCK
+PASS Actual usable control ZURÜCK
+RESUME UI FRAME settings_1440
+PASS Actual usable control EXPORT / IMPORT
+PASS Touch-safe backup layout (1440, 1080)
+RESUME UI FRAME preview_1440
+PASS Actual usable control ABBRECHEN
+PASS Actual usable control ZURÜCK
+PASS Actual usable control ZURÜCK
+RESUME BACKUP UI RESULT 32 passed, 0 failed; native_touch=true

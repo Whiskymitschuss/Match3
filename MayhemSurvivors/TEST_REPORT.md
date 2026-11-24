@@ -1,3 +1,63 @@
+# Testbericht 0.29.0 Beta 3 — 2026-11-24
+
+**44 Suiten / 10127 bestandene Prüfungen / 0 Fehler**. Zusätzlich beide historischen
+Kampf-Regressionstraces mit 33 und 87 Kontrollpunkten bestanden. Godot 4.6.3 stable.
+Jede Suite verwendet einen eigenen temporären App-Speicher, keine persönlichen Daten.
+Nach dem letzten Callback-Lifecycle-Schutz Backup-/UI-Suiten nochmals 20/0 und 32/0.
+
+Neue Run-Suite: 61/0. Echte Game-Neuinstanzen, Kampfpause, Welt-/Bosszustände,
+alle 15 Fähigkeiten und alle zehn Arena-Controller, Shop/Rerolls, feste Levelwahl,
+Profiltrennung und kompatible Daten. Ein gespeicherter Run erzeugt nach dem Laden
+über weitere 80 Kampf-Frames exakt denselben Zustand und RNG. Geteilte Referenzen
+in Trefferlisten, Gegnern und Gefahren bleiben erhalten. Prüft Beschädigung,
+unbekannten Regelsatz, falschen Besitzer, Schreibfehler und einmalige Abschlussbelohnung.
+
+Belastungsfixture: 100 Gegner und 320 Pool-Projektile, 152327 Bytes Payload.
+Im finalen Host-Test rund 23,5 ms für vollständiges Graph-Encoding; periodisch
+auf einem Hintergrundthread. Hauptthread-Kopie rund 1,8 ms. Abschluss wartet auf
+den Worker, schreibt Ergebnisse danach und verhindert alte Run-Checkpoints.
+Hintergrund-Schreibfehler lässt den letzten gültigen Dateistand und den Kampf erhalten.
+Diese Hostzeiten sind kein Nachweis für Android-FPS oder schwache Geräte.
+
+Backup-Suite: 20/0. UTF-8, Name/Coins/Einstellungen, tatsächliche Dateischreib- und
+Lesewege, Fehler, Format/Version/Prüfsumme/Größenlimit, Run-Neuzuordnung, tatsächliches
+Fortsetzen im importierten Profil, freie Slots, eindeutige Namen, Vorschau/Abbruch,
+Bestätigung und Schutz bestehender Spieler.
+
+Neue UI-Suite: 32/0 Headless und zusätzlich 32/0 unter nativer GL/Mesa-Darstellung
+mit InputEventScreenTouch. Tatsächliche Buttonnavigation über Pause, Menü,
+Fortsetzen, Shop, Levelwahl, Settings, Importvorschau und Abbruch. Elf Ansichten
+in 1600×900, 2400×1080 und 1440×1080 erzeugt; Hauptmenü, Profilsettings, Exportseite
+und 4:3-Importvorschau visuell kontrolliert. Linux-Aufnahmen, keine Android-Screenshots.
+
+Entwicklungsbefunde behoben: doppelte _exit_tree-Definition, unzutreffender
+Fresh-App-Zustand in einer bestehenden Testfixture, tiefe Kopie gemeinsamer
+Gegnerreferenzen, zu teures periodisches Speichern auf dem Hauptthread und
+mögliche veraltete Schreibvorgänge vor Run-Abschluss. Abschließende Tests grün.
+
+Release-AAB: Bundletool, JAR-Signatur, unverändertes Uploadzertifikat, Paket/Code36,
+ARM64, SDK24–36, nur VIBRATE, kein Android-Cloudbackup, ZIP-CRC, 16-KiB-ELF-Segmente
+und PAGE_ALIGNMENT_16K geprüft. 24 Daten-JSONs bytegleich; neue Controller kompiliert
+enthalten. Keine Tests, privaten Schlüssel oder Spielstände im Bundle.
+
+Offen: physische Android-Installation, nativer SAF-Dateianbieter und content://-
+Rücklesen, Abbruch/Zurück aus dem Systemdialog, tatsächliches Store-Update,
+Multitouch/Safe Areas/Sensorik, Audio, Langzeitverhalten und Geräteperformance.
+Code35-Verarbeitung ist durch Nutzerscreenshot belegt; Code36 wurde hier noch
+nicht in die Play Console hochgeladen oder freigegeben.
+
+Rohprotokolle: tests/results/v0.29.0-beta3-*.log. Run-/Backup-Anleitung:
+RUN_RESUME_BACKUP.md; Geräteprüfplan: BETA_TESTING.md.
+
+Quell-ZIP ohne Import-/Buildcache frisch entpackt und importiert: keine Parser- oder
+Ressourcenfehler. Erstspieler37/0, Run61/0, Backup20/0 und UI32/0 nochmals bestanden.
+812 Laufzeit-/Konfigurationsdateien entsprechen bytegleich dem Snapshot des
+gebauten AAB; 130 Test-/Werkzeugskripte ebenfalls bytegleich. Quellpaket enthält
+Projekt, Assets, Daten, Szenen, Skripte, Tests, Berichte und neun neue UI-Aufnahmen;
+keine Toolchains, Caches, privaten Schlüssel oder Spielerdateien.
+
+---
+
 # Testbericht 0.28.1 Beta 2 — 2026-11-23
 
 **41 Suiten / 10014 bestandene Prüfungen / 0 Fehler** im vollständigen Projektlauf.

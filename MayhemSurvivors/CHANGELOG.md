@@ -1,3 +1,20 @@
+# 0.29.0 Beta 3 — Runs fortsetzen und Profil-Dateien (2026-11-24)
+
+- Persistierte Kampagnen-/Endlos-Runs je lokalem Spieler, Wiedereinstieg pausiert.
+- Gegner, Projektile/Hitlisten, Bossphasen, Arenaereignisse, Fähigkeiten, RNG,
+  Werte, Shopangebote und feste Levelauswahl werden wiederhergestellt.
+- Periodisches Autosave im Hintergrund; Pause, Lifecycle, Menüübergänge und
+  Abschluss warten korrekt auf laufende Schreibvorgänge. Keine veralteten
+  Checkpoints nach Belohnungsauszahlung und kein doppelter Ergebnis-Commit.
+- Sichern & Hauptmenü, Fortsetzen, bestätigtes Ersetzen und Abbrechen eines Runs.
+- Portable Profil-Datei mit Version/Prüfsumme, native Dateiauswahl, Importvorschau
+  und bestätigter Anlage eines zusätzlichen Profils; kein Überschreiben anderer.
+- Defensive Größen-/Typ-/Kompatibilitätsprüfungen, Schreibkontrolle per Rücklesen,
+  sichtbare Fehler und isolierter Test-App-Speicher je Suite.
+- VersionCode 36, gleicher Store-Uploadschlüssel, aktualisierte Hilfe/Datenschutzhinweise.
+
+---
+
 # 0.28.1 Beta 2 — neuer Store-Spielerstart
 
 - Neue Spieler und lokale Zusatzprofile: nur Bruiser/Hammer/Welt 1, sämtliche

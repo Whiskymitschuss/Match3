@@ -142,6 +142,7 @@ func run():
 		check(g.boss_hud.position.y>=222+g.safe_logical.position.y,'Boss HUD clears player card '+str(size))
 		g.pause_game();check(g.ui_root.get_children().all(func(n):return not n is Label or n.mouse_filter==Control.MOUSE_FILTER_IGNORE),'Decorative labels never intercept touch '+str(size));g.resume()
 	root.size=Vector2i(1280,720);await process_frame;g.update_safe_area();g.test_mode=false;g.saved.settings.master=0;g.saved.settings.reduced_motion=true
+	g.run_session.live=false # This fixture represents a fresh app, without the previous test's live run.
 	g.saved=g.default_save();g.saved.settings.master=0;g.saved.settings.reduced_motion=true;g.main_menu();await process_frame
 	await tap(Vector2(500,710));check(button('MIT KICKSY ÜBEN')!=null,'Actual Play touch opens first-player welcome safely')
 	await tap(Vector2(1300,910));check(g.state==g.State.CHARACTER_SELECT and g.saved.settings.onboarding_seen,'Actual screen touch can skip welcome through production GUI')

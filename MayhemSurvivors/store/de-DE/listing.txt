@@ -32,6 +32,10 @@ Keine Anmeldung, keine Werbung, keine Echtgeldkäufe. Spiele vollständig offlin
 Bis zu fünf lokale Spielerprofile halten ihre Sammlungen, Einstellungen und
 Statistiken getrennt. Kicksy erklärt dir im Tutorial die wichtigsten Systeme.
 
-Hinweis zur Beta: Inhalte und Balance werden weiter verbessert. Dauerhafter
-Fortschritt wird lokal gespeichert; ein aktiver Run wird nach vollständigem
-Beenden der App nicht fortgesetzt. Eine Deinstallation löscht lokale App-Daten.
+PAUSE MACHEN UND WEITERSPIELEN
+Setze gesicherte Runs nach dem App-Ende fort. Sichere ein Profil als Datei und
+importiere es bei Bedarf auf einem anderen Handy. Keine automatische Cloud-Anbindung.
+
+Hinweis zur Beta: Inhalte und Balance werden weiter verbessert. Fortschritt und
+Run-Sicherungen liegen lokal. Eine Deinstallation löscht interne App-Daten;
+eine zuvor selbst exportierte Datei kannst du getrennt aufbewahren.

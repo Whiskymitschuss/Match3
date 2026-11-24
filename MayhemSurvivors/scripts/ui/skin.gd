@@ -31,7 +31,11 @@ static func menu(game:Node2D):
 	profile.name='ProfileAccess';profile.add_theme_font_size_override('font_size',28);profile.icon=preload('res://assets/ui/icons/profile.svg');profile.expand_icon=true;profile.add_theme_constant_override('icon_max_width',44)
 	image(game,LOGO,Rect2(75,155,950,425))
 	game.label_at('DEIN HELD. DEIN BUILD. DEIN MAYHEM.',Vector2(125,590),29,Color('#F1DEF9'))
-	game.button('SPIELEN',Vector2(115,655),Vector2(830,115),func():game.queue_ui_action(game.play),Color('#9C247D'))
+	if game.run_session.pending():
+		game.button('FORTSETZEN',Vector2(115,655),Vector2(540,115),func():game.queue_ui_action(game.run_session.resume_saved),Color('#147F81'))
+		game.button('NEUER RUN',Vector2(680,655),Vector2(265,115),func():game.queue_ui_action(game.play))
+	else:
+		game.button('SPIELEN',Vector2(115,655),Vector2(830,115),func():game.queue_ui_action(game.play),Color('#9C247D'))
 	game.button('CHARAKTERE',Vector2(115,800),Vector2(400,95),func():game.queue_ui_action(game.character_select))
 	game.button('AUFTRÄGE',Vector2(545,800),Vector2(400,95),func():game.queue_ui_action(func():game.reward_hub.show()))
 	game.button('STATISTIK',Vector2(115,925),Vector2(400,90),func():game.queue_ui_action(game.statistics))
@@ -43,7 +47,7 @@ static func menu(game:Node2D):
 	game.portrait(Vector2(1140,295),selected,1.52,'wardrobe')
 	game.label_at(c.name,Vector2(1110,845),38,Color(c.color))
 	game.button('SAMMLUNG',Vector2(1080,940),Vector2(710,90),func():game.queue_ui_action(func():game.garage.show(selected)))
-	game.label_at('v0.28.1-beta2 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
+	game.label_at('v0.29.0-beta3 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='DEIN BUILD':

@@ -1,6 +1,6 @@
 # Datenschutzerklärung — Mayhem Survivors
 
-Stand: 23. November 2026. Entwickler: RF Worlds.
+Stand: 24. November 2026. Entwickler: RF Worlds.
 
 Mayhem Survivors ist ein Android-Einzelspielerspiel, das vollständig offline
 funktioniert. Es gibt keine Anmeldung, Werbung, In-App-Käufe, Analyse-SDKs oder
@@ -10,7 +10,7 @@ Spiel-, Profil- oder Gerätedaten an RF Worlds oder andere Empfänger.
 ## Lokale Daten
 
 Die App speichert vom Spieler gewählte lokale Profilnamen, Einstellungen,
-Freischaltungen, Spielwährungen, Ausrüstung, Aufgaben und Spielstatistiken im
+Freischaltungen, Spielwährungen, Ausrüstung, Aufgaben, Spielstatistiken und aktive Run-Checkpoints im
 privaten App-Speicher des jeweiligen Android-Geräts. Bis zu fünf Profile sind
 möglich. Namen dienen nur zur Unterscheidung auf diesem Gerät; echte Namen sind
 nicht erforderlich. Sicherungsdateien und gegebenenfalls beschädigte Dateien
@@ -21,6 +21,20 @@ Entfernen eines zusätzlichen Profils wird dessen Datei intern archiviert.
 Alle App-Daten einschließlich lokaler Sicherungen und Archive können über
 Androids Funktion „Speicherinhalt löschen“ oder durch Deinstallation gelöscht
 werden. Damit geht auch der eigene Spielfortschritt verloren.
+
+## Manuelle Profilübertragung
+
+Auf ausdrücklichen Wunsch exportiert die App das aktive Profil inklusive des
+gewählten Namens, seiner Fortschritte, Einstellungen und gegebenenfalls des
+gesicherten Runs in eine JSON-Datei. Der Speicherort wird im Android-Dateidialog
+gewählt. Die Datei kann auf einem anderen Gerät als zusätzliches Profil importiert
+werden. RF Worlds erhält diese Datei nicht automatisch. Nutzer bestimmen selbst,
+ob und an wen sie sie außerhalb der App weitergeben. Ein gewählter Dateianbieter
+kann eigene Speicher- oder Synchronisationsdienste nach eigenen Bedingungen nutzen.
+
+Exportierte Dateien liegen außerhalb der internen Profilverwaltung. Sie müssen
+am gewählten Speicherort separat gelöscht werden und können nach Deinstallation
+weiter vorhanden sein. Keine zusätzlichen allgemeinen Speicherberechtigungen.
 
 ## Freiwilliger Fehlerbericht
 

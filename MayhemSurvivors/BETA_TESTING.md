@@ -1,84 +1,57 @@
-# Mayhem Survivors — Google Play Beta 2
+# Mayhem Survivors — Google Play Beta 3
 
-Diese Version bereitet den Test einer neuen App über Google Play vor. Das Release-
-AAB wird in der vorhandenen Play Console hochgeladen. Die App ist dort noch nicht
-angelegt; es gibt daher noch keinen Store-Testlink. Siehe PLAY_STORE_HANDOFF.md.
-Godot 4.6.3 / ARM64 / Android ab API 24 / Querformat / vollständig offline.
+Version 0.29.0-beta3 / VersionCode 36 / Godot 4.6.3 / Android ARM64 ab API 24.
+Das signierte Release-AAB gehört als neue Version in den internen Play-Test.
+Der App-Eintrag existiert laut Nutzer-Screenshots bereits, Code 35 wurde verarbeitet.
+Freigabe/Testlink und echte Geräteabnahme sind noch nicht bestätigt.
 
-## Neue Installation und eigene Spielstände
+## Erstspieler und Profile
 
-Jeder neue Spieler startet mit Bruiser und Hammer Rang 1 auf dem Schrottplatz.
-Coins, Teile, Tickets, Cases, Ausrüstung, Statistik, Weltabschlüsse und Passfortschritt
-beginnen bei null. Es werden keine Entwickler-Spielstände mitgeliefert. Das Tutorial
-bietet Hilfe und vergibt keine dauerhaften Geschenke. Weitere Inhalte werden erspielt.
+Frische Installation ohne App-Daten: Bruiser, Hammer Rang 1, Schrottplatz und null
+Guthaben/Fortschritte. Keine mitgelieferten Entwicklerdaten oder Gratis-Cases.
+Weitere Inhalte werden erspielt. Bis zu fünf unabhängige lokale Spielerprofile.
+Reguläres Store-Update behält vorhandene eigene Daten; nicht vorher deinstallieren.
+Ein Wechsel von einer Debug-APK zur Store-Signatur ist kein garantiertes Update.
 
-Jedes Handy hat eigene lokale Daten. Innerhalb der App gibt es fünf getrennte
-Profile mit eigenen Freischaltungen, Währungen, Ausrüstung, Statistiken, Aufgaben,
-Passfortschritt, Einstellungen sowie zuletzt gewähltem Kämpfer und Arena. Jedes
-zusätzliche Profil startet ebenfalls bei null. Nach einem Neustart lädt die App das
-zuletzt aktive Profil. Ein laufender Run muss vor einem Profilwechsel beendet werden.
+Jedes Profil hat seinen eigenen gesicherten Run. Vor dem Wechsel SICHERN &
+HAUPTMENÜ wählen. Keine Anmeldung oder automatische Synchronisation. Exportdateien
+lassen sich selbst übertragen; ein Import benötigt einen freien Profilplatz.
 
-Reguläre Updates behalten bestehende eigene Spielstände. Die bisherige Debug-APK
-hat einen anderen Schlüssel als eine von Google signierte Store-App. Für einen
-Erstspieler-Test eine separate Android-Testumgebung ohne vorhandene App-Daten nutzen.
-Eine Deinstallation oder Androids Funktion „Speicherinhalt löschen“ entfernt lokale
-Daten. Die App überträgt keine Spielstände zwischen Handys.
+## Neue Abnahmewege
 
-Das aktive Profil und das Startprofil sind gegen Entfernen geschützt. Andere
-Profile können bestätigt aus der Auswahl entfernt werden; Dateien bleiben intern
-archiviert und werden nicht mit einem anderen Spieler vermischt.
+1. Code 35 über Google Play auf Code 36 aktualisieren, eigene Figuren/Coins und
+   Welten kontrollieren. Ein weiteres frisches Profil muss bei null beginnen.
+2. Kampfrun starten, Pause, SICHERN & HAUPTMENÜ; App vollständig beenden und neu
+   öffnen. FORTSETZEN muss in die Pause führen. Erst dort den Kampf starten.
+3. Android Home/Telefonunterbrechung und harten Prozessabbruch ausprobieren.
+   Letzter erfolgreicher Checkpoint muss erhalten sein, keine Offline-Kampfschäden.
+4. Im Shop kaufen und neu würfeln, neu starten: identische verbleibende Angebote,
+   Guthaben und Rerollkosten. Offene Levelwahl ebenfalls neu starten und vergleichen.
+5. Während Boss-Ankündigung, Fähigkeit und Arenenereignis sichern/laden. Warnungen,
+   Treffer, Timer und Gegner müssen plausibel fortsetzen. Sieg/Niederlage danach
+   genau einmal belohnen, Neustart darf den abgeschlossenen Run nicht zurückbringen.
+6. Profil wechseln und dessen anderen Run fortsetzen. Guthaben bleiben getrennt.
+7. Export über Android-Dateidialog speichern, abbrechen, erneut exportieren. Auf
+   einem zweiten Gerät importieren, Vorschau bestätigen und Run fortsetzen.
+8. Import abbrechen, ungültige Datei wählen, fünf Plätze belegen: kein Überschreiben
+   vorhandener Spieler. Android Zurück/Home während des Dateidialogs kontrollieren.
+9. Wenig freien Speicher testen: sichtbarer Speicherfehler; weiter vorhandene gültige
+   Sicherung und keine Behauptung eines erfolgreichen Transfers.
+10. Multitouch, Safe Areas, Android-Tastatur, drei Grafikstufen, Musik/Audio,
+    unterschiedliche Displayformate und längere Endlos-Runs auf echten Geräten prüfen.
 
-## Sicherungen
-
-Vollständige Spielstände und die Profilübersicht werden über temporäre Dateien
-geprüft und atomar ersetzt. Der vorherige gültige Stand bleibt als lokale
-Sicherung erhalten. Beschädigte Hauptdateien werden archiviert; eine gültige
-Sicherung wird automatisch geladen. Falls nötig, wird die Profilübersicht aus
-vorhandenen gültigen Spielerdateien wiederaufgebaut.
-
-Unter EINSTELLUNGEN → PROFIL kannst du speichern oder nach Bestätigung den letzten
-Sicherungsstand des aktiven Spielers laden. Das kann dessen neuere Fortschritte
-zurücksetzen. Andere Spieler bleiben getrennt. Bei einem Schreibfehler bleiben
-Käufe zurückgerollt und ein Profilwechsel wird blockiert, bis Speichern gelingt.
-
-**Dauerhafter Fortschritt wird gespeichert. Ein aktiver Run lässt sich nach
-vollständigem Beenden der App weiterhin nicht fortsetzen.** Bei einer normalen
-Android-Unterbrechung pausiert das Spiel; die Simulation läuft dabei nicht weiter.
-
-## Die wichtigsten Testwege
-
-1. Über den Play-Testlink frisch starten: nur Bruiser/Hammer und Schrottplatz; Coins, Teile, Tickets und Fortschritt null.
-2. Zwei eigene Profile anlegen. Mit beiden getrennt spielen, Belohnungen verdienen und erst dann Cases öffnen.
-3. Aufgabe beziehungsweise Weltbelohnung abholen. Danach zum anderen Profil wechseln
-   und sicherstellen, dass es dessen Guthaben und Freischaltungen nicht verändert.
-4. Musik, Grafik und Kämpfer je Profil unterschiedlich einstellen. App komplett
-   schließen und neu öffnen. Aktives Profil, Auswahl und Fortschritt kontrollieren.
-5. Namen mit Umlauten eingeben. Android-Tastatur und Zurücknavigation ausprobieren.
-6. Mit zwei Fingern spielen; Android unterbrechen, zurückkehren und sicher fortsetzen.
-7. Im Shop oder bei einer Auswahl Zurück drücken. Abbruchdialog abbrechen und prüfen,
-   dass dieselben Angebote und Auswahlmöglichkeiten erhalten bleiben.
-8. Alle zehn Wellen, Bosswechsel, Sieg/Niederlage, Cases, Inventar und Endlos testen.
-9. Drei Runs mit Bruiser, Steelfist und einer neuen Figur bei gleichen Rahmenbedingungen
-   in der Run-Analyse vergleichen. Schwierigkeit und unverständliche Treffer melden.
-10. Auf kleinen, breiten und ausgeschnittenen Displays testen; lange Runs auf Klang,
-    Touchgefühl, FPS, Akku und Temperatur prüfen.
+Interne atomare Speicherung und vorherige Sicherung bleiben bestehen. EINSTELLUNGEN
+→ PROFIL → SICHERUNG LADEN setzt nur den aktiven Spieler auf den letzten internen
+Sicherungsstand zurück; EXPORT / IMPORT ist die separate portable Dateiübertragung.
+Details und harte Abbruchgrenzen: RUN_RESUME_BACKUP.md.
 
 ## Fehler melden
 
-EINSTELLUNGEN → PROFIL → BETA-HILFE zeigt Anleitung und einen kopierbaren Bericht.
-Er enthält Version, Gerät/Ansicht, lokale Profil-ID, Speicherstatus und Spielzustand,
-aber keinen Spielernamen und keinen vollständigen Spielstand. Es wird nichts
-automatisch hochgeladen. Du entscheidest selbst, wo du den Bericht teilst.
+EINSTELLUNGEN → PROFIL → BETA-HILFE enthält eine Anleitung und einen kopierbaren
+lokalen Fehlerbericht ohne Spielernamen oder vollständigen Spielstand. Es wird
+nichts automatisch hochgeladen. Schritte, Erwartung, tatsächliches Verhalten,
+Handymodell und Screenshot ergänzen. Exportierte Profildateien können den selbst
+gewählten Profilnamen enthalten; nicht unbedacht öffentlich teilen.
 
-Ergänze: Schritte zum Fehler, erwartetes Verhalten, tatsächliches Verhalten,
-Häufigkeit und möglichst ein Bild. Bei Leistungsproblemen Grafikstufe, Handymodell
-und ungefähre Spieldauer nennen.
-
-## Vor öffentlicher Veröffentlichung
-
-Der geschlossene Test muss die physische Android-Abnahme, menschliche Balance,
-Mehrfingerbedienung, Tastatur/Safe Area, Sensorik, Audio und Langzeitstabilität
-bestätigen. Automatisierte Tests und Linux-GL-Bilder ersetzen das nicht.
-Eine spätere Store-Veröffentlichung benötigt einen Release-Build mit dauerhaft
-verwaltetem Release-Schlüssel und ein Android App Bundle sowie Store-Material.
-Dieses Paket bleibt eine signierte Debug-APK für den geschlossenen Betatest.
+Automatisierte Tests und Linux-GL-Ansichten ersetzen keine physische Android-Abnahme.
+Kein physisches Gerät oder Emulator wurde für dieses Update getestet.

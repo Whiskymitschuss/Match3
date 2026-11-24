@@ -29,14 +29,16 @@ func render():
 	else:controls()
 func profile():
 	game.UISkin.panel(game,Rect2(100,365,1720,550),game.TEAL)
-	text('DEIN PROFIL: '+game.profiles.active_name(),Rect2(145,405,1600,70),44,game.GOLD)
-	text('Eigene Freischaltungen, Coins, Ausrüstung und Statistiken. Alles liegt auf diesem Gerät. Laufende Runs enden nach vollständigem Schließen der App.',Rect2(145,500,1570,120),32)
+	text('DEIN PROFIL: '+game.profiles.active_name(),Rect2(145,395,1600,70),44,game.GOLD)
+	text('Fortschritt und laufender Run bleiben auf diesem Gerät. Mit einer Exportdatei kannst du dein Profil zusätzlich sichern oder auf ein anderes Handy übertragen.',Rect2(145,485,1570,95),29)
 	var editable=game.state==game.State.MAIN_MENU
-	button('SPIELERPROFILE',Rect2(145,660,740,90),func():dispose();game.profile_view.show()).disabled=not editable
+	button('SPIELERPROFILE',Rect2(145,590,740,85),func():dispose();game.profile_view.show()).disabled=not editable
 	var backup=game.SaveManager.Store.parse(game.SaveManager.Store.sidecar(game.active_save_path(),'backup'),game.SaveManager.valid_file)
-	button('SICHERUNG LADEN',Rect2(1000,660,740,90),func():game.profile_view.confirm_restore(render)).disabled=not editable or backup.is_empty()
-	button('JETZT SPEICHERN',Rect2(145,790,740,90),func():game.save_game();render())
-	button('BETA-HILFE',Rect2(1000,790,740,90),func():game.beta_view.show(render))
+	button('SICHERUNG LADEN',Rect2(1000,590,740,85),func():game.profile_view.confirm_restore(render)).disabled=not editable or backup.is_empty()
+	button('EXPORT / IMPORT',Rect2(145,700,740,85),func():dispose();game.profile_transfer.show()).disabled=not editable
+	button('BETA-HILFE',Rect2(1000,700,740,85),func():game.beta_view.show(render))
+	button('JETZT SPEICHERN',Rect2(145,810,740,85),func():game.save_game();render())
+	text(game.save_error,Rect2(1000,820,740,65),23,game.GOLD)
 func audio():
 	game.UISkin.panel(game,Rect2(100,365,1720,450),game.TEAL)
 	for i in range(3):

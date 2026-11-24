@@ -1,6 +1,7 @@
 extends RefCounted
 const Store=preload('res://scripts/autoload/local_store.gd')
 static var last_load:Dictionary={}
+const Checkpoint=preload('res://scripts/progression/run_checkpoint.gd')
 const Worlds=preload('res://scripts/progression/world_progress.gd')
 const Rewards=preload('res://scripts/progression/daily_rewards.gd')
 const Collection=preload('res://scripts/progression/collection.gd')
@@ -11,18 +12,19 @@ const Records = preload('res://scripts/progression/run_records.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 # Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'selection':{'character':'bruiser','arena':'scrapyard','difficulty':'normal','mode':'campaign'},'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
+	return {'active_run':{},'selection':{'character':'bruiser','arena':'scrapyard','difficulty':'normal','mode':'campaign'},'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):
 	var f=FileAccess.open(path,FileAccess.WRITE)
 	if f:f.store_string(raw)
 static func load_local(path: String = 'user://save.json') -> Dictionary:
-	var result=defaults()
 	var loaded=Store.read(path,valid_file);last_load={'path':path,'status':loaded.status,'repair':loaded.repair}
-	if loaded.data.is_empty():return result
-	var data=loaded.data;var raw=loaded.raw
-	if data.version<3:
+	return sanitize(loaded.data,loaded.raw,path) if not loaded.data.is_empty() else defaults()
+static func sanitize(data:Dictionary,raw:String='',path:String='') -> Dictionary:
+	var result=defaults()
+	if not valid_file(data):return result
+	if data.version<3 and path!='':
 		var suffix='v%d.backup' % int(data.version)
 		if not FileAccess.file_exists(sidecar(path,suffix)):backup(raw,sidecar(path,suffix))
 	for key in ['highest_wave','games','wins','kills','time']:
@@ -46,7 +48,7 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 	result.endless_records=Endless.sanitize(data.get('endless_records'))
 	result.meta=Rewards.clean(data.get('meta'))
 	result.collection=Collection.clean(data.get('collection'))
-	if not data.has('collection') and not FileAccess.file_exists(sidecar(path,'pre_garage')):backup(raw,sidecar(path,'pre_garage'))
+	if path!='' and not data.has('collection') and not FileAccess.file_exists(sidecar(path,'pre_garage')):backup(raw,sidecar(path,'pre_garage'))
 	for id in result.meta.owned:
 		if Collection.catalog().items.has(id):result.collection.levels[id]=1
 	result.records=Records.sanitize_records(data.get('records'))
@@ -62,7 +64,7 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 				if id in (Arenas.IDS if key=='unlocked_arenas' else ['class','gold','mayhem','reactor']) and not result[key].has(id):result[key].append(id)
 	result.difficulty_records=DifficultyRecords.load_records(result,data.get('difficulty_records'))
 	result.world_progress=Worlds.migrate(result,data.get('world_progress') if data.version==3 else null)
-	if not data.has('world_progress') and not FileAccess.file_exists(sidecar(path,'pre_world_map')):backup(raw,sidecar(path,'pre_world_map'))
+	if path!='' and not data.has('world_progress') and not FileAccess.file_exists(sidecar(path,'pre_world_map')):backup(raw,sidecar(path,'pre_world_map'))
 	Arenas.sync(result)
 	if result.unlocked_styles.has(data.settings.get('aura')):result.settings.aura=data.settings.aura
 	preload('res://scripts/progression/hero_unlocks.gd').sync(result)
@@ -73,6 +75,7 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 		if Worlds.available(result,str(selection.get('arena',''))):result.selection.arena=selection.arena
 		if selection.get('difficulty') in ['normal','veteran','mayhem']:result.selection.difficulty=selection.difficulty
 		if selection.get('mode') in ['campaign','endless']:result.selection.mode=selection.mode
+	if Checkpoint.compatible(data.get('active_run'),result):result.active_run=data.active_run.duplicate(true)
 	return result
 static func valid_file(data:Dictionary) -> bool:return (data.get('version')==1 or data.get('version')==2 or data.get('version')==3) and data.get('settings') is Dictionary
 static func save_local(data: Dictionary, path: String = 'user://save.json') -> Error:

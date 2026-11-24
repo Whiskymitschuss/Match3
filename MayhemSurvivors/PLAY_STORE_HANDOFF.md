@@ -1,85 +1,55 @@
-# Google Play — Beta 2 (0.28.1)
+# Google Play — Update Beta 3 (0.29.0)
 
-Ziel ist eine neue Android-App in der vorhandenen Play Console von RF Worlds.
-Die App wurde noch nicht in der Console angelegt. Dieser Quellstand veröffentlicht
-keinen Store-Eintrag und lädt nichts in ein Google-Konto hoch.
+Die App wurde inzwischen in deiner Play Console angelegt. Laut Screenshot wurde
+0.28.1-beta2 / Code 35 verarbeitet. Der interne Tester-Kreis beziehungsweise die
+Freigabe ist noch nicht bestätigt. Diese Übergabe lädt nichts automatisch hoch.
 
-## Neue Spieler starten bei null
+## Neue Version eintragen
 
-Eine frische Installation ohne lokale App-Daten startet mit Bruiser, Hammer Rang 1
-und Welt 1 (Schrottplatz). Studio-Coins, Run-Coins, Teile, Tickets, geöffnete Cases,
-Statistiken, Weltabschlüsse und Passfortschritt sind null. Es gibt keine weiteren
-freigeschalteten Kämpfer, Gegenstände, Skins oder Dekorationen. Kicksy bietet das
-Tutorial an; Training vergibt keine dauerhaften Belohnungen. Weitere lokale
-Profile beginnen unter denselben Bedingungen.
+1. Bestehende App **Mayhem Survivors** öffnen, Testen → Interner Test.
+2. Neue Version erstellen; MayhemSurvivors-v0.29.0-beta3-store.aab hochladen.
+3. Release-Name: **0.29.0 Beta 3 – Runs fortsetzen**.
+4. Versionshinweise aus dem folgenden Block in das deutsche Feld kopieren.
+5. Prüfen, speichern und den internen Test nach den Console-Hinweisen freigeben.
+6. Unter Tester eine E-Mail-Liste mit deinem Google-Play-Konto und gegebenenfalls
+   weiteren Testern hinterlegen. Den angezeigten Opt-in-Link mit diesem Konto öffnen.
+7. Über den Store aktualisieren und BETA_TESTING.md auf einem echten Handy abnehmen.
 
-Runs, Aufgaben und Weltabschlüsse liefern erspielte Belohnungen. Nach dem ersten
-Weltabschluss lässt sich die erste Crew-Case-Belohnung abholen. Eine bestehende
-Installation behält ihren eigenen bisherigen Spielstand bei einem Update. Ein
-Spielstand des Entwicklers wird niemals als Startstand mitgeliefert.
+```text
+<de-DE>
+Neu: Laufende Runs nach dem App-Ende fortsetzen.
+Automatische Sicherungen und sicherer Wiedereinstieg über das Pause-Menü.
+Profile inklusive Sammlung und Run als Datei exportieren und auf einem anderen Handy importieren.
+Bestehende Spielstände bleiben erhalten. Neue Spieler starten weiterhin bei null.
+Bitte Fortsetzen, Speichern und den Android-Dateidialog testen.
+</de-DE>
+```
 
-## Build und Schlüssel
+## Buildidentität
 
-- Paket: `com.rfworlds.mayhemsurvivors`
-- Version: `0.28.1-beta2`, VersionCode `35`
-- Google-Play-Preset: **Google Play**, Release / AAB / ausschließlich ARM64
-- Mindestversion: Android API 24; Target SDK 36
-- Renderverfahren: GL Compatibility; Querformat; lokale Daten, kein Internetzugriff
-- Automatisches Android-Datenbackup deaktiviert; keine Cloud-Übertragung
+- Paket com.rfworlds.mayhemsurvivors, Code **36**, Name **0.29.0-beta3**.
+- Release-AAB / ARM64 / API 24–36 / Querformat / GL Compatibility.
+- Derselbe private Upload-Schlüssel wie Code 35; private Dateien nicht im Repository.
+- Google Play signiert Installationen weiterhin über Play App Signing.
+- Nur VIBRATE, kein INTERNET, Android-Cloudbackup deaktiviert.
+- Kein Neu-Anlegen der App und kein Zurücksetzen bestehender Spieler erforderlich.
 
-Das AAB wird mit einem separaten Upload-Schlüssel signiert. Private Schlüssel und
-Passwörter gehören außerhalb des GitHub-Repositories und des Quell-ZIPs sicher
-aufbewahrt. Das Build-Werkzeug `tools/build_store.py` liest sie aus externen Dateien
-und schreibt sie nicht ins Export-Preset. Die Android-Buildvorlage wird bei Bedarf
-automatisch installiert; die Gradle-Abhängigkeiten benötigen beim Bauen Internet.
+Ein AAB ist keine direkt installierbare APK. Eine Store-App kann eine frühere
+Debug-APK mit anderem Signierschlüssel nicht regulär aktualisieren. Vor einem
+solchen Wechsel möglichst mit dieser Updateversion eine portable Sicherung anlegen.
+Reguläre Updates derselben Store-App behalten lokale Profile. Frische Spieler
+starten weiterhin nur mit Bruiser, Hammer Rang 1, Schrottplatz und null Fortschritt.
 
-Für die neue App **Play App Signing mit einem von Google erzeugten App-Signierschlüssel**
-verwenden. Der Upload-Schlüssel autorisiert spätere Bundles; Google signiert die
-installierbaren Store-Versionen mit dem App-Signierschlüssel. Die bisherige
-Debug-APK hat einen anderen Schlüssel und ist kein Store-Upload.
+## Store-Einrichtung und Veröffentlichung
 
-Ein Wechsel von der bisherigen Debug-Installation zur Store-App ist daher kein
-garantiertes Update. Für einen sauberen Erstspieler-Test eine separate Android-
-Testumgebung ohne vorhandene App-Daten verwenden. Normale künftige Store-Updates
-setzen den Fortschritt nicht zurück.
+Für interne Tests mindestens das eigene Google-Konto als Tester verwenden.
+Optionale Mapping-/Native-Symbol-Hinweise verhindern den internen Test allein nicht.
+Für eine öffentliche Veröffentlichung die konkreten Console-Anforderungen für
+dieses Entwicklerkonto, Inhaltsbewertung, Datensicherheit, Zielgruppe, Kontaktdaten,
+öffentliche Datenschutzerklärung und Store-Grafiken vollständig erfüllen.
+store/de-DE/listing.txt und store/PRIVACY_DE.md beschreiben den aktuellen Offline-Stand.
 
-## In der Play Console fertigzustellen
-
-1. Neue App mit Name **Mayhem Survivors**, Standardsprache Deutsch und Typ Spiel
-   anlegen. Paketname wird durch den ersten Bundle-Upload festgelegt.
-2. Play App Signing aktivieren und das signierte Release-AAB in den internen Test
-   hochladen. Einen höheren VersionCode für jeden späteren Upload verwenden.
-3. Unter App-Inhalte die tatsächlichen Angaben zu Zielgruppe, Comic-Gewalt,
-   Inhaltsbewertung, Werbung, App-Zugriff und Datensicherheit ausfüllen. Keine
-   Anmeldung, Werbung, Echtgeldkäufe oder automatische Datenerhebung im Spiel.
-   Die Zufalls-Cases werden ausschließlich mit erspielten Spielmitteln geöffnet.
-4. Store-Texte aus `store/de-DE/listing.txt` übernehmen. Echte Kontaktangaben von
-   RF Worlds ergänzen und die Datenschutzerklärung als öffentlich erreichbare
-   Webseite verlinken. `store/PRIVACY_DE.md` beschreibt die aktuelle App.
-5. Ein 512×512-App-Icon, eine 1024×500-Featuregrafik und aussagekräftige Android-
-   Screenshots im geforderten Format hinterlegen. Vorhandene Spielgrafiken sind
-   die Grundlage; echte Gerätescreenshots erst nach der Geräteabnahme verwenden.
-6. Testerkreis hinzufügen, Testversion prüfen und Testlink teilen. Anschließend
-   die für dieses Entwicklerkonto in der Console angezeigten Voraussetzungen
-   für den geschlossenen Test beziehungsweise Produktionszugriff erfüllen.
-
-Es fehlen bis zur tatsächlichen Store-Freigabe insbesondere Console-Einrichtung,
-Kontakt-/Zielgruppenangaben, Store-Material, Prüfung durch Google und echte
-Android-Gerätetests. Ein erfolgreicher AAB-Build ersetzt diese Schritte nicht.
-
-## Erstspieler-Abnahme über den Store
-
-- App aus dem Testlink neu installieren: ausschließlich Bruiser und Schrottplatz;
-  sämtliche Guthaben und Fortschritte null, keine Gratistickets.
-- Tutorial beenden: keine dauerhaften Coins, Gegenstände oder Kämpfer geschenkt.
-- Einen regulären Run spielen, Belohnungen und Freischaltungen prüfen.
-- Erstes Weltfinale besiegen, Weltbelohnung einmal abholen, erste Crew-Case öffnen.
-- App schließen, erneut öffnen und später über den Store aktualisieren: nur der
-  eigene erspielte Fortschritt bleibt erhalten.
-- Zweites lokales Profil starten: erneut bei null, ohne Fortschritt des ersten.
-- Android-Unterbrechung, Safe Area, Tastatur, Multitouch, Audio, lange Runs und
-  unterschiedliche Geräte nach `BETA_TESTING.md` testen.
-
-Ein aktiver Run wird nach vollständigem App-Ende weiterhin nicht wiederhergestellt.
-Alle dauerhaften Daten bleiben offline auf dem jeweiligen Gerät. Eine Deinstallation
-oder das Löschen der Android-App-Daten entfernt diese lokalen Daten.
+Keine Anmeldung, Werbung, Echtgeldkäufe, automatische Datenerhebung oder Server.
+Zufalls-Cases werden nur mit erspielten Mitteln geöffnet. Manuelle Profildateien
+entstehen ausschließlich auf Nutzerwunsch. Sie sind keine Cloud-Anmeldung.
+Eine öffentliche Veröffentlichung oder erfolgreiche Geräteabnahme wird hier nicht behauptet.

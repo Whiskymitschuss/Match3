@@ -1,0 +1,9 @@
+new_player_test 
+NEW PLAYER RESULT 37 passed, 0 failed
+run_resume_test 
+RUN RESUME RESULT 61 passed, 0 failed
+profile_backup_test 
+PROFILE BACKUP RESULT 20 passed, 0 failed
+resume_backup_ui_test 
+RESUME BACKUP UI RESULT 32 passed, 0 failed; native_touch=false
+All requested suites passed.
