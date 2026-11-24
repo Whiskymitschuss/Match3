@@ -1,0 +1,18 @@
+plugins { id 'com.android.library' version '8.6.1' }
+def gamesId = providers.gradleProperty('rfPlayProjectId').getOrElse('')
+android {
+    namespace 'com.rfworlds.mayhemsurvivors.playgames'
+    compileSdk 36
+    defaultConfig {
+        minSdk 24
+        resValue 'string', 'rf_play_games_project_id', gamesId
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+dependencies {
+    compileOnly files(providers.gradleProperty('godotAar').get())
+    compileOnly 'com.google.android.gms:play-services-games-v2:21.0.0'
+}

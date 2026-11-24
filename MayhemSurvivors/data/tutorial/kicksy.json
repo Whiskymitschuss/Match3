@@ -8,7 +8,7 @@
     },
     {
       "title": "BEWEGEN",
-      "text": "Links den Joystick ziehen. Rennen zuerst, heldenhaft aussehen danach! Bewege dich ein Stück; zielen übernimmt deine Waffe."
+      "text": "{move_side} den Joystick ziehen. Rennen zuerst, heldenhaft aussehen danach! Bewege dich ein Stück; zielen übernimmt deine Waffe."
     },
     {
       "title": "AUTOMATISCH ANGREIFEN",
@@ -24,7 +24,7 @@
     },
     {
       "title": "DEINE SPEZIALFÄHIGKEIT",
-      "text": "Tippe rechts unten auf {ability}. Bruisers Schockwelle trifft im Umkreis und stößt normale Gegner weg. Nutze sie, wenn du Platz brauchst. Der Balken zeigt die Abklingzeit."
+      "text": "Tippe {ability_side} unten auf {ability}. Bruisers Schockwelle trifft im Umkreis und stößt normale Gegner weg. Nutze sie, wenn du Platz brauchst. Der Balken zeigt die Abklingzeit."
     },
     {
       "title": "WARNBAHN AUSWEICHEN",

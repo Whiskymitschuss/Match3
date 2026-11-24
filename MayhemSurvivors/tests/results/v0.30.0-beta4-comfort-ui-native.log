@@ -1,0 +1,59 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS Usable control EXTRAS
+PASS Usable control ÖFFNEN
+PASS Actual menu opens editable layout preview
+PASS Real touchscreen drag moves and bounds the preview joystick
+PASS Usable control LINKSHÄNDER: AUS
+PASS Usable control ANWENDEN
+PASS Layout apply persists handedness without replacing the pending run
+PASS Usable control ÖFFNEN
+PASS Usable control AKTUELLES SPEICHERN
+PASS Usable control ANLEGEN
+PASS Actual preset buttons save and equip a build
+PASS Usable control AKTUELLES SPEICHERN
+PASS Usable control ABBRECHEN
+PASS Preset overwrite cancellation preserves the pending run
+PASS Usable control ZURÜCK
+PASS Usable control ÖFFNEN
+PASS Usable control STARTPHASE: 1
+PASS Usable control TRAINING STARTEN
+PASS Usable control KAMPF STARTEN
+PASS Real boss preparation and start enter isolated combat
+PASS Usable control Ⅱ
+PASS Usable control SICHERN & HAUPTMENÜ
+PASS Pause navigation leaves practice without rewards or overwriting the real run
+PASS Usable control ÖFFNEN
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Touch editor button fits safe area (2400, 1080)
+PASS Usable control ABBRECHEN
+PASS Usable control ÖFFNEN
+PASS Usable control ZURÜCK
+PASS Usable control ÖFFNEN
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Touch editor button fits safe area (1440, 1080)
+PASS Usable control ABBRECHEN
+PASS Usable control ÖFFNEN
+PASS Usable control ZURÜCK
+COMFORT UI RESULT 53 passed, 0 failed; native_touch=true

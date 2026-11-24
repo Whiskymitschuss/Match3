@@ -1,1 +1,1 @@
-42184a1b4666226b3c350e77ba94e69e6d80c398240b719fa450cd0770ba3f4d  MayhemSurvivors-v0.29.0-beta3-store.aab
+e73ad3cbad2abd62062da8f551a26568cbbc79aa45b52d1266cfa9e1bb7d3e20  MayhemSurvivors-v0.30.0-beta4-store.aab

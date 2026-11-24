@@ -1,49 +1,48 @@
-# RF Worlds — Mayhem Survivors 0.29.0 Beta 3
+# Mayhem Survivors — 0.30.0 Beta 4
 
-Android / Godot 4.6.3 stable / GDScript / ARM64 / vollständig offline.
-15 Kämpfer, zehn Welten, Kampagne und Endlos. Store-Update mit fortsetzbaren Runs
-und manueller Übertragung lokaler Spielerprofile.
+RF Worlds / Godot4.6.3 stable / GDScript / Android ARM64 / Querformat / GL Compatibility.
+15 Fighter, zehn Arenen, Kampagne und Endlos; fünf voneinander getrennte lokale Profile.
 
-## Spielen und sichern
+## Das Komfort-Update
 
-Links per Touch-Joystick bewegen; Waffen greifen automatisch an. Rechts die
-Fähigkeit benutzen. Bosse in Welle 2/4/6/8/10, Wellenshop, XP-Upgrades, Entwicklungen,
-Cases und Sammlung. Aufgaben, Weltbelohnungen und Runs liefern erspielte Spielmittel.
+HAUPTMENÜ → EXTRAS führt zu Boss-Training, Ausrüstungs-Builds, Touchlayout und
+persönlichen Rekorden. Linkshändermodus, fester/dynamischer Joystick, Verschieben,
+Größe, Transparenz und Deadzone werden pro Profil gespeichert. Drei Builds pro
+Fighter legen vorhandene Ausrüstung gemeinsam an, ohne einen laufenden Run umzubauen.
 
-Ein laufender Kampagnen-/Endlos-Run wird etwa alle zehn Kampfsekunden sowie an
-wichtigen Übergängen gesichert. Pause und „SICHERN & HAUPTMENÜ“ sichern unmittelbar.
-Nach einem Neustart im Hauptmenü FORTSETZEN wählen. Kämpfe werden pausiert geladen;
-Shop und offene Levelwahl behalten ihre Angebote. Kein Fortschritt durch Offline-Zeit.
+Boss-Training verwendet die echten Bosse/Welt-Controller, alle fünf Bossstufen und
+wählbare Startphasen. Nur eigene Fighter und freigeschaltete Welten. Keine Belohnungen
+oder Statistikfortschritte; ein zuvor gesicherter normaler Run bleibt erhalten.
 
-EINSTELLUNGEN → PROFIL → EXPORT / IMPORT erstellt eine portable JSON-Datei des
-aktiven Spielers. Der Import zeigt eine Vorschau und legt nach Bestätigung ein
-zusätzliches Profil an; er überschreibt keine anderen Spieler. Fünf Profilplätze.
-Datei selbst auf ein anderes Gerät übertragen; keine automatische Cloud-Anbindung.
-Details, Grenzen und Tests: [RUN_RESUME_BACKUP.md](RUN_RESUME_BACKUP.md).
+Run-Fortsetzen lädt Kämpfe pausiert und behält Shop/Levelwahl. Periodisches Speichern
+erfolgt alle zehn Kampfsekunden im Hintergrund; Pause und wichtige Übergänge sichern
+zusätzlich. EINSTELLUNGEN → PROFIL → EXPORT / IMPORT sichert Profile als Datei,
+einschließlich Builds/Touchlayout. Importiert wird als zusätzlicher Spieler, kein
+Überschreiben anderer Profile. Details: MOBILE_COMFORT.md und RUN_RESUME_BACKUP.md.
 
-## Der neue Spielerstart bleibt unverändert
+## Online-Status
 
-Nur Bruiser, Hammer Rang 1 und Welt 1 sind verfügbar. Studio-Coins, Teile, Tickets,
-Cases, Statistiken, Weltabschlüsse und Passfortschritt beginnen bei null. Weitere
-Kämpfer, Gegenstände, Skins und Dekorationen werden erspielt. Kicksy erklärt im
-Tutorial die Steuerung; Training schenkt keinen dauerhaften Fortschritt.
+Google Play Games wurde vom Nutzer als Dienst ausgewählt, ein Spieleprojekt ist
+noch nicht angelegt. Adapter, Scoring, Konto-/Profilzuordnung, Warteschlange und
+optionaler nativer Build sind implementiert. **In diesem AAB nicht aktiv:** keine
+Google-SDKs/Internetberechtigung, keine Anmeldung und kein Upload. Persönliche Rekorde
+bleiben verfügbar. Zur Aktivierung werden echte Projekt-/Bestenlisten-IDs benötigt;
+PLAY_GAMES_SETUP.md führt den Console-Schritt und den vorbereiteten Build-Weg aus.
 
-Bis zu fünf lokale Profile halten Sammlung, Aufgaben, Währungen, Einstellungen,
-Statistiken und je einen aktiven Run getrennt. Bestehende eigene Daten bleiben bei
-regulären Store-Updates erhalten. Keine Anmeldung, Werbung, Echtgeldkäufe oder Server.
+## Bestehende Spieler und Projektstart
 
-## Godot-Projekt und Exporte
+Reguläre Store-Updates behalten eigene Profile, Sammlung, Guthaben und0.29-Run-Sicherungen.
+Neue Spieler starten weiterhin mit Bruiser/Hammer Rang1 und Schrottplatz bei null.
+Keine Gratis-Cases, Werbung, Echtgeldkäufe, Anmeldungspflicht oder eigene Server.
 
-project.godot mit Godot 4.6.3 stable öffnen und importieren; Hauptszene und alle
-Ressourcen sind konfiguriert. Keine Szenen oder Skripte müssen zusammengesetzt werden.
-Paket com.rfworlds.mayhemsurvivors / VersionCode 36 / API 24–36 / Querformat /
-GL Compatibility. Preset Android für Entwicklungs-APKs; Google Play für Release-AAB.
+project.godot mit Godot4.6.3 stable öffnen/importieren und starten. Hauptszene,
+Ressourcen und Daten sind verbunden. Keine manuelle Programmierung nötig.
+Preset Google Play: Release-AAB, Code37, com.rfworlds.mayhemsurvivors, SDK24–36.
+tools/build_store.py nutzt den getrennten bestehenden Upload-Schlüssel; keine
+Schlüssel/Passwörter im Projekt. Das optionale Play-Games-Plugin ist eigener Java-Code
+unter native/play_games; der Export aktiviert es nur mit realer Konfiguration.
 
-Store-Neubauten benötigen passende Android-Exportvorlagen, vollständiges JDK und
-Android SDK. tools/build_store.py liest Keystore und Passwortdatei von außerhalb
-des Projekts. Den bestehenden privaten Upload-Schlüssel sicher getrennt aufbewahren.
-tools/run_tests.py --traces führt die ausgelieferten Tests mit isoliertem App-Speicher aus.
-tools/package_source.py erstellt das vollständige Quell-ZIP ohne generierte Caches.
+Tests: python tools/run_tests.py --traces. tools/package_source.py erstellt das
+Quellarchiv ohne generierte Caches, Android-Builds oder private Daten.
 
-[Google-Play-Übergabe](PLAY_STORE_HANDOFF.md) · [Betatest](BETA_TESTING.md) ·
-[Testbericht](TEST_REPORT.md) · [Buildbericht](BUILD_REPORT.md)
+[Betatest](BETA_TESTING.md) · [Store-Übergabe](PLAY_STORE_HANDOFF.md) · [Testbericht](TEST_REPORT.md) · [Buildbericht](BUILD_REPORT.md)

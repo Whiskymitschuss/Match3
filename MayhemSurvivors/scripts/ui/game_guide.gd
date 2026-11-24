@@ -21,7 +21,7 @@ func show(section:String='rules',page:int=0,return_to:Callable=Callable()):
 	var total=1
 	if section=='rules':
 		text('DEIN RUN',Vector2(140,390),700,46,game.GOLD)
-		text('Links unten bewegen. Deine Klassenwaffe greift automatisch an. Rechts unten liegt deine aktive Fähigkeit.\n\n10 Wellen pro Arena: Bosse in 2 / 4 / 6 / 8 / 10. Axel wartet in Welle 6. Der Arenaboss in 10 öffnet die nächste Welt.\n\nGelb = Vorwarnung. Rot = aktive Gefahr. Grün = sichere Ringöffnung.',Vector2(140,465),750,29)
+		text('Mit dem Joystick bewegen. Deine Klassenwaffe greift automatisch an. Die aktive Fähigkeit liegt auf der anderen Seite. Das Touchlayout kannst du in den Einstellungen ändern.\n\n10 Wellen pro Arena: Bosse in 2 / 4 / 6 / 8 / 10. Axel wartet in Welle 6. Der Arenaboss in 10 öffnet die nächste Welt.\n\nGelb = Vorwarnung. Rot = aktive Gefahr. Grün = sichere Ringöffnung.',Vector2(140,465),750,29)
 		text('DEIN BUILD',Vector2(960,390),760,46,game.TEAL)
 		text('Run-Coins: Wellenshop. Studio-Coins: Cases und kosmetischer Shop. Teile: dauerhafte Werkstatt.\n\nRun-Waffenlevel 1–5: in diesem Lauf. Auf Level 5 eine von zwei Entwicklungen wählen.\n\nWerkstattrang 1–5: dauerhaft. Waffen erhalten maximal +8 % Schaden. Neue Fighter kommen aus Crew-Cases; Bruiser ist frei.',Vector2(960,465),760,29)
 	elif section=='heroes':

@@ -10,10 +10,11 @@ func _draw():
 		draw_style_box(game.style(Color('#121A27')),Rect2(at,Vector2(520,80)))
 		var lines=arena_status.split('\n')
 		for i in range(lines.size()):draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),at+Vector2(14,29+i*29),lines[i],HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color('#8FE5DC'))
+	var geom=game.touch_geometry();var radius=geom.visual_radius;var factor=geom.scale;var tint=Color(1,1,1,geom.opacity)
 	var p: Vector2 = game.stick_origin if game.stick_id>=0 else game.joystick_rest()
-	draw_texture_rect(preload('res://assets/ui/joystick_base.svg'),Rect2(p-Vector2(140,140),Vector2(280,280)),false)
-	draw_texture_rect(preload('res://assets/ui/joystick_thumb.svg'),Rect2(p+game.stick_pos-Vector2(56,56),Vector2(112,112)),false)
-	draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),p+Vector2(-72,170),'BEWEGEN',HORIZONTAL_ALIGNMENT_LEFT,-1,24,Color.WHITE)
+	draw_texture_rect(preload('res://assets/ui/joystick_base.svg'),Rect2(p-Vector2.ONE*radius,Vector2.ONE*radius*2),false,tint)
+	draw_texture_rect(preload('res://assets/ui/joystick_thumb.svg'),Rect2(p+game.stick_pos-Vector2.ONE*56*factor,Vector2.ONE*112*factor),false,tint)
+	draw_string(preload('res://assets/ui/fonts/BarlowCondensed-Bold.ttf'),p+Vector2(-72,170)*factor,'BEWEGEN',HORIZONTAL_ALIGNMENT_LEFT,-1,24,Color.WHITE)
 	if game.hit_feedback.hurt_flash>0:
 		var alpha=game.hit_feedback.hurt_flash/.22*.65
 		for x in [game.ui_bleed.position.x,game.ui_bleed.end.x-12]:draw_rect(Rect2(x,game.ui_bleed.position.y,12,game.ui_bleed.size.y),Color(1,.28,.35,alpha))

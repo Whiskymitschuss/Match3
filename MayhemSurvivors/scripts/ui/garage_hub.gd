@@ -88,6 +88,7 @@ func show(index:int=-1,category:String='weapon',offset:int=0):
 			upgrade.disabled=rank==0 or rank>=5 or state.parts<cost
 	button('ZURÜCK',Vector2(100,965),Vector2(350,85),func():game.character_select(hero))
 	button('MEISTERSCHAFT',Vector2(490,965),Vector2(370,85),func():game.mastery_screen(hero))
+	button('BUILDS',Vector2(105,745),Vector2(220,75),func():game.presets_view.show(hero))
 	button('ABLEGEN',Vector2(900,965),Vector2(230,85),func():transact('off');show(hero,slot,page)).disabled=slot=='weapon' or not owned_hero
 	button('‹',Vector2(1170,965),Vector2(100,85),func():show(hero,slot,page-1)).disabled=page<=0
 	text('%d / %d' % [page+1,pages],Vector2(1310,989),110,28,game.GOLD)

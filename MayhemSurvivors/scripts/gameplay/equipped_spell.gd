@@ -9,7 +9,7 @@ var touch_ids:Array[int]=[]
 func _init(g:Node2D):game=g
 func reset():id=game.run_gear.get('spell','');rank=int(game.run_gear.get('spell_rank',0));cooldown=0;invulnerability=0;touch_ids.clear()
 func duration() -> float:return 45.0 if id=='heal_pulse' else (35.0 if id=='frost_nova' else 42.0-rank*2)
-func rect() -> Rect2:return Rect2(game.ability_rect().position-Vector2(0,170),Vector2(300,140))
+func rect() -> Rect2:return game.touch_geometry().spell
 func ready() -> bool:return id!='' and rank>0 and cooldown<=0 and game.state==game.State.COMBAT
 func activate() -> bool:
 	if not ready() or (id=='heal_pulse' and game.hp>=game.max_hp):return false

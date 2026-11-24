@@ -1,3 +1,35 @@
+# 0.30.0 Beta4 — Implementierung und Store-Build geprüft
+
+Stand24.11.2026. Branch feature/beta-all-six-v0.30.0.
+Nutzerauftrag: alle sechs Ideen. Google Play Games ausdrücklich gewählt; Nutzer
+bestätigt, dass das Spieleprojekt noch nicht angelegt ist. Keine echten Kennungen.
+
+Fertig spielbar: Run-Fortsetzen, portable Profile, Touchlayout-Editor, Boss-Training
+und drei Ausrüstungs-Builds je Fighter. Native Touch-/Safe-Area-Bedienung verbunden;
+Training/Tutorial verändern keinen vorherigen Run oder dessen Ranking-Ticket.
+Presets/Touchlayout sind profilbezogen und portabel. Online-Bindungen werden nicht kopiert.
+
+Punkt6 technisch vorbereitet: eigener Java-/Godot-Adapter, bewusste Verbindung,
+Konto-/Profilprüfung, qualifizierte Run-Tickets, getrennte Kategorien, Offline-
+Warteschlange, Fehler-/Timeoutbehandlung und optionaler AAB-Build. Java kompiliert,
+Adapter-Testdouble31/0; echte Google-Verbindung weiterhin offen und im AAB deaktiviert.
+
+Prüfungen: vollständige47 Suiten10293/0 plus beide Traces, abschließende Ergänzungen
+im aktuellen Suite-Stand10296/0. Komfort81/0, native UI53/0, Python-Konfiguration5/0.
+Zehn UI-Ansichten in drei Formaten. Keine offenen Parser-/Laufzeitfehler in finalen Logs.
+Finales signiertes AAB Code37 /76430402 Bytes, Signatur/Manifest/CRC/16-KiB grün.
+Offline-Manifest und Abwesenheit von Google-SDK/Plugin im DEX geprüft.833 Laufzeit-
+Dateien für den Quellabgleich gesichert. Private Schlüssel außerhalb des Projekts.
+
+Quellprüfung abgeschlossen: frischer Import,283 Godot-Prüfungen und Python5/0,
+833 bytegleiche Laufzeitdateien sowie vollständige Native-/Test-/Toolquellen.
+Aktuelle Phase: geprüfte Artefakte veröffentlichen und anonyme Downloads verifizieren. Danach: Android-Geräteabnahme und Nutzer legt nach
+PLAY_GAMES_SETUP.md das Spieleprojekt mit zwei Listen an. Es fehlen numerische
+Spieleprojekt-ID und beide Bestenlisten-IDs. Erst damit realen Online-Build aktivieren.
+Keine Console-Veröffentlichung, kein PR-Merge, keine echten Google-/Android-Tests behaupten.
+
+---
+
 # Übergabe 0.29.0 Beta 3 — abgeschlossen am 24.11.2026
 
 Code, Dokumentation, signiertes AAB und vollständiges Quell-ZIP im Branch

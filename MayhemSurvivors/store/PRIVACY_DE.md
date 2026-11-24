@@ -36,6 +36,13 @@ Exportierte Dateien liegen außerhalb der internen Profilverwaltung. Sie müssen
 am gewählten Speicherort separat gelöscht werden und können nach Deinstallation
 weiter vorhanden sein. Keine zusätzlichen allgemeinen Speicherberechtigungen.
 
+## Online-Status dieser Version
+
+In0.30.0 Beta4 sind Google-Play-Ranglisten nicht aktiviert. Die App initialisiert
+kein Google-Play-Games-SDK und überträgt keine Ranglistendaten. Persönliche Rekorde
+bleiben lokal. Eine spätere optionale Anbindung wird erst nach Konfiguration und
+entsprechender Aktualisierung der Datenschutzinformationen aktiviert.
+
 ## Freiwilliger Fehlerbericht
 
 Die Beta-Hilfe kann einen Bericht mit App-Version, Android-Gerätemodell,

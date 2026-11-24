@@ -69,8 +69,9 @@ func controls():
 	button('NEIGUNG: '+('AN' if game.saved.settings.tilt else 'AUS'),Rect2(130,400,790,90),func():toggle('tilt'))
 	var modes=['OFF','LOW','HIGH'];var mode=game.saved.settings.haptics
 	button('VIBRATION: '+{'OFF':'AUS','LOW':'DEZENT','HIGH':'STARK'}[mode],Rect2(965,400,820,90),func():game.saved.settings.haptics=modes[(modes.find(mode)+1)%3];game.save_game();game.haptic('ability');render())
-	text('LINKS BEWEGEN · RECHTS FÄHIGKEITEN',Rect2(140,540,1580,65),40,game.GOLD)
+	text('RECHTS BEWEGEN · LINKS FÄHIGKEITEN' if game.TouchLayout.clean(game.saved.settings.get('touch_layout')).left_handed else 'LINKS BEWEGEN · RECHTS FÄHIGKEITEN',Rect2(140,540,1580,65),40,game.GOLD)
 	text('Deine Waffen greifen automatisch an. Neigung bewegt nur den Menühintergrund. Buttons bleiben an ihrem Platz. Ohne Sensor bleibt das Bild stabil.',Rect2(140,625,1580,85),29)
-	var tutorial=button('TUTORIAL',Rect2(100,790,500,100),func():dispose();game.tutorial.start());tutorial.disabled=game.state==game.State.PAUSED
-	button('HANDBUCH',Rect2(650,790,550,100),func():game.game_guide.show('rules',0,func():render()))
-	button('NEU ZENTRIEREN',Rect2(1250,790,560,100),func():game.menu_motion.reset();game.sound('click'))
+	button('TOUCHLAYOUT ANPASSEN',Rect2(100,750,800,90),func():game.touch_editor.show(render))
+	var tutorial=button('TUTORIAL',Rect2(100,855,500,85),func():dispose();game.tutorial.start());tutorial.disabled=game.state==game.State.PAUSED
+	button('HANDBUCH',Rect2(650,855,550,85),func():game.game_guide.show('rules',0,func():render()))
+	button('NEU ZENTRIEREN',Rect2(1250,855,560,85),func():game.menu_motion.reset();game.sound('click'))

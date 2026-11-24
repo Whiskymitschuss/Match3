@@ -109,7 +109,7 @@ func intro():
 	game.label_at('%d HP / %.0f Kontaktschaden' % [roundi(actual.hp),actual.damage],Vector2(825,380),26,game.TEAL)
 	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
 	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+game.arena_mechanics.zone_title()+' / mindestens 2 s Vorwarnung',Vector2(825,825),23,game.TEAL)
-	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),game.begin_wave,Color('#8A432E'))
+	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),func():game.queue_ui_action(game.begin_wave),Color('#8A432E'))
 
 func attack_order(e:Dictionary) -> Array:
 	if slot()!=10:return ladder[str(slot())].sequence

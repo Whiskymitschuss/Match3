@@ -12,7 +12,7 @@ const Records = preload('res://scripts/progression/run_records.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 # Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'active_run':{},'selection':{'character':'bruiser','arena':'scrapyard','difficulty':'normal','mode':'campaign'},'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
+	return {'online_scores':preload('res://scripts/progression/online_scores.gd').defaults(),'loadout_presets':{},'active_run':{},'selection':{'character':'bruiser','arena':'scrapyard','difficulty':'normal','mode':'campaign'},'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false,'touch_layout':preload('res://scripts/mobile/touch_layout.gd').defaults()},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):
@@ -45,6 +45,7 @@ static func sanitize(data:Dictionary,raw:String='',path:String='') -> Dictionary
 	if data.settings.get('arena_briefings') is Array:
 		for id in ['reactor','docks','foundry','gardens','frost','storm','crystal','carnival','void']:
 			if data.settings.arena_briefings.has(id):result.settings.arena_briefings.append(id)
+	result.settings.touch_layout=preload('res://scripts/mobile/touch_layout.gd').clean(data.settings.get('touch_layout'))
 	result.endless_records=Endless.sanitize(data.get('endless_records'))
 	result.meta=Rewards.clean(data.get('meta'))
 	result.collection=Collection.clean(data.get('collection'))
@@ -75,6 +76,8 @@ static func sanitize(data:Dictionary,raw:String='',path:String='') -> Dictionary
 		if Worlds.available(result,str(selection.get('arena',''))):result.selection.arena=selection.arena
 		if selection.get('difficulty') in ['normal','veteran','mayhem']:result.selection.difficulty=selection.difficulty
 		if selection.get('mode') in ['campaign','endless']:result.selection.mode=selection.mode
+	result.online_scores=preload('res://scripts/progression/online_scores.gd').clean(data.get('online_scores'))
+	result.loadout_presets=preload('res://scripts/progression/loadout_presets.gd').clean(data.get('loadout_presets'),result.collection)
 	if Checkpoint.compatible(data.get('active_run'),result):result.active_run=data.active_run.duplicate(true)
 	return result
 static func valid_file(data:Dictionary) -> bool:return (data.get('version')==1 or data.get('version')==2 or data.get('version')==3) and data.get('settings') is Dictionary

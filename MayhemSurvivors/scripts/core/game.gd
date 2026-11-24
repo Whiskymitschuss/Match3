@@ -156,6 +156,16 @@ var profile_root='user://'
 var profiles
 var run_session
 var profile_transfer
+var touch_editor
+var practice
+var presets_view
+var extras
+var play_games
+var leaderboards_view
+const TouchLayout=preload('res://scripts/mobile/touch_layout.gd')
+var touch_cache:Dictionary={}
+var touch_cache_config:Dictionary={}
+var touch_cache_safe=Rect2()
 var level_choices:Array=[]
 var profile_view
 var beta_view
@@ -177,6 +187,12 @@ func change_state(next: int):
 func _ready():
 	run_session=preload('res://scripts/progression/run_session.gd').new(self)
 	profile_transfer=preload('res://scripts/ui/profile_transfer.gd').new(self)
+	touch_editor=preload('res://scripts/ui/touch_layout_editor.gd').new(self)
+	practice=preload('res://scripts/gameplay/boss_practice.gd').new(self)
+	presets_view=preload('res://scripts/ui/presets_view.gd').new(self)
+	extras=preload('res://scripts/ui/extras_hub.gd').new(self)
+	play_games=preload('res://scripts/mobile/play_games.gd').new(self)
+	leaderboards_view=preload('res://scripts/ui/leaderboards_view.gd').new(self)
 	rules=preload('res://scripts/gameplay/run_rules.gd').new(self)
 	rng.randomize()
 	run_items=preload('res://scripts/economy/run_items.gd').new(self)
@@ -273,7 +289,9 @@ func update_safe_area():
 	if is_instance_valid(hud):hud.position=Vector2(75,35)+hud_top_left()
 	if is_instance_valid(boss_hud):boss_hud.position=Vector2(620,222)+Vector2(0,safe_logical.position.y)
 	if is_instance_valid(pause_button):pause_button.position=Vector2(1690,40)+hud_top_right()
-	if is_instance_valid(ability_button):ability_button.position=ability_rect().position
+	if is_instance_valid(ability_button):ability_button.position=ability_rect().position;ability_button.size=ability_rect().size;ability_button.modulate.a=touch_geometry().opacity
+	if is_instance_valid(spell_button):spell_button.position=equipped_spell.rect().position;spell_button.size=equipped_spell.rect().size;spell_button.modulate.a=touch_geometry().opacity
+	if equipped_spell:equipped_spell.touch_ids.clear()
 	stick_id=-1
 	ability_touch_ids.clear()
 	stick_pos=Vector2.ZERO
@@ -281,9 +299,13 @@ func update_safe_area():
 	if camera:camera.zoom=Vector2.ONE*DisplayLayout.camera_zoom(viewport_size)
 func hud_top_left() -> Vector2:return safe_logical.position
 func hud_top_right() -> Vector2:return Vector2(safe_logical.end.x-1920,safe_logical.position.y)
-func ability_rect() -> Rect2:
-	return Rect2(ABILITY_RECT.position+safe_logical.end-Vector2(1920,1080),ABILITY_RECT.size)
-func joystick_rest() -> Vector2:return Vector2(220+safe_logical.position.x,850+safe_logical.end.y-1080)
+func touch_geometry() -> Dictionary:
+	var cfg=saved.settings.get('touch_layout',{})
+	if touch_cache.is_empty() or touch_cache_safe!=safe_logical or touch_cache_config!=cfg:
+		touch_cache=TouchLayout.geometry(safe_logical,cfg);touch_cache_config=cfg.duplicate(true) if cfg is Dictionary else {};touch_cache_safe=safe_logical
+	return touch_cache
+func ability_rect() -> Rect2:return touch_geometry().ability
+func joystick_rest() -> Vector2:return touch_geometry().joy
 
 func default_save():
 	return SaveManager.defaults()
@@ -296,6 +318,7 @@ func active_save_path() -> String:return profiles.active_path() if profiles else
 func remember_selection():
 	saved.selection={'character':characters[selected].id,'arena':arena_id,'difficulty':selected_difficulty,'mode':run_mode if run_mode in ['campaign','endless'] else 'campaign'}
 func save_game() -> bool:
+	if practice and practice.active:return practice.save_settings()
 	if profiles==null or not SaveManager.valid_file(saved):return false
 	if run_session and not run_session.capture():return false
 	remember_selection()
@@ -306,6 +329,8 @@ func save_game() -> bool:
 		if access:access.text='PROFIL: '+profiles.active_name()+(' / SPEICHERFEHLER' if not ok else '')
 	return ok
 func apply_profile(data:Dictionary):
+	if play_games:play_games.profile_changed()
+	if touch_editor:touch_editor.dispose()
 	if profile_transfer:profile_transfer.cancel_dialog()
 	saved=data
 	var choice=saved.get('selection',{})
@@ -419,6 +444,7 @@ func _apply_ui_action(revision:int,action:Callable):
 	if revision==ui_revision and action.is_valid():action.call()
 
 func main_menu():
+	if practice and practice.active:practice.leave();return
 	if run_session and not run_session.suspend():return
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	change_state(State.MAIN_MENU)
@@ -652,6 +678,7 @@ func start_run(force_new:bool=false):
 	result_recorded = false
 	run_waves=0;run_abilities=0;run_events=0
 	run_session.begin()
+	play_games.begin()
 	prepare_wave()
 
 func prepare_wave():
@@ -660,9 +687,9 @@ func prepare_wave():
 	if united.enabled and rules.boss_wave():united.bosses.intro();return
 	if breaker.scheduled():breaker.intro();return
 	backdrop(('WELLE %d / ENDLOS' if run_mode=='endless' else 'WELLE %d / 10') % wave_number,arena_definition.boss_name+' ERWACHT' if rules.boss_wave() else arena_definition.name+(' / Verstärkte Gegnergruppen ab Welle 4' if wave_number>=4 else ' / Bewege dich, sammle Kristalle und überlebe!'))
-	label_at('Automatische Waffen • Links unten bewegen\nXP sammeln → Upgrades wählen\nZwischen den Wellen: Ausrüstung kaufen',Vector2(120,350),36)
+	label_at('Automatische Waffen • '+('Rechts' if TouchLayout.clean(saved.settings.get('touch_layout')).left_handed else 'Links')+' unten bewegen\nXP sammeln → Upgrades wählen\nZwischen den Wellen: Ausrüstung kaufen',Vector2(120,350),36)
 	var ability=hero_ability.definition()
-	label_at('RECHTS UNTEN: '+ability.name+' / %.0f s Abklingzeit' % ability.cooldown,Vector2(120,525),30,Color(ability.color))
+	label_at(('LINKS UNTEN: ' if TouchLayout.clean(saved.settings.get('touch_layout')).left_handed else 'RECHTS UNTEN: ')+ability.name+' / %.0f s Abklingzeit' % ability.cooldown,Vector2(120,525),30,Color(ability.color))
 	var help=label_at(ability.description,Vector2(120,575),26)
 	help.custom_minimum_size.x=1550
 	help.size.x=1550
@@ -682,7 +709,7 @@ func prepare_wave():
 	if arena_mechanics.normal_wave():
 		label_at(arena_mechanics.briefing(),Vector2(120,755),25,TEAL)
 		label_at('Arena-Tipps kannst du in der Pause erneut öffnen.',Vector2(120,800),25,GOLD)
-	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
+	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),func():queue_ui_action(begin_wave),Color('#147f81'))
 
 func begin_wave():
 	cleanup()
@@ -698,6 +725,7 @@ func begin_wave():
 	change_state(State.COMBAT)
 	recap.begin()
 	arena_mechanics.begin_wave()
+	if practice and practice.active:practice.began()
 	make_hud()
 
 func make_hud():
@@ -706,7 +734,7 @@ func make_hud():
 	hud = label_at('',Vector2(75,35)+hud_top_left(),30)
 	boss_hud = label_at('',Vector2(620,222)+Vector2(0,safe_logical.position.y),32,Color('#FF4757'))
 	pause_button=button('Ⅱ',Vector2(1690,40)+hud_top_right(),Vector2(140,100),func():queue_ui_action(pause_game))
-	ability_button=button('',ability_rect().position,ABILITY_RECT.size,func():hero_ability.activate())
+	ability_button=button('',ability_rect().position,ability_rect().size,func():hero_ability.activate())
 	ability_button.set_script(preload('res://scripts/ui/ability_button.gd'))
 	ability_button.game=self
 	ability_button.focus_mode=Control.FOCUS_NONE
@@ -724,6 +752,8 @@ func make_hud():
 		synergy_button.add_theme_font_size_override('font_size',24)
 		synergy_button.icon=run_items.icon(synergies.module_id());synergy_button.name='SynergyStatus'
 		synergy_button.expand_icon=true;synergy_button.add_theme_constant_override('icon_max_width',48)
+	ability_button.modulate.a=touch_geometry().opacity
+	if is_instance_valid(spell_button):spell_button.modulate.a=touch_geometry().opacity
 	refresh_hud()
 
 func refresh_hud():
@@ -732,6 +762,7 @@ func refresh_hud():
 	var info = 'HP %d / %d    LV %d    XP %d / %d\nWELLE %d / 10    %02d:%02d    RUN-COINS %d' % [ceili(hp),max_hp,level,xp,required_xp(),wave_number,int(remaining)/60,int(remaining)%60,coins]
 	if run_mode=='endless':info=info.replace('WELLE %d / 10' % wave_number,'WELLE %d / ENDLOS' % wave_number)
 	if run_mode!='tutorial':info='['+Difficulty.definition(run_difficulty).name+'] '+info
+	if run_mode=='practice':info=info.replace('['+Difficulty.definition(run_difficulty).name+'] ','TRAINING / ')
 	if run_mode=='tutorial':info=info.split('\n')[0]+'\nTUTORIAL   RUN-COINS %d' % coins
 	if saved.settings.get('show_fps',false):info+='\n%.0f FPS / %d Gegner / %d Projektile' % [Engine.get_frames_per_second(),enemies.size(),shots.filter(func(s):return s.active).size()]
 	if hud.text != info: hud.text = info
@@ -749,6 +780,7 @@ func refresh_hud():
 			if not warning.is_empty(): boss_hud.text += '  %.1f s' % warning.seconds
 
 func _input(event):
+	if touch_editor and touch_editor.input(event):get_viewport().set_input_as_handled();return
 	if selection_swipe.handle(event):get_viewport().set_input_as_handled();return
 	if equipped_spell and equipped_spell.input(event):get_viewport().set_input_as_handled();return
 	if event is InputEventScreenTouch:
@@ -763,10 +795,13 @@ func _input(event):
 			hero_ability.activate()
 			get_viewport().set_input_as_handled()
 			return
-		if state == State.COMBAT and event.pressed and stick_id == -1 and safe_logical.has_point(pos) and pos.x < 700+safe_logical.position.x and pos.y > 540+safe_logical.end.y-1080:
+		var geom=touch_geometry()
+		if state == State.COMBAT and event.pressed and stick_id == -1 and safe_logical.has_point(pos) and geom.zone.has_point(pos) and (geom.dynamic or pos.distance_to(geom.joy)<=geom.visual_radius):
 			stick_id = event.index
-			stick_origin = Vector2(clampf(pos.x,130+safe_logical.position.x,570+safe_logical.position.x),clampf(pos.y,680+safe_logical.end.y-1080,930+safe_logical.end.y-1080))
-			stick_pos = (pos-stick_origin).limit_length(110)
+			var edge=Vector2.ONE*geom.visual_radius
+			stick_origin=pos.clamp(safe_logical.position+edge,safe_logical.end-edge) if geom.dynamic else geom.joy
+			stick_pos=(pos-stick_origin).limit_length(geom.radius)
+			move_input=TouchLayout.analog(stick_pos,geom.radius,geom.deadzone)
 			get_viewport().set_input_as_handled()
 		elif event.index == stick_id and not event.pressed:
 			stick_id = -1
@@ -776,8 +811,9 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventScreenDrag and event.index == stick_id:
-		stick_pos = ((ui_root.get_global_transform().affine_inverse()*event.position)-stick_origin).limit_length(110)
-		move_input = stick_pos/110.0 if stick_pos.length()>14 else Vector2.ZERO
+		var geom=touch_geometry()
+		stick_pos = ((ui_root.get_global_transform().affine_inverse()*event.position)-stick_origin).limit_length(geom.radius)
+		move_input = TouchLayout.analog(stick_pos,geom.radius,geom.deadzone)
 		get_viewport().set_input_as_handled()
 
 func _notification(what):
@@ -855,6 +891,7 @@ func confirm_leave():
 
 func _physics_process(delta):
 	if run_session:run_session.tick(delta)
+	if play_games:play_games.tick()
 	animation_clock += delta
 	queue_redraw()
 	if is_instance_valid(joystick): joystick.queue_redraw()
@@ -918,7 +955,7 @@ func _physics_process(delta):
 		effects[i].life -= delta
 		if effects[i].life <= 0: effects.remove_at(i)
 	if state != State.COMBAT: return
-	if level<999 and xp >= required_xp(): level_up(); return
+	if level<999 and xp >= required_xp() and not (practice and practice.active): level_up(); return
 	if remaining <= 0:
 		if rules.boss_wave(): finish(false)
 		else:
@@ -1044,6 +1081,7 @@ func hurt(amount: float):
 	var received=maxf(1,amount-armor)*steelfist.damage_factor()
 	received=crew.absorb(united.heroes.absorb(received))
 	recap.hurt(minf(maxf(0,hp),received))
+	if practice and practice.active and received>0:practice.hits+=1;practice.damage_taken+=minf(hp,received)
 	hp -= received
 	hurt_clock = .65
 	if received<=0:sound('united_impact');return
@@ -1136,6 +1174,7 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id
 		sound('death')
 		sound('coin')
 		if kind in ['boss','breaker_axel','champion']:recap.close('cleared')
+		if practice and practice.active and kind in ['boss','breaker_axel','champion']:practice.finish(true);return
 		if kind in ['breaker_axel','champion']:
 			sound('axel_defeat');run_waves+=1;cleanup();axel_shop_pending=true
 			if level<999 and xp>=required_xp():level_up()
@@ -1344,9 +1383,11 @@ func reroll_shop() -> bool:
 	return true
 
 func finish(victory: bool):
+	if practice and practice.active:practice.finish(victory);return
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	if result_recorded: return
 	result_recorded = true
+	play_games.finish(victory)
 	run_session.end()
 	recap.close('cleared' if victory else ('defeat' if hp<=0 else ('timeout' if remaining<=0 else 'abandoned')))
 	studio_reward=Collection.run_reward(saved,run_mode,run_waves,kills,victory)
@@ -1513,6 +1554,9 @@ func _draw():
 			if e.text!='': draw_string(UISkin.BODY,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
+	if play_games:play_games.dispose()
+	if play_games:play_games.cancel()
+	if touch_editor:touch_editor.dispose()
 	if profile_transfer:profile_transfer.cancel_dialog()
 	if run_session:run_session.wait_for_worker(false)
 	ui_back_action=Callable()

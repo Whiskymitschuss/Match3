@@ -1,3 +1,25 @@
+# 0.30.0 Beta4 — mobile Steuerung, Training, Builds und Online-Vorbereitung
+
+- Neues Extras-Menü und übersichtliche persönliche Rekorde nach Arena/Schwierigkeit.
+- Touchlayout-Editor mit echter Drag-Vorschau, Linkshändermodus, Größe/Transparenz,
+  Deadzone, festem/dynamischem Joystick; Multitouch und Safe-Area-Layout verbunden.
+- Drei permanente Ausrüstungs-Builds je Fighter, gemeinsames Anlegen aller Slots,
+  bestätigtes Ersetzen und Rollback bei Schreibfehlern. Keine Gratisausrüstung.
+- Echtes Boss-Training über alle fünf Bossstufen und zehn freigeschaltete Welten,
+  Phasenwahl, Trainings-Build und Treffer-/Schadensauswertung. Keine Progression;
+  vorheriger Run bleibt erhalten. Sichere Rückkehr und Wiederholung.
+- Backups übernehmen Builds/Touchlayout; Online-Bindungen und Tickets werden beim
+  portablen Export/Import entfernt. Altes Profilschema3 und0.29-Checkpoints bleiben gültig.
+- Eigener optionaler Google-Play-Games-v2-Adapter, Kontoprüfung, Run-Tickets,
+  begrenzte persistente Score-Warteschlange, Deduplizierung und nativer Build-Weg.
+  Java-Adapter kompiliert; echter Dienst mangels Spieleprojekt/IDs noch nicht aktiviert.
+- Kein SDK-Autostart vor bewusster Verbindung. Im aktuellen AAB keine Google-SDKs
+  oder Internetberechtigung. Keine erfundenen Online-Einträge.
+- Boss-Startbuttons wechseln ihre Szene nach dem Touch-Callback; vermeidet Zugriff
+  auf bereits aus dem Baum entfernte Buttons. VersionCode37, bestehender Upload-Schlüssel.
+
+---
+
 # 0.29.0 Beta 3 — Runs fortsetzen und Profil-Dateien (2026-11-24)
 
 - Persistierte Kampagnen-/Endlos-Runs je lokalem Spieler, Wiedereinstieg pausiert.

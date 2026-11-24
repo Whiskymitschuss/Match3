@@ -24,8 +24,13 @@ Kampf weiter.
 
 DEIN BUILD, DEIN STIL
 Wähle Upgrades, kaufe zwischen Wellen ein und entwickle deine Waffen. Sammle
-Ausrüstung, Skins und sichtbare Dekorationen. Tägliche Aufgaben, Wochenziele und
+Ausrüstung, Skins und sichtbare Dekorationen. Speichere drei Ausrüstungs-Builds pro
+Fighter und lege sie gemeinsam an. Tägliche Aufgaben, Wochenziele und
 der erspielbare Pass bringen weitere Ziele für deine Sammlung.
+
+ÜBEN UND DEINE STEUERUNG ANPASSEN
+Trainiere echte Bosse ohne deinen normalen Run zu verlieren. Verschiebe die
+Touchsteuerung, wähle den Linkshändermodus und passe Größe und Deadzone an.
 
 OFFLINE UND AUF DEINEM HANDY
 Keine Anmeldung, keine Werbung, keine Echtgeldkäufe. Spiele vollständig offline.

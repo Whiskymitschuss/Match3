@@ -1,0 +1,101 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Only Bruiser in real new profile
+PASS Real roster gate bruiser
+PASS Real roster gate sparky
+PASS Real roster gate shade
+PASS Real roster gate twinkle
+PASS Real roster gate kicksy
+PASS Real roster gate steelfist
+PASS Real roster gate cinder
+PASS Real roster gate frosty
+PASS Real roster gate volt
+PASS Real roster gate rook
+PASS Real roster gate nyx
+PASS Real roster gate viper
+PASS Real roster gate echo
+PASS Real roster gate nova
+PASS Real roster gate rivet
+PASS Locked fighter cannot bypass selection
+PASS Locked Sparky is a training-only loan
+PASS Tutorial does not unlock case fighters
+PASS New player has no unearned case
+PASS Real free crew opening succeeds
+PASS Case unlocks actual fighter and starter
+PASS Result saved before reveal
+PASS Second opening blocked by outstanding receipt
+PASS Reopening saved reveal never grants twice
+PASS Actual acknowledge transaction
+PASS Duplicate acknowledge rejected
+PASS Failed save restores tickets, ownership, seed, history and wallet
+PASS Paid arsenal spends permanent coins exactly
+PASS Old profile migrates roster but preserves coins and attributed stats
+PASS Pre-garage profile backed up
+PASS Combat cannot spend or mutate inventory
+PASS Inventory transaction blocked in 7
+PASS Inventory transaction blocked in 6
+PASS Inventory transaction blocked in 5
+PASS Actual combat applies equipped gear once
+PASS Actual equipped weapon rank snapshot
+PASS Run freezes both stats and appearance
+PASS Wave change cannot apply gear twice
+PASS Rank5 adds exactly8 percent to hammer
+PASS Rank5 adds exactly8 percent to blaster
+PASS Rank5 adds exactly8 percent to splitgun
+PASS Rank5 adds exactly8 percent to arc
+PASS Rank5 adds exactly8 percent to orbit
+PASS Rank5 adds exactly8 percent to mop
+PASS Rank5 adds exactly8 percent to bomb
+PASS Rank5 adds exactly8 percent to tools
+PASS Heal spell has actual rank-scaled healing and cooldown
+PASS Cooldown blocks heal repeat
+PASS Full-health heal does not spend cooldown
+PASS Frost has real area damage and slow
+PASS Frost slow changes actual movement
+PASS Spell cooldown freezes in 7
+PASS Spell cooldown freezes in 5
+PASS Spell cooldown freezes in 6
+PASS Blink clamps to arena and scales cooldown
+PASS Blink grants brief actual invulnerability
+PASS Blink invulnerability ends
+PASS Multitouch joystick plus separate spell button
+PASS Both touch captures release cleanly
+PASS Actual result grants earned studio coins
+PASS Duplicate finish cannot duplicate permanent payout
+PASS Actual workshop upgrade transaction
+PASS Upgrade survives restart
+PASS Actual equipment transaction
+PASS Equipped outfit survives restart
+PASS Populated inventory category weapon
+PASS Populated inventory category head
+PASS Populated inventory category body
+PASS Populated inventory category feet
+PASS Populated inventory category item
+PASS Populated inventory category spell
+PASS Populated inventory category skin
+PASS Populated inventory category deco
+PASS Real chance screen crew
+PASS Real chance screen arsenal
+PASS Real chance screen style
+PASS Journal remains usable
+PASS Real visible item asset hard_hat
+PASS Real visible item asset neon_visor
+PASS Real visible item asset skull_mask
+PASS Real visible item asset scrap_vest
+PASS Real visible item asset reactor_plate
+PASS Real visible item asset mayhem_jacket
+PASS Real visible item asset steel_boots
+PASS Real visible item asset neon_soles
+PASS Real visible item asset raider_boots
+PASS Real visible item asset cyan_core
+PASS Real visible item asset ember_edge
+PASS Real visible item asset void_steel
+PASS Real visible item asset arctic_chrome
+PASS Real visible item asset toxic_stripe
+PASS Real visible item asset heart_module
+PASS Real visible item asset ward_module
+PASS Real visible item asset magnet_module
+PASS Real visible item asset heal_pulse
+PASS Real visible item asset frost_nova
+PASS Real visible item asset phase_blink
+GARAGE RESULT 98 passed, 0 failed

@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Fresh offline game does not initialize or publish to Google
+PASS An unconfigured service cannot attempt a fake connection
+PASS Configured adapter still waits for explicit user action
+PASS Connect really calls the adapter but does not pre-grant consent
+PASS Stale authentication callback cannot enable any profile
+PASS Authentication binds only the active local profile and preserves its name
+PASS Explicit account binding is actually saved
+PASS New eligible run receives its own board/account ticket
+PASS Actual victory queues millisecond score in its arena/difficulty category
+PASS Queued result really calls the score adapter with the configured board ID
+PASS Acknowledged result is removed and deduplicated
+PASS Same finished run cannot be queued twice
+PASS Campaign defeat never submits a victory time
+PASS Endless submits completed waves independently of campaign timing
+PASS Network failure retains the result and permits fully offline play
+PASS Different Google account cannot receive another account’s pending scores
+PASS Failed acknowledgement save retains the outbox for safe best-score retry
+PASS Timeout clears the request without losing queued results
+PASS Profile switch invalidates callbacks from the former player
+PASS Switching back retains only the original player’s outbox
+PASS Leaderboard button really requests the native leaderboard
+PASS Portable export keeps the run but removes online binding, tickets and submission queue
+PASS Direct profile import also cannot clone online consent or ranked eligibility
+PASS Tutorial preserves the suspended ranked run and eligibility ticket
+PASS Practice can start while a ranked run is suspended
+PASS Practice cannot consume the suspended ranked ticket or submit a score
+PASS Arena mismatch rejects ticket instead of posting to another board
+PASS Invalid categories and non-finite/fractional scores are rejected
+PASS Save sanitization removes foreign-account and invalid queued scores
+PASS Offline submission queue has a fixed upper bound
+PASS Switching off publishes nothing further and removes local online binding
+ONLINE SCORES RESULT 31 passed, 0 failed; adapter=FAKE (no real Google authentication)

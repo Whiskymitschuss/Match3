@@ -1,9 +1,26 @@
-# Mayhem Survivors — Google Play Beta 3
+# Mayhem Survivors — Beta4 /0.30.0 /Code37
 
-Version 0.29.0-beta3 / VersionCode 36 / Godot 4.6.3 / Android ARM64 ab API 24.
-Das signierte Release-AAB gehört als neue Version in den internen Play-Test.
-Der App-Eintrag existiert laut Nutzer-Screenshots bereits, Code 35 wurde verarbeitet.
-Freigabe/Testlink und echte Geräteabnahme sind noch nicht bestätigt.
+Ergänzender Testplan für echte Android-Geräte. Automatisierte Tests und Linux-
+Godot-Bilder ersetzen keine Geräteabnahme. Google Play Games ist in diesem Build
+nicht aktiviert, weil Spieleprojekt und Kennungen fehlen. Keine Online-Tests behauptet.
+
+## Neue Bedienwege
+
+1. Über Play aktualisieren: bestehende0.29-Profile, Guthaben und gesicherten Run prüfen.
+2. EXTRAS → DEINE STEUERUNG: mit zwei Fingern probieren, Vorschau ziehen, Linkshänder,
+   Größe/Transparenz/Deadzone und festen Joystick testen. Abbrechen behält das alte
+   Layout; Anwenden muss nach Neustart und profilbezogen erhalten bleiben.
+3. Pause → Einstellungen → Steuerung → Touchlayout: ändern, zurück in denselben
+   Kampf. Fähigkeit und Zauber mit dem zweiten Finger benutzen; Android unterbrechen.
+4. Drei Builds im eigenen Fighter speichern, belegt ersetzen/abbrechen, anlegen und
+   einen neuen Run starten. Bestehender gesicherter Run muss seine alte Ausrüstung behalten.
+5. Normalen Run sichern. Boss-Training starten, Phase wählen, gewinnen/verlieren,
+   pausieren, wiederholen und verlassen. Keine Coins/Aufgaben/Freischaltungen erhalten;
+   den normalen Run danach tatsächlich weiterladen. Jede freigeschaltete Welt prüfen.
+6. Profil mit Builds/Touchlayout/Run exportieren und auf einem anderen Handy importieren.
+   Kein Überschreiben anderer Spieler. Die Android-Dateiauswahl inklusive Abbruch testen.
+7. Persönliche Rekorde unter EXTRAS → BESTENLISTEN nach Arena/Schwierigkeit ansehen.
+   Keine Online-Rangplätze oder Google-Anmeldung in dieser Version erwarten.
 
 ## Erstspieler und Profile
 
