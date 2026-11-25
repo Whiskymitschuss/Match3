@@ -17,7 +17,9 @@ func counts() -> Dictionary:
 	return result
 func valid(id:String) -> bool:
 	if not data.has(id) or owned.has(id):return false
-	var mods=data[id].mods
+	var item=data[id]
+	if item.has('hero') and (game.characters[game.selected].id!=item.hero or game.weapon_level(item.weapon)==0 or game.run_mode=='tutorial'):return false
+	var mods=item.mods
 	if game.max_hp+float(mods.get('hp',0))<30:return false
 	if mods.has('crit') and game.crit>=.75:return false
 	if mods.has('armor') and float(mods.armor)>0 and game.armor>=20:return false

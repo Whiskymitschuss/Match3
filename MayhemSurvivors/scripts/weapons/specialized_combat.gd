@@ -29,7 +29,7 @@ func fire(w:Dictionary,d:Dictionary,power:float,dt:float):
 			if e.pos.distance_to(blade)<e.radius+28 and e.orbit_cd<=0:
 				e.orbit_cd=.5/game.attack_mult/(1+.08*(w.level-1))*d.hit_cooldown
 				game.combat_visuals.impact(e.pos,'orbit')
-				game.damage_enemy(e,game.united.bosses.weapon_power(w,e,power*d.power))
+				game.damage_enemy(e,game.united.bosses.weapon_power(w,e,power*d.power),'weapon',w.id)
 				if game.state!=game.State.COMBAT:return
 		return
 	w.clock-=dt
@@ -53,12 +53,12 @@ func fire(w:Dictionary,d:Dictionary,power:float,dt:float):
 					shot.splash_power=power*float(d.get('splash',0))
 		'hammer':
 			if w.spec=='crusher':
-				game.damage_enemy(target,power*d.power)
+				game.damage_enemy(target,power*d.power,'weapon',w.id)
 			else:
 				ring(game.player.position,d.radius,Color(d.color))
 				for e in game.enemies.duplicate():
 					if e.pos.distance_to(game.player.position)<=d.radius+e.radius:
-						game.damage_enemy(e,power*d.power)
+						game.damage_enemy(e,power*d.power,'weapon',w.id)
 						if game.state!=game.State.COMBAT:return
 		'arc':
 			var origin=game.player.position
@@ -73,7 +73,7 @@ func fire(w:Dictionary,d:Dictionary,power:float,dt:float):
 				game.combat_visuals.beam(origin,choice.pos)
 				ring(choice.pos,22,Color(d.color))
 				origin=choice.pos
-				game.damage_enemy(choice,power*d.power*(1-j*maxf(.04,.15-.02*(w.level-1))))
+				game.damage_enemy(choice,power*d.power*(1-j*maxf(.04,.15-.02*(w.level-1))),'weapon',w.id)
 				if game.state!=game.State.COMBAT:return
 func hit_before(shot:Dictionary,enemy:Dictionary) -> bool:
 	for e in shot.hit_enemies:
@@ -91,7 +91,7 @@ func projectile(shot:Dictionary,old:Vector2):
 		shot.hits_left-=1
 		var at:Vector2=e.pos
 		game.combat_visuals.impact(at,shot.weapon)
-		game.damage_enemy(e,shot.damage)
+		game.damage_enemy(e,shot.damage,'weapon',shot.weapon)
 		if game.state!=game.State.COMBAT:return
 		if shot.splash_power>0:
 			var d=Specs.all()[shot.spec]

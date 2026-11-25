@@ -1,0 +1,10 @@
+Anonymous complete public download verification — 2026-11-18T20:25:00.430573+00:00
+PASS MayhemSurvivors-v0.25.0-debug.apk
+76180130 bytes
+SHA256 60fca96d5cc2262388d9454b781d7f13f88c72408f9c2f29ab127550c5173f7d
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-synergies-v0.25.0/Downloads/MayhemSurvivors-v0.25.0-debug.apk
+PASS MayhemSurvivors-v0.25.0-source.zip
+92394647 bytes
+SHA256 c72e6441aa557b7b69a8d2f001b8146ef3f077bb7cedc3a678e8d4b09a7fc6bc
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-synergies-v0.25.0/Downloads/MayhemSurvivors-v0.25.0-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.

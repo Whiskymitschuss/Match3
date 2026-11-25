@@ -1,3 +1,62 @@
+# Testbericht 0.25.0 — 2026-11-18
+
+Godot 4.6.3 stable. Vollständiger Testlauf am frisch entpackten Quellprojekt ohne
+vorhandenen Importcache: **34 Suiten / 5.434 Prüfungen / 0 Fehler**. Beide historischen
+Traces zusätzlich bestanden (33 + 87 Kontrollpunkte; bewusst eingefrorene alte
+Kampfregeln in deren Test-Fixtures). Parserimport ohne Script-/Ressourcenfehler.
+720 Laufzeitdateien und project.godot/export_presets.cfg bytegleich zum Arbeitsstand.
+
+Neue Synergien-Suite: **240 Prüfungen**, nochmals mit echten InputEventScreenTouch-
+Ereignissen durch die native GL-Oberfläche bestanden. Geprüft: Klassen-/Waffenbindung,
+garantiertes relevantes Shopangebot, Kaufpreis, unzureichende Coins, Doppelkauf,
+Markierung/Ladung, reale Basis- und entwickelte Waffen, Impuls/Arc, exakte Boni,
+Kettenreichweite/-anzahl, globale Abklingzeit, kein rekursiver Proc/Krit-Zufallszug,
+Pause/Shop/Levelauswahl, Wellenende, Boss-Ende, normale XP-/Coin-Beute, Game Over,
+Neustart, Statistik-IDs, Ressourcen und Freigabe des Managers. Native Touch-Wege:
+HUD → Regeln → Kampf; Shop → Regeln → Shop; Kauf → Inventar → Modulregeln → Inventar.
+
+27 gezielte Belastungsszenarien: drei Helden × Basis/zwei Entwicklungen × drei
+Qualitätsstufen; **16.200 Schritte / 270 simulierte Sekunden**, maximal 100 Gegner
+und 12 neue visuelle Impulse. Bei identischem Seed und Startwinkel liefern LOW,
+MEDIUM und HIGH exakt denselben Schaden und dieselbe Zahl an Auslösungen.
+Zusätzlich bestehender Soak: **110 Helden-/Arena-Kombinationen**, 92.400 Schritte /
+1.540 simulierte Sekunden; Spitzen 38 Gegner, 22 Pool-Projektile und 4 United-Gefahren.
+Doppelte Bereinigung, Pause und Bossmuster bleiben stabil.
+
+54 stationäre Bossproben, jeweils 15 Sekunden kontrollierte Treffergelegenheit;
+Wellen 2/4/6/8/10, drei Helden, relevante Entwicklungen, mit/ohne Modul.
+Bruiser: +3,05 bis +8,73 % Schaden; Shade: +2,47 bis +16 %. Sparky am isolierten
+Boss: 0 % Zusatzschaden, weil keine anderen Kettenziele vorhanden sind. Bestehende
+Waffenwerte, Boss-HP und Resistenzen wurden nicht verändert. Projektionen sind
+weder tatsächliche Boss-Kampfdauern noch ein Nachweis fairer menschlicher Balance;
+unterschiedliche Builds behalten deutlich unterschiedliche stationäre DPS.
+
+16 native GL-Ansichten mit Mesa/llvmpipe bei 1600×900, 2400×1080 und 1440×1080
+aufgenommen; Galerie und entscheidende Einzelansichten kontrolliert. HUD, drei
+Regelansichten, drei Shopmodule und Bossmarkierung sind enthalten. Verdeckte Shop-
+Unterzeile, zu große HUD-Symbole und verdeckte Gegnerzeichen korrigiert und erneut
+aufgenommen. Kein fehlendes Asset oder Scriptfehler in der finalen Ausführung.
+
+Entwicklungsfehler: Ein Soak-Vergleich startete mit unterschiedlichen Orbitwinkeln;
+Fixture zurückgesetzt und kompletter Vergleich wiederholt. Zwei vorläufige Script-
+Indentations-/Variablennamenfehler wurden vor dem finalen Import behoben. Keine
+fehlgeschlagenen Zwischenläufe werden als erfolgreicher Nachweis verwendet.
+
+Reproduktion: `python tools/run_tests.py --traces`; zusätzliche Scripts:
+`tests/synergies_test.gd -- --native-touch` (native GL), `synergies_soak.gd`,
+`synergies_probe.gd`, `synergies_capture.gd`, `united_soak.gd`. Godot-CLI im Projekt
+mit `--fixed-fps 60`; Details und Rohprotokolle unter tests/results/v0.25.0-*.
+Im Build gibt es keine Tests oder Test-Schalter als Spielerfunktion.
+
+Offen: physisches Android-Gerät, subjektiver Sound-/Haptik-/Balancecheck, echte
+Mehrfinger-Bedienung am Gerät, thermische Stabilität, Akku und 60 FPS. Native Linux-
+Touchereignisse und ein installierbares APK ersetzen diese Abnahme nicht.
+Build-/Signaturprüfung: BUILD_REPORT.md. Spieleranleitung: SYNERGIES.md.
+
+---
+
+## Frühere Testberichte
+
 # Testbericht 0.24.0 — 2026-11-18
 
 **33 Suiten / 5.194 bestandene Prüfungen / 0 Fehler**, nach frischem Entpacken und

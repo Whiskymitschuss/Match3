@@ -98,6 +98,8 @@ var weapon_manager
 var combat_visuals
 var world_visuals
 var run_items
+var synergies
+var synergy_button:Button
 var shop_view
 var ui_revision=0
 var audio_director
@@ -160,6 +162,7 @@ func _ready():
 	rules=preload('res://scripts/gameplay/run_rules.gd').new(self)
 	rng.randomize()
 	run_items=preload('res://scripts/economy/run_items.gd').new(self)
+	synergies=preload('res://scripts/combat/build_synergies.gd').new(self)
 	shop_view=preload('res://scripts/ui/shop_view.gd').new(self)
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
 	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
@@ -242,6 +245,7 @@ func update_safe_area():
 	if bg:bg.position=ui_bleed.position;bg.size=ui_bleed.size
 	var chrome=ui_root.get_node_or_null('HudChrome')
 	if chrome:chrome.queue_redraw()
+	if is_instance_valid(synergy_button):synergy_button.position=Vector2(65,310)+hud_top_left()
 	if is_instance_valid(hud):hud.position=Vector2(75,35)+hud_top_left()
 	if is_instance_valid(boss_hud):boss_hud.position=Vector2(620,222)+Vector2(0,safe_logical.position.y)
 	if is_instance_valid(pause_button):pause_button.position=Vector2(1690,40)+hud_top_right()
@@ -282,6 +286,7 @@ func clear_ui():
 		ui_root.remove_child(n)
 		n.queue_free()
 	pause_button=null
+	synergy_button=null
 	ability_button=null
 	ability_touch_ids.clear()
 	hud = null
@@ -525,6 +530,7 @@ func settings(back: Callable):
 	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
 
 func cleanup():
+	if synergies:synergies.clear()
 	if united:united.clear()
 	axel_shop_pending=false
 	if breaker:breaker.clear()
@@ -663,10 +669,16 @@ func make_hud():
 	joystick.set_script(load('res://scripts/mobile/joystick_visual.gd'))
 	joystick.set('game',self)
 	ui_root.add_child(joystick)
+	if not synergies.module_id().is_empty() and run_mode!='tutorial':
+		synergy_button=button('',Vector2(65,310)+hud_top_left(),Vector2(450,76),func():queue_ui_action(func():pause_game();synergies.show_help(resume)))
+		synergy_button.add_theme_font_size_override('font_size',24)
+		synergy_button.icon=run_items.icon(synergies.module_id());synergy_button.name='SynergyStatus'
+		synergy_button.expand_icon=true;synergy_button.add_theme_constant_override('icon_max_width',48)
 	refresh_hud()
 
 func refresh_hud():
 	if not is_instance_valid(hud): return
+	if is_instance_valid(synergy_button):synergy_button.text=synergies.status()
 	var info = 'HP %d / %d    LV %d    XP %d / %d\nWELLE %d / 10    %02d:%02d    RUN-COINS %d' % [ceili(hp),max_hp,level,xp,required_xp(),wave_number,int(remaining)/60,int(remaining)%60,coins]
 	if run_mode=='endless':info=info.replace('WELLE %d / 10' % wave_number,'WELLE %d / ENDLOS' % wave_number)
 	if run_mode!='tutorial':info='['+Difficulty.definition(run_difficulty).name+'] '+info
@@ -742,6 +754,7 @@ func pause_menu():
 	button('EINSTELLUNGEN',Vector2(120,460),Vector2(620,110),func(): settings(pause_menu))
 	button('HANDBUCH',Vector2(120,740),Vector2(620,110),func():game_guide.show('rules',0,pause_menu))
 	button('HAUPTMENÜ',Vector2(120,600),Vector2(620,110),confirm_leave)
+	if not synergies.module_id().is_empty():button('KLASSENMODUL',Vector2(1000,320),Vector2(620,110),func():queue_ui_action(func():synergies.show_help(pause_menu)))
 	if arena_mechanics.supported():button('ARENA-TIPPS',Vector2(120,880),Vector2(620,100),func():queue_ui_action(func():arena_coach.show(pause_menu)))
 
 func resume():
@@ -761,6 +774,7 @@ func _physics_process(delta):
 	if is_instance_valid(spell_button):spell_button.queue_redraw()
 	if state != State.COMBAT: return
 	if tutorial and tutorial.active and tutorial.frozen():return
+	synergies.update(delta)
 	vfx.update(delta)
 	specialized_combat.update(delta)
 	hit_feedback.update(delta)
@@ -986,13 +1000,15 @@ func update_shots(dt: float):
 				if Geometry2D.get_closest_point_to_segment(e.pos,old,s.pos).distance_to(e.pos)<e.radius+8:
 					s.active=false
 					combat_visuals.impact(s.pos,s.get('weapon','blaster'))
-					damage_enemy(e,s.damage)
+					damage_enemy(e,s.damage,'weapon',s.get('weapon',''))
 					if state != State.COMBAT: return
 					break
 
-func damage_enemy(e: Dictionary, power: float, source:String='weapon'):
+func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id:String=''):
 	if e.hp<=0 or not enemies.has(e): return
-	var critical = source!='arena' and rng.randf()<crit
+	var combo=synergies.before_hit(e,weapon_id) if source=='weapon' else {}
+	power*=float(combo.get('multiplier',1.0))
+	var critical = source not in ['arena','synergy'] and rng.randf()<crit
 	var amount = power*(2 if critical else 1)*enemy_roles.damage_factor(e)*united.enemies.factor(e)*(1.0-float(breaker.data.resistance) if e.kind=='breaker_axel' else 1.0)
 	dealt += minf(e.hp,amount)
 	e.hp -= amount
@@ -1029,6 +1045,8 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon'):
 			run_waves+=1
 			if run_mode=='endless':cleanup();open_shop()
 			else:finish(true)
+
+	if state==State.COMBAT and source=='weapon':synergies.after_hit(e,weapon_id,power,combo)
 
 func update_loot(dt: float):
 	for i in range(loot.size()-1,-1,-1):
@@ -1137,7 +1155,13 @@ func generate_offers():
 			var item=run_items.data[id]
 			pool.append({'type':'item','id':id,'name':item.name,'description':item.description,'price':int(item.price)+wave_number*4,'rarity':item.rarity})
 	pool.shuffle()
-	for i in range(mini(4,pool.size())): offers.append(pool[i])
+	var module=synergies.module_id()
+	var guaranteed:Dictionary={}
+	for offer in pool:
+		if offer.type=='item' and offer.id==module:guaranteed=offer;break
+	if not guaranteed.is_empty():pool.erase(guaranteed)
+	for i in range(mini(3 if not guaranteed.is_empty() else 4,pool.size())):offers.append(pool[i])
+	if not guaranteed.is_empty():offers.append(guaranteed)
 
 func weapon_level(id: String) -> int:
 	for w in weapons:
@@ -1356,6 +1380,7 @@ func _draw():
 		ravox.draw_name(e)
 	combat_visuals.draw_weapons(true)
 	draw_player_character()
+	synergies.draw()
 	reward_hub.draw_cosmetics()
 	combat_visuals.draw_weapons(false)
 	bombs.draw()

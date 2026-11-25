@@ -1,3 +1,28 @@
+# Mayhem Survivors 0.25.0 Alpha — Dein Build greift ineinander
+
+Drei neue Run-Module verknüpfen Fähigkeiten mit Waffen:
+
+- Bruiser: **Bruchkern** — Schockwelle markiert; nächster Hammer +60 %.
+- Sparky: **Ionenrelais** — Arc/Impuls laden; Blaster löst eine begrenzte Zweierkette aus.
+- Shade: **Schattenspule** — Schattenschritt lädt den nächsten Klingentreffer +80 %.
+
+Das passende Modul wird im Wellenshop garantiert angeboten, bis es gekauft ist.
+Neue Symbole, Gegner-Markierungen, Impulsringe, eigene Sounds und eine antippbare
+Bereitschaftsanzeige erklären die Kombinationen. Beide Waffenentwicklungen sind
+angeschlossen. Hilfe pausiert den Kampf und führt sicher zurück. Gegenstände im
+Shop-Inventar passen jetzt auch bei einer vollen Sammlung in zwei Reihen.
+
+Godot 4.6.3 stable / Android ARM64 / offline / versionCode 31 / gleiches Paket und
+Signatur. Über die vorhandene App installieren; dein Profil bleibt kompatibel.
+Konkrete Werte, Grenzen und Testanleitung: [SYNERGIES.md](SYNERGIES.md).
+Prüfstatus: TEST_REPORT.md / BUILD_REPORT.md. Android-Geräteabnahme und menschliche
+Balance bleiben offen. Die enthaltenen stationären Schadensproben sind keine
+Aussage über echte Boss-Kampfdauern oder 60 FPS auf einem Handy.
+
+---
+
+## Vorherige Updates
+
 # Mayhem Survivors 0.24.0 Alpha — Glutwerk unter Druck
 
 Im Glutwerk stehen ab der dritten normalen Welle zwei Dampfventile bereit. Am Rad

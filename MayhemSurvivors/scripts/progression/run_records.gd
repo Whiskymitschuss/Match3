@@ -45,7 +45,7 @@ static func clean_run(data) -> Dictionary:
 	if data.get('items') is Array:
 		var items=[]
 		for id in data.items:
-			if id in ['grip','plate','battery','coolant','boots','lens','magnet','pack'] and not items.has(id):items.append(id)
+			if id in ['grip','plate','battery','coolant','boots','lens','magnet','pack','fault_core','ion_relay','umbra_spool'] and not items.has(id):items.append(id)
 		if not items.is_empty():result.items=items
 	return result
 static func sanitize_history(data) -> Array:

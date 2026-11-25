@@ -94,5 +94,56 @@
     },
     "description": "+20 maximale/aktuelle HP\n-4 % Schaden",
     "color": "#FFD166"
+  },
+  "fault_core": {
+    "name": "BRUCHKERN",
+    "hero": "bruiser",
+    "weapon": "hammer",
+    "family": "neutral",
+    "price": 30,
+    "rarity": "KLASSENMODUL",
+    "mods": {},
+    "description": "Schockwelle markiert 6 s.\nNächster Hammer: +60 %.",
+    "details": "Schockwelle markiert überlebende Ziele für 6 Sekunden. Dein nächster Hammertreffer gegen jedes markierte Ziel verursacht +60 % Schaden und verbraucht dessen Markierung. Beide Hammer-Entwicklungen funktionieren. Kein zusätzlicher Treffer und keine Kettenauslösung.",
+    "color": "#FF9F1C",
+    "combo": {
+      "duration": 6.0,
+      "bonus": 0.6
+    }
+  },
+  "ion_relay": {
+    "name": "IONENRELAIS",
+    "hero": "sparky",
+    "weapon": "blaster",
+    "family": "neutral",
+    "price": 30,
+    "rarity": "KLASSENMODUL",
+    "mods": {},
+    "description": "Strom markiert 4 s.\nBlaster: 2 Ketten ×55 %.",
+    "details": "Arc Cannon und Impulsgranate elektrisieren überlebende Ziele für 4 Sekunden. Ein Blaster-Direkttreffer verbraucht die Ladung und springt auf bis zu zwei andere Ziele über: je 55 % des auslösenden Blaster-Schadens vor Krit. Sprungweite: 180. Globale Abklingzeit: 0,75 Sekunden. Impulse können weder kritisch treffen noch weitere Impulse oder Markierungen auslösen. Flächenschaden des Sprengkerns löst keine Kette aus.",
+    "color": "#00D9D0",
+    "combo": {
+      "duration": 4.0,
+      "ratio": 0.55,
+      "targets": 2,
+      "reach": 180.0,
+      "cooldown": 0.75
+    }
+  },
+  "umbra_spool": {
+    "name": "SCHATTENSPULE",
+    "hero": "shade",
+    "weapon": "orbit",
+    "family": "neutral",
+    "price": 30,
+    "rarity": "KLASSENMODUL",
+    "mods": {},
+    "description": "Schattenschritt lädt 4 s.\nNächste Klinge: +80 %.",
+    "details": "Schattenschritt lädt deine Orbit Blade für 4 Sekunden auf. Der nächste Klingentreffer verursacht +80 % Schaden gegen genau ein Ziel und verbraucht die Ladung. Beide Klingen-Entwicklungen funktionieren. Die Aufladung stapelt sich nicht; erneuter Schattenschritt ersetzt sie.",
+    "color": "#A55EEA",
+    "combo": {
+      "duration": 4.0,
+      "bonus": 0.8
+    }
   }
 }
