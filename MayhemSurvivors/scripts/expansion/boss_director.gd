@@ -48,7 +48,10 @@ func update(dt:float):
 		if attack=='charge':target=(origin+origin.direction_to(target)*440).clamp(Vector2(40,40),Vector2(2360,1560))
 		if attack=='ring':game.united.enemies.ring(origin,230+(45 if tier==3 else 0),origin.direction_to(target).angle()+PI*.5,1.5,touch_damage(e),e)
 		if attack=='zones':
-			if e.boss_pattern in ['storm','frost','void']:
+			var arena_warm=game.arena_mechanics.boss_zones(e,target)
+			if arena_warm>0:
+				clock=arena_warm;game.boss_warning='KERNENTLADUNG / GELBE KREISE VERLASSEN' if game.arena_id=='reactor' else 'CONTAINERABWURF / ZIELFLÄCHEN VERLASSEN'
+			elif e.boss_pattern in ['storm','frost','void']:
 				game.united.enemies.lane(true,target.x,1.5,touch_damage(e),e);game.united.enemies.lane(false,target.y,1.5,touch_damage(e),e)
 			else:
 				for offset in [Vector2.ZERO,Vector2(-180,100),Vector2(180,-100)]:game.united.enemies.circle((target+offset).clamp(Vector2(100,100),Vector2(2300,1500)),90,1.5,1.6 if e.boss_pattern=='poison' else .4,touch_damage(e)*.75,e,Color('#C48AFF'),'slow' if e.boss_pattern=='frost' else '')
@@ -87,6 +90,7 @@ func intro():
 	var actual=game.rules.scale_stats(game.WaveBalance.stats(d,game.rules.current_wave(),game.wave_number,true),true)
 	game.label_at('%d HP / %.0f Kontaktschaden' % [roundi(actual.hp),actual.damage],Vector2(825,380),26,game.TEAL)
 	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
+	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+('Kernentladungen' if game.arena_id=='reactor' else 'Containerabwürfe')+' / 2 s Vorwarnung',Vector2(825,825),25,game.TEAL)
 	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),game.begin_wave,Color('#8A432E'))
 
 func attack_order(e:Dictionary) -> Array:

@@ -1,0 +1,26 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ARENA MECHANICS FRAME reactor_coach
+ARENA MECHANICS FRAME reactor_briefing
+ARENA MECHANICS FRAME docks_coach
+ARENA MECHANICS FRAME docks_briefing
+ARENA MECHANICS FRAME reactor_cores
+ARENA MECHANICS FRAME reactor_ready
+ARENA MECHANICS FRAME reactor_warning
+ARENA MECHANICS FRAME reactor_complete
+ARENA MECHANICS FRAME container_warning_1600
+ARENA MECHANICS FRAME container_landed_1600
+ARENA MECHANICS FRAME container_warning_2400
+ARENA MECHANICS FRAME container_landed_2400
+ARENA MECHANICS FRAME container_warning_1440
+ARENA MECHANICS FRAME container_landed_1440
+ARENA MECHANICS FRAME reactor_boss_intro
+ARENA MECHANICS FRAME reactor_boss_warning
+ARENA MECHANICS FRAME docks_boss_intro
+ARENA MECHANICS FRAME docks_boss_warning
+ARENA MECHANICS FRAME pause_help
+ARENA MECHANICS FRAME reactor_map
+ARENA MECHANICS FRAME docks_map

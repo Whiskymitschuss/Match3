@@ -1,0 +1,69 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Character weapon policy 0
+PASS Starter always permitted 0
+PASS 40 randomized shops contain only class weapons 0
+PASS Forbidden purchase rejected without mutation 0 blaster
+PASS Permitted purchase 0 hammer
+PASS Forbidden purchase rejected without mutation 0 splitgun
+PASS Forbidden purchase rejected without mutation 0 arc
+PASS Forbidden purchase rejected without mutation 0 orbit
+PASS Forbidden purchase rejected without mutation 0 mop
+PASS Forbidden purchase rejected without mutation 0 bomb
+PASS Forbidden purchase rejected without mutation 0 tools
+PASS Forbidden purchase rejected without mutation 0 flamer
+PASS Forbidden purchase rejected without mutation 0 cryo
+PASS Forbidden purchase rejected without mutation 0 tesla
+PASS Forbidden purchase rejected without mutation 0 lance
+PASS Forbidden purchase rejected without mutation 0 chakram
+PASS Useless projectile upgrade filtered 0
+PASS Useless multishot upgrade filtered 0
+PASS Stat upgrades cannot grant cross-class weapons 0
+PASS One held weapon and exactly two finite grip points over 16 aim angles 0
+PASS Orbit weapon adds no extra holding hands 0
+PASS Rig state cleared on restart 0
+PASS Character weapon policy 1
+PASS Starter always permitted 1
+PASS 40 randomized shops contain only class weapons 1
+PASS Permitted purchase 1 blaster
+PASS Forbidden purchase rejected without mutation 1 hammer
+PASS Permitted purchase 1 splitgun
+PASS Permitted purchase 1 arc
+PASS Forbidden purchase rejected without mutation 1 orbit
+PASS Forbidden purchase rejected without mutation 1 mop
+PASS Forbidden purchase rejected without mutation 1 bomb
+PASS Forbidden purchase rejected without mutation 1 tools
+PASS Forbidden purchase rejected without mutation 1 flamer
+PASS Forbidden purchase rejected without mutation 1 cryo
+PASS Forbidden purchase rejected without mutation 1 tesla
+PASS Forbidden purchase rejected without mutation 1 lance
+PASS Forbidden purchase rejected without mutation 1 chakram
+PASS Useless projectile upgrade filtered 1
+PASS Useless multishot upgrade filtered 1
+PASS Stat upgrades cannot grant cross-class weapons 1
+PASS One held weapon and exactly two finite grip points over 16 aim angles 1
+PASS Orbit weapon adds no extra holding hands 1
+PASS Rig state cleared on restart 1
+PASS Character weapon policy 2
+PASS Starter always permitted 2
+PASS 40 randomized shops contain only class weapons 2
+PASS Forbidden purchase rejected without mutation 2 blaster
+PASS Forbidden purchase rejected without mutation 2 hammer
+PASS Forbidden purchase rejected without mutation 2 splitgun
+PASS Forbidden purchase rejected without mutation 2 arc
+PASS Permitted purchase 2 orbit
+PASS Forbidden purchase rejected without mutation 2 mop
+PASS Forbidden purchase rejected without mutation 2 bomb
+PASS Forbidden purchase rejected without mutation 2 tools
+PASS Forbidden purchase rejected without mutation 2 flamer
+PASS Forbidden purchase rejected without mutation 2 cryo
+PASS Forbidden purchase rejected without mutation 2 tesla
+PASS Forbidden purchase rejected without mutation 2 lance
+PASS Forbidden purchase rejected without mutation 2 chakram
+PASS Useless projectile upgrade filtered 2
+PASS Useless multishot upgrade filtered 2
+PASS Stat upgrades cannot grant cross-class weapons 2
+PASS One held weapon and exactly two finite grip points over 16 aim angles 2
+PASS Orbit weapon adds no extra holding hands 2
+PASS Rig state cleared on restart 2
+CHARACTER POLICY RESULT 66 passed, 0 failed

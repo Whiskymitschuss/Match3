@@ -1,0 +1,2 @@
+RF Worlds / Mayhem Survivors 0.23.0
+energy_core.svg and neon_container.svg are original programmatically authored vector illustrations for this project. No third-party images or textures were used.

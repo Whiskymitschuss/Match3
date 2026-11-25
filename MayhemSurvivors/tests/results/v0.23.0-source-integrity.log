@@ -1,0 +1,2 @@
+PASS fresh import and all 32 suites / 4977 checks, both historical traces.
+PASS 694 runtime files and project/export configuration byte-identical to tested extraction.

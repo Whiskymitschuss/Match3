@@ -9,7 +9,7 @@ const Records = preload('res://scripts/progression/run_records.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 # Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
+	return {'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):
@@ -43,6 +43,9 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 	if data.settings.get('splatter') is bool:result.settings.splatter=data.settings.splatter
 	for key in ['tutorial_complete','onboarding_seen','tilt','reduced_motion','show_fps']:
 		if data.settings.get(key) is bool:result.settings[key]=data.settings[key]
+	if data.settings.get('arena_briefings') is Array:
+		for id in ['reactor','docks']:
+			if data.settings.arena_briefings.has(id):result.settings.arena_briefings.append(id)
 	result.endless_records=Endless.sanitize(data.get('endless_records'))
 	result.meta=Rewards.clean(data.get('meta'))
 	result.collection=Collection.clean(data.get('collection'))
