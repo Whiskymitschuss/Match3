@@ -625,7 +625,7 @@ func prepare_wave():
 		label_at('OPTIONALE BERGUNG / Ab Sekunde 24 im türkisen Kreis 1,2 s anhalten.',Vector2(120,755),28,TEAL)
 		label_at('Zwei Einschlagsalven ausweichen: +%d Run-Coins. Ignorieren ist erlaubt.' % scrapyard_salvage.reward(),Vector2(120,800),25,GOLD)
 	if arena_mechanics.normal_wave():
-		label_at('REAKTOR / Drei Kerne sammeln, am Terminal 1,2 s anhalten.' if arena_id=='reactor' else 'NEONHAFEN / Container treffen dich und Gegner. Zwei Kills pro Doppelladung bringen einen Bonus.',Vector2(120,755),25,TEAL)
+		label_at(arena_mechanics.briefing(),Vector2(120,755),25,TEAL)
 		label_at('Arena-Tipps kannst du in der Pause erneut öffnen.',Vector2(120,800),25,GOLD)
 	button('LOS GEHT’S',Vector2(120,680),Vector2(650,120),begin_wave,Color('#147f81'))
 

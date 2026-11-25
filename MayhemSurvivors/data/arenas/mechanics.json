@@ -16,8 +16,14 @@
   },
   "docks": {
     "name": "CONTAINER-MANÖVER",
-    "drop_times": [16, 40],
-    "size": [180, 140],
+    "drop_times": [
+      16,
+      40
+    ],
+    "size": [
+      180,
+      140
+    ],
     "warm": 2.0,
     "enemy_damage": 200,
     "damage_per_wave": 20,
@@ -30,5 +36,23 @@
   "limits": {
     "hazards": 6,
     "boss_fraction_cap": 0.005
+  },
+  "foundry": {
+    "name": "DAMPFDRUCK",
+    "cycle": 12.0,
+    "sweet_min": 0.6,
+    "sweet_max": 0.85,
+    "hold": 0.8,
+    "warm": 1.6,
+    "offset": 100,
+    "length": 420,
+    "width": 110,
+    "enemy_damage": 140,
+    "damage_per_wave": 20,
+    "player_damage": 10,
+    "push": 170,
+    "bonus_base": 16,
+    "bonus_per_wave": 4,
+    "boss_warm": 2.0
   }
 }

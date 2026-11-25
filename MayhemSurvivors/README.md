@@ -1,3 +1,28 @@
+# Mayhem Survivors 0.24.0 Alpha — Glutwerk unter Druck
+
+Im Glutwerk stehen ab der dritten normalen Welle zwei Dampfventile bereit. Am Rad
+0,8 Sekunden anhalten löst einen gerichteten Dampfstoß aus. Der Pfeil zeigt die Bahn;
+1,6 Sekunden Vorwarnung. Überlebende normale Gegner werden zurückgedrängt.
+
+Der Druck baut sich in zwölf Sekunden wiederkehrend auf. Wer bei 60–85 % auslöst
+und einen Gegner beseitigt, erhält zusätzlich zur normalen Beute einen Manöver-Bonus.
+Jeder Hahn lässt sich einmal pro Welle nutzen. Die heißen Bodenbahnen bleiben gefährlich.
+Kampagne und Endlos folgen denselben lokalen Wellenregeln.
+
+Der Ofenkönig setzt angekündigte kreuzende Dampfbahnen ein. Kicksy erklärt die
+Ventile beim ersten Auftreten; ARENA-TIPPS öffnet die Hilfe in der Pause erneut.
+HUD, Weltkarte, Beutedetails, eine eigene Ventilgrafik und vier Sounds sind enthalten.
+Bestehende Profile, Waffenwerte, Boss-HP und Case-Navigation bleiben erhalten.
+
+Godot 4.6.3 stable / Android ARM64 / vollständig offline / versionCode 30 / gleicher
+Paketname und Signierschlüssel. Als Update über die vorhandene App installieren.
+Details: FOUNDRY.md, TEST_REPORT.md, BUILD_REPORT.md. Menschliche Balance und eine
+physische Android-Geräteabnahme bleiben offen.
+
+---
+
+## Vorherige Updates
+
 # Mayhem Survivors 0.23.0 Alpha — Arenen zu deinem Vorteil nutzen
 
 Die Reaktorzone und der Neonhafen bekommen eigene Mechaniken, zusätzliche Run-Beute,

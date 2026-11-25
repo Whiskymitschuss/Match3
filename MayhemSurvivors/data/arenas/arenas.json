@@ -46,7 +46,7 @@
   },
   "foundry": {
     "name": "GLUTWERK",
-    "description": "Schmelzbahnen und der gefährliche Ofenkönig.",
+    "description": "Nutze Dampfventile im grünen Druckbereich und dränge Gegner in heiße Bahnen.",
     "floor": "foundry",
     "waves": "waves/reactor",
     "boss_name": "OFENKÖNIG",
