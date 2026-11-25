@@ -1,3 +1,70 @@
+# Testbericht 0.26.0 — 2026-11-19
+
+Godot 4.6.3 stable. Am frisch entpackten Quellprojekt ohne vorhandenen Importcache:
+**36 Suiten / 5.761 Prüfungen / 0 Fehler**. Beide historischen Traces zusätzlich
+bestanden: 33 + 87 Kontrollpunkte mit bewusst eingefrorenen alten Kampfregeln.
+767 Laufzeitdateien und project.godot/export_presets.cfg sind bytegleich zum
+Arbeitsstand der Android-APK. Testskripte und Runner ebenfalls verglichen.
+Keine Parser-, Script- oder Ressourcenfehler in den finalen Läufen.
+
+## Neue Inhalte und native Bedienung
+
+- Presentation-Pack: 130 Prüfungen für 15 Figuren, Klassenwerte, echte Gift-/
+  Schall-/Schild-/Drohnenwirkung, Passiven, Pause, Wellenbereinigung und Freigabe.
+  Skin-Kauf, unzureichende Coins, Doppelkauf, Ausrüstung und Laden geprüft.
+  Alle fünf Skins lassen Schaden, kritischen Zufall, Kills und Beute unverändert.
+- Run-Analyse: 88 Prüfungen für aktive Kampfzeit, tatsächlichen HP-Verlust,
+  begrenzten Modulbonus, Wellen/Bosse, Endlos, History, Filter, Seiten und Laden.
+  Alte Runs bekommen keine erfundenen Detailwerte. Manager und Views werden frei.
+- Beide Suiten zusätzlich im nativen GL-Fenster mit InputEventScreenTouch:
+  **218 bestandene Touch-/Funktionsprüfungen**, keine Enginefehler. Wege umfassen
+  Hauptmenü, Settings, Handbuch, Garage, Skin-Kauf, Ausrüstung, Pause/Fortsetzen,
+  Ergebnis, Run-Analyse, Verlauf und Zurück.
+- 40 native GL-Aufnahmen: 22 für Menü, drei Settings-Tabs, Skins und vier neue
+  Figuren in Auswahl/Kampf; 18 für Analyse, Ergebnis, Verlauf und alte Runs.
+  1600×900, 2400×1080 und 1440×1080; Galerie und relevante Einzelbilder geprüft.
+  Gemeinsames Zwei-Hand-Rig, lesbare Inhalte und keine fehlenden Texturen.
+
+## Belastung und Medien
+
+- Recap: 90 Szenarien (15 Figuren × Kampagne/Endlos × drei Qualitätsstufen),
+  41.175 Schritte / 686,25 simulierte Sekunden; kontrollierte Wellen-/Bossenden.
+- United: 150 Figuren-/Arena-Kombinationen, 126.000 Schritte / 2.100 simulierte
+  Sekunden. Spitzen: 38 Gegner, 22 Pool-Slots und vier United-Gefahren.
+- Klassenmodule: 27 Szenarien / 16.200 Schritte / 270 simulierte Sekunden;
+  bis 100 Gegner und zwölf neue Effekte. Gleicher Schaden und gleiche Auslösungen
+  bei LOW/MEDIUM/HIGH mit identischen Startwerten und Zufallsseeds.
+- Neue Crew: zwölf Szenarien / 7.200 Schritte / 120 simulierte Sekunden mit
+  100 Gegnern; maximal drei Pool-Slots und 67 Partikel. Gleiche Kampfergebnisse
+  in allen drei Qualitätsstufen; Bereinigung vollständig.
+- FFmpeg hat alle drei Original-Musikstücke unabhängig dekodiert: Stereo,
+  endliche Samples, hörbarer RMS-Pegel und keine geclippten Einzeldateien.
+  Längen: Menü 36,923 s, Kampf 28,235 s, Boss 25,946 s. Importierte neue SFX und
+  aktiver Master-Hard-Limiter mit -0,8 dB geprüft. Dies ersetzt keinen Hörtest.
+
+## Korrekturen und Reproduktion
+
+Ein echter GUI-Lebensdauerfehler beim Fortsetzen wurde durch Menüwechsel nach
+Abschluss des Inputcallbacks behoben und nativ erneut geprüft. Ein älterer GUI-Test
+wartet nun ebenfalls auf diesen Übergang. Alte Elf-Figuren-Fixtures wurden auf
+15 Figuren, 14 Case-Freischaltungen und 39 Sammlungsgegenstände erweitert.
+Fehlgeschlagene Zwischenläufe werden nicht als erfolgreiche Nachweise verwendet.
+
+`python tools/run_tests.py --traces` führt alle ausgelieferten Suiten aus.
+Zusätzlich: crew_soak.gd, recap_soak.gd, united_soak.gd, synergies_soak.gd;
+presentation_pack_test.gd / recap_test.gd mit `-- --native-touch` im GL-Fenster.
+Aufnahmen: presentation_pack_capture.gd und recap_capture.gd. Godot-CLI jeweils
+mit `--fixed-fps 60`. Rohprotokolle: tests/results/v0.26.0-*.
+
+Offen bleiben physische Android-Geräteprüfung, echtes Mehrfingergefühl,
+subjektive Musik-/Sound-/Haptikabnahme, menschliche Balance, Safe-Area-/Sensor-
+Verhalten am Gerät, Temperatur, Akku und gemessene 60 FPS. Kontrollierte Simulation
+und Linux-/Mesa-Aufnahmen belegen diese Punkte nicht. Keine Tests im APK.
+
+---
+
+## Frühere Testberichte
+
 # Testbericht 0.25.0 — 2026-11-18
 
 Godot 4.6.3 stable. Vollständiger Testlauf am frisch entpackten Quellprojekt ohne

@@ -1,0 +1,223 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Real class attack defeats core donor 0 0
+PASS Real class attack defeats core donor 0 1
+PASS Real class attack defeats core donor 0 2
+PASS Real class attack defeats core donor 0 3
+PASS Real class attack defeats core donor 0 4
+PASS Real class attack defeats core donor 0 5
+PASS Real class attack defeats core donor 0 6
+PASS Real class attack defeats core donor 0 7
+PASS Real class attack defeats core donor 0 8
+PASS Real class attack defeats core donor 0 9
+PASS Real class attack defeats core donor 0 10
+PASS Real class attack defeats core donor 0 11
+PASS Twelve weapon kills produce three bounded core drops
+PASS Actual proximity pickup charges reactor
+PASS Walking through terminal does not activate
+PASS Full deliberate hold required
+PASS Intentional hold consumes exactly three cores
+PASS No reactor damage before 2.5 second warning 0 LOW
+PASS Reactor snapshot hits player and nearby enemies only
+PASS Arena damage does not consume critical RNG or inherit class crit
+PASS Normal kill loot plus exact once-only maneuver bonus
+PASS Reactor cannot repeat damage or farm bonus
+PASS Wave cleanup retains only run totals
+PASS New run resets arena receipts
+PASS Real class attack defeats core donor 0 0
+PASS Real class attack defeats core donor 0 1
+PASS Real class attack defeats core donor 0 2
+PASS Real class attack defeats core donor 0 3
+PASS Real class attack defeats core donor 0 4
+PASS Real class attack defeats core donor 0 5
+PASS Real class attack defeats core donor 0 6
+PASS Real class attack defeats core donor 0 7
+PASS Real class attack defeats core donor 0 8
+PASS Real class attack defeats core donor 0 9
+PASS Real class attack defeats core donor 0 10
+PASS Real class attack defeats core donor 0 11
+PASS Twelve weapon kills produce three bounded core drops
+PASS Actual proximity pickup charges reactor
+PASS Walking through terminal does not activate
+PASS Full deliberate hold required
+PASS Intentional hold consumes exactly three cores
+PASS No reactor damage before 2.5 second warning 0 MEDIUM
+PASS Reactor snapshot hits player and nearby enemies only
+PASS Arena damage does not consume critical RNG or inherit class crit
+PASS Normal kill loot plus exact once-only maneuver bonus
+PASS Reactor cannot repeat damage or farm bonus
+PASS Wave cleanup retains only run totals
+PASS New run resets arena receipts
+PASS Real class attack defeats core donor 0 0
+PASS Real class attack defeats core donor 0 1
+PASS Real class attack defeats core donor 0 2
+PASS Real class attack defeats core donor 0 3
+PASS Real class attack defeats core donor 0 4
+PASS Real class attack defeats core donor 0 5
+PASS Real class attack defeats core donor 0 6
+PASS Real class attack defeats core donor 0 7
+PASS Real class attack defeats core donor 0 8
+PASS Real class attack defeats core donor 0 9
+PASS Real class attack defeats core donor 0 10
+PASS Real class attack defeats core donor 0 11
+PASS Twelve weapon kills produce three bounded core drops
+PASS Actual proximity pickup charges reactor
+PASS Walking through terminal does not activate
+PASS Full deliberate hold required
+PASS Intentional hold consumes exactly three cores
+PASS No reactor damage before 2.5 second warning 0 HIGH
+PASS Reactor snapshot hits player and nearby enemies only
+PASS Arena damage does not consume critical RNG or inherit class crit
+PASS Normal kill loot plus exact once-only maneuver bonus
+PASS Reactor cannot repeat damage or farm bonus
+PASS Wave cleanup retains only run totals
+PASS New run resets arena receipts
+PASS Real class attack defeats core donor 1 0
+PASS Real class attack defeats core donor 1 1
+PASS Real class attack defeats core donor 1 2
+PASS Real class attack defeats core donor 1 3
+PASS Real class attack defeats core donor 1 4
+PASS Real class attack defeats core donor 1 5
+PASS Real class attack defeats core donor 1 6
+PASS Real class attack defeats core donor 1 7
+PASS Real class attack defeats core donor 1 8
+PASS Real class attack defeats core donor 1 9
+PASS Real class attack defeats core donor 1 10
+PASS Real class attack defeats core donor 1 11
+PASS Twelve weapon kills produce three bounded core drops
+PASS Actual proximity pickup charges reactor
+PASS Walking through terminal does not activate
+PASS Full deliberate hold required
+PASS Intentional hold consumes exactly three cores
+PASS No reactor damage before 2.5 second warning 1 LOW
+PASS Reactor snapshot hits player and nearby enemies only
+PASS Arena damage does not consume critical RNG or inherit class crit
+PASS Normal kill loot plus exact once-only maneuver bonus
+PASS Reactor cannot repeat damage or farm bonus
+PASS Wave cleanup retains only run totals
+PASS New run resets arena receipts
+PASS Real class attack defeats core donor 1 0
+PASS Real class attack defeats core donor 1 1
+PASS Real class attack defeats core donor 1 2
+PASS Real class attack defeats core donor 1 3
+PASS Real class attack defeats core donor 1 4
+PASS Real class attack defeats core donor 1 5
+PASS Real class attack defeats core donor 1 6
+PASS Real class attack defeats core donor 1 7
+PASS Real class attack defeats core donor 1 8
+PASS Real class attack defeats core donor 1 9
+PASS Real class attack defeats core donor 1 10
+PASS Real class attack defeats core donor 1 11
+PASS Twelve weapon kills produce three bounded core drops
+PASS Actual proximity pickup charges reactor
+PASS Walking through terminal does not activate
+PASS Full deliberate hold required
+PASS Intentional hold consumes exactly three cores
+PASS No reactor damage before 2.5 second warning 1 MEDIUM
+PASS Reactor snapshot hits player and nearby enemies only
+PASS Arena damage does not consume critical RNG or inherit class crit
+PASS Normal kill loot plus exact once-only maneuver bonus
+PASS Reactor cannot repeat damage or farm bonus
+PASS Wave cleanup retains only run totals
+PASS New run resets arena receipts
+PASS Real class attack defeats core donor 1 0
+PASS Real class attack defeats core donor 1 1
+PASS Real class attack defeats core donor 1 2
+PASS Real class attack defeats core donor 1 3
+PASS Real class attack defeats core donor 1 4
+PASS Real class attack defeats core donor 1 5
+PASS Real class attack defeats core donor 1 6
+PASS Real class attack defeats core donor 1 7
+PASS Real class attack defeats core donor 1 8
+PASS Real class attack defeats core donor 1 9
+PASS Real class attack defeats core donor 1 10
+PASS Real class attack defeats core donor 1 11
+PASS Twelve weapon kills produce three bounded core drops
+PASS Actual proximity pickup charges reactor
+PASS Walking through terminal does not activate
+PASS Full deliberate hold required
+PASS Intentional hold consumes exactly three cores
+PASS No reactor damage before 2.5 second warning 1 HIGH
+PASS Reactor snapshot hits player and nearby enemies only
+PASS Arena damage does not consume critical RNG or inherit class crit
+PASS Normal kill loot plus exact once-only maneuver bonus
+PASS Reactor cannot repeat damage or farm bonus
+PASS Wave cleanup retains only run totals
+PASS New run resets arena receipts
+PASS No container before scheduled time
+PASS One bounded double load announced
+PASS No container damage before complete two-second warning
+PASS Player can dodge fixed landing and lure enemies under container
+PASS Container pair awards bonus once after two kills
+PASS Spent pair cannot pay repeatedly
+PASS Second scheduled pair is the wave limit
+PASS Second pair creates actual danger and no empty bonus
+PASS Long frame cannot create unbounded drops
+PASS No container before scheduled time
+PASS One bounded double load announced
+PASS No container damage before complete two-second warning
+PASS Player can dodge fixed landing and lure enemies under container
+PASS Container pair awards bonus once after two kills
+PASS Spent pair cannot pay repeatedly
+PASS Second scheduled pair is the wave limit
+PASS Second pair creates actual danger and no empty bonus
+PASS Long frame cannot create unbounded drops
+PASS All environmental simulation frozen reactor 7
+PASS All environmental simulation frozen reactor 5
+PASS All environmental simulation frozen reactor 6
+PASS Warning snapshot and player collision agree reactor
+PASS Long frame resolves exactly one actual impact reactor
+PASS Lethal mistake clears all pending damage and rewards reactor
+PASS Safe restart after environmental death reactor
+PASS All environmental simulation frozen docks 7
+PASS All environmental simulation frozen docks 5
+PASS All environmental simulation frozen docks 6
+PASS Warning snapshot and player collision agree docks
+PASS Long frame resolves exactly one actual impact docks
+PASS Lethal mistake clears all pending damage and rewards docks
+PASS Safe restart after environmental death docks
+PASS Actual map boss creates three fully warned arena attacks reactor
+PASS Threshold damage preserves already announced arena pattern reactor
+PASS Boss death safely clears owned arena warnings reactor
+PASS Environmental boss damage capped at half a percent per impact reactor
+PASS Boss hazards cannot farm maneuver bonus reactor
+PASS Displaced boss cancels warning before impact reactor
+PASS Actual map boss creates three fully warned arena attacks docks
+PASS Threshold damage preserves already announced arena pattern docks
+PASS Boss death safely clears owned arena warnings docks
+PASS Environmental boss damage capped at half a percent per impact docks
+PASS Boss hazards cannot farm maneuver bonus docks
+PASS Displaced boss cancels warning before impact docks
+PASS Endless repeats mechanics, tutorial remains isolated tutorial
+PASS Endless repeats mechanics, tutorial remains isolated campaign
+PASS Endless repeats mechanics, tutorial remains isolated endless
+PASS Other worlds retain their mechanics scrapyard
+PASS Other worlds retain their mechanics reactor
+PASS Other worlds retain their mechanics docks
+PASS Other worlds retain their mechanics foundry
+PASS Other worlds retain their mechanics gardens
+PASS Other worlds retain their mechanics frost
+PASS Other worlds retain their mechanics storm
+PASS Other worlds retain their mechanics crystal
+PASS Other worlds retain their mechanics carnival
+PASS Other worlds retain their mechanics void
+PASS No late unreachable reactor activation
+PASS Terminal never auto-activates under idle edge player
+PASS Terminal never auto-activates under idle edge player
+PASS Terminal never auto-activates under idle edge player
+PASS Terminal never auto-activates under idle edge player
+PASS Help migration sanitizes IDs, types and duplicates
+PASS First appearance shows Kicksy and freezes gameplay reactor
+PASS Real help touch saves acknowledgement and returns to briefing reactor
+PASS Help can reopen in pause without resuming combat reactor
+PASS Help returns to pause safely reactor
+PASS First appearance shows Kicksy and freezes gameplay docks
+PASS Real help touch saves acknowledgement and returns to briefing docks
+PASS Help can reopen in pause without resuming combat docks
+PASS Help returns to pause safely docks
+PASS Imported original sound core_collect
+PASS Imported original sound core_warning
+PASS Imported original sound core_blast
+PASS Imported original sound container_warning
+PASS Imported original sound container_impact
+ARENA MECHANICS RESULT 220 passed, 0 failed; native_touch=false

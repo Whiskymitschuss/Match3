@@ -20,7 +20,7 @@ func button(text:String):
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
-	check(g.characters.size()==11 and g.characters[3].id=='twinkle','Fourth real character')
+	check(g.characters.size()==15 and g.characters[3].id=='twinkle','Fourth real character')
 	fresh();check(g.max_hp==100 and g.speed==210 and g.weapons[0].id=='mop','Specified HP speed and start weapon')
 	check(g.allowed_weapon_ids()==['mop'] and not g.can_equip_weapon('hammer') and not g.has_projectile_weapon(),'Exclusive mop class binding')
 	check(not g.valid_upgrade('multi') and not g.valid_upgrade('projectile'),'No unsuitable projectile upgrades')

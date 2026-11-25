@@ -8,7 +8,7 @@ func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);g.set_physics_process(false);var original=g.saved.duplicate(true)
 	g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved);preload('res://tests/legacy_worlds.gd').unlock_all(g.saved)
 	var result=[]
-	for hero in range(11):
+	for hero in range(g.characters.size()):
 		for weapon in R.ALLOWED[R.HEROES[hero]]:
 			for wave in [2,4,6,8,10]:
 				var config=CONFIG[wave];var paths=[''] if wave<8 else g.Specs.choices(weapon)

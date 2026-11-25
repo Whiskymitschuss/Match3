@@ -17,13 +17,13 @@ func actor(offset:Vector2,kind:String='grunt') -> Dictionary:
 func run():
 	g=load('res://scenes/boot/main.tscn').instantiate();g.test_mode=true;root.add_child(g);preload('res://tests/legacy_release.gd').apply(g);g.set_physics_process(false);var original=g.saved.duplicate(true);g.saved=g.default_save();preload('res://tests/legacy_collection.gd').unlock_all(g.saved)
 	root.size=Vector2i(1280,720);await process_frame;await process_frame;g.update_safe_area()
-	check(g.characters.size()==11 and g.characters[5].id=='steelfist','Sixth hero preserves all previous indices')
+	check(g.characters.size()==15 and g.characters[5].id=='steelfist','Sixth hero preserves all previous indices')
 	check(Unlocks.available(g.saved,'steelfist') and g.saved.unlocked.has('steelfist'),'Legacy combat fixture has owned Steelfist')
 	g.character_select(5)
 	for node in g.ui_root.get_children():
 		if node is Button and node.text=='AUSWÄHLEN':node.pressed.emit();break
 	check(g.selected==5 and g.state==g.State.ARENA_SELECT,'Real selection button selects Steelfist')
-	g.character_select(10);g.selection_shift('hero',1);check(g.hero_cursor==0,'Swipe carousel wraps after eleventh hero')
+	g.character_select(g.characters.size()-1);g.selection_shift('hero',1);check(g.hero_cursor==0,'Swipe carousel wraps after the last of fifteen fighters')
 	fresh();g.crit=.05
 	check(g.max_hp==208 and g.hp==208 and g.speed==165,'160 base HP plus30 percent produces208, speed165')
 	check(near(g.crit,.05) and near(g.attack_mult,1) and g.weapons[0].id=='tools','Crit5 percent and one tool-duo slot')

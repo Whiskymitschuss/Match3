@@ -156,7 +156,7 @@ func draw_hands(hands: Array):
 	for i in range(2):
 		var angle=(hands[i]-bends[i]).angle()
 		game.draw_set_transform(hands[i],angle,Vector2(1,1 if i==0 else -1))
-		game.draw_texture_rect_region(HeroArt.texture(game.characters[game.selected].id,true),Rect2(-14,-14,28,28),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
+		game.draw_texture_rect_region(HeroArt.hand_texture(),Rect2(-14,-14,28,28),HeroArt.hand_region(game.characters[game.selected].id),game.Mastery.tint(game.Mastery.selected(game.saved,game.characters[game.selected].id)))
 		game.draw_set_transform(Vector2.ZERO)
 
 func draw_weapons(behind: bool = false):
@@ -173,10 +173,12 @@ func draw_weapons(behind: bool = false):
 				game.draw_set_transform(hands[i],angle)
 				var id='wrench' if i==0 else 'pliers'
 				game.draw_texture_rect_region(Art.weapon_texture(id),Rect2(-24,-64,48,84),Art.weapon(id),game.GearArt.weapon_tint(game.run_loadout))
+				preload('res://scripts/ui/weapon_skins.gd').livery(game,Rect2(-24,-64,48,84),game.run_loadout,game.animation_clock)
 				game.draw_set_transform(Vector2.ZERO)
 		elif not pose.is_empty():
 			game.draw_set_transform(pose.center,pose.angle,Vector2(1,pose.mirror))
 			game.draw_texture_rect_region(Art.weapon_texture(pose.id),pose.rect,Art.weapon(pose.id),game.GearArt.weapon_tint(game.run_loadout))
+			preload('res://scripts/ui/weapon_skins.gd').livery(game,pose.rect,game.run_loadout,game.animation_clock)
 			for w in game.weapons:
 				if w.id!=pose.id:continue
 				var spec=Specs.definition(w)
@@ -206,7 +208,8 @@ func draw_weapons(behind: bool = false):
 		game.draw_arc(game.player.position,radius,angle-.35,angle,12,Color(color,.7),3,true)
 		game.draw_set_transform(game.player.position+Vector2.from_angle(angle)*radius,angle+PI*.5)
 		var blade_size:float=orbit_pose.size
-		game.draw_texture_rect_region(Art.TEXTURE,Rect2(Vector2.ONE*(-blade_size/2),Vector2.ONE*blade_size),Art.weapon('orbit'),game.GearArt.weapon_tint(game.run_loadout))
+		game.draw_texture_rect_region(Art.weapon_texture('orbit'),Rect2(Vector2.ONE*(-blade_size/2),Vector2.ONE*blade_size),Art.weapon('orbit'),game.GearArt.weapon_tint(game.run_loadout))
+		preload('res://scripts/ui/weapon_skins.gd').livery(game,Rect2(Vector2.ONE*(-blade_size/2),Vector2.ONE*blade_size),game.run_loadout,game.animation_clock)
 		if not Specs.definition(w).is_empty():game.draw_texture_rect(Specs.icon(w.spec),Rect2(-11,-11,22,22),false)
 		game.draw_set_transform(Vector2.ZERO)
 
@@ -215,7 +218,7 @@ func draw_shots():
 		if not s.active: continue
 		if game.united.draw_shot(s):continue
 		var skin=int(s.get('skin',game.selected))
-		var color=Color('#FF592E') if s.hostile else Art.color_for(skin)
+		var color=Color('#FF592E') if s.hostile else preload('res://scripts/ui/weapon_skins.gd').color(game.run_loadout,Art.color_for(skin))
 		var direction: Vector2=s.vel.normalized()
 		if s.hostile and s.get('enemy_kind','')=='spitter':
 			game.draw_line(s.pos-direction*28,s.pos,Color(1,.3,.15,.45),8,true)
@@ -227,6 +230,12 @@ func draw_shots():
 			var accent=Color(Specs.all()[s.spec].color)
 			if s.spec=='blast':game.draw_arc(s.pos,14,0,TAU,16,accent,3,true)
 			else:game.draw_line(s.pos-direction*45,s.pos,Color(accent,.8),4,true)
+		if not s.hostile and skin>=11:
+			game.draw_line(s.pos-direction*25,s.pos,Color(color,.5),6,true)
+			if skin==12:
+				for distance in [0,10,20]:game.draw_arc(s.pos-direction*distance,7,-PI*.45+direction.angle(),PI*.45+direction.angle(),10,color,2,true)
+			else:game.draw_circle(s.pos,5,color);game.draw_circle(s.pos,2,Color.WHITE)
+			continue
 		var split=s.get('weapon','blaster')=='splitgun'
 		var length=32.0 if split else 44.0
 		var thickness=16.0 if split else 23.0

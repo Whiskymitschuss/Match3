@@ -99,6 +99,10 @@ var combat_visuals
 var world_visuals
 var run_items
 var synergies
+var recap
+var crew
+var recap_view
+var settings_view
 var synergy_button:Button
 var shop_view
 var ui_revision=0
@@ -163,6 +167,10 @@ func _ready():
 	rng.randomize()
 	run_items=preload('res://scripts/economy/run_items.gd').new(self)
 	synergies=preload('res://scripts/combat/build_synergies.gd').new(self)
+	recap=preload('res://scripts/progression/run_recap.gd').new(self)
+	crew=preload('res://scripts/characters/crew_combat.gd').new(self)
+	recap_view=preload('res://scripts/ui/recap_view.gd').new(self)
+	settings_view=preload('res://scripts/ui/settings_view.gd').new(self)
 	shop_view=preload('res://scripts/ui/shop_view.gd').new(self)
 	weapon_manager = preload('res://scripts/weapons/weapon_manager.gd').new(self)
 	combat_visuals = preload('res://scripts/combat/combat_visuals.gd').new(self)
@@ -459,7 +467,7 @@ func statistics(character: int = -1, arena_filter: String = 'all'):
 		label_at('BESTWERTE',Vector2(1250,365),28,GOLD)
 		label_at('Welle: %d / 10\nKills: %d\nLevel: %d\nSchaden: %d\nLängster Run: %s\nSchnellster Sieg: %s' % [record.best_wave,record.best_kills,record.best_level,record.best_damage,duration_text(record.longest_run),duration_text(record.fastest_victory) if record.fastest_victory>0 else '—'],Vector2(1250,420),29)
 	button('ZURÜCK',Vector2(110,900),Vector2(400,95),main_menu)
-	var history=button('LETZTE RUNDEN →',Vector2(1110,900),Vector2(650,95),func(): recent_runs_screen(character,0,arena_filter))
+	var history=button('LETZTE RUNDEN →',Vector2(1110,900),Vector2(650,95),func():queue_ui_action(func():recent_runs_screen(character,0,arena_filter)))
 	history.disabled=saved.recent_runs.is_empty()
 	if saved.recent_runs.is_empty():label_at('Der Verlauf beginnt mit deinem nächsten Run.',Vector2(1010,830),24)
 
@@ -485,51 +493,30 @@ func recent_runs_screen(character: int = -1, page: int = 0, arena_filter: String
 		var hero=RunRecords.CHARACTERS.find(run.character)
 		label_at(characters[hero].name,Vector2(125,y+10),29,Color(characters[hero].color))
 		label_at('SIEG' if run.won else 'GAME OVER',Vector2(465,y+10),29,Color('#2ED573') if run.won else Color('#FF6376'))
-		label_at(('Welle %d / 10   LV %d   %d Kills   %s' % [run.wave,run.level,run.kills,duration_text(run.time)])+(' / %d Eliten' % int(run.get('elite_kills',0))),Vector2(940,y+12),25)
+		var row_stats=label_at(('Welle %d / 10   LV %d   %d Kills   %s' % [run.wave,run.level,run.kills,duration_text(run.time)])+(' / %d Eliten' % int(run.get('elite_kills',0))),Vector2(940,y+12),25)
+		row_stats.clip_text=true;row_stats.size=Vector2(590,40);row_stats.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
 		var loadout=''
 		for w in run.weapons:loadout+='%s Lv.%d  ' % [Specs.label(w) if not Specs.label(w).is_empty() else weapon_data[w.id].name,w.level]
-		label_at(Arenas.definition(run.get('arena','scrapyard')).name+' / '+Difficulty.definition(run.get('difficulty','normal')).name+' / '+loadout,Vector2(125,y+65),21)
-		label_at('%d Schaden  /  %d Coins' % [run.damage,run.coins],Vector2(1190,y+65),23,GOLD)
-	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func(): statistics(character,arena_filter))
-	var previous=button('← VORHERIGE',Vector2(590,905),Vector2(350,95),func(): recent_runs_screen(character,page-1,arena_filter))
+		var loadout_label=label_at(Arenas.definition(run.get('arena','scrapyard')).name+' / '+Difficulty.definition(run.get('difficulty','normal')).name+' / '+loadout,Vector2(125,y+65),21)
+		loadout_label.clip_text=true;loadout_label.size=Vector2(970,40);loadout_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
+		label_at('%d Schaden  /  %d Coins' % [run.damage,run.coins],Vector2(1150,y+65),21,GOLD)
+		if run.get('mode','campaign')=='endless':
+			for node in ui_root.get_children():
+				if node is Label and node.position.is_equal_approx(Vector2(940,y+12)):node.text=node.text.replace(' / 10',' / ENDLOS')
+		var return_history=func():recent_runs_screen(character,page,arena_filter)
+		button('ANALYSE',Vector2(1570,y+20),Vector2(210,80),func():queue_ui_action(func():recap_view.show(run,return_history)))
+	button('ZURÜCK',Vector2(100,905),Vector2(350,95),func():queue_ui_action(func():statistics(character,arena_filter)))
+	var previous=button('← VORHERIGE',Vector2(590,905),Vector2(350,95),func():queue_ui_action(func():recent_runs_screen(character,page-1,arena_filter)))
 	previous.disabled=page==0
 	label_at('%d / %d' % [page+1,pages],Vector2(1040,930),30)
-	var next=button('NÄCHSTE →',Vector2(1280,905),Vector2(480,95),func(): recent_runs_screen(character,page+1,arena_filter))
+	var next=button('NÄCHSTE →',Vector2(1280,905),Vector2(480,95),func():queue_ui_action(func():recent_runs_screen(character,page+1,arena_filter)))
 	next.disabled=page>=pages-1
 
-func settings(back: Callable):
-	backdrop('EINSTELLUNGEN','Audio, Vibration und Trefferfeedback')
-	button('BEWEGUNG',Vector2(1570,310),Vector2(260,120),motion_settings)
-	var keys = ['master','music','sfx']
-	for i in range(3):
-		var key = keys[i]
-		label_at(['MASTER','MUSIK','EFFEKTE'][i],Vector2(120,300+i*120),32)
-		var slider = HSlider.new()
-		slider.position = Vector2(500,300+i*120)
-		slider.size = Vector2(800,75)
-		slider.min_value = 0
-		slider.max_value = 1
-		slider.step = .05
-		slider.value = float(saved.settings[key])
-		slider.add_theme_icon_override('grabber',preload('res://assets/ui/slider_grab.svg'))
-		slider.add_theme_icon_override('grabber_highlight',preload('res://assets/ui/slider_grab.svg'))
-		var rail=UISkin.box(Color('#182230'));rail.content_margin_top=7;rail.content_margin_bottom=7
-		slider.add_theme_stylebox_override('slider',rail)
-		slider.add_theme_stylebox_override('grabber_area',UISkin.box(Color('#B56B1E'),GOLD))
-		var percentage=label_at('%d %%' % int(slider.value*100),Vector2(1360,310+i*120),34,GOLD)
-		slider.value_changed.connect(func(v): saved.settings[key]=v;percentage.text='%d %%' % roundi(v*100); update_music(); save_game())
-		ui_root.add_child(slider)
-	for i in range(3):
-		var q = ['LOW','MEDIUM','HIGH'][i]
-		button(('✓ ' if saved.settings.quality == q else '')+q,Vector2(120+i*460,710),Vector2(420,95),func(): saved.settings.quality=q; vfx.apply_settings(); save_game(); settings(back))
-	var modes=['OFF','LOW','HIGH']
-	var mode=saved.settings.get('haptics','OFF')
-	button('VIBRATION: '+{'OFF':'AUS','LOW':'DEZENT','HIGH':'STARK'}[mode],Vector2(120,825),Vector2(620,90),func(): saved.settings.haptics=modes[(modes.find(mode)+1)%3];save_game();haptic('ability');settings(back))
-	button('SCHADENSZAHLEN: '+('AN' if saved.settings.get('damage_numbers',true) else 'AUS'),Vector2(800,825),Vector2(700,90),func(): saved.settings.damage_numbers=not saved.settings.get('damage_numbers',true);save_game();settings(back))
-	button('CARTOON-SPLATTER: '+('AN' if saved.settings.get('splatter',true) else 'AUS'),Vector2(800,960),Vector2(700,85),func(): saved.settings.splatter=not saved.settings.get('splatter',true);vfx.apply_settings();save_game();settings(back))
-	button('ZURÜCK',Vector2(120,960),Vector2(420,85),back)
+func settings(back:Callable):settings_view.show(back)
 
 func cleanup():
+	if recap:recap.close()
+	if crew:crew.clear()
 	if synergies:synergies.clear()
 	if united:united.clear()
 	axel_shop_pending=false
@@ -577,7 +564,7 @@ func start_run():
 	crit = .05+float(c.crit_bonus)
 	armor = int(run_gear.get('armor',0))+int(c.get('armor',0))
 	magnet = 100+float(run_gear.get('magnet',0))
-	projectile_speed = 1
+	projectile_speed = 1+float(c.get('projectile_bonus',0))
 	multishot = 0
 	level = 1
 	xp = 0
@@ -588,6 +575,7 @@ func start_run():
 	run_time = 0
 	wave_number = 1
 	run_items.clear()
+	recap.reset()
 	scrapyard_salvage.reset_run()
 	arena_mechanics.reset_run()
 	result_details.clear()
@@ -647,6 +635,7 @@ func begin_wave():
 	elif united.enabled and united.bosses.scheduled() and not rules.final_boss_wave():spawn_enemy('champion')
 	elif rules.boss_wave(): spawn_enemy('boss')
 	change_state(State.COMBAT)
+	recap.begin()
 	arena_mechanics.begin_wave()
 	make_hud()
 
@@ -655,7 +644,7 @@ func make_hud():
 	var chrome=Control.new();chrome.name='HudChrome';chrome.set_script(preload('res://scripts/ui/hud_chrome.gd'));chrome.game=self;ui_root.add_child(chrome)
 	hud = label_at('',Vector2(75,35)+hud_top_left(),30)
 	boss_hud = label_at('',Vector2(620,222)+Vector2(0,safe_logical.position.y),32,Color('#FF4757'))
-	pause_button=button('Ⅱ',Vector2(1690,40)+hud_top_right(),Vector2(140,100),pause_game)
+	pause_button=button('Ⅱ',Vector2(1690,40)+hud_top_right(),Vector2(140,100),func():queue_ui_action(pause_game))
 	ability_button=button('',ability_rect().position,ABILITY_RECT.size,func():hero_ability.activate())
 	ability_button.set_script(preload('res://scripts/ui/ability_button.gd'))
 	ability_button.game=self
@@ -750,10 +739,10 @@ func pause_game():
 
 func pause_menu():
 	backdrop('DURCHATMEN','Deine Runde wartet auf dich.')
-	button('FORTSETZEN',Vector2(120,320),Vector2(620,110),resume)
-	button('EINSTELLUNGEN',Vector2(120,460),Vector2(620,110),func(): settings(pause_menu))
-	button('HANDBUCH',Vector2(120,740),Vector2(620,110),func():game_guide.show('rules',0,pause_menu))
-	button('HAUPTMENÜ',Vector2(120,600),Vector2(620,110),confirm_leave)
+	button('FORTSETZEN',Vector2(120,320),Vector2(620,110),func():queue_ui_action(resume))
+	button('EINSTELLUNGEN',Vector2(120,460),Vector2(620,110),func():queue_ui_action(func():settings(pause_menu)))
+	button('HANDBUCH',Vector2(120,740),Vector2(620,110),func():queue_ui_action(func():game_guide.show('rules',0,pause_menu)))
+	button('HAUPTMENÜ',Vector2(120,600),Vector2(620,110),func():queue_ui_action(confirm_leave))
 	if not synergies.module_id().is_empty():button('KLASSENMODUL',Vector2(1000,320),Vector2(620,110),func():queue_ui_action(func():synergies.show_help(pause_menu)))
 	if arena_mechanics.supported():button('ARENA-TIPPS',Vector2(120,880),Vector2(620,100),func():queue_ui_action(func():arena_coach.show(pause_menu)))
 
@@ -763,8 +752,8 @@ func resume():
 
 func confirm_leave():
 	backdrop('RUN WIRKLICH BEENDEN?','Dieser Durchlauf wird als Niederlage gewertet.')
-	button('WEITERSPIELEN',Vector2(120,420),Vector2(650,110),pause_menu)
-	button('RUN BEENDEN',Vector2(120,570),Vector2(650,110),func(): finish(false); main_menu())
+	button('WEITERSPIELEN',Vector2(120,420),Vector2(650,110),func():queue_ui_action(pause_menu))
+	button('RUN BEENDEN',Vector2(120,570),Vector2(650,110),func():queue_ui_action(func():finish(false);main_menu()))
 
 func _physics_process(delta):
 	animation_clock += delta
@@ -784,7 +773,10 @@ func _physics_process(delta):
 	if state != State.COMBAT:return
 	combat_visuals.update(delta)
 	world_visuals.update(delta)
+	crew.update(delta)
+	if state!=State.COMBAT:return
 	run_time += delta
+	recap.tick(delta)
 	remaining = maxf(0,remaining-delta)
 	hurt_clock -= delta
 	if absf(move_input.x)>.08: facing = -1.0 if move_input.x<0 else 1.0
@@ -832,6 +824,7 @@ func _physics_process(delta):
 		if rules.boss_wave(): finish(false)
 		else:
 			run_waves+=1
+			recap.close('cleared')
 			cleanup()
 			open_shop()
 	refresh_hud()
@@ -949,7 +942,8 @@ func hurt(amount: float):
 	if tutorial and tutorial.active:return
 	if state != State.COMBAT or hurt_clock>0 or hero_ability.invulnerable() or equipped_spell.invulnerability>0 or united.heroes.invulnerability>0: return
 	var received=maxf(1,amount-armor)*steelfist.damage_factor()
-	received=united.heroes.absorb(received)
+	received=crew.absorb(united.heroes.absorb(received))
+	recap.hurt(minf(maxf(0,hp),received))
 	hp -= received
 	hurt_clock = .65
 	if received<=0:sound('united_impact');return
@@ -1008,9 +1002,13 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id
 	if e.hp<=0 or not enemies.has(e): return
 	var combo=synergies.before_hit(e,weapon_id) if source=='weapon' else {}
 	power*=float(combo.get('multiplier',1.0))
-	var critical = source not in ['arena','synergy'] and rng.randf()<crit
+	var critical = source not in ['arena','synergy','toxin'] and rng.randf()<crit
 	var amount = power*(2 if critical else 1)*enemy_roles.damage_factor(e)*united.enemies.factor(e)*(1.0-float(breaker.data.resistance) if e.kind=='breaker_axel' else 1.0)
-	dealt += minf(e.hp,amount)
+	var actual=minf(e.hp,amount)
+	var combo_multiplier=float(combo.get('multiplier',1.0))
+	if source=='synergy':recap.bonus(actual)
+	elif combo_multiplier>1:recap.bonus(maxf(0,actual-minf(e.hp,amount/combo_multiplier)))
+	dealt += actual
 	e.hp -= amount
 	e.hit = .15
 	vfx.enemy_hit(e,critical)
@@ -1028,6 +1026,7 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id
 		arena_mechanics.defeated(e,source)
 		twinkle.on_kill()
 		steelfist.on_kill()
+		crew.on_kill()
 		var reward = int(e.get('coin_reward',enemy_definition(kind).coins))
 		coins += reward
 		vfx.coin(pos,reward)
@@ -1036,6 +1035,7 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id
 		else:loot.append({'pos':pos,'xp':int(e.get('xp_reward',enemy_definition(kind).xp))})
 		sound('death')
 		sound('coin')
+		if kind in ['boss','breaker_axel','champion']:recap.close('cleared')
 		if kind in ['breaker_axel','champion']:
 			sound('axel_defeat');run_waves+=1;cleanup();axel_shop_pending=true
 			if level<999 and xp>=required_xp():level_up()
@@ -1046,7 +1046,9 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id
 			if run_mode=='endless':cleanup();open_shop()
 			else:finish(true)
 
-	if state==State.COMBAT and source=='weapon':synergies.after_hit(e,weapon_id,power,combo)
+	if state==State.COMBAT and source=='weapon':
+		synergies.after_hit(e,weapon_id,power,combo)
+		crew.after_hit(e,weapon_id)
 
 func update_loot(dt: float):
 	for i in range(loot.size()-1,-1,-1):
@@ -1131,7 +1133,9 @@ func apply_upgrade(id: String):
 func allowed_weapon_ids() -> Array:
 	return characters[selected].allowed_weapons.filter(func(id):return saved.collection.levels.has(id) or run_mode=='tutorial')
 
-func gear_weapon_multiplier(id:String) -> float:return 1.0+float(run_gear.get('weapon_bonus',{}).get(id,0))
+func gear_weapon_multiplier(id:String) -> float:
+	var ranged=1.0+float(characters[selected].get('ranged_bonus',0)) if id in ['blaster','splitgun','arc'] else 1.0
+	return (1.0+float(run_gear.get('weapon_bonus',{}).get(id,0)))*ranged
 
 func can_equip_weapon(id: String) -> bool:
 	return allowed_weapon_ids().has(id)
@@ -1237,6 +1241,7 @@ func finish(victory: bool):
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	if result_recorded: return
 	result_recorded = true
+	recap.close('cleared' if victory else ('defeat' if hp<=0 else ('timeout' if remaining<=0 else 'abandoned')))
 	studio_reward=Collection.run_reward(saved,run_mode,run_waves,kills,victory)
 	preload('res://scripts/progression/daily_rewards.gd').record(saved.meta,{'mode':run_mode,'arena':arena_id,'kills':kills,'waves':run_waves,'skills':run_abilities,'won':victory})
 	change_state(State.VICTORY if victory else State.GAME_OVER)
@@ -1248,8 +1253,10 @@ func finish(victory: bool):
 		saved.highest_wave=maxi(int(saved.highest_wave),mini(10,wave_number))
 	var difficulty_best=DifficultyRecords.add(saved,run_difficulty,run_mode,arena_id,wave_number,kills,run_time,victory)
 	var previous_rewards=Mastery.rewards(saved,characters[selected].id)
-	var improvements=RunRecords.add_run(saved,{'difficulty':run_difficulty,'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'elite_kills':encounters.elite_kills}) if run_mode=='campaign' else []
-	if run_mode=='endless':preload('res://scripts/progression/endless_records.gd').add(saved,arena_id,wave_number,kills,run_time)
+	var improvements=RunRecords.add_run(saved,{'difficulty':run_difficulty,'arena':arena_id,'character':characters[selected].id,'won':victory,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'elite_kills':encounters.elite_kills,'mode':run_mode,'analysis':recap.snapshot()}) if run_mode=='campaign' else []
+	if run_mode=='endless':
+		preload('res://scripts/progression/endless_records.gd').add(saved,arena_id,wave_number,kills,run_time)
+		RunRecords.remember(saved,{'difficulty':run_difficulty,'arena':arena_id,'character':characters[selected].id,'won':false,'wave':wave_number,'time':run_time,'kills':kills,'level':level,'damage':dealt,'coins':earned,'weapons':weapons,'items':run_items.owned,'mode':'endless','analysis':recap.snapshot()})
 	var world_first_clear=WorldProgress.complete(saved,arena_id,run_mode,victory,wave_number)
 	var unlocked=Arenas.sync(saved)
 	if Unlocks.sync(saved):unlocked.append('KICKSY')
@@ -1276,7 +1283,7 @@ func show_result():
 		celebration.count=12 if saved.settings.quality=='LOW' else (24 if saved.settings.quality=='MEDIUM' else 40)
 		celebration.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		ui_root.add_child(celebration)
-	portrait(Vector2(1380,300),selected,1.05,'victory' if victory else 'defeat')
+	portrait(Vector2(1380,250),selected,1.05,'victory' if victory else 'defeat')
 	var summary=label_at('Welle %d / 10     Zeit %02d:%02d\nKills %d (Eliten %d)     Level %d\nSchaden %d     Run-Coins %d\n\n%s' % [wave_number,int(run_time)/60,int(run_time)%60,kills,encounters.elite_kills,level,dealt,earned,weapon_summary()],Vector2(110,300),33)
 	if run_mode=='endless':summary.text=summary.text.replace(' / 10',' / ENDLOS')
 	summary.text=UISkin.wrap_text(summary.text,UISkin.BODY,33,1120)
@@ -1293,6 +1300,7 @@ func show_result():
 	if world_message!='':
 		var message=label_at(UISkin.wrap_text(world_message,UISkin.BODY,20,1110),Vector2(110,680),20,TEAL if world_map.error=='' else Color('#FF6D7B'))
 		message.set_deferred('size',Vector2(1120,60))
+	button('RUN-ANALYSE',Vector2(1300,640),Vector2(430,75),func():queue_ui_action(func():recap_view.show_current()))
 	button('NOCHMAL SPIELEN',Vector2(110,740),Vector2(540,110),start_run)
 	button('CHARAKTERE',Vector2(690,740),Vector2(500,110),func():character_select(selected))
 	button('HAUPTMENÜ',Vector2(1230,740),Vector2(500,110),main_menu)
@@ -1368,6 +1376,7 @@ func _draw():
 	world_visuals.draw_deaths()
 	vfx.draw_particles()
 	hero_ability.draw()
+	crew.draw()
 	for l in loot:
 		var p: Vector2 = l.pos
 		draw_circle(p,18,Color(0,.85,.8,.12))
@@ -1396,6 +1405,8 @@ func _draw():
 			if e.text!='': draw_string(UISkin.BODY,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
+	if recap_view:recap_view.dispose()
+	if settings_view:settings_view.dispose()
 	if audio_director:audio_director.stop()
 	if is_instance_valid(alert_audio):
 		alert_audio.stop()
@@ -1495,7 +1506,7 @@ func mastery_screen(index:int, preview:String=''):
 	for i in range((index/6)*6,mini((index/6)*6+6,characters.size())):
 		var tab_width=1720.0/6
 		button(characters[i].name,Vector2(100+(i%6)*tab_width,230),Vector2(tab_width-18,75),func():mastery_screen(i),Color('#147F81') if i==index else Color('#243958'))
-	button('WEITERE HELDEN',Vector2(110,320),Vector2(480,65),func():mastery_screen(6 if index<6 else 0))
+	button('WEITERE HELDEN',Vector2(110,320),Vector2(480,65),func():mastery_screen(posmod((index/6)*6+6,ceili(characters.size()/6.0)*6)))
 	portrait(Vector2(130,390),index,1.1)
 	# Preview can show a locked colour, but never equips it.
 	var art=ui_root.get_child(ui_root.get_child_count()-1)
@@ -1536,13 +1547,7 @@ func endless_statistics(page:int=0):
 	button('VORHERIGE',Vector2(800,960),Vector2(430,90),func():endless_statistics(posmod(page-1,3)))
 	button('NÄCHSTE',Vector2(1300,960),Vector2(480,90),func():endless_statistics(posmod(page+1,3)))
 
-func motion_settings():
-	backdrop('MENÜBEWEGUNG','Neigung bewegt nur Hintergrundbilder / Bedienelemente bleiben an ihrer Position')
-	button('NEIGUNG: '+('AN' if saved.settings.tilt else 'AUS'),Vector2(160,320),Vector2(1500,110),func():saved.settings.tilt=not saved.settings.tilt;menu_motion.reset();save_game();motion_settings())
-	button('RUHIGE MENÜS: '+('AN' if saved.settings.reduced_motion else 'AUS'),Vector2(160,470),Vector2(1500,110),func():saved.settings.reduced_motion=not saved.settings.reduced_motion;save_game();motion_settings())
-	button('NEIGUNG NEU ZENTRIEREN',Vector2(160,620),Vector2(1500,110),func():menu_motion.reset();sound('click'))
-	label_at('Halte das Handy bequem. Die aktuelle Haltung wird als Mitte übernommen.\nOhne Bewegungssensor bleibt die Darstellung stabil. Keine Sensorberechtigung nötig.',Vector2(160,790),29)
-	button('ZURÜCK',Vector2(160,960),Vector2(650,90),func():settings(main_menu if state!=State.PAUSED else pause_menu))
+func motion_settings():settings_view.show(main_menu if state!=State.PAUSED else pause_menu,'controls')
 
 func difficulty_select(page:int=0):
 	backdrop('DEINE SCHWIERIGKEIT','Gleiche Warnzeiten / gleiche Gegnergrenze / eigene Rekorde je Stufe')

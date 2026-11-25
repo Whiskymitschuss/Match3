@@ -1,15 +1,22 @@
-# Nächster Stand nach 0.21
+# Nächster Stand nach 0.26
 
-Umgesetzt: zehn Welten, elf Helden, zehn zusätzliche Gegner, Bossleiter alle zwei
-Wellen, harmonisierte Comicdarstellung, erweitertes Handbuch und neue Kampfsounds.
+Umgesetzt: zehn Welten, 15 Kämpfer, erweiterte Gegner, Bossleiter in 2/4/6/8/10,
+Comicdarstellung, lokale Sammlung und Werkstatt, Arena-Manöver der ersten Welten,
+drei Klassenmodule, lokale Run-Analysen, neue Menü-/Settings-Struktur, fünf Waffen-Skins und eine
+eigene Musik-/Soundmischung für Menü, Kampf und Boss.
 
-1. APK auf vorhandenen Android-Spielstand aktualisieren und Erststart prüfen.
-2. Je ein kompletter Run mit Bruiser, Steelfist und einer neuen Klasse; Welle2/4/6/8/10
-   nach Zeit bis Kill, erlittenem Schaden und verfügbaren Käufen beurteilen.
-3. Schild-/Frost-/Beschwörerwellen und zehnte Welt auf kleinen und breiten Displays testen.
-4. Touch mit zwei Fingern, Unterbrechung, Safe Area, Neigung und Lautstärke vor Ort abnehmen.
-5. FPS/Temperatur bei langen Endlosläufen auf schwächerem und geeignetem Gerät messen.
-6. Erst anhand dieser Ergebnisse Spawnmischung, Boss-HP und Belohnungskurve feinabstimmen.
+1. APK als Update auf den vorhandenen Android-Spielstand installieren.
+2. Je einen Run mit Bruiser, Steelfist und einer neuen Klasse spielen. Wellen-
+   und Bosszeiten, tatsächlichen HP-Verlust und Käufe in der Run-Analyse ansehen.
+3. Bruchkern, Ionenrelais und Schattenspule mit Basiswaffen und Entwicklungen
+   ausprobieren. Zusatzschaden hängt von erreichbaren Zielen und verbliebenen HP ab.
+4. Schild-, Frost- und Beschwörerwellen sowie zehnte Welt auf kleinen und breiten
+   Displays testen. Filter, Tabs, Verlauf und Rückwege vor Ort abnehmen.
+5. Touch mit zwei Fingern, Unterbrechung, Safe Area, Neigung und Lautstärke prüfen.
+6. FPS und Temperatur bei langen Endlosläufen auf geeigneten Geräten messen.
+7. Anhand menschlicher Rückmeldungen Spawnmischung, Bosskurve und Belohnungen
+   abstimmen. Danach weitere Arena-Manöver für die verbleibenden Welten vertiefen.
 
-Kein weiterer großer Inhaltsblock, bevor die neue Breite menschlich getestet ist.
-Keine Cloud, Echtgeldkäufe, Werbung oder Onlinepflicht geplant.
+Die Analyse liefert gemessene Werte zur Orientierung. Stationäre automatisierte
+Proben beweisen keine menschliche Balance. Kein weiterer großer Inhaltsblock vor
+der Geräteabnahme; keine Cloud, Echtgeldkäufe, Werbung oder Onlinepflicht geplant.

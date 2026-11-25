@@ -1,4 +1,5 @@
 extends RefCounted
+const Recap=preload('res://scripts/progression/recap_data.gd')
 const Roster=preload('res://scripts/core/roster.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 const Specs=preload('res://scripts/weapons/specializations.gd')
@@ -34,6 +35,13 @@ static func clean_run(data) -> Dictionary:
 	var result={'arena':data.get('arena','scrapyard'),'character':data.character,'won':data.get('won',false)==true,'wave':clampi(int(number(data.get('wave'),1)),1,10),'time':number(data.get('time'),0,7200),'kills':int(number(data.get('kills'))),'level':clampi(int(number(data.get('level'),1)),1,999),'damage':number(data.get('damage')),'coins':int(number(data.get('coins'))),'weapons':[]}
 	if data.get('difficulty') in ['normal','veteran','mayhem']:result.difficulty=data.difficulty
 	if data.has('elite_kills'):result.elite_kills=clampi(int(number(data.elite_kills)),0,100)
+	if data.get('mode') in ['campaign','endless']:
+		result.mode=data.mode
+		if data.mode=='endless':
+			result.wave=clampi(int(number(data.get('wave'),1)),1,1000000)
+			result.time=number(data.get('time'))
+	var analysis=Recap.clean(data.get('analysis'))
+	if not analysis.is_empty():result.analysis=analysis
 	var weapons=data.get('weapons')
 	if weapons is Array:
 		for item in weapons:
@@ -83,9 +91,14 @@ static func add_run(saved: Dictionary, data: Dictionary) -> Array[String]:
 		if run.won and run.time>0 and (record.fastest_victory<=0 or run.time<record.fastest_victory):
 				record.fastest_victory=run.time
 				improvements.append('fastest_victory')
+	remember(saved,run)
+	return improvements
+static func remember(saved:Dictionary,data:Dictionary):
+	var run=clean_run(data)
+	if run.is_empty():return
+	if not saved.has('recent_runs'):saved.recent_runs=[]
 	saved.recent_runs.push_front(run)
 	if saved.recent_runs.size()>MAX_HISTORY:saved.recent_runs.resize(MAX_HISTORY)
-	return improvements
 static func aggregate(records: Dictionary) -> Dictionary:
 	var result=character_defaults()
 	for id in CHARACTERS:
