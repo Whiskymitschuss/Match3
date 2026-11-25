@@ -27,7 +27,7 @@ func actor() -> Dictionary:
 		if e.kind=='breaker_axel' and e.hp>0:return e
 	return {}
 func clear():
-	stage='chase';attack='ring';clock=2.5;tier=1;pattern=0;beats=0;dash_hit=false;combo=false
+	stage='chase';attack='ring';clock=(float(game.united.bosses.ladder.cadence.opening_delay) if game.united and game.united.enabled else 2.5);tier=1;pattern=0;beats=0;dash_hit=false;combo=false
 	rings.clear();cracks.clear();stagger_left=0;slow_left=0;push_velocity=Vector2.ZERO
 func tick_player(dt:float):
 	stagger_left=maxf(0,stagger_left-dt);slow_left=maxf(0,slow_left-dt)
@@ -52,7 +52,7 @@ func begin_attack(id:String,e:Dictionary):
 	dash_hit=false
 	game.sound('axel_warning')
 func recover():
-	stage='recovery';clock=float(data.recovery)*(.7 if tier==3 else 1.0);game.boss_warning=''
+	stage='recovery';clock=float(data.recovery)*([.9,.8,.7][tier-1] if game.united.enabled else (.7 if tier==3 else 1.0));game.boss_warning=''
 func warning_text() -> String:
 	if stage=='windup':return {'ring':'BODENSTOSS / DISTANZ SCHAFFEN','hammer':'PRESSLUFTHAMMER / MARKIERUNG VERLASSEN','charge':'ZOMBIE-ANSTURM / SEITLICH AUSWEICHEN'}[attack]+'  %.1f s' % maxf(0,clock)
 	if stage=='hammer':return 'PRESSLUFTHAMMER-RASEREI / ABSTAND HALTEN'
@@ -66,8 +66,8 @@ func update(dt:float):
 	update_hazards(dt)
 	if game.state!=game.State.COMBAT:return
 	var next=3 if e.hp/e.max_hp<=float(data.phases[1]) else (2 if e.hp/e.max_hp<=float(data.phases[0]) else 1)
-	if next>tier:
-		tier=next;stage='phase';clock=1.1;combo=false;game.sound('axel_rage')
+	if next>tier and (not game.united.enabled or stage not in ['windup','dash','hammer']):
+		tier=next;stage='phase';clock=(float(game.united.bosses.ladder.cadence.phase_pause) if game.united.enabled else 1.1);combo=false;game.sound('axel_rage')
 		game.encounters.warn('BREAKER AXEL / '+('WUTPHASE' if tier==3 else 'PHASE 2'));return
 	if float(e.get('steel_stun',0))>0:return
 	if stage in ['windup','dash','hammer'] and (not game.enemy_roles.visible(e.pos) or (stage=='windup' and e.pos.distance_to(origin)>6)):
@@ -79,7 +79,7 @@ func update(dt:float):
 		'chase','recovery','phase':
 			if not game.enemy_roles.visible(e.pos):return
 			if combo:combo=false;begin_attack('ring',e)
-			else:begin_attack(['ring','hammer','charge'][pattern%3],e);pattern+=1
+			else:begin_attack((game.united.bosses.ladder['6'].sequence if game.united.enabled else ['ring','hammer','charge'])[pattern%3],e);pattern+=1
 		'windup':
 			match attack:
 				'ring':

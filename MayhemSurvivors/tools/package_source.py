@@ -1,11 +1,11 @@
-"""Package the complete runnable 0.21.1 project, excluding generated cache and old capture galleries."""
+"""Package the complete runnable 0.21.2 project, excluding generated cache and old capture galleries."""
 from pathlib import Path
 import argparse, zipfile
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path);args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.21.1-source.zip'
+out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.21.2-source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
-captures={'case_navigation_reveal','case_navigation_inventory','united_home','united_map_gardens','united_hero_steelfist','united_hero_cinder','united_new_enemies_firestorm','united_boss_combat_6','united_guide_hero','united_tutorial'}
+captures={'boss_balance_intro_10','boss_balance_opening_4','boss_balance_opening_8','boss_balance_orbit_details','boss_balance_shade_selection','case_navigation_reveal','case_navigation_inventory','united_home','united_map_gardens','united_hero_steelfist','united_hero_cinder','united_new_enemies_firestorm','united_boss_combat_6','united_guide_hero','united_tutorial'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(root.rglob('*')):
   rel=f.relative_to(root)

@@ -1,0 +1,10 @@
+Anonymous complete public download verification — 2026-11-18T12:44:39.678458+00:00
+PASS MayhemSurvivors-v0.21.2-debug.apk
+76014568 bytes
+SHA256 83f428e40f8f2bb004eb58894542384524d32b60a25345c32874e3282cfadabb
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/MayhemSurvivors-v0.21.2-debug.apk
+PASS MayhemSurvivors-v0.21.2-source.zip
+80963872 bytes
+SHA256 b5b543ae8cfabde907c2a69214823d07de10eb1bc171d30f29ce12d0722662e7
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/balance/bosses-v0.21.2/Downloads/MayhemSurvivors-v0.21.2-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.

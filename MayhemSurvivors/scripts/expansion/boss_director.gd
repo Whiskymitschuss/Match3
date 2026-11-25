@@ -18,13 +18,15 @@ func profile() -> Dictionary:
 	if s==6:d=game.breaker.data.duplicate(true);d.boss_art=0;d.pattern='drill';d.name='BREAKER AXEL';d.duration=75
 	elif s==10:d={'name':game.arena_definition.boss_name,'hp':6000.0,'speed':78.0,'damage':20.0,'radius':78.0,'xp':150,'coins':150,'boss_art':int(game.arena_definition.get('boss_art',4)),'pattern':game.arena_definition.get('event',{'scrapyard':'debris','reactor':'storm','docks':'tide','foundry':'fire'}.get(game.arena_id,'storm')),'duration':90,'color':game.arena_definition.get('boss',{}).get('color','#FF9F1C')}
 	else:d=ladder.get(str(s),ladder['2']).duplicate(true);d.boss_art=int(d.art);d.color='#C68CFF'
-	var rank=int(game.arena_definition.get('rank',0));d.hp=float(d.hp)*(1+rank*.08);d.damage=float(d.damage)*(1+rank*.035)
+	for property in ['hp','speed']:
+		if ladder.get(str(s),{}).has(property):d[property]=ladder[str(s)][property]
+	var rank=int(game.arena_definition.get('rank',0));d.hp=roundf(float(d.hp)*(1+rank*.08));d.damage=float(d.damage)*(1+rank*.035)
 	return d
 func actor() -> Dictionary:
 	for e in game.enemies:
 		if e.kind in ['boss','champion'] and e.hp>0:return e
 	return {}
-func clear():stage='chase';clock=2.5;tier=1;pattern=0;attack='';hit=false
+func clear():stage='chase';clock=float(ladder.cadence.opening_delay);tier=1;pattern=0;attack='';hit=false
 func rage(e:Dictionary) -> bool:return game.breaker.tier==3 if e.kind=='breaker_axel' else (tier==3 and R.BOSS_KINDS.has(e.kind))
 func touch_damage(e:Dictionary) -> float:return e.damage*(1.15 if tier==3 else 1.0)
 func update(dt:float):
@@ -32,8 +34,8 @@ func update(dt:float):
 	var e=actor()
 	if e.is_empty():return
 	var next=3 if e.hp/e.max_hp<=.35 else (2 if e.hp/e.max_hp<=.7 else 1)
-	if next>tier:
-		tier=next;stage='phase';clock=1.1;game.united.enemies.removed(e);game.sound('united_rage');game.encounters.warn('%s / PHASE %d' % [e.boss_name,tier]);return
+	if next>tier and stage not in ['windup','dash']:
+		tier=next;stage='phase';clock=float(ladder.cadence.phase_pause);game.sound('united_rage');game.encounters.warn('%s / PHASE %d' % [e.boss_name,tier]);return
 	if float(e.get('steel_stun',0))>0:return
 	if stage in ['windup','dash'] and (not game.enemy_roles.visible(e.pos) or (stage=='windup' and e.pos.distance_to(origin)>8)):
 		game.united.enemies.removed(e);stage='recovery';clock=2;return
@@ -41,7 +43,7 @@ func update(dt:float):
 	if clock>0:return
 	if stage in ['chase','recovery','phase']:
 		if not game.enemy_roles.visible(e.pos):return
-		origin=e.pos;target=game.player.position;hit=false;attack=['ring','fan','charge','zones'][pattern%4];pattern+=1;stage='windup';clock=1.5
+		origin=e.pos;target=game.player.position;hit=false;attack=attack_order(e)[pattern%4];pattern+=1;stage='windup';clock=1.5
 		game.boss_warning={'ring':'IMPULSRING / GRÜNE ÖFFNUNG NUTZEN','fan':'PROJEKTILFÄCHER / SEITLICH AUSWEICHEN','charge':'STURMSPUR VERLASSEN','zones':'MARKIERUNGEN VERLASSEN'}[attack];game.sound('united_warning')
 		if attack=='charge':target=(origin+origin.direction_to(target)*440).clamp(Vector2(40,40),Vector2(2360,1560))
 		if attack=='ring':game.united.enemies.ring(origin,230+(45 if tier==3 else 0),origin.direction_to(target).angle()+PI*.5,1.5,touch_damage(e),e)
@@ -56,8 +58,8 @@ func update(dt:float):
 			for i in range(7+(2 if tier==3 else 0)):
 				game.shoot(origin,Vector2.from_angle(angle+(i-(3 if tier<3 else 4))*.17),touch_damage(e)*.7,true,250,3.2,'united_boss')
 		if attack=='charge':stage='dash';clock=2.5
-		else:stage='recovery';clock=2.4 if tier<3 else 1.7;game.boss_warning=''
-	else:stage='recovery';clock=2.0
+		else:stage='recovery';clock=float(ladder.cadence.recovery[tier-1]);game.boss_warning=''
+	else:stage='recovery';clock=float(ladder.cadence.recovery[tier-1])
 func velocity(e:Dictionary,normal:Vector2,dt:float) -> Vector2:
 	if stage in ['windup','phase']:return Vector2.ZERO
 	if stage=='dash':return e.pos.direction_to(target)*minf(470,e.pos.distance_to(target)/maxf(.0001,dt))
@@ -66,7 +68,7 @@ func after_move(e:Dictionary,before:Vector2,after:Vector2):
 	if stage!='dash':return
 	if not hit and Geometry2D.get_closest_point_to_segment(game.player.position,before,after).distance_to(game.player.position)<e.radius+27:hit=true;game.breaker.hit(touch_damage(e),before,260,.18)
 	if game.state==game.State.COMBAT and after.distance_to(target)<1:
-		stage='recovery';clock=1.8;game.boss_warning=''
+		stage='recovery';clock=float(ladder.cadence.charge_recovery);game.boss_warning=''
 		if tier>=2:game.united.enemies.ring(after,220,after.direction_to(game.player.position).angle()+PI*.5,1.5,touch_damage(e),e)
 func draw():
 	if stage!='windup' or actor().is_empty():return
@@ -82,5 +84,18 @@ func intro():
 	var texture=AtlasTexture.new();texture.atlas=art.BOSSES;texture.region=art.boss_region(d.boss_art);game.UISkin.image(game,texture,Rect2(110,265,620,680))
 	game.UISkin.panel(game,Rect2(790,280,1010,590),Color('#FF9F45'))
 	game.label_at(d.name,Vector2(825,315),55,game.GOLD)
-	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,420),31)
+	var actual=game.rules.scale_stats(game.WaveBalance.stats(d,game.rules.current_wave(),game.wave_number,true),true)
+	game.label_at('%d HP / %.0f Kontaktschaden' % [roundi(actual.hp),actual.damage],Vector2(825,380),26,game.TEAL)
+	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
 	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),game.begin_wave,Color('#8A432E'))
+
+func attack_order(e:Dictionary) -> Array:
+	if slot()!=10:return ladder[str(slot())].sequence
+	if e.boss_pattern in ['storm','frost','void']:return ['zones','charge','fan','ring']
+	if e.boss_pattern in ['fire','poison','carnival']:return ['fan','zones','charge','ring']
+	return ladder['10'].sequence
+func weapon_factor(w:Dictionary) -> float:
+	if not game.united.enabled:return 1.0
+	return float(game.Specs.definition(w).get('boss_power',game.weapon_data[w.id].get('boss_power',1.0)))
+func weapon_power(w:Dictionary,e:Dictionary,power:float) -> float:
+	return power*weapon_factor(w) if R.BOSS_KINDS.has(e.kind) else power

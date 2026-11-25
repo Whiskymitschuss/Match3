@@ -1,0 +1,821 @@
+[
+  {
+    "dps": 56.74,
+    "hero": "bruiser",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 8.6,
+    "wave": 2,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 117.15,
+    "hero": "bruiser",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 9.4,
+    "wave": 4,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 156.9,
+    "hero": "bruiser",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 11.1,
+    "wave": 6,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 194.28,
+    "hero": "bruiser",
+    "hp": 2842.0,
+    "spec": "quake",
+    "stationary_ttk": 14.6,
+    "wave": 8,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 402.98,
+    "hero": "bruiser",
+    "hp": 2842.0,
+    "spec": "crusher",
+    "stationary_ttk": 7.1,
+    "wave": 8,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 238.52,
+    "hero": "bruiser",
+    "hp": 6960.0,
+    "spec": "quake",
+    "stationary_ttk": 29.2,
+    "wave": 10,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 482.99,
+    "hero": "bruiser",
+    "hp": 6960.0,
+    "spec": "crusher",
+    "stationary_ttk": 14.4,
+    "wave": 10,
+    "weapon": "hammer"
+  },
+  {
+    "dps": 41.27,
+    "hero": "sparky",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 11.8,
+    "wave": 2,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 180.22,
+    "hero": "sparky",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 6.1,
+    "wave": 4,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 356.59,
+    "hero": "sparky",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 4.9,
+    "wave": 6,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 617.48,
+    "hero": "sparky",
+    "hp": 2842.0,
+    "spec": "piercer",
+    "stationary_ttk": 4.6,
+    "wave": 8,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 493.98,
+    "hero": "sparky",
+    "hp": 2842.0,
+    "spec": "blast",
+    "stationary_ttk": 5.8,
+    "wave": 8,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 913.79,
+    "hero": "sparky",
+    "hp": 6960.0,
+    "spec": "piercer",
+    "stationary_ttk": 7.6,
+    "wave": 10,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 731.03,
+    "hero": "sparky",
+    "hp": 6960.0,
+    "spec": "blast",
+    "stationary_ttk": 9.5,
+    "wave": 10,
+    "weapon": "blaster"
+  },
+  {
+    "dps": 42.88,
+    "hero": "sparky",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 11.4,
+    "wave": 2,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 114.69,
+    "hero": "sparky",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 9.6,
+    "wave": 4,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 188.6,
+    "hero": "sparky",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 9.2,
+    "wave": 6,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 393.6,
+    "hero": "sparky",
+    "hp": 2842.0,
+    "spec": "precision",
+    "stationary_ttk": 7.2,
+    "wave": 8,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 229.6,
+    "hero": "sparky",
+    "hp": 2842.0,
+    "spec": "storm",
+    "stationary_ttk": 12.4,
+    "wave": 8,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 536.66,
+    "hero": "sparky",
+    "hp": 6960.0,
+    "spec": "precision",
+    "stationary_ttk": 13.0,
+    "wave": 10,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 313.05,
+    "hero": "sparky",
+    "hp": 6960.0,
+    "spec": "storm",
+    "stationary_ttk": 22.2,
+    "wave": 10,
+    "weapon": "splitgun"
+  },
+  {
+    "dps": 29.02,
+    "hero": "sparky",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 16.8,
+    "wave": 2,
+    "weapon": "arc"
+  },
+  {
+    "dps": 61.44,
+    "hero": "sparky",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 17.9,
+    "wave": 4,
+    "weapon": "arc"
+  },
+  {
+    "dps": 82.02,
+    "hero": "sparky",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 21.2,
+    "wave": 6,
+    "weapon": "arc"
+  },
+  {
+    "dps": 114.35,
+    "hero": "sparky",
+    "hp": 2842.0,
+    "spec": "conductor",
+    "stationary_ttk": 24.9,
+    "wave": 8,
+    "weapon": "arc"
+  },
+  {
+    "dps": 281.75,
+    "hero": "sparky",
+    "hp": 2842.0,
+    "spec": "overcharge",
+    "stationary_ttk": 10.1,
+    "wave": 8,
+    "weapon": "arc"
+  },
+  {
+    "dps": 138.23,
+    "hero": "sparky",
+    "hp": 6960.0,
+    "spec": "conductor",
+    "stationary_ttk": 50.4,
+    "wave": 10,
+    "weapon": "arc"
+  },
+  {
+    "dps": 345.0,
+    "hero": "sparky",
+    "hp": 6960.0,
+    "spec": "overcharge",
+    "stationary_ttk": 20.2,
+    "wave": 10,
+    "weapon": "arc"
+  },
+  {
+    "dps": 10.75,
+    "hero": "shade",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 45.3,
+    "wave": 2,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 34.13,
+    "hero": "shade",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 32.3,
+    "wave": 4,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 41.6,
+    "hero": "shade",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 41.8,
+    "wave": 6,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 59.79,
+    "hero": "shade",
+    "hp": 2842.0,
+    "spec": "wide",
+    "stationary_ttk": 47.5,
+    "wave": 8,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 126.49,
+    "hero": "shade",
+    "hp": 2842.0,
+    "spec": "swift",
+    "stationary_ttk": 22.5,
+    "wave": 8,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 79.7,
+    "hero": "shade",
+    "hp": 6960.0,
+    "spec": "wide",
+    "stationary_ttk": 87.3,
+    "wave": 10,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 144.55,
+    "hero": "shade",
+    "hp": 6960.0,
+    "spec": "swift",
+    "stationary_ttk": 48.1,
+    "wave": 10,
+    "weapon": "orbit"
+  },
+  {
+    "dps": 62.83,
+    "hero": "twinkle",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 7.8,
+    "wave": 2,
+    "weapon": "mop"
+  },
+  {
+    "dps": 126.03,
+    "hero": "twinkle",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 8.7,
+    "wave": 4,
+    "weapon": "mop"
+  },
+  {
+    "dps": 163.15,
+    "hero": "twinkle",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 10.7,
+    "wave": 6,
+    "weapon": "mop"
+  },
+  {
+    "dps": 264.51,
+    "hero": "twinkle",
+    "hp": 2842.0,
+    "spec": "soap_storm",
+    "stationary_ttk": 10.7,
+    "wave": 8,
+    "weapon": "mop"
+  },
+  {
+    "dps": 294.69,
+    "hero": "twinkle",
+    "hp": 2842.0,
+    "spec": "chemical_flood",
+    "stationary_ttk": 9.6,
+    "wave": 8,
+    "weapon": "mop"
+  },
+  {
+    "dps": 333.27,
+    "hero": "twinkle",
+    "hp": 6960.0,
+    "spec": "soap_storm",
+    "stationary_ttk": 20.9,
+    "wave": 10,
+    "weapon": "mop"
+  },
+  {
+    "dps": 364.91,
+    "hero": "twinkle",
+    "hp": 6960.0,
+    "spec": "chemical_flood",
+    "stationary_ttk": 19.1,
+    "wave": 10,
+    "weapon": "mop"
+  },
+  {
+    "dps": 38.69,
+    "hero": "kicksy",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 12.6,
+    "wave": 2,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 153.6,
+    "hero": "kicksy",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 7.2,
+    "wave": 4,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 332.82,
+    "hero": "kicksy",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 5.2,
+    "wave": 6,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 868.72,
+    "hero": "kicksy",
+    "hp": 2842.0,
+    "spec": "bombard",
+    "stationary_ttk": 3.3,
+    "wave": 8,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 574.88,
+    "hero": "kicksy",
+    "hp": 2842.0,
+    "spec": "fireball",
+    "stationary_ttk": 4.9,
+    "wave": 8,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 1424.9,
+    "hero": "kicksy",
+    "hp": 6960.0,
+    "spec": "bombard",
+    "stationary_ttk": 4.9,
+    "wave": 10,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 857.37,
+    "hero": "kicksy",
+    "hp": 6960.0,
+    "spec": "fireball",
+    "stationary_ttk": 8.1,
+    "wave": 10,
+    "weapon": "bomb"
+  },
+  {
+    "dps": 55.41,
+    "hero": "steelfist",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 8.8,
+    "wave": 2,
+    "weapon": "tools"
+  },
+  {
+    "dps": 130.67,
+    "hero": "steelfist",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 8.4,
+    "wave": 4,
+    "weapon": "tools"
+  },
+  {
+    "dps": 173.34,
+    "hero": "steelfist",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 10.0,
+    "wave": 6,
+    "weapon": "tools"
+  },
+  {
+    "dps": 301.84,
+    "hero": "steelfist",
+    "hp": 2842.0,
+    "spec": "pressure_breaker",
+    "stationary_ttk": 9.4,
+    "wave": 8,
+    "weapon": "tools"
+  },
+  {
+    "dps": 358.88,
+    "hero": "steelfist",
+    "hp": 2842.0,
+    "spec": "ratchet_rush",
+    "stationary_ttk": 7.9,
+    "wave": 8,
+    "weapon": "tools"
+  },
+  {
+    "dps": 350.9,
+    "hero": "steelfist",
+    "hp": 6960.0,
+    "spec": "pressure_breaker",
+    "stationary_ttk": 19.8,
+    "wave": 10,
+    "weapon": "tools"
+  },
+  {
+    "dps": 424.26,
+    "hero": "steelfist",
+    "hp": 6960.0,
+    "spec": "ratchet_rush",
+    "stationary_ttk": 16.4,
+    "wave": 10,
+    "weapon": "tools"
+  },
+  {
+    "dps": 49.68,
+    "hero": "cinder",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 9.8,
+    "wave": 2,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 107.16,
+    "hero": "cinder",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 10.3,
+    "wave": 4,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 146.26,
+    "hero": "cinder",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 11.9,
+    "wave": 6,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 302.49,
+    "hero": "cinder",
+    "hp": 2842.0,
+    "spec": "solar_fan",
+    "stationary_ttk": 9.4,
+    "wave": 8,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 307.05,
+    "hero": "cinder",
+    "hp": 2842.0,
+    "spec": "ash_rain",
+    "stationary_ttk": 9.3,
+    "wave": 8,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 381.27,
+    "hero": "cinder",
+    "hp": 6960.0,
+    "spec": "solar_fan",
+    "stationary_ttk": 18.3,
+    "wave": 10,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 380.94,
+    "hero": "cinder",
+    "hp": 6960.0,
+    "spec": "ash_rain",
+    "stationary_ttk": 18.3,
+    "wave": 10,
+    "weapon": "flamer"
+  },
+  {
+    "dps": 36.11,
+    "hero": "frosty",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 13.5,
+    "wave": 2,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 157.7,
+    "hero": "frosty",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 7.0,
+    "wave": 4,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 305.08,
+    "hero": "frosty",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 5.7,
+    "wave": 6,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 527.21,
+    "hero": "frosty",
+    "hp": 2842.0,
+    "spec": "ice_lance",
+    "stationary_ttk": 5.4,
+    "wave": 8,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 865.27,
+    "hero": "frosty",
+    "hp": 2842.0,
+    "spec": "frost_burst",
+    "stationary_ttk": 3.3,
+    "wave": 8,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 835.71,
+    "hero": "frosty",
+    "hp": 6960.0,
+    "spec": "ice_lance",
+    "stationary_ttk": 8.3,
+    "wave": 10,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 1242.27,
+    "hero": "frosty",
+    "hp": 6960.0,
+    "spec": "frost_burst",
+    "stationary_ttk": 5.6,
+    "wave": 10,
+    "weapon": "cryo"
+  },
+  {
+    "dps": 36.75,
+    "hero": "volt",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 13.3,
+    "wave": 2,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 76.8,
+    "hero": "volt",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 14.3,
+    "wave": 4,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 106.98,
+    "hero": "volt",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 16.3,
+    "wave": 6,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 223.53,
+    "hero": "volt",
+    "hp": 2842.0,
+    "spec": "thunder_prism",
+    "stationary_ttk": 12.7,
+    "wave": 8,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 186.28,
+    "hero": "volt",
+    "hp": 2842.0,
+    "spec": "storm_grid",
+    "stationary_ttk": 15.3,
+    "wave": 8,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 257.88,
+    "hero": "volt",
+    "hp": 6960.0,
+    "spec": "thunder_prism",
+    "stationary_ttk": 27.0,
+    "wave": 10,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 214.9,
+    "hero": "volt",
+    "hp": 6960.0,
+    "spec": "storm_grid",
+    "stationary_ttk": 32.4,
+    "wave": 10,
+    "weapon": "tesla"
+  },
+  {
+    "dps": 55.88,
+    "hero": "rook",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 8.7,
+    "wave": 2,
+    "weapon": "lance"
+  },
+  {
+    "dps": 115.37,
+    "hero": "rook",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 9.6,
+    "wave": 4,
+    "weapon": "lance"
+  },
+  {
+    "dps": 154.52,
+    "hero": "rook",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 11.3,
+    "wave": 6,
+    "weapon": "lance"
+  },
+  {
+    "dps": 373.33,
+    "hero": "rook",
+    "hp": 2842.0,
+    "spec": "solar_pike",
+    "stationary_ttk": 7.6,
+    "wave": 8,
+    "weapon": "lance"
+  },
+  {
+    "dps": 276.54,
+    "hero": "rook",
+    "hp": 2842.0,
+    "spec": "aegis_sweep",
+    "stationary_ttk": 10.3,
+    "wave": 8,
+    "weapon": "lance"
+  },
+  {
+    "dps": 441.7,
+    "hero": "rook",
+    "hp": 6960.0,
+    "spec": "solar_pike",
+    "stationary_ttk": 15.8,
+    "wave": 10,
+    "weapon": "lance"
+  },
+  {
+    "dps": 327.18,
+    "hero": "rook",
+    "hp": 6960.0,
+    "spec": "aegis_sweep",
+    "stationary_ttk": 21.3,
+    "wave": 10,
+    "weapon": "lance"
+  },
+  {
+    "dps": 40.84,
+    "hero": "nyx",
+    "hp": 487.2,
+    "spec": "",
+    "stationary_ttk": 11.9,
+    "wave": 2,
+    "weapon": "chakram"
+  },
+  {
+    "dps": 163.84,
+    "hero": "nyx",
+    "hp": 1102.0,
+    "spec": "",
+    "stationary_ttk": 6.7,
+    "wave": 4,
+    "weapon": "chakram"
+  },
+  {
+    "dps": 328.86,
+    "hero": "nyx",
+    "hp": 1740.0,
+    "spec": "",
+    "stationary_ttk": 5.3,
+    "wave": 6,
+    "weapon": "chakram"
+  },
+  {
+    "dps": 1028.41,
+    "hero": "nyx",
+    "hp": 2842.0,
+    "spec": "twin_moon",
+    "stationary_ttk": 2.8,
+    "wave": 8,
+    "weapon": "chakram"
+  },
+  {
+    "dps": 655.14,
+    "hero": "nyx",
+    "hp": 2842.0,
+    "spec": "dusk_spiral",
+    "stationary_ttk": 4.3,
+    "wave": 8,
+    "weapon": "chakram"
+  },
+  {
+    "dps": 1528.96,
+    "hero": "nyx",
+    "hp": 6960.0,
+    "spec": "twin_moon",
+    "stationary_ttk": 4.6,
+    "wave": 10,
+    "weapon": "chakram"
+  },
+  {
+    "dps": 1043.02,
+    "hero": "nyx",
+    "hp": 6960.0,
+    "spec": "dusk_spiral",
+    "stationary_ttk": 6.7,
+    "wave": 10,
+    "weapon": "chakram"
+  }
+]
