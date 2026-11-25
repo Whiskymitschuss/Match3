@@ -21,6 +21,7 @@ func show():
 	game.backdrop('MAYHEM MARKET','Welle %d geschafft  /  %s  /  %d Run-Coins' % [game.wave_number,game.characters[game.selected].name,game.coins])
 	game.button('WERTE',Vector2(1250,75),Vector2(260,85),stats)
 	game.button('? HILFE',Vector2(1550,75),Vector2(260,85),func():help_page(0))
+	if game.characters[game.selected].id=='bruiser':game.button('HAMMER-PFADE',Vector2(865,75),Vector2(350,85),func():game.queue_ui_action(game.bruiser_builds.show))
 	for i in range(game.offers.size()):
 		var o=game.offers[i];var x=100+i*435
 		panel(Vector2(x,245),Vector2(400,495),Color('#19222F'))
@@ -93,7 +94,9 @@ func weapon_details(id:String):
 	var reach=(float(d.reach)+10*(w.level-1))*float(spec.get('reach',1.0))
 	if id=='orbit':reach=game.specialized_combat.orbit_pose(w).radius
 	if id=='tools':reach=game.steelfist.reach(w)
-	text('Schaden pro Treffer: %.1f (ohne Krit)\n%s: %.2f s\n%s: %.0f\nKrit-Chance: %.0f %%' % [damage,'Trefferintervall' if id=='orbit' else 'Abklingzeit',cooldown,'Orbit-Radius' if id=='orbit' else 'Zielreichweite',reach,game.crit*100],Vector2(760,285),1000,32)
+	var range_label='Orbit-Radius' if id=='orbit' else 'Zielreichweite'
+	if id=='hammer' and w.get('spec','')=='quake':reach=float(spec.radius);range_label='Schlagradius'
+	text('Schaden pro Treffer: %.1f (ohne Krit)\n%s: %.2f s\n%s: %.0f\nKrit-Chance: %.0f %%' % [damage,'Trefferintervall' if id=='orbit' else 'Abklingzeit',cooldown,range_label,reach,game.crit*100],Vector2(760,285),1000,32)
 	text('SET: '+game.run_items.FAMILIES[game.run_items.family(id)].name,Vector2(760,520),1000,29,game.TEAL)
 	text(spec.description if not spec.is_empty() else 'Auf Stufe 5 wählst du eine kostenlose Entwicklung. Die Klassenbindung bleibt erhalten.',Vector2(760,590),1000,28)
 	if game.united.bosses.weapon_factor(w)>1:text('Gegen Bosse: ×%.2f / %.1f Schaden vor Krit' % [game.united.bosses.weapon_factor(w),damage*game.united.bosses.weapon_factor(w)],Vector2(760,740),1000,26,game.GOLD)

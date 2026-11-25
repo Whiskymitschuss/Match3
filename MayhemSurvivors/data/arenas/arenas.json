@@ -1,7 +1,7 @@
 {
   "scrapyard": {
     "name": "SCHROTTPLATZ",
-    "description": "Die bewährte Arena. Zehn Wellen gegen die Schrottmeute.",
+    "description": "Zehn Wellen, fünf Bosse und freiwillige Bergungen für zusätzliche Run-Coins.",
     "floor": "scrapyard",
     "waves": "waves/waves",
     "boss_name": "THE OVERLORD",

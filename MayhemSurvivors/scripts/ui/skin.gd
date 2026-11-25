@@ -29,7 +29,7 @@ static func menu(game:Node2D):
 	game.label_at('ÜBERLEBE DAS CHAOS',Vector2(1490,82),25,Color('#D6C4E6'))
 	image(game,LOGO,Rect2(75,160,950,425))
 	game.label_at('DEIN HELD. DEIN BUILD. DEIN MAYHEM.',Vector2(125,590),29,Color('#F1DEF9'))
-	game.button('SPIELEN',Vector2(115,655),Vector2(830,115),game.character_select,Color('#9C247D'))
+	game.button('SPIELEN',Vector2(115,655),Vector2(830,115),func():game.queue_ui_action(game.play),Color('#9C247D'))
 	game.button('CHARAKTERE',Vector2(115,800),Vector2(400,95),game.character_select)
 	game.button('AUFTRÄGE & SHOP',Vector2(545,800),Vector2(400,95),func():game.reward_hub.show())
 	game.button('STATISTIK',Vector2(115,925),Vector2(400,90),game.statistics)
@@ -43,7 +43,7 @@ static func menu(game:Node2D):
 	game.button('TUTORIAL',Vector2(1100,890),Vector2(330,90),func():game.tutorial.start())
 	game.button('HANDBUCH',Vector2(1460,890),Vector2(330,90),func():game.game_guide.show('rules',0,game.main_menu))
 	game.label_at('11 HELDEN / 10 ARENEN / 2 MODI',Vector2(1145,995),25,Color('#E7D7F3'))
-	game.label_at('v0.21.2  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
+	game.label_at('v0.22.0  /  RF WORLDS',Vector2(1560,1030),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='EINSTELLUNGEN':panel(game,Rect2(90,260,1460,415))

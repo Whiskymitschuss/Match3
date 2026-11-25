@@ -10,6 +10,8 @@ var start_pos=Vector2.ZERO
 var start_value=0
 var paused_once=false
 var previous={}
+var training_weapon='hammer'
+var card_revision=0
 var TITLES:Array=[]
 var TEXTS:Array=[]
 func _init(g:Node2D):
@@ -19,7 +21,9 @@ func frozen() -> bool:return active and (step in [0,11,12] or done)
 func start():
 	if active:return
 	previous={'selected':game.selected,'arena':game.arena_id,'mode':game.run_mode}
-	game.character_select();game.selected=1;game.arena_id='scrapyard';game.run_mode='tutorial';active=true;game.start_run();game.begin_wave()
+	game.character_select();game.selected=0 if game.united.enabled else 1
+	training_weapon=game.characters[game.selected].weapon
+	game.arena_id='scrapyard';game.run_mode='tutorial';active=true;game.start_run();game.begin_wave()
 	step=0;done=true
 	layer=CanvasLayer.new();layer.layer=20;add_child(layer)
 	root=Control.new();root.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(root)
@@ -44,7 +48,7 @@ func enter_step():
 	done=step in [0,11,12];start_pos=game.player.position
 	game.remaining=99999;game.spawn_clock=99999
 	match step:
-		2:dummy(Vector2(160,0),12);start_value=game.kills
+		2:dummy(Vector2(75 if training_weapon=='hammer' else 160,0),12);start_value=game.kills
 		3:
 			start_value=game.xp
 			if game.loot.is_empty():game.loot.append({'pos':game.player.position+Vector2(110,0),'xp':5})
@@ -54,9 +58,9 @@ func enter_step():
 			game.cleanup();game.wave_number=5;game.spawn_enemy('ravox');var e=game.enemies.back();e.pos=game.player.position+Vector2(260,0);e.ravox_clock=0;e.hp=1000000;e.max_hp=1000000
 		7:
 			game.cleanup();game.open_shop();game.coins=300;game.hp=game.max_hp-20
-			game.offers=[{'type':'weapon','id':'blaster','name':'BLASTER','description':'Waffenstufe verbessern','price':25,'rarity':'STANDARD'},{'type':'upgrade','id':'damage','name':'HEAVY IMPACT','description':'+12 % Schaden','price':20,'rarity':'STANDARD'},{'type':'upgrade','id':'heal','name':'FIELD MEDIC','description':'Heilt 25 HP','price':15,'rarity':'STANDARD'},{'type':'upgrade','id':'rapid','name':'RAPID FIRE','description':'+10 % Angriffstempo','price':20,'rarity':'STANDARD'}];game.show_shop()
+			game.offers=[{'type':'weapon','id':training_weapon,'name':game.weapon_data[training_weapon].name,'description':'Waffenstufe verbessern','price':25,'rarity':'STANDARD'},{'type':'upgrade','id':'damage','name':'HEAVY IMPACT','description':'+12 % Schaden','price':20,'rarity':'STANDARD'},{'type':'upgrade','id':'heal','name':'FIELD MEDIC','description':'Heilt 25 HP','price':15,'rarity':'STANDARD'},{'type':'upgrade','id':'rapid','name':'RAPID FIRE','description':'+10 % Angriffstempo','price':20,'rarity':'STANDARD'}];game.show_shop()
 		8:start_value=game.rerolls
-		9:start_value=game.weapon_level('blaster')
+		9:start_value=game.weapon_level(training_weapon)
 		10:paused_once=false
 	redraw_card()
 func _process(_dt):
@@ -81,7 +85,7 @@ func _process(_dt):
 			for offer in game.offers:
 				if offer.get('sold',false):passed=true
 		8:passed=game.rerolls>start_value
-		9:passed=game.weapon_level('blaster')>start_value
+		9:passed=game.weapon_level(training_weapon)>start_value
 		10:
 			if game.state==game.State.PAUSED:paused_once=true
 			if game.state==game.State.COMBAT:game.remaining=99999;game.spawn_clock=99999
@@ -91,9 +95,15 @@ func text(value:String,at:Vector2,width:float,font_size:int) -> Label:
 	var label=Label.new();label.text=value;label.position=at;label.size=Vector2(width,100);label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	label.add_theme_font_override('font',game.UISkin.BODY);label.add_theme_font_size_override('font_size',font_size);label.mouse_filter=Control.MOUSE_FILTER_IGNORE;root.add_child(label);label.set_deferred('size',Vector2(width,100));return label
 func control_button(value:String,at:Vector2,size:Vector2,action:Callable) -> Button:
-	var b=Button.new();b.text=value;b.position=at;b.size=size;b.custom_minimum_size=size;b.add_theme_font_override('font',game.UISkin.HEADING);b.add_theme_font_size_override('font_size',25);b.add_theme_stylebox_override('normal',game.UISkin.box(Color('#38204F'),Color('#E879F9')));b.pressed.connect(action);root.add_child(b);return b
+	var b=Button.new();b.text=value;b.position=at;b.size=size;b.custom_minimum_size=size;b.add_theme_font_override('font',game.UISkin.HEADING);b.add_theme_font_size_override('font_size',25);b.add_theme_stylebox_override('normal',game.UISkin.box(Color('#38204F'),Color('#E879F9')))
+	var revision=card_revision
+	b.pressed.connect(func():call_deferred('_card_action',revision,action));root.add_child(b);return b
+func _card_action(revision:int,action:Callable):
+	if active and revision==card_revision and action.is_valid():action.call()
 func redraw_card():
+	card_revision+=1
 	for child in root.get_children():root.remove_child(child);child.queue_free()
+	var focus=Control.new();focus.set_script(preload('res://scripts/ui/tutorial_focus.gd'));focus.tutorial=self;root.add_child(focus)
 	var full=step in [0,11,12]
 	var shop=step in [7,8,9]
 	var origin=Vector2(520,300) if full else (Vector2(510,0) if shop else Vector2(500,765))
@@ -107,7 +117,8 @@ func redraw_card():
 	var offset=285 if full else 185
 	text('KICKSY / %d VON %d' % [step+1,TITLES.size()],origin+Vector2(offset,14),size.x-offset-20,18).modulate=Color('#E879F9')
 	text(TITLES[step],origin+Vector2(offset,42),size.x-offset-20,27).modulate=Color('#FFD166')
-	text(TEXTS[step],origin+Vector2(offset,82),size.x-offset-25,27 if full else 22)
+	var instruction:String=TEXTS[step].replace('{weapon}',game.weapon_data[training_weapon].name).replace('{ability}',game.hero_ability.definition().name)
+	text(instruction,origin+Vector2(offset,82),size.x-offset-25,27 if full else 22)
 	var y=origin.y+size.y-85
 	control_button('BEENDEN',Vector2(origin.x+18,y),Vector2(155,70),func():stop(false))
 	var advance=control_button('ABSCHLIESSEN' if step==12 else ('WEITER' if done else 'JETZT ÜBEN'),Vector2(origin.x+size.x-230,y),Vector2(210,70),next);advance.disabled=not done

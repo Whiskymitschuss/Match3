@@ -1,0 +1,23 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+FIRST ARENA FRAME welcome
+FIRST ARENA FRAME training_intro
+FIRST ARENA FRAME training_move
+FIRST ARENA FRAME training_ability
+FIRST ARENA FRAME market
+FIRST ARENA FRAME build_paths
+FIRST ARENA FRAME evolution
+FIRST ARENA FRAME quake_details
+FIRST ARENA FRAME wave_briefing
+FIRST ARENA FRAME salvage_offer
+FIRST ARENA FRAME salvage_active
+FIRST ARENA FRAME salvage_complete
+FIRST ARENA FRAME boss_1600
+FIRST ARENA FRAME boss_2400
+FIRST ARENA FRAME boss_1440
+FIRST ARENA FRAME victory
+FIRST ARENA FRAME reward_details
+FIRST ARENA FRAME world_reward

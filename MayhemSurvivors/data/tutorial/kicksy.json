@@ -4,7 +4,7 @@
   "steps": [
     {
       "title": "WILLKOMMEN BEI MAYHEM",
-      "text": "Na, bereit für ein bisschen Mayhem? Ich bin Kicksy. Wir üben mit echten Waffen und Tasten. Keine Sorge: Deine Kampfrekorde bleiben sauber."
+      "text": "Ich bin Kicksy! Wir üben mit Bruiser, deinem ersten freien Fighter. Hammer, Schockwelle und echte Shop-Tasten: Alles funktioniert wie im Run. Dein Trainingsfortschritt zählt separat."
     },
     {
       "title": "BEWEGEN",
@@ -12,7 +12,7 @@
     },
     {
       "title": "AUTOMATISCH ANGREIFEN",
-      "text": "Geh in Waffenreichweite. Dein Blaster sucht selbst das nächste Ziel und feuert automatisch. Besiege den Übungsgegner."
+      "text": "Dein {weapon} greift automatisch an. Bruiser kämpft im Nahbereich: Geh an den Übungsgegner heran. Bewege dich nach einem Schlag wieder aus der Gefahrenzone."
     },
     {
       "title": "XP EINSAMMELN",
@@ -24,7 +24,7 @@
     },
     {
       "title": "DEINE SPEZIALFÄHIGKEIT",
-      "text": "Tippe rechts unten auf IMPULSGRANATE. Jede Klasse besitzt eine eigene Fähigkeit. Der Balken zeigt, wann sie wieder bereit ist."
+      "text": "Tippe rechts unten auf {ability}. Bruisers Schockwelle trifft im Umkreis und stößt normale Gegner weg. Nutze sie, wenn du Platz brauchst. Der Balken zeigt die Abklingzeit."
     },
     {
       "title": "WARNBAHN AUSWEICHEN",
@@ -40,7 +40,7 @@
     },
     {
       "title": "WAFFEN AUFRÜSTEN",
-      "text": "Waffenkarte unten antippen, dann AUFRÜSTEN. Stufe 5 bringt eine Entwicklung. Set-Boni findest du unter SETS."
+      "text": "Tippe unten auf deine Waffenkarte, danach AUFRÜSTEN. Auf Stufe 5 wählst du einen von zwei Pfaden. Bruiser hat ERDBEBEN gegen Gruppen oder DONNERFAUST gegen Einzelziele."
     },
     {
       "title": "PAUSE & WEITERSPIELEN",
@@ -48,11 +48,11 @@
     },
     {
       "title": "FORTSCHRITT & BELOHNUNGEN",
-      "text": "Meisterschaften bringen Skins. Unter AUFTRÄGE & SHOP holst du Studio-Coins und Pass-XP für tägliche und wöchentliche Ziele ab. Der kostenlose Pass bringt weitere Coins für kosmetische Begleiter und Ringe. Kampagne und Endlos haben eigene Rekorde."
+      "text": "Mit Run-Coins kaufst du im Wellenshop ein. Studio-Coins bleiben für Cases und Deko. Auf dem Schrottplatz gibt es freiwillige Bergungen: 1,2 Sekunden im türkisen Kreis anhalten, Einschlägen ausweichen und zusätzliche Run-Coins sichern."
     },
     {
       "title": "BEREIT FÜR MAYHEM",
-      "text": "Bosse warten in Welle 2, 4, 6, 8 und 10. Axel kommt in 6. Der Arenaboss in 10 öffnet die nächste Welt. Deine Crew wächst über Crew-Cases. Nur Bruiser ist sofort frei; hier trainierst du mit einem Leihhelden. Weiteres steht im Handbuch."
+      "text": "Bosse in Welle 2, 4, 6, 8 und 10. Warnungen lesen und seitlich ausweichen! Der Arenasieg öffnet die nächste Welt. Auf der Weltkarte holst du deine Erstbelohnung ab. Für den echten Run sind Bruiser und sein Hammer bereit."
     }
   ]
 }

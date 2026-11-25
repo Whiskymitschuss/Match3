@@ -127,5 +127,13 @@ static func snapshot(saved:Dictionary,hero:String) -> Dictionary:
 	return result
 static func run_reward(saved:Dictionary,mode:String,waves:int,kills:int,won:bool) -> int:
 	if mode=='tutorial':return 0
-	var coins=clampi(waves*5+mini(10,maxi(0,kills)/50)+(20 if won and mode=='campaign' else 0),0,500)
+	var coins=int(reward_breakdown(mode,waves,kills,won).total)
 	saved.meta.coins=mini(1000000000,saved.meta.coins+coins);saved.meta.earned=mini(1000000000,saved.meta.earned+coins);return coins
+static func reward_breakdown(mode:String,waves:int,kills:int,won:bool) -> Dictionary:
+	var result={'waves':0,'kills':0,'victory':0,'total':0}
+	if mode=='tutorial':return result
+	result.waves=clampi(waves*5,0,500)
+	result.kills=mini(500-result.waves,mini(10,maxi(0,kills)/50))
+	result.victory=mini(500-result.waves-result.kills,20 if won and mode=='campaign' else 0)
+	result.total=result.waves+result.kills+result.victory
+	return result

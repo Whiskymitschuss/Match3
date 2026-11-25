@@ -1,0 +1,170 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Imported original audible short contract cue salvage_offer
+PASS Imported original audible short contract cue salvage_start
+PASS Imported original audible short contract cue salvage_complete
+PASS First Play opens a real two-choice welcome
+PASS Production training uses the actually free Bruiser and hammer
+PASS Queued double tap advances the coach exactly once
+PASS Real movement completes the first lesson
+PASS Actual automatic hammer kills the training enemy
+PASS Actual crystal pickup completes XP lesson
+PASS Real level-up selection completes upgrade lesson
+PASS Ability instruction derives its name from character data
+PASS Real Bruiser shockwave completes ability lesson
+PASS Real telegraphed charge and dodge complete lesson
+PASS Training shop buys the owned class weapon
+PASS Real purchase is observed by coach
+PASS Actual free reroll completes lesson
+PASS Actual hammer workshop upgrade completes lesson
+PASS Real pause and resume complete lesson
+PASS Training completes and returns safely to menu
+PASS Training awards no run currency, cases, kills or locked fighters
+PASS Welcome choice persists through load
+PASS Returning players go directly to character choice
+PASS Cancel and restart training safely
+PASS Terminal cannot auto-accept underneath idle corner player (45.0, 45.0)
+PASS Terminal cannot auto-accept underneath idle corner player (2355.0, 45.0)
+PASS Terminal cannot auto-accept underneath idle corner player (45.0, 1555.0)
+PASS Terminal cannot auto-accept underneath idle corner player (2355.0, 1555.0)
+PASS No early event LOW
+PASS Optional terminal creates no forced hazards LOW
+PASS Passing through does not accept LOW
+PASS Leaving circle resets deliberate hold LOW
+PASS Accept creates one three-impact salvo LOW
+PASS Exact shared warning and collision data LOW
+PASS No damage before full 1.8 second warning LOW
+PASS Danger creates real damage after warning LOW
+PASS Contract freeze LOW 7
+PASS Contract freeze LOW 5
+PASS Contract freeze LOW 6
+PASS Completed contract grants exact one-time Run-Coins LOW
+PASS Repeated update cannot duplicate receipt LOW
+PASS Wave cleanup keeps only run receipt LOW
+PASS Deliberate hold has not completed before 1.2 seconds
+PASS Death during contract grants no pending reward LOW
+PASS Restart resets all contract receipts LOW
+PASS No early event MEDIUM
+PASS Optional terminal creates no forced hazards MEDIUM
+PASS Passing through does not accept MEDIUM
+PASS Leaving circle resets deliberate hold MEDIUM
+PASS Accept creates one three-impact salvo MEDIUM
+PASS Exact shared warning and collision data MEDIUM
+PASS No damage before full 1.8 second warning MEDIUM
+PASS Danger creates real damage after warning MEDIUM
+PASS Contract freeze MEDIUM 7
+PASS Contract freeze MEDIUM 5
+PASS Contract freeze MEDIUM 6
+PASS Completed contract grants exact one-time Run-Coins MEDIUM
+PASS Repeated update cannot duplicate receipt MEDIUM
+PASS Wave cleanup keeps only run receipt MEDIUM
+PASS Deliberate hold has not completed before 1.2 seconds
+PASS Death during contract grants no pending reward MEDIUM
+PASS Restart resets all contract receipts MEDIUM
+PASS No early event HIGH
+PASS Optional terminal creates no forced hazards HIGH
+PASS Passing through does not accept HIGH
+PASS Leaving circle resets deliberate hold HIGH
+PASS Accept creates one three-impact salvo HIGH
+PASS Exact shared warning and collision data HIGH
+PASS No damage before full 1.8 second warning HIGH
+PASS Danger creates real damage after warning HIGH
+PASS Contract freeze HIGH 7
+PASS Contract freeze HIGH 5
+PASS Contract freeze HIGH 6
+PASS Completed contract grants exact one-time Run-Coins HIGH
+PASS Repeated update cannot duplicate receipt HIGH
+PASS Wave cleanup keeps only run receipt HIGH
+PASS Deliberate hold has not completed before 1.2 seconds
+PASS Death during contract grants no pending reward HIGH
+PASS Restart resets all contract receipts HIGH
+PASS Other modes retain their rules tutorial
+PASS Other modes retain their rules endless
+PASS Late acceptance closes before an impossible contract
+PASS No contract in starter or boss wave 1
+PASS No contract in starter or boss wave 2
+PASS No contract in starter or boss wave 4
+PASS No contract in starter or boss wave 6
+PASS No contract in starter or boss wave 8
+PASS No contract in starter or boss wave 10
+PASS Other arena gameplay unchanged reactor
+PASS Other arena gameplay unchanged docks
+PASS Other arena gameplay unchanged foundry
+PASS Other arena gameplay unchanged gardens
+PASS Other arena gameplay unchanged frost
+PASS Other arena gameplay unchanged storm
+PASS Other arena gameplay unchanged crystal
+PASS Other arena gameplay unchanged carnival
+PASS Other arena gameplay unchanged void
+PASS Both paths visible with frozen simulation quake
+PASS Build preview reaches real workshop quake
+PASS Real paid workshop level 2 quake
+PASS Real paid workshop level 3 quake
+PASS Real paid workshop level 4 quake
+PASS Real paid workshop level 5 quake
+PASS Actual free specialization choice quake
+PASS Connected normal/boss wave transition quake 1
+PASS Real hammer path defeats boss within its maximum timer in stationary reference quake 2
+PASS Connected normal/boss wave transition quake 2
+PASS Connected normal/boss wave transition quake 3
+PASS Real hammer path defeats boss within its maximum timer in stationary reference quake 4
+PASS Connected normal/boss wave transition quake 4
+PASS Connected normal/boss wave transition quake 5
+PASS Real hammer path defeats boss within its maximum timer in stationary reference quake 6
+PASS Connected normal/boss wave transition quake 6
+PASS Connected normal/boss wave transition quake 7
+PASS Real hammer path defeats boss within its maximum timer in stationary reference quake 8
+PASS Connected normal/boss wave transition quake 8
+PASS Connected normal/boss wave transition quake 9
+PASS Real hammer path defeats boss within its maximum timer in stationary reference quake 10
+PASS Connected normal/boss wave transition quake 10
+PASS Actual campaign clear opens next world quake
+PASS Three distinct reward purposes shown quake
+PASS Result navigation and repeated finish cannot pay twice quake
+PASS Details route reaches exact once-only first-clear claim quake
+PASS Claim persists and cannot duplicate quake
+PASS New run safely follows result and claim quake
+PASS Both paths visible with frozen simulation crusher
+PASS Build preview reaches real workshop crusher
+PASS Real paid workshop level 2 crusher
+PASS Real paid workshop level 3 crusher
+PASS Real paid workshop level 4 crusher
+PASS Real paid workshop level 5 crusher
+PASS Actual free specialization choice crusher
+PASS Connected normal/boss wave transition crusher 1
+PASS Real hammer path defeats boss within its maximum timer in stationary reference crusher 2
+PASS Connected normal/boss wave transition crusher 2
+PASS Connected normal/boss wave transition crusher 3
+PASS Real hammer path defeats boss within its maximum timer in stationary reference crusher 4
+PASS Connected normal/boss wave transition crusher 4
+PASS Connected normal/boss wave transition crusher 5
+PASS Real hammer path defeats boss within its maximum timer in stationary reference crusher 6
+PASS Connected normal/boss wave transition crusher 6
+PASS Connected normal/boss wave transition crusher 7
+PASS Real hammer path defeats boss within its maximum timer in stationary reference crusher 8
+PASS Connected normal/boss wave transition crusher 8
+PASS Connected normal/boss wave transition crusher 9
+PASS Real hammer path defeats boss within its maximum timer in stationary reference crusher 10
+PASS Connected normal/boss wave transition crusher 10
+PASS Actual campaign clear opens next world crusher
+PASS Three distinct reward purposes shown crusher
+PASS Result navigation and repeated finish cannot pay twice crusher
+PASS Details route reaches exact once-only first-clear claim crusher
+PASS Claim persists and cannot duplicate crusher
+PASS New run safely follows result and claim crusher
+PASS Reward explanation exactly matches actual payout ["campaign", 10, 466, true]
+PASS Reward explanation exactly matches actual payout ["campaign", 4, 120, false]
+PASS Reward explanation exactly matches actual payout ["endless", 10000, 99999, false]
+PASS Reward explanation exactly matches actual payout ["tutorial", 10, 1000, true]
+PASS Boss HUD clears player card (1280, 720)
+PASS Decorative labels never intercept touch (1280, 720)
+PASS Boss HUD clears player card (2400, 1080)
+PASS Decorative labels never intercept touch (2400, 1080)
+PASS Boss HUD clears player card (1440, 1080)
+PASS Decorative labels never intercept touch (1440, 1080)
+PASS Actual Play touch opens first-player welcome safely
+PASS Actual screen touch can skip welcome through production GUI
+PASS Actual touch returns from reward details to result
+PASS Actual touch reopens reward details without duplicate payout
+PASS First queued destination wins; stale page action is discarded
+FIRST ARENA RESULT 167 passed, 0 failed; native_touch=false
