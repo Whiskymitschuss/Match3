@@ -19,7 +19,7 @@ func clear():
 	cloud.clear();sonic_flash=0;drone_left=0;drone_clock=0;heal_clock=0;drone_phase=0;shield=0;shield_left=0
 	for e in game.enemies:
 		for key in ['toxin_left','toxin_clock']:e.erase(key)
-func active_left() -> float:return maxf(shield_left,maxf(drone_left,float(cloud.get('left',0))))
+func active_left() -> float:return maxf(shield_left if shield>0 else 0.0,maxf(drone_left,float(cloud.get('left',0))))
 func heal(amount:float):
 	if not live() or game.hp<=0:return
 	var restored=minf(amount,game.max_hp-game.hp)

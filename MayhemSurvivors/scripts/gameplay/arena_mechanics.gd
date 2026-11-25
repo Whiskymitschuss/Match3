@@ -20,15 +20,20 @@ var total_coins=0
 var arena_kills=0
 var maneuvers=0
 var valves
-func _init(g:Node2D):game=g;data=game.read_data('arenas/mechanics');valves=preload('res://scripts/gameplay/foundry_valves.gd').new(g,self)
-func supported() -> bool:return enabled and game.united.enabled and game.arena_events.enabled and game.run_mode!='tutorial' and game.arena_id in ['reactor','docks','foundry']
+var worlds
+func _init(g:Node2D):
+	game=g;data=game.read_data('arenas/mechanics');valves=preload('res://scripts/gameplay/foundry_valves.gd').new(g,self)
+	worlds=preload('res://scripts/gameplay/world_maneuvers.gd').new(g,self);data.merge(worlds.data)
+func supported() -> bool:return enabled and game.united.enabled and game.arena_events.enabled and game.run_mode!='tutorial' and game.arena_id in ['reactor','docks','foundry','gardens','frost','storm','crystal','carnival','void']
 func normal_wave() -> bool:return supported() and not game.rules.boss_wave() and ((game.wave_number-1)%10)+1>=3
 func clear():
 	hazards.clear();cores.clear();charge=0;killed_for_cores=0;dropped=0;stage='idle';held=0;drop_index=0;groups.clear()
 	valves.clear()
+	worlds.clear()
 func reset_run():clear();serial=0;total_coins=0;arena_kills=0;maneuvers=0
 func begin_wave():
 	if not normal_wave():return
+	if worlds.IDS.has(game.arena_id):worlds.begin_wave();return
 	if game.arena_id=='foundry':stage='valves';valves.begin_wave();return
 	stage='collect' if game.arena_id=='reactor' else 'watch'
 	var offset=Vector2(-300 if game.player.position.x>1200 else 300,120 if game.player.position.y<300 else -120)
@@ -54,6 +59,7 @@ func add_hazard(kind:String,pos:Vector2,warm:float,owner:Dictionary={},group:int
 	if boss:h.owner_start=owner.pos
 	hazards.append(h);return true
 func remove_owner(owner:Dictionary):
+	worlds.remove_owner(owner)
 	for i in range(hazards.size()-1,-1,-1):
 		if not hazards[i].owner.is_empty() and is_same(hazards[i].owner,owner):hazards.remove_at(i)
 func contains(h:Dictionary,pos:Vector2,radius:float) -> bool:
@@ -61,6 +67,7 @@ func contains(h:Dictionary,pos:Vector2,radius:float) -> bool:
 	return pos.distance_to(h.pos)<=float(h.radius)+radius
 func update(dt:float):
 	if game.state!=game.State.COMBAT or not supported():return
+	if worlds.IDS.has(game.arena_id):worlds.update(dt);return
 	# Existing hazards advance first. Newly announced ones always get their full warning.
 	for h in hazards.duplicate():
 		if not hazards.has(h):continue
@@ -130,6 +137,7 @@ func award(arena:String):
 	game.sound('salvage_complete');game.encounters.warn('MANÖVER GELUNGEN / +%d RUN-COINS' % value)
 func boss_zones(owner:Dictionary,at:Vector2) -> float:
 	if not supported() or not game.rules.final_boss_wave():return 0.0
+	if worlds.IDS.has(game.arena_id):return worlds.boss_zones(owner,at)
 	if game.arena_id=='foundry':
 		var warm=float(data.foundry.boss_warm)
 		for direction in [Vector2.RIGHT,Vector2.DOWN]:add_hazard('steam',at-direction*(float(data.foundry.offset)+float(data.foundry.length)*.5),warm,owner,-1,direction)
@@ -138,12 +146,14 @@ func boss_zones(owner:Dictionary,at:Vector2) -> float:
 	var warm=float(data[game.arena_id].boss_warm)
 	for offset in [Vector2.ZERO,Vector2(-230,140),Vector2(230,-140)]:add_hazard(kind,(at+offset).clamp(Vector2(150,160),Vector2(2250,1440)),warm,owner)
 	return warm
-func zone_title() -> String:return {'reactor':'Kernentladungen','docks':'Containerabwürfe','foundry':'Dampfbahnen'}.get(game.arena_id,'Arenenangriff')
+func zone_title() -> String:return data[game.arena_id].boss_title if worlds.IDS.has(game.arena_id) else {'reactor':'Kernentladungen','docks':'Containerabwürfe','foundry':'Dampfbahnen'}.get(game.arena_id,'Arenenangriff')
 func briefing() -> String:
+	if worlds.IDS.has(game.arena_id):return data[game.arena_id].name+' / '+data[game.arena_id].prompt
 	if game.arena_id=='foundry':return 'GLUTWERK / Am Handrad anhalten. Grüner Druck und ein Kill bringen den Dampfbonus.'
 	return 'REAKTOR / Drei Kerne sammeln, am Terminal 1,2 s anhalten.' if game.arena_id=='reactor' else 'NEONHAFEN / Container treffen dich und Gegner. Zwei Kills pro Doppelladung bringen einen Bonus.'
 func status() -> String:
 	if not normal_wave():return ''
+	if worlds.IDS.has(game.arena_id):return worlds.status()
 	if game.arena_id=='foundry':return valves.status()
 	if game.arena_id=='docks':return 'CONTAINER: 2 GEGNER PRO DOPPELLADUNG\nMANÖVER-BONUS +%d RUN-COINS' % bonus('docks')
 	if stage=='expired':return 'REAKTOR / ZEITFENSTER GESCHLOSSEN'
@@ -152,6 +162,7 @@ func status() -> String:
 	return 'ENERGIEKERNE %d / %d\n%s' % [charge,int(data.reactor.cores_required),'AM TERMINAL 1,2 s ANHALTEN' if charge>=int(data.reactor.cores_required) else 'JEDER 4. GEGNER LÄSST EINEN KERN FALLEN']
 func draw():
 	if not supported():return
+	if worlds.IDS.has(game.arena_id):worlds.draw();return
 	if normal_wave() and game.arena_id=='foundry':valves.draw()
 	for core in cores:
 		game.draw_circle(core.pos,24,Color(.35,1,.5,.14));game.draw_texture_rect(CORE,Rect2(core.pos-Vector2(19,23),Vector2(38,46)),false)

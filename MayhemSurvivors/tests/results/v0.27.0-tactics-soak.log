@@ -1,0 +1,21 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TACTICS SOAK gardens hero=0 qualities identical
+TACTICS SOAK frost hero=0 qualities identical
+TACTICS SOAK storm hero=0 qualities identical
+TACTICS SOAK crystal hero=0 qualities identical
+TACTICS SOAK carnival hero=0 qualities identical
+TACTICS SOAK void hero=0 qualities identical
+TACTICS SOAK gardens hero=5 qualities identical
+TACTICS SOAK frost hero=5 qualities identical
+TACTICS SOAK storm hero=5 qualities identical
+TACTICS SOAK crystal hero=5 qualities identical
+TACTICS SOAK carnival hero=5 qualities identical
+TACTICS SOAK void hero=5 qualities identical
+TACTICS SOAK gardens hero=11 qualities identical
+TACTICS SOAK frost hero=11 qualities identical
+TACTICS SOAK storm hero=11 qualities identical
+TACTICS SOAK crystal hero=11 qualities identical
+TACTICS SOAK carnival hero=11 qualities identical
+TACTICS SOAK void hero=11 qualities identical
+TACTICS SOAK PASS scenarios=54 simulation_frames=64800 simulated_seconds=1080.0 enemies=100 peak_hazards=3 peak_projectile_pool=9; controlled simulation, not human balance

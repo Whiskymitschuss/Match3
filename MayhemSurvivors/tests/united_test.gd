@@ -92,16 +92,20 @@ func run():
 	check(g.united.enemies.hazards.size()==12,'Danger field count bounded independently of visual quality')
 	for wave in [2,4,8,10]:
 		start(0,'void',wave);var boss=g.enemies[0];boss.pos=at+Vector2(220,0);g.united.bosses.clock=0;g.united.update(.01)
-		check(g.united.bosses.stage=='windup' and g.united.bosses.clock==1.5,'Boss starts full warning '+str(wave))
+		check(g.united.bosses.stage=='windup' and g.united.bosses.clock==(2.0 if wave==10 else 1.5),'Boss starts full warning '+str(wave))
 		boss.hp=boss.max_hp*.3;g.united.update(.01);check(g.united.bosses.stage=='windup' and g.united.bosses.tier==1,'Threshold damage preserves locked boss warning '+str(wave));g.united.bosses.stage='recovery';g.united.update(.01);check(g.united.bosses.tier==3 and g.united.bosses.stage=='phase','Boss rage enters readable transition '+str(wave))
 		g.pause_game();var clock=g.united.bosses.clock;g._physics_process(3);check(g.united.bosses.clock==clock,'Boss pause freezes phase '+str(wave));g.resume()
 	# Pool metadata must not leak across old and new projectile types.
 	start();var shot=g.shoot(at,Vector2.RIGHT,1,false,600,1,'cryo');shot.united=true;shot.united_hits=[{}];shot.active=false
 	var reused=g.shoot(at,Vector2.RIGHT,1,false,600,1,'blaster');check(not reused.get('united',false) and not reused.has('united_hits'),'Pooled projectile resets previous weapon hit history')
-	# Six new world events actually create danger then reward survival.
+	# The six later worlds now expose optional tools instead of automatic event damage.
 	for arena in R.ARENAS.slice(4):
-		start(0,arena,3);g.remaining=30;g.arena_events.update(.01);check(not g.united.enemies.hazards.is_empty(),'Arena event is functional '+arena)
-		g.arena_events.update(9);check(g.run_events==1,'Arena event survival tracked '+arena)
+		start(0,arena,3);g.remaining=30;g.arena_events.update(.01);g.arena_mechanics.update(.01);var tool=g.arena_mechanics.worlds
+		check(tool.stage=='ready' and not tool.nodes.is_empty() and tool.hazards.is_empty(),'Optional arena equipment is available '+arena)
+		if tool.definition().mode=='relay':
+			for pos in tool.nodes:g.player.position=pos;g.arena_mechanics.update(.01)
+		else:g.player.position=tool.nodes[0];g.arena_mechanics.update(1.01)
+		g.player.position=Vector2(45,45);g.arena_mechanics.update(4);check(g.run_events==1 and tool.stage=='complete','Completed optional arena event tracked '+arena)
 	# Actual role effects and per-target projectile semantics.
 	start(0,'scrapyard',9);var medic=dummy('medic');var patient=dummy('grunt',Vector2(130,0));patient.hp=50000;g.united.enemies.release(medic);check(patient.hp==66000,'Medic restores sixteen percent without exceeding max health')
 	var shieldbug=dummy('shieldbug');shieldbug.u_face=shieldbug.pos.direction_to(g.player.position);check(g.united.enemies.factor(shieldbug)==.65,'Shield bug protects its facing');shieldbug.u_face=-shieldbug.u_face;check(g.united.enemies.factor(shieldbug)==1,'Shield bug can be flanked')

@@ -1,3 +1,80 @@
+# Testbericht 0.27.0 — 2026-11-23
+
+Godot 4.6.3 stable. Frisch entpacktes Quellprojekt ohne Importcache:
+**38 Suiten / 9.890 bestandene Prüfungen / 0 Fehler**. Beide historischen Traces
+mit eingefrorenen alten Regeln zusätzlich bestanden: 33 + 87 Kontrollpunkte.
+790 Laufzeitdateien plus project.godot/export_presets.cfg sowie Testskripte und
+Runner sind bytegleich zum APK-Quellstand. Keine finalen Parser-, Script- oder
+Ressourcenfehler. Rohprotokolle: tests/results/v0.27.0-*.
+
+## Arena-Taktik und Vergleich
+
+686 Taktik-Prüfungen: sechs Welten × Bruiser/Steelfist/Viper × drei Qualitäten,
+vollständige Vorwarnung, echte Kollisionsgeometrie und Gegnerbeute, einmaliger
+Bonus, keine Extra-Krit-Zufallszüge, freundlicher Schaden, Filterreinigung,
+Wärmeschutz und wirkliche Bewegung, langsame Gegner, fester Blitz, Stun,
+Runenreihenfolge, Bombentakt, Ringsog mit Eliten-/Bosswiderstand und sichere Räume.
+Pause, Shop, Levelwahl, kurze Restzeit, Tod, Wellenbereinigung, Endlos und Restart
+geprüft. Alle sechs Bossvarianten besitzen Vorlauf, Besitzerbereinigung und
+0,5-%-Schadensgrenze pro Einschlag. Keine zusätzlichen Boss-Manöverzahlungen.
+Erstbesuch, Hilfe-Rückweg, gespeicherte Bestätigung und Managerfreigabe geprüft.
+
+3.443 Fortschritts-/Vergleichsprüfungen: echte Case-Preise, Gratistickets, fehlende
+Coins, schreibgeschützte Darstellung, vollständige Crew und 40 unabhängig gesetzte
+Case-Seeds. Der angezeigte Schutz garantiert fehlende Kämpfer innerhalb der
+bestehenden Obergrenze. Verglichen werden tatsächliche kontrollierte Spielbelege
+mit gleichen Rahmenbedingungen. Andere Welten, Modi und Schwierigkeiten sowie
+alte Runs ohne Messdaten werden ausgeschlossen. Werte werden nicht erfunden.
+Statistik erreicht alle 15 Figuren; Tabs, früherer Run und Zurück bleiben nutzbar.
+
+Die beiden neuen Suiten und Case-Navigation nochmals nativ im GL-Fenster mit
+InputEventScreenTouch ausgeführt: 686 / 3.443 / 74 Funktionsprüfungen bestanden.
+Diese Zahlen umfassen auch Modellprüfungen und sind keine Anzahl physischer
+Fingerkontakte. Echte Touch-Wege umfassen sechs Arena-Hilfen, Rückwege zur Pause,
+Vergleich/Filter/Tabs, alle Statistikseiten und Case-Öffnung/Inventar/Zurück.
+
+## Belastung und Darstellung
+
+- Taktik-Soak: 54 Szenarien, 64.800 Schritte / 1.080 simulierte Sekunden.
+  Drei Klassen × sechs Welten × LOW/MEDIUM/HIGH, Normalwelle mit 100 Gegnern
+  und Abschlussboss. Maximal drei neue Gefahren und neun Pool-Slots. Identische
+  Schadens-, HP- und Beutewerte je Qualität bei gleichen Startbedingungen.
+- Analyse-Soak: 90 Szenarien, alle 15 Figuren × Kampagne/Endlos × drei Qualitäten;
+  41.175 Schritte / 686,25 simulierte Sekunden. Kontrollierte Wellen-/Bossenden,
+  erhaltene Gesamtwerte und höchstens 20 gespeicherte Runs.
+- 30 native GL-Aufnahmen: Werkzeug, Vorwarnung, Kicksy-Hilfe und Abschlussboss
+  je neuer Welt, Wärmefeld, drei Vergleichsformate, Leerzustand und Case-Menü.
+  Weltbilder in 1600×900; Vergleich zusätzlich 2400×1080 und 1440×1080.
+  Galerie und relevante Einzelbilder kontrolliert. Vergleichsbilder zeigen
+  kontrollierte Darstellungsbelege, keine menschlichen Android-Testläufe.
+- Sechs eigene SVGs und drei PCM-Cues importiert und im APK nachgewiesen.
+  Bestehende Musik, Mixer, Objektpools und Grafikbudgets bleiben angeschlossen.
+
+## Entwicklungskorrekturen und Reproduktion
+
+Ein Vergleichstest suchte nach dem Roh-Buttonnamen mit Pfeil, während die Skin den
+Pfeil entfernt. Auf den sichtbaren Namen korrigiert; Rückweg ist nativ bestätigt.
+Ein Test mit zurückgesetzter Standardlautstärke hielt beim schnellen Engine-Ende
+noch einen Klick-Audiopuffer; UI-Tests sind jetzt ausdrücklich stumm. Alte Event-
+Fixtures auf freiwillige Werkzeuge und neue volle Bosswarnzeit angepasst.
+Ein veralteter X-Display-Socket verhinderte zunächst den nativen Start. Neuer
+virtueller X-Server gestartet und alle betroffenen Läufe erfolgreich wiederholt.
+Die frühere Nutzungslimit-Blockade wurde vor diesen finalen Ausführungen aufgehoben.
+Keine fehlgeschlagenen Zwischenläufe gelten als erfolgreiche Nachweise.
+
+Reproduktion: `python tools/run_tests.py --traces`. Zusätzlich tactics_soak.gd,
+recap_soak.gd; tactics_test.gd / progress_comparison_test.gd /
+case_navigation_test.gd mit `-- --native-touch` im GL-Fenster; tactics_capture.gd.
+Godot jeweils mit `--fixed-fps 60`. Keine Testfunktionen im APK.
+
+Offen: physisches Android-Gerät, echte Mehrfingerbedienung, Safe Area und Sensorik,
+subjektiver Klang, menschliche Balance, lange Endlosläufe, Temperatur, Akku und
+gemessene 60 FPS. Software-GL und kontrollierte Simulation belegen diese Punkte nicht.
+
+---
+
+## Frühere Testberichte
+
 # Testbericht 0.26.0 — 2026-11-19
 
 Godot 4.6.3 stable. Am frisch entpackten Quellprojekt ohne vorhandenen Importcache:

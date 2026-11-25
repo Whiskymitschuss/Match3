@@ -1,0 +1,751 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Fixed boss HP progression scrapyard normal 2
+PASS Time limit preserved scrapyard normal 2
+PASS Contact damage remains fair scrapyard normal 2
+PASS Stronger boss keeps connected reward and completion scrapyard normal 2
+PASS Fixed boss HP progression scrapyard normal 4
+PASS Time limit preserved scrapyard normal 4
+PASS Contact damage remains fair scrapyard normal 4
+PASS Stronger boss keeps connected reward and completion scrapyard normal 4
+PASS Fixed boss HP progression scrapyard normal 6
+PASS Time limit preserved scrapyard normal 6
+PASS Contact damage remains fair scrapyard normal 6
+PASS Stronger boss keeps connected reward and completion scrapyard normal 6
+PASS Fixed boss HP progression scrapyard normal 8
+PASS Time limit preserved scrapyard normal 8
+PASS Contact damage remains fair scrapyard normal 8
+PASS Stronger boss keeps connected reward and completion scrapyard normal 8
+PASS Fixed boss HP progression scrapyard normal 10
+PASS Time limit preserved scrapyard normal 10
+PASS Contact damage remains fair scrapyard normal 10
+PASS Stronger boss keeps connected reward and completion scrapyard normal 10
+PASS Fixed boss HP progression scrapyard veteran 2
+PASS Time limit preserved scrapyard veteran 2
+PASS Contact damage remains fair scrapyard veteran 2
+PASS Stronger boss keeps connected reward and completion scrapyard veteran 2
+PASS Fixed boss HP progression scrapyard veteran 4
+PASS Time limit preserved scrapyard veteran 4
+PASS Contact damage remains fair scrapyard veteran 4
+PASS Stronger boss keeps connected reward and completion scrapyard veteran 4
+PASS Fixed boss HP progression scrapyard veteran 6
+PASS Time limit preserved scrapyard veteran 6
+PASS Contact damage remains fair scrapyard veteran 6
+PASS Stronger boss keeps connected reward and completion scrapyard veteran 6
+PASS Fixed boss HP progression scrapyard veteran 8
+PASS Time limit preserved scrapyard veteran 8
+PASS Contact damage remains fair scrapyard veteran 8
+PASS Stronger boss keeps connected reward and completion scrapyard veteran 8
+PASS Fixed boss HP progression scrapyard veteran 10
+PASS Time limit preserved scrapyard veteran 10
+PASS Contact damage remains fair scrapyard veteran 10
+PASS Stronger boss keeps connected reward and completion scrapyard veteran 10
+PASS Fixed boss HP progression scrapyard mayhem 2
+PASS Time limit preserved scrapyard mayhem 2
+PASS Contact damage remains fair scrapyard mayhem 2
+PASS Stronger boss keeps connected reward and completion scrapyard mayhem 2
+PASS Fixed boss HP progression scrapyard mayhem 4
+PASS Time limit preserved scrapyard mayhem 4
+PASS Contact damage remains fair scrapyard mayhem 4
+PASS Stronger boss keeps connected reward and completion scrapyard mayhem 4
+PASS Fixed boss HP progression scrapyard mayhem 6
+PASS Time limit preserved scrapyard mayhem 6
+PASS Contact damage remains fair scrapyard mayhem 6
+PASS Stronger boss keeps connected reward and completion scrapyard mayhem 6
+PASS Fixed boss HP progression scrapyard mayhem 8
+PASS Time limit preserved scrapyard mayhem 8
+PASS Contact damage remains fair scrapyard mayhem 8
+PASS Stronger boss keeps connected reward and completion scrapyard mayhem 8
+PASS Fixed boss HP progression scrapyard mayhem 10
+PASS Time limit preserved scrapyard mayhem 10
+PASS Contact damage remains fair scrapyard mayhem 10
+PASS Stronger boss keeps connected reward and completion scrapyard mayhem 10
+PASS Fixed boss HP progression reactor normal 2
+PASS Time limit preserved reactor normal 2
+PASS Contact damage remains fair reactor normal 2
+PASS Stronger boss keeps connected reward and completion reactor normal 2
+PASS Fixed boss HP progression reactor normal 4
+PASS Time limit preserved reactor normal 4
+PASS Contact damage remains fair reactor normal 4
+PASS Stronger boss keeps connected reward and completion reactor normal 4
+PASS Fixed boss HP progression reactor normal 6
+PASS Time limit preserved reactor normal 6
+PASS Contact damage remains fair reactor normal 6
+PASS Stronger boss keeps connected reward and completion reactor normal 6
+PASS Fixed boss HP progression reactor normal 8
+PASS Time limit preserved reactor normal 8
+PASS Contact damage remains fair reactor normal 8
+PASS Stronger boss keeps connected reward and completion reactor normal 8
+PASS Fixed boss HP progression reactor normal 10
+PASS Time limit preserved reactor normal 10
+PASS Contact damage remains fair reactor normal 10
+PASS Stronger boss keeps connected reward and completion reactor normal 10
+PASS Fixed boss HP progression reactor veteran 2
+PASS Time limit preserved reactor veteran 2
+PASS Contact damage remains fair reactor veteran 2
+PASS Stronger boss keeps connected reward and completion reactor veteran 2
+PASS Fixed boss HP progression reactor veteran 4
+PASS Time limit preserved reactor veteran 4
+PASS Contact damage remains fair reactor veteran 4
+PASS Stronger boss keeps connected reward and completion reactor veteran 4
+PASS Fixed boss HP progression reactor veteran 6
+PASS Time limit preserved reactor veteran 6
+PASS Contact damage remains fair reactor veteran 6
+PASS Stronger boss keeps connected reward and completion reactor veteran 6
+PASS Fixed boss HP progression reactor veteran 8
+PASS Time limit preserved reactor veteran 8
+PASS Contact damage remains fair reactor veteran 8
+PASS Stronger boss keeps connected reward and completion reactor veteran 8
+PASS Fixed boss HP progression reactor veteran 10
+PASS Time limit preserved reactor veteran 10
+PASS Contact damage remains fair reactor veteran 10
+PASS Stronger boss keeps connected reward and completion reactor veteran 10
+PASS Fixed boss HP progression reactor mayhem 2
+PASS Time limit preserved reactor mayhem 2
+PASS Contact damage remains fair reactor mayhem 2
+PASS Stronger boss keeps connected reward and completion reactor mayhem 2
+PASS Fixed boss HP progression reactor mayhem 4
+PASS Time limit preserved reactor mayhem 4
+PASS Contact damage remains fair reactor mayhem 4
+PASS Stronger boss keeps connected reward and completion reactor mayhem 4
+PASS Fixed boss HP progression reactor mayhem 6
+PASS Time limit preserved reactor mayhem 6
+PASS Contact damage remains fair reactor mayhem 6
+PASS Stronger boss keeps connected reward and completion reactor mayhem 6
+PASS Fixed boss HP progression reactor mayhem 8
+PASS Time limit preserved reactor mayhem 8
+PASS Contact damage remains fair reactor mayhem 8
+PASS Stronger boss keeps connected reward and completion reactor mayhem 8
+PASS Fixed boss HP progression reactor mayhem 10
+PASS Time limit preserved reactor mayhem 10
+PASS Contact damage remains fair reactor mayhem 10
+PASS Stronger boss keeps connected reward and completion reactor mayhem 10
+PASS Fixed boss HP progression docks normal 2
+PASS Time limit preserved docks normal 2
+PASS Contact damage remains fair docks normal 2
+PASS Stronger boss keeps connected reward and completion docks normal 2
+PASS Fixed boss HP progression docks normal 4
+PASS Time limit preserved docks normal 4
+PASS Contact damage remains fair docks normal 4
+PASS Stronger boss keeps connected reward and completion docks normal 4
+PASS Fixed boss HP progression docks normal 6
+PASS Time limit preserved docks normal 6
+PASS Contact damage remains fair docks normal 6
+PASS Stronger boss keeps connected reward and completion docks normal 6
+PASS Fixed boss HP progression docks normal 8
+PASS Time limit preserved docks normal 8
+PASS Contact damage remains fair docks normal 8
+PASS Stronger boss keeps connected reward and completion docks normal 8
+PASS Fixed boss HP progression docks normal 10
+PASS Time limit preserved docks normal 10
+PASS Contact damage remains fair docks normal 10
+PASS Stronger boss keeps connected reward and completion docks normal 10
+PASS Fixed boss HP progression docks veteran 2
+PASS Time limit preserved docks veteran 2
+PASS Contact damage remains fair docks veteran 2
+PASS Stronger boss keeps connected reward and completion docks veteran 2
+PASS Fixed boss HP progression docks veteran 4
+PASS Time limit preserved docks veteran 4
+PASS Contact damage remains fair docks veteran 4
+PASS Stronger boss keeps connected reward and completion docks veteran 4
+PASS Fixed boss HP progression docks veteran 6
+PASS Time limit preserved docks veteran 6
+PASS Contact damage remains fair docks veteran 6
+PASS Stronger boss keeps connected reward and completion docks veteran 6
+PASS Fixed boss HP progression docks veteran 8
+PASS Time limit preserved docks veteran 8
+PASS Contact damage remains fair docks veteran 8
+PASS Stronger boss keeps connected reward and completion docks veteran 8
+PASS Fixed boss HP progression docks veteran 10
+PASS Time limit preserved docks veteran 10
+PASS Contact damage remains fair docks veteran 10
+PASS Stronger boss keeps connected reward and completion docks veteran 10
+PASS Fixed boss HP progression docks mayhem 2
+PASS Time limit preserved docks mayhem 2
+PASS Contact damage remains fair docks mayhem 2
+PASS Stronger boss keeps connected reward and completion docks mayhem 2
+PASS Fixed boss HP progression docks mayhem 4
+PASS Time limit preserved docks mayhem 4
+PASS Contact damage remains fair docks mayhem 4
+PASS Stronger boss keeps connected reward and completion docks mayhem 4
+PASS Fixed boss HP progression docks mayhem 6
+PASS Time limit preserved docks mayhem 6
+PASS Contact damage remains fair docks mayhem 6
+PASS Stronger boss keeps connected reward and completion docks mayhem 6
+PASS Fixed boss HP progression docks mayhem 8
+PASS Time limit preserved docks mayhem 8
+PASS Contact damage remains fair docks mayhem 8
+PASS Stronger boss keeps connected reward and completion docks mayhem 8
+PASS Fixed boss HP progression docks mayhem 10
+PASS Time limit preserved docks mayhem 10
+PASS Contact damage remains fair docks mayhem 10
+PASS Stronger boss keeps connected reward and completion docks mayhem 10
+PASS Fixed boss HP progression foundry normal 2
+PASS Time limit preserved foundry normal 2
+PASS Contact damage remains fair foundry normal 2
+PASS Stronger boss keeps connected reward and completion foundry normal 2
+PASS Fixed boss HP progression foundry normal 4
+PASS Time limit preserved foundry normal 4
+PASS Contact damage remains fair foundry normal 4
+PASS Stronger boss keeps connected reward and completion foundry normal 4
+PASS Fixed boss HP progression foundry normal 6
+PASS Time limit preserved foundry normal 6
+PASS Contact damage remains fair foundry normal 6
+PASS Stronger boss keeps connected reward and completion foundry normal 6
+PASS Fixed boss HP progression foundry normal 8
+PASS Time limit preserved foundry normal 8
+PASS Contact damage remains fair foundry normal 8
+PASS Stronger boss keeps connected reward and completion foundry normal 8
+PASS Fixed boss HP progression foundry normal 10
+PASS Time limit preserved foundry normal 10
+PASS Contact damage remains fair foundry normal 10
+PASS Stronger boss keeps connected reward and completion foundry normal 10
+PASS Fixed boss HP progression foundry veteran 2
+PASS Time limit preserved foundry veteran 2
+PASS Contact damage remains fair foundry veteran 2
+PASS Stronger boss keeps connected reward and completion foundry veteran 2
+PASS Fixed boss HP progression foundry veteran 4
+PASS Time limit preserved foundry veteran 4
+PASS Contact damage remains fair foundry veteran 4
+PASS Stronger boss keeps connected reward and completion foundry veteran 4
+PASS Fixed boss HP progression foundry veteran 6
+PASS Time limit preserved foundry veteran 6
+PASS Contact damage remains fair foundry veteran 6
+PASS Stronger boss keeps connected reward and completion foundry veteran 6
+PASS Fixed boss HP progression foundry veteran 8
+PASS Time limit preserved foundry veteran 8
+PASS Contact damage remains fair foundry veteran 8
+PASS Stronger boss keeps connected reward and completion foundry veteran 8
+PASS Fixed boss HP progression foundry veteran 10
+PASS Time limit preserved foundry veteran 10
+PASS Contact damage remains fair foundry veteran 10
+PASS Stronger boss keeps connected reward and completion foundry veteran 10
+PASS Fixed boss HP progression foundry mayhem 2
+PASS Time limit preserved foundry mayhem 2
+PASS Contact damage remains fair foundry mayhem 2
+PASS Stronger boss keeps connected reward and completion foundry mayhem 2
+PASS Fixed boss HP progression foundry mayhem 4
+PASS Time limit preserved foundry mayhem 4
+PASS Contact damage remains fair foundry mayhem 4
+PASS Stronger boss keeps connected reward and completion foundry mayhem 4
+PASS Fixed boss HP progression foundry mayhem 6
+PASS Time limit preserved foundry mayhem 6
+PASS Contact damage remains fair foundry mayhem 6
+PASS Stronger boss keeps connected reward and completion foundry mayhem 6
+PASS Fixed boss HP progression foundry mayhem 8
+PASS Time limit preserved foundry mayhem 8
+PASS Contact damage remains fair foundry mayhem 8
+PASS Stronger boss keeps connected reward and completion foundry mayhem 8
+PASS Fixed boss HP progression foundry mayhem 10
+PASS Time limit preserved foundry mayhem 10
+PASS Contact damage remains fair foundry mayhem 10
+PASS Stronger boss keeps connected reward and completion foundry mayhem 10
+PASS Fixed boss HP progression gardens normal 2
+PASS Time limit preserved gardens normal 2
+PASS Contact damage remains fair gardens normal 2
+PASS Stronger boss keeps connected reward and completion gardens normal 2
+PASS Fixed boss HP progression gardens normal 4
+PASS Time limit preserved gardens normal 4
+PASS Contact damage remains fair gardens normal 4
+PASS Stronger boss keeps connected reward and completion gardens normal 4
+PASS Fixed boss HP progression gardens normal 6
+PASS Time limit preserved gardens normal 6
+PASS Contact damage remains fair gardens normal 6
+PASS Stronger boss keeps connected reward and completion gardens normal 6
+PASS Fixed boss HP progression gardens normal 8
+PASS Time limit preserved gardens normal 8
+PASS Contact damage remains fair gardens normal 8
+PASS Stronger boss keeps connected reward and completion gardens normal 8
+PASS Fixed boss HP progression gardens normal 10
+PASS Time limit preserved gardens normal 10
+PASS Contact damage remains fair gardens normal 10
+PASS Stronger boss keeps connected reward and completion gardens normal 10
+PASS Fixed boss HP progression gardens veteran 2
+PASS Time limit preserved gardens veteran 2
+PASS Contact damage remains fair gardens veteran 2
+PASS Stronger boss keeps connected reward and completion gardens veteran 2
+PASS Fixed boss HP progression gardens veteran 4
+PASS Time limit preserved gardens veteran 4
+PASS Contact damage remains fair gardens veteran 4
+PASS Stronger boss keeps connected reward and completion gardens veteran 4
+PASS Fixed boss HP progression gardens veteran 6
+PASS Time limit preserved gardens veteran 6
+PASS Contact damage remains fair gardens veteran 6
+PASS Stronger boss keeps connected reward and completion gardens veteran 6
+PASS Fixed boss HP progression gardens veteran 8
+PASS Time limit preserved gardens veteran 8
+PASS Contact damage remains fair gardens veteran 8
+PASS Stronger boss keeps connected reward and completion gardens veteran 8
+PASS Fixed boss HP progression gardens veteran 10
+PASS Time limit preserved gardens veteran 10
+PASS Contact damage remains fair gardens veteran 10
+PASS Stronger boss keeps connected reward and completion gardens veteran 10
+PASS Fixed boss HP progression gardens mayhem 2
+PASS Time limit preserved gardens mayhem 2
+PASS Contact damage remains fair gardens mayhem 2
+PASS Stronger boss keeps connected reward and completion gardens mayhem 2
+PASS Fixed boss HP progression gardens mayhem 4
+PASS Time limit preserved gardens mayhem 4
+PASS Contact damage remains fair gardens mayhem 4
+PASS Stronger boss keeps connected reward and completion gardens mayhem 4
+PASS Fixed boss HP progression gardens mayhem 6
+PASS Time limit preserved gardens mayhem 6
+PASS Contact damage remains fair gardens mayhem 6
+PASS Stronger boss keeps connected reward and completion gardens mayhem 6
+PASS Fixed boss HP progression gardens mayhem 8
+PASS Time limit preserved gardens mayhem 8
+PASS Contact damage remains fair gardens mayhem 8
+PASS Stronger boss keeps connected reward and completion gardens mayhem 8
+PASS Fixed boss HP progression gardens mayhem 10
+PASS Time limit preserved gardens mayhem 10
+PASS Contact damage remains fair gardens mayhem 10
+PASS Stronger boss keeps connected reward and completion gardens mayhem 10
+PASS Fixed boss HP progression frost normal 2
+PASS Time limit preserved frost normal 2
+PASS Contact damage remains fair frost normal 2
+PASS Stronger boss keeps connected reward and completion frost normal 2
+PASS Fixed boss HP progression frost normal 4
+PASS Time limit preserved frost normal 4
+PASS Contact damage remains fair frost normal 4
+PASS Stronger boss keeps connected reward and completion frost normal 4
+PASS Fixed boss HP progression frost normal 6
+PASS Time limit preserved frost normal 6
+PASS Contact damage remains fair frost normal 6
+PASS Stronger boss keeps connected reward and completion frost normal 6
+PASS Fixed boss HP progression frost normal 8
+PASS Time limit preserved frost normal 8
+PASS Contact damage remains fair frost normal 8
+PASS Stronger boss keeps connected reward and completion frost normal 8
+PASS Fixed boss HP progression frost normal 10
+PASS Time limit preserved frost normal 10
+PASS Contact damage remains fair frost normal 10
+PASS Stronger boss keeps connected reward and completion frost normal 10
+PASS Fixed boss HP progression frost veteran 2
+PASS Time limit preserved frost veteran 2
+PASS Contact damage remains fair frost veteran 2
+PASS Stronger boss keeps connected reward and completion frost veteran 2
+PASS Fixed boss HP progression frost veteran 4
+PASS Time limit preserved frost veteran 4
+PASS Contact damage remains fair frost veteran 4
+PASS Stronger boss keeps connected reward and completion frost veteran 4
+PASS Fixed boss HP progression frost veteran 6
+PASS Time limit preserved frost veteran 6
+PASS Contact damage remains fair frost veteran 6
+PASS Stronger boss keeps connected reward and completion frost veteran 6
+PASS Fixed boss HP progression frost veteran 8
+PASS Time limit preserved frost veteran 8
+PASS Contact damage remains fair frost veteran 8
+PASS Stronger boss keeps connected reward and completion frost veteran 8
+PASS Fixed boss HP progression frost veteran 10
+PASS Time limit preserved frost veteran 10
+PASS Contact damage remains fair frost veteran 10
+PASS Stronger boss keeps connected reward and completion frost veteran 10
+PASS Fixed boss HP progression frost mayhem 2
+PASS Time limit preserved frost mayhem 2
+PASS Contact damage remains fair frost mayhem 2
+PASS Stronger boss keeps connected reward and completion frost mayhem 2
+PASS Fixed boss HP progression frost mayhem 4
+PASS Time limit preserved frost mayhem 4
+PASS Contact damage remains fair frost mayhem 4
+PASS Stronger boss keeps connected reward and completion frost mayhem 4
+PASS Fixed boss HP progression frost mayhem 6
+PASS Time limit preserved frost mayhem 6
+PASS Contact damage remains fair frost mayhem 6
+PASS Stronger boss keeps connected reward and completion frost mayhem 6
+PASS Fixed boss HP progression frost mayhem 8
+PASS Time limit preserved frost mayhem 8
+PASS Contact damage remains fair frost mayhem 8
+PASS Stronger boss keeps connected reward and completion frost mayhem 8
+PASS Fixed boss HP progression frost mayhem 10
+PASS Time limit preserved frost mayhem 10
+PASS Contact damage remains fair frost mayhem 10
+PASS Stronger boss keeps connected reward and completion frost mayhem 10
+PASS Fixed boss HP progression storm normal 2
+PASS Time limit preserved storm normal 2
+PASS Contact damage remains fair storm normal 2
+PASS Stronger boss keeps connected reward and completion storm normal 2
+PASS Fixed boss HP progression storm normal 4
+PASS Time limit preserved storm normal 4
+PASS Contact damage remains fair storm normal 4
+PASS Stronger boss keeps connected reward and completion storm normal 4
+PASS Fixed boss HP progression storm normal 6
+PASS Time limit preserved storm normal 6
+PASS Contact damage remains fair storm normal 6
+PASS Stronger boss keeps connected reward and completion storm normal 6
+PASS Fixed boss HP progression storm normal 8
+PASS Time limit preserved storm normal 8
+PASS Contact damage remains fair storm normal 8
+PASS Stronger boss keeps connected reward and completion storm normal 8
+PASS Fixed boss HP progression storm normal 10
+PASS Time limit preserved storm normal 10
+PASS Contact damage remains fair storm normal 10
+PASS Stronger boss keeps connected reward and completion storm normal 10
+PASS Fixed boss HP progression storm veteran 2
+PASS Time limit preserved storm veteran 2
+PASS Contact damage remains fair storm veteran 2
+PASS Stronger boss keeps connected reward and completion storm veteran 2
+PASS Fixed boss HP progression storm veteran 4
+PASS Time limit preserved storm veteran 4
+PASS Contact damage remains fair storm veteran 4
+PASS Stronger boss keeps connected reward and completion storm veteran 4
+PASS Fixed boss HP progression storm veteran 6
+PASS Time limit preserved storm veteran 6
+PASS Contact damage remains fair storm veteran 6
+PASS Stronger boss keeps connected reward and completion storm veteran 6
+PASS Fixed boss HP progression storm veteran 8
+PASS Time limit preserved storm veteran 8
+PASS Contact damage remains fair storm veteran 8
+PASS Stronger boss keeps connected reward and completion storm veteran 8
+PASS Fixed boss HP progression storm veteran 10
+PASS Time limit preserved storm veteran 10
+PASS Contact damage remains fair storm veteran 10
+PASS Stronger boss keeps connected reward and completion storm veteran 10
+PASS Fixed boss HP progression storm mayhem 2
+PASS Time limit preserved storm mayhem 2
+PASS Contact damage remains fair storm mayhem 2
+PASS Stronger boss keeps connected reward and completion storm mayhem 2
+PASS Fixed boss HP progression storm mayhem 4
+PASS Time limit preserved storm mayhem 4
+PASS Contact damage remains fair storm mayhem 4
+PASS Stronger boss keeps connected reward and completion storm mayhem 4
+PASS Fixed boss HP progression storm mayhem 6
+PASS Time limit preserved storm mayhem 6
+PASS Contact damage remains fair storm mayhem 6
+PASS Stronger boss keeps connected reward and completion storm mayhem 6
+PASS Fixed boss HP progression storm mayhem 8
+PASS Time limit preserved storm mayhem 8
+PASS Contact damage remains fair storm mayhem 8
+PASS Stronger boss keeps connected reward and completion storm mayhem 8
+PASS Fixed boss HP progression storm mayhem 10
+PASS Time limit preserved storm mayhem 10
+PASS Contact damage remains fair storm mayhem 10
+PASS Stronger boss keeps connected reward and completion storm mayhem 10
+PASS Fixed boss HP progression crystal normal 2
+PASS Time limit preserved crystal normal 2
+PASS Contact damage remains fair crystal normal 2
+PASS Stronger boss keeps connected reward and completion crystal normal 2
+PASS Fixed boss HP progression crystal normal 4
+PASS Time limit preserved crystal normal 4
+PASS Contact damage remains fair crystal normal 4
+PASS Stronger boss keeps connected reward and completion crystal normal 4
+PASS Fixed boss HP progression crystal normal 6
+PASS Time limit preserved crystal normal 6
+PASS Contact damage remains fair crystal normal 6
+PASS Stronger boss keeps connected reward and completion crystal normal 6
+PASS Fixed boss HP progression crystal normal 8
+PASS Time limit preserved crystal normal 8
+PASS Contact damage remains fair crystal normal 8
+PASS Stronger boss keeps connected reward and completion crystal normal 8
+PASS Fixed boss HP progression crystal normal 10
+PASS Time limit preserved crystal normal 10
+PASS Contact damage remains fair crystal normal 10
+PASS Stronger boss keeps connected reward and completion crystal normal 10
+PASS Fixed boss HP progression crystal veteran 2
+PASS Time limit preserved crystal veteran 2
+PASS Contact damage remains fair crystal veteran 2
+PASS Stronger boss keeps connected reward and completion crystal veteran 2
+PASS Fixed boss HP progression crystal veteran 4
+PASS Time limit preserved crystal veteran 4
+PASS Contact damage remains fair crystal veteran 4
+PASS Stronger boss keeps connected reward and completion crystal veteran 4
+PASS Fixed boss HP progression crystal veteran 6
+PASS Time limit preserved crystal veteran 6
+PASS Contact damage remains fair crystal veteran 6
+PASS Stronger boss keeps connected reward and completion crystal veteran 6
+PASS Fixed boss HP progression crystal veteran 8
+PASS Time limit preserved crystal veteran 8
+PASS Contact damage remains fair crystal veteran 8
+PASS Stronger boss keeps connected reward and completion crystal veteran 8
+PASS Fixed boss HP progression crystal veteran 10
+PASS Time limit preserved crystal veteran 10
+PASS Contact damage remains fair crystal veteran 10
+PASS Stronger boss keeps connected reward and completion crystal veteran 10
+PASS Fixed boss HP progression crystal mayhem 2
+PASS Time limit preserved crystal mayhem 2
+PASS Contact damage remains fair crystal mayhem 2
+PASS Stronger boss keeps connected reward and completion crystal mayhem 2
+PASS Fixed boss HP progression crystal mayhem 4
+PASS Time limit preserved crystal mayhem 4
+PASS Contact damage remains fair crystal mayhem 4
+PASS Stronger boss keeps connected reward and completion crystal mayhem 4
+PASS Fixed boss HP progression crystal mayhem 6
+PASS Time limit preserved crystal mayhem 6
+PASS Contact damage remains fair crystal mayhem 6
+PASS Stronger boss keeps connected reward and completion crystal mayhem 6
+PASS Fixed boss HP progression crystal mayhem 8
+PASS Time limit preserved crystal mayhem 8
+PASS Contact damage remains fair crystal mayhem 8
+PASS Stronger boss keeps connected reward and completion crystal mayhem 8
+PASS Fixed boss HP progression crystal mayhem 10
+PASS Time limit preserved crystal mayhem 10
+PASS Contact damage remains fair crystal mayhem 10
+PASS Stronger boss keeps connected reward and completion crystal mayhem 10
+PASS Fixed boss HP progression carnival normal 2
+PASS Time limit preserved carnival normal 2
+PASS Contact damage remains fair carnival normal 2
+PASS Stronger boss keeps connected reward and completion carnival normal 2
+PASS Fixed boss HP progression carnival normal 4
+PASS Time limit preserved carnival normal 4
+PASS Contact damage remains fair carnival normal 4
+PASS Stronger boss keeps connected reward and completion carnival normal 4
+PASS Fixed boss HP progression carnival normal 6
+PASS Time limit preserved carnival normal 6
+PASS Contact damage remains fair carnival normal 6
+PASS Stronger boss keeps connected reward and completion carnival normal 6
+PASS Fixed boss HP progression carnival normal 8
+PASS Time limit preserved carnival normal 8
+PASS Contact damage remains fair carnival normal 8
+PASS Stronger boss keeps connected reward and completion carnival normal 8
+PASS Fixed boss HP progression carnival normal 10
+PASS Time limit preserved carnival normal 10
+PASS Contact damage remains fair carnival normal 10
+PASS Stronger boss keeps connected reward and completion carnival normal 10
+PASS Fixed boss HP progression carnival veteran 2
+PASS Time limit preserved carnival veteran 2
+PASS Contact damage remains fair carnival veteran 2
+PASS Stronger boss keeps connected reward and completion carnival veteran 2
+PASS Fixed boss HP progression carnival veteran 4
+PASS Time limit preserved carnival veteran 4
+PASS Contact damage remains fair carnival veteran 4
+PASS Stronger boss keeps connected reward and completion carnival veteran 4
+PASS Fixed boss HP progression carnival veteran 6
+PASS Time limit preserved carnival veteran 6
+PASS Contact damage remains fair carnival veteran 6
+PASS Stronger boss keeps connected reward and completion carnival veteran 6
+PASS Fixed boss HP progression carnival veteran 8
+PASS Time limit preserved carnival veteran 8
+PASS Contact damage remains fair carnival veteran 8
+PASS Stronger boss keeps connected reward and completion carnival veteran 8
+PASS Fixed boss HP progression carnival veteran 10
+PASS Time limit preserved carnival veteran 10
+PASS Contact damage remains fair carnival veteran 10
+PASS Stronger boss keeps connected reward and completion carnival veteran 10
+PASS Fixed boss HP progression carnival mayhem 2
+PASS Time limit preserved carnival mayhem 2
+PASS Contact damage remains fair carnival mayhem 2
+PASS Stronger boss keeps connected reward and completion carnival mayhem 2
+PASS Fixed boss HP progression carnival mayhem 4
+PASS Time limit preserved carnival mayhem 4
+PASS Contact damage remains fair carnival mayhem 4
+PASS Stronger boss keeps connected reward and completion carnival mayhem 4
+PASS Fixed boss HP progression carnival mayhem 6
+PASS Time limit preserved carnival mayhem 6
+PASS Contact damage remains fair carnival mayhem 6
+PASS Stronger boss keeps connected reward and completion carnival mayhem 6
+PASS Fixed boss HP progression carnival mayhem 8
+PASS Time limit preserved carnival mayhem 8
+PASS Contact damage remains fair carnival mayhem 8
+PASS Stronger boss keeps connected reward and completion carnival mayhem 8
+PASS Fixed boss HP progression carnival mayhem 10
+PASS Time limit preserved carnival mayhem 10
+PASS Contact damage remains fair carnival mayhem 10
+PASS Stronger boss keeps connected reward and completion carnival mayhem 10
+PASS Fixed boss HP progression void normal 2
+PASS Time limit preserved void normal 2
+PASS Contact damage remains fair void normal 2
+PASS Stronger boss keeps connected reward and completion void normal 2
+PASS Fixed boss HP progression void normal 4
+PASS Time limit preserved void normal 4
+PASS Contact damage remains fair void normal 4
+PASS Stronger boss keeps connected reward and completion void normal 4
+PASS Fixed boss HP progression void normal 6
+PASS Time limit preserved void normal 6
+PASS Contact damage remains fair void normal 6
+PASS Stronger boss keeps connected reward and completion void normal 6
+PASS Fixed boss HP progression void normal 8
+PASS Time limit preserved void normal 8
+PASS Contact damage remains fair void normal 8
+PASS Stronger boss keeps connected reward and completion void normal 8
+PASS Fixed boss HP progression void normal 10
+PASS Time limit preserved void normal 10
+PASS Contact damage remains fair void normal 10
+PASS Stronger boss keeps connected reward and completion void normal 10
+PASS Fixed boss HP progression void veteran 2
+PASS Time limit preserved void veteran 2
+PASS Contact damage remains fair void veteran 2
+PASS Stronger boss keeps connected reward and completion void veteran 2
+PASS Fixed boss HP progression void veteran 4
+PASS Time limit preserved void veteran 4
+PASS Contact damage remains fair void veteran 4
+PASS Stronger boss keeps connected reward and completion void veteran 4
+PASS Fixed boss HP progression void veteran 6
+PASS Time limit preserved void veteran 6
+PASS Contact damage remains fair void veteran 6
+PASS Stronger boss keeps connected reward and completion void veteran 6
+PASS Fixed boss HP progression void veteran 8
+PASS Time limit preserved void veteran 8
+PASS Contact damage remains fair void veteran 8
+PASS Stronger boss keeps connected reward and completion void veteran 8
+PASS Fixed boss HP progression void veteran 10
+PASS Time limit preserved void veteran 10
+PASS Contact damage remains fair void veteran 10
+PASS Stronger boss keeps connected reward and completion void veteran 10
+PASS Fixed boss HP progression void mayhem 2
+PASS Time limit preserved void mayhem 2
+PASS Contact damage remains fair void mayhem 2
+PASS Stronger boss keeps connected reward and completion void mayhem 2
+PASS Fixed boss HP progression void mayhem 4
+PASS Time limit preserved void mayhem 4
+PASS Contact damage remains fair void mayhem 4
+PASS Stronger boss keeps connected reward and completion void mayhem 4
+PASS Fixed boss HP progression void mayhem 6
+PASS Time limit preserved void mayhem 6
+PASS Contact damage remains fair void mayhem 6
+PASS Stronger boss keeps connected reward and completion void mayhem 6
+PASS Fixed boss HP progression void mayhem 8
+PASS Time limit preserved void mayhem 8
+PASS Contact damage remains fair void mayhem 8
+PASS Stronger boss keeps connected reward and completion void mayhem 8
+PASS Fixed boss HP progression void mayhem 10
+PASS Time limit preserved void mayhem 10
+PASS Contact damage remains fair void mayhem 10
+PASS Stronger boss keeps connected reward and completion void mayhem 10
+PASS No adaptive health or punishment of strong builds
+PASS Distinct fully warned opener 2
+PASS Opening warning gives movement time 2
+PASS New cadence freezes in 7 / 2
+PASS New cadence freezes in 5 / 2
+PASS New cadence freezes in 6 / 2
+PASS Distinct fully warned opener 4
+PASS Opening warning gives movement time 4
+PASS New cadence freezes in 7 / 4
+PASS New cadence freezes in 5 / 4
+PASS New cadence freezes in 6 / 4
+PASS Axel announces the opening charge with full windup
+PASS Opening warning gives movement time 6
+PASS New cadence freezes in 7 / 6
+PASS New cadence freezes in 5 / 6
+PASS New cadence freezes in 6 / 6
+PASS Distinct fully warned opener 8
+PASS Opening warning gives movement time 8
+PASS New cadence freezes in 7 / 8
+PASS New cadence freezes in 5 / 8
+PASS New cadence freezes in 6 / 8
+PASS Distinct fully warned opener 10
+PASS Opening warning gives movement time 10
+PASS New cadence freezes in 7 / 10
+PASS New cadence freezes in 5 / 10
+PASS New cadence freezes in 6 / 10
+PASS Burst damage does not cancel the fan warning
+PASS Announced fan actually fires before phase transition
+PASS Pending rage follows the completed attack
+PASS Phase transition has no hidden invulnerability
+PASS Phase change preserves already telegraphed hazards
+PASS Axel finishes his announced pattern before rage
+PASS Axel transitions after attack completion
+PASS No pre-warning projectile damage
+PASS Opening projectile attack creates actual pressure
+PASS Explicit compensation orbit 0 boss
+PASS Explicit compensation orbit 0 breaker_axel
+PASS Explicit compensation orbit 0 champion
+PASS Normal enemy damage unchanged orbit 0 grunt
+PASS Normal enemy damage unchanged orbit 0 runner
+PASS Normal enemy damage unchanged orbit 0 tank
+PASS Normal enemy damage unchanged orbit 0 slicer
+PASS Normal enemy damage unchanged orbit 0 lurker
+PASS Normal enemy damage unchanged orbit 0 shieldbug
+PASS Normal enemy damage unchanged orbit 0 medic
+PASS Normal enemy damage unchanged orbit 0 mortar
+PASS Normal enemy damage unchanged orbit 0 frostling
+PASS Normal enemy damage unchanged orbit 0 roller
+PASS Normal enemy damage unchanged orbit 0 leech
+PASS Normal enemy damage unchanged orbit 0 summoner
+PASS Normal enemy damage unchanged orbit 0 pyro
+PASS Historical combat fixture unchanged 0
+PASS Explicit compensation orbit 1 boss
+PASS Explicit compensation orbit 1 breaker_axel
+PASS Explicit compensation orbit 1 champion
+PASS Normal enemy damage unchanged orbit 1 grunt
+PASS Normal enemy damage unchanged orbit 1 runner
+PASS Normal enemy damage unchanged orbit 1 tank
+PASS Normal enemy damage unchanged orbit 1 slicer
+PASS Normal enemy damage unchanged orbit 1 lurker
+PASS Normal enemy damage unchanged orbit 1 shieldbug
+PASS Normal enemy damage unchanged orbit 1 medic
+PASS Normal enemy damage unchanged orbit 1 mortar
+PASS Normal enemy damage unchanged orbit 1 frostling
+PASS Normal enemy damage unchanged orbit 1 roller
+PASS Normal enemy damage unchanged orbit 1 leech
+PASS Normal enemy damage unchanged orbit 1 summoner
+PASS Normal enemy damage unchanged orbit 1 pyro
+PASS Historical combat fixture unchanged 1
+PASS Explicit compensation orbit 2 boss
+PASS Explicit compensation orbit 2 breaker_axel
+PASS Explicit compensation orbit 2 champion
+PASS Normal enemy damage unchanged orbit 2 grunt
+PASS Normal enemy damage unchanged orbit 2 runner
+PASS Normal enemy damage unchanged orbit 2 tank
+PASS Normal enemy damage unchanged orbit 2 slicer
+PASS Normal enemy damage unchanged orbit 2 lurker
+PASS Normal enemy damage unchanged orbit 2 shieldbug
+PASS Normal enemy damage unchanged orbit 2 medic
+PASS Normal enemy damage unchanged orbit 2 mortar
+PASS Normal enemy damage unchanged orbit 2 frostling
+PASS Normal enemy damage unchanged orbit 2 roller
+PASS Normal enemy damage unchanged orbit 2 leech
+PASS Normal enemy damage unchanged orbit 2 summoner
+PASS Normal enemy damage unchanged orbit 2 pyro
+PASS Historical combat fixture unchanged 2
+PASS Explicit compensation tesla 3 boss
+PASS Explicit compensation tesla 3 breaker_axel
+PASS Explicit compensation tesla 3 champion
+PASS Normal enemy damage unchanged tesla 3 grunt
+PASS Normal enemy damage unchanged tesla 3 runner
+PASS Normal enemy damage unchanged tesla 3 tank
+PASS Normal enemy damage unchanged tesla 3 slicer
+PASS Normal enemy damage unchanged tesla 3 lurker
+PASS Normal enemy damage unchanged tesla 3 shieldbug
+PASS Normal enemy damage unchanged tesla 3 medic
+PASS Normal enemy damage unchanged tesla 3 mortar
+PASS Normal enemy damage unchanged tesla 3 frostling
+PASS Normal enemy damage unchanged tesla 3 roller
+PASS Normal enemy damage unchanged tesla 3 leech
+PASS Normal enemy damage unchanged tesla 3 summoner
+PASS Normal enemy damage unchanged tesla 3 pyro
+PASS Historical combat fixture unchanged 3
+PASS Explicit compensation tesla 4 boss
+PASS Explicit compensation tesla 4 breaker_axel
+PASS Explicit compensation tesla 4 champion
+PASS Normal enemy damage unchanged tesla 4 grunt
+PASS Normal enemy damage unchanged tesla 4 runner
+PASS Normal enemy damage unchanged tesla 4 tank
+PASS Normal enemy damage unchanged tesla 4 slicer
+PASS Normal enemy damage unchanged tesla 4 lurker
+PASS Normal enemy damage unchanged tesla 4 shieldbug
+PASS Normal enemy damage unchanged tesla 4 medic
+PASS Normal enemy damage unchanged tesla 4 mortar
+PASS Normal enemy damage unchanged tesla 4 frostling
+PASS Normal enemy damage unchanged tesla 4 roller
+PASS Normal enemy damage unchanged tesla 4 leech
+PASS Normal enemy damage unchanged tesla 4 summoner
+PASS Normal enemy damage unchanged tesla 4 pyro
+PASS Historical combat fixture unchanged 4
+PASS No hidden boss nerf blaster
+PASS No hidden boss nerf hammer
+PASS No hidden boss nerf splitgun
+PASS No hidden boss nerf arc
+PASS No hidden boss nerf mop
+PASS No hidden boss nerf bomb
+PASS No hidden boss nerf tools
+PASS No hidden boss nerf flamer
+PASS No hidden boss nerf cryo
+PASS No hidden boss nerf lance
+PASS No hidden boss nerf chakram
+PASS Sprengkern direct hit is unchanged
+PASS Endless boss ladder scales coherently 12
+PASS Endless boss ladder scales coherently 14
+PASS Endless boss ladder scales coherently 16
+PASS Endless boss ladder scales coherently 18
+PASS Endless boss ladder scales coherently 20
+PASS Endless boss ladder scales coherently 22
+PASS Map-specific four-attack repertoire scrapyard
+PASS Map-specific four-attack repertoire reactor
+PASS Map-specific four-attack repertoire docks
+PASS Map-specific four-attack repertoire foundry
+PASS Map-specific four-attack repertoire gardens
+PASS Map-specific four-attack repertoire frost
+PASS Map-specific four-attack repertoire storm
+PASS Map-specific four-attack repertoire crystal
+PASS Map-specific four-attack repertoire carnival
+PASS Map-specific four-attack repertoire void
+BOSS BALANCE RESULT 748 passed, 0 failed

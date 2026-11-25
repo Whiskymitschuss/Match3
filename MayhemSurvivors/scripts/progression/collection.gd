@@ -96,6 +96,26 @@ static func open_case(saved:Dictionary,case_id:String) -> Dictionary:
 static func acknowledge(saved:Dictionary,serial:int) -> bool:
 	if saved.collection.pending.is_empty() or int(saved.collection.pending.serial)!=serial:return false
 	saved.collection.pending.clear();return true
+static func case_progress(saved:Dictionary,id:String) -> Dictionary:
+	if not catalog().cases.has(id):return {}
+	var state=saved.collection;var missing=0
+	for key in catalog().heroes if id=='crew' else catalog().items:
+		if id=='crew':missing+=int(not state.heroes.has(key))
+		elif catalog().items[key].case==id:missing+=int(not state.levels.has(key) and not saved.meta.owned.has(key))
+	var ticket=int(state.tickets[id]);var price=int(catalog().cases[id].price);var need=maxi(0,price-int(saved.meta.coins))
+	return {'id':id,'missing':missing,'ticket':ticket,'price':price,'needed':need,'ready':ticket>0 or (need==0 and (id!='crew' or missing>0)),'guarantee':3-int(state.pity) if id=='crew' and missing>0 else 0}
+static func next_case(saved:Dictionary) -> Dictionary:
+	var id='arsenal'
+	for key in ['crew','arsenal','style']:
+		var progress=case_progress(saved,key)
+		if progress.ticket>0 or progress.missing>0:id=key;break
+	var result=case_progress(saved,id);var name=String(catalog().cases[id].name)
+	if not saved.collection.pending.is_empty():result.label='DEIN CASE-FUND WARTET / IN CASES ABHOLEN'
+	elif result.ticket>0:result.label=name+' / GRATISTICKET BEREIT'
+	elif result.ready:result.label=name+' / GENUG STUDIO-COINS GESAMMELT'
+	else:result.label='%s / NOCH %d STUDIO-COINS' % [name,result.needed]
+	if id=='crew' and result.guarantee>0:result.label+=' / NEUER FIGHTER IN MAX. %d %s' % [result.guarantee,'CASE' if result.guarantee==1 else 'CASES']
+	return result
 static func upgrade(saved:Dictionary,id:String) -> bool:
 	if not catalog().items.has(id) or not saved.collection.levels.has(id) or not catalog().items[id].ranked:return false
 	var rank=int(saved.collection.levels[id])

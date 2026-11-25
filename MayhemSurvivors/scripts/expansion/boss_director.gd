@@ -10,6 +10,7 @@ var attack=''
 var origin=Vector2.ZERO
 var target=Vector2.ZERO
 var hit=false
+const ATTACK_NAMES={'ring':'IMPULSRING','fan':'PROJEKTILFÄCHER','charge':'ANSTURM','zones':'ARENA-ANGRIFF'}
 func _init(g:Node2D):game=g;ladder=game.read_data('waves/boss_ladder')
 func slot() -> int:return ((game.wave_number-1)%10)+1
 func scheduled() -> bool:return game.united.enabled and game.run_mode!='tutorial' and slot()%2==0
@@ -80,7 +81,24 @@ func draw():
 		game.draw_colored_polygon(PackedVector2Array([origin+side,target+side,target-side,origin-side]),Color(1,.7,.2,.15));game.draw_line(origin+side,target+side,Color('#FFD166'),3,true);game.draw_line(origin-side,target-side,Color('#FFD166'),3,true)
 	elif attack=='fan':
 		var angle:float=origin.direction_to(target).angle()
-		for delta in [-.7,0,.7]:game.draw_line(origin,origin+Vector2.from_angle(angle+delta)*600,Color(1,.8,.3,.5),3,true)
+		var count=9 if tier==3 else 7
+		for i in range(count):
+			var ray=Vector2.from_angle(angle+(i-(count-1)*.5)*.17)
+			game.draw_line(origin,origin+ray*600,Color(1,.8,.3,.55),3,true)
+	var left=maxf(0,clock);var value='%s / %.1f s' % [ATTACK_NAMES.get(attack,'ANGRIFF'),left]
+	var font=game.UISkin.HEADING;var width=font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,23).x
+	var at=origin+Vector2(-width*.5,-actor().radius-40)
+	game.draw_rect(Rect2(at-Vector2(8,26),Vector2(width+16,36)),Color('#101423'));game.draw_string(font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,23,game.GOLD)
+func hint() -> String:
+	if stage=='phase':return 'PHASENWECHSEL / %.1f s' % maxf(0,clock)
+	if stage=='windup':return boss_instruction()+' / %.1f s' % maxf(0,clock)
+	if stage=='dash':return 'ANSTURM / STURMSPUR VERLASSEN'
+	if stage=='recovery':return 'ERHOLUNG / DEIN ANGRIFFSFENSTER %.1f s' % maxf(0,clock)
+	return 'VERFOLGUNG / FLUCHTWEG FREIHALTEN'
+func boss_instruction() -> String:
+	if attack=='zones' and slot()==10 and game.arena_mechanics.worlds.IDS.has(game.arena_id):
+		return game.arena_mechanics.zone_title().to_upper()+(' / INNEN SICHER' if game.arena_id in ['frost','void'] else ' / MARKIERUNG VERLASSEN')
+	return {'ring':'IMPULSRING / GRÜNE ÖFFNUNG','fan':'FÄCHER / SEITLICH AUSWEICHEN','charge':'ANSTURM / SPUR VERLASSEN','zones':'ARENA-ANGRIFF / MARKIERUNG VERLASSEN'}.get(attack,'VORWARNUNG')
 func intro():
 	var d=profile();var art=preload('res://scripts/expansion/comic_art.gd')
 	game.backdrop('BOSSWELLE %d / 10' % slot(),d.name+' / '+game.arena_definition.name)
@@ -90,7 +108,7 @@ func intro():
 	var actual=game.rules.scale_stats(game.WaveBalance.stats(d,game.rules.current_wave(),game.wave_number,true),true)
 	game.label_at('%d HP / %.0f Kontaktschaden' % [roundi(actual.hp),actual.damage],Vector2(825,380),26,game.TEAL)
 	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
-	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+game.arena_mechanics.zone_title()+' / 2 s Vorwarnung',Vector2(825,825),25,game.TEAL)
+	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+game.arena_mechanics.zone_title()+' / mindestens 2 s Vorwarnung',Vector2(825,825),23,game.TEAL)
 	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),game.begin_wave,Color('#8A432E'))
 
 func attack_order(e:Dictionary) -> Array:

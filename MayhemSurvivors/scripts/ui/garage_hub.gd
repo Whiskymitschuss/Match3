@@ -107,6 +107,8 @@ func cases():
 		text(d.name,Vector2(x+25,535),500,42,Color(d.color))
 		text('Crew vollständig: Duplikate geben Teile.' if complete else d.description,Vector2(x+25,600),500,25)
 		text('TICKETS: %d / PREIS: %d STUDIO-COINS' % [ticket,d.price],Vector2(x+25,700),500,24,game.GOLD)
+		var progress=C.case_progress(game.saved,id)
+		text('NEUER FIGHTER IN MAX. %d %s' % [progress.guarantee,'CASE' if progress.guarantee==1 else 'CASES'] if id=='crew' and progress.guarantee>0 else ('NOCH %d COINS BIS ZUM CASE' % progress.needed if not progress.ready else 'BEREIT / DEIN FUND BLEIBT DAUERHAFT'),Vector2(x+25,665),500,21,game.TEAL)
 		button('INHALTE & CHANCEN',Vector2(x+25,750),Vector2(500,65),func():chances(id))
 		var open=button('GRATISTICKET ÖFFNEN' if ticket>0 else 'ÖFFNEN / %d COINS' % d.price,Vector2(x+25,835),Vector2(500,70),func():open_case(id),Color(d.color).darkened(.65))
 		open.disabled=(ticket<=0 and game.saved.meta.coins<d.price) or (complete and ticket<=0)

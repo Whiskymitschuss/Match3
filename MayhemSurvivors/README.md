@@ -1,22 +1,22 @@
-# RF Worlds — Mayhem Survivors 0.26.0 Alpha
+# RF Worlds — Mayhem Survivors 0.27.0 Alpha
 
 Android-Arena-Survival mit 15 Kämpfern, zehn freischaltbaren Welten, Kampagne und
 Endlos. Godot 4.6.3 stable / GDScript / ARM64 / vollständig offline.
 
-## Neu in diesem Update
+## Neu: Arena-Taktik und Fortschritt
 
-- Vier zusätzliche Kämpfer im gemeinsamen Comicstil: **Viper**, **Echo**, **Nova**
-  und **Rivet**. Eigene passive und aktive Fähigkeiten, Effekte und Sounds.
-- Neues Hauptmenü mit SPIELEN, CHARAKTERE, AUFTRÄGE, STATISTIK, EINSTELLUNGEN und
-  SAMMLUNG. Tutorial und Handbuch findest du unter Einstellungen → Steuerung.
-- Aufgeräumte Einstellungen mit Audio, Grafik und Steuerung. Lautstärke, Qualität,
-  Vibration, Neigung, ruhige Menüs und Trefferanzeigen bleiben lokal gespeichert.
-- Fünf sichtbare Waffen-Skins mit Lackierung, Mustern, Schussfarben und Vorschau.
-  Über Stil-Cases oder erspielte Studio-Coins erhältlich; keine Werteboni.
-- Neue eigene Musik für Menü, Kampf und Boss. Überarbeitete Schuss-/Treffersounds,
-  neue Fähigkeitensounds und ein Begrenzer für Pegelspitzen im gesamten Audiomix.
-- Run-Analyse mit aktiver Kampfzeit, Wellen/Bossen, tatsächlichem HP-Verlust und
-  zusätzlichem Modulschaden. Auch später im lokalen Verlauf erreichbar.
+- Sechs freiwillige Werkzeuge: Sporenfilter, Thermofackel, Blitzableiter,
+  Resonanzrelais, Bombenkarussell und Rissanker. Eigene Grafik, Effekte und Sounds.
+- Passende Angriffszonen für die sechs Abschlussbosse, verbleibende Warnzeit,
+  erkennbare sichere Innenkreise und tatsächliche Erholungsfenster.
+- Vergleich gespeicherter Runs nach Arena, Modus und Schwierigkeit: Kampfzeit,
+  HP-Verlust, Schaden pro Sekunde und Build nebeneinander.
+- Case-Ziele mit echten Coin-Differenzen und aktuellem Crew-Duplikatschutz.
+  Preise, Chancen und vorhandene Waffen-/Bosswerte beibehalten.
+- Statistik für alle 15 Figuren erreichbar; verbrauchter Nova-Schild wird
+  unmittelbar als beendet angezeigt. Menü, Skins, Musik und Sammlung enthalten.
+
+[Spielregeln und Android-Praxistest für dieses Update](ARENA_TACTICS.md)
 
 ## Die Crew
 
@@ -37,7 +37,7 @@ Waffenlevel 1–5 und die bestehenden Entwicklungen bleiben für ihre Klassen ve
 ## Spielen und installieren
 
 Die signierte Debug-APK als Update über die vorhandene App installieren. Paketname:
-`com.rfworlds.mayhemsurvivors`, versionCode 32. Gleiches Update-Zertifikat.
+`com.rfworlds.mayhemsurvivors`, versionCode 33. Gleiches Update-Zertifikat.
 Android ARM64, minSDK 24, Querformat, GL Compatibility. Nur Vibration als Berechtigung.
 
 Im Spiel links mit dem Touch-Joystick bewegen. Waffen greifen automatisch an.

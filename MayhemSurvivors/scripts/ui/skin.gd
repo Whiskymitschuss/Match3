@@ -41,7 +41,7 @@ static func menu(game:Node2D):
 	game.portrait(Vector2(1140,295),selected,1.52,'wardrobe')
 	game.label_at(c.name,Vector2(1110,845),38,Color(c.color))
 	game.button('SAMMLUNG',Vector2(1080,940),Vector2(710,90),func():game.queue_ui_action(func():game.garage.show(selected)))
-	game.label_at('v0.26.0 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
+	game.label_at('v0.27.0 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='DEIN BUILD':

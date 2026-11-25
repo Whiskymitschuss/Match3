@@ -44,7 +44,7 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 	for key in ['tutorial_complete','onboarding_seen','tilt','reduced_motion','show_fps']:
 		if data.settings.get(key) is bool:result.settings[key]=data.settings[key]
 	if data.settings.get('arena_briefings') is Array:
-		for id in ['reactor','docks','foundry']:
+		for id in ['reactor','docks','foundry','gardens','frost','storm','crystal','carnival','void']:
 			if data.settings.arena_briefings.has(id):result.settings.arena_briefings.append(id)
 	result.endless_records=Endless.sanitize(data.get('endless_records'))
 	result.meta=Rewards.clean(data.get('meta'))

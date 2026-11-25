@@ -1,0 +1,14 @@
+Anonymous complete public download verification — 2026-11-23T13:41:04.296743+00:00
+PASS MayhemSurvivors-v0.27.0-debug.apk
+78354194 bytes
+SHA256 209e6e4bbb6d59603f4345e79a756f94e98c69c00021e1aacf91ea6ece5f9df2
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/MayhemSurvivors-v0.27.0-debug.apk
+PASS MayhemSurvivors-v0.27.0-source.zip
+81005353 bytes
+SHA256 619e445abc5fdd13cdf2457b73483003835cc485144253dc679a63820de12f06
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/arena-tactics-v0.27.0/Downloads/MayhemSurvivors-v0.27.0-source.zip
+Both complete binary downloads match the published SHA256 values; no authentication.
+PASS public SHA256SUMS-v0.27.0.txt matches both complete downloads.
+Source commit: 824d663
+Artifact commit: 468e3ce
+Pull request: https://github.com/Whiskymitschuss/Match3/pull/12

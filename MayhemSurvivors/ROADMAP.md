@@ -1,22 +1,18 @@
-# Nächster Stand nach 0.26
+# Nach 0.27
 
-Umgesetzt: zehn Welten, 15 Kämpfer, erweiterte Gegner, Bossleiter in 2/4/6/8/10,
-Comicdarstellung, lokale Sammlung und Werkstatt, Arena-Manöver der ersten Welten,
-drei Klassenmodule, lokale Run-Analysen, neue Menü-/Settings-Struktur, fünf Waffen-Skins und eine
-eigene Musik-/Soundmischung für Menü, Kampf und Boss.
+Umgesetzt: 15 Kämpfer, zehn Welten mit eigenen Manövern und Abschlussbossen,
+Bossleiter 2/4/6/8/10, lokale Sammlung, Cases, Werkstatt, Skins, Aufträge und Pass.
+Run-Analyse und Run-Vergleich unterstützen die weitere Balancearbeit.
 
-1. APK als Update auf den vorhandenen Android-Spielstand installieren.
-2. Je einen Run mit Bruiser, Steelfist und einer neuen Klasse spielen. Wellen-
-   und Bosszeiten, tatsächlichen HP-Verlust und Käufe in der Run-Analyse ansehen.
-3. Bruchkern, Ionenrelais und Schattenspule mit Basiswaffen und Entwicklungen
-   ausprobieren. Zusatzschaden hängt von erreichbaren Zielen und verbliebenen HP ab.
-4. Schild-, Frost- und Beschwörerwellen sowie zehnte Welt auf kleinen und breiten
-   Displays testen. Filter, Tabs, Verlauf und Rückwege vor Ort abnehmen.
-5. Touch mit zwei Fingern, Unterbrechung, Safe Area, Neigung und Lautstärke prüfen.
-6. FPS und Temperatur bei langen Endlosläufen auf geeigneten Geräten messen.
-7. Anhand menschlicher Rückmeldungen Spawnmischung, Bosskurve und Belohnungen
-   abstimmen. Danach weitere Arena-Manöver für die verbleibenden Welten vertiefen.
+1. 0.27 als Update auf dem vorhandenen Android-Spielstand installieren.
+2. Drei echte Runs mit Bruiser, Steelfist und einer neuen Figur in derselben
+   Arena, Schwierigkeit und demselben Modus vergleichen.
+3. Sporenfilter, Wärme, Blitzbahn, Runenfolge, Bombentakt und Ringsog praktisch
+   erproben. Sichere Innenräume und Countdown auf kleinen Displays prüfen.
+4. Mehrfingerbedienung, Unterbrechung, Neigung, Safe Area und Audio am Gerät abnehmen.
+5. Lange Endlosläufe auf FPS, Temperatur und Akku messen.
+6. Erst anhand dieser menschlichen Daten Schwierigkeit und Belohnungsfluss abstimmen.
 
-Die Analyse liefert gemessene Werte zur Orientierung. Stationäre automatisierte
-Proben beweisen keine menschliche Balance. Kein weiterer großer Inhaltsblock vor
-der Geräteabnahme; keine Cloud, Echtgeldkäufe, Werbung oder Onlinepflicht geplant.
+Bisher liegen keine neuen menschlichen Android-Rundaten für dieses Update vor.
+Automatische Belastung und festgelegte Testszenarien belegen keine menschliche
+Balance oder 60 FPS. Keine Cloud, Werbung, Echtgeldkäufe oder Onlinepflicht geplant.
