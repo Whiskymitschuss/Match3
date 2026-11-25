@@ -1,3 +1,17 @@
+# 0.28.0 Beta 1 — Offline-Profile und Betatest (2026-11-23)
+
+- Fünf lokale Profile, Namen und Aktivierung; bisheriger Spielstand bleibt Spieler 1.
+- Eigene Währungen, Figuren, Welten, Gegenstände, Aufgaben, Einstellungen und Rekorde.
+- Alle Spielstand-Schreibwege profilbezogen; letzter Spieler und Auswahl persistent.
+- Geprüfte temporäre Schreibdatei, atomare Ersetzung, gültige vorherige Sicherung,
+  automatische Wiederherstellung und defensive Rekonstruktion des Profilindexes.
+- Manuelles Wiederherstellen mit Bestätigung; aktive/primäre Profile geschützt.
+- Profilverwaltung und neuer Profilbereich der Einstellungen; touchgerechte Namen.
+- Android-Zurückwege, bestätigtes App-Ende und eingefrorene Run-Abbruchdialoge.
+- Beta-Anleitung und kopierbarer lokaler Fehlerbericht ohne Namen oder Auto-Upload.
+- Neue Tests für Isolation, echte Transaktionen, Neustart, Beschädigung, I/O-Fehler
+  und native UI. Alte Mechanik-Fixtures setzen ihren historischen Sessionkontext.
+
 # 0.27.0 — Arena-Taktik und Fortschritt (2026-11-23)
 
 - Eigene freiwillige Manöver für Giftgärten, Frostdepot, Sturmdächer, Kristallmine,

@@ -1,18 +1,16 @@
-# Nach 0.27
+# Geschlossene Beta — nächster Schritt
 
-Umgesetzt: 15 Kämpfer, zehn Welten mit eigenen Manövern und Abschlussbossen,
-Bossleiter 2/4/6/8/10, lokale Sammlung, Cases, Werkstatt, Skins, Aufträge und Pass.
-Run-Analyse und Run-Vergleich unterstützen die weitere Balancearbeit.
+Umgesetzt: 15 Kämpfer, zehn Welten mit Manövern/Bossleiter, Endlos, lokale Sammlung,
+Cases/Skins/Werkstatt, Aufgaben und Pass, Analysen sowie fünf lokale Spielerprofile.
+Robuste Speicherung, Rücknavigation und Beta-Hilfe unterstützen den Test.
 
-1. 0.27 als Update auf dem vorhandenen Android-Spielstand installieren.
-2. Drei echte Runs mit Bruiser, Steelfist und einer neuen Figur in derselben
-   Arena, Schwierigkeit und demselben Modus vergleichen.
-3. Sporenfilter, Wärme, Blitzbahn, Runenfolge, Bombentakt und Ringsog praktisch
-   erproben. Sichere Innenräume und Countdown auf kleinen Displays prüfen.
-4. Mehrfingerbedienung, Unterbrechung, Neigung, Safe Area und Audio am Gerät abnehmen.
-5. Lange Endlosläufe auf FPS, Temperatur und Akku messen.
-6. Erst anhand dieser menschlichen Daten Schwierigkeit und Belohnungsfluss abstimmen.
+1. Auf mehreren geeigneten Android-Geräten als Update installieren.
+2. Zwei Spielerprofile getrennt spielen, Käufe/Belohnungen und Neustart prüfen.
+3. Tastatur, Mehrfingersteuerung, Zurück, Unterbrechung und Sensoren abnehmen.
+4. Drei echte Klassen-Runs unter gleichen Bedingungen vergleichen.
+5. Lange Runs auf Stabilität, FPS, Temperatur und Akku messen.
+6. Befunde mit Beta-Bericht dokumentieren und gezielt korrigieren.
 
-Bisher liegen keine neuen menschlichen Android-Rundaten für dieses Update vor.
-Automatische Belastung und festgelegte Testszenarien belegen keine menschliche
-Balance oder 60 FPS. Keine Cloud, Werbung, Echtgeldkäufe oder Onlinepflicht geplant.
+Aktive Runs werden nach vollständigem App-Ende noch nicht fortgesetzt. Keine
+Cloud, Anmeldung, Werbung oder Echtgeldkäufe. Für eine spätere öffentliche
+Store-Version folgen Release-Signierung/AAB und Store-Material nach Geräteabnahme.

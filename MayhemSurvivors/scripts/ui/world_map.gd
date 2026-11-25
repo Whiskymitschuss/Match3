@@ -1,7 +1,7 @@
 extends RefCounted
 const W=preload('res://scripts/progression/world_progress.gd')
 var game:Node2D
-var save_path='user://save.json'
+var save_path=''
 var busy=false
 var error=''
 var notice=''
@@ -10,7 +10,8 @@ func can_enter() -> bool:return game.state not in [game.State.COMBAT,game.State.
 func text(value:String,at:Vector2,width:float,font:int=26,color:Color=Color.WHITE) -> Label:
 	var node=game.label_at(value,at,font,color);node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;node.set_deferred('size',Vector2(width,140));return node
 func persist() -> bool:
-	if game.SaveManager.save_local(game.saved,save_path)!=OK:error='Speichern fehlgeschlagen. Bitte erneut versuchen.';return false
+	game.remember_selection()
+	if game.SaveManager.save_local(game.saved,save_path if save_path!='' else game.active_save_path())!=OK:error='Speichern fehlgeschlagen. Bitte erneut versuchen.';return false
 	error='';return true
 func claim(id:String) -> bool:
 	if busy or not can_enter():return false

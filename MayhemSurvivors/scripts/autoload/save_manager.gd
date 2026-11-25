@@ -1,4 +1,6 @@
 extends RefCounted
+const Store=preload('res://scripts/autoload/local_store.gd')
+static var last_load:Dictionary={}
 const Worlds=preload('res://scripts/progression/world_progress.gd')
 const Rewards=preload('res://scripts/progression/daily_rewards.gd')
 const Collection=preload('res://scripts/progression/collection.gd')
@@ -9,7 +11,7 @@ const Records = preload('res://scripts/progression/run_records.gd')
 const Arenas = preload('res://scripts/core/arena_catalog.gd')
 # Schema 3 adds arena attribution and cosmetic unlocks. Older runs were scrapyard-only.
 static func defaults() -> Dictionary:
-	return {'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
+	return {'selection':{'character':'bruiser','arena':'scrapyard','difficulty':'normal','mode':'campaign'},'world_progress':Worlds.defaults(),'collection':Collection.defaults(),'meta':Rewards.defaults(),'difficulty_records':DifficultyRecords.defaults(),'endless_records':Endless.defaults(),'hero_styles':Mastery.style_defaults(),'version':3,'unlocked':['bruiser'],'highest_wave':0,'games':0,'wins':0,'kills':0,'time':0.0,'settings':{'master':.8,'music':.35,'sfx':.8,'quality':'HIGH','aura':'class','haptics':'OFF','damage_numbers':true,'splatter':true,'shop_help_seen':false,'tutorial_complete':false,'onboarding_seen':false,'arena_briefings':[],'tilt':true,'reduced_motion':false,'show_fps':false},'records':Records.defaults(),'recent_runs':[],'arena_records':Records.arena_defaults(),'unlocked_arenas':['scrapyard'],'unlocked_styles':['class']}
 static func sidecar(path: String, suffix: String) -> String:
 	return path.get_basename()+'.'+suffix+'.json'
 static func backup(raw: String, path: String):
@@ -17,14 +19,9 @@ static func backup(raw: String, path: String):
 	if f:f.store_string(raw)
 static func load_local(path: String = 'user://save.json') -> Dictionary:
 	var result=defaults()
-	if not FileAccess.file_exists(path):return result
-	var raw=FileAccess.get_file_as_string(path)
-	var parser=JSON.new()
-	var valid=parser.parse(raw)==OK
-	var data=parser.data if valid else null
-	if not data is Dictionary or not (data.get('version')==1 or data.get('version')==2 or data.get('version')==3) or not data.get('settings') is Dictionary:
-		backup(raw,sidecar(path,'corrupt'))
-		return result
+	var loaded=Store.read(path,valid_file);last_load={'path':path,'status':loaded.status,'repair':loaded.repair}
+	if loaded.data.is_empty():return result
+	var data=loaded.data;var raw=loaded.raw
 	if data.version<3:
 		var suffix='v%d.backup' % int(data.version)
 		if not FileAccess.file_exists(sidecar(path,suffix)):backup(raw,sidecar(path,suffix))
@@ -70,11 +67,13 @@ static func load_local(path: String = 'user://save.json') -> Dictionary:
 	if result.unlocked_styles.has(data.settings.get('aura')):result.settings.aura=data.settings.aura
 	preload('res://scripts/progression/hero_unlocks.gd').sync(result)
 	result.hero_styles=Mastery.sanitize(result,data.get('hero_styles'))
+	var selection=data.get('selection',{})
+	if selection is Dictionary:
+		if selection.get('character') in result.collection.heroes:result.selection.character=selection.character
+		if Worlds.available(result,str(selection.get('arena',''))):result.selection.arena=selection.arena
+		if selection.get('difficulty') in ['normal','veteran','mayhem']:result.selection.difficulty=selection.difficulty
+		if selection.get('mode') in ['campaign','endless']:result.selection.mode=selection.mode
 	return result
+static func valid_file(data:Dictionary) -> bool:return (data.get('version')==1 or data.get('version')==2 or data.get('version')==3) and data.get('settings') is Dictionary
 static func save_local(data: Dictionary, path: String = 'user://save.json') -> Error:
-	var temp=path+'.tmp'
-	var f=FileAccess.open(temp,FileAccess.WRITE)
-	if not f:return FileAccess.get_open_error()
-	f.store_string(JSON.stringify(data))
-	f.close()
-	return DirAccess.rename_absolute(temp,path)
+	return Store.write(data,path,valid_file)

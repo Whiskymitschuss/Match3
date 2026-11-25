@@ -1,3 +1,79 @@
+# Testbericht 0.28.0 Beta 1 — 2026-11-23
+
+Godot 4.6.3 stable. Am frisch entpackten Projekt ohne vorhandenen Importcache:
+**40 Suiten / 9973 bestandene Prüfungen / 0 Fehler**. Beide historischen Traces
+mit eingefrorenen älteren Regeln zusätzlich bestanden (33 + 87 Kontrollpunkte).
+800 Laufzeitdateien plus Projekt-/Exportkonfiguration und alle 109 Testskripte
+sind bytegleich zum APK-Quellstand. Keine finalen Parser-/Script-/Ressourcenfehler.
+
+## Eigene Spieler und Speicherhärtung
+
+Profile-Store: 37 Prüfungen. Bestehender Spieler bleibt am ursprünglichen Pfad;
+vier weitere Spieler starten unabhängig mit Bruiser. Grenzen, Namen/Umlaute,
+doppelte Namen, feste IDs, Verzeichnis-Schutz und persistente Auswahl geprüft.
+Aktiver und primärer Spieler geschützt; entfernte Dateien werden archiviert.
+Katalog nach Neustart, Sicherung und Rekonstruktion aus gültigen Dateien geprüft.
+
+Transaktionstests prüfen gültige Vorgängersicherung, beschädigte Hauptdatei,
+Reparatur, verwaiste temporäre Datei, gültigen Primärstand als Autorität,
+vollständige Beschädigung, Dateigrößenlimit, nicht beschreibbaren Zielpfad und
+ungültige Daten. Fehlgeschlagene Writes melden Fehler, statt Persistenz zu behaupten.
+Manuelles Restore betrifft ausschließlich den aktiven Spieler. Migrationen behalten
+weiter exakte Originalbytes als Archiv; JSON-Versionen 1/2/3 werden erkannt.
+
+Beta-Profiles: 42 Funktionsprüfungen, nochmals nativ mit InputEventScreenTouch
+bestanden. Wirkliche Case-, Aufgaben-, Weltbelohnungs- und Run-Ergebniswege speichern
+im aktiven Profil. Guthaben, Freischaltungen, Daten, Einstellungen und Auswahl
+werden nicht zwischen Spielern vermischt. Neue Game-Instanz lädt denselben Spieler.
+Ein Save-Fehler blockiert den Profilwechsel ohne Datenverlust im Arbeitsspeicher.
+
+Native UI-Wege umfassen Namen ändern, Profil anlegen/aktivieren, bestätigtes Restore,
+Zurück aus Case-Reveal, Profil-/Settings-Menüs und Abbruchdialoge. Shop-Abbruch kann
+ohne Neuwürfeln oder Simulationsfortschritt abgebrochen werden. Bestätigter Abbruch
+aus Vorbereitung, Levelwahl und Shop zeichnet genau eine Niederlage auf. Unterbrechung
+pausiert, Rückwege setzen korrekt fort; Profilmutationen sind in aktiven Runs gesperrt.
+Beta-Bericht enthält keinen Spielernamen. Die neuen Profiltests verwenden private Testverzeichnisse.
+
+## Regression, Belastung und Darstellung
+
+- Bestehende Charakter-, Kampf-, Shop-, Cases-, Welt-, Belohnungs- und Analyseprüfungen
+  am frischen Stand bestanden. Native Case-Navigation zusätzlich 74 Prüfungen grün.
+- Analyse-Soak: 90 Szenarien / alle 15 Figuren / Kampagne und Endlos / drei Qualitäten;
+  41.175 Schritte / 686,25 simulierte Sekunden. Kontrollierte Wellen-/Bossenden,
+  korrekte gespeicherte Belege und begrenzte Historie. Kein menschlicher Schwierigkeitsbeleg.
+- 16 native GL-Aufnahmen: Hauptmenü, Profile, Settings und Beta-Hilfe jeweils in
+  1600×900, 2400×1080 und 1440×1080; zusätzlich Name, Wiederherstellung, Anleitung
+  und Run-Abbruchdialog. Relevante Einzelbilder und Layouts kontrolliert. Bilder
+  verwenden eigene Darstellungsfixtures, keine menschlichen Android-Runs.
+- Tatsächlicher Debug-Export mit unverändertem Update-Schlüssel, gültiger Signatur,
+  ARM64, korrektem Paket und importiertem Profilicon; Speicher-/Profilcontroller enthalten.
+
+## Behobene Entwicklungsbefunde
+
+JSON-Zahlen mussten mit numerischem Vergleich statt typabhängiger Listenmitgliedschaft
+validiert werden. Originalbytes von Migrationsarchiven werden erhalten. Historische
+Kampf-Fixtures setzen ihren alten Sessionkontext, damit gespeicherte Welt-/Stufenwahl
+ihre festgelegten Erwartungen nicht beeinflusst. Menü-Animationstest wählt SPIELEN
+statt den inzwischen neu hinzugekommenen Profilbutton. Schneller Audio-Testabschluss
+wartet auf die Freigabe des Mischpuffers. Alle betroffenen Läufe erfolgreich wiederholt.
+
+Reproduktion: `python tools/run_tests.py --traces`. Zusätzlich beta_profiles_test.gd
+und case_navigation_test.gd mit `-- --native-touch` im GL-Fenster, recap_soak.gd und
+beta_capture.gd; Godot mit `--fixed-fps 60`. Rohlogs: tests/results/v0.28.0-beta1-*.
+
+## Beta-Grenzen
+
+Geschlossener Android-Gerätetest steht aus: Installation über alte Daten, Tastatur,
+Mehrfingergefühl, Safe Area, Sensoren, subjektiver Klang, menschliche Balance,
+lange Runs, Temperatur, Akku und gemessene 60 FPS. Linux-GL und Headless beweisen
+diese Punkte nicht. Aktive Runs werden nach vollständigem App-Ende nicht fortgesetzt;
+dauerhafter Fortschritt und Profile schon. Keine Cloud/Anmeldung oder automatische
+Übertragung zwischen Handys. Testanleitung: BETA_TESTING.md. Keine Tests im APK.
+
+---
+
+## Frühere Testberichte
+
 # Testbericht 0.27.0 — 2026-11-23
 
 Godot 4.6.3 stable. Frisch entpacktes Quellprojekt ohne Importcache:

@@ -1,0 +1,4 @@
+PASS final source ZIP CRC and safe paths; no cache, SDK, private keystore or APK.
+PASS 800 runtime files plus project.godot/export_presets.cfg match the fresh tested source snapshot.
+PASS 109 GDScript test files, runner, generators and current reports match the working tree.
+PASS 13 selected capture PNGs; all gameplay assets, scenes, scripts and data included.

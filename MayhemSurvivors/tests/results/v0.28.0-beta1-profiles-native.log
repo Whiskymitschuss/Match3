@@ -1,0 +1,48 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS Boot preserves legacy player and exposes named profile access
+PASS Production switch loads a genuinely new player
+PASS Save then switch between two local players
+PASS Wallet, graphics and character/arena choices are isolated
+PASS All individual choices restore together
+PASS Actual crew transaction persists in active player file
+PASS Case pending state and fighter unlock cannot leak between players
+PASS Android back acknowledges a revealed case once and returns safely
+PASS Daily task payment persists only for its owner
+PASS World reward uses active profile persistence
+PASS World first-clear claims remain independent
+PASS Back in frozen run opens a confirmation above the unchanged shop
+PASS Cancelling run exit preserves offers and the frozen simulation
+PASS Real run result and history go to exactly one player
+PASS Fresh game instance restores the selected player after restart
+PASS Failed current-save write blocks switching without losing in-memory progress
+PASS Native profile header opens usable management (1600, 900)
+PASS Native name field persists through actual save action
+PASS Android back returns from profiles to main menu
+PASS Native profile header opens usable management (2400, 1080)
+PASS Native name field persists through actual save action
+PASS Android back returns from profiles to main menu
+PASS Native profile header opens usable management (1440, 1080)
+PASS Native name field persists through actual save action
+PASS Android back returns from profiles to main menu
+PASS Native profile activation swaps the actual game data
+PASS Android interruption pauses gameplay
+PASS No hidden simulation or incoming time while interrupted
+PASS Player switching is blocked during an active run
+PASS Paused settings expose profile data without allowing mutation
+PASS System back leaves paused settings safely
+PASS System back resumes through the existing pause route
+PASS Feedback report contains useful local diagnostics without player names
+PASS Native beta help explains installation, restart and run limitations
+PASS Manual recovery requires a clear confirmation
+PASS Native recovery restores only the confirmed active player
+PASS Native creation saves and activates one fresh independent player
+PASS Main-menu Android back requires explicit exit confirmation
+PASS Exit confirmation can be cancelled without closing the app
+PASS Native frozen-run exit records one defeat and returns safely 3
+PASS Native frozen-run exit records one defeat and returns safely 5
+PASS Native frozen-run exit records one defeat and returns safely 6
+BETA PROFILES RESULT 42 passed, 0 failed; native_touch=true

@@ -7,7 +7,7 @@ var slot='weapon'
 var page=0
 var busy=false
 var error=''
-var save_path='user://save.json'
+var save_path=''
 const SLOT_NAMES={'weapon':'WAFFEN','head':'KOPF','body':'KÖRPER','feet':'SCHUHE','item':'ITEMS','spell':'ZAUBER','skin':'WAFFEN-SKINS','deco':'DEKO'}
 func _init(g:Node2D):game=g
 func enter() -> bool:
@@ -38,7 +38,7 @@ func transact(kind:String,id:String='',serial:int=-1) -> bool:
 				else:game.saved.collection.loadouts[game.characters[hero].id][slot]=''
 				ok=true
 	if not ok:return false
-	if game.SaveManager.save_local(game.saved,save_path)!=OK:
+	if game.SaveManager.save_local(game.saved,save_path if save_path!='' else game.active_save_path())!=OK:
 		game.saved=before;error='Speichern fehlgeschlagen. Es wurde nichts verbraucht.';return false
 	error='';return true
 func show(index:int=-1,category:String='weapon',offset:int=0):
@@ -154,6 +154,10 @@ func reveal():
 	text(d.name,Vector2(850,330),850,64,game.GOLD)
 	text(('Bereits in deiner Sammlung. +%d Werkstattteile für dauerhafte Upgrades.' % r.parts) if r.duplicate else ('Fighter und passende Startwaffe sind dauerhaft freigeschaltet.' if r.hero else d.description),Vector2(850,460),850,34)
 	text('Der Fund gehört dauerhaft dir.\n%d STUDIO-COINS / %d TEILE' % [game.saved.meta.coins,game.saved.collection.parts],Vector2(850,670),850,29,game.TEAL)
+	game.ui_back_action=func():
+		if transact('ack','',r.serial):cases()
+		else:reveal()
+	game.ui_back_priority=3
 	button('WEITERE CASES',Vector2(100,965),Vector2(720,85),func():
 		if transact('ack','',r.serial):cases()
 		else:reveal())

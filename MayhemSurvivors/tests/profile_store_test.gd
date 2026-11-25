@@ -1,0 +1,60 @@
+extends SceneTree
+const Save=preload('res://scripts/autoload/save_manager.gd')
+const Store=preload('res://scripts/autoload/local_store.gd')
+const Profiles=preload('res://scripts/progression/player_profiles.gd')
+const Files=preload('res://tests/beta_test_files.gd')
+const ROOT='user://beta_test_model'
+var passed=0
+var failed=0
+func _initialize():call_deferred('run')
+func check(ok:bool,text:String):
+	if ok:passed+=1;print('PASS ',text)
+	else:failed+=1;push_error('FAIL '+text)
+func run():
+	Files.clear(ROOT);DirAccess.make_dir_recursive_absolute(ROOT)
+	var path=ROOT+'/save.json';var data=Save.defaults();data.meta.coins=321;data.games=12;data.settings.music=.15
+	check(Save.save_local(data,path)==OK,'Existing schema-3 legacy save written')
+	var profiles=Profiles.new(ROOT);var loaded=profiles.load_active()
+	check(profiles.index.active=='player_1' and profiles.active_path()==path and loaded.games==12 and loaded.meta.coins==321 and loaded.settings.music==.15,'Old player remains in place with complete local progress')
+	var names=['René','Nina','Tom','Lina'];var ids=[]
+	for name in names:
+		var id=profiles.create(name);ids.append(id);check(id!='' and FileAccess.file_exists(profiles.path_for(id)),'New profile really persisted '+name)
+		var player=Save.load_local(profiles.path_for(id));check(player.collection.heroes==['bruiser'] and player.meta.coins==0 and player.games==0 and player.world_progress.unlocked==['scrapyard'],'New player has independent fresh progression '+name)
+	check(profiles.create('Sechster')=='' and profiles.index.profiles.size()==5,'Five-profile limit cannot consume or overwrite existing saves')
+	check(not profiles.rename(ids[0],'NINA') and profiles.rename(ids[0],'  René  ') and not profiles.rename(ids[0],'\n\t'),'Names trim controls and reject duplicates and emptiness')
+	check(Profiles.number('../save')==0 and Profiles.number('player_01')==0 and Profiles.number('player_+2')==0 and Profiles.number('player_2')==2,'Only canonical fixed profile identifiers become file paths')
+	var bad=profiles.index.duplicate(true);bad.profiles[1].id='../save';check(not Profiles.valid_index(bad),'Forged index cannot escape the profile directory')
+	check(profiles.switch_to(ids[0],loaded),'Switch commits old progress before changing index')
+	loaded=profiles.load_active();loaded.meta.coins=777;loaded.collection.parts=91;loaded.settings.quality='LOW';loaded.settings.master=0;check(profiles.save_active(loaded),'Player-specific wallet and settings saved')
+	var restarted=Profiles.new(ROOT);check(restarted.index.active==ids[0] and restarted.load_active().meta.coins==777,'Restart restores selected profile and its wallet')
+	check(profiles.switch_to('player_1',loaded),'Switch back to original profile')
+	check(profiles.load_active().meta.coins==321 and profiles.load_active().games==12,'No new-player coins or stats leak into legacy player')
+	check(not profiles.remove('player_1') and not profiles.remove(profiles.index.active),'Primary and active player cannot be removed')
+	check(profiles.remove(ids[3]) and not profiles.has(ids[3]) and FileAccess.file_exists(profiles.path_for(ids[3])+'.removed'),'Inactive profile removed from selection without overwriting others')
+	var new_id=profiles.create('Neu');check(new_id!=ids[3] and new_id!='','Removed identifiers are not silently reused')
+	# Atomic saves retain a valid previous snapshot and recover without merging players.
+	data=Save.defaults();data.meta.coins=100;Save.save_local(data,path);data.meta.coins=200;Save.save_local(data,path)
+	check(Store.parse(Store.sidecar(path,'backup'),Save.valid_file).data.meta.coins==100,'Rolling backup retains the previous complete transaction')
+	Files.raw(path,'{broken');loaded=Save.load_local(path)
+	check(loaded.meta.coins==100 and Save.last_load.status=='recovered' and FileAccess.file_exists(Store.sidecar(path,'corrupt')),'Corrupt primary automatically recovers its own backup and preserves bad bytes')
+	check(Store.parse(path,Save.valid_file).data.meta.coins==100,'Recovery actually repairs the primary file')
+	data.meta.coins=300;Save.save_local(data,path);Files.raw(Store.sidecar(path,'backup'),'{broken');data.meta.coins=400;Files.raw(path+'.tmp',JSON.stringify(data))
+	check(Save.load_local(path).meta.coins==300,'Valid committed primary wins over an abandoned temporary write')
+	Files.raw(path,'{broken');check(Save.load_local(path).meta.coins==400 and Save.last_load.status=='recovered','A complete staged file is a final recovery source when both committed snapshots fail')
+	Files.raw(path,'{broken');Files.raw(path+'.tmp','{broken');Files.raw(Store.sidecar(path,'backup'),'{broken')
+	check(Save.load_local(path).meta.coins==0 and Save.last_load.status=='damaged','Fully damaged saves safely load defaults and expose their status')
+	data.meta.coins=500;check(Save.save_local(data,path)==OK,'Explicit subsequent save can establish a new valid primary')
+	DirAccess.make_dir_absolute(ROOT+'/blocked');check(Save.save_local(data,ROOT+'/blocked')!=OK and DirAccess.dir_exists_absolute(ROOT+'/blocked'),'Failed promotion cannot replace an existing directory')
+	check(Save.save_local(data,ROOT+'/missing/save.json')!=OK,'Missing-parent write reports failure rather than false persistence')
+	check(Save.save_local({},path)==ERR_INVALID_DATA and Save.load_local(path).meta.coins==500,'Invalid data cannot overwrite a valid primary')
+	data.meta.coins=600;Save.save_local(data,path);check(profiles.restore() and profiles.load_active().meta.coins==500,'Explicit restore loads the previous committed snapshot')
+	check(Save.load_local(profiles.path_for(ids[0])).meta.coins==777,'Manual restoration cannot modify another player')
+	var huge=FileAccess.open(path,FileAccess.WRITE);huge.store_string('x'.repeat(8*1024*1024+1));huge.close();loaded=Save.load_local(path)
+	check(Save.last_load.status in ['recovered','damaged'] and FileAccess.file_exists(Store.sidecar(path,'corrupt')),'Oversized corrupt input is bounded and archived without parsing')
+	# Profile index itself has rolling recovery and a safe disk reconstruction.
+	var backup=Store.parse(Store.sidecar(profiles.index_path(),'backup'),Profiles.valid_index)
+	Files.raw(profiles.index_path(),'{broken');var recovered=Profiles.new(ROOT)
+	check(recovered.index==backup.data and recovered.notice!='','Profile manifest recovers its own valid previous snapshot')
+	Files.raw(profiles.index_path(),'{broken');Files.raw(Store.sidecar(profiles.index_path(),'backup'),'{broken');Files.raw(profiles.index_path()+'.tmp','{broken');recovered=Profiles.new(ROOT)
+	check(recovered.index.profiles.size()<=5 and recovered.has(ids[0]) and not recovered.has(ids[3]) and recovered.index.active=='player_1','Lost manifest reconstructs known valid profile files and skips removed archives')
+	Files.clear(ROOT);print('PROFILE STORE RESULT ',passed,' passed, ',failed,' failed');quit(1 if failed else 0)

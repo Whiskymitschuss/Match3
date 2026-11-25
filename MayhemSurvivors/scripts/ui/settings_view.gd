@@ -7,7 +7,7 @@ var tab='audio'
 func _init(g:Node2D):owner_ref=weakref(g)
 func dispose():back=Callable()
 func show(return_to:Callable,section:String='audio'):
-	back=return_to;tab=section if section in ['audio','graphics','controls'] else 'audio';render()
+	back=return_to;tab=section if section in ['audio','graphics','controls','profile'] else 'audio';render()
 func leave():
 	var target=back;back=Callable()
 	if target.is_valid():target.call()
@@ -19,13 +19,24 @@ func toggle(key:String):
 	game.saved.settings[key]=not game.saved.settings[key];game.vfx.apply_settings();game.menu_motion.reset();game.save_game();render()
 func render():
 	game.backdrop('EINSTELLUNGEN','Dein Spielgefühl / Änderungen werden automatisch gespeichert')
-	for i in range(3):
-		var key=['audio','graphics','controls'][i]
-		button(['AUDIO','GRAFIK','STEUERUNG'][i],Rect2(100+i*585,245,550,85),func():tab=key;render(),Color('#64417C') if tab==key else Color('#2F2044'))
+	for i in range(4):
+		var key=['audio','graphics','controls','profile'][i]
+		button(['AUDIO','GRAFIK','STEUERUNG','PROFIL'][i],Rect2(100+i*435,245,410,85),func():tab=key;render(),Color('#64417C') if tab==key else Color('#2F2044'))
 	button('ZURÜCK',Rect2(100,960,480,90),leave)
 	if tab=='audio':audio()
 	elif tab=='graphics':graphics()
+	elif tab=='profile':profile()
 	else:controls()
+func profile():
+	game.UISkin.panel(game,Rect2(100,365,1720,550),game.TEAL)
+	text('DEIN PROFIL: '+game.profiles.active_name(),Rect2(145,405,1600,70),44,game.GOLD)
+	text('Eigene Freischaltungen, Coins, Ausrüstung und Statistiken. Alles liegt auf diesem Gerät. Laufende Runs enden nach vollständigem Schließen der App.',Rect2(145,500,1570,120),32)
+	var editable=game.state==game.State.MAIN_MENU
+	button('SPIELERPROFILE',Rect2(145,660,740,90),func():dispose();game.profile_view.show()).disabled=not editable
+	var backup=game.SaveManager.Store.parse(game.SaveManager.Store.sidecar(game.active_save_path(),'backup'),game.SaveManager.valid_file)
+	button('SICHERUNG LADEN',Rect2(1000,660,740,90),func():game.profile_view.confirm_restore(render)).disabled=not editable or backup.is_empty()
+	button('JETZT SPEICHERN',Rect2(145,790,740,90),func():game.save_game();render())
+	button('BETA-HILFE',Rect2(1000,790,740,90),func():game.beta_view.show(render))
 func audio():
 	game.UISkin.panel(game,Rect2(100,365,1720,450),game.TEAL)
 	for i in range(3):
