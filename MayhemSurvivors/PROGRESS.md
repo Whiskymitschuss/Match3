@@ -1,3 +1,55 @@
+# Übergabe 0.29.0 Beta 3 — abgeschlossen am 24.11.2026
+
+Code, Dokumentation, signiertes AAB und vollständiges Quell-ZIP im Branch
+feature/run-resume-backups-v0.29.0 veröffentlicht. Draft-PR #15 erstellt, nicht
+zusammengeführt. Alle drei öffentlichen Downloads (AAB/ZIP/TXT) vollständig ohne
+Anmeldung gelesen und SHA256/Bytezahl mit lokalen Originalen abgeglichen.
+Nachweis: Downloads/VERIFY-v0.29.0-beta3.txt, separat nach dem Quellpaket erstellt.
+AAB 76388236 Bytes, ZIP 76929693 Bytes; Prüfsummen im Downloadverzeichnis.
+
+Implementierung und automatisierte Prüfung dieses Updates erledigt. Nächster
+Schritt beim Nutzer: neues internes Play-Release Code36 mit bestehendem Schlüssel;
+echter Android-Test für Fortsetzen, Store-Update und nativen Dateidialog. Kein
+Console-Upload, keine Play-Freigabe oder Geräteinstallation durch diese Sitzung.
+Das Quell-ZIP bildet den geprüften Stand vor dem nachträglichen Downloadnachweis ab.
+
+---
+
+# 0.29.0 Beta 3 — Run fortsetzen und portable Profil-Dateien
+
+Stand 2026-11-24. Branch feature/run-resume-backups-v0.29.0.
+Aktuelle Phase: Implementierung, Tests, signierter Store-Build und Quellprüfung abgeschlossen.
+
+Implementiert: atomare profilbezogene Run-Checkpoints; Gegner-/Projektilreferenzen,
+Bossphasen, Arenagefahren, Fähigkeiten, RNG, Run-Werte, Shop und feste Levelwahl.
+Neustart → Hauptmenü → Fortsetzen → Pause. Sichern & Hauptmenü, Profilwechsel und
+bestätigter Ersatz/Abbruch. Alle zehn Kampfsekunden Autosave im Hintergrund;
+wichtige Übergänge/Lifecycle synchron. Abschluss nach Worker-Join atomar mit Belohnung.
+
+Portable JSON-Sicherung: Version, SHA256, acht MiB, native Dateiauswahl, Rücklese-
+Kontrolle, Vorschau und expliziter Import als zusätzliches Profil. Keine Mischung
+oder Überschreibung anderer Spieler. Neuer Besitzer für enthaltenen Run.
+Fünf Profilplätze, vollständig offline, keine breite Speicherberechtigung.
+Neue Spieler weiterhin Bruiser/Hammer/Schrottplatz, null Guthaben/Fortschritt.
+
+Verifiziert: 44 Suiten / 10127 Prüfungen / 0 Fehler, beide Traces. Neue Suiten
+Run61/0, Backup20/0, UI32/0; UI nativ32/0, elf Ansichten in drei Formaten.
+100-Gegner-/320-Projektil-Fixture, deterministisches Weiterspielen nach Neustart,
+Worker-Reihenfolge und I/O-Ausfälle geprüft. Keine offenen Parserfehler.
+
+Export: signiertes Store-AAB0.29.0-beta3 / Code36 / 76388236 Bytes gebaut.
+Bundletool, gleiche Uploadsignatur, Manifest, CRC und 16-KiB-Ausrichtung bestanden.
+812 Laufzeit-/Konfigurationsdateien für Quellenabgleich gesnapshottet.
+
+Quellprüfung bestanden: frischer Import, 150 Zusatzprüfungen und 812 bytegleiche
+Laufzeit-/Konfigurationsdateien. Vollständiges Quell-ZIP ohne private Daten.
+Nächster Arbeitsschritt: Artefakte im Branch veröffentlichen und anonyme Downloads verifizieren.
+Danach Nutzer: interner Store-ReleaseCode36 und echte Android-Abnahme inklusive
+SAF-Dateidialog/content://, Unterbrechung, Speicher und Langzeitperformance.
+Keine bestätigte Play-Freigabe oder Geräteinstallation. Keine Server/Bestenliste.
+
+---
+
 # Ergänzung 24.11.2026 — Inhaltsübersicht und Console-Fortschritt
 
 Nutzer-Screenshots bestätigen: App in Google Play Console angelegt, Release-AAB

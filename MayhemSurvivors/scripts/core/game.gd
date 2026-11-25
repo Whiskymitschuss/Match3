@@ -128,6 +128,7 @@ var run_time = 0.0
 var wave_number = 1
 var remaining = 60.0
 const WaveBalance=preload('res://scripts/gameplay/wave_balance.gd')
+var spawn_serial=0
 var spawn_cycle=0
 var spawn_clock = 0.0
 var hurt_clock = 0.0
@@ -153,6 +154,9 @@ var style_cache: Dictionary = {}
 var test_mode = false
 var profile_root='user://'
 var profiles
+var run_session
+var profile_transfer
+var level_choices:Array=[]
 var profile_view
 var beta_view
 var save_error=''
@@ -167,9 +171,12 @@ func change_state(next: int):
 		push_error('Invalid state transition: %s -> %s' % [state,next])
 		return
 	state = next
+	if run_session:run_session.request()
 	if audio_director:audio_director.state_changed(next)
 
 func _ready():
+	run_session=preload('res://scripts/progression/run_session.gd').new(self)
+	profile_transfer=preload('res://scripts/ui/profile_transfer.gd').new(self)
 	rules=preload('res://scripts/gameplay/run_rules.gd').new(self)
 	rng.randomize()
 	run_items=preload('res://scripts/economy/run_items.gd').new(self)
@@ -290,6 +297,7 @@ func remember_selection():
 	saved.selection={'character':characters[selected].id,'arena':arena_id,'difficulty':selected_difficulty,'mode':run_mode if run_mode in ['campaign','endless'] else 'campaign'}
 func save_game() -> bool:
 	if profiles==null or not SaveManager.valid_file(saved):return false
+	if run_session and not run_session.capture():return false
 	remember_selection()
 	var ok=profiles.save_active(saved)
 	save_error=profiles.error
@@ -298,6 +306,7 @@ func save_game() -> bool:
 		if access:access.text='PROFIL: '+profiles.active_name()+(' / SPEICHERFEHLER' if not ok else '')
 	return ok
 func apply_profile(data:Dictionary):
+	if profile_transfer:profile_transfer.cancel_dialog()
 	saved=data
 	var choice=saved.get('selection',{})
 	selected=maxi(0,Collection.HEROES.find(choice.get('character','bruiser')))
@@ -410,6 +419,7 @@ func _apply_ui_action(revision:int,action:Callable):
 	if revision==ui_revision and action.is_valid():action.call()
 
 func main_menu():
+	if run_session and not run_session.suspend():return
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	change_state(State.MAIN_MENU)
 	cleanup()
@@ -590,7 +600,9 @@ func cleanup():
 	projectile_pool.clear()
 	boss_warning = ''
 
-func start_run():
+func start_run(force_new:bool=false):
+	if run_session.enabled() and not force_new and run_mode!='tutorial' and run_session.pending() and not run_session.live:
+		run_session.confirm_new(func():start_run(true));return
 	if not Unlocks.available(saved,characters[selected].id) and not (tutorial and tutorial.active and run_mode=='tutorial'):character_select(selected);return
 	if not Arenas.unlocked(saved,arena_id):arena_select();return
 	run_difficulty=selected_difficulty if selected_difficulty in Difficulty.IDS else 'normal'
@@ -620,6 +632,8 @@ func start_run():
 	dealt = 0
 	run_time = 0
 	wave_number = 1
+	spawn_serial=0
+	remaining=60.0;level_choices.clear()
 	run_items.clear()
 	recap.reset()
 	scrapyard_salvage.reset_run()
@@ -637,6 +651,7 @@ func start_run():
 	hurt_clock=0
 	result_recorded = false
 	run_waves=0;run_abilities=0;run_events=0
+	run_session.begin()
 	prepare_wave()
 
 func prepare_wave():
@@ -768,7 +783,7 @@ func _input(event):
 func _notification(what):
 	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		if state == State.COMBAT: pause_game()
-		save_game()
+		else:save_game()
 	if what == NOTIFICATION_APPLICATION_FOCUS_IN and is_instance_valid(ui_root):
 		if OS.has_feature('android'):DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		call_deferred('update_safe_area')
@@ -790,7 +805,7 @@ func confirm_frozen_run_exit():
 	var previous=ui_back_action;var priority=ui_back_priority
 	var overlay=Control.new();overlay.name='LeaveRunOverlay';overlay.size=Vector2(1920,1080);overlay.mouse_filter=Control.MOUSE_FILTER_STOP;overlay.z_index=100;ui_root.add_child(overlay)
 	var shade=ColorRect.new();shade.position=ui_bleed.position;shade.size=ui_bleed.size;shade.color=Color(0,0,0,.8);shade.mouse_filter=Control.MOUSE_FILTER_STOP;overlay.add_child(shade)
-	var panel=Panel.new();panel.position=Vector2(290,310);panel.size=Vector2(1340,460);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_theme_stylebox_override('panel',style(Color('#33213E')));overlay.add_child(panel)
+	var panel=Panel.new();panel.position=Vector2(290,310);panel.size=Vector2(1340,560);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_theme_stylebox_override('panel',style(Color('#33213E')));overlay.add_child(panel)
 	label_at('DIESEN RUN BEENDEN?',Vector2(335,350),52,GOLD,overlay)
 	label_at('Der Durchlauf zählt als Niederlage. Dein dauerhafter Fortschritt bleibt erhalten.',Vector2(335,450),28,Color.WHITE,overlay)
 	var cancel=func():
@@ -800,7 +815,9 @@ func confirm_frozen_run_exit():
 	var leave=button('RUN BEENDEN',Vector2(975,610),Vector2(600,100),func():queue_ui_action(func():
 		if not is_instance_valid(overlay) or overlay.is_queued_for_deletion():return
 		finish(false);main_menu()))
-	leave.reparent(overlay);ui_back_action=cancel;ui_back_priority=3
+	leave.reparent(overlay)
+	var save_leave=button('SICHERN & HAUPTMENÜ',Vector2(335,745),Vector2(1240,90),func():queue_ui_action(main_menu));save_leave.reparent(overlay)
+	ui_back_action=cancel;ui_back_priority=3
 func confirm_exit():
 	if state!=State.MAIN_MENU:return
 	backdrop('MAYHEM FÜR HEUTE BEENDEN?','Dein dauerhafter Fortschritt wird lokal gespeichert.')
@@ -813,6 +830,7 @@ func confirm_exit():
 func pause_game():
 	if state != State.COMBAT: return
 	change_state(State.PAUSED)
+	if run_session.enabled():save_game()
 	pause_menu()
 
 func pause_menu():
@@ -820,8 +838,10 @@ func pause_menu():
 	button('FORTSETZEN',Vector2(120,320),Vector2(620,110),func():queue_ui_action(resume))
 	button('EINSTELLUNGEN',Vector2(120,460),Vector2(620,110),func():queue_ui_action(func():settings(pause_menu)))
 	button('HANDBUCH',Vector2(120,740),Vector2(620,110),func():queue_ui_action(func():game_guide.show('rules',0,pause_menu)))
-	button('HAUPTMENÜ',Vector2(120,600),Vector2(620,110),func():queue_ui_action(confirm_leave))
+	button('SICHERN & HAUPTMENÜ',Vector2(120,600),Vector2(620,110),func():queue_ui_action(main_menu))
 	if not synergies.module_id().is_empty():button('KLASSENMODUL',Vector2(1000,320),Vector2(620,110),func():queue_ui_action(func():synergies.show_help(pause_menu)))
+	button('RUN ABBRECHEN',Vector2(1000,740),Vector2(720,110),func():queue_ui_action(confirm_leave))
+	if save_error!='':label_at(save_error,Vector2(1000,885),23,GOLD)
 	if arena_mechanics.supported():button('ARENA-TIPPS',Vector2(120,880),Vector2(620,100),func():queue_ui_action(func():arena_coach.show(pause_menu)))
 
 func resume():
@@ -834,6 +854,7 @@ func confirm_leave():
 	button('RUN BEENDEN',Vector2(120,570),Vector2(650,110),func():queue_ui_action(func():finish(false);main_menu()))
 
 func _physics_process(delta):
+	if run_session:run_session.tick(delta)
 	animation_clock += delta
 	queue_redraw()
 	if is_instance_valid(joystick): joystick.queue_redraw()
@@ -922,7 +943,8 @@ func spawn_enemy(kind: String):
 	var current_wave=rules.current_wave()
 	var is_boss=kind in ['boss','breaker_axel','champion']
 	var values=rules.scale_stats(WaveBalance.stats(d,current_wave,wave_number,is_boss),is_boss)
-	enemies.append({'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,is_boss),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,is_boss)})
+	spawn_serial+=1
+	enemies.append({'save_actor':spawn_serial,'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,is_boss),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,is_boss)})
 	enemy_roles.initialize(enemies.back())
 	ravox.initialize(enemies.back())
 	enemy_pack.initialize(enemies.back())
@@ -1175,11 +1197,16 @@ func level_up():
 	change_state(State.LEVEL_UP)
 	sound('level')
 	haptic('level')
-	backdrop('LEVEL %d • DEIN UPGRADE' % level,'Wähle eine Verbesserung. Der Kampf wartet auf dich.')
 	var pool: Array = []
 	for u in upgrades:
 		if valid_upgrade(u[0]): pool.append(u)
 	pool.shuffle()
+	level_choices=pool.slice(0,mini(3,pool.size()))
+	show_level_choices()
+
+func show_level_choices():
+	backdrop('LEVEL %d • DEIN UPGRADE' % level,'Wähle eine Verbesserung. Der Kampf wartet auf dich.')
+	var pool=level_choices
 	for i in range(mini(3,pool.size())):
 		var u = pool[i]
 		var x = 100+i*580
@@ -1270,6 +1297,7 @@ func weapon_icon(id: String, pos: Vector2, size: Vector2):
 	ui_root.add_child(icon)
 
 func show_shop():
+	run_session.request()
 	if not encounters.rewards.is_empty():encounters.reward_screen();return
 	if not pending_specialization().is_empty():specialization_screen();return
 	shop_view.show()
@@ -1319,6 +1347,7 @@ func finish(victory: bool):
 	if tutorial and tutorial.active:tutorial.stop(false);return
 	if result_recorded: return
 	result_recorded = true
+	run_session.end()
 	recap.close('cleared' if victory else ('defeat' if hp<=0 else ('timeout' if remaining<=0 else 'abandoned')))
 	studio_reward=Collection.run_reward(saved,run_mode,run_waves,kills,victory)
 	preload('res://scripts/progression/daily_rewards.gd').record(saved.meta,{'mode':run_mode,'arena':arena_id,'kills':kills,'waves':run_waves,'skills':run_abilities,'won':victory})
@@ -1484,6 +1513,8 @@ func _draw():
 			if e.text!='': draw_string(UISkin.BODY,e.pos+Vector2(-12,-35*(1-e.life)),e.text,HORIZONTAL_ALIGNMENT_LEFT,-1,24,e.color)
 
 func _exit_tree():
+	if profile_transfer:profile_transfer.cancel_dialog()
+	if run_session:run_session.wait_for_worker(false)
 	ui_back_action=Callable()
 	if beta_view:beta_view.dispose()
 	if recap_view:recap_view.dispose()

@@ -1,0 +1,39 @@
+RF WORLDS | MAYHEM SURVIVORS
+UPDATE 0.29.0 BETA 3 | ANDROID | VERSIONCODE 36
+24.11.2026
+
+NEU
+- Kampagne und Endlos nach App-Ende fortsetzen, ein gesicherter Run je Profil.
+- Hauptmenü: FORTSETZEN. Kämpfe werden zuerst pausiert geladen.
+- Shopangebote, Levelauswahl, Gegner, Bosse, Fähigkeiten und Zufallszustand bleiben erhalten.
+- Automatische Sicherung etwa alle zehn Kampfsekunden im Hintergrund.
+- Pause und SICHERN & HAUPTMENÜ sichern zusätzlich unmittelbar.
+- Einstellungen > Profil > EXPORT / IMPORT: portable Sicherungsdatei.
+- Import zeigt Vorschau und legt nach Bestätigung einen zusätzlichen Spieler an.
+- Andere Profile werden nicht überschrieben. Maximal fünf Profile.
+
+AUF EIN ANDERES HANDY
+Aktives Profil exportieren, Datei selbst auf das Zielgerät übertragen, dort in
+derselben Version importieren. Ein freier Profilplatz ist erforderlich.
+Die Datei kann deinen Profilnamen enthalten. Getrennt von der App aufbewahren.
+Keine Anmeldung und keine automatische Cloud-Anbindung.
+
+BESTEHENDE INHALTE
+15 Fighter, 10 Welten, Kampagne/Endlos, Bosse alle zwei Wellen, Upgrades,
+Waffenentwicklungen, Sammlung/Cases, erspielbare Aufgaben und Pass.
+Neue Spieler: Bruiser, Hammer Rang 1, Schrottplatz und null Guthaben/Fortschritt.
+Vorhandene eigene Fortschritte bleiben bei regulären Store-Updates erhalten.
+
+WICHTIG BEIM TESTEN
+Bei hartem Prozessabbruch kann der Abschnitt seit der letzten erfolgreichen
+Sicherung fehlen, normalerweise bis etwa zehn Sekunden. Bei Schreibfehlern länger.
+Abgeschlossene Runs werden nicht erneut geladen oder belohnt.
+Tutorial-Training wird nicht als aktiver Run gespeichert.
+Der Android-Dateidialog muss noch auf echten Geräten getestet werden.
+
+GOOGLE PLAY
+Dies ist ein signiertes Release-App-Bundle, keine direkt installierbare APK.
+In der vorhandenen App einen neuen internen Testrelease anlegen, Code 36 hochladen.
+Danach über den Play-Testlink aktualisieren; nicht vorher deinstallieren.
+Release-Name: 0.29.0 Beta 3 – Runs fortsetzen
+Die Console-Freigabe erfolgt durch den Kontoinhaber.

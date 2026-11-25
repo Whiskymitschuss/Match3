@@ -1,0 +1,5 @@
+PASS fresh source ZIP extracted without .godot or Android build cache
+PASS clean Godot 4.6.3 editor import with no parser/resource errors
+PASS new-player37 + run61 + backup20 + UI32 = 150 fresh-project checks
+PASS 812 runtime/configuration files byte-identical to signed bundle source snapshot
+PASS 130 shipped GDScript tests/Python tools byte-identical to tested working source

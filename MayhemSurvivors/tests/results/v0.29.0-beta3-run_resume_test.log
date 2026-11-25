@@ -1,0 +1,66 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS JSON graph preserves shared enemy identity
+PASS Graph preserves int64, geometry, colour and typed arrays
+PASS Object loading is never allowed
+PASS Cyclic corrupt graphs rejected before allocation
+PASS New game instance finds the saved run in its own profile
+PASS Actual combat resumes from persisted profile
+PASS Restored combat is paused at exact player/time/economy values
+PASS RNG, projectiles and hazard owners keep exact shared identity
+PASS Loaded run never simulates before explicit continuation
+PASS Explicit resume continues actual simulation
+PASS New game instance finds the saved run in its own profile
+PASS Actual shop resumes after restart
+PASS Shop keeps exact offers, reroll count and wallet
+PASS New game instance finds the saved run in its own profile
+PASS Pending level-up resumes after restart
+PASS Level-up is not rerolled, charged twice or skipped
+PASS All live character ability state serializes bruiser
+PASS All live character ability state serializes sparky
+PASS All live character ability state serializes shade
+PASS All live character ability state serializes twinkle
+PASS All live character ability state serializes kicksy
+PASS All live character ability state serializes steelfist
+PASS All live character ability state serializes cinder
+PASS All live character ability state serializes frosty
+PASS All live character ability state serializes volt
+PASS All live character ability state serializes rook
+PASS All live character ability state serializes nyx
+PASS All live character ability state serializes viper
+PASS All live character ability state serializes echo
+PASS All live character ability state serializes nova
+PASS All live character ability state serializes rivet
+PASS All arena machinery serializes scrapyard
+PASS All arena machinery serializes reactor
+PASS All arena machinery serializes docks
+PASS All arena machinery serializes foundry
+PASS All arena machinery serializes gardens
+PASS All arena machinery serializes frost
+PASS All arena machinery serializes storm
+PASS All arena machinery serializes crystal
+PASS All arena machinery serializes carnival
+PASS All arena machinery serializes void
+PASS New game instance finds the saved run in its own profile
+PASS Breaker Axel windup resumes
+PASS Boss phase, warnings and attack counters survive
+PASS Finish atomically clears checkpoint with its rewards
+PASS Repeated finish never duplicates rewards
+PASS Restart after finish cannot replay completed run
+PASS Restored run replays the next combat segment with identical state and RNG
+PASS Failed run save blocks suspension without dropping combat state
+PASS Damaged checkpoint checksum is rejected
+PASS Unknown ruleset is rejected without attempting combat
+PASS Checkpoint from another player cannot be resumed
+PASS Another player cannot see the first player’s pending run
+PASS Returning to owner restores its independent pending run
+PASS 100 enemies and 320 pooled projectiles produce a valid bounded checkpoint
+CHECKPOINT BENCHMARK 23462 us / 152327 payload bytes (host only, not Android FPS)
+PASS Periodic autosave starts a background worker
+PASS Background deep copy preserves actor identity and writes valid full workload
+AUTOSAVE MAIN COPY 1825 us (host only, not Android FPS)
+PASS Second periodic autosave starts
+PASS Finish waits for worker and commits final rewards after it; stale checkpoint cannot return
+PASS Write-failure fixture starts background worker
+PASS Failed background write leaves committed file and running simulation intact
+RUN RESUME RESULT 61 passed, 0 failed

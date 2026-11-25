@@ -1,3 +1,43 @@
+# Google-Play-Build 0.29.0 Beta 3 — 2026-11-24
+
+Tatsächlich gebautes und signiertes Release-App-Bundle mit Godot 4.6.3 stable,
+OpenJDK21, Android SDK36 / Build-Tools36.1.0 und offizieller Gradle-Vorlage.
+
+- MayhemSurvivors-v0.29.0-beta3-store.aab / **76388236 Bytes**.
+- SHA256 `42184a1b4666226b3c350e77ba94e69e6d80c398240b719fa450cd0770ba3f4d`.
+- Paket com.rfworlds.mayhemsurvivors / Code36 / Name0.29.0-beta3.
+- Ausschließlich ARM64-v8a / minSDK24 / targetSDK36 / Release, nicht debuggable.
+- Nur VIBRATE, kein INTERNET; allowBackup false, Querformat/GL Compatibility.
+- Bestehender privater Upload-Schlüssel aus Code35 unverändert; Zertifikat-SHA256:
+  `2A:18:95:FA:8D:27:ED:97:53:0C:E0:18:F9:CC:AE:D3:E7:B2:82:43:62:5C:F1:EF:B4:AC:EA:F7:4D:23:4F:8C`.
+
+Bundletool1.18.3 validate erfolgreich, JAR-Signatur verifiziert. Self-signed-/
+Trust-Chain-/Timestamp-Hinweise sind bei diesem Uploadzertifikat erwartbar.
+Manifest zuerst im JAR; keine Streaming-Inkonsistenz. Alle ZIP-CRCs korrekt.
+Beide nativen Bibliotheken haben 16384-Byte-PT_LOAD-Ausrichtung, BundleConfig
+PAGE_ALIGNMENT_16K. 24 Laufzeit-JSONs entsprechen exakt den Quellen. Compilierte
+Checkpoint-, Session-, Graph-, Backup- und Transfer-Controller nachgewiesen.
+Keine Tests, privaten Schlüssel oder App-Spielstände im AAB.
+
+ADB-Daemon tcp:5037 nicht erreichbar; der unabhängige Export war erfolgreich.
+AGP8.6.1 weist auf das gegenüber seinem Teststand neuere TargetSDK36 hin; Build
+und Bundlevalidierung sind bestanden. Keine Geräteinstallation behauptet.
+Der private Schlüssel bleibt außerhalb von Repository und Quell-ZIP.
+
+Das AAB als neue Version derselben Play-Console-App in den internen Test laden.
+Code35 wurde laut Nutzer bereits verarbeitet, Code36 ist noch nicht hochgeladen.
+Keine direkt installierbare APK. Play-Console-Freigabe und Geräteabnahme bleiben
+beim tatsächlichen Store-Test zu erledigen; PLAY_STORE_HANDOFF.md enthält die Schritte.
+
+Quell-ZIP ohne Import-/Buildcache frisch entpackt und importiert: keine Parser- oder
+Ressourcenfehler. Erstspieler37/0, Run61/0, Backup20/0 und UI32/0 nochmals bestanden.
+812 Laufzeit-/Konfigurationsdateien entsprechen bytegleich dem Snapshot des
+gebauten AAB; 130 Test-/Werkzeugskripte ebenfalls bytegleich. Quellpaket enthält
+Projekt, Assets, Daten, Szenen, Skripte, Tests, Berichte und neun neue UI-Aufnahmen;
+keine Toolchains, Caches, privaten Schlüssel oder Spielerdateien.
+
+---
+
 # Google-Play-Build 0.28.1 Beta 2 — 2026-11-23
 
 Tatsächlich gebautes **Release-App-Bundle** für die neue Play-Console-App.

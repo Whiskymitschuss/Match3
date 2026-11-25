@@ -68,7 +68,7 @@ func save_active(saved:Dictionary) -> bool:
 	return result==OK
 func available_name(value:String,except_id:String='') -> bool:
 	return not value.is_empty() and not index.profiles.any(func(p):return p.id!=except_id and p.name.to_lower()==value.to_lower())
-func create(value:String) -> String:
+func create(value:String,initial:Dictionary={}) -> String:
 	var name=clean_name(value)
 	if index.profiles.size()>=LIMIT:error='Alle fünf Profilplätze sind belegt.';return ''
 	if not available_name(name):error='Bitte einen freien Namen mit 1–18 Zeichen eingeben.';return ''
@@ -76,7 +76,9 @@ func create(value:String) -> String:
 	while n<=1000000 and (has('player_'+str(n)) or FileAccess.file_exists(path_for('player_'+str(n))) or FileAccess.file_exists(path_for('player_'+str(n))+'.removed')):n+=1
 	if n>1000000:error='Kein freier Profilplatz gefunden.';return ''
 	var id='player_'+str(n)
-	if DirAccess.make_dir_recursive_absolute(root+'profiles')!=OK or Save.save_local(Save.defaults(),path_for(id))!=OK:error='Neues Profil konnte nicht gespeichert werden.';return ''
+	var data=Save.defaults() if initial.is_empty() else Save.sanitize(initial)
+	if not data.active_run.is_empty():data.active_run.owner=id
+	if DirAccess.make_dir_recursive_absolute(root+'profiles')!=OK or Save.save_local(data,path_for(id))!=OK:error='Neues Profil konnte nicht gespeichert werden.';return ''
 	var updated=index.duplicate(true);updated.profiles.append({'id':id,'name':name});updated.next=n+1
 	if not commit(updated):DirAccess.remove_absolute(path_for(id));return ''
 	return id
@@ -106,3 +108,12 @@ func restore() -> bool:
 	if backup.is_empty():error='Keine gültige Sicherung für dieses Profil vorhanden.';return false
 	if Save.save_local(backup.data,active_path())!=OK:error='Sicherung konnte nicht wiederhergestellt werden.';return false
 	notice='Letzter Sicherungsstand geladen.';error='';return true
+
+func import_new(value:String,data:Dictionary) -> String:
+	if not Save.valid_file(data):error='Ungültiger Spielstand.';return ''
+	var base=clean_name(value)
+	if base=='':base='Import'
+	var name=base;var suffix=2
+	while not available_name(name):
+		var tail=' ('+str(suffix)+')';name=base.substr(0,18-tail.length())+tail;suffix+=1
+	return create(name,data)
