@@ -46,12 +46,12 @@ func show(index:int=-1,category:String='weapon',offset:int=0):
 	game.portrait(Vector2(115,270),hero,1.5,'wardrobe')
 	text(character.name+(' / DEINE CREW' if owned_hero else ' / CREW-CASE BENÖTIGT'),Vector2(115,845),570,30,Color(character.color))
 	text('Deko gilt für alle Fighter' if slot=='deco' else 'Dein Look / Ausrüstung gilt ab Run-Start',Vector2(115,895),570,21)
-	game.button('‹',Vector2(105,245),Vector2(90,80),func():show(posmod(hero-1,game.characters.size()),slot))
-	game.button('›',Vector2(610,245),Vector2(90,80),func():show(posmod(hero+1,game.characters.size()),slot))
+	button('‹',Vector2(105,245),Vector2(90,80),func():show(posmod(hero-1,game.characters.size()),slot))
+	button('›',Vector2(610,245),Vector2(90,80),func():show(posmod(hero+1,game.characters.size()),slot))
 	var keys=SLOT_NAMES.keys()
 	for i in range(keys.size()):
 		var key:String=keys[i]
-		var tab=game.button(SLOT_NAMES[key],Vector2(760+(i%4)*265,240+(i/4)*80),Vector2(250,72),func():show(hero,key),Color('#147F81') if key==slot else Color('#302342'));tab.add_theme_font_size_override('font_size',28)
+		var tab=button(SLOT_NAMES[key],Vector2(760+(i%4)*265,240+(i/4)*80),Vector2(250,72),func():show(hero,key),Color('#147F81') if key==slot else Color('#302342'));tab.add_theme_font_size_override('font_size',28)
 	var ids:Array=[]
 	for id in C.catalog().items:
 		if C.catalog().items[id].slot==slot:ids.append(id)
@@ -66,22 +66,22 @@ func show(index:int=-1,category:String='weapon',offset:int=0):
 		text(d.description,Vector2(x+18,605),295,23)
 		text(('WERKSTATTRANG %d / 5' % rank if d.ranked else 'REIN OPTISCH') if rank>0 else ('FUNDORT: '+C.catalog().cases[d.case].name),Vector2(x+18,695),295,21,game.TEAL)
 		var label='AKTIV' if equipped else ('AUSRÜSTEN' if rank>0 and compatible and owned_hero else ('KLASSENBINDUNG' if not compatible else 'GESPERRT'))
-		var b=game.button(label,Vector2(x+15,740),Vector2(300,75),func():
+		var b=button(label,Vector2(x+15,740),Vector2(300,75),func():
 			if transact('equip',id):game.sound('garage_equip')
 			show(hero,slot,page))
 		b.disabled=equipped or rank==0 or not compatible or not owned_hero
 		if d.ranked:
-			var cost=int(C.catalog().upgrade_costs[maxi(0,mini(3,rank-1))]);var upgrade=game.button('RANG 5 MAX' if rank>=5 else '%d TEILE AUFRÜSTEN' % cost,Vector2(x+15,825),Vector2(300,75),func():
+			var cost=int(C.catalog().upgrade_costs[maxi(0,mini(3,rank-1))]);var upgrade=button('RANG 5 MAX' if rank>=5 else '%d TEILE AUFRÜSTEN' % cost,Vector2(x+15,825),Vector2(300,75),func():
 				if transact('upgrade',id):game.sound('garage_upgrade')
 				show(hero,slot,page))
 			upgrade.disabled=rank==0 or rank>=5 or state.parts<cost
-	game.button('ZURÜCK',Vector2(100,965),Vector2(350,85),func():game.character_select(hero))
-	game.button('MEISTERSCHAFT',Vector2(490,965),Vector2(370,85),func():game.mastery_screen(hero))
-	game.button('ABLEGEN',Vector2(900,965),Vector2(230,85),func():transact('off');show(hero,slot,page)).disabled=slot=='weapon' or not owned_hero
-	game.button('‹',Vector2(1170,965),Vector2(100,85),func():show(hero,slot,page-1)).disabled=page<=0
+	button('ZURÜCK',Vector2(100,965),Vector2(350,85),func():game.character_select(hero))
+	button('MEISTERSCHAFT',Vector2(490,965),Vector2(370,85),func():game.mastery_screen(hero))
+	button('ABLEGEN',Vector2(900,965),Vector2(230,85),func():transact('off');show(hero,slot,page)).disabled=slot=='weapon' or not owned_hero
+	button('‹',Vector2(1170,965),Vector2(100,85),func():show(hero,slot,page-1)).disabled=page<=0
 	text('%d / %d' % [page+1,pages],Vector2(1310,989),110,28,game.GOLD)
-	game.button('›',Vector2(1420,965),Vector2(100,85),func():show(hero,slot,page+1)).disabled=page>=pages-1
-	game.button('CASES',Vector2(1560,965),Vector2(260,85),cases)
+	button('›',Vector2(1420,965),Vector2(100,85),func():show(hero,slot,page+1)).disabled=page>=pages-1
+	button('CASES',Vector2(1560,965),Vector2(260,85),cases)
 	if error!='':text(error,Vector2(110,925),1500,23,Color('#FF4757'))
 func cases():
 	if not enter():return
@@ -96,13 +96,13 @@ func cases():
 		text(d.name,Vector2(x+25,535),500,42,Color(d.color))
 		text('Crew vollständig: Duplikate geben Teile.' if complete else d.description,Vector2(x+25,600),500,25)
 		text('TICKETS: %d / PREIS: %d STUDIO-COINS' % [ticket,d.price],Vector2(x+25,700),500,24,game.GOLD)
-		game.button('INHALTE & CHANCEN',Vector2(x+25,750),Vector2(500,65),func():chances(id))
-		var open=game.button('GRATISTICKET ÖFFNEN' if ticket>0 else 'ÖFFNEN / %d COINS' % d.price,Vector2(x+25,835),Vector2(500,70),func():open_case(id),Color(d.color).darkened(.65))
+		button('INHALTE & CHANCEN',Vector2(x+25,750),Vector2(500,65),func():chances(id))
+		var open=button('GRATISTICKET ÖFFNEN' if ticket>0 else 'ÖFFNEN / %d COINS' % d.price,Vector2(x+25,835),Vector2(500,70),func():open_case(id),Color(d.color).darkened(.65))
 		open.disabled=(ticket<=0 and game.saved.meta.coins<d.price) or (complete and ticket<=0)
-	game.button('HAUPTMENÜ',Vector2(100,965),Vector2(350,85),game.main_menu)
-	game.button('INVENTAR',Vector2(490,965),Vector2(430,85),func():show(game.selected))
-	game.button('LETZTE FUNDE',Vector2(960,965),Vector2(400,85),history)
-	game.button('AUFTRÄGE',Vector2(1400,965),Vector2(420,85),func():game.reward_hub.show())
+	button('HAUPTMENÜ',Vector2(100,965),Vector2(350,85),game.main_menu)
+	button('INVENTAR',Vector2(490,965),Vector2(430,85),func():show(game.selected))
+	button('LETZTE FUNDE',Vector2(960,965),Vector2(400,85),history)
+	button('AUFTRÄGE',Vector2(1400,965),Vector2(420,85),func():game.reward_hub.show())
 	if error!='':text(error,Vector2(110,925),1600,24,Color('#FF4757'))
 func chances(id:String,offset:int=0):
 	if not enter():return
@@ -114,20 +114,22 @@ func chances(id:String,offset:int=0):
 		var e=entries[i];var x=110+(i%2)*865;var y=330+((i%10)/2)*115;var owned=game.saved.collection.heroes.has(e.id) if id=='crew' else game.saved.collection.levels.has(e.id)
 		game.UISkin.panel(game,Rect2(x,y,815,100))
 		text('%s / %.2f %%\n%s' % [source[e.id].name,e.chance*100,'BEREITS VORHANDEN → TEILE' if owned else source[e.id].rarity],Vector2(x+20,y+12),775,27,game.GOLD if owned else Color.WHITE)
-	game.button('ZURÜCK',Vector2(100,965),Vector2(350,85),cases)
-	game.button('VORHERIGE',Vector2(850,965),Vector2(420,85),func():chances(id,offset-1)).disabled=offset<=0
-	game.button('NÄCHSTE',Vector2(1310,965),Vector2(500,85),func():chances(id,offset+1)).disabled=offset>=pages-1
+	button('ZURÜCK',Vector2(100,965),Vector2(350,85),cases)
+	button('VORHERIGE',Vector2(850,965),Vector2(420,85),func():chances(id,offset-1)).disabled=offset<=0
+	button('NÄCHSTE',Vector2(1310,965),Vector2(500,85),func():chances(id,offset+1)).disabled=offset>=pages-1
 func open_case(id:String) -> bool:
 	if not transact('open',id):cases();return false
 	game.sound('case_open');busy=true
 	if game.test_mode or game.saved.settings.get('reduced_motion',false):reveal();return true
 	game.backdrop('DEIN FUND WARTET','Der nächste Baustein für deine Mayhem-Sammlung.')
 	var fx=Control.new();fx.set_script(preload('res://scripts/ui/case_opening.gd'));fx.garage=self;fx.case_id=id;fx.revision=game.ui_revision;fx.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.ui_root.add_child(fx)
-	game.button('ÜBERSPRINGEN',Vector2(1310,965),Vector2(500,85),reveal)
+	button('ÜBERSPRINGEN',Vector2(1310,965),Vector2(500,85),reveal)
 	return true
 func reveal():
 	busy=false;game.sound('case_reveal')
-	var r:Dictionary=game.saved.collection.pending
+	# Acknowledging clears the saved dictionary in place. Button callbacks must
+	# retain an independent receipt for their destination and repeat-tap handling.
+	var r:Dictionary=game.saved.collection.pending.duplicate(true)
 	if r.is_empty():cases();return
 	var d=C.catalog().heroes[r.id] if r.hero else C.catalog().items[r.id]
 	game.backdrop('DUPLIKAT / +%d TEILE' % r.parts if r.duplicate else ('NEUER FIGHTER!' if r.hero else 'NEUER FUND!'),C.catalog().cases[r.case].name+' / '+d.rarity)
@@ -139,10 +141,10 @@ func reveal():
 	text(d.name,Vector2(850,330),850,64,game.GOLD)
 	text(('Bereits in deiner Sammlung. +%d Werkstattteile für dauerhafte Upgrades.' % r.parts) if r.duplicate else ('Fighter und passende Startwaffe sind dauerhaft freigeschaltet.' if r.hero else d.description),Vector2(850,460),850,34)
 	text('Der Fund gehört dauerhaft dir.\n%d STUDIO-COINS / %d TEILE' % [game.saved.meta.coins,game.saved.collection.parts],Vector2(850,670),850,29,game.TEAL)
-	game.button('WEITERE CASES',Vector2(100,965),Vector2(720,85),func():
+	button('WEITERE CASES',Vector2(100,965),Vector2(720,85),func():
 		if transact('ack','',r.serial):cases()
 		else:reveal())
-	game.button('ZUM INVENTAR',Vector2(950,965),Vector2(870,85),func():
+	button('ZUM INVENTAR',Vector2(950,965),Vector2(870,85),func():
 		if transact('ack','',r.serial):show(hero,'weapon' if r.hero else d.slot)
 		else:reveal())
 	if error!='':text(error,Vector2(110,925),1600,24,Color('#FF4757'))
@@ -154,6 +156,14 @@ func history(offset:int=0):
 	for i in range(offset*8,mini(entries.size(),offset*8+8)):
 		var e=entries[i];var d=C.catalog().heroes[e.id] if e.hero else C.catalog().items[e.id]
 		text('#%d / %s / %s' % [e.serial,d.name,('+%d TEILE' % e.parts) if e.duplicate else 'NEU'],Vector2(130,280+(i%8)*80),1600,32,game.TEAL if not e.duplicate else game.GOLD)
-	game.button('ZURÜCK',Vector2(100,965),Vector2(450,85),cases)
-	game.button('VORHERIGE',Vector2(850,965),Vector2(420,85),func():history(offset-1)).disabled=offset<=0
-	game.button('NÄCHSTE',Vector2(1310,965),Vector2(500,85),func():history(offset+1)).disabled=offset>=pages-1
+	button('ZURÜCK',Vector2(100,965),Vector2(450,85),cases)
+	button('VORHERIGE',Vector2(850,965),Vector2(420,85),func():history(offset-1)).disabled=offset<=0
+	button('NÄCHSTE',Vector2(1310,965),Vector2(500,85),func():history(offset+1)).disabled=offset>=pages-1
+
+func button(caption:String,at:Vector2,dimensions:Vector2,action:Callable,color:Color=Color('#2F2044')) -> Button:
+	# Touch also emits mouse events. Change pages after that dispatch has finished,
+	# and discard queued taps from the old screen after its first action navigates.
+	var revision=game.ui_revision
+	return game.button(caption,at,dimensions,func():dispatch_button.call_deferred(action,revision),color)
+func dispatch_button(action:Callable,revision:int):
+	if revision==game.ui_revision:action.call()

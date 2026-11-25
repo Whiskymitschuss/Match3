@@ -1,0 +1,198 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Actual case opens crew
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Real GUI leaves reveal: crew / ZUM INVENTAR
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:53)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Navigation keeps exact rewards and clears only receipt crew
+PASS Acknowledgement persists crew
+PASS Inventory category matches actual reward crew
+ERROR: FAIL Usable GUI button ZURÜCK
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] tap (res://tests/case_navigation_test.gd:25)
+       [2] settle (res://tests/case_navigation_test.gd:21)
+ERROR: FAIL Inventory back button still works crew
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:58)
+       [2] tap (res://tests/case_navigation_test.gd:26)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens crew
+PASS Usable GUI button WEITERE CASES
+PASS Real GUI leaves reveal: crew / WEITERE CASES
+PASS Navigation keeps exact rewards and clears only receipt crew
+PASS Acknowledgement persists crew
+PASS Usable GUI button HAUPTMENÜ
+PASS Cases main menu still works crew
+PASS Actual case opens arsenal
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Real GUI leaves reveal: arsenal / ZUM INVENTAR
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:53)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Navigation keeps exact rewards and clears only receipt arsenal
+PASS Acknowledgement persists arsenal
+PASS Inventory category matches actual reward arsenal
+ERROR: FAIL Usable GUI button ZURÜCK
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] tap (res://tests/case_navigation_test.gd:25)
+       [2] settle (res://tests/case_navigation_test.gd:21)
+ERROR: FAIL Inventory back button still works arsenal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:58)
+       [2] tap (res://tests/case_navigation_test.gd:26)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens arsenal
+PASS Usable GUI button WEITERE CASES
+PASS Real GUI leaves reveal: arsenal / WEITERE CASES
+PASS Navigation keeps exact rewards and clears only receipt arsenal
+PASS Acknowledgement persists arsenal
+PASS Usable GUI button HAUPTMENÜ
+PASS Cases main menu still works arsenal
+PASS Actual case opens style
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Real GUI leaves reveal: style / ZUM INVENTAR
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:53)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Navigation keeps exact rewards and clears only receipt style
+PASS Acknowledgement persists style
+ERROR: FAIL Inventory category matches actual reward style
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:57)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+ERROR: FAIL Usable GUI button ZURÜCK
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] tap (res://tests/case_navigation_test.gd:25)
+       [2] settle (res://tests/case_navigation_test.gd:21)
+ERROR: FAIL Inventory back button still works style
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:58)
+       [2] tap (res://tests/case_navigation_test.gd:26)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens style
+PASS Usable GUI button WEITERE CASES
+PASS Real GUI leaves reveal: style / WEITERE CASES
+PASS Navigation keeps exact rewards and clears only receipt style
+PASS Acknowledgement persists style
+PASS Usable GUI button HAUPTMENÜ
+PASS Cases main menu still works style
+PASS Actual case opens crew
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Saved stuck reveal recovers without another draw
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:62)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens crew
+PASS Duplicate fixture
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Duplicate parts preserved exactly
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:63)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens style
+PASS Usable GUI button WEITERE CASES
+PASS Failed acknowledgement rolls back and retains reward
+PASS Usable GUI button WEITERE CASES
+PASS Real retry works after saving recovers
+PASS Actual case opens crew
+PASS Production case animation starts
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Animated/skip route leaves reveal false
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:76)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens crew
+PASS Production case animation starts
+PASS Usable GUI button ÜBERSPRINGEN
+PASS Usable GUI button ZUM INVENTAR
+SCRIPT ERROR: Invalid access to property or key 'hero' on a base object of type 'Dictionary'.
+          at: <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+          GDScript backtrace (most recent call first):
+              [0] <anonymous lambda> (res://scripts/ui/garage_hub.gd:146)
+              [1] <anonymous lambda> (res://scripts/core/game.gd:325)
+              [2] tap (res://tests/case_navigation_test.gd:34)
+ERROR: FAIL Animated/skip route leaves reveal true
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/case_navigation_test.gd:13)
+       [1] run (res://tests/case_navigation_test.gd:76)
+       [2] tap (res://tests/case_navigation_test.gd:35)
+       [3] settle (res://tests/case_navigation_test.gd:21)
+PASS Actual case opens arsenal
+PASS Usable GUI button WEITERE CASES
+PASS Scaled GUI navigation (2340, 1080)
+PASS Actual case opens arsenal
+PASS Usable GUI button WEITERE CASES
+PASS Scaled GUI navigation (1920, 1440)
+CASE NAVIGATION RESULT 58 passed, 14 failed; native_touch=false
