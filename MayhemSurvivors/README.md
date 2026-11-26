@@ -1,3 +1,18 @@
+# 0.31.0 Beta5 — mehr Wucht im Kampf
+
+Neue farbige Impulse bei allen15 Spezialfähigkeiten, zusätzliche Explosions-
+Druckringe, Krit-Trefferringe, Schuss-Speedlines und aufpoppende Schadenszahlen.
+Boss-Phasenwechsel erhalten einen eigenen Impuls. LOW spart Speedlines;
+reduzierte Bewegung unterdrückt zusätzliche Strahlen und Zahlen-Pop.
+Effekte bleiben begrenzt, kosmetisch und vom Kampf-RNG getrennt.
+
+Geprüft: Effekte40/0, Fähigkeiten76/0, Waffenoptik28/0, Run-Fortsetzen61/0,
+neue Wow-Prüfungen24/0 =229 Prüfungen. Beide historischen Kampftraces33/87
+bestanden. Native GL-Effektaufnahmen erzeugt; Schockwelle visuell kontrolliert.
+Keine physische Android-Abnahme und keine Geräte-FPS-Messung.
+
+---
+
 # Mayhem Survivors — 0.30.0 Beta 4
 
 RF Worlds / Godot4.6.3 stable / GDScript / Android ARM64 / Querformat / GL Compatibility.

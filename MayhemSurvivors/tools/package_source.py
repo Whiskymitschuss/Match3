@@ -1,11 +1,11 @@
-"""Package the complete runnable 0.30.0-beta4 project, excluding generated cache and old capture galleries."""
+"""Package the complete runnable 0.31.0-beta5 project, excluding generated cache and old capture galleries."""
 from pathlib import Path
 import argparse, zipfile
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path);args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.30.0-beta4-source.zip'
+out=args.out or root.parent/'Downloads/MayhemSurvivors-v0.31.0-beta5-source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
-captures={'comfort_records_1600','comfort_extras_1600','comfort_layout_1600','comfort_presets_1600','comfort_practice_1600','comfort_practice_hud_1600','comfort_layout_2400','comfort_practice_2400','comfort_layout_1440','comfort_practice_1440'}
+captures={'fx_shockwave','fx_splatter_gunfire','fx_impulse_explosion'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(root.rglob('*')):
   rel=f.relative_to(root)

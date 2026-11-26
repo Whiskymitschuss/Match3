@@ -30,6 +30,8 @@ func draw():
 	var font=ThemeDB.fallback_font
 	for n in numbers:
 		var pos:Vector2=n.pos-Vector2(0,(.7-n.life)*65)
+		var pop=1.0 if game.saved.settings.get('reduced_motion',false) else 1.0+.2*maxf(0,1-(.7-n.life)/.12)
+		var font_size=roundi(n.size*pop)
 		var alpha=clampf(n.life*4,0,1)
-		game.draw_string_outline(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,n.size,5,Color(0.04,.06,.12,alpha))
-		game.draw_string(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,n.size,Color(n.color,alpha))
+		game.draw_string_outline(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,5,Color(0.04,.06,.12,alpha))
+		game.draw_string(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,Color(n.color,alpha))

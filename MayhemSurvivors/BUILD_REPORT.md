@@ -1,3 +1,14 @@
+# Store-Build0.31.0-beta5 /Code38 — 26.11.2026
+
+Release-AAB tatsächlich gebaut und mit unverändertem Upload-Schlüssel signiert.
+76431537 Bytes; SHA256 b98783ae54a99102da1f6c0d0a89157cf6a55b1be3b74c2323595033f8500bb8.
+Godot4.6.3 /ARM64 /SDK24–36 /nur VIBRATE /kein INTERNET /allowBackup false.
+Bundletool, JAR-Signatur, ZIP-CRC,25 Daten-JSONs und16-KiB-Ausrichtung geprüft.
+Google Play Games bleibt deaktiviert; keine echten Projekt-IDs vorhanden.
+Kein Console-Upload oder physischer Android-Test. Quellarchiv separat geprüft.
+
+---
+
 # Google-Play-Build0.30.0 Beta4 — 24.11.2026
 
 Tatsächlich gebautes, signiertes Release-App-Bundle nach allen Laufzeitänderungen.

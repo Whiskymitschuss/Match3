@@ -81,6 +81,7 @@ func enemy_hit(enemy:Dictionary,critical:bool):
 	elif game.saved.settings.get('splatter',true):
 		burst(enemy.pos,color,limits().burst,'drop',120,true)
 		if critical:stain(enemy.pos,color,enemy.radius*.8)
+	if critical:event('impact_wave',enemy.pos,Color('#FFD166'),enemy.radius+26,Vector2.RIGHT,.26)
 	if critical:event('critical',enemy.pos,Color('#FFD166'),42,Vector2.RIGHT,.23)
 func coin(pos:Vector2,amount:int):
 	event('coin',pos,Color('#FFD166'),10,Vector2.RIGHT,.65)
@@ -99,6 +100,7 @@ func enemy_died(enemy:Dictionary):
 func shot(weapon:String,direction:Vector2):
 	var color=preload('res://scripts/ui/weapon_skins.gd').color(game.run_loadout,Color('#FFB347') if weapon=='splitgun' else game.combat_visuals.Art.color_for(game.selected))
 	var origin=game.player.position+direction*62+Vector2(0,-9)
+	if weapon in ['blaster','splitgun','cryo','tesla','arc'] and game.saved.settings.quality!='LOW':event('speed_slice',origin,color,58 if weapon=='splitgun' else 42,direction,.14)
 	if weapon in ['blaster','splitgun']:
 		if weapon==game.combat_visuals.primary_id():event('muzzle',origin,color,40 if weapon=='splitgun' else 30,direction,.10)
 		burst(origin,color,limits().burst,'spark',180)
@@ -120,12 +122,16 @@ func ground_impact(pos:Vector2,radius:float,color:Color):
 	event('crack',pos,color,radius,Vector2.RIGHT,.5)
 	burst(pos,Color('#B7A8A0'),limits().burst,'smoke',80)
 func explosion(pos:Vector2,radius:float,color:Color):
+	event('impact_wave',pos,color,radius*1.12,Vector2.RIGHT,.42)
 	if sound_clock<=0:game.sound('fx_boom');sound_clock=.09
 	event('explosion',pos,color,radius,Vector2.RIGHT,.38)
 	burst(pos,color,limits().burst*2,'spark',230)
 	burst(pos,Color('#7F879B'),limits().burst,'smoke',100)
 	stain(pos,Color('#252B3E'),radius*.8,false)
 func ability(kind:String,pos:Vector2):
+	var d=game.hero_ability.definition()
+	event('power_burst',pos,Color(d.color),125,Vector2.RIGHT,.55)
+	burst(pos,Color(d.color),limits().burst*2,'wisp',210)
 	match kind:
 		'shockwave':ground_impact(pos,245,Color('#FF9F1C'))
 		'impulse':event('charge',pos,Color('#00D9D0'),40,Vector2.RIGHT,.25)
@@ -178,6 +184,19 @@ func draw_front():
 		var alpha:float=1-t
 		var color=Color(e.color,alpha)
 		match e.kind:
+			'impact_wave','power_burst':
+				var r:float=e.radius*(.2+.8*(1-pow(1-t,3)))
+				game.draw_arc(e.pos,r,0,TAU,32,Color(e.color,alpha*.65),2+alpha*3,true)
+				if e.kind=='power_burst' and not game.saved.settings.get('reduced_motion',false):
+					var rays=8 if game.saved.settings.quality=='LOW' else 12
+					for i in range(rays):
+						var dir=Vector2.from_angle(i*TAU/rays+e.phase)
+						game.draw_line(e.pos+dir*r*.75,e.pos+dir*r*(1.12+.25*t),Color(e.color,alpha*.7),3,true)
+			'speed_slice':
+				var side:Vector2=e.direction.orthogonal()
+				for sign in [-1,1]:
+					var at:Vector2=e.pos+side*12*sign+e.direction*e.radius*t
+					game.draw_line(at,at+e.direction*e.radius*.7,color,2,true)
 			'muzzle':
 				var dir:Vector2=e.direction
 				var side=dir.orthogonal()

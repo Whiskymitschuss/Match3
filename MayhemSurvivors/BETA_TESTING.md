@@ -1,4 +1,4 @@
-# Mayhem Survivors — Beta4 /0.30.0 /Code37
+# Mayhem Survivors — Beta5 /0.31.0 /Code38
 
 Ergänzender Testplan für echte Android-Geräte. Automatisierte Tests und Linux-
 Godot-Bilder ersetzen keine Geräteabnahme. Google Play Games ist in diesem Build
