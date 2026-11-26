@@ -1,0 +1,11 @@
+PASS Bundletool validate, JAR signature and unchanged upload certificate
+PASS package/versionCode 37/versionName 0.30.0-beta4/SDK24-36
+PASS release not debuggable, only VIBRATE, allowBackup false
+PASS BundleConfig PAGE_ALIGNMENT_16K
+PASS base/lib/arm64-v8a/libc++_shared.so PT_LOAD alignments [16384, 16384, 16384]
+PASS base/lib/arm64-v8a/libgodot_android.so PT_LOAD alignments [16384, 16384, 16384]
+PASS disabled online configuration: no Google SDK/native bridge in DEX and no source plugin files in bundle
+PASS all 25 data JSONs byte-identical
+PASS checkpoint/session/graph/backup/transfer compiled controllers present
+PASS no tests, keys, passwords or player saves in bundle; ZIP CRC passed
+{"bytes": 76430402, "sha256": "e73ad3cbad2abd62062da8f551a26568cbbc79aa45b52d1266cfa9e1bb7d3e20", "certificate_sha256": "2A:18:95:FA:8D:27:ED:97:53:0C:E0:18:F9:CC:AE:D3:E7:B2:82:43:62:5C:F1:EF:B4:AC:EA:F7:4D:23:4F:8C"}

@@ -1,0 +1,64 @@
+Picked up JAVA_TOOL_OPTIONS: -Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Unable to initialize metrics, ensure /home/agent/.android is writable, details: /home/agent/.android/analytics.settings (No such file or directory)
+WARNING: We recommend using a newer Android Gradle plugin to use compileSdk = 36
+
+This Android Gradle plugin (8.6.1) was tested up to compileSdk = 35.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compileSdk = 36.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compileSdk = 36 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=36
+to this project's gradle.properties.
+
+> Task :preBuild UP-TO-DATE
+> Task :preReleaseBuild UP-TO-DATE
+> Task :mergeReleaseJniLibFolders UP-TO-DATE
+> Task :mergeReleaseNativeLibs NO-SOURCE
+> Task :stripReleaseDebugSymbols NO-SOURCE
+> Task :copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :generateReleaseResValues UP-TO-DATE
+> Task :extractDeepLinksForAarRelease UP-TO-DATE
+> Task :generateReleaseResources UP-TO-DATE
+> Task :packageReleaseResources UP-TO-DATE
+> Task :parseReleaseLocalResources UP-TO-DATE
+> Task :generateReleaseRFile UP-TO-DATE
+> Task :extractReleaseAnnotations
+> Task :javaPreCompileRelease UP-TO-DATE
+
+> Task :compileReleaseJavaWithJavac
+Note: /workspace/publish-match3/MayhemSurvivors/native/play_games/src/main/java/com/rfworlds/mayhemsurvivors/playgames/RFPlayGames.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :mergeReleaseShaders UP-TO-DATE
+> Task :compileReleaseShaders NO-SOURCE
+> Task :generateReleaseAssets UP-TO-DATE
+> Task :packageReleaseAssets UP-TO-DATE
+> Task :prepareLintJarForPublish UP-TO-DATE
+> Task :prepareReleaseArtProfile UP-TO-DATE
+> Task :processReleaseManifest UP-TO-DATE
+> Task :processReleaseJavaRes NO-SOURCE
+> Task :mergeReleaseJavaResource UP-TO-DATE
+> Task :syncReleaseLibJars
+> Task :writeReleaseAarMetadata UP-TO-DATE
+> Task :bundleReleaseAar
+> Task :mapReleaseSourceSetPaths UP-TO-DATE
+> Task :mergeReleaseResources UP-TO-DATE
+> Task :verifyReleaseResources UP-TO-DATE
+> Task :assembleRelease
+[Incubating] Problems report is available at: file:///workspace/publish-match3/MayhemSurvivors/native/play_games/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 10s
+25 actionable tasks: 4 executed, 21 up-to-date

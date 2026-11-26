@@ -2,6 +2,7 @@ extends Button
 var game:Node2D
 func _draw():
 	if not is_instance_valid(game) or game.equipped_spell.id=='':return
+	draw_set_transform(Vector2.ZERO,0,Vector2.ONE*game.touch_geometry().scale)
 	var spell=game.equipped_spell;var d=spell.C.catalog().items[spell.id]
 	draw_texture_rect(preload('res://scripts/ui/gear_art.gd').icon(spell.id),Rect2(15,12,75,75),false)
 	var font=game.UISkin.HEADING

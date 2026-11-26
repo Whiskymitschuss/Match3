@@ -4,7 +4,7 @@ const MAX_BYTES=8*1024*1024
 const FORMAT='RFWorlds.MayhemSurvivors.Profile'
 static func encode(saved:Dictionary,name:String) -> String:
 	if not Save.valid_file(saved):return ''
-	var payload=JSON.stringify({'name':name,'save':saved})
+	var payload=JSON.stringify({'name':name,'save':preload('res://scripts/progression/online_scores.gd').portable(saved)})
 	var text=JSON.stringify({'format':FORMAT,'version':1,'created_at':int(Time.get_unix_time_from_system()),'payload':payload,'sha256':payload.sha256_text()})
 	return text if text.to_utf8_buffer().size()<=MAX_BYTES else ''
 static func decode(text:String) -> Dictionary:
@@ -22,6 +22,7 @@ static func decode(text:String) -> Dictionary:
 		if character.unicode_at(0)<32 or character.unicode_at(0)==127:return {'error':'Ungültiger Profilname in der Sicherung.'}
 	var cleaned=Save.sanitize(payload.save)
 	if payload.save.get('active_run') is Dictionary and not payload.save.active_run.is_empty() and cleaned.active_run.is_empty():return {'error':'Der gespeicherte Run ist beschädigt oder gehört zu einer anderen Version.'}
+	cleaned.online_scores=preload('res://scripts/progression/online_scores.gd').defaults()
 	return {'name':payload.name,'save':cleaned,'error':''}
 static func write_file(text:String,path:String) -> Error:
 	if decode(text).get('error','')!='':return ERR_INVALID_DATA

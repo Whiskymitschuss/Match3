@@ -116,4 +116,5 @@ func import_new(value:String,data:Dictionary) -> String:
 	var name=base;var suffix=2
 	while not available_name(name):
 		var tail=' ('+str(suffix)+')';name=base.substr(0,18-tail.length())+tail;suffix+=1
-	return create(name,data)
+	var imported=data.duplicate(true);imported.online_scores=preload('res://scripts/progression/online_scores.gd').defaults()
+	return create(name,imported)

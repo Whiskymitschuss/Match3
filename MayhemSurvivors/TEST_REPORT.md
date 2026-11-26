@@ -1,3 +1,61 @@
+# Testbericht0.30.0 Beta4 — 24.11.2026
+
+Vollständiger Lauf: **47 Godot-Suiten /10293 Prüfungen /0 Fehler**, dazu beide
+historischen Regressionstraces (33 +87 Kontrollpunkte). Danach Anleitung und
+Tutorial-Abgrenzung im Linkshändermodus gezielt nachgeprüft: Komfort81/0,
+Online-Adapter31/0, Kicksy40/0 und Charakterregeln66/0. Aktueller Stand der47
+einzelnen Suiteprotokolle: **10296 bestandene Prüfungen**, einschließlich drei
+nachträglich ergänzter Prüfungen. Keine Behauptung einer realen Google-Anmeldung.
+
+Komfort81/0: feste/dynamische und gespiegelte echte Touch-Eingaben, zweiter Finger,
+Deadzone, Safe Areas/Seitenverhältnisse/Größen, Editor-Anwenden/Abbrechen, I/O-Rollback,
+Preset-Ausrüstung/Sperren/Neustart/Backup. Reale Trainingskämpfe für fünf Bossstufen,
+alle zehn Arena-Abschlussbosse und Phasen. Gewinnen, sterben und verlassen ohne
+Coins, Aufgabenfortschritt, Statistikänderung oder Verlust des vorherigen Runs.
+Tutorial-Inhalte folgen dem gewählten Layout. Ranglisten-Ticket bleibt beim Tutorial.
+
+UI53/0 Headless und nochmals53/0 unter nativer GodotGL/Mesa-Darstellung mit echten
+InputEventScreenTouch-Ereignissen. Extras → Layout/Drag/Anwenden → Builds/Sichern/
+Anlegen/Abbruch → Bosswahl/Start/Kampf/Pause → sicher zurück zum bestehenden Run.
+Kontrollen passen in1600×900,2400×1080 und1440×1080. Zehn aktuelle Ansichten erzeugt;
+Extras, Builds, persönliche Rekorde, Trainings-HUD und4:3-Layout visuell geprüft.
+Linux-Aufnahmen und Testfixtures; keine Android-Gerätescreenshots.
+
+Online-Adapter31/0 verwendet ausdrücklich ein FakeBridge-Testdouble: Opt-in,
+authentifizierte Zuordnung, Kategorie/Zeit-/Wellenwert, tatsächlicher Adapteraufruf,
+Bestätigung, Duplikate, Niederlage, Offline-Warteschlange/Limit, Timeout, Schreibfehler,
+falsches Konto, Profilwechsel, Portabilität und Training/Tutorial-Abgrenzung geprüft.
+Fünf Python-Konfigurationstests bestanden. Eigenes Android-Plugin gegen Godot4.6.3,
+GamesServicesv2 SDK21.0.0/AndroidSDK36 tatsächlich kompiliert. Kein echtes Google-
+Projekt, Konto oder Netzwerkdienst wurde mit diesen Tests verbunden.
+
+Entwicklungsbefunde behoben: Native UI-Fixture brauchte regulären Zustandsübergang
+und Viewport-Transformation; Pause-Icon hat absichtlich leeren Buttontext. Tatsächliche
+Boss-Startcallbacks wechseln die UI jetzt erst nach dem Touch-Callback. Double-Grenzen
+statt Float32-Vektorgrenzen für Einstellungen; JSON-Metadaten werden semantisch geprüft,
+Run-Payload/Hash bleiben bytegleich. Screenshot-Fixture verwendet gültigen Testpfad.
+Google-SDK-Autoinitialisierung wird im optionalen Plugin deaktiviert.
+
+Finales Release-AAB geprüft: Signatur/Zertifikat, Code37, Paket, SDK, ARM64,
+16-KiB-ELF-Ausrichtung/PAGE_ALIGNMENT_16K, Manifest, ZIP-CRC und25 exakte Daten-JSONs.
+Neue Steuerungs-/Trainings-/Build-/Scorecontroller kompiliert enthalten. Keine Tests,
+privaten Schlüssel oder Spielerdateien. **Keine Google-SDKs/native Play-Games-Klasse
+im DEX, keine Internetberechtigung und kein entsprechender Manifest-Eintrag.**
+
+Offen: Spieleprojekt und echte Kennungen laut Nutzer noch nicht angelegt, reale
+Google-Authentifizierung/Scoreübermittlung/SDK-Dialoge, physisches Store-Update,
+native Android-Dateiauswahl/SAF, Safe Areas/Multitouch auf Geräten, Klang, Balance,
+Langzeitstabilität und Geräte-FPS. Automatisierte Tests ersetzen diese Abnahme nicht.
+
+Quellpaket zusätzlich ohne Cache frisch importiert:283 Prüfungen aus sechs Suiten
+(Erstspieler37,Run61,Backup20,Komfort81,UI53,Online-Adapter31) und fünf Python-Tests
+erneut bestanden. 833 Laufzeit-/Konfigurationsdateien entsprechen bytegleich
+dem getesteten AAB-Quellstand; 141 Test-/Werkzeug-/Native-Quelldateien ebenfalls
+bytegleich. Quelle enthält alle Assets, Daten, Szenen, Skripte, optionale Pluginquellen,
+Tests, Berichte und zehn neue UI-Aufnahmen, keine Toolchains/Caches/privaten Spielstände.
+
+---
+
 # Testbericht 0.29.0 Beta 3 — 2026-11-24
 
 **44 Suiten / 10127 bestandene Prüfungen / 0 Fehler**. Zusätzlich beide historischen

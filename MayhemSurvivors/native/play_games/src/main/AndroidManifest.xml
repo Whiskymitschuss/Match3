@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <!-- SDK 21 otherwise initializes before the player opts in. -->
+        <provider android:name="com.google.android.gms.games.provider.PlayGamesInitProvider"
+                  tools:node="remove" />
+        <meta-data android:name="org.godotengine.plugin.v2.RFPlayGames"
+                   android:value="com.rfworlds.mayhemsurvivors.playgames.RFPlayGames" />
+        <meta-data android:name="com.google.android.gms.games.APP_ID"
+                   android:value="@string/rf_play_games_project_id" />
+    </application>
+</manifest>

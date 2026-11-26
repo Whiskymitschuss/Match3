@@ -15,6 +15,7 @@ import zipfile
 p=argparse.ArgumentParser()
 p.add_argument('--keystore',type=Path,required=True)
 p.add_argument('--password-file',type=Path,required=True)
+p.add_argument('--play-games-config',type=Path,help='Real Google Play Games project and leaderboard IDs')
 p.add_argument('--alias',default='rfworlds_upload')
 p.add_argument('--godot',default='godot')
 args=p.parse_args()
@@ -24,7 +25,7 @@ password=args.password_file.read_text().strip()
 if not key.is_file() or not password:raise SystemExit('Upload key or password missing.')
 if key.is_relative_to(root) or args.password_file.resolve().is_relative_to(root):
     raise SystemExit('Keep private signing files outside the source project.')
-out=root/'builds/android/MayhemSurvivors-v0.29.0-beta3-store.aab'
+out=root/'builds/android/MayhemSurvivors-v0.30.0-beta4-store.aab'
 out.parent.mkdir(parents=True,exist_ok=True)
 env=os.environ.copy()
 env.update(GODOT_ANDROID_KEYSTORE_RELEASE_PATH=str(key),
@@ -60,12 +61,17 @@ with zipfile.ZipFile(aar) as archive:
             for info in archive.infolist():
                 if info not in unnecessary:target.writestr(info,archive.read(info.filename))
 if unnecessary:temporary.replace(aar)
+# Compile the optional bridge only when real console identifiers are supplied.
+import json, sys
+configuration=args.play_games_config or root/'data/network/play_games.json'
+if args.play_games_config or json.loads(configuration.read_text()).get('provider')=='google_play':
+    subprocess.run([sys.executable,str(root/'tools/build_play_games.py'),'--config',str(configuration)],check=True,env=env)
 command=[args.godot,'--headless','--path',str(root)]
 command+=['--export-release','Google Play',str(out)]
 result=subprocess.run(command,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
 log=result.stdout.replace(password,'[REDACTED]')
 logs=root/'tests/results';logs.mkdir(exist_ok=True)
-(logs/'v0.29.0-beta3-store-build.log').write_text(log)
+(logs/'v0.30.0-beta4-store-build.log').write_text(log)
 print(log)
 if result.returncode or re.search(r'SCRIPT ERROR|\bERROR:',log) or not out.is_file():
     raise SystemExit(result.returncode or 1)

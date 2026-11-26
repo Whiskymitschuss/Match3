@@ -1,0 +1,23 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Portable UTF-8 profile keeps currencies, name and settings
+PASS Non-JSON import rejected
+PASS Broken checksum rejected
+PASS Unknown backup format version rejected
+PASS Oversized import rejected
+PASS Other apps cannot be imported as Mayhem profiles
+PASS File export really writes a readable portable profile
+PASS Write error is reported without changing original profile
+PASS Portable backup includes a suspended exact run
+PASS Import creates additional profile without changing current selection
+PASS Imported checkpoint is rebound to its new local player
+PASS Import never overwrites or merges original player
+PASS Imported run really resumes with exact combat state
+PASS Duplicate import name gets an independent unambiguous suffix
+PASS Real confirmation imports and activates a new local player
+PASS Real transfer flow retains pending run and permanent progress
+PASS Selecting a file only previews it until confirmation
+PASS Unreadable file cannot mutate any player
+PASS Full profile capacity refuses import without overwriting a slot
+PASS Import is blocked during an active paused run
+PROFILE BACKUP RESULT 20 passed, 0 failed

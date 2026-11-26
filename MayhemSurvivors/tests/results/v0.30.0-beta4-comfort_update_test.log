@@ -1,0 +1,84 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Default touch geometry preserves the shipped positions
+PASS Analog input has a real deadzone and bounded maximum
+PASS Malformed layout settings are bounded and sanitized
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Safe and separate controls across aspect, cutout, size and handedness
+PASS Actual fixed right-hand joystick drives the player
+PASS Second finger activates mirrored ability without stealing movement
+PASS Multitouch release resets input safely
+PASS Cancelling the editor leaves the saved layout unchanged
+PASS Applying the editor writes the current profile
+PASS Layout editing preserves the pending combat snapshot
+PASS A real owned fighter loadout can be stored
+PASS Applying a different preset replaces every equipment slot
+PASS Preset restores the saved owned clothing
+PASS Locked heroes, empty slots and out-of-range presets are rejected
+PASS Presets survive versioned save/load
+PASS Portable backups include touch layout, presets and suspended run
+PASS Failed preset write rolls back the slot and current player
+PASS Failed layout write keeps the last saved controls
+PASS Practice cannot bypass fighter locks
+PASS Practice cannot bypass world unlocks
+PASS Each boss rung starts as isolated practice
+PASS Practice uses a real boss with requested rage-phase health
+PASS Real boss death opens the training result instead of shop or rewards
+PASS Training victory leaves collection, quests, stats and prior checkpoint untouched
+PASS Each boss rung starts as isolated practice
+PASS Practice uses a real boss with requested rage-phase health
+PASS Real boss death opens the training result instead of shop or rewards
+PASS Training victory leaves collection, quests, stats and prior checkpoint untouched
+PASS Each boss rung starts as isolated practice
+PASS Practice uses a real boss with requested rage-phase health
+PASS Real boss death opens the training result instead of shop or rewards
+PASS Training victory leaves collection, quests, stats and prior checkpoint untouched
+PASS Each boss rung starts as isolated practice
+PASS Practice uses a real boss with requested rage-phase health
+PASS Real boss death opens the training result instead of shop or rewards
+PASS Training victory leaves collection, quests, stats and prior checkpoint untouched
+PASS Each boss rung starts as isolated practice
+PASS Practice uses a real boss with requested rage-phase health
+PASS Real boss death opens the training result instead of shop or rewards
+PASS Training victory leaves collection, quests, stats and prior checkpoint untouched
+PASS Another practice attempt starts after repeated victories
+PASS Practice defeat records actual received hits
+PASS Leaving a defeated practice restores the real player
+PASS Final-boss practice starts in scrapyard
+PASS Real map boss and arena controller run in scrapyard
+PASS Final-boss practice starts in reactor
+PASS Real map boss and arena controller run in reactor
+PASS Final-boss practice starts in docks
+PASS Real map boss and arena controller run in docks
+PASS Final-boss practice starts in foundry
+PASS Real map boss and arena controller run in foundry
+PASS Final-boss practice starts in gardens
+PASS Real map boss and arena controller run in gardens
+PASS Final-boss practice starts in frost
+PASS Real map boss and arena controller run in frost
+PASS Final-boss practice starts in storm
+PASS Real map boss and arena controller run in storm
+PASS Final-boss practice starts in crystal
+PASS Real map boss and arena controller run in crystal
+PASS Final-boss practice starts in carnival
+PASS Real map boss and arena controller run in carnival
+PASS Final-boss practice starts in void
+PASS Real map boss and arena controller run in void
+PASS Original suspended run still really resumes after training
+PASS Tutorial movement follows the selected handedness
+PASS Tutorial ability instruction follows the mirrored button
+COMFORT UPDATE RESULT 81 passed, 0 failed

@@ -118,6 +118,8 @@ func redraw_card():
 	text('KICKSY / %d VON %d' % [step+1,TITLES.size()],origin+Vector2(offset,14),size.x-offset-20,18).modulate=Color('#E879F9')
 	text(TITLES[step],origin+Vector2(offset,42),size.x-offset-20,27).modulate=Color('#FFD166')
 	var instruction:String=TEXTS[step].replace('{weapon}',game.weapon_data[training_weapon].name).replace('{ability}',game.hero_ability.definition().name)
+	var left=game.TouchLayout.clean(game.saved.settings.get('touch_layout')).left_handed
+	instruction=instruction.replace('{move_side}','Rechts' if left else 'Links').replace('{ability_side}','links' if left else 'rechts')
 	text(instruction,origin+Vector2(offset,82),size.x-offset-25,27 if full else 22)
 	var y=origin.y+size.y-85
 	control_button('BEENDEN',Vector2(origin.x+18,y),Vector2(155,70),func():stop(false))

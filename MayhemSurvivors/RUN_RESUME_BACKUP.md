@@ -29,7 +29,7 @@ Sichern & Hauptmenü erlaubt danach einen Profilwechsel ohne diesen Run zu verli
 Im Hauptmenü EINSTELLUNGEN → PROFIL → EXPORT / IMPORT → SICHERUNG EXPORTIEREN.
 Im Android-Dateidialog einen selbst gewählten Speicherort verwenden. Enthalten
 sind Profilname, Sammlung, Währungen, Ausrüstung, Aufgaben, Einstellungen,
-Statistiken und gegebenenfalls der gesicherte Run des aktiven Spielers.
+Statistiken, Ausrüstungs-Builds, Touchlayout und gegebenenfalls der gesicherte Run des aktiven Spielers.
 
 Das Spiel lädt die Datei nicht selbst ins Netz. Ein vom Nutzer ausgewählter
 Dateianbieter kann eigene Synchronisationsfunktionen anbieten. Die Kopie getrennt
@@ -62,3 +62,11 @@ Die native Android-Dateiauswahl verwendet Godots vorhandene SAF-Anbindung ohne
 breite Speicherberechtigung. Datei-Schreib-/Leselogik und native Linux-Touchmenüs
 sind getestet. Der Android-Dateianbieter einschließlich content://, Abbruch und
 Neustart muss noch auf echten Geräten abgenommen werden.
+
+## Ergänzung0.30
+
+Builds und Touchlayout gehören zum portablen Profil. Online-Kontobindung,
+ausstehende Score-Übermittlungen und Ranglisten-Tickets werden beim Export/Import
+entfernt; das importierte Profil hat dadurch keine Online-Zustimmung. Sein
+gesicherter normaler Run bleibt spielbar. Boss-Training wird nicht gesichert
+und verändert einen vorherigen Run nicht.

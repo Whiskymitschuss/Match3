@@ -163,4 +163,4 @@ func intro():
 	game.label_at('„'+data.quote+'“',Vector2(800,315),43,game.GOLD)
 	game.label_at('PRESSLUFTHAMMER-RASEREI\nGelbe Kreisfläche verlassen. Mehrere Schläge!\n\nBODENSTOSS & ZOMBIE-ANSTURM\nSchockring ausweichen. Sturmspur seitlich verlassen.\n\nAB 40 % HP: WUTPHASE\nSchneller und stärker. Bodenrisse bleiben gefährlich.',Vector2(800,400),30)
 	game.label_at('75 Sekunden / Sieg öffnet den Shop für Welle %d\nBewegung, Ausweichen und Heilung bleiben entscheidend.' % (game.wave_number+1),Vector2(800,815),27,game.TEAL)
-	game.button('DER BODEN BEBT – LOS!',Vector2(800,930),Vector2(940,100),game.begin_wave,Color('#97502A'))
+	game.button('DER BODEN BEBT – LOS!',Vector2(800,930),Vector2(940,100),func():game.queue_ui_action(game.begin_wave),Color('#97502A'))

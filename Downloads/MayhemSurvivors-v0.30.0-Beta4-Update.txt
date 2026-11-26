@@ -1,0 +1,40 @@
+RF WORLDS | MAYHEM SURVIVORS
+0.30.0 BETA4 | ANDROID | VERSIONCODE37
+
+DIREKT VERFÜGBAR
+1. Run-Fortsetzen: automatisches Sichern und sicher pausiert weiterspielen.
+2. Profil-Dateien: offline exportieren/importieren, jetzt inklusive Builds/Touchlayout.
+3. Touchlayout: Linkshänder, verschieben, Größe, Transparenz, Deadzone, fester Joystick.
+4. Boss-Training: echte Bosse, fünf Bossstufen, freigeschaltete Arenen, Phasenwahl.
+   Kein Fortschritt/Belohnungen; dein normaler gesicherter Run bleibt erhalten.
+5. Drei Ausrüstungs-Builds pro Fighter: speichern, bestätigt ersetzen und anlegen.
+
+WO?
+Hauptmenü > EXTRAS. Builds auch in der Garage. Touchlayout zusätzlich unter
+Einstellungen > Steuerung. Profil-Dateien unter Einstellungen > Profil.
+
+PUNKT6: GOOGLE-PLAY-BESTENLISTE
+Adapter, Wertung, Warteschlange und Android-Build-Weg sind implementiert.
+Noch nicht live: Es gibt noch kein Play-Games-Projekt und keine echten Kennungen.
+Dieser Build bleibt vollständig offline; keine Google-Anmeldung oder erfundenen Rangplätze.
+
+NÄCHSTER SCHRITT IN DER PLAY CONSOLE
+Play-Spieldienste > Einrichtung und Verwaltung > Konfiguration: Spieleprojekt
+anlegen und mit Mayhem Survivors verknüpfen. Android-Anmeldedaten mit Paketname
+com.rfworlds.mayhemsurvivors und App-Signatur-SHA1 von Google Play einrichten.
+Zwei Bestenlisten: Schrottplatz/Normal/schnellster Sieg (Zeit, kleiner besser)
+und Schrottplatz/Normal/geschaffte Endloswellen (Ganzzahl, größer besser).
+Danach die numerische Spieleprojekt-ID und beide Bestenlisten-IDs an Codex schicken.
+Keine Passwörter oder privaten Schlüssel schicken. Vollständige Anleitung:
+MayhemSurvivors/PLAY_GAMES_SETUP.md im GitHub-Quellprojekt.
+
+STORE-UPDATE
+AAB in derselben App als neuen internen Testrelease Code37 hochladen.
+Über Google Play aktualisieren, nicht vorher deinstallieren. Eigene Fortschritte
+bleiben erhalten; neue Spieler starten weiter bei null mit Bruiser/Hammer/Schrottplatz.
+Eine AAB-Datei ist keine direkt installierbare APK.
+
+PRÜFUNG
+Automatisierte Godot-Suiten, native Linux-Touchnavigation und Java-Kompilierung geprüft.
+Google-Adaptertests verwenden ein Testdouble, keine echte Google-Anmeldung.
+Echte Android-Abnahme inklusive Dateidialog und späterer Online-Verbindung steht aus.

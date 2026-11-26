@@ -20,7 +20,7 @@ func active() -> bool:return live and game.run_mode in ['campaign','endless'] an
 func pending() -> bool:return game.saved.get('active_run') is Dictionary and not game.saved.active_run.is_empty()
 func begin():
 	wait_for_worker()
-	live=game.run_mode!='tutorial';run_id=Crypto.new().generate_random_bytes(16).hex_encode();elapsed=0
+	live=game.run_mode in ['campaign','endless'];run_id=Crypto.new().generate_random_bytes(16).hex_encode();elapsed=0
 func end():
 	wait_for_worker()
 	live=false;elapsed=0;game.saved.active_run={}

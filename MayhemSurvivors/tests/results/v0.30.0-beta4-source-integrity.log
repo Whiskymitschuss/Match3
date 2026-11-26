@@ -1,0 +1,6 @@
+PASS fresh source ZIP extracted without .godot or Android build caches
+PASS Godot4.6.3 fresh editor import, no parser/resource errors
+PASS six fresh-project suites /283 checks and Python5 configuration tests
+PASS 833 runtime/configuration files byte-identical to signed-AAB source snapshot
+PASS 141 test/tool/native-source files byte-identical to working source
+PASS optional Play Games stays disabled; no real online service or account claimed

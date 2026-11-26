@@ -1,0 +1,10 @@
+test_empty_and_unknown_provider (__main__.Config.test_empty_and_unknown_provider) ... ok
+test_no_default_or_zero_project (__main__.Config.test_no_default_or_zero_project) ... ok
+test_unique_categories (__main__.Config.test_unique_categories) ... ok
+test_valid_explicit_configuration (__main__.Config.test_valid_explicit_configuration) ... ok
+test_wrong_categories_and_ids (__main__.Config.test_wrong_categories_and_ids) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

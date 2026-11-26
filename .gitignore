@@ -13,3 +13,8 @@ MayhemSurvivors/android/
 
 __pycache__/
 *.pyc
+
+MayhemSurvivors/native/play_games/.gradle/
+MayhemSurvivors/native/play_games/build/
+MayhemSurvivors/native/play_games/local.properties
+MayhemSurvivors/addons/rf_play_games/*.aar

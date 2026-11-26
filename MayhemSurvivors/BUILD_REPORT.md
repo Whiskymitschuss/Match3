@@ -1,3 +1,45 @@
+# Google-Play-Build0.30.0 Beta4 — 24.11.2026
+
+Tatsächlich gebautes, signiertes Release-App-Bundle nach allen Laufzeitänderungen.
+Godot4.6.3 stable / OpenJDK21 / AndroidSDK36 / Build-Tools36.1.0 /
+offizielle Gradle-Vorlage8.11.1 mit AGP8.6.1.
+
+- Datei MayhemSurvivors-v0.30.0-beta4-store.aab / **76430402 Bytes**.
+- SHA256 `e73ad3cbad2abd62062da8f551a26568cbbc79aa45b52d1266cfa9e1bb7d3e20`.
+- com.rfworlds.mayhemsurvivors / Code37 /0.30.0-beta4 / ARM64-v8a ausschließlich.
+- SDK24–36 / Release nicht debuggable / allowBackup false / nur VIBRATE.
+- Gleicher privater Upload-Schlüssel wie Code35/36. Zertifikat-SHA256:
+  `2A:18:95:FA:8D:27:ED:97:53:0C:E0:18:F9:CC:AE:D3:E7:B2:82:43:62:5C:F1:EF:B4:AC:EA:F7:4D:23:4F:8C`.
+
+Bundletool1.18.3 validate, JAR-Signatur, ZIP-CRC und Manifest erfolgreich geprüft.
+Beide nativen Bibliotheken besitzen16384-Byte-PT_LOAD-Ausrichtung und BundleConfig
+PAGE_ALIGNMENT_16K.25 Laufzeit-JSONs bytegleich. Neue Trainings-/Touch-/Build-/
+Leaderboard-GDScript-Controller im Assetpack. Keine Tests, privaten Schlüssel,
+Spielstände, nativen Quellordner oder Editor-Addons als Spielressourcen im Bundle.
+
+**Online-Status:** Nutzer wählt Google Play Games, hat aber noch kein Spieleprojekt.
+Konfiguration bleibt disabled. Im AAB weder Google-Spiele-SDK noch native RFPlayGames-
+Klasse im DEX/Manifest und kein INTERNET. Der eigene optionale Java-Adapter wurde
+separat tatsächlich kompiliert (Compile-Check ohne echte Projekt-ID), aber nicht
+als aktivierte Online-Funktion in diesen Store-Build aufgenommen. Kein erfundener
+Projektwert und keine behauptete Google-Verbindung. PLAY_GAMES_SETUP.md beschreibt
+die noch nötige Console-Konfiguration und den automatischen optionalen Build-Weg.
+
+ADB tcp:5037 ist nicht erreichbar; dies verhindert den unabhängigen Export nicht.
+AGP-Hinweis auf das gegenüber seinem Teststand neuere TargetSDK36 bleibt vorhanden;
+Build und Bundlevalidierung bestehen. JAR-Hinweise zu selbstsigniertem Uploadzertifikat,
+Trust-Chain und fehlendem Timestamp sind erwartbar; Signatur tatsächlich verifiziert.
+Keine physische Installation oder Play-Console-Freigabe durch diesen Workspace.
+
+Quellpaket zusätzlich ohne Cache frisch importiert:283 Prüfungen aus sechs Suiten
+(Erstspieler37,Run61,Backup20,Komfort81,UI53,Online-Adapter31) und fünf Python-Tests
+erneut bestanden. 833 Laufzeit-/Konfigurationsdateien entsprechen bytegleich
+dem getesteten AAB-Quellstand; 141 Test-/Werkzeug-/Native-Quelldateien ebenfalls
+bytegleich. Quelle enthält alle Assets, Daten, Szenen, Skripte, optionale Pluginquellen,
+Tests, Berichte und zehn neue UI-Aufnahmen, keine Toolchains/Caches/privaten Spielstände.
+
+---
+
 # Google-Play-Build 0.29.0 Beta 3 — 2026-11-24
 
 Tatsächlich gebautes und signiertes Release-App-Bundle mit Godot 4.6.3 stable,

@@ -1,16 +1,15 @@
-# Geschlossene Beta — nächster Schritt
+# Beta4 — tatsächlicher Stand und nächster Schritt
 
-Umgesetzt: 15 Kämpfer, zehn Welten mit Manövern/Bossleiter, Endlos, lokale Sammlung,
-Cases/Skins/Werkstatt, Aufgaben und Pass, Analysen sowie fünf lokale Spielerprofile.
-Robuste Speicherung, Rücknavigation und Beta-Hilfe unterstützen den Test.
+Run-Fortsetzen, Profil-Dateien, Touchlayout, Boss-Training und drei Builds je Fighter
+sind implementiert. Profil- und Run-Daten bleiben getrennt; neue Spieler starten bei null.
+Google-Play-Adapter und Build-Weg sind vorbereitet und nativ kompiliert, Online ist
+noch nicht aktiv: Nutzer hat noch kein Spieleprojekt und keine echten Kennungen.
 
-1. Auf mehreren geeigneten Android-Geräten als Update installieren.
-2. Zwei Spielerprofile getrennt spielen, Käufe/Belohnungen und Neustart prüfen.
-3. Tastatur, Mehrfingersteuerung, Zurück, Unterbrechung und Sensoren abnehmen.
-4. Drei echte Klassen-Runs unter gleichen Bedingungen vergleichen.
-5. Lange Runs auf Stabilität, FPS, Temperatur und Akku messen.
-6. Befunde mit Beta-Bericht dokumentieren und gezielt korrigieren.
-
-Aktive Runs werden nach vollständigem App-Ende noch nicht fortgesetzt. Keine
-Cloud, Anmeldung, Werbung oder Echtgeldkäufe. Für eine spätere öffentliche
-Store-Version folgen Release-Signierung/AAB und Store-Material nach Geräteabnahme.
+1. Store-UpdateCode37 auf echten Android-Geräten testen, bestehende Daten behalten.
+2. Touchlayout/Multitouch, Trainingspause/-abbruch und Profil-/Run-Isolation prüfen.
+3. Native Export-/Import-Dateiauswahl und Wechsel auf ein anderes Handy abnehmen.
+4. Google-Play-Spieleprojekt und zwei Bestenlisten nach PLAY_GAMES_SETUP.md anlegen.
+5. Echte IDs eintragen lassen, höheren Store-VersionCode bauen und Google-Funktionen
+   mit freigegebenen Testkonten auf echten Geräten prüfen.
+6. Danach Langzeitstabilität, Temperatur/Akku, Klang, Safe Areas und menschliche
+   Balance auf mehreren Geräten abnehmen. Keine öffentliche Veröffentlichung behaupten.

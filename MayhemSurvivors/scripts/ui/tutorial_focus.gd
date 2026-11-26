@@ -7,7 +7,8 @@ func _draw():
 	var g=tutorial.game
 	var rect=Rect2()
 	match tutorial.step:
-		1:rect=Rect2(g.joystick_rest()-Vector2(150,150),Vector2(300,300))
+		1:
+			var r=g.touch_geometry().visual_radius+10;rect=Rect2(g.joystick_rest()-Vector2.ONE*r,Vector2.ONE*r*2)
 		5:rect=g.ability_rect()
 		7:rect=Rect2(120,640,360,85)
 		8:rect=Rect2(1300,770,480,90)
