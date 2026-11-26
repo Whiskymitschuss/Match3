@@ -48,7 +48,7 @@ static func menu(game:Node2D):
 	game.label_at(c.name,Vector2(1110,845),38,Color(c.color))
 	game.button('SAMMLUNG',Vector2(1080,940),Vector2(340,90),func():game.queue_ui_action(func():game.garage.show(selected)))
 	game.button('EXTRAS',Vector2(1450,940),Vector2(340,90),func():game.queue_ui_action(func():game.extras.show()))
-	game.label_at('v0.30.0-beta4 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
+	game.label_at('v0.31.0-beta5 / RF WORLDS',Vector2(110,1035),18,Color('#D6C4E6'))
 	game.schedule_menu_reveal()
 static func decorate_screen(game:Node2D,title:String):
 	if title=='DEIN BUILD':

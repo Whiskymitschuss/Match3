@@ -1,3 +1,16 @@
+# 0.31.0 Beta5 — kräftigeres Kampf-Feedback
+
+Auftrag26.11.2026: mehr Effekte und stärkere Erfolgsmomente. Implementiert:
+farbige Fähigkeiten-Bursts für alle15 Fighter, zusätzliche Explosions-Druckringe,
+Krit-Trefferringe, Schuss-Speedlines, Boss-Phasenimpulse und animierte Schadenszahlen.
+Effekte bleiben kosmetisch, begrenzt und verwenden ausschließlich visuellen RNG.
+Ruhige Menüs reduziert Bewegung; LOW lässt Schuss-Speedlines weg.
+229 Prüfungen und beide Traces bestanden; native Effektaufnahmen geprüft.
+Signiertes Store-AABCode38 gebaut und validiert. Aktuell: Quellpaket und öffentliche Downloads prüfen.
+Google Play Games bleibt mangels Spieleprojekt deaktiviert.
+
+---
+
 # Übergabe0.30.0 Beta4 — 26.11.2026
 
 Code und geprüfte Artefakte im Branch feature/beta-all-six-v0.30.0 veröffentlicht.

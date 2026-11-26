@@ -36,6 +36,7 @@ func update(dt:float):
 	if e.is_empty():return
 	var next=3 if e.hp/e.max_hp<=.35 else (2 if e.hp/e.max_hp<=.7 else 1)
 	if next>tier and stage not in ['windup','dash']:
+		game.vfx.event('power_burst',e.pos,Color('#FF9F1C'),e.radius*2.2,Vector2.RIGHT,.6)
 		tier=next;stage='phase';clock=float(ladder.cadence.phase_pause);game.sound('united_rage');game.encounters.warn('%s / PHASE %d' % [e.boss_name,tier]);return
 	if float(e.get('steel_stun',0))>0:return
 	if stage in ['windup','dash'] and (not game.enemy_roles.visible(e.pos) or (stage=='windup' and e.pos.distance_to(origin)>8)):

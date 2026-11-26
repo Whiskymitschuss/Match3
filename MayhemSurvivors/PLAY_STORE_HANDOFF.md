@@ -1,8 +1,8 @@
-# Google Play — Update0.30.0 Beta4 / Code37
+# Google Play — Update0.31.0 Beta5 / Code38
 
 Bestehende App Mayhem Survivors → Testen → Interner Test → neue Version.
-MayhemSurvivors-v0.30.0-beta4-store.aab hochladen. Release-Name:
-**0.30.0 Beta4 – Touchlayout, Training & Builds**. Gleicher privater Upload-Schlüssel
+MayhemSurvivors-v0.31.0-beta5-store.aab hochladen. Release-Name:
+**0.31.0 Beta5 – Touchlayout, Training & Builds**. Gleicher privater Upload-Schlüssel
 wie Code35/36. Kein Neu-Anlegen der App und kein Zurücksetzen von Spielern.
 
 ```text
@@ -15,7 +15,7 @@ Bitte Steuerung, Training, Speichern und vorhandene Spielstände testen.
 </de-DE>
 ```
 
-VersionCode37 / 0.30.0-beta4 / com.rfworlds.mayhemsurvivors / ARM64 /
+VersionCode38 / 0.31.0-beta5 / com.rfworlds.mayhemsurvivors / ARM64 /
 minSDK24, targetSDK36 / Release-AAB / Querformat / GL Compatibility.
 Nur VIBRATE, kein INTERNET; Android-Cloudbackup deaktiviert. Eine AAB-Datei wird
 über Google Play verteilt und ist nicht direkt wie eine APK installierbar.

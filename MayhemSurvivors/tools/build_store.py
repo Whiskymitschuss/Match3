@@ -25,7 +25,7 @@ password=args.password_file.read_text().strip()
 if not key.is_file() or not password:raise SystemExit('Upload key or password missing.')
 if key.is_relative_to(root) or args.password_file.resolve().is_relative_to(root):
     raise SystemExit('Keep private signing files outside the source project.')
-out=root/'builds/android/MayhemSurvivors-v0.30.0-beta4-store.aab'
+out=root/'builds/android/MayhemSurvivors-v0.31.0-beta5-store.aab'
 out.parent.mkdir(parents=True,exist_ok=True)
 env=os.environ.copy()
 env.update(GODOT_ANDROID_KEYSTORE_RELEASE_PATH=str(key),
@@ -71,7 +71,7 @@ command+=['--export-release','Google Play',str(out)]
 result=subprocess.run(command,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
 log=result.stdout.replace(password,'[REDACTED]')
 logs=root/'tests/results';logs.mkdir(exist_ok=True)
-(logs/'v0.30.0-beta4-store-build.log').write_text(log)
+(logs/'v0.31.0-beta5-store-build.log').write_text(log)
 print(log)
 if result.returncode or re.search(r'SCRIPT ERROR|\bERROR:',log) or not out.is_file():
     raise SystemExit(result.returncode or 1)
