@@ -1,3 +1,16 @@
+# Übergabe0.31.0 Beta5 — 26.11.2026
+
+Code, signiertes AABCode38 und Quell-ZIP im Branch feature/combat-wow-v0.31.0
+veröffentlicht. Draft-PR #17 erstellt, kein Merge. AAB/ZIP/TXT vollständig anonym
+heruntergeladen und Bytezahlen/SHA256 mit den Originalen verglichen.
+Nachweis separat: Downloads/VERIFY-v0.31.0-beta5.txt.229 gezielte Prüfungen und
+beide Traces grün; native GL-Effekte gerendert. Nächster Schritt: interner Store-
+ReleaseCode38 und echte Android-Abnahme von Lesbarkeit, Effektlast und Spielgefühl.
+Google Play Games weiterhin deaktiviert; Projekt/IDs fehlen. Kein Console-Upload.
+Quell-ZIP enthält den geprüften Stand vor dem nachträglichen Downloadnachweis.
+
+---
+
 # 0.31.0 Beta5 — kräftigeres Kampf-Feedback
 
 Auftrag26.11.2026: mehr Effekte und stärkere Erfolgsmomente. Implementiert:

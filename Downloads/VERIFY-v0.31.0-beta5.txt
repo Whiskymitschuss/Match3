@@ -1,0 +1,14 @@
+Anonymous complete public download verification — 2026-11-26T23:23:01.114202+00:00
+PASS MayhemSurvivors-v0.31.0-beta5-store.aab
+76431537 bytes
+SHA256 b98783ae54a99102da1f6c0d0a89157cf6a55b1be3b74c2323595033f8500bb8
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-wow-v0.31.0/Downloads/MayhemSurvivors-v0.31.0-beta5-store.aab
+PASS MayhemSurvivors-v0.31.0-beta5-source.zip
+70353002 bytes
+SHA256 7ff65930ec78cd9282f499a267a553b355d8183e431996146a111d3c94b9738a
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-wow-v0.31.0/Downloads/MayhemSurvivors-v0.31.0-beta5-source.zip
+PASS MayhemSurvivors-v0.31.0-Beta5-Update.txt
+849 bytes
+SHA256 2f97edf39cff6baed933083232127beaeb937f1b8d1c054f4ede615aa05ce41e
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-wow-v0.31.0/Downloads/MayhemSurvivors-v0.31.0-Beta5-Update.txt
+All three complete downloads match local bytes and published binary SHA256 values; no authentication.
