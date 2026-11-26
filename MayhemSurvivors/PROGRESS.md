@@ -1,3 +1,25 @@
+# Übergabe0.30.0 Beta4 — 26.11.2026
+
+Code und geprüfte Artefakte im Branch feature/beta-all-six-v0.30.0 veröffentlicht.
+Draft-PR #16 erstellt, nicht zusammengeführt. AAB, Quell-ZIP und Update-TXT komplett
+anonym heruntergeladen; Bytezahlen und SHA256 stimmen mit den lokalen Originalen
+überein. Nachweis: Downloads/VERIFY-v0.30.0-beta4.txt, nach dem Quellpaket erstellt.
+AAB76430402 Bytes, ZIP77507846 Bytes. Arbeitsstand sauber; kein Console-Upload.
+
+Fünf lokale Funktionen fertig: Run-Fortsetzen, Profil-Dateien, Touchlayout,
+Boss-Training und Ausrüstungs-Builds. Google-Play-Anbindung implementiert/vorbereitet,
+aber im Store-Build deaktiviert. Nutzer hat Google Play Games gewählt und noch
+kein Spieleprojekt angelegt. Nächster erforderlicher Schritt: Play-Spieldienste-
+Projekt und zwei Listen nach PLAY_GAMES_SETUP.md erstellen. Numerische Projekt-ID
+und beide Bestenlisten-IDs fehlen. Keine echte Google-Anmeldung oder Geräteabnahme.
+
+Der Nutzer kann Code37 bereits über den internen Store-Test installieren und die
+lokalen Funktionen prüfen. Für aktivierte Online-Funktionen nach Erhalt der IDs
+einen höheren VersionCode bauen und reale SDK-/Kontotests durchführen. Das ZIP
+bildet den geprüften Quellstand vor diesem nachträglichen Downloadnachweis ab.
+
+---
+
 # 0.30.0 Beta4 — Implementierung und Store-Build geprüft
 
 Stand24.11.2026. Branch feature/beta-all-six-v0.30.0.

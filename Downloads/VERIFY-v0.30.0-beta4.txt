@@ -1,0 +1,17 @@
+Anonymous complete public download verification — 2026-11-26T22:56:54.052488+00:00
+PASS MayhemSurvivors-v0.30.0-beta4-store.aab
+76430402 bytes
+SHA256 e73ad3cbad2abd62062da8f551a26568cbbc79aa45b52d1266cfa9e1bb7d3e20
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/beta-all-six-v0.30.0/Downloads/MayhemSurvivors-v0.30.0-beta4-store.aab
+PASS MayhemSurvivors-v0.30.0-beta4-source.zip
+77507846 bytes
+SHA256 47355789469f5819be580d5202b56846ba90f5b75fe6d1da115497b00e490a75
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/beta-all-six-v0.30.0/Downloads/MayhemSurvivors-v0.30.0-beta4-source.zip
+PASS MayhemSurvivors-v0.30.0-Beta4-Update.txt
+2256 bytes
+SHA256 43289e67bf0a03012c5d6074476b3f8da333e58f66860b6666d4e26bf0c43d54
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/beta-all-six-v0.30.0/Downloads/MayhemSurvivors-v0.30.0-Beta4-Update.txt
+All three complete downloads match local bytes and published binary SHA256 values; no authentication.
+
+Draft-PR: https://github.com/Whiskymitschuss/Match3/pull/16
+No merge, Play Console upload or real Google authentication performed.

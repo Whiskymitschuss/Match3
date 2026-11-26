@@ -24,3 +24,5 @@ Weiterhin vollständig offline, keine Werbung, Echtgeldkäufe oder Server.
 Die Online-Adaptertests verwenden ein Testdouble. Physische Android-Abnahme sowie
 echte Google-Anmeldung/Scoreübermittlung bleiben offen. Das AAB ist ein Store-Upload,
 keine direkt installierbare APK. Kein automatischer Console-Upload oder Merge.
+
+[Öffentlicher Downloadnachweis](Downloads/VERIFY-v0.30.0-beta4.txt) · [Draft-PR #16](https://github.com/Whiskymitschuss/Match3/pull/16)
