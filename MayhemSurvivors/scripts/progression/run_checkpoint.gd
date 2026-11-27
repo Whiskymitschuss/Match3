@@ -127,6 +127,7 @@ static func valid_contents(d:Dictionary,envelope:Dictionary) -> bool:
 		actor_ids.append(e.save_actor)
 	for loot in c.loot:
 		if not loot is Dictionary or not loot.get('pos') is Vector2 or not Graph.number(loot.get('xp')) or loot.xp<0:return false
+		if loot.has('coin') and (not loot.coin is int or loot.coin<0 or loot.coin>1000000000):return false
 	for shot in d.shots:
 		if shot is Dictionary and shot.get('active')==false and shot.get('hit_enemies') is Array:continue
 		if not shot is Dictionary or shot.get('active')!=true or not shot.get('pos') is Vector2 or not shot.get('vel') is Vector2 or not shot.get('hostile') is bool or not shot.get('weapon') is String:return false

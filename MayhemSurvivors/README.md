@@ -1,3 +1,27 @@
+# 0.32.0 Beta6 — eigene Kampfidentität
+
+Grundgegner erhalten angekündigte Biss-, Sprung- und Stampfangriffe. Zwischenbosse
+und zehn Arenen-Finale verwenden eigene Angriffspaare mit passenden Warnungen und
+Geschossformen. Breaker Axels Presslufthammer-System bleibt eigenständig.
+Hammer, Mopp und Lanze haben verschiedene Bewegungsposen; alle15 Fighter erhalten
+eigene Fähigkeitsmotive. Größere gold-violette KRIT-Zahlen und drei neue originale
+Sounds verstärken Treffer und Belohnungen.
+
+Run-Coins sind Boden-Pickups in vier wertabhängigen Farben. Bestehende Belohnungswerte
+bleiben erhalten; beim überlebten Wellenabschluss werden Restmünzen gebankt.
+Cases mischen vor der gewichteten Ziehung den Kandidatenpool; Deckel-Animation und
+Licht folgen dem bereits gespeicherten Ergebnis. Chancen/Pity/Preise bleiben bestehen.
+Details und Spielhinweise: [COMBAT_IDENTITY.md](COMBAT_IDENTITY.md).
+
+49 Testsuiten mit10513 bestandenen Prüfungen, beide historischen Kampftraces und
+native Case-Touch-Navigation74/0 geprüft. Native GL-Darstellung aller15 Fähigkeitensymbole,
+Kampf, Bosswarnungen und Case-Öffnung geprüft. Kein physischer Android-Gerätetest,
+keine Geräte-FPS-Zusage. Google Play Games weiterhin deaktiviert; Projekt/IDs fehlen.
+Signiertes Store-AABCode39 gebaut und validiert. Bestehende Profile und Checkpoints
+bleiben verwendbar; neue Profile starten unverändert bei null.
+
+---
+
 # 0.31.0 Beta5 — mehr Wucht im Kampf
 
 Neue farbige Impulse bei allen15 Spezialfähigkeiten, zusätzliche Explosions-

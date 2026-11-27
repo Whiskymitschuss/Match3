@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Write real schema-1 fixture
+PASS Migrate schema-1 totals into schema 3
+PASS Migration preserves kills, wave and time
+PASS Migration preserves settings
+PASS Migration creates original schema-1 backup
+PASS Backup preserves original file contents
+PASS No invented attribution of legacy runs to heroes
+PASS Record updates only selected character
+PASS Character totals recorded
+PASS Personal bests recorded
+PASS Result can announce a genuine new best
+PASS Record helper does not duplicate global counters
+PASS History excludes active weapon simulation state
+PASS Worse later run does not overwrite bests
+PASS First victory records its actual duration
+PASS Faster victory improves time
+PASS Slower victory preserves fastest and updates longest
+PASS History is bounded and newest first
+PASS Write schema-2 record file
+PASS Schema-2 personal records survive disk roundtrip
+PASS Roundtrip preserves legacy global data
+PASS Corrupt nested record fields are clamped/defaulted
+PASS Malformed history entries cannot break stats UI
+PASS Partial record corruption does not erase valid global totals
+PASS Actual game result connects to per-character records
+PASS Repeated finish cannot duplicate records or history
+PASS Stats view preserves menu state
+PASS Filtered history safely clamps page index
+RUN RECORDS RESULT 28 passed, 0 failed
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories

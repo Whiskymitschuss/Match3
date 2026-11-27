@@ -1,0 +1,28 @@
+RF WORLDS — MAYHEM SURVIVORS 0.32.0 Beta6 /Code39
+
+NEU
+- Grunt: angekündigter Biss; Runner: gezielter Sprung; Tank: Bodenstampfer.
+- Eigene Angriffspaare für Zwischenbosse und alle zehn Arenen-Finale.
+- Eisspeere, Kristallsplitter, Blitzgeschosse und weitere Boss-Silhouetten.
+-15 unterschiedliche Comic-Motive für die Spezialfähigkeiten.
+- Hammer über Kopf, Mopp-Bogen, Lanzenstoß; weiterhin genau zwei Hände.
+- Große gold-violette KRIT-Zahlen, lokaler Trefferblitz und eigener Krit-Sound.
+- Echte Münz-Pickups: Gold1-3, Grün4-7, Blau8-24, Violett25+ pro Paket.
+- Restmünzen werden beim überlebten Wellenabschluss gutgeschrieben.
+- Gemischter Kandidatenpool bei gewichteten Cases, öffnender Deckel und echtes Fundlicht.
+- Drei neue eigene Sounds. Effekt-/Audio-Budgets bleiben begrenzt.
+
+BEIBEHALTEN
+15 Fighter,10 Arenen, Kampagne/Endlos, Bosse2/4/6/8/10, Offline-Profile,
+Shop, Cases, Ausrüstung, Touchlayout, Boss-Training, Run-Fortsetzen und Profilbackup.
+Belohnungswerte, Case-Chancen, Pity und Preise unverändert. Neue Spieler starten bei0.
+
+GEPRÜFT
+49 Testsuiten:10513/0. Historische Traces33/87. Native Case-Touch-Navigation74/0.
+Python5/0. Native GL-Darstellung aller15 Motive, Bosswarnungen, Münzen und Case.
+Signiertes Store-AABCode39, ARM64, Paket com.rfworlds.mayhemsurvivors, SDK24-36.
+
+NOCH ZU TESTEN
+Physisches Android-Gerät: neue Ausweichmuster, Spielbalance, Ton, Sichtbarkeit,
+Effektlast und echte FPS. Kein Console-Upload erfolgt. Google Play Games ohne IDs deaktiviert.
+AAB ist für die Play Console; es wird nicht direkt wie eine APK auf dem Handy installiert.

@@ -82,9 +82,11 @@ func enemy_hit(enemy:Dictionary,critical:bool):
 		burst(enemy.pos,color,limits().burst,'drop',120,true)
 		if critical:stain(enemy.pos,color,enemy.radius*.8)
 	if critical:event('impact_wave',enemy.pos,Color('#FFD166'),enemy.radius+26,Vector2.RIGHT,.26)
-	if critical:event('critical',enemy.pos,Color('#FFD166'),42,Vector2.RIGHT,.23)
+	if critical:
+		event('critical',enemy.pos,Color('#FFD166'),58,Vector2.RIGHT,.3);game.sound('crit_punch')
 func coin(pos:Vector2,amount:int):
-	event('coin',pos,Color('#FFD166'),10,Vector2.RIGHT,.65)
+	var coins=preload('res://scripts/economy/coin_pickups.gd')
+	event('coin',pos,coins.COLORS[coins.tier(amount)],10+coins.tier(amount)*2,Vector2.RIGHT,.65)
 	events.back().amount=amount
 func enemy_died(enemy:Dictionary):
 	var mechanical=enemy.kind=='drone' or (enemy.kind=='boss' and game.is_reactor())
@@ -131,6 +133,8 @@ func explosion(pos:Vector2,radius:float,color:Color):
 func ability(kind:String,pos:Vector2):
 	var d=game.hero_ability.definition()
 	event('power_burst',pos,Color(d.color),125,Vector2.RIGHT,.55)
+	event('hero_signature',pos,Color(d.color),135,Vector2.RIGHT,.65)
+	events.back().hero=game.characters[game.selected].id
 	burst(pos,Color(d.color),limits().burst*2,'wisp',210)
 	match kind:
 		'shockwave':ground_impact(pos,245,Color('#FF9F1C'))
@@ -220,13 +224,14 @@ func draw_front():
 			'coin':
 				var at:Vector2=e.pos-Vector2(0,16+sin(t*PI*.6)*35)
 				game.draw_circle(at,8,Color(.08,.1,.16,alpha))
-				game.draw_circle(at,6,Color(1,.82,.4,alpha))
+				game.draw_circle(at,e.radius*.6,color)
 				game.draw_line(at+Vector2(-2,-3),at+Vector2(2,-3),Color(1,1,.8,alpha),2,true)
 				game.draw_string_outline(ThemeDB.fallback_font,at+Vector2(11,6),'+'+str(e.amount),HORIZONTAL_ALIGNMENT_LEFT,-1,19,3,Color(.06,.08,.14,alpha))
 				game.draw_string(ThemeDB.fallback_font,at+Vector2(11,6),'+'+str(e.amount),HORIZONTAL_ALIGNMENT_LEFT,-1,19,color)
+			'hero_signature':preload('res://scripts/combat/hero_sigils.gd').draw(game,e,t,alpha)
 			'critical':
-				for i in range(4):
-					var dir=Vector2.from_angle(i*TAU/4+.4)
+				for i in range(8):
+					var dir=Vector2.from_angle(i*TAU/8+.4)
 					game.draw_line(e.pos+dir*12,e.pos+dir*e.radius*(.6+.3*t),color,3*alpha+1,true)
 				game.draw_circle(e.pos,4*alpha,Color(1,1,.85,alpha))
 			'sweep','slash':

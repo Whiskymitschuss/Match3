@@ -1,0 +1,9 @@
+combat_identity_test 
+COMBAT IDENTITY RESULT 218 passed, 0 failed
+run_resume_test 
+RUN RESUME RESULT 61 passed, 0 failed
+case_navigation_test 
+CASE NAVIGATION RESULT 74 passed, 0 failed; native_touch=false
+abilities_test 
+ABILITIES RESULT 76 passed, 0 failed
+All requested suites passed.

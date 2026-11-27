@@ -110,8 +110,8 @@ func run():
 		check(near(hp-boss.hp,expected) and g.state==g.State.COMBAT,'Bosses receive bounded combo with existing resistance rules '+str(hero))
 	# Death resolution is shared: one XP/coin reward and no second kill from a proc.
 	start(1);g.run_items.add('ion_relay');var a=enemy(Vector2(100,0),1);var b=enemy(Vector2(170,0),1);var c=enemy(Vector2(240,0),1);g.synergies.mark(a);var kills=g.kills;var coins=g.coins;var reward=a.coin_reward+b.coin_reward+c.coin_reward
-	g.damage_enemy(a,12,'weapon','blaster');check(g.kills==kills+3 and g.coins==coins+reward and g.loot.size()==3 and g.enemies.is_empty(),'Proc kills grant each enemy exactly one normal reward')
-	g.damage_enemy(a,12,'weapon','blaster');check(g.kills==kills+3 and g.coins==coins+reward,'Removed enemy cannot award another proc or reward')
+	g.damage_enemy(a,12,'weapon','blaster');check(g.kills==kills+3 and wallet_and_drops()==coins+reward and g.loot.size()==3 and g.enemies.is_empty(),'Proc kills grant each enemy exactly one normal reward')
+	g.damage_enemy(a,12,'weapon','blaster');check(g.kills==kills+3 and wallet_and_drops()==coins+reward,'Removed enemy cannot award another proc or reward')
 	# Killing a wave boss must exit before any chain damages the next state.
 	for wave in [2,10]:
 		start(1,wave);g.run_items.add('ion_relay');a=g.enemies[0];a.pos=g.player.position+Vector2(100,0);a.hp=1;b=enemy(Vector2(170,0));g.synergies.mark(a);var hp_b=b.hp;g.damage_enemy(a,12,'weapon','blaster')
@@ -140,3 +140,8 @@ func run():
 	for id in IDS:check(g.run_items.icon(id) is Texture2D,'Own imported module icon '+id)
 	g.saved=original;g.save_game();var weak=weakref(g.synergies);g.free();await process_frame;await process_frame;await process_frame;check(weak.get_ref()==null,'Synergy manager has no reference cycle')
 	print('SYNERGIES RESULT ',passed,' passed, ',failed,' failed; native_touch=',native_touch);quit(1 if failed else 0)
+
+func wallet_and_drops() -> int:
+	var value=int(g.coins)
+	for packet in g.loot:value+=int(packet.get('coin',0))
+	return value

@@ -84,7 +84,7 @@ func run():
 		if skip:await tap('ÜBERSPRINGEN')
 		else:
 			for node in g.ui_root.get_children():
-				if node.get_script()==preload('res://scripts/ui/case_opening.gd'):node._process(1.4);break
+				if node.get_script()==preload('res://scripts/ui/case_opening.gd'):node._process(1.6);break
 			await settle()
 		before=g.saved.duplicate(true);await tap('ZUM INVENTAR');check(heading('MAYHEM GARAGE') and same_rewards(before),'Animated/skip route leaves reveal '+str(skip))
 	# Safe-area-scaled controls remain hittable on wider displays and tablets.

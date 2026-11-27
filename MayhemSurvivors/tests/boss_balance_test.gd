@@ -36,14 +36,14 @@ func run():
 		if wave==6:
 			g.breaker.update(1.41);check(g.breaker.stage=='windup' and g.breaker.attack=='charge' and near(g.breaker.clock,1.25),'Axel announces the opening charge with full windup')
 		else:
-			g.united.bosses.update(1.41);check(g.united.bosses.stage=='windup' and g.united.bosses.attack==({2:'fan',4:'charge',8:'zones',10:'charge'}[wave]) and near(g.united.bosses.clock,1.5),'Distinct fully warned opener '+str(wave))
+			g.united.bosses.update(1.41);check(g.united.bosses.stage=='windup' and g.united.bosses.attack==({2:'acid_lob',4:'crusher_ram',8:'admiral_broadside',10:'dock_anchors'}[wave]) and near(g.united.bosses.clock,1.6 if wave==4 else 1.8),'Distinct fully warned opener '+str(wave))
 		var hp=g.hp;g._physics_process(.1);check(g.hp==hp,'Opening warning gives movement time '+str(wave))
 		for state in [g.State.PAUSED,g.State.LEVEL_UP,g.State.SHOP]:
 			g.state=state;var clock=g.breaker.clock if wave==6 else g.united.bosses.clock;g._physics_process(3);g.breaker.update(3);g.united.bosses.update(3);check(near(clock,g.breaker.clock if wave==6 else g.united.bosses.clock),'New cadence freezes in '+str(state)+' / '+str(wave))
 	# Threshold damage cannot erase a previously telegraphed attack.
-	start('docks',2);var boss=g.enemies[0];boss.pos=g.player.position+Vector2(250,0);g.united.bosses.clock=0;g.united.bosses.update(.01);boss.hp=boss.max_hp*.3
-	g.united.bosses.update(1.0);check(g.united.bosses.stage=='windup' and g.united.bosses.tier==1,'Burst damage does not cancel the fan warning')
-	g.united.bosses.update(.51);check(g.shots.filter(func(s):return s.active and s.hostile).size()==7,'Announced fan actually fires before phase transition')
+	start('docks',2);var boss=g.enemies[0];boss.pos=g.player.position+Vector2(250,0);g.united.bosses.clock=0;g.united.bosses.pattern=1;g.united.bosses.update(.01);boss.hp=boss.max_hp*.3
+	g.united.bosses.update(1.0);check(g.united.bosses.stage=='windup' and g.united.bosses.tier==1,'Burst damage does not cancel the double-spit warning')
+	g.united.bosses.update(.81);check(g.shots.filter(func(s):return s.active and s.hostile).size()==2,'Announced double spit actually fires before phase transition')
 	g.united.bosses.update(.01);check(g.united.bosses.stage=='phase' and g.united.bosses.tier==3,'Pending rage follows the completed attack')
 	var amount=boss.hp;g.damage_enemy(boss,10);check(boss.hp<amount,'Phase transition has no hidden invulnerability')
 	g.united.enemies.clear();g.united.enemies.circle(g.player.position,90,1.5,.5,10,boss);g.united.bosses.tier=1;g.united.bosses.stage='recovery';g.united.bosses.update(.01)
@@ -51,7 +51,7 @@ func run():
 	start('docks',6);boss=g.enemies[0];boss.pos=g.player.position+Vector2(200,0);g.breaker.begin_attack('hammer',boss);boss.hp=boss.max_hp*.3;g.breaker.update(.1)
 	check(g.breaker.stage=='windup' and g.breaker.tier==1,'Axel finishes his announced pattern before rage');g.breaker.stage='recovery';g.breaker.update(.01);check(g.breaker.tier==3 and g.breaker.stage=='phase','Axel transitions after attack completion')
 	# Actually hit the player after the fan's full warning, with unchanged damage.
-	start('docks',2);boss=g.enemies[0];boss.pos=g.player.position+Vector2(250,0);g.united.bosses.clock=0;g.united.bosses.update(.01);var before=g.hp;g.united.bosses.update(1.49);g.update_shots(.01);check(g.hp==before,'No pre-warning projectile damage');g.united.bosses.update(.02);g.update_shots(1.1);check(g.hp<before,'Opening projectile attack creates actual pressure')
+	start('docks',2);boss=g.enemies[0];boss.pos=g.player.position+Vector2(250,0);g.united.bosses.clock=0;g.united.bosses.pattern=1;g.united.bosses.update(.01);var before=g.hp;g.united.bosses.update(1.79);g.update_shots(.01);check(g.hp==before,'No pre-warning projectile damage');g.united.bosses.update(.02);var shot=g.shots.filter(func(s):return s.active and s.hostile)[0];g.player.position=shot.pos+shot.vel*.5;g.update_shots(.51);check(g.hp<before,'Announced spit projectile creates actual pressure')
 	# Compensation is explicit, limited to affected weapons and boss kinds.
 	var weapons=[{'id':'orbit','level':1},{'id':'orbit','level':5,'spec':'wide'},{'id':'orbit','level':5,'spec':'swift'},{'id':'tesla','level':1},{'id':'tesla','level':5,'spec':'thunder_prism'}]
 	for i in range(weapons.size()):

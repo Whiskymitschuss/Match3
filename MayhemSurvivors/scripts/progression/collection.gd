@@ -72,7 +72,11 @@ static func open_case(saved:Dictionary,case_id:String) -> Dictionary:
 	if not ticket and saved.meta.coins<price:return {}
 	var pool=candidates(saved,case_id)
 	if pool.is_empty():return {}
-	var rng=RandomNumberGenerator.new();rng.seed=state.seed;var roll=rng.randf();var picked=pool.back().id
+	var rng=RandomNumberGenerator.new();rng.seed=state.seed
+	# Shuffle before the weighted draw: catalog insertion order never becomes a reveal order.
+	for i in range(pool.size()-1,0,-1):
+		var j=rng.randi_range(0,i);var item=pool[i];pool[i]=pool[j];pool[j]=item
+	var roll=rng.randf();var picked=pool.back().id
 	for entry in pool:
 		roll-=entry.chance
 		if roll<=0:picked=entry.id;break

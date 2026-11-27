@@ -23,8 +23,15 @@ func damage(pos:Vector2, amount:float, critical:bool, player_hit:bool=false):
 	while numbers.size()>=cap:numbers.pop_front()
 	serial+=1
 	var color=Color('#FF6376') if player_hit else (Color('#FFD166') if critical else Color.WHITE)
-	var text=('-' if player_hit else '')+str(ceili(amount))+('!' if critical else '')
-	numbers.append({'pos':pos+Vector2((serial%5-2)*10,-30),'life':.7,'text':text,'color':color,'size':40 if critical or player_hit else 29})
+	var text=('-' if player_hit else ('KRIT ' if critical else ''))+str(ceili(amount))
+	if critical:
+		var criticals=0
+		for n in numbers:
+			if n.get('critical',false):criticals+=1
+		if criticals>=6:
+			for i in range(numbers.size()):
+				if numbers[i].get('critical',false):numbers.remove_at(i);break
+	numbers.append({'pos':pos+Vector2((serial%5-2)*10,-30),'life':.7,'text':text,'color':color,'critical':critical,'size':52 if critical else (40 if player_hit else 29)})
 func draw():
 	if not game.saved.settings.get('damage_numbers',true):return
 	var font=ThemeDB.fallback_font
@@ -33,5 +40,5 @@ func draw():
 		var pop=1.0 if game.saved.settings.get('reduced_motion',false) else 1.0+.2*maxf(0,1-(.7-n.life)/.12)
 		var font_size=roundi(n.size*pop)
 		var alpha=clampf(n.life*4,0,1)
-		game.draw_string_outline(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,5,Color(0.04,.06,.12,alpha))
+		game.draw_string_outline(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,8 if n.get('critical',false) else 5,Color(.37,.04,.48,alpha) if n.get('critical',false) else Color(0.04,.06,.12,alpha))
 		game.draw_string(font,pos,n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,Color(n.color,alpha))

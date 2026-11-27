@@ -1,3 +1,22 @@
+# 0.32.0 Beta6 — Implementierung und Build geprüft
+
+Implementiert: individuelle Bossmuster für die Zwischenbosse und zehn Map-Finale,
+angekündigte Biss-/Sprung-/Stampfangriffe für die drei Grundgegner, physische
+wertabhängige Münzen (Gold/Grün/Blau/Violett), schräge Nahkampfposen,15 unterschiedliche
+Fähigkeitensymbole, KRIT-Schrift und eigene synthetisierte Sounds. Case-Pool wird vor
+gewichteter Ziehung gemischt; Öffnung zeigt echten, bereits gespeicherten Fund.
+Bestehende Checkpoint-Struktur bleibt bestehen; Münzen als optionales Loot-Feld.
+
+49 Suiten/10513 Prüfungen grün, Traces33/87, native Case-Navigation74/0, Python5/0.
+Native GL-Motive aller15 Helden und wichtige Kampfsituationen geprüft. AABCode39
+gebaut, signiert und validiert. Google Play Games bleibt ohne Projekt/IDs deaktiviert.
+Frisches Quell-ZIP: Import fehlerfrei,429 Prüfungen und Python5/0 erneut grün;
+849 Laufzeitdateien entsprechen dem signierten Export-Quellstand.
+Aktuelle Phase: Downloads veröffentlichen/verifizieren.
+Offen danach: echter Android-Spieltest mit Fokus Ausweich-Balancing, Ton und Effektlast.
+
+---
+
 # Übergabe0.31.0 Beta5 — 26.11.2026
 
 Code, signiertes AABCode38 und Quell-ZIP im Branch feature/combat-wow-v0.31.0

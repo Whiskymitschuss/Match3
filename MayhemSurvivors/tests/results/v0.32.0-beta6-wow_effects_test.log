@@ -1,0 +1,27 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Hero burst uses real palette 0
+PASS Hero burst uses real palette 1
+PASS Hero burst uses real palette 2
+PASS Hero burst uses real palette 3
+PASS Hero burst uses real palette 4
+PASS Hero burst uses real palette 5
+PASS Hero burst uses real palette 6
+PASS Hero burst uses real palette 7
+PASS Hero burst uses real palette 8
+PASS Hero burst uses real palette 9
+PASS Hero burst uses real palette 10
+PASS Hero burst uses real palette 11
+PASS Hero burst uses real palette 12
+PASS Hero burst uses real palette 13
+PASS Hero burst uses real palette 14
+PASS Explosion combines blast and pressure ring
+PASS Gunfire quality gate LOW
+PASS Effect budget holds LOW
+PASS Gunfire quality gate MEDIUM
+PASS Effect budget holds MEDIUM
+PASS Gunfire quality gate HIGH
+PASS Effect budget holds HIGH
+PASS Cosmetics preserve health, timers and gameplay RNG
+PASS Transient accents expire
+WOW EFFECTS RESULT 24 passed, 0 failed
