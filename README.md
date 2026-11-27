@@ -9,3 +9,5 @@ Bodenmünzen von Gold bis Episch, kräftigere Krits, schräge Nahkampfposen und 
 AAB gebaut, signiert und validiert. Keine physische Android-Abnahme; neues Balancing
 erfordert Spieltest. Bestehende lokale Profile/Runs bleiben verwendbar. Google Play
 Games bleibt ohne Projekt/IDs deaktiviert. [Details](MayhemSurvivors/COMBAT_IDENTITY.md).
+
+[Downloadnachweis](Downloads/VERIFY-v0.32.0-beta6.txt) · [Draft-PR #18](https://github.com/Whiskymitschuss/Match3/pull/18). Kein Merge oder Console-Upload.

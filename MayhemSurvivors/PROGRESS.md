@@ -12,7 +12,10 @@ Native GL-Motive aller15 Helden und wichtige Kampfsituationen geprüft. AABCode3
 gebaut, signiert und validiert. Google Play Games bleibt ohne Projekt/IDs deaktiviert.
 Frisches Quell-ZIP: Import fehlerfrei,429 Prüfungen und Python5/0 erneut grün;
 849 Laufzeitdateien entsprechen dem signierten Export-Quellstand.
-Aktuelle Phase: Downloads veröffentlichen/verifizieren.
+Veröffentlicht: feature/combat-identity-v0.32.0, Draft-PR #18, kein Merge.
+AAB/ZIP/TXT vollständig anonym heruntergeladen und SHA256/Bytezahlen verglichen.
+Nachweis: Downloads/VERIFY-v0.32.0-beta6.txt. Quell-ZIP enthält den geprüften Stand
+vor diesem nachträglichen Übergabevermerk. Nächster Schritt: interner Play-TestCode39.
 Offen danach: echter Android-Spieltest mit Fokus Ausweich-Balancing, Ton und Effektlast.
 
 ---
