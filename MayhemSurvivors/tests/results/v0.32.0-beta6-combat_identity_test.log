@@ -1,0 +1,221 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Value-based rarity 1
+PASS Value-based rarity 4
+PASS Value-based rarity 8
+PASS Value-based rarity 25
+PASS Coins really drop before collection
+PASS Death cannot duplicate coin packet
+PASS Collection idempotently awards exact packet value
+PASS Physical coin packet survives checkpoint validation
+PASS Physical coin state really persists and resumes from local profile
+PASS Wave completion banks remaining real coins before cleanup
+PASS No immediate damage during warning grunt
+PASS Warning clock freezes on pause grunt
+PASS Bite can be dodged and creates recovery window
+PASS No immediate damage during warning runner
+PASS Warning clock freezes on pause runner
+PASS Runner releases a real directed pounce
+PASS Pounce can hit only once per attack
+PASS No immediate damage during warning tank
+PASS Warning clock freezes on pause tank
+PASS Tank releases a real ground hazard
+PASS Distinct final-boss repertoire scrapyard
+PASS Full named telegraph scrap_magnets
+PASS Ground signature has actual hazard scrap_magnets
+PASS Full named telegraph scrap_shred
+PASS Telegraphed ray count equals actual projectiles scrap_shred
+PASS Warning direction matches shot scrap_shred 0
+PASS Warning direction matches shot scrap_shred 1
+PASS Warning direction matches shot scrap_shred 2
+PASS Warning direction matches shot scrap_shred 3
+PASS Distinct final-boss repertoire reactor
+PASS Full named telegraph reactor_pylons
+PASS Ground signature has actual hazard reactor_pylons
+PASS Full named telegraph reactor_overload
+PASS Telegraphed ray count equals actual projectiles reactor_overload
+PASS Warning direction matches shot reactor_overload 0
+PASS Warning direction matches shot reactor_overload 1
+PASS Warning direction matches shot reactor_overload 2
+PASS Warning direction matches shot reactor_overload 3
+PASS Warning direction matches shot reactor_overload 4
+PASS Warning direction matches shot reactor_overload 5
+PASS Warning direction matches shot reactor_overload 6
+PASS Warning direction matches shot reactor_overload 7
+PASS Warning direction matches shot reactor_overload 8
+PASS Warning direction matches shot reactor_overload 9
+PASS Distinct final-boss repertoire docks
+PASS Full named telegraph dock_anchors
+PASS Ground signature has actual hazard dock_anchors
+PASS Full named telegraph dock_broadside
+PASS Telegraphed ray count equals actual projectiles dock_broadside
+PASS Warning direction matches shot dock_broadside 0
+PASS Warning direction matches shot dock_broadside 1
+PASS Warning direction matches shot dock_broadside 2
+PASS Warning direction matches shot dock_broadside 3
+PASS Warning direction matches shot dock_broadside 4
+PASS Warning direction matches shot dock_broadside 5
+PASS Distinct final-boss repertoire foundry
+PASS Full named telegraph forge_fountains
+PASS Ground signature has actual hazard forge_fountains
+PASS Full named telegraph forge_embers
+PASS Telegraphed ray count equals actual projectiles forge_embers
+PASS Warning direction matches shot forge_embers 0
+PASS Warning direction matches shot forge_embers 1
+PASS Warning direction matches shot forge_embers 2
+PASS Warning direction matches shot forge_embers 3
+PASS Warning direction matches shot forge_embers 4
+PASS Distinct final-boss repertoire gardens
+PASS Full named telegraph garden_bloom
+PASS Ground signature has actual hazard garden_bloom
+PASS Full named telegraph garden_seeds
+PASS Telegraphed ray count equals actual projectiles garden_seeds
+PASS Warning direction matches shot garden_seeds 0
+PASS Warning direction matches shot garden_seeds 1
+PASS Warning direction matches shot garden_seeds 2
+PASS Warning direction matches shot garden_seeds 3
+PASS Warning direction matches shot garden_seeds 4
+PASS Warning direction matches shot garden_seeds 5
+PASS Distinct final-boss repertoire frost
+PASS Full named telegraph frost_eye
+PASS Ground signature has actual hazard frost_eye
+PASS Full named telegraph frost_shards
+PASS Telegraphed ray count equals actual projectiles frost_shards
+PASS Warning direction matches shot frost_shards 0
+PASS Warning direction matches shot frost_shards 1
+PASS Warning direction matches shot frost_shards 2
+PASS Distinct final-boss repertoire storm
+PASS Full named telegraph storm_spiral
+PASS Spiral is a timed volley state
+PASS Spiral counters serialize mid-salvo
+PASS Full named telegraph storm_rod
+PASS Ground signature has actual hazard storm_rod
+PASS Distinct final-boss repertoire crystal
+PASS Full named telegraph crystal_prism
+PASS Telegraphed ray count equals actual projectiles crystal_prism
+PASS Warning direction matches shot crystal_prism 0
+PASS Warning direction matches shot crystal_prism 1
+PASS Warning direction matches shot crystal_prism 2
+PASS Warning direction matches shot crystal_prism 3
+PASS Warning direction matches shot crystal_prism 4
+PASS Warning direction matches shot crystal_prism 5
+PASS Warning direction matches shot crystal_prism 6
+PASS Warning direction matches shot crystal_prism 7
+PASS Warning direction matches shot crystal_prism 8
+PASS Full named telegraph crystal_mirrors
+PASS Ground signature has actual hazard crystal_mirrors
+PASS Distinct final-boss repertoire carnival
+PASS Full named telegraph carnival_roulette
+PASS Telegraphed ray count equals actual projectiles carnival_roulette
+PASS Warning direction matches shot carnival_roulette 0
+PASS Warning direction matches shot carnival_roulette 1
+PASS Warning direction matches shot carnival_roulette 2
+PASS Warning direction matches shot carnival_roulette 3
+PASS Warning direction matches shot carnival_roulette 4
+PASS Warning direction matches shot carnival_roulette 5
+PASS Warning direction matches shot carnival_roulette 6
+PASS Warning direction matches shot carnival_roulette 7
+PASS Warning direction matches shot carnival_roulette 8
+PASS Warning direction matches shot carnival_roulette 9
+PASS Warning direction matches shot carnival_roulette 10
+PASS Warning direction matches shot carnival_roulette 11
+PASS Full named telegraph carnival_balloons
+PASS Ground signature has actual hazard carnival_balloons
+PASS Distinct final-boss repertoire void
+PASS Full named telegraph void_portals
+PASS Ground signature has actual hazard void_portals
+PASS Full named telegraph void_eclipse
+PASS Ground signature has actual hazard void_eclipse
+PASS Intermediate boss owns specialised pattern 2 acid_lob
+PASS Intermediate boss owns specialised pattern 2 acid_spit
+PASS Intermediate boss owns specialised pattern 2 acid_lob
+PASS Intermediate boss owns specialised pattern 2 acid_spit
+PASS Intermediate boss owns specialised pattern 4 crusher_ram
+PASS Intermediate boss owns specialised pattern 4 crusher_quake
+PASS Intermediate boss owns specialised pattern 4 crusher_ram
+PASS Intermediate boss owns specialised pattern 4 crusher_quake
+PASS Intermediate boss owns specialised pattern 8 admiral_broadside
+PASS Intermediate boss owns specialised pattern 8 admiral_mines
+PASS Intermediate boss owns specialised pattern 8 admiral_broadside
+PASS Intermediate boss owns specialised pattern 8 admiral_mines
+PASS Hero-specific motif 0
+PASS Hero-specific motif 1
+PASS Hero-specific motif 2
+PASS Hero-specific motif 3
+PASS Hero-specific motif 4
+PASS Hero-specific motif 5
+PASS Hero-specific motif 6
+PASS Hero-specific motif 7
+PASS Hero-specific motif 8
+PASS Hero-specific motif 9
+PASS Hero-specific motif 10
+PASS Hero-specific motif 11
+PASS Hero-specific motif 12
+PASS Hero-specific motif 13
+PASS Hero-specific motif 14
+PASS Original audible asset coin_epic
+PASS Original audible asset crit_punch
+PASS Original audible asset signature_blast
+PASS Critical readouts remain capped under heavy multishot
+PASS Case transaction cannot charge twice 1
+PASS Case transaction cannot charge twice 2
+PASS Case transaction cannot charge twice 3
+PASS Case transaction cannot charge twice 4
+PASS Case transaction cannot charge twice 5
+PASS Case transaction cannot charge twice 6
+PASS Case transaction cannot charge twice 7
+PASS Case transaction cannot charge twice 8
+PASS Case transaction cannot charge twice 9
+PASS Case transaction cannot charge twice 10
+PASS Case transaction cannot charge twice 11
+PASS Case transaction cannot charge twice 12
+PASS Case transaction cannot charge twice 13
+PASS Case transaction cannot charge twice 14
+PASS Case transaction cannot charge twice 15
+PASS Case transaction cannot charge twice 16
+PASS Case transaction cannot charge twice 17
+PASS Case transaction cannot charge twice 18
+PASS Case transaction cannot charge twice 19
+PASS Case transaction cannot charge twice 20
+PASS Case transaction cannot charge twice 21
+PASS Case transaction cannot charge twice 22
+PASS Case transaction cannot charge twice 23
+PASS Case transaction cannot charge twice 24
+PASS Case transaction cannot charge twice 25
+PASS Case transaction cannot charge twice 26
+PASS Case transaction cannot charge twice 27
+PASS Case transaction cannot charge twice 28
+PASS Case transaction cannot charge twice 29
+PASS Case transaction cannot charge twice 30
+PASS Case transaction cannot charge twice 31
+PASS Case transaction cannot charge twice 32
+PASS Case transaction cannot charge twice 33
+PASS Case transaction cannot charge twice 34
+PASS Case transaction cannot charge twice 35
+PASS Case transaction cannot charge twice 36
+PASS Case transaction cannot charge twice 37
+PASS Case transaction cannot charge twice 38
+PASS Case transaction cannot charge twice 39
+PASS Case transaction cannot charge twice 40
+PASS Case transaction cannot charge twice 41
+PASS Case transaction cannot charge twice 42
+PASS Case transaction cannot charge twice 43
+PASS Case transaction cannot charge twice 44
+PASS Case transaction cannot charge twice 45
+PASS Case transaction cannot charge twice 46
+PASS Case transaction cannot charge twice 47
+PASS Case transaction cannot charge twice 48
+PASS Case transaction cannot charge twice 49
+PASS Case transaction cannot charge twice 50
+PASS Case transaction cannot charge twice 51
+PASS Case transaction cannot charge twice 52
+PASS Case transaction cannot charge twice 53
+PASS Case transaction cannot charge twice 54
+PASS Case transaction cannot charge twice 55
+PASS Case transaction cannot charge twice 56
+PASS Case transaction cannot charge twice 57
+PASS Case transaction cannot charge twice 58
+PASS Case transaction cannot charge twice 59
+PASS Case transaction cannot charge twice 60
+PASS Different seeds yield varied weighted case results
+COMBAT IDENTITY RESULT 218 passed, 0 failed

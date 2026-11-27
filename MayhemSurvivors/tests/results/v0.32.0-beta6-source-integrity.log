@@ -1,0 +1,5 @@
+PASS fresh ZIP CRC, no imported cache or build artifacts
+PASS Godot4.6.3 clean editor import without parser/resource errors
+PASS 429 actual checks in4 suites from extracted source, Python5/0
+PASS849 runtime/configuration files match signed AAB source snapshot
+PASS all15 hero motifs rendered natively without script errors

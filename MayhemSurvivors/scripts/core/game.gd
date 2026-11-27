@@ -48,6 +48,8 @@ var arena_coach
 var bruiser_builds
 var result_details:Dictionary={}
 var enemy_roles
+var core_attacks
+const CoinPickups=preload('res://scripts/economy/coin_pickups.gd')
 var encounters
 var bombs
 var twinkle
@@ -225,6 +227,7 @@ func _ready():
 	arena_coach=preload('res://scripts/ui/arena_coach.gd').new(self)
 	bruiser_builds=preload('res://scripts/ui/bruiser_builds.gd').new(self)
 	ravox=preload('res://scripts/enemies/ravox_controller.gd').new(self)
+	core_attacks=preload('res://scripts/enemies/core_attacks.gd').new(self)
 	enemy_roles=preload('res://scripts/enemies/reactor_roles.gd').new(self)
 	encounters=preload('res://scripts/gameplay/encounter_director.gd').new(self)
 	load_save()
@@ -960,6 +963,7 @@ func _physics_process(delta):
 		if rules.boss_wave(): finish(false)
 		else:
 			run_waves+=1
+			CoinPickups.bank(self)
 			recap.close('cleared')
 			cleanup()
 			open_shop()
@@ -982,6 +986,7 @@ func spawn_enemy(kind: String):
 	var values=rules.scale_stats(WaveBalance.stats(d,current_wave,wave_number,is_boss),is_boss)
 	spawn_serial+=1
 	enemies.append({'save_actor':spawn_serial,'kind':kind,'pos':pos,'hp':values.hp,'max_hp':values.hp,'speed':values.speed,'damage':values.damage,'radius':float(d.radius),'hit':0.0,'orbit_cd':0.0,'coin_reward':WaveBalance.reward(int(d.coins),current_wave,is_boss),'xp_reward':WaveBalance.reward(int(d.xp),current_wave,is_boss)})
+	core_attacks.initialize(enemies.back())
 	enemy_roles.initialize(enemies.back())
 	ravox.initialize(enemies.back())
 	enemy_pack.initialize(enemies.back())
@@ -1021,6 +1026,7 @@ func update_enemies(dt: float):
 		if twinkle.stunned(e,dt):continue
 		var dir: Vector2 = rules.direction(e)
 		var velocity: Vector2 = dir*e.speed
+		velocity=core_attacks.velocity(e,velocity,dt)
 		if united.enemies.data.has(e.kind):velocity=united.enemies.velocity(e,velocity,dt)
 		if united.enabled and e.kind in ['boss','champion']:velocity=united.bosses.velocity(e,velocity,dt)
 		if e.kind=='ravox':velocity=ravox.velocity(e,velocity,dt)
@@ -1042,7 +1048,8 @@ func update_enemies(dt: float):
 		# Staggered limited local separation avoids quadratic full neighbor scans.
 		for j in range(i+1,mini(i+7,enemies.size())):
 			if enemy_pack.CONFIG.has(e.kind) and e.pack_stage in ['windup','release']:break
-			if united.enabled and e.kind in ['boss','champion'] and united.bosses.stage in ['windup','dash','phase']:break
+			if united.enabled and e.kind in ['boss','champion'] and united.bosses.stage in ['windup','dash','phase','salvo']:break
+			if e.get('core_stage','') in ['windup','pounce']:break
 			if e.get('u_stage','') in ['windup','dash']:break
 			if e.kind=='breaker_axel' and breaker.stage in ['windup','dash','hammer','phase']:break
 			if e.kind=='ravox' and e.ravox_stage in ['windup','dash','recovery']:break
@@ -1057,6 +1064,8 @@ func update_enemies(dt: float):
 				velocity += offset/distance*45
 		var previous_pos:Vector2=e.pos
 		e.pos = (e.pos+velocity*dt).clamp(Vector2(35,35),Vector2(2365,1565))
+		core_attacks.after_move(e,previous_pos)
+		if state!=State.COMBAT:return
 		if united.enabled and e.kind in ['boss','champion']:united.bosses.after_move(e,previous_pos,e.pos)
 		if united.enemies.data.has(e.kind):united.enemies.after_move(e,previous_pos,e.pos)
 		if e.kind=='ravox':ravox.after_move(e,previous_pos,e.pos)
@@ -1064,7 +1073,7 @@ func update_enemies(dt: float):
 		if state!=State.COMBAT:return
 		if e.has('elite'):encounters.after_move(e,previous_pos,e.pos)
 		if state!=State.COMBAT:return
-		if not (e.kind=='ravox' and e.ravox_stage=='dash') and not (e.kind=='breaker_axel' and breaker.stage=='dash') and e.get('u_stage','')!='dash' and not (united.enabled and e.kind in ['boss','champion'] and united.bosses.stage=='dash') and e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0:
+		if not core_attacks.active(e) and not (e.kind=='ravox' and e.ravox_stage=='dash') and not (e.kind=='breaker_axel' and breaker.stage=='dash') and e.get('u_stage','')!='dash' and not (united.enabled and e.kind in ['boss','champion'] and united.bosses.stage=='dash') and e.pos.distance_to(player.position)<e.radius+27 and hurt_clock<=0:
 			if e.kind=='breaker_axel':breaker.hit(breaker.damage(breaker.data.damage,e),e.pos,180,.12)
 			elif united.enabled and e.kind in ['boss','champion']:breaker.hit(united.bosses.touch_damage(e),e.pos,180,.12)
 			else:
@@ -1166,14 +1175,15 @@ func damage_enemy(e: Dictionary, power: float, source:String='weapon', weapon_id
 		steelfist.on_kill()
 		crew.on_kill()
 		var reward = int(e.get('coin_reward',enemy_definition(kind).coins))
-		coins += reward
-		vfx.coin(pos,reward)
-		earned += reward
+		if united.enabled:
+			loot.append({'pos':pos,'xp':0 if kind in ['breaker_axel','champion'] else int(e.xp_reward),'coin':reward})
+		else:
+			coins+=reward;earned+=reward;vfx.coin(pos,reward)
+			if kind not in ['breaker_axel','champion']:loot.append({'pos':pos,'xp':int(e.xp_reward)})
 		if kind in ['breaker_axel','champion']:xp+=int(e.xp_reward)
-		else:loot.append({'pos':pos,'xp':int(e.get('xp_reward',enemy_definition(kind).xp))})
 		sound('death')
-		sound('coin')
-		if kind in ['boss','breaker_axel','champion']:recap.close('cleared')
+		if not united.enabled:sound('coin')
+		if kind in ['boss','breaker_axel','champion']:CoinPickups.bank(self);recap.close('cleared')
 		if practice and practice.active and kind in ['boss','breaker_axel','champion']:practice.finish(true);return
 		if kind in ['breaker_axel','champion']:
 			sound('axel_defeat');run_waves+=1;cleanup();axel_shop_pending=true
@@ -1196,11 +1206,13 @@ func update_loot(dt: float):
 		if distance<magnet: l.pos = l.pos.move_toward(player.position,600*dt)
 		if distance<34:
 			xp += l.xp
+			CoinPickups.collect(self,l)
 			loot.remove_at(i)
-			sound('xp')
+			if l.xp>0:sound('xp')
 	# Merge bounded crystal storage without discarding XP.
 	while loot.size()>240:
 		loot[0].xp += loot.back().xp
+		loot[0].coin=int(loot[0].get('coin',0))+int(loot.back().get('coin',0))
 		loot.pop_back()
 
 func required_xp() -> int:
@@ -1527,6 +1539,8 @@ func _draw():
 	hero_ability.draw()
 	crew.draw()
 	for l in loot:
+		CoinPickups.draw(self,l)
+		if l.xp<=0:continue
 		var p: Vector2 = l.pos
 		draw_circle(p,18,Color(0,.85,.8,.12))
 		draw_colored_polygon(PackedVector2Array([p+Vector2(0,-13),p+Vector2(9,0),p+Vector2(0,13),p+Vector2(-9,0)]),TEAL)
@@ -1536,6 +1550,7 @@ func _draw():
 		world_visuals.draw_enemy(e)
 		encounters.draw_elite(e)
 		ravox.draw_name(e)
+	core_attacks.draw()
 	combat_visuals.draw_weapons(true)
 	draw_player_character()
 	synergies.draw()

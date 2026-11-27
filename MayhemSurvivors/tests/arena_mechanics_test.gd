@@ -52,24 +52,24 @@ func run():
 		for quality in ['LOW','MEDIUM','HIGH']:
 			start('reactor',3,hero);g.saved.settings.quality=quality;charge_with_weapon();accept()
 			var at=g.arena_mechanics.terminal;var a=dummy(at+Vector2(40,0));var b=dummy(at+Vector2(-40,0));var far=dummy(at+Vector2(450,0),1000)
-			var hp=g.hp;var wallet=g.coins;var seed=g.rng.state;var coins=int(a.coin_reward)+int(b.coin_reward)
+			var hp=g.hp;var wallet=wallet_and_drops();var seed=g.rng.state;var coins=int(a.coin_reward)+int(b.coin_reward)
 			g.arena_mechanics.update(2.49);check(g.hp==hp and a.hp==1,'No reactor damage before 2.5 second warning '+str(hero)+' '+quality)
 			g.arena_mechanics.update(.02)
 			check(near(g.hp,hp-14) and not g.enemies.has(a) and not g.enemies.has(b) and far.hp==1000,'Reactor snapshot hits player and nearby enemies only')
 			check(g.rng.state==seed,'Arena damage does not consume critical RNG or inherit class crit')
-			check(g.arena_mechanics.total_coins==30 and g.arena_mechanics.arena_kills==2 and g.coins==wallet+coins+30,'Normal kill loot plus exact once-only maneuver bonus')
+			check(g.arena_mechanics.total_coins==30 and g.arena_mechanics.arena_kills==2 and wallet_and_drops()==wallet+coins+30,'Normal kill loot plus exact once-only maneuver bonus')
 			for i in range(4):g.arena_mechanics.update(3)
-			check(g.coins==wallet+coins+30 and g.arena_mechanics.maneuvers==1 and g.arena_mechanics.hazards.is_empty(),'Reactor cannot repeat damage or farm bonus')
+			check(wallet_and_drops()==wallet+coins+30 and g.arena_mechanics.maneuvers==1 and g.arena_mechanics.hazards.is_empty(),'Reactor cannot repeat damage or farm bonus')
 			g.cleanup();check(g.arena_mechanics.cores.is_empty() and g.arena_mechanics.hazards.is_empty() and g.arena_mechanics.total_coins==30,'Wave cleanup retains only run totals')
 			g.start_run();check(g.arena_mechanics.total_coins==0 and g.arena_mechanics.arena_kills==0,'New run resets arena receipts')
 	for hero in [0,1]:
 		start('docks',3,hero);g.remaining=44.1;g.arena_mechanics.update(.01);check(g.arena_mechanics.hazards.is_empty(),'No container before scheduled time')
 		g.remaining=44;g.arena_mechanics.update(.01);check(g.arena_mechanics.hazards.size()==2,'One bounded double load announced')
-		var h=g.arena_mechanics.hazards[0];var snapshot:Vector2=h.pos;var a=dummy(snapshot+Vector2(35,0));var b=dummy(snapshot-Vector2(35,0));var hp=g.hp;var wallet=g.coins;var coins=int(a.coin_reward)+int(b.coin_reward)
+		var h=g.arena_mechanics.hazards[0];var snapshot:Vector2=h.pos;var a=dummy(snapshot+Vector2(35,0));var b=dummy(snapshot-Vector2(35,0));var hp=g.hp;var wallet=wallet_and_drops();var coins=int(a.coin_reward)+int(b.coin_reward)
 		g.arena_mechanics.update(1.99);check(g.hp==hp and a.hp==1,'No container damage before complete two-second warning')
 		g.player.position+=Vector2(0,300);g.arena_mechanics.update(.02)
 		check(g.hp==hp and not g.enemies.has(a) and not g.enemies.has(b) and h.pos==snapshot,'Player can dodge fixed landing and lure enemies under container')
-		check(g.arena_mechanics.total_coins==24 and g.coins==wallet+coins+24 and g.arena_mechanics.arena_kills==2,'Container pair awards bonus once after two kills')
+		check(g.arena_mechanics.total_coins==24 and wallet_and_drops()==wallet+coins+24 and g.arena_mechanics.arena_kills==2,'Container pair awards bonus once after two kills')
 		g.arena_mechanics.update(4);check(g.arena_mechanics.maneuvers==1 and g.arena_mechanics.total_coins==24,'Spent pair cannot pay repeatedly')
 		g.remaining=20;g.arena_mechanics.update(.01);check(g.arena_mechanics.hazards.size()==2 and g.arena_mechanics.drop_index==2,'Second scheduled pair is the wave limit')
 		g.arena_mechanics.update(2.1);check(g.hp==hp-12 and g.arena_mechanics.total_coins==24,'Second pair creates actual danger and no empty bonus')
@@ -90,14 +90,14 @@ func run():
 	# Boss patterns preserve fixed HP, full windup and cap all damage to bosses.
 	for arena in ['reactor','docks']:
 		start(arena,10);var boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0)
-		g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('zones');g.united.bosses.clock=0;g.united.bosses.update(.01)
-		check(g.united.bosses.stage=='windup' and near(g.united.bosses.clock,2) and g.arena_mechanics.hazards.size()==3,'Actual map boss creates three fully warned arena attacks '+arena)
-		var health=boss.hp;boss.hp=boss.max_hp*.3;g.united.bosses.update(.1);check(g.arena_mechanics.hazards.size()==3 and g.united.bosses.stage=='windup','Threshold damage preserves already announced arena pattern '+arena)
-		g.damage_enemy(boss,1000000000);check(g.arena_mechanics.hazards.is_empty() and g.state==g.State.VICTORY,'Boss death safely clears owned arena warnings '+arena)
+		g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('reactor_pylons' if arena=='reactor' else 'dock_anchors');g.united.bosses.clock=0;g.united.bosses.update(.01)
+		check(g.united.bosses.stage=='windup' and near(g.united.bosses.clock,1.8) and g.united.enemies.hazards.size()==(4 if arena=='reactor' else 2),'Actual map boss creates distinct fully warned arena attacks '+arena)
+		var health=boss.hp;boss.hp=boss.max_hp*.3;g.united.bosses.update(.1);check(g.united.enemies.hazards.size()==(4 if arena=='reactor' else 2) and g.united.bosses.stage=='windup','Threshold damage preserves already announced arena pattern '+arena)
+		g.damage_enemy(boss,1000000000);check(g.united.enemies.hazards.is_empty() and g.arena_mechanics.hazards.is_empty() and g.state==g.State.VICTORY,'Boss death safely clears owned arena warnings '+arena)
 		start(arena,10);boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);g.arena_mechanics.add_hazard('core' if arena=='reactor' else 'container',boss.pos,2,boss);g.player.position-=Vector2(220,0);health=boss.hp;g.crit=.75;var seed=g.rng.state
 		g.arena_mechanics.update(2.01);check(near(health-boss.hp,boss.max_hp*.005) and g.rng.state==seed,'Environmental boss damage capped at half a percent per impact '+arena)
 		check(g.arena_mechanics.total_coins==0,'Boss hazards cannot farm maneuver bonus '+arena)
-		start(arena,10);boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('zones');g.united.bosses.clock=0;g.united.bosses.update(.01);boss.pos+=Vector2(12,0);g.arena_mechanics.update(3)
+		start(arena,10);boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('reactor_pylons' if arena=='reactor' else 'dock_anchors');g.united.bosses.clock=0;g.united.bosses.update(.01);boss.pos+=Vector2(12,0);g.united.bosses.update(.01);g.united.enemies.update(3)
 		check(g.arena_mechanics.hazards.is_empty() and g.hp==g.max_hp,'Displaced boss cancels warning before impact '+arena)
 	# No global tuning or tutorial changes; persisted help is defensive and repeatable.
 	for mode in ['tutorial','campaign','endless']:
@@ -119,3 +119,8 @@ func run():
 		var sound=load('res://assets/audio/'+id+'.wav');check(sound is AudioStreamWAV and sound.get_length()>.1,'Imported original sound '+id)
 	g.saved=original;g.save_game();g.free();await process_frame;DirAccess.remove_absolute(PATH)
 	print('ARENA MECHANICS RESULT ',passed,' passed, ',failed,' failed; native_touch=',native_touch);quit(1 if failed else 0)
+
+func wallet_and_drops() -> int:
+	var value=int(g.coins)
+	for packet in g.loot:value+=int(packet.get('coin',0))
+	return value

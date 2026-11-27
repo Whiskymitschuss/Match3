@@ -1,0 +1,689 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Optional waiting tool gardens 0 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 0 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 0 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 5 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 5 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 5 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 11 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 11 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool gardens 11 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 0 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 0 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 0 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 5 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 5 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 5 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 11 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 11 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool frost 11 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 0 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 0 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 0 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 5 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 5 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 5 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 11 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 11 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool storm 11 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 0 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 0 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 0 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 5 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 5 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 5 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 11 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 11 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool crystal 11 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 0 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 0 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 0 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 5 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 5 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 5 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 11 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 11 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool carnival 11 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 0 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 0 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 0 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 5 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 5 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 5 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 11 LOW
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 11 MEDIUM
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Optional waiting tool void 11 HIGH
+PASS No event before ten seconds
+PASS Equipment becomes available on actual wave clock
+PASS Passing equipment never accidentally activates it
+PASS Freshly announced geometry gets its complete warning
+PASS No early environmental hit
+PASS Real collision defeats only in-area targets
+PASS Actual normal loot and one exact maneuver reward
+PASS No combat RNG draws, duplicated deaths or artificial kills
+PASS No repeat farming or reactivation
+PASS Wave cleanup releases all tool state
+PASS Filter cleans hostile circles but preserves boss geometry
+PASS Cleaning pulse cannot hurt its player
+PASS Heat creates real bounded protection and enemy slow
+PASS Player keeps full analog speed inside warmth
+PASS Outside heat the same frost status slows actual movement
+PASS Warmth expires and never becomes permanent immunity
+PASS Lightning aim is locked instead of tracking after warning
+PASS Lightning actually interrupts and stuns normal survivors
+PASS Relay enforces its announced order
+PASS Ordered movement creates two announced diagonal beams
+PASS Bomb cascade has three distinct complete fuse times
+PASS Empty bomb cascades cannot pay a bonus
+PASS Gravity uses elapsed overlap and elites resist forced movement
+PASS Annulus geometry has real safe inner and outer space
+PASS Full tool simulation freezes in 7 gardens
+PASS Full tool simulation freezes in 5 gardens
+PASS Full tool simulation freezes in 6 gardens
+PASS Friendly and hostile areas have distinct actual player collision gardens
+PASS Late-wave inputs cannot leave invisible attacks
+PASS Each final boss has its own bounded announced geometry gardens
+PASS Removing owner cancels pending effects gardens
+PASS Environmental boss damage is capped; no boss maneuver bonus gardens
+PASS Endless reuses one bounded tool per normal wave gardens
+PASS First wave has no extra arena workload gardens
+PASS Full tool simulation freezes in 7 frost
+PASS Full tool simulation freezes in 5 frost
+PASS Full tool simulation freezes in 6 frost
+PASS Friendly and hostile areas have distinct actual player collision frost
+PASS Late-wave inputs cannot leave invisible attacks
+PASS Each final boss has its own bounded announced geometry frost
+PASS Removing owner cancels pending effects frost
+PASS Environmental boss damage is capped; no boss maneuver bonus frost
+PASS Endless reuses one bounded tool per normal wave frost
+PASS First wave has no extra arena workload frost
+PASS Full tool simulation freezes in 7 storm
+PASS Full tool simulation freezes in 5 storm
+PASS Full tool simulation freezes in 6 storm
+PASS Friendly and hostile areas have distinct actual player collision storm
+PASS Late-wave inputs cannot leave invisible attacks
+PASS Each final boss has its own bounded announced geometry storm
+PASS Removing owner cancels pending effects storm
+PASS Environmental boss damage is capped; no boss maneuver bonus storm
+PASS Lethal mistake cannot award bonus after game over storm
+PASS Endless reuses one bounded tool per normal wave storm
+PASS First wave has no extra arena workload storm
+PASS Full tool simulation freezes in 7 crystal
+PASS Full tool simulation freezes in 5 crystal
+PASS Full tool simulation freezes in 6 crystal
+PASS Friendly and hostile areas have distinct actual player collision crystal
+PASS Late-wave inputs cannot leave invisible attacks
+PASS Each final boss has its own bounded announced geometry crystal
+PASS Removing owner cancels pending effects crystal
+PASS Environmental boss damage is capped; no boss maneuver bonus crystal
+PASS Lethal mistake cannot award bonus after game over crystal
+PASS Endless reuses one bounded tool per normal wave crystal
+PASS First wave has no extra arena workload crystal
+PASS Full tool simulation freezes in 7 carnival
+PASS Full tool simulation freezes in 5 carnival
+PASS Full tool simulation freezes in 6 carnival
+PASS Friendly and hostile areas have distinct actual player collision carnival
+PASS Late-wave inputs cannot leave invisible attacks
+PASS Each final boss has its own bounded announced geometry carnival
+PASS Removing owner cancels pending effects carnival
+PASS Environmental boss damage is capped; no boss maneuver bonus carnival
+PASS Lethal mistake cannot award bonus after game over carnival
+PASS Endless reuses one bounded tool per normal wave carnival
+PASS First wave has no extra arena workload carnival
+PASS Full tool simulation freezes in 7 void
+PASS Full tool simulation freezes in 5 void
+PASS Full tool simulation freezes in 6 void
+PASS Friendly and hostile areas have distinct actual player collision void
+PASS Late-wave inputs cannot leave invisible attacks
+PASS Each final boss has its own bounded announced geometry void
+PASS Removing owner cancels pending effects void
+PASS Environmental boss damage is capped; no boss maneuver bonus void
+PASS Lethal mistake cannot award bonus after game over void
+PASS Endless reuses one bounded tool per normal wave void
+PASS First wave has no extra arena workload void
+PASS Actual boss attack exposes remaining windup
+PASS Boss countdown pauses with gameplay
+PASS Recovery window is visible and uses actual cooldown
+PASS First-use coach available gardens
+PASS Native confirmation saves one-time lesson gardens
+PASS Native arena tips return to paused run gardens
+PASS First-use coach available frost
+PASS Native confirmation saves one-time lesson frost
+PASS Native arena tips return to paused run frost
+PASS First-use coach available storm
+PASS Native confirmation saves one-time lesson storm
+PASS Native arena tips return to paused run storm
+PASS First-use coach available crystal
+PASS Native confirmation saves one-time lesson crystal
+PASS Native arena tips return to paused run crystal
+PASS First-use coach available carnival
+PASS Native confirmation saves one-time lesson carnival
+PASS Native arena tips return to paused run carnival
+PASS First-use coach available void
+PASS Native confirmation saves one-time lesson void
+PASS Native arena tips return to paused run void
+PASS All six new coach confirmations survive loading
+PASS World tool manager has no surviving reference cycle
+TACTICS RESULT 686 passed, 0 failed; native_touch=false

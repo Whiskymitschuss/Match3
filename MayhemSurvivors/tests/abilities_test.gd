@@ -174,7 +174,7 @@ func run():
 	g.crit=1
 	near=enemy(g.player.position+Vector2(100,0))
 	g.damage_enemy(near,10)
-	check(g.hit_feedback.numbers.back().text=='20!' and g.hit_feedback.numbers.back().size==40,'Critical damage has larger, explicit gold number')
+	check(g.hit_feedback.numbers.back().text=='KRIT 20' and g.hit_feedback.numbers.back().size==52,'Critical damage has larger, explicit gold number')
 	g.saved.settings.damage_numbers=false
 	var count=g.hit_feedback.numbers.size()
 	g.damage_enemy(near,10)

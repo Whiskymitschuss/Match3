@@ -33,6 +33,7 @@ func play(id:String):
 	if game.test_mode or sfx_gain()<=0:return
 	var now=Time.get_ticks_msec()
 	var gap=100 if id.begins_with('combo_') else (70 if id in ['xp','coin','death','fx_splat'] else (40 if id in ['blaster_fire','splitgun_fire','hit','united_flame','united_cryo','united_tesla','united_lance','united_chakram','united_pyro'] else 0))
+	if id in ['crit_punch','coin_epic','signature_blast']:gap=120 if id=='crit_punch' else 180
 	if gap>0 and now-int(last_played.get(id,-10000))<gap:return
 	last_played[id]=now
 	if id in CUES:

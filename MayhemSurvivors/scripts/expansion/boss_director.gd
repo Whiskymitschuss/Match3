@@ -10,8 +10,9 @@ var attack=''
 var origin=Vector2.ZERO
 var target=Vector2.ZERO
 var hit=false
+var signatures
 const ATTACK_NAMES={'ring':'IMPULSRING','fan':'PROJEKTILFÄCHER','charge':'ANSTURM','zones':'ARENA-ANGRIFF'}
-func _init(g:Node2D):game=g;ladder=game.read_data('waves/boss_ladder')
+func _init(g:Node2D):game=g;ladder=game.read_data('waves/boss_ladder');signatures=preload('res://scripts/bosses/signature_moves.gd').new(game)
 func slot() -> int:return ((game.wave_number-1)%10)+1
 func scheduled() -> bool:return game.united.enabled and game.run_mode!='tutorial' and slot()%2==0
 func profile() -> Dictionary:
@@ -35,18 +36,19 @@ func update(dt:float):
 	var e=actor()
 	if e.is_empty():return
 	var next=3 if e.hp/e.max_hp<=.35 else (2 if e.hp/e.max_hp<=.7 else 1)
-	if next>tier and stage not in ['windup','dash']:
+	if next>tier and stage not in ['windup','dash','salvo']:
 		game.vfx.event('power_burst',e.pos,Color('#FF9F1C'),e.radius*2.2,Vector2.RIGHT,.6)
 		tier=next;stage='phase';clock=float(ladder.cadence.phase_pause);game.sound('united_rage');game.encounters.warn('%s / PHASE %d' % [e.boss_name,tier]);return
 	if float(e.get('steel_stun',0))>0:return
-	if stage in ['windup','dash'] and (not game.enemy_roles.visible(e.pos) or (stage=='windup' and e.pos.distance_to(origin)>8)):
+	if stage in ['windup','dash','salvo'] and (not game.enemy_roles.visible(e.pos) or (stage=='windup' and e.pos.distance_to(origin)>8)):
 		game.united.enemies.removed(e);stage='recovery';clock=2;return
 	clock=maxf(0,clock-dt)
 	if clock>0:return
 	if stage in ['chase','recovery','phase']:
 		if not game.enemy_roles.visible(e.pos):return
 		origin=e.pos;target=game.player.position;hit=false;attack=attack_order(e)[pattern%4];pattern+=1;stage='windup';clock=1.5
-		game.boss_warning={'ring':'IMPULSRING / GRÜNE ÖFFNUNG NUTZEN','fan':'PROJEKTILFÄCHER / SEITLICH AUSWEICHEN','charge':'STURMSPUR VERLASSEN','zones':'MARKIERUNGEN VERLASSEN'}[attack];game.sound('united_warning')
+		game.boss_warning={'ring':'IMPULSRING / GRÜNE ÖFFNUNG NUTZEN','fan':'PROJEKTILFÄCHER / SEITLICH AUSWEICHEN','charge':'STURMSPUR VERLASSEN','zones':'MARKIERUNGEN VERLASSEN'}.get(attack,'SPEZIALANGRIFF');game.sound('united_warning')
+		if signatures.prepare(e,attack):return
 		if attack=='charge':target=(origin+origin.direction_to(target)*440).clamp(Vector2(40,40),Vector2(2360,1560))
 		if attack=='ring':game.united.enemies.ring(origin,230+(45 if tier==3 else 0),origin.direction_to(target).angle()+PI*.5,1.5,touch_damage(e),e)
 		if attack=='zones':
@@ -57,7 +59,9 @@ func update(dt:float):
 				game.united.enemies.lane(true,target.x,1.5,touch_damage(e),e);game.united.enemies.lane(false,target.y,1.5,touch_damage(e),e)
 			else:
 				for offset in [Vector2.ZERO,Vector2(-180,100),Vector2(180,-100)]:game.united.enemies.circle((target+offset).clamp(Vector2(100,100),Vector2(2300,1500)),90,1.5,1.6 if e.boss_pattern=='poison' else .4,touch_damage(e)*.75,e,Color('#C48AFF'),'slow' if e.boss_pattern=='frost' else '')
+	elif stage=='salvo':signatures.pulse(e)
 	elif stage=='windup':
+		if signatures.owns(attack):signatures.release(e,attack);return
 		if attack=='fan':
 			var angle:float=origin.direction_to(target).angle()
 			for i in range(7+(2 if tier==3 else 0)):
@@ -66,7 +70,7 @@ func update(dt:float):
 		else:stage='recovery';clock=float(ladder.cadence.recovery[tier-1]);game.boss_warning=''
 	else:stage='recovery';clock=float(ladder.cadence.recovery[tier-1])
 func velocity(e:Dictionary,normal:Vector2,dt:float) -> Vector2:
-	if stage in ['windup','phase']:return Vector2.ZERO
+	if stage in ['windup','phase','salvo']:return Vector2.ZERO
 	if stage=='dash':return e.pos.direction_to(target)*minf(470,e.pos.distance_to(target)/maxf(.0001,dt))
 	return normal*(1.3 if tier==3 else 1.0)
 func after_move(e:Dictionary,before:Vector2,after:Vector2):
@@ -77,7 +81,7 @@ func after_move(e:Dictionary,before:Vector2,after:Vector2):
 		if tier>=2:game.united.enemies.ring(after,220,after.direction_to(game.player.position).angle()+PI*.5,1.5,touch_damage(e),e)
 func draw():
 	if stage!='windup' or actor().is_empty():return
-	if attack=='charge':
+	if attack in ['charge','crusher_ram']:
 		var side:Vector2=origin.direction_to(target).orthogonal()*(actor().radius+27)
 		game.draw_colored_polygon(PackedVector2Array([origin+side,target+side,target-side,origin-side]),Color(1,.7,.2,.15));game.draw_line(origin+side,target+side,Color('#FFD166'),3,true);game.draw_line(origin-side,target-side,Color('#FFD166'),3,true)
 	elif attack=='fan':
@@ -86,17 +90,20 @@ func draw():
 		for i in range(count):
 			var ray=Vector2.from_angle(angle+(i-(count-1)*.5)*.17)
 			game.draw_line(origin,origin+ray*600,Color(1,.8,.3,.55),3,true)
-	var left=maxf(0,clock);var value='%s / %.1f s' % [ATTACK_NAMES.get(attack,'ANGRIFF'),left]
+	signatures.draw()
+	var left=maxf(0,clock);var value='%s / %.1f s' % [signatures.NAMES.get(attack,ATTACK_NAMES.get(attack,'ANGRIFF')),left]
 	var font=game.UISkin.HEADING;var width=font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,23).x
 	var at=origin+Vector2(-width*.5,-actor().radius-40)
 	game.draw_rect(Rect2(at-Vector2(8,26),Vector2(width+16,36)),Color('#101423'));game.draw_string(font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,23,game.GOLD)
 func hint() -> String:
 	if stage=='phase':return 'PHASENWECHSEL / %.1f s' % maxf(0,clock)
 	if stage=='windup':return boss_instruction()+' / %.1f s' % maxf(0,clock)
+	if stage=='salvo':return 'GEWITTERSPIRALE / IN BEWEGUNG BLEIBEN'
 	if stage=='dash':return 'ANSTURM / STURMSPUR VERLASSEN'
 	if stage=='recovery':return 'ERHOLUNG / DEIN ANGRIFFSFENSTER %.1f s' % maxf(0,clock)
 	return 'VERFOLGUNG / FLUCHTWEG FREIHALTEN'
 func boss_instruction() -> String:
+	if signatures.owns(attack):return signatures.NAMES[attack]
 	if attack=='zones' and slot()==10 and game.arena_mechanics.worlds.IDS.has(game.arena_id):
 		return game.arena_mechanics.zone_title().to_upper()+(' / INNEN SICHER' if game.arena_id in ['frost','void'] else ' / MARKIERUNG VERLASSEN')
 	return {'ring':'IMPULSRING / GRÜNE ÖFFNUNG','fan':'FÄCHER / SEITLICH AUSWEICHEN','charge':'ANSTURM / SPUR VERLASSEN','zones':'ARENA-ANGRIFF / MARKIERUNG VERLASSEN'}.get(attack,'VORWARNUNG')
@@ -108,15 +115,13 @@ func intro():
 	game.label_at(d.name,Vector2(825,315),55,game.GOLD)
 	var actual=game.rules.scale_stats(game.WaveBalance.stats(d,game.rules.current_wave(),game.wave_number,true),true)
 	game.label_at('%d HP / %.0f Kontaktschaden' % [roundi(actual.hp),actual.damage],Vector2(825,380),26,game.TEAL)
-	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelbe Flächen kündigen Schaden an.\nGrüne Ringöffnungen sind sichere Durchgänge.\nSturmspuren seitlich verlassen.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
-	if slot()==10 and game.arena_mechanics.supported():game.label_at('ARENA-ANGRIFF: '+game.arena_mechanics.zone_title()+' / mindestens 2 s Vorwarnung',Vector2(825,825),23,game.TEAL)
+	var moves=signatures.order() if slot()!=6 else []
+	if not moves.is_empty():game.label_at(signatures.NAMES[moves[0]]+'\n'+signatures.NAMES[moves[1]],Vector2(825,745),23,game.TEAL)
+	game.label_at('WELLE %d / %.0f SEKUNDEN LIMIT\n\nGelb: Angriff wird vorbereitet.\nGrüne Ringöffnung: sicherer Durchgang.\n\nPhasen bei 70 %% und %d %% Leben.\nEin Sieg führt zum %s.' % [slot(),d.duration,40 if slot()==6 else 35,'Arenenabschluss' if slot()==10 else 'Shop'],Vector2(825,440),30)
 	game.button('KAMPF STARTEN',Vector2(825,930),Vector2(920,100),func():game.queue_ui_action(game.begin_wave),Color('#8A432E'))
 
-func attack_order(e:Dictionary) -> Array:
-	if slot()!=10:return ladder[str(slot())].sequence
-	if e.boss_pattern in ['storm','frost','void']:return ['zones','charge','fan','ring']
-	if e.boss_pattern in ['fire','poison','carnival']:return ['fan','zones','charge','ring']
-	return ladder['10'].sequence
+func attack_order(_e:Dictionary) -> Array:
+	return signatures.order()
 func weapon_factor(w:Dictionary) -> float:
 	if not game.united.enabled:return 1.0
 	return float(game.Specs.definition(w).get('boss_power',game.weapon_data[w.id].get('boss_power',1.0)))

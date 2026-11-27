@@ -1,0 +1,25 @@
+Signer #1:
+
+Certificate #1:
+Owner: CN=RF Worlds, OU=Mobile Games, O=RF Worlds, C=DE
+Issuer: CN=RF Worlds, OU=Mobile Games, O=RF Worlds, C=DE
+Serial number: 8def8f6d6d9be03d
+Valid from: Mon Nov 23 23:17:05 UTC 2026 until: Sun Dec 18 23:17:05 UTC 2067
+Certificate fingerprints:
+	 SHA1: 2C:76:D6:11:1D:90:28:5A:F2:87:B9:F8:4F:72:54:34:3B:49:BE:07
+	 SHA256: 2A:18:95:FA:8D:27:ED:97:53:0C:E0:18:F9:CC:AE:D3:E7:B2:82:43:62:5C:F1:EF:B4:AC:EA:F7:4D:23:4F:8C
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 4096-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: BF 9F C4 0F 92 91 74 F1   BF A0 D2 3F 63 74 2A 1F  ......t....?ct*.
+0010: 76 4B 83 A6                                        vK..
+]
+]
+
+

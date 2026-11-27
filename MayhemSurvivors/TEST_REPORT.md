@@ -1,3 +1,39 @@
+# Testbericht0.32.0 Beta6 — 27.11.2026
+
+Alle49 versandten Suiten ausgeführt: **10513 Prüfungen bestanden /0 Fehler**.
+Ausführliche Einzelprotokolle und suite-summary unter tests/results/v0.32.0-beta6-*.log.
+Der finale Gesamtlauf hatte zunächst eine fehlerhafte neue Gleichheitsprüfung für
+das serialisierte Speicherenvelop; der abschließende tatsächliche Datei-Lade-/Resume-Test
+ist218/0. Alle übrigen48 Suiten sind im vollständigen Lauf grün. Während des Builds
+war die Arbeitsplatte vorübergehend voll; danach Build-Caches entfernt und Speichern
+neu geprüft. Frühere Testabweichungen durch absichtlich ersetzte Bossmuster und nun
+physische Coins sind auf die neuen Regeln angepasst; keine Produktions-Testumgehung.
+
+Neue Identitätssuite218/0: vier Münzwerte, idempotentes Einsammeln, Tod/Belohnungen,
+Wellenbank, tatsächliche lokale Speicherung und pausiertes Fortsetzen, drei Grundgegner,
+Warn-/Erholungsfenster, pausierte Angriffstimer, zwanzig Finalattacken, passende echte
+Projektilrichtungen, Zwischenbossmuster, Spiralsalven-Checkpoint,15 Figurenmotive,
+Originalaudio, Krit-Zahlenbudget und60 verschiedene Case-Seeds mit Transaktionssperre.
+
+Beide historischen Traces:33+87 Kontrollpunkte unverändert. Sie prüfen ausdrücklich
+Legacy-Kampfregeln; die neue Gegnermechanik wird durch die neue Suite geprüft.
+Google-Konfigurations-Python-Tests5/0, weiterhin Fake-Adapter und kein echtes Login.
+
+Native Linux-X11/GL-Compatibility mit Mesa-Software-Renderer: alle15 Motive gezeichnet,
+Kampf/Münzen/Krits, Kristall-/Sturm-Bosswarnung und -schüsse, Bossintro und Case-Öffnung
+aufgenommen. Case-Navigation mit simuliertem nativem ScreenTouch74/0 bestanden,
+einschließlich Überspringen, echter Animation, Inventar und verschiedenen Seitenverhältnissen.
+Keine Parser-/Ressourcenfehler im finalen Lauf. X11 meldet lediglich fehlende VSync-Unterstützung.
+
+Nicht durchgeführt: physischer Android-Test, Geräte-FPS/Hitze/Latenz, reale Play-Games-
+Anmeldung oder Console-Veröffentlichung. Das neue Ausweich-Balancing braucht Spieltest.
+
+Frisches Quell-ZIP ohne Cache importiert: keine Parser-/Ressourcenfehler. Vier Suiten
+mit429 Prüfungen und Python5/0 erneut bestanden;849 Laufzeit-/Konfigurationsdateien
+bytegleich zum Export-Quellstand. Quellpaket enthält fünf aktuelle GL-Aufnahmen.
+
+---
+
 # 0.31.0 Beta5 — mehr Wucht im Kampf
 
 Neue farbige Impulse bei allen15 Spezialfähigkeiten, zusätzliche Explosions-

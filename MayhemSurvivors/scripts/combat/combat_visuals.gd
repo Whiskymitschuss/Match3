@@ -79,7 +79,10 @@ func held_pose() -> Dictionary:
 	var grips=[Vector2(-18,18),Vector2(12,4)]
 	if id in ['hammer','mop','lance']:
 		var progress=1.0-r.swing/.26
-		angle+=sin(progress*PI)*.8 if r.swing>0 else -.3
+		# Upright resting tools, overhead hammer, broad mop sweep, forward lance thrust.
+		if id=='hammer':angle=r.angle-mirror*(1.05-1.9*sin(progress*PI) if r.swing>0 else 1.05)
+		elif id=='mop':angle=r.angle+mirror*(-1.15+2.3*progress if r.swing>0 else -.95)
+		else:angle=r.angle-mirror*(.35 if r.swing>0 else .9)
 		center=game.player.position+Vector2(0,-8)+direction*5
 		rect=Rect2(-14,-43,110,84)
 		grips=[Vector2(5,0),Vector2(27,0)]
@@ -216,6 +219,8 @@ func draw_weapons(behind: bool = false):
 func draw_shots():
 	for s in game.shots:
 		if not s.active: continue
+		if str(s.get('weapon','')).begins_with('sig_'):
+			preload('res://scripts/bosses/projectile_art.gd').draw(game,s);continue
 		if game.united.draw_shot(s):continue
 		var skin=int(s.get('skin',game.selected))
 		var color=Color('#FF592E') if s.hostile else preload('res://scripts/ui/weapon_skins.gd').color(game.run_loadout,Art.color_for(skin))

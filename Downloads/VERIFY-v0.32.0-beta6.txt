@@ -1,0 +1,14 @@
+Anonymous complete public download verification — 2026-11-27T00:10:37.726981+00:00
+PASS MayhemSurvivors-v0.32.0-beta6-store.aab
+76467612 bytes
+SHA256 55959c508d8e8378d91a4856e4a39d0df11352cf53312b86f99512421d806d4b
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-identity-v0.32.0/Downloads/MayhemSurvivors-v0.32.0-beta6-store.aab
+PASS MayhemSurvivors-v0.32.0-beta6-source.zip
+71871619 bytes
+SHA256 56b80bffe38ca498b4265bcdce81a1de433979650f401a7068d4fa31fde1e410
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-identity-v0.32.0/Downloads/MayhemSurvivors-v0.32.0-beta6-source.zip
+PASS UPDATE-v0.32.0-beta6.txt
+1603 bytes
+SHA256 0f27440d41c0f43d89055f7eea6b101db31e633b746b3a7af14fb765b6c4596f
+https://github.com/Whiskymitschuss/Match3/raw/refs/heads/feature/combat-identity-v0.32.0/Downloads/UPDATE-v0.32.0-beta6.txt
+All three complete downloads match local bytes and published binary SHA256 values; no authentication.

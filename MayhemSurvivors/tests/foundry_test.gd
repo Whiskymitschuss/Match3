@@ -53,7 +53,7 @@ func run():
 			m.update(.02)
 			check(not g.enemies.has(a) and near(b.hp,1000-h.enemy_damage) and far.hp==1000,'Directional footprint damages only enemies inside')
 			check(b.pos.is_equal_approx(old+h.direction*170) and g.hp==hp,'Surviving enemy pushed along arrow; operator remains safe')
-			check(m.total_coins==28 and g.coins==wallet+reward+28 and g.loot.size()==loot+1,'Sweet pressure grants exact bounded bonus plus ordinary XP/coins')
+			check(m.total_coins==28 and wallet_and_drops()==wallet+reward+28 and g.loot.size()==loot+1,'Sweet pressure grants exact bounded bonus plus ordinary XP/coins')
 			check(g.rng.state==seed,'Environmental steam has no critical RNG draw')
 			var count=m.hazards.size();valves.release(v);check(m.hazards.size()==count,'Used handwheel cannot spawn another burst')
 			m.update(3);check(m.maneuvers==1 and m.total_coins==28 and m.hazards.is_empty(),'One damage and bonus resolution per handwheel')
@@ -86,13 +86,13 @@ func run():
 			check(valve.pos.distance_to(at)>65 and rect.has_area() and not rect.grow(27).has_point(valve.pos),'Valid valve/jet geometry at arena edge '+str(at))
 	# Actual final-boss attack, caps, warning ownership and phase transition.
 	start(0,10);var boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);var max_hp=boss.max_hp
-	g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('zones');g.united.bosses.clock=0;g.united.bosses.update(.01)
+	g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('forge_fountains');g.united.bosses.clock=0;g.united.bosses.update(.01)
 	check(g.arena_mechanics.hazards.size()==2 and g.arena_mechanics.hazards.all(func(x):return x.kind=='steam') and g.united.bosses.clock==2,'Ofenkönig casts real crossing steam lanes with full warning')
 	var health=boss.hp;var before:Vector2=boss.pos;g.player.position-=Vector2(100,100);g.arena_mechanics.update(1.99);check(boss.hp==health,'Boss is not damaged before its own warning expires')
 	g.arena_mechanics.update(.02);check(boss.hp<health and health-boss.hp<=max_hp*.01+.01 and boss.pos==before,'Environmental boss damage capped and no boss knockback')
 	check(g.arena_mechanics.total_coins==0 and g.arena_mechanics.valves.stations.is_empty(),'Boss pattern grants no handwheel bonus')
 	g.damage_enemy(boss,1000000000);check(g.state==g.State.VICTORY and g.arena_mechanics.hazards.is_empty(),'Final kill clears owned steam warnings and reaches victory')
-	start(0,10);boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('zones');g.united.bosses.clock=0;g.united.bosses.update(.01);boss.hp=boss.max_hp*.3;g.united.bosses.update(.1)
+	start(0,10);boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);g.united.bosses.pattern=g.united.bosses.attack_order(boss).find('forge_fountains');g.united.bosses.clock=0;g.united.bosses.update(.01);boss.hp=boss.max_hp*.3;g.united.bosses.update(.1)
 	check(g.arena_mechanics.hazards.size()==2 and g.united.bosses.stage=='windup','Phase threshold preserves the announced steam attack')
 	boss.pos+=Vector2(12,0);g.arena_mechanics.update(4);check(g.arena_mechanics.hazards.is_empty() and g.hp==g.max_hp,'Displaced owner cancels steam before collision')
 	for mode in ['campaign','endless','tutorial']:
@@ -112,3 +112,8 @@ func run():
 	g.saved=original;g.save_game();var weak_arena=weakref(g.arena_mechanics);var weak_valves=weakref(g.arena_mechanics.valves);g.free();await process_frame;await process_frame;await process_frame
 	check(weak_arena.get_ref()==null and weak_valves.get_ref()==null,'Both managers release without a reference cycle')
 	DirAccess.remove_absolute(PATH);print('FOUNDRY RESULT ',passed,' passed, ',failed,' failed; native_touch=',native_touch);quit(1 if failed else 0)
+
+func wallet_and_drops() -> int:
+	var value=int(g.coins)
+	for packet in g.loot:value+=int(packet.get('coin',0))
+	return value

@@ -1,3 +1,26 @@
+# Store-Build0.32.0-beta6 /Code39 — 27.11.2026
+
+Release-AAB tatsächlich gebaut und mit dem bisherigen privaten Upload-Schlüssel signiert.
+Datei: MayhemSurvivors-v0.32.0-beta6-store.aab /76467612 Bytes.
+SHA256: 55959c508d8e8378d91a4856e4a39d0df11352cf53312b86f99512421d806d4b.
+Godot4.6.3 /JDK21 /ARM64 /SDK24–36 /nur VIBRATE /kein INTERNET /allowBackup false.
+Bundletool validate, JAR-Signatur, ZIP-CRC,25 Daten-JSONs und16-KiB-Ausrichtung bestanden.
+Alle fünf neuen Controllerfamilien kompiliert im AAB vorhanden;849 Laufzeit-/Configdateien
+als Export-Quellstand gehasht. Keine Tests, Schlüssel, Profile oder Spielstände im Bundle.
+Google Play Games deaktiviert, kein Google-SDK im DEX. Versionsname0.32.0-beta6.
+Zertifikat-SHA256: 2A:18:95:FA:8D:27:ED:97:53:0C:E0:18:F9:CC:AE:D3:E7:B2:82:43:62:5C:F1:EF:B4:AC:EA:F7:4D:23:4F:8C.
+
+Android-Build war erfolgreich. ADB-Daemon war nicht erreichbar: kein Gerät angeschlossen.
+Nach dem Build wurden502MB regenerierbare Gradle-Ergebnisse entfernt, um Quellprüfung
+und Artefaktpakete zu ermöglichen. Templatequellen und signiertes AAB bleiben erhalten.
+Kein Play-Console-Upload, kein physischer Android-Test und kein neuer Debug-APK-Build.
+
+Frisches Quell-ZIP ohne Cache importiert: keine Parser-/Ressourcenfehler. Vier Suiten
+mit429 Prüfungen und Python5/0 erneut bestanden;849 Laufzeit-/Konfigurationsdateien
+bytegleich zum Export-Quellstand. Quellpaket enthält fünf aktuelle GL-Aufnahmen.
+
+---
+
 # Store-Build0.31.0-beta5 /Code38 — 26.11.2026
 
 Release-AAB tatsächlich gebaut und mit unverändertem Upload-Schlüssel signiert.

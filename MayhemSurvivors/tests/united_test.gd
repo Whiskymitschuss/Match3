@@ -92,7 +92,7 @@ func run():
 	check(g.united.enemies.hazards.size()==12,'Danger field count bounded independently of visual quality')
 	for wave in [2,4,8,10]:
 		start(0,'void',wave);var boss=g.enemies[0];boss.pos=at+Vector2(220,0);g.united.bosses.clock=0;g.united.update(.01)
-		check(g.united.bosses.stage=='windup' and g.united.bosses.clock==(2.0 if wave==10 else 1.5),'Boss starts full warning '+str(wave))
+		check(g.united.bosses.stage=='windup' and is_equal_approx(g.united.bosses.clock,1.6 if wave==4 else 1.8),'Boss starts full warning '+str(wave))
 		boss.hp=boss.max_hp*.3;g.united.update(.01);check(g.united.bosses.stage=='windup' and g.united.bosses.tier==1,'Threshold damage preserves locked boss warning '+str(wave));g.united.bosses.stage='recovery';g.united.update(.01);check(g.united.bosses.tier==3 and g.united.bosses.stage=='phase','Boss rage enters readable transition '+str(wave))
 		g.pause_game();var clock=g.united.bosses.clock;g._physics_process(3);check(g.united.bosses.clock==clock,'Boss pause freezes phase '+str(wave));g.resume()
 	# Pool metadata must not leak across old and new projectile types.

@@ -61,7 +61,7 @@ func run():
 				g.arena_mechanics.update(1.99);check(a.hp==1 and b.hp==1 and g.coins==coins,'No early environmental hit')
 				g.arena_mechanics.update(.02);check(not g.enemies.has(a) and not g.enemies.has(b) and far.hp==10000,'Real collision defeats only in-area targets')
 				g.arena_mechanics.update(2);var bonus=g.arena_mechanics.bonus(arena)
-				check(tool().stage=='complete' and g.arena_mechanics.total_coins==bonus and g.coins==coins+reward+bonus,'Actual normal loot and one exact maneuver reward')
+				check(tool().stage=='complete' and g.arena_mechanics.total_coins==bonus and wallet_and_drops()==coins+reward+bonus,'Actual normal loot and one exact maneuver reward')
 				check(g.rng.state==seed and g.arena_mechanics.arena_kills==2,'No combat RNG draws, duplicated deaths or artificial kills')
 				g.arena_mechanics.update(50);tool().activate();check(g.arena_mechanics.total_coins==bonus and g.arena_mechanics.maneuvers==1,'No repeat farming or reactivation')
 				g.cleanup();check(tool().hazards.is_empty() and tool().nodes.is_empty() and tool().warmth_left==0,'Wave cleanup releases all tool state')
@@ -109,8 +109,10 @@ func run():
 		start(arena,1);check(not g.arena_mechanics.normal_wave() and tool().nodes.is_empty(),'First wave has no extra arena workload '+arena)
 	# Readable boss phase/cadence feedback and exact ray count without new attack speed.
 	start('storm',10);var director=g.united.bosses;var boss=g.enemies[0];boss.pos=g.player.position+Vector2(180,0);director.stage='chase';director.clock=0;director.update(.01)
-	check(director.stage=='windup' and '2.0' in director.hint(),'Actual boss attack exposes remaining windup')
-	var clock=director.clock;g.state=g.State.PAUSED;director.update(10);check(director.clock==clock,'Boss countdown pauses with gameplay');g.state=g.State.COMBAT;director.update(clock+.01);check('ANGRIFFSFENSTER' in director.hint(),'Recovery window is visible and uses actual cooldown')
+	check(director.stage=='windup' and '1.8' in director.hint(),'Actual boss attack exposes remaining windup')
+	var clock=director.clock;g.state=g.State.PAUSED;director.update(10);check(director.clock==clock,'Boss countdown pauses with gameplay');g.state=g.State.COMBAT;director.update(clock+.01)
+	for i in range(5):director.update(.23)
+	check('ANGRIFFSFENSTER' in director.hint(),'Recovery window is visible and uses actual cooldown')
 	# First-use lessons, pause tips and save/load use the production UI.
 	for arena in tool().IDS:
 		start(arena);g.state=g.State.WAVE_PREPARATION;g.saved.settings.arena_briefings.erase(arena);g.test_mode=false;check(g.arena_coach.offer(),'First-use coach available '+arena)
@@ -122,3 +124,8 @@ func lifetime(refs:Array):
 	await process_frame;await process_frame;await process_frame
 	check(refs.all(func(r):return r.get_ref()==null),'World tool manager has no surviving reference cycle')
 	print('TACTICS RESULT ',passed,' passed, ',failed,' failed; native_touch=',native_touch);quit(1 if failed else 0)
+
+func wallet_and_drops() -> int:
+	var value=int(g.coins)
+	for packet in g.loot:value+=int(packet.get('coin',0))
+	return value
